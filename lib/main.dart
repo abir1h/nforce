@@ -11,6 +11,14 @@ void main() {
       debugShowCheckedModeBanner: false,
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
+      theme: ThemeData(
+        fontFamily: 'Poppins',
+        checkboxTheme: const CheckboxThemeData(
+          splashRadius: 0,
+          materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          visualDensity: VisualDensity.compact,
+        ),
+      ),
     ),
   );
 }
