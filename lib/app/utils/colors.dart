@@ -18,4 +18,6 @@ class AppColors {
   static const Color white2 = Color(0xFFDBDBF9);
   static const Color white3 = Color(0xFFCECECE);
   static const Color white4 = Color(0xFFA1A1A1);
+
+  static const Color subText = Color(0xFF4D4D4D);
 }

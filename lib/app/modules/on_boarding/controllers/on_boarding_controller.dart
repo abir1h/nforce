@@ -1,5 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'dart:developer' as developer show log;
+import 'package:nuforce/app/modules/on_boarding/components/top_view_with_text.dart';
+import 'package:nuforce/app/routes/app_pages.dart';
+import 'package:nuforce/gen/assets.gen.dart';
 
 class OnBoardingController extends GetxController {
   RxInt currentPageIndex = 0.obs;
@@ -7,6 +10,10 @@ class OnBoardingController extends GetxController {
   RxBool isLastPage = false.obs;
 
   void changePage() {
+    if (isLastPage.value) {
+      Get.offAllNamed(Routes.HOME);
+      return;
+    }
     if (currentPageIndex.value == 2) {
       isLastPage.value = true;
       return;
@@ -16,4 +23,22 @@ class OnBoardingController extends GetxController {
     percent.value = (index + 1) / 3;
     isLastPage.value = index == 2;
   }
+
+  RxList<Widget> contents = [
+    TopViewWithText(
+      imagePath: Assets.images.png.onboarding1.path,
+      title: 'One app to rule them all',
+      description: 'With our app, you can easily track and man age all your solution service requests in one place.',
+    ),
+    TopViewWithText(
+      imagePath: Assets.images.png.onboarding2.path,
+      title: 'Effortless Service Tracking',
+      description: 'With our app, you can easily track and man age all your solution service requests in one place.',
+    ),
+    TopViewWithText(
+      imagePath: Assets.images.png.onboarding3.path,
+      title: 'Field Ops Made Simple',
+      description: 'With our app, you can easily track and man age all your solution service requests in one place.',
+    ),
+  ].obs;
 }

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/on_boarding/components/next_button.dart';
+import 'package:nuforce/app/modules/on_boarding/components/skip_button.dart';
+import 'package:nuforce/app/routes/app_pages.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
-import 'package:nuforce/app/utils/colors.dart';
-import 'package:nuforce/app/utils/text_styles.dart';
 import 'package:nuforce/main.dart';
 
 import '../controllers/on_boarding_controller.dart';
@@ -23,28 +23,34 @@ class OnBoardingView extends GetView<OnBoardingController> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Row(
+                Obx(
+                  () => controller.contents[controller.currentPageIndex.value],
+                ),
+                Column(
                   children: [
-                    Text(
-                      'Skip',
-                      style: CustomTextStyle.heading4.copyWith(
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.greyText,
-                      ),
+                    const SizedBox(height: 40),
+                    Row(
+                      children: [
+                        SkipButton(
+                          onTap: () {
+                            Get.offAllNamed(Routes.HOME);
+                          },
+                        ),
+                        const Spacer(),
+                        Obx(
+                          () => NextButton(
+                            percent: controller.percent.value,
+                            text: controller.isLastPage.value ? 'Start' : 'Next',
+                            onTap: () {
+                              controller.changePage();
+                            },
+                          ),
+                        ),
+                      ],
                     ),
-                    const Spacer(),
-                    Obx(
-                      () => NextButton(
-                        percent: controller.percent.value,
-                        text: controller.isLastPage.value ? 'Start' : 'Next',
-                        onTap: () {
-                          controller.changePage();
-                        },
-                      ),
-                    ),
+                    const SizedBox(height: 30),
                   ],
                 ),
-                const SizedBox(height: 30),
               ],
             ),
           ),
