@@ -1,23 +1,19 @@
 import 'package:get/get.dart';
+import 'dart:developer' as developer show log;
 
 class OnBoardingController extends GetxController {
-  //TODO: Implement OnBoardingController
+  RxInt currentPageIndex = 0.obs;
+  RxDouble percent = (1 / 3).obs;
+  RxBool isLastPage = false.obs;
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  void changePage() {
+    if (currentPageIndex.value == 2) {
+      isLastPage.value = true;
+      return;
+    }
+    final index = currentPageIndex.value + 1;
+    currentPageIndex.value = index;
+    percent.value = (index + 1) / 3;
+    isLastPage.value = index == 2;
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }

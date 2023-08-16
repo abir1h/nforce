@@ -22,8 +22,21 @@ class $AssetsImagesPngGen {
   AssetGenImage get nuforceSplash =>
       const AssetGenImage('assets/images/png/nuforce_splash.png');
 
+  /// File path: assets/images/png/onboarding1.png
+  AssetGenImage get onboarding1 =>
+      const AssetGenImage('assets/images/png/onboarding1.png');
+
+  /// File path: assets/images/png/onboarding2.png
+  AssetGenImage get onboarding2 =>
+      const AssetGenImage('assets/images/png/onboarding2.png');
+
+  /// File path: assets/images/png/onboarding3.png
+  AssetGenImage get onboarding3 =>
+      const AssetGenImage('assets/images/png/onboarding3.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [nuforceSplash];
+  List<AssetGenImage> get values =>
+      [nuforceSplash, onboarding1, onboarding2, onboarding3];
 }
 
 class Assets {
