@@ -15,6 +15,7 @@ class SplashView extends GetView<SplashController> {
   Widget build(BuildContext context) {
     height = MediaQuery.of(context).size.height;
     width = MediaQuery.of(context).size.width;
+    controller.onInit();
     return Scaffold(
       backgroundColor: AppColors.primaryBlue1,
       body: SizedBox(

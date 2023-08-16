@@ -1,23 +1,16 @@
 import 'package:get/get.dart';
+import 'package:nuforce/app/routes/app_pages.dart';
 
 class SplashController extends GetxController {
-  //TODO: Implement SplashController
-
-  final count = 0.obs;
   @override
   void onInit() {
+    Future.delayed(const Duration(seconds: 2), () {
+      navigateToDestination();
+    });
     super.onInit();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  void navigateToDestination() {
+    Get.offAllNamed(Routes.ON_BOARDING);
   }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }
