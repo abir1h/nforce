@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:nuforce/app/utils/app_constants.dart';
+import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/app/utils/text_styles.dart';
+import 'package:nuforce/gen/assets.gen.dart';
+import 'package:nuforce/main.dart';
 
 import '../controllers/splash_controller.dart';
 
@@ -8,11 +13,55 @@ class SplashView extends GetView<SplashController> {
   const SplashView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text(
-          'SplashView is working',
-          style: TextStyle(fontSize: 20),
+    height = MediaQuery.of(context).size.height;
+    width = MediaQuery.of(context).size.width;
+    return Scaffold(
+      backgroundColor: AppColors.primaryBlue1,
+      body: SizedBox(
+        height: height,
+        width: width,
+        child: Center(
+          child: Stack(
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Spacer(),
+                  Container(
+                    padding: const EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.1),
+                      shape: BoxShape.circle,
+                    ),
+                    child: Container(
+                      height: 180,
+                      width: 180,
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Image.asset(Assets.images.png.nuforceSplash.path),
+                    ),
+                  ),
+                  const Spacer(),
+                ],
+              ),
+              Positioned(
+                bottom: 70,
+                left: 0,
+                right: 0,
+                child: Text(
+                  AppConstants.splashBottom,
+                  textAlign: TextAlign.center,
+                  style: CustomTextStyle.paragraphMedium.copyWith(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

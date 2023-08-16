@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 
 import 'app/routes/app_pages.dart';
 
+double height = 0;
+double width = 0;
 void main() {
   runApp(
     GetMaterialApp(
