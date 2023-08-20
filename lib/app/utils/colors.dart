@@ -20,4 +20,7 @@ class AppColors {
   static const Color white4 = Color(0xFFA1A1A1);
 
   static const Color subText = Color(0xFF4D4D4D);
+  static const Color inactiveColor = Color(0xFFBCBCBC);
+
+  static const Color lightButtonColor = Color(0xFFD8E9FF);
 }

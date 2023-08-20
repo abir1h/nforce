@@ -11,7 +11,7 @@ class OnBoardingController extends GetxController {
 
   void changePage() {
     if (isLastPage.value) {
-      Get.offAllNamed(Routes.HOME);
+      Get.offAllNamed(Routes.AUTH);
       return;
     }
     if (currentPageIndex.value == 2) {

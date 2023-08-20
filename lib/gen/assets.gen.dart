@@ -13,6 +13,7 @@ class $AssetsImagesGen {
   const $AssetsImagesGen();
 
   $AssetsImagesPngGen get png => const $AssetsImagesPngGen();
+  $AssetsImagesSvgGen get svg => const $AssetsImagesSvgGen();
 }
 
 class $AssetsImagesPngGen {
@@ -37,6 +38,28 @@ class $AssetsImagesPngGen {
   /// List of all assets
   List<AssetGenImage> get values =>
       [nuforceSplash, onboarding1, onboarding2, onboarding3];
+}
+
+class $AssetsImagesSvgGen {
+  const $AssetsImagesSvgGen();
+
+  /// File path: assets/images/svg/apple.svg
+  String get apple => 'assets/images/svg/apple.svg';
+
+  /// File path: assets/images/svg/facebook.svg
+  String get facebook => 'assets/images/svg/facebook.svg';
+
+  /// File path: assets/images/svg/google.svg
+  String get google => 'assets/images/svg/google.svg';
+
+  /// File path: assets/images/svg/microsoft.svg
+  String get microsoft => 'assets/images/svg/microsoft.svg';
+
+  /// File path: assets/images/svg/nuforce_logo.svg
+  String get nuforceLogo => 'assets/images/svg/nuforce_logo.svg';
+
+  /// List of all assets
+  List<String> get values => [apple, facebook, google, microsoft, nuforceLogo];
 }
 
 class Assets {

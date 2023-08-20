@@ -33,7 +33,7 @@ class OnBoardingView extends GetView<OnBoardingController> {
                       children: [
                         SkipButton(
                           onTap: () {
-                            Get.offAllNamed(Routes.HOME);
+                            Get.offAllNamed(Routes.AUTH);
                           },
                         ),
                         const Spacer(),
