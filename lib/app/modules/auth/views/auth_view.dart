@@ -3,6 +3,8 @@ import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/auth/components/social_login_buttons.dart';
+import 'package:nuforce/app/modules/auth/views/login_singup_view.dart';
+import 'package:nuforce/app/shared/widgets/or_x_with.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
 import 'package:nuforce/app/utils/colors.dart';
@@ -50,7 +52,9 @@ class AuthView extends GetView<AuthController> {
                 const SizedBox(height: 30),
                 PrimaryButton(
                   text: 'Try NuForce For Free',
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(() => const LoginSignupView());
+                  },
                 ),
                 const SizedBox(height: 15),
                 PrimaryButton(
@@ -59,26 +63,7 @@ class AuthView extends GetView<AuthController> {
                   primaryColored: false,
                 ),
                 const SizedBox(height: 30),
-                Row(
-                  children: [
-                    Expanded(
-                      child: Container(
-                        height: 1,
-                        color: AppColors.inactiveColor,
-                      ),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 10),
-                      child: Text('Or log in with'),
-                    ),
-                    Expanded(
-                      child: Container(
-                        height: 1,
-                        color: AppColors.inactiveColor,
-                      ),
-                    ),
-                  ],
-                ),
+                const OrXWith(label: 'Or log in with'),
                 const SizedBox(height: 30),
                 const SocialLoginButtons(),
                 const Spacer(),

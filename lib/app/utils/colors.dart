@@ -23,4 +23,6 @@ class AppColors {
   static const Color inactiveColor = Color(0xFFBCBCBC);
 
   static const Color lightButtonColor = Color(0xFFD8E9FF);
+  static const Color tabbarColor = Color(0xFFE6EEF6);
+  static const Color inactiveTabbarColor = Color(0xFFF3F3F3);
 }
