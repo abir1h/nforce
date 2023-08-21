@@ -6,4 +6,7 @@ class AuthController extends GetxController {
   RxBool isPasswordVisible = true.obs;
   RxBool rememberMe = false.obs;
   TextEditingController magicLinkEmailController = TextEditingController();
+  final pinController = TextEditingController();
+  final focusNode = FocusNode();
+
 }

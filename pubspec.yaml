@@ -17,6 +17,7 @@ dependencies:
   webview_flutter: ^4.0.7
   flutter_native_splash: ^2.3.2
   percent_indicator: ^4.2.3
+  pinput: ^3.0.0
 
   flutter:
     sdk: flutter

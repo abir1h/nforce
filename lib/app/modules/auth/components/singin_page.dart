@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/auth/components/social_login_buttons.dart';
 import 'package:nuforce/app/modules/auth/controllers/auth_controller.dart';
+import 'package:nuforce/app/modules/auth/views/forgot_password_view.dart';
 import 'package:nuforce/app/modules/auth/views/magic_link_signin_view.dart';
 import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
 import 'package:nuforce/app/shared/widgets/or_x_with.dart';
@@ -74,12 +75,17 @@ class SignInPage extends StatelessWidget {
                   ],
                 ),
                 const Spacer(),
-                const Text(
-                  'Forgot Password?',
-                  style: TextStyle(
-                    color: AppColors.nutralBlack1,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14,
+                GestureDetector(
+                  onTap: () {
+                    Get.to(() => const ForgotPasswordView());
+                  },
+                  child: const Text(
+                    'Forgot Password?',
+                    style: TextStyle(
+                      color: AppColors.nutralBlack1,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14,
+                    ),
                   ),
                 ),
               ],
