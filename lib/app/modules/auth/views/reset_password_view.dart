@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/auth/views/otp_view.dart';
+import 'package:nuforce/app/modules/auth/components/reset_pass_bottosheet.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar.dart';
 import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
@@ -82,7 +82,7 @@ class ResetPasswordView extends GetView<AuthController> {
                 const SizedBox(height: 30),
                 PrimaryButton(
                   onPressed: () {
-                    Get.to(() => const OtpView());
+                    resetPasswordBottomSheet(context);
                   },
                   text: 'Save Password',
                 ),
