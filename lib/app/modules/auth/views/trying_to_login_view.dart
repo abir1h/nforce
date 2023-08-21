@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/auth/components/magic_link_bottomsheet.dart';
-import 'package:nuforce/app/modules/auth/views/trying_to_login_view.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar.dart';
-import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/text_styles.dart';
+import 'package:nuforce/gen/assets.gen.dart';
 import 'package:nuforce/main.dart';
 
 import '../controllers/auth_controller.dart';
 
-class MagicLinkSingin extends GetView<AuthController> {
-  const MagicLinkSingin({Key? key}) : super(key: key);
+class TryingToLoginView extends GetView<AuthController> {
+  const TryingToLoginView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,41 +32,46 @@ class MagicLinkSingin extends GetView<AuthController> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
-                const SizedBox(height: 24),
+                SizedBox(
+                  width: width * 0.7,
+                  child: Image.asset(
+                    Assets.images.png.timeExceeded.path,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                const SizedBox(height: 40),
                 Text(
-                  'Sign in with Magic Link',
+                  'Please wait...',
                   textAlign: TextAlign.center,
                   style: CustomTextStyle.heading1.copyWith(
                     fontWeight: FontWeight.w600,
                     color: AppColors.nutralBlack1,
                   ),
                 ),
-                const SizedBox(height: 5),
+                const SizedBox(height: 8),
                 Text(
-                  'Simply enter your registered email address, and we\'ll send you a secure link.',
+                  'We are trying to login you in',
                   textAlign: TextAlign.center,
                   style: CustomTextStyle.heading4.copyWith(
                     fontWeight: FontWeight.w400,
                     color: AppColors.subText,
                   ),
                 ),
-                const SizedBox(height: 30),
-                CustomTextField(
-                  controller: controller.magicLinkEmailController,
-                  hint: 'Enter your email',
-                  label: 'Email',
-                  keyboardType: TextInputType.emailAddress,
+                const SizedBox(height: 24),
+                Text(
+                  'it seems this link has been expired',
+                  textAlign: TextAlign.center,
+                  style: CustomTextStyle.heading5.copyWith(
+                    fontWeight: FontWeight.w400,
+                    color: AppColors.red,
+                  ),
                 ),
                 const SizedBox(height: 30),
                 PrimaryButton(
                   onPressed: () {
-                    if (DateTime.now().second % 2 == 0) {
-                      magicLinkBottomSheet(context);
-                    } else {
-                      Get.to(() => const TryingToLoginView());
-                    }
+                    magicLinkBottomSheet(context);
                   },
-                  text: 'Send magic link',
+                  text: 'Send magic link again',
                 ),
                 const Spacer(),
                 Row(

@@ -39,9 +39,19 @@ class $AssetsImagesPngGen {
   AssetGenImage get phoneText =>
       const AssetGenImage('assets/images/png/phone_text.png');
 
+  /// File path: assets/images/png/time_exceeded.png
+  AssetGenImage get timeExceeded =>
+      const AssetGenImage('assets/images/png/time_exceeded.png');
+
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [nuforceSplash, onboarding1, onboarding2, onboarding3, phoneText];
+  List<AssetGenImage> get values => [
+        nuforceSplash,
+        onboarding1,
+        onboarding2,
+        onboarding3,
+        phoneText,
+        timeExceeded
+      ];
 }
 
 class $AssetsImagesSvgGen {
