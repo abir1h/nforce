@@ -53,7 +53,12 @@ class AuthView extends GetView<AuthController> {
                 PrimaryButton(
                   text: 'Try NuForce For Free',
                   onPressed: () {
-                    Get.to(() => const LoginSignupView());
+                    if (AuthController().initialized) {
+                      Get.to(() => const LoginSignupView());
+                    } else {
+                      Get.put(AuthController());
+                      Get.to(() => const LoginSignupView());
+                    }
                   },
                 ),
                 const SizedBox(height: 15),

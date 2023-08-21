@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 class AuthController extends GetxController {
   RxInt tabIndex = 0.obs;
-  
+
   RxBool isPasswordVisible = true.obs;
   RxBool isResetPasswordVisible = true.obs;
   RxBool isConfirmPasswordVisible = true.obs;
@@ -12,5 +12,4 @@ class AuthController extends GetxController {
   TextEditingController magicLinkEmailController = TextEditingController();
   final pinController = TextEditingController();
   final focusNode = FocusNode();
-
 }
