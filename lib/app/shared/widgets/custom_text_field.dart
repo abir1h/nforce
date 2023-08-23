@@ -26,54 +26,67 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 50,
-      child: TextField(
-        cursorColor: AppColors.primaryBlue1,
-        autocorrect: false,
-        obscureText: obscureText,
-        obscuringCharacter: '*',
-        controller: controller,
-        decoration: InputDecoration(
-          suffixIcon: isPassword
-              ? IconButton(
-                  onPressed: onVisibilityTap,
-                  icon: Icon(
-                    isVisibile ? Icons.visibility : Icons.visibility_off,
-                    color: AppColors.greyText,
-                  ),
-                )
-              : null,
-          hintText: hint,
-          labelStyle: CustomTextStyle.paragraphSmall.copyWith(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          label,
+          style: CustomTextStyle.paragraphSmall.copyWith(
             fontWeight: FontWeight.w500,
             color: AppColors.nutralBlack1,
             // fontSize: 20,
           ),
-          labelText: label,
-          hintStyle: CustomTextStyle.paragraphSmall.copyWith(
-            fontWeight: FontWeight.w400,
-          ),
-          border: OutlineInputBorder(
-            borderSide: const BorderSide(
-              color: AppColors.greyText,
+        ),
+        const SizedBox(height: 8),
+        Container(
+          height: 50,
+          color: AppColors.testFieldBackground,
+          child: TextField(
+            cursorColor: AppColors.primaryBlue1,
+            autocorrect: false,
+            obscureText: obscureText,
+            controller: controller,
+            textAlignVertical: TextAlignVertical.center,
+            decoration: InputDecoration(
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 0,
+              ),
+              suffixIcon: isPassword
+                  ? IconButton(
+                      onPressed: onVisibilityTap,
+                      icon: Icon(
+                        isVisibile ? Icons.visibility : Icons.visibility_off,
+                        color: AppColors.greyText,
+                      ),
+                    )
+                  : null,
+              hintText: hint,
+              hintStyle: CustomTextStyle.paragraphSmall.copyWith(
+                fontWeight: FontWeight.w400,
+              ),
+              border: OutlineInputBorder(
+                borderSide: const BorderSide(
+                  color: AppColors.greyText,
+                ),
+                borderRadius: BorderRadius.circular(6),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderSide: const BorderSide(
+                  color: AppColors.greyText,
+                ),
+                borderRadius: BorderRadius.circular(6),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: const BorderSide(
+                  color: AppColors.primaryBlue1,
+                ),
+                borderRadius: BorderRadius.circular(6),
+              ),
             ),
-            borderRadius: BorderRadius.circular(6),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderSide: const BorderSide(
-              color: AppColors.greyText,
-            ),
-            borderRadius: BorderRadius.circular(6),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: const BorderSide(
-              color: AppColors.primaryBlue1,
-            ),
-            borderRadius: BorderRadius.circular(6),
           ),
         ),
-      ),
+      ],
     );
   }
 }

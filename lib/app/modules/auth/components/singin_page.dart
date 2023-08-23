@@ -33,7 +33,7 @@ class SignInPage extends StatelessWidget {
             Obx(
               () => CustomTextField(
                 controller: null,
-                hint: '********',
+                hint: 'Enter your password',
                 label: 'Password',
                 keyboardType: TextInputType.visiblePassword,
                 obscureText: controller.isPasswordVisible.value,

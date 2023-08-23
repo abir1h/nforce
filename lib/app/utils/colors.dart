@@ -25,4 +25,5 @@ class AppColors {
   static const Color lightButtonColor = Color(0xFFD8E9FF);
   static const Color tabbarColor = Color(0xFFE6EEF6);
   static const Color inactiveTabbarColor = Color(0xFFF3F3F3);
+  static const Color testFieldBackground = Color(0xFFF7F7F7);
 }
