@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/auth/components/signup_page.dart';
 import 'package:nuforce/app/modules/auth/components/singin_page.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar.dart';
 import 'package:nuforce/app/shared/widgets/custom_tabbar.dart';
@@ -61,9 +62,10 @@ class LoginSignupView extends GetView<AuthController> {
                           height: height - 50 - AppBar().preferredSize.height - 60,
                           child: SignInPage(controller: controller),
                         )
-                      : Container(
-                          // TODO : Add Sing Up Form
-                          ),
+                      : SizedBox(
+                          height: height - 50 - AppBar().preferredSize.height - 60,
+                          child: SignUpPage(controller: controller),
+                        ),
                 ),
               ),
             ],

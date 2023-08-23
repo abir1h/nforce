@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:nuforce/app/utils/colors.dart';
 
 import 'app/routes/app_pages.dart';
 
@@ -15,10 +16,13 @@ void main() {
       getPages: AppPages.routes,
       theme: ThemeData(
         fontFamily: 'Poppins',
-        checkboxTheme: const CheckboxThemeData(
+        checkboxTheme: CheckboxThemeData(
           splashRadius: 0,
           materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
           visualDensity: VisualDensity.compact,
+          fillColor: MaterialStateColor.resolveWith(
+            (states) => AppColors.primaryBlue1,
+          ),
         ),
       ),
     ),
