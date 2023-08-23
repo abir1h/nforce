@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:nuforce/app/modules/auth/components/company_image.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar.dart';
 import 'package:nuforce/app/shared/widgets/custom_dropdown.dart';
+import 'package:nuforce/app/shared/widgets/custom_phone_input.dart';
 import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
@@ -76,7 +77,11 @@ class AccountSetupView extends GetView<AuthController> {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  //TODO phone number
+                  const CustomPhoneInput(
+                    label: 'Phone Number',
+                    hint: 'Enter phone number',
+                    controller: null,
+                  ),
 
                   const SizedBox(height: 16),
                   const CustomTextField(
