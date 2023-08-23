@@ -28,62 +28,123 @@ class AccountSetupView extends GetView<AuthController> {
           width: width,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  'Setup your account',
-                  textAlign: TextAlign.center,
-                  style: CustomTextStyle.heading1.copyWith(
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.nutralBlack1,
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    'Setup your account',
+                    textAlign: TextAlign.center,
+                    style: CustomTextStyle.heading1.copyWith(
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.nutralBlack1,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 24),
-                const CompanyImage(),
-                const SizedBox(height: 16),
-                const CustomTextField(
-                  label: 'Company Name',
-                  hint: 'Write company name',
-                  controller: null,
-                ),
+                  const SizedBox(height: 24),
+                  const CompanyImage(),
+                  const SizedBox(height: 16),
+                  const CustomTextField(
+                    label: 'Company Name',
+                    hint: 'Write company name',
+                    controller: null,
+                  ),
 
-                const SizedBox(height: 16),
-                Obx(
-                  () => CustomDropdownButton(
-                    items: controller.signUpController.industryType
-                        .map((e) => DropdownMenuItem(
-                              value: e,
-                              child: Text(
-                                e,
-                                style: const TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400,
-                                  color: AppColors.subText,
+                  const SizedBox(height: 16),
+                  Obx(
+                    () => CustomDropdownButton(
+                      items: controller.signUpController.industryType
+                          .map((e) => DropdownMenuItem(
+                                value: e,
+                                child: Text(
+                                  e,
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                    color: AppColors.subText,
+                                  ),
                                 ),
-                              ),
-                            ))
-                        .toList(),
-                    hint: controller.signUpController.selectedIndustry.value,
-                    onChanged: (v) {
-                      controller.signUpController.selectedIndustry.value = v;
-                    },
-                    label: 'Industry Type',
-                    value: null,
+                              ))
+                          .toList(),
+                      hint: controller.signUpController.selectedIndustry.value,
+                      onChanged: (v) {
+                        controller.signUpController.selectedIndustry.value = v;
+                      },
+                      label: 'Industry Type',
+                      value: null,
+                    ),
                   ),
-                ),
+                  const SizedBox(height: 16),
+                  //TODO phone number
 
-                //d
-                const SizedBox(height: 30),
-                PrimaryButton(
-                  onPressed: () {
-                    controller.navigateFromOtpView();
-                  },
-                  text: 'Continue',
-                ),
-              ],
+                  const SizedBox(height: 16),
+                  const CustomTextField(
+                    label: 'Website',
+                    hint: 'Website Link',
+                    controller: null,
+                  ),
+
+                  const SizedBox(height: 16),
+                  Obx(
+                    () => CustomDropdownButton(
+                      items: controller.signUpController.country
+                          .map((e) => DropdownMenuItem(
+                                value: e,
+                                child: Text(
+                                  e,
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                    color: AppColors.subText,
+                                  ),
+                                ),
+                              ))
+                          .toList(),
+                      hint: controller.signUpController.selectedCountry.value,
+                      onChanged: (v) {
+                        controller.signUpController.selectedCountry.value = v;
+                      },
+                      label: 'Country',
+                      value: null,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Obx(
+                    () => CustomDropdownButton(
+                      items: controller.signUpController.state
+                          .map((e) => DropdownMenuItem(
+                                value: e,
+                                child: Text(
+                                  e,
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                    color: AppColors.subText,
+                                  ),
+                                ),
+                              ))
+                          .toList(),
+                      hint: controller.signUpController.selectedState.value,
+                      onChanged: (v) {
+                        controller.signUpController.selectedState.value = v;
+                      },
+                      label: 'State',
+                      value: null,
+                    ),
+                  ),
+
+                  //d
+                  const SizedBox(height: 30),
+                  PrimaryButton(
+                    onPressed: () {
+                      controller.navigateFromOtpView();
+                    },
+                    text: 'Continue',
+                  ),
+                  const SizedBox(height: 30),
+                ],
+              ),
             ),
           ),
         ),

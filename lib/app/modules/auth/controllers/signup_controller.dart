@@ -13,4 +13,18 @@ class SingupAuthController extends GetxController {
     'Test Industry 2',
     'Test Industry 3',
   ];
+
+  RxString selectedCountry = 'Select Country'.obs;
+  List<String> country = [
+    'Country 1',
+    'Country 2',
+    'Country 3',
+  ];
+
+  RxString selectedState = 'Select State'.obs;
+  List<String> state = [
+    'State 1',
+    'State 2',
+    'State 3',
+  ];
 }
