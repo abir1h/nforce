@@ -36,7 +36,7 @@ class CustomPhoneInput extends StatelessWidget {
             border: Border.all(
               color: AppColors.greyText,
             ),
-            color: AppColors.testFieldBackground,
+            color: AppColors.textFieldBackground,
           ),
           child: Center(
             child: InternationalPhoneNumberInput(

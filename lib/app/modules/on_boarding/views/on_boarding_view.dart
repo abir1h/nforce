@@ -20,40 +20,38 @@ class OnBoardingView extends GetView<OnBoardingController> {
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Obx(
-                    () => controller.contents[controller.currentPageIndex.value],
-                  ),
-                  Column(
-                    children: [
-                      const SizedBox(height: 40),
-                      Row(
-                        children: [
-                          SkipButton(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Obx(
+                  () => controller.contents[controller.currentPageIndex.value],
+                ),
+                Column(
+                  children: [
+                    const SizedBox(height: 40),
+                    Row(
+                      children: [
+                        SkipButton(
+                          onTap: () {
+                            Get.offAllNamed(Routes.AUTH);
+                          },
+                        ),
+                        const Spacer(),
+                        Obx(
+                          () => NextButton(
+                            percent: controller.percent.value,
+                            text: controller.isLastPage.value ? 'Start' : 'Next',
                             onTap: () {
-                              Get.offAllNamed(Routes.AUTH);
+                              controller.changePage();
                             },
                           ),
-                          const Spacer(),
-                          Obx(
-                            () => NextButton(
-                              percent: controller.percent.value,
-                              text: controller.isLastPage.value ? 'Start' : 'Next',
-                              onTap: () {
-                                controller.changePage();
-                              },
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 30),
-                    ],
-                  ),
-                ],
-              ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 30),
+                  ],
+                ),
+              ],
             ),
           ),
         ),

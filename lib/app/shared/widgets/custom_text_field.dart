@@ -40,7 +40,7 @@ class CustomTextField extends StatelessWidget {
         const SizedBox(height: 8),
         Container(
           height: 50,
-          color: AppColors.testFieldBackground,
+          color: AppColors.textFieldBackground,
           child: TextField(
             cursorColor: AppColors.primaryBlue1,
             autocorrect: false,

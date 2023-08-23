@@ -35,7 +35,7 @@ class CustomDropdownButton extends StatelessWidget {
           height: 50,
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
           decoration: BoxDecoration(
-            color: AppColors.testFieldBackground,
+            color: AppColors.textFieldBackground,
             borderRadius: BorderRadius.circular(6),
             border: Border.all(color: AppColors.greyText),
           ),

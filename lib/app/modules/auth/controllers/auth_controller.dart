@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/auth/controllers/agent_customer_auth_controller.dart';
 import 'package:nuforce/app/modules/auth/controllers/signup_controller.dart';
 import 'package:nuforce/app/modules/auth/views/account_setup_view.dart';
 import 'package:nuforce/app/modules/auth/views/reset_password_view.dart';
 
 class AuthController extends GetxController {
   final signUpController = Get.put(SingupAuthController());
+  final agentCustomerAuthController = Get.put(AgentCustomerAuthController());
   RxInt tabIndex = 0.obs;
 
   RxBool isPasswordVisible = true.obs;

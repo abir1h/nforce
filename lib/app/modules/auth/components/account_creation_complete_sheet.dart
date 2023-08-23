@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
-import 'package:nuforce/app/modules/auth/controllers/auth_controller.dart';
-import 'package:nuforce/app/modules/auth/views/otp_view.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/text_styles.dart';
@@ -48,9 +45,7 @@ Future<dynamic> accountCreationComplete(BuildContext context) {
               width: 150,
               child: PrimaryButton(
                 onPressed: () {
-                  final controller = Get.put(AuthController());
-                  controller.fromSignUp.value = true;
-                  Get.to(() => const OtpView());
+                  Navigator.of(context).pop();
                 },
                 text: 'Done',
               ),

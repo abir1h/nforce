@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/auth/components/social_login_buttons.dart';
+import 'package:nuforce/app/modules/auth/views/agent_customer_login_view.dart';
 import 'package:nuforce/app/modules/auth/views/login_singup_view.dart';
 import 'package:nuforce/app/shared/widgets/or_x_with.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
@@ -82,11 +83,21 @@ class AuthView extends GetView<AuthController> {
                         color: AppColors.greyText,
                       ),
                     ),
-                    Text(
-                      'Agent ',
-                      style: CustomTextStyle.heading4.copyWith(
-                        fontWeight: FontWeight.w400,
-                        color: AppColors.primaryBlue1,
+                    GestureDetector(
+                      onTap: () {
+                        if (AuthController().initialized) {
+                          Get.to(() => const AgentCustomerLoginView());
+                        } else {
+                          Get.put(AuthController());
+                          Get.to(() => const AgentCustomerLoginView());
+                        }
+                      },
+                      child: Text(
+                        'Agent ',
+                        style: CustomTextStyle.heading4.copyWith(
+                          fontWeight: FontWeight.w400,
+                          color: AppColors.primaryBlue1,
+                        ),
                       ),
                     ),
                     Text(
@@ -96,11 +107,21 @@ class AuthView extends GetView<AuthController> {
                         color: AppColors.greyText,
                       ),
                     ),
-                    Text(
-                      'Customer',
-                      style: CustomTextStyle.heading4.copyWith(
-                        fontWeight: FontWeight.w400,
-                        color: AppColors.primaryBlue1,
+                    GestureDetector(
+                      onTap: () {
+                        if (AuthController().initialized) {
+                          Get.to(() => const AgentCustomerLoginView());
+                        } else {
+                          Get.put(AuthController());
+                          Get.to(() => const AgentCustomerLoginView());
+                        }
+                      },
+                      child: Text(
+                        'Customer',
+                        style: CustomTextStyle.heading4.copyWith(
+                          fontWeight: FontWeight.w400,
+                          color: AppColors.primaryBlue1,
+                        ),
                       ),
                     ),
                   ],
