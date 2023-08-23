@@ -15,7 +15,7 @@ class LoginSignupView extends GetView<AuthController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      // resizeToAvoidBottomInset: false,
       backgroundColor: AppColors.white1,
       appBar: const CustomAppbar(
         title: '',
@@ -24,51 +24,53 @@ class LoginSignupView extends GetView<AuthController> {
         child: SizedBox(
           height: height,
           width: width,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Row(
-                children: [
-                  Expanded(
-                    child: Obx(
-                      () => CustomTabBar(
-                        isSelected: controller.tabIndex.value == 0,
-                        onTap: () {
-                          controller.tabIndex.value = 0;
-                        },
-                        text: 'Sing In',
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Obx(
-                      () => CustomTabBar(
-                        isSelected: controller.tabIndex.value == 1,
-                        onTap: () {
-                          controller.tabIndex.value = 1;
-                        },
-                        text: 'Sing Up',
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 30),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
-                child: Obx(
-                  () => controller.tabIndex.value == 0
-                      ? SizedBox(
-                          height: height - 50 - AppBar().preferredSize.height - 60,
-                          child: SignInPage(controller: controller),
-                        )
-                      : SizedBox(
-                          height: height - 50 - AppBar().preferredSize.height - 60,
-                          child: SignUpPage(controller: controller),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      child: Obx(
+                        () => CustomTabBar(
+                          isSelected: controller.tabIndex.value == 0,
+                          onTap: () {
+                            controller.tabIndex.value = 0;
+                          },
+                          text: 'Sing In',
                         ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Obx(
+                        () => CustomTabBar(
+                          isSelected: controller.tabIndex.value == 1,
+                          onTap: () {
+                            controller.tabIndex.value = 1;
+                          },
+                          text: 'Sing Up',
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            ],
+                const SizedBox(height: 30),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
+                  child: Obx(
+                    () => controller.tabIndex.value == 0
+                        ? SizedBox(
+                            height: height - 50 - AppBar().preferredSize.height - 60,
+                            child: SignInPage(controller: controller),
+                          )
+                        : SizedBox(
+                            height: height - 50 - AppBar().preferredSize.height - 60,
+                            child: SignUpPage(controller: controller),
+                          ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

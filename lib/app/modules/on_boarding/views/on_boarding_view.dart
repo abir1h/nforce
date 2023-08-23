@@ -20,38 +20,40 @@ class OnBoardingView extends GetView<OnBoardingController> {
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Obx(
-                  () => controller.contents[controller.currentPageIndex.value],
-                ),
-                Column(
-                  children: [
-                    const SizedBox(height: 40),
-                    Row(
-                      children: [
-                        SkipButton(
-                          onTap: () {
-                            Get.offAllNamed(Routes.AUTH);
-                          },
-                        ),
-                        const Spacer(),
-                        Obx(
-                          () => NextButton(
-                            percent: controller.percent.value,
-                            text: controller.isLastPage.value ? 'Start' : 'Next',
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Obx(
+                    () => controller.contents[controller.currentPageIndex.value],
+                  ),
+                  Column(
+                    children: [
+                      const SizedBox(height: 40),
+                      Row(
+                        children: [
+                          SkipButton(
                             onTap: () {
-                              controller.changePage();
+                              Get.offAllNamed(Routes.AUTH);
                             },
                           ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 30),
-                  ],
-                ),
-              ],
+                          const Spacer(),
+                          Obx(
+                            () => NextButton(
+                              percent: controller.percent.value,
+                              text: controller.isLastPage.value ? 'Start' : 'Next',
+                              onTap: () {
+                                controller.changePage();
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 30),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),

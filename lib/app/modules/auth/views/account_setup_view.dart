@@ -18,7 +18,7 @@ class AccountSetupView extends GetView<AuthController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: true,
       backgroundColor: AppColors.white1,
       appBar: const CustomAppbar(
         title: '',
