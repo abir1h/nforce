@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/auth/views/reset_password_view.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
@@ -132,7 +131,7 @@ class OtpView extends GetView<AuthController> {
                 const SizedBox(height: 30),
                 PrimaryButton(
                   onPressed: () {
-                    Get.to(() => const ResetPasswordView());
+                    controller.navigateFromOtpView();
                   },
                   text: 'Done',
                 ),

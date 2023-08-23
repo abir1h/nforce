@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:nuforce/app/modules/auth/controllers/auth_controller.dart';
+import 'package:nuforce/app/modules/auth/views/otp_view.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/text_styles.dart';
@@ -42,7 +45,14 @@ Future<dynamic> varifyEmailBottomSheet(BuildContext context) {
             const SizedBox(height: 24),
             SizedBox(
               width: 150,
-              child: PrimaryButton(onPressed: () {}, text: 'Got It!'),
+              child: PrimaryButton(
+                onPressed: () {
+                  final controller = Get.put(AuthController());
+                  controller.fromSignUp.value = true;
+                  Get.to(() => const OtpView());
+                },
+                text: 'Got It!',
+              ),
             ),
             const SizedBox(height: 30),
           ],

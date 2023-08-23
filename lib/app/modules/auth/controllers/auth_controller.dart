@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/auth/controllers/signup_controller.dart';
+import 'package:nuforce/app/modules/auth/views/account_setup_view.dart';
+import 'package:nuforce/app/modules/auth/views/reset_password_view.dart';
 
 class AuthController extends GetxController {
   final signUpController = Get.put(SingupAuthController());
@@ -14,4 +16,14 @@ class AuthController extends GetxController {
   TextEditingController magicLinkEmailController = TextEditingController();
   final pinController = TextEditingController();
   final focusNode = FocusNode();
+
+  RxBool fromSignUp = false.obs;
+
+  void navigateFromOtpView() {
+    if (fromSignUp.value) {
+      Get.to(() => const AccountSetupView());
+    } else {
+      Get.to(() => const ResetPasswordView());
+    }
+  }
 }
