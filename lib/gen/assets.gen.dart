@@ -72,8 +72,12 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/nuforce_logo.svg
   String get nuforceLogo => 'assets/images/svg/nuforce_logo.svg';
 
+  /// File path: assets/images/svg/success.svg
+  String get success => 'assets/images/svg/success.svg';
+
   /// List of all assets
-  List<String> get values => [apple, facebook, google, microsoft, nuforceLogo];
+  List<String> get values =>
+      [apple, facebook, google, microsoft, nuforceLogo, success];
 }
 
 class Assets {

@@ -18,8 +18,13 @@ class AuthController extends GetxController {
   final focusNode = FocusNode();
 
   RxBool fromSignUp = false.obs;
+  RxBool fromSetupAccount = false.obs;
 
   void navigateFromOtpView() {
+    if (fromSetupAccount.value) {
+      Get.back();
+      return;
+    }
     if (fromSignUp.value) {
       Get.to(() => const AccountSetupView());
     } else {

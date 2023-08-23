@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/auth/components/account_creation_complete_sheet.dart';
 import 'package:nuforce/app/modules/auth/components/company_image.dart';
+import 'package:nuforce/app/modules/auth/views/otp_view.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar.dart';
 import 'package:nuforce/app/shared/widgets/custom_dropdown.dart';
 import 'package:nuforce/app/shared/widgets/custom_phone_input.dart';
@@ -143,7 +145,10 @@ class AccountSetupView extends GetView<AuthController> {
                   const SizedBox(height: 30),
                   PrimaryButton(
                     onPressed: () {
-                      controller.navigateFromOtpView();
+                      controller.fromSetupAccount.value = true;
+                      Get.to(() => const OtpView())!.then((value) {
+                        accountCreationComplete(context);
+                      });
                     },
                     text: 'Continue',
                   ),
