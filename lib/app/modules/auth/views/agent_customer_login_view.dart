@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/auth/components/recent_login_tile.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar.dart';
 import 'package:nuforce/app/shared/widgets/custom_tabbar.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
@@ -126,12 +127,21 @@ class AgentCustomerLoginView extends GetView<AuthController> {
                   child: Obx(
                     () => controller.agentCustomerAuthController.tabIndex.value == 0
                         ? SizedBox(
-                            height: height * 0.5,
-                            child: Container(),
+                            child: ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: 2,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemBuilder: (context, index) {
+                                return const Padding(
+                                  padding: EdgeInsets.only(bottom: 10),
+                                  child: RecentLoginTile(),
+                                );
+                              },
+                            ),
                           )
                         : SizedBox(
                             height: height * 0.6,
-                            child: Text('New Login'),
+                            child: const Center(child: Text('New Login')),
                           ),
                   ),
                 ),
