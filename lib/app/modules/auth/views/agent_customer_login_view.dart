@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/auth/components/new_login_form_widget.dart';
 import 'package:nuforce/app/modules/auth/components/recent_login_tile.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar.dart';
 import 'package:nuforce/app/shared/widgets/custom_tabbar.dart';
@@ -139,10 +140,7 @@ class AgentCustomerLoginView extends GetView<AuthController> {
                               },
                             ),
                           )
-                        : SizedBox(
-                            height: height * 0.6,
-                            child: const Center(child: Text('New Login')),
-                          ),
+                        : const NewLoginFormWidget(),
                   ),
                 ),
               ],
