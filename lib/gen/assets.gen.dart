@@ -57,6 +57,12 @@ class $AssetsImagesPngGen {
 class $AssetsImagesSvgGen {
   const $AssetsImagesSvgGen();
 
+  /// File path: assets/images/svg/activity0.svg
+  String get activity0 => 'assets/images/svg/activity0.svg';
+
+  /// File path: assets/images/svg/activity1.svg
+  String get activity1 => 'assets/images/svg/activity1.svg';
+
   /// File path: assets/images/svg/apple.svg
   String get apple => 'assets/images/svg/apple.svg';
 
@@ -66,8 +72,20 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/google.svg
   String get google => 'assets/images/svg/google.svg';
 
+  /// File path: assets/images/svg/home0.svg
+  String get home0 => 'assets/images/svg/home0.svg';
+
+  /// File path: assets/images/svg/home1.svg
+  String get home1 => 'assets/images/svg/home1.svg';
+
   /// File path: assets/images/svg/microsoft.svg
   String get microsoft => 'assets/images/svg/microsoft.svg';
+
+  /// File path: assets/images/svg/more0.svg
+  String get more0 => 'assets/images/svg/more0.svg';
+
+  /// File path: assets/images/svg/more1.svg
+  String get more1 => 'assets/images/svg/more1.svg';
 
   /// File path: assets/images/svg/nuforce_logo.svg
   String get nuforceLogo => 'assets/images/svg/nuforce_logo.svg';
@@ -78,9 +96,30 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/success.svg
   String get success => 'assets/images/svg/success.svg';
 
+  /// File path: assets/images/svg/today0.svg
+  String get today0 => 'assets/images/svg/today0.svg';
+
+  /// File path: assets/images/svg/today1.svg
+  String get today1 => 'assets/images/svg/today1.svg';
+
   /// List of all assets
-  List<String> get values =>
-      [apple, facebook, google, microsoft, nuforceLogo, scan, success];
+  List<String> get values => [
+        activity0,
+        activity1,
+        apple,
+        facebook,
+        google,
+        home0,
+        home1,
+        microsoft,
+        more0,
+        more1,
+        nuforceLogo,
+        scan,
+        success,
+        today0,
+        today1
+      ];
 }
 
 class Assets {

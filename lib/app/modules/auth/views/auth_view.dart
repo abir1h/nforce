@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:nuforce/app/modules/auth/components/social_login_buttons.dart';
 import 'package:nuforce/app/modules/auth/views/agent_customer_login_view.dart';
 import 'package:nuforce/app/modules/auth/views/login_singup_view.dart';
+import 'package:nuforce/app/routes/app_pages.dart';
 import 'package:nuforce/app/shared/widgets/or_x_with.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
@@ -65,7 +66,9 @@ class AuthView extends GetView<AuthController> {
                 const SizedBox(height: 15),
                 PrimaryButton(
                   text: 'Log in to your Business',
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.offAllNamed(Routes.BOTTOM_NAV_BAR);
+                  },
                   primaryColored: false,
                 ),
                 const SizedBox(height: 30),
