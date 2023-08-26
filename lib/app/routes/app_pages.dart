@@ -10,6 +10,8 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/more/bindings/more_binding.dart';
 import '../modules/more/views/more_view.dart';
+import '../modules/new_orders/bindings/new_orders_binding.dart';
+import '../modules/new_orders/views/new_orders_view.dart';
 import '../modules/on_boarding/bindings/on_boarding_binding.dart';
 import '../modules/on_boarding/views/on_boarding_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
@@ -64,6 +66,11 @@ class AppPages {
       name: _Paths.MORE,
       page: () => const MoreView(),
       binding: MoreBinding(),
+    ),
+    GetPage(
+      name: _Paths.NEW_ORDERS,
+      page: () => const NewOrdersView(),
+      binding: NewOrdersBinding(),
     ),
   ];
 }
