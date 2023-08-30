@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/home/components/service_button.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar.dart';
+import 'package:nuforce/gen/assets.gen.dart';
+import 'package:nuforce/main.dart';
 
 import '../controllers/home_controller.dart';
 
@@ -10,14 +13,59 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
-      body: const Center(
-        child: Text(
-          'HomeView is working',
-          style: TextStyle(fontSize: 20),
-        ),
+      appBar: const CustomAppBar(),
+      body: Column(
+        children: [
+          SizedBox(
+            width: width,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+              child: Wrap(
+                spacing: 16,
+                runSpacing: 16,
+                alignment: WrapAlignment.start,
+                children: [
+                  ServiceButton(
+                    svgPath: Assets.images.svg.customerService,
+                    title: 'Service Center',
+                    onTap: () {},
+                  ),
+                  ServiceButton(
+                    svgPath: Assets.images.svg.businessManager,
+                    title: 'Business Manager',
+                    onTap: () {},
+                  ),
+                  ServiceButton(
+                    svgPath: Assets.images.svg.serviceManager,
+                    title: 'Service Manager',
+                    onTap: () {},
+                  ),
+                  ServiceButton(
+                    svgPath: Assets.images.svg.humanResource,
+                    title: 'Human Resource',
+                    onTap: () {},
+                  ),
+                  ServiceButton(
+                    svgPath: Assets.images.svg.calendar,
+                    title: 'Calendar',
+                    onTap: () {},
+                  ),
+                  ServiceButton(
+                    svgPath: Assets.images.svg.accounting,
+                    title: 'Accounting',
+                    onTap: () {},
+                  ),
+                  ServiceButton(
+                    svgPath: Assets.images.svg.customer,
+                    title: 'Customer',
+                    onTap: () {},
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
 }
-

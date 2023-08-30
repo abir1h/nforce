@@ -50,10 +50,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                           SvgPicture.asset(Assets.images.svg.pinLocation),
                           const SizedBox(width: 5),
                           Text(
-                            'Abu Bokkor',
+                            'Khadimpara, Sylhet',
                             style: CustomTextStyle.paragraphExtraSmall.copyWith(
                               fontWeight: FontWeight.w400,
-                              color: AppColors.white1,
+                              color: AppColors.white2,
                             ),
                           ),
                         ],

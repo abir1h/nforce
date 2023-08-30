@@ -62,6 +62,9 @@ class $AssetsImagesPngGen {
 class $AssetsImagesSvgGen {
   const $AssetsImagesSvgGen();
 
+  /// File path: assets/images/svg/accounting.svg
+  String get accounting => 'assets/images/svg/accounting.svg';
+
   /// File path: assets/images/svg/activity0.svg
   String get activity0 => 'assets/images/svg/activity0.svg';
 
@@ -70,6 +73,18 @@ class $AssetsImagesSvgGen {
 
   /// File path: assets/images/svg/apple.svg
   String get apple => 'assets/images/svg/apple.svg';
+
+  /// File path: assets/images/svg/business_manager.svg
+  String get businessManager => 'assets/images/svg/business_manager.svg';
+
+  /// File path: assets/images/svg/calendar.svg
+  String get calendar => 'assets/images/svg/calendar.svg';
+
+  /// File path: assets/images/svg/customer.svg
+  String get customer => 'assets/images/svg/customer.svg';
+
+  /// File path: assets/images/svg/customer_service.svg
+  String get customerService => 'assets/images/svg/customer_service.svg';
 
   /// File path: assets/images/svg/facebook.svg
   String get facebook => 'assets/images/svg/facebook.svg';
@@ -82,6 +97,9 @@ class $AssetsImagesSvgGen {
 
   /// File path: assets/images/svg/home1.svg
   String get home1 => 'assets/images/svg/home1.svg';
+
+  /// File path: assets/images/svg/human_resource.svg
+  String get humanResource => 'assets/images/svg/human_resource.svg';
 
   /// File path: assets/images/svg/microsoft.svg
   String get microsoft => 'assets/images/svg/microsoft.svg';
@@ -104,6 +122,9 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/scan.svg
   String get scan => 'assets/images/svg/scan.svg';
 
+  /// File path: assets/images/svg/service_manager.svg
+  String get serviceManager => 'assets/images/svg/service_manager.svg';
+
   /// File path: assets/images/svg/success.svg
   String get success => 'assets/images/svg/success.svg';
 
@@ -115,13 +136,19 @@ class $AssetsImagesSvgGen {
 
   /// List of all assets
   List<String> get values => [
+        accounting,
         activity0,
         activity1,
         apple,
+        businessManager,
+        calendar,
+        customer,
+        customerService,
         facebook,
         google,
         home0,
         home1,
+        humanResource,
         microsoft,
         more0,
         more1,
@@ -129,6 +156,7 @@ class $AssetsImagesSvgGen {
         nuforceLogo,
         pinLocation,
         scan,
+        serviceManager,
         success,
         today0,
         today1
