@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/home/components/home_mini_tabs.dart';
 import 'package:nuforce/app/modules/home/components/service_button.dart';
+import 'package:nuforce/app/modules/home/components/today_body.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 import 'package:nuforce/main.dart';
@@ -70,9 +71,7 @@ class HomeView extends GetView<HomeController> {
           const SizedBox(height: 16),
           Obx(
             () => switch (controller.miniTabEnum.value) {
-              MiniTabIndexEnum.today => const Center(
-                  child: Text('Today'),
-                ),
+              MiniTabIndexEnum.today => const TodayBody(),
               MiniTabIndexEnum.actions => const Center(
                   child: Text('Actions'),
                 ),
