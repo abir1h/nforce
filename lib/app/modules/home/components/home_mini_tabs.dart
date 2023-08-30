@@ -18,9 +18,9 @@ class HomeMiniTabs extends StatelessWidget {
         Expanded(
           child: Obx(
             () => CustomTabBar(
-              isSelected: controller.miniTabIndex.value == MiniTabIndexEnum.today,
+              isSelected: controller.miniTabEnum.value == MiniTabIndexEnum.today,
               onTap: () {
-                controller.miniTabIndex.value = MiniTabIndexEnum.today;
+                controller.miniTabEnum.value = MiniTabIndexEnum.today;
               },
               text: 'Today',
               isMini: true,
@@ -30,9 +30,9 @@ class HomeMiniTabs extends StatelessWidget {
         Expanded(
           child: Obx(
             () => CustomTabBar(
-              isSelected: controller.miniTabIndex.value == MiniTabIndexEnum.actions,
+              isSelected: controller.miniTabEnum.value == MiniTabIndexEnum.actions,
               onTap: () {
-                controller.miniTabIndex.value = MiniTabIndexEnum.actions;
+                controller.miniTabEnum.value = MiniTabIndexEnum.actions;
               },
               text: 'Actions',
               isMini: true,
@@ -42,9 +42,9 @@ class HomeMiniTabs extends StatelessWidget {
         Expanded(
           child: Obx(
             () => CustomTabBar(
-              isSelected: controller.miniTabIndex.value == MiniTabIndexEnum.performance,
+              isSelected: controller.miniTabEnum.value == MiniTabIndexEnum.performance,
               onTap: () {
-                controller.miniTabIndex.value = MiniTabIndexEnum.performance;
+                controller.miniTabEnum.value = MiniTabIndexEnum.performance;
               },
               text: 'Performance',
               isMini: true,
@@ -54,9 +54,9 @@ class HomeMiniTabs extends StatelessWidget {
         Expanded(
           child: Obx(
             () => CustomTabBar(
-              isSelected: controller.miniTabIndex.value == MiniTabIndexEnum.invoices,
+              isSelected: controller.miniTabEnum.value == MiniTabIndexEnum.invoices,
               onTap: () {
-                controller.miniTabIndex.value = MiniTabIndexEnum.invoices;
+                controller.miniTabEnum.value = MiniTabIndexEnum.invoices;
               },
               text: 'Invoices',
               isMini: true,

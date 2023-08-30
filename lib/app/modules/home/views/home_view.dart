@@ -67,7 +67,23 @@ class HomeView extends GetView<HomeController> {
           ),
           const SizedBox(height: 10),
           HomeMiniTabs(controller: controller),
-          
+          const SizedBox(height: 16),
+          Obx(
+            () => switch (controller.miniTabEnum.value) {
+              MiniTabIndexEnum.today => const Center(
+                  child: Text('Today'),
+                ),
+              MiniTabIndexEnum.actions => const Center(
+                  child: Text('Actions'),
+                ),
+              MiniTabIndexEnum.performance => const Center(
+                  child: Text('Performance'),
+                ),
+              MiniTabIndexEnum.invoices => const Center(
+                  child: Text('Invoices'),
+                ),
+            },
+          ),
         ],
       ),
     );
