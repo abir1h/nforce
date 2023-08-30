@@ -43,7 +43,11 @@ class TodayBody extends GetView<HomeController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const MatrixWidget(), // This widget comes with padding
-                  Container(height: 1, width: width, color: AppColors.inactiveColor),
+                  Container(
+                    height: 1,
+                    width: width,
+                    color: AppColors.inactiveColor,
+                  ),
                   Padding(
                     padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
                     child: SizedBox(
