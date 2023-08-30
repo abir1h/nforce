@@ -20,6 +20,8 @@ dependencies:
   pinput: ^3.0.0
   intl_phone_number_input: ^0.7.3+1
   persistent_bottom_nav_bar: ^5.0.2
+  timeline_tile: ^2.0.0
+  expandable: ^5.0.1
 
   flutter:
     sdk: flutter
