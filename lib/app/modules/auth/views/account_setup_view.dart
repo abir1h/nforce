@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:nuforce/app/modules/auth/components/account_creation_complete_sheet.dart';
 import 'package:nuforce/app/modules/auth/components/company_image.dart';
 import 'package:nuforce/app/modules/auth/views/otp_view.dart';
-import 'package:nuforce/app/shared/widgets/custom_appbar.dart';
+import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/shared/widgets/custom_dropdown.dart';
 import 'package:nuforce/app/shared/widgets/custom_phone_input.dart';
 import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
@@ -22,7 +22,7 @@ class AccountSetupView extends GetView<AuthController> {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       backgroundColor: AppColors.white1,
-      appBar: const CustomAppbar(
+      appBar: const CustomAppbarMinimal(
         title: '',
       ),
       body: SafeArea(

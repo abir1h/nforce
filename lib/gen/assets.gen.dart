@@ -39,6 +39,10 @@ class $AssetsImagesPngGen {
   AssetGenImage get phoneText =>
       const AssetGenImage('assets/images/png/phone_text.png');
 
+  /// File path: assets/images/png/profile_placeholder_male.png
+  AssetGenImage get profilePlaceholderMale =>
+      const AssetGenImage('assets/images/png/profile_placeholder_male.png');
+
   /// File path: assets/images/png/time_exceeded.png
   AssetGenImage get timeExceeded =>
       const AssetGenImage('assets/images/png/time_exceeded.png');
@@ -50,6 +54,7 @@ class $AssetsImagesPngGen {
         onboarding2,
         onboarding3,
         phoneText,
+        profilePlaceholderMale,
         timeExceeded
       ];
 }
@@ -87,8 +92,14 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/more1.svg
   String get more1 => 'assets/images/svg/more1.svg';
 
+  /// File path: assets/images/svg/notification.svg
+  String get notification => 'assets/images/svg/notification.svg';
+
   /// File path: assets/images/svg/nuforce_logo.svg
   String get nuforceLogo => 'assets/images/svg/nuforce_logo.svg';
+
+  /// File path: assets/images/svg/pin_location.svg
+  String get pinLocation => 'assets/images/svg/pin_location.svg';
 
   /// File path: assets/images/svg/scan.svg
   String get scan => 'assets/images/svg/scan.svg';
@@ -114,7 +125,9 @@ class $AssetsImagesSvgGen {
         microsoft,
         more0,
         more1,
+        notification,
         nuforceLogo,
+        pinLocation,
         scan,
         success,
         today0,

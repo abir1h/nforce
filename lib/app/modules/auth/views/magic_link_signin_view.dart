@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/auth/components/magic_link_bottomsheet.dart';
 import 'package:nuforce/app/modules/auth/views/trying_to_login_view.dart';
-import 'package:nuforce/app/shared/widgets/custom_appbar.dart';
+import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
@@ -19,7 +19,7 @@ class MagicLinkSingin extends GetView<AuthController> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: AppColors.white1,
-      appBar: const CustomAppbar(
+      appBar: const CustomAppbarMinimal(
         title: '',
       ),
       body: SafeArea(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/auth/views/otp_view.dart';
-import 'package:nuforce/app/shared/widgets/custom_appbar.dart';
+import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
 import 'package:nuforce/app/shared/widgets/or_x_with.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
@@ -19,7 +19,7 @@ class ForgotPasswordView extends GetView<AuthController> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: AppColors.white1,
-      appBar: const CustomAppbar(
+      appBar: const CustomAppbarMinimal(
         title: '',
       ),
       body: SafeArea(
