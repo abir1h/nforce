@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/main.dart';
+
 class CustomTabBar extends StatelessWidget {
   const CustomTabBar({
     super.key,
     required this.text,
     required this.onTap,
     required this.isSelected,
+    this.isMini = false,
   });
 
   final String text;
   final VoidCallback onTap;
   final bool isSelected;
+  final bool isMini;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +23,7 @@ class CustomTabBar extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            height: 50,
+            height: isMini ? 40 : 50,
             width: width,
             color: isSelected ? AppColors.tabbarColor : AppColors.inactiveTabbarColor,
             child: Center(
@@ -28,8 +31,8 @@ class CustomTabBar extends StatelessWidget {
                 text,
                 style: TextStyle(
                   color: isSelected ? AppColors.primaryBlue1 : AppColors.greyText,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
+                  fontSize: isMini ? 14 : 20,
+                  fontWeight: isMini ? FontWeight.w500 : FontWeight.w600,
                 ),
               ),
             ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/home/components/home_mini_tabs.dart';
 import 'package:nuforce/app/modules/home/components/service_button.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar.dart';
 import 'package:nuforce/gen/assets.gen.dart';
@@ -64,6 +65,9 @@ class HomeView extends GetView<HomeController> {
               ),
             ),
           ),
+          const SizedBox(height: 10),
+          HomeMiniTabs(controller: controller),
+          
         ],
       ),
     );
