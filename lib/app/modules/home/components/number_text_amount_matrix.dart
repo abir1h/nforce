@@ -30,7 +30,7 @@ class MatrixWidget extends StatelessWidget {
                 amount: '23K',
                 number: '29',
                 color: AppColors.lightBlue,
-                title: 'TO go',
+                title: 'To go',
               ),
             ),
             SizedBox(width: 10),
@@ -99,7 +99,7 @@ class NumberTextAmountMatrics extends StatelessWidget {
           title,
           textAlign: TextAlign.center,
           style: const TextStyle(
-            fontSize: 12,
+            fontSize: 10,
             fontWeight: FontWeight.w400,
             color: AppColors.subText,
           ),
