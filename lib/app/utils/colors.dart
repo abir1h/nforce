@@ -31,4 +31,7 @@ class AppColors {
   static const Color tabbarColor = Color(0xFFE6EEF6);
   static const Color inactiveTabbarColor = Color(0xFFF3F3F3);
   static const Color textFieldBackground = Color(0xFFF7F7F7);
+
+  static const Color purple = Color(0xFFA300F0);
+  static const Color orange = Color(0xFFFD9800);
 }

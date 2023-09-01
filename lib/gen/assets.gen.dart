@@ -74,11 +74,17 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/apple.svg
   String get apple => 'assets/images/svg/apple.svg';
 
+  /// File path: assets/images/svg/arrow_right.svg
+  String get arrowRight => 'assets/images/svg/arrow_right.svg';
+
   /// File path: assets/images/svg/business_manager.svg
   String get businessManager => 'assets/images/svg/business_manager.svg';
 
   /// File path: assets/images/svg/calendar.svg
   String get calendar => 'assets/images/svg/calendar.svg';
+
+  /// File path: assets/images/svg/colored_cal.svg
+  String get coloredCal => 'assets/images/svg/colored_cal.svg';
 
   /// File path: assets/images/svg/customer.svg
   String get customer => 'assets/images/svg/customer.svg';
@@ -140,8 +146,10 @@ class $AssetsImagesSvgGen {
         activity0,
         activity1,
         apple,
+        arrowRight,
         businessManager,
         calendar,
+        coloredCal,
         customer,
         customerService,
         facebook,

@@ -71,6 +71,34 @@ class HomeController extends GetxController {
     mockTaskApiList[index].isDone = value;
     mockTaskApiList.refresh();
   }
+
+  List<MockRecommandedActions> mockRecommandeActions = <MockRecommandedActions>[
+    MockRecommandedActions(
+      text: 'Scheduled items overdue',
+      color: AppColors.primaryBlue1,
+      onTap: () {},
+    ),
+    MockRecommandedActions(
+      text: 'Unassigned scheduled items to add',
+      color: AppColors.primaryBlue2,
+      onTap: () {},
+    ),
+    MockRecommandedActions(
+      text: 'Requests ready for review',
+      color: AppColors.green,
+      onTap: () {},
+    ),
+    MockRecommandedActions(
+      text: 'Approved quotes to convert to jobs',
+      color: AppColors.purple,
+      onTap: () {},
+    ),
+    MockRecommandedActions(
+      text: 'Recurring job ending with 30 days',
+      color: AppColors.orange,
+      onTap: () {},
+    ),
+  ];
 }
 
 enum MiniTabIndexEnum {
@@ -91,5 +119,17 @@ class MockTaskApi {
     required this.title,
     required this.isDone,
     required this.color,
+  });
+}
+
+class MockRecommandedActions {
+  String text;
+  Color color;
+  VoidCallback onTap;
+
+  MockRecommandedActions({
+    required this.text,
+    required this.color,
+    required this.onTap,
   });
 }
