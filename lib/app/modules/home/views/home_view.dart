@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/home/components/actions_body.dart';
 import 'package:nuforce/app/modules/home/components/home_mini_tabs.dart';
+import 'package:nuforce/app/modules/home/components/performance_body.dart';
 import 'package:nuforce/app/modules/home/components/service_button.dart';
 import 'package:nuforce/app/modules/home/components/today_body.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar.dart';
+import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 import 'package:nuforce/main.dart';
 
@@ -16,6 +18,7 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white1,
       appBar: const CustomAppBar(),
       body: SizedBox(
         height: height,
@@ -78,12 +81,8 @@ class HomeView extends GetView<HomeController> {
                 () => switch (controller.miniTabEnum.value) {
                   MiniTabIndexEnum.today => const TodayBody(),
                   MiniTabIndexEnum.actions => const ActionsBody(),
-                  MiniTabIndexEnum.performance => const Center(
-                      child: Text('Performance'),
-                    ),
-                  MiniTabIndexEnum.invoices => const Center(
-                      child: Text('Invoices'),
-                    ),
+                  MiniTabIndexEnum.performance => const PerformanceBody(),
+                  MiniTabIndexEnum.invoices => const Center(),
                 },
               ),
             ],

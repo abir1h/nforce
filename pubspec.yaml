@@ -22,6 +22,7 @@ dependencies:
   persistent_bottom_nav_bar: ^5.0.2
   timeline_tile: ^2.0.0
   expandable: ^5.0.1
+  fl_chart: ^0.63.0
 
   flutter:
     sdk: flutter
