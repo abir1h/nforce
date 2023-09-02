@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/home/components/line_chart.dart';
 import 'package:nuforce/app/modules/home/components/performance_card_widget.dart';
 import 'package:nuforce/app/modules/home/controllers/home_controller.dart';
 import 'package:nuforce/app/utils/colors.dart';
@@ -108,6 +109,15 @@ class PerformanceBody extends GetView<HomeController> {
                 ),
               ],
             ),
+            const SizedBox(height: 15),
+            const Divider(thickness: 1),
+            const SizedBox(height: 15),
+            SizedBox(
+              width: width,
+              height: 200,
+              child: const CustomChart(),
+            ),
+            const SizedBox(height: 100),
           ],
         ),
       ),
