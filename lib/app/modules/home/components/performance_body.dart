@@ -116,7 +116,7 @@ class PerformanceBody extends GetView<HomeController> {
             SizedBox(
               width: width,
               height: 200,
-              child: const CustomChart(),
+              child: CustomChart(),
             ),
             const SizedBox(height: 15),
             SizedBox(

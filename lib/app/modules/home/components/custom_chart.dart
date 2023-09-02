@@ -1,9 +1,11 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:nuforce/app/modules/home/controllers/home_controller.dart';
 import 'package:nuforce/app/utils/colors.dart';
 
 class CustomChart extends StatelessWidget {
-  const CustomChart({super.key});
+  CustomChart({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -47,9 +49,13 @@ class CustomChart extends StatelessWidget {
         ),
       );
 
+  final homecontroller = Get.put(HomeController());
+
   List<LineChartBarData> get lineBarsData1 => [
-        lineChartBarData1_1,
-        lineChartBarData1_2,
+        if (homecontroller.isSmootherSelected.value) smootherLineChartBarData,
+        if (homecontroller.isSaferSelected.value) saferLineChartBarData,
+        if (homecontroller.isCleanerSelected.value) cleanerLineChartBarData,
+        if (homecontroller.isOnTimeSelected.value) onTimeLineChartBarData,
       ];
 
   Widget leftTitleWidgets(double value, TitleMeta meta) {
@@ -135,7 +141,7 @@ class CustomChart extends StatelessWidget {
         ),
       );
 
-  LineChartBarData get lineChartBarData1_1 => LineChartBarData(
+  LineChartBarData get cleanerLineChartBarData => LineChartBarData(
         isCurved: true,
         color: AppColors.primaryBlue2,
         barWidth: 2,
@@ -153,7 +159,7 @@ class CustomChart extends StatelessWidget {
         ],
       );
 
-  LineChartBarData get lineChartBarData1_2 => LineChartBarData(
+  LineChartBarData get saferLineChartBarData => LineChartBarData(
         isCurved: true,
         color: AppColors.primaryBlue1,
         barWidth: 2,
@@ -170,6 +176,44 @@ class CustomChart extends StatelessWidget {
           FlSpot(10, 2.8),
           FlSpot(12, 2.6),
           FlSpot(13, 3.9),
+        ],
+      );
+  LineChartBarData get smootherLineChartBarData => LineChartBarData(
+        isCurved: true,
+        color: AppColors.green,
+        barWidth: 2,
+        isStrokeCapRound: true,
+        dotData: const FlDotData(show: false),
+        belowBarData: BarAreaData(
+          show: false,
+          color: AppColors.lightPink.withOpacity(0),
+        ),
+        spots: const [
+          FlSpot(1, 1),
+          FlSpot(3, 1.5),
+          FlSpot(5, 1),
+          FlSpot(7, 2),
+          FlSpot(8, 4),
+          FlSpot(13, 2),
+        ],
+      );
+  LineChartBarData get onTimeLineChartBarData => LineChartBarData(
+        isCurved: true,
+        color: AppColors.orange,
+        barWidth: 2,
+        isStrokeCapRound: true,
+        dotData: const FlDotData(show: false),
+        belowBarData: BarAreaData(
+          show: false,
+          color: AppColors.lightPink.withOpacity(0),
+        ),
+        spots: const [
+          FlSpot(0, 1),
+          FlSpot(3, 1.5),
+          FlSpot(7, 2),
+          FlSpot(10, 2.5),
+          FlSpot(12, 3),
+          FlSpot(13, 1),
         ],
       );
 
