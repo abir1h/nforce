@@ -116,7 +116,16 @@ class PerformanceBody extends GetView<HomeController> {
             SizedBox(
               width: width,
               height: 200,
-              child: CustomChart(),
+              child: Obx(
+                () => CustomChart(
+                  lineBarsData: [
+                    if (controller.chartController.isSmootherSelected.value) controller.chartController.smootherChartData,
+                    if (controller.chartController.isSaferSelected.value) controller.chartController.saferChartData,
+                    if (controller.chartController.isCleanerSelected.value) controller.chartController.cleanerChartData,
+                    if (controller.chartController.isOnTimeSelected.value) controller.chartController.onTimeChartData,
+                  ],
+                ),
+              ),
             ),
             const SizedBox(height: 15),
             SizedBox(
@@ -127,32 +136,32 @@ class PerformanceBody extends GetView<HomeController> {
                   Obx(
                     () => ColoredCheckboxWithTitle(
                       color: AppColors.green,
-                      isSelected: controller.isSmootherSelected.value,
-                      onChanged: (p0) => controller.isSmootherSelected.value = p0!,
+                      isSelected: controller.chartController.isSmootherSelected.value,
+                      onChanged: (p0) => controller.chartController.isSmootherSelected.value = p0!,
                       title: 'Smoother',
                     ),
                   ),
                   Obx(
                     () => ColoredCheckboxWithTitle(
                       color: AppColors.primaryBlue1,
-                      isSelected: controller.isSaferSelected.value,
-                      onChanged: (p0) => controller.isSaferSelected.value = p0!,
+                      isSelected: controller.chartController.isSaferSelected.value,
+                      onChanged: (p0) => controller.chartController.isSaferSelected.value = p0!,
                       title: 'Safer',
                     ),
                   ),
                   Obx(
                     () => ColoredCheckboxWithTitle(
                       color: AppColors.primaryBlue2,
-                      isSelected: controller.isCleanerSelected.value,
-                      onChanged: (p0) => controller.isCleanerSelected.value = p0!,
+                      isSelected: controller.chartController.isCleanerSelected.value,
+                      onChanged: (p0) => controller.chartController.isCleanerSelected.value = p0!,
                       title: 'Cleaner',
                     ),
                   ),
                   Obx(
                     () => ColoredCheckboxWithTitle(
                       color: AppColors.orange,
-                      isSelected: controller.isOnTimeSelected.value,
-                      onChanged: (p0) => controller.isOnTimeSelected.value = p0!,
+                      isSelected: controller.chartController.isOnTimeSelected.value,
+                      onChanged: (p0) => controller.chartController.isOnTimeSelected.value = p0!,
                       title: 'On Tme',
                     ),
                   ),

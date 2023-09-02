@@ -1,6 +1,7 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/home/controllers/chart_controller.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'dart:developer' as developer show log;
 
@@ -18,6 +19,8 @@ class HomeController extends GetxController {
     });
     super.onInit();
   }
+
+  final chartController = Get.put(ChartController());
 
   Rx<MiniTabIndexEnum> miniTabEnum = MiniTabIndexEnum.today.obs;
   Rx<ExpandableController> expandableController = ExpandableController().obs;
@@ -99,11 +102,6 @@ class HomeController extends GetxController {
       onTap: () {},
     ),
   ];
-
-  RxBool isSmootherSelected = false.obs;
-  RxBool isSaferSelected = true.obs;
-  RxBool isCleanerSelected = true.obs;
-  RxBool isOnTimeSelected = false.obs;
 }
 
 enum MiniTabIndexEnum {
