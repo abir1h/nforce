@@ -99,6 +99,11 @@ class HomeController extends GetxController {
       onTap: () {},
     ),
   ];
+
+  RxBool isSmootherSelected = false.obs;
+  RxBool isSaferSelected = true.obs;
+  RxBool isCleanerSelected = true.obs;
+  RxBool isOnTimeSelected = false.obs;
 }
 
 enum MiniTabIndexEnum {

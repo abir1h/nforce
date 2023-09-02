@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/home/components/line_chart.dart';
+import 'package:nuforce/app/modules/home/components/custom_chart.dart';
 import 'package:nuforce/app/modules/home/components/performance_card_widget.dart';
 import 'package:nuforce/app/modules/home/controllers/home_controller.dart';
+import 'package:nuforce/app/shared/widgets/custom_checkbox.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/main.dart';
 
@@ -117,10 +118,88 @@ class PerformanceBody extends GetView<HomeController> {
               height: 200,
               child: const CustomChart(),
             ),
+            const SizedBox(height: 15),
+            SizedBox(
+              width: width,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Obx(
+                    () => ColoredCheckboxWithTitle(
+                      color: AppColors.green,
+                      isSelected: controller.isSmootherSelected.value,
+                      onChanged: (p0) => controller.isSmootherSelected.value = p0!,
+                      title: 'Smoother',
+                    ),
+                  ),
+                  Obx(
+                    () => ColoredCheckboxWithTitle(
+                      color: AppColors.primaryBlue1,
+                      isSelected: controller.isSaferSelected.value,
+                      onChanged: (p0) => controller.isSaferSelected.value = p0!,
+                      title: 'Safer',
+                    ),
+                  ),
+                  Obx(
+                    () => ColoredCheckboxWithTitle(
+                      color: AppColors.primaryBlue2,
+                      isSelected: controller.isCleanerSelected.value,
+                      onChanged: (p0) => controller.isCleanerSelected.value = p0!,
+                      title: 'Cleaner',
+                    ),
+                  ),
+                  Obx(
+                    () => ColoredCheckboxWithTitle(
+                      color: AppColors.orange,
+                      isSelected: controller.isOnTimeSelected.value,
+                      onChanged: (p0) => controller.isOnTimeSelected.value = p0!,
+                      title: 'On Tme',
+                    ),
+                  ),
+                ],
+              ),
+            ),
             const SizedBox(height: 100),
           ],
         ),
       ),
+    );
+  }
+}
+
+class ColoredCheckboxWithTitle extends StatelessWidget {
+  const ColoredCheckboxWithTitle({
+    super.key,
+    required this.isSelected,
+    required this.color,
+    required this.onChanged,
+    required this.title,
+  });
+
+  final bool isSelected;
+  final Color color;
+  final Function(bool?)? onChanged;
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        CustomCheckbox(
+          activeColor: color,
+          value: isSelected,
+          onChanged: onChanged,
+        ),
+        Text(
+          title,
+          style: const TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight.w400,
+            color: AppColors.subText,
+          ),
+        ),
+      ],
     );
   }
 }

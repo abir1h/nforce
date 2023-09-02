@@ -6,9 +6,11 @@ class CustomCheckbox extends StatelessWidget {
     super.key,
     required this.value,
     required this.onChanged,
+    this.activeColor,
   });
   final bool? value;
   final Function(bool?)? onChanged;
+  final Color? activeColor;
   @override
   Widget build(BuildContext context) {
     return Theme(
@@ -16,8 +18,8 @@ class CustomCheckbox extends StatelessWidget {
         checkboxTheme: CheckboxThemeData(
           materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
           checkColor: MaterialStateColor.resolveWith((states) => AppColors.white1),
-          fillColor: MaterialStateColor.resolveWith((states) => AppColors.primaryBlue1),
-          side: const BorderSide(color: AppColors.inactiveColor),
+          fillColor: MaterialStateColor.resolveWith((states) => activeColor ?? AppColors.primaryBlue1),
+          side: BorderSide(color: activeColor ?? AppColors.inactiveColor),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(4),
           ),
