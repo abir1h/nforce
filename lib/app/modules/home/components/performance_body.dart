@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/home/components/colored_checkbox_with_title.dart';
 import 'package:nuforce/app/modules/home/components/custom_chart.dart';
 import 'package:nuforce/app/modules/home/components/performance_card_widget.dart';
 import 'package:nuforce/app/modules/home/controllers/home_controller.dart';
-import 'package:nuforce/app/shared/widgets/custom_checkbox.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/main.dart';
 
@@ -115,7 +115,7 @@ class PerformanceBody extends GetView<HomeController> {
             const SizedBox(height: 15),
             SizedBox(
               width: width,
-              height: 200,
+              height: 140,
               child: Obx(
                 () => CustomChart(
                   lineBarsData: [
@@ -129,7 +129,7 @@ class PerformanceBody extends GetView<HomeController> {
             ),
             const SizedBox(height: 15),
             SizedBox(
-              width: width,
+              width: width - 40,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -162,7 +162,7 @@ class PerformanceBody extends GetView<HomeController> {
                       color: AppColors.orange,
                       isSelected: controller.chartController.isOnTimeSelected.value,
                       onChanged: (p0) => controller.chartController.isOnTimeSelected.value = p0!,
-                      title: 'On Tme',
+                      title: 'On Time',
                     ),
                   ),
                 ],
@@ -172,43 +172,6 @@ class PerformanceBody extends GetView<HomeController> {
           ],
         ),
       ),
-    );
-  }
-}
-
-class ColoredCheckboxWithTitle extends StatelessWidget {
-  const ColoredCheckboxWithTitle({
-    super.key,
-    required this.isSelected,
-    required this.color,
-    required this.onChanged,
-    required this.title,
-  });
-
-  final bool isSelected;
-  final Color color;
-  final Function(bool?)? onChanged;
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        CustomCheckbox(
-          activeColor: color,
-          value: isSelected,
-          onChanged: onChanged,
-        ),
-        Text(
-          title,
-          style: const TextStyle(
-            fontSize: 12,
-            fontWeight: FontWeight.w400,
-            color: AppColors.subText,
-          ),
-        ),
-      ],
     );
   }
 }

@@ -47,12 +47,15 @@ class PerformanceCardWidget extends StatelessWidget {
                     ),
                   ),
                 ),
-                Text(
-                  subPercentage,
-                  style: const TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400,
-                    color: AppColors.white4,
+                FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    subPercentage,
+                    style: const TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                      color: AppColors.white4,
+                    ),
                   ),
                 ),
               ],
