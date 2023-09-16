@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:nuforce/app/utils/colors.dart';
 
 class CustomChart extends StatelessWidget {
-  CustomChart({
+  const CustomChart({
     required this.lineBarsData,
     super.key,
   });
