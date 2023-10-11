@@ -18,18 +18,28 @@ class CustomTabBarFilled extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        color: isSelected ? AppColors.primaryBlue1 : AppColors.primaryBlue3,
-        padding: EdgeInsets.symmetric(horizontal: 20.sp, vertical: 13.sp),
-        child: Center(
-          child: Text(
-            text,
-            style: TextStyle(
-              color: isSelected ? AppColors.white1 : AppColors.nutralBlack1,
-              fontSize: isMini ? 12 : 20,
-              fontWeight: isMini ? FontWeight.w500 : FontWeight.w600,
+    return Container(
+      decoration: const BoxDecoration(
+        border: Border(
+          bottom: BorderSide(
+            color: AppColors.greyText,
+            width: 1,
+          ),
+        ),
+      ),
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
+          color: isSelected ? AppColors.primaryBlue1 : AppColors.primaryBlue3,
+          padding: EdgeInsets.symmetric(horizontal: 20.sp, vertical: 13.sp),
+          child: Center(
+            child: Text(
+              text,
+              style: TextStyle(
+                color: isSelected ? AppColors.white1 : AppColors.nutralBlack1,
+                fontSize: isMini ? 12 : 20,
+                fontWeight: isMini ? FontWeight.w500 : FontWeight.w600,
+              ),
             ),
           ),
         ),

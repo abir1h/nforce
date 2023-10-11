@@ -104,6 +104,9 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/facebook.svg
   String get facebook => 'assets/images/svg/facebook.svg';
 
+  /// File path: assets/images/svg/filter.svg
+  String get filter => 'assets/images/svg/filter.svg';
+
   /// File path: assets/images/svg/gift.svg
   String get gift => 'assets/images/svg/gift.svg';
 
@@ -149,11 +152,17 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/scan.svg
   String get scan => 'assets/images/svg/scan.svg';
 
+  /// File path: assets/images/svg/search.svg
+  String get search => 'assets/images/svg/search.svg';
+
   /// File path: assets/images/svg/service.svg
   String get service => 'assets/images/svg/service.svg';
 
   /// File path: assets/images/svg/service_manager.svg
   String get serviceManager => 'assets/images/svg/service_manager.svg';
+
+  /// File path: assets/images/svg/sort.svg
+  String get sort => 'assets/images/svg/sort.svg';
 
   /// File path: assets/images/svg/subscription.svg
   String get subscription => 'assets/images/svg/subscription.svg';
@@ -183,6 +192,7 @@ class $AssetsImagesSvgGen {
         customerService,
         discount,
         facebook,
+        filter,
         gift,
         google,
         home0,
@@ -198,8 +208,10 @@ class $AssetsImagesSvgGen {
         package,
         pinLocation,
         scan,
+        search,
         service,
         serviceManager,
+        sort,
         subscription,
         success,
         today0,
