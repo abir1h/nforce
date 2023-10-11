@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nuforce/app/utils/colors.dart';
 
@@ -23,8 +24,8 @@ class ServiceButton extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            height: 64,
-            width: 72,
+            height: 64.sp,
+            width: 72.sp,
             decoration: BoxDecoration(
               color: AppColors.tabbarColor,
               borderRadius: BorderRadius.circular(4),
@@ -33,14 +34,14 @@ class ServiceButton extends StatelessWidget {
               child: SvgPicture.asset(svgPath),
             ),
           ),
-          const SizedBox(height: 4),
+          SizedBox(height: 4.sp),
           SizedBox(
-            width: 72,
+            width: 72.sp,
             child: Text(
               title,
               textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontSize: 12,
+              style: TextStyle(
+                fontSize: 11.sp,
                 fontWeight: FontWeight.w400,
                 color: AppColors.subText,
               ),

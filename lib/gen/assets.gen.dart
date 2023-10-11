@@ -71,6 +71,9 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/activity1.svg
   String get activity1 => 'assets/images/svg/activity1.svg';
 
+  /// File path: assets/images/svg/addons.svg
+  String get addons => 'assets/images/svg/addons.svg';
+
   /// File path: assets/images/svg/apple.svg
   String get apple => 'assets/images/svg/apple.svg';
 
@@ -86,14 +89,23 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/colored_cal.svg
   String get coloredCal => 'assets/images/svg/colored_cal.svg';
 
+  /// File path: assets/images/svg/coupon.svg
+  String get coupon => 'assets/images/svg/coupon.svg';
+
   /// File path: assets/images/svg/customer.svg
   String get customer => 'assets/images/svg/customer.svg';
 
   /// File path: assets/images/svg/customer_service.svg
   String get customerService => 'assets/images/svg/customer_service.svg';
 
+  /// File path: assets/images/svg/discount.svg
+  String get discount => 'assets/images/svg/discount.svg';
+
   /// File path: assets/images/svg/facebook.svg
   String get facebook => 'assets/images/svg/facebook.svg';
+
+  /// File path: assets/images/svg/gift.svg
+  String get gift => 'assets/images/svg/gift.svg';
 
   /// File path: assets/images/svg/google.svg
   String get google => 'assets/images/svg/google.svg';
@@ -106,6 +118,9 @@ class $AssetsImagesSvgGen {
 
   /// File path: assets/images/svg/human_resource.svg
   String get humanResource => 'assets/images/svg/human_resource.svg';
+
+  /// File path: assets/images/svg/material.svg
+  String get material => 'assets/images/svg/material.svg';
 
   /// File path: assets/images/svg/microsoft.svg
   String get microsoft => 'assets/images/svg/microsoft.svg';
@@ -122,14 +137,26 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/nuforce_logo.svg
   String get nuforceLogo => 'assets/images/svg/nuforce_logo.svg';
 
+  /// File path: assets/images/svg/offer.svg
+  String get offer => 'assets/images/svg/offer.svg';
+
+  /// File path: assets/images/svg/package.svg
+  String get package => 'assets/images/svg/package.svg';
+
   /// File path: assets/images/svg/pin_location.svg
   String get pinLocation => 'assets/images/svg/pin_location.svg';
 
   /// File path: assets/images/svg/scan.svg
   String get scan => 'assets/images/svg/scan.svg';
 
+  /// File path: assets/images/svg/service.svg
+  String get service => 'assets/images/svg/service.svg';
+
   /// File path: assets/images/svg/service_manager.svg
   String get serviceManager => 'assets/images/svg/service_manager.svg';
+
+  /// File path: assets/images/svg/subscription.svg
+  String get subscription => 'assets/images/svg/subscription.svg';
 
   /// File path: assets/images/svg/success.svg
   String get success => 'assets/images/svg/success.svg';
@@ -145,26 +172,35 @@ class $AssetsImagesSvgGen {
         accounting,
         activity0,
         activity1,
+        addons,
         apple,
         arrowRight,
         businessManager,
         calendar,
         coloredCal,
+        coupon,
         customer,
         customerService,
+        discount,
         facebook,
+        gift,
         google,
         home0,
         home1,
         humanResource,
+        material,
         microsoft,
         more0,
         more1,
         notification,
         nuforceLogo,
+        offer,
+        package,
         pinLocation,
         scan,
+        service,
         serviceManager,
+        subscription,
         success,
         today0,
         today1

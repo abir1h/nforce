@@ -7,6 +7,7 @@ import 'package:nuforce/app/modules/home/components/invoice_body.dart';
 import 'package:nuforce/app/modules/home/components/performance_body.dart';
 import 'package:nuforce/app/modules/home/components/service_button.dart';
 import 'package:nuforce/app/modules/home/components/today_body.dart';
+import 'package:nuforce/app/routes/app_pages.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/gen/assets.gen.dart';
@@ -49,7 +50,9 @@ class HomeView extends GetView<HomeController> {
                       ServiceButton(
                         svgPath: Assets.images.svg.serviceManager,
                         title: 'Service Manager',
-                        onTap: () {},
+                        onTap: () {
+                          Get.toNamed(Routes.SERVICE_ITEMS);
+                        },
                       ),
                       ServiceButton(
                         svgPath: Assets.images.svg.humanResource,

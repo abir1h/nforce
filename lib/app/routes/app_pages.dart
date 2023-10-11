@@ -14,6 +14,8 @@ import '../modules/new_orders/bindings/new_orders_binding.dart';
 import '../modules/new_orders/views/new_orders_view.dart';
 import '../modules/on_boarding/bindings/on_boarding_binding.dart';
 import '../modules/on_boarding/views/on_boarding_view.dart';
+import '../modules/service_items/bindings/service_items_binding.dart';
+import '../modules/service_items/views/service_items_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
 import '../modules/today/bindings/today_binding.dart';
@@ -71,6 +73,11 @@ class AppPages {
       name: _Paths.NEW_ORDERS,
       page: () => const NewOrdersView(),
       binding: NewOrdersBinding(),
+    ),
+    GetPage(
+      name: _Paths.SERVICE_ITEMS,
+      page: () => const ServiceItemsView(),
+      binding: ServiceItemsBinding(),
     ),
   ];
 }

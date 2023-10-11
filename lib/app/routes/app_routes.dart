@@ -12,6 +12,7 @@ abstract class Routes {
   static const ACTIVITY = _Paths.ACTIVITY;
   static const MORE = _Paths.MORE;
   static const NEW_ORDERS = _Paths.NEW_ORDERS;
+  static const SERVICE_ITEMS = _Paths.SERVICE_ITEMS;
 }
 
 abstract class _Paths {
@@ -25,4 +26,5 @@ abstract class _Paths {
   static const ACTIVITY = '/activity';
   static const MORE = '/more';
   static const NEW_ORDERS = '/new-orders';
+  static const SERVICE_ITEMS = '/service-items';
 }
