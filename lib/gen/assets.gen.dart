@@ -170,6 +170,9 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/success.svg
   String get success => 'assets/images/svg/success.svg';
 
+  /// File path: assets/images/svg/thumb.svg
+  String get thumb => 'assets/images/svg/thumb.svg';
+
   /// File path: assets/images/svg/today0.svg
   String get today0 => 'assets/images/svg/today0.svg';
 
@@ -214,6 +217,7 @@ class $AssetsImagesSvgGen {
         sort,
         subscription,
         success,
+        thumb,
         today0,
         today1
       ];

@@ -9,27 +9,28 @@ class CustomDropdownButton extends StatelessWidget {
     required this.hint,
     required this.onChanged,
     required this.value,
-    required this.label,
+    this.label,
   });
   final List<DropdownMenuItem> items;
   final String hint;
   final Function(dynamic)? onChanged;
   final dynamic value;
-  final String label;
+  final String? label;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          label,
-          style: CustomTextStyle.paragraphSmall.copyWith(
-            fontWeight: FontWeight.w500,
-            color: AppColors.nutralBlack1,
-            // fontSize: 20,
+        if (label != null)
+          Text(
+            label!,
+            style: CustomTextStyle.paragraphSmall.copyWith(
+              fontWeight: FontWeight.w500,
+              color: AppColors.nutralBlack1,
+              // fontSize: 20,
+            ),
           ),
-        ),
         const SizedBox(height: 8),
         Container(
           height: 50,
