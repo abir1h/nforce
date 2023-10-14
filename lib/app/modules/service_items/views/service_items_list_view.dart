@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/service_items/views/selected_service_item_details_view.dart';
 import 'package:nuforce/app/modules/service_items/widgets/search_widget.dart';
 import 'package:nuforce/app/modules/service_items/widgets/service_manager_item_card.dart';
 import 'package:nuforce/app/modules/service_items/widgets/tabs.dart';
@@ -90,13 +91,18 @@ class ServiceItemsListView extends GetView<ServiceItemsController> {
                     RxBool isFavorite = false.obs;
                     return Padding(
                       padding: const EdgeInsets.only(bottom: 16),
-                      child: Obx(
-                        () => ServiceManagerItemCard(
-                          withBottomTitle: index == 0,
-                          isFavorite: isFavorite.value,
-                          onFavoriteTap: () {
-                            isFavorite.value = !isFavorite.value;
-                          },
+                      child: GestureDetector(
+                        onTap: () {
+                          Get.to(() => const SelectedServiceItemDetailsView());
+                        },
+                        child: Obx(
+                          () => ServiceManagerItemCard(
+                            withBottomTitle: index == 0,
+                            isFavorite: isFavorite.value,
+                            onFavoriteTap: () {
+                              isFavorite.value = !isFavorite.value;
+                            },
+                          ),
                         ),
                       ),
                     );
