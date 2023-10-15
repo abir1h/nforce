@@ -19,9 +19,9 @@ class SelectedServiceDetailsTabs extends StatelessWidget {
         children: [
           Obx(
             () => CustomTabBarFilled(
-              isSelected: controller.selectedTabEnum.value == SelectedServiceTabEnum.overview,
+              isSelected: controller.selectedServiceTabEnum.value == SelectedServiceTabEnum.overview,
               onTap: () {
-                controller.selectedTabEnum.value = SelectedServiceTabEnum.overview;
+                controller.selectedServiceTabEnum.value = SelectedServiceTabEnum.overview;
               },
               text: 'Overview',
               isMini: true,
@@ -29,9 +29,9 @@ class SelectedServiceDetailsTabs extends StatelessWidget {
           ),
           Obx(
             () => CustomTabBarFilled(
-              isSelected: controller.selectedTabEnum.value == SelectedServiceTabEnum.subItems,
+              isSelected: controller.selectedServiceTabEnum.value == SelectedServiceTabEnum.subItems,
               onTap: () {
-                controller.selectedTabEnum.value = SelectedServiceTabEnum.subItems;
+                controller.selectedServiceTabEnum.value = SelectedServiceTabEnum.subItems;
               },
               text: 'Sub Items(3)',
               isMini: true,
@@ -39,9 +39,9 @@ class SelectedServiceDetailsTabs extends StatelessWidget {
           ),
           Obx(
             () => CustomTabBarFilled(
-              isSelected: controller.selectedTabEnum.value == SelectedServiceTabEnum.settings,
+              isSelected: controller.selectedServiceTabEnum.value == SelectedServiceTabEnum.settings,
               onTap: () {
-                controller.selectedTabEnum.value = SelectedServiceTabEnum.settings;
+                controller.selectedServiceTabEnum.value = SelectedServiceTabEnum.settings;
               },
               text: 'Settings',
               isMini: true,
@@ -49,9 +49,9 @@ class SelectedServiceDetailsTabs extends StatelessWidget {
           ),
           Obx(
             () => CustomTabBarFilled(
-              isSelected: controller.selectedTabEnum.value == SelectedServiceTabEnum.content,
+              isSelected: controller.selectedServiceTabEnum.value == SelectedServiceTabEnum.content,
               onTap: () {
-                controller.selectedTabEnum.value = SelectedServiceTabEnum.content;
+                controller.selectedServiceTabEnum.value = SelectedServiceTabEnum.content;
               },
               text: 'Content',
               isMini: true,
