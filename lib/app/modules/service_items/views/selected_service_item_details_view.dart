@@ -1,9 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/service_items/controllers/service_items_controller.dart';
 import 'package:nuforce/app/modules/service_items/widgets/landing_page_url_text_box.dart';
@@ -17,7 +14,6 @@ import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/shared/widgets/secondary_button.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
 import 'package:nuforce/app/utils/colors.dart';
-import 'package:nuforce/gen/assets.gen.dart';
 import 'package:nuforce/main.dart';
 
 class SelectedServiceItemDetailsView extends StatefulWidget {
