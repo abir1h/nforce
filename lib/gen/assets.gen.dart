@@ -89,6 +89,9 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/colored_cal.svg
   String get coloredCal => 'assets/images/svg/colored_cal.svg';
 
+  /// File path: assets/images/svg/copy_icon.svg
+  String get copyIcon => 'assets/images/svg/copy_icon.svg';
+
   /// File path: assets/images/svg/coupon.svg
   String get coupon => 'assets/images/svg/coupon.svg';
 
@@ -190,6 +193,7 @@ class $AssetsImagesSvgGen {
         businessManager,
         calendar,
         coloredCal,
+        copyIcon,
         coupon,
         customer,
         customerService,
