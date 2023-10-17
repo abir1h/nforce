@@ -26,6 +26,7 @@ dependencies:
   flutter_screenutil: ^5.9.0
   syncfusion_flutter_sliders: ^23.1.40
   flutter_rating_bar: ^4.0.1
+  expandable_text: ^2.3.0
 
   flutter:
     sdk: flutter
