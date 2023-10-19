@@ -13,6 +13,7 @@ class CustomTextField extends StatelessWidget {
     this.isVisibile = false,
     this.isPassword = false,
     this.onVisibilityTap,
+    this.maxLines = 1,
   });
 
   final String label;
@@ -23,6 +24,7 @@ class CustomTextField extends StatelessWidget {
   final VoidCallback? onVisibilityTap;
   final bool isVisibile;
   final bool isPassword;
+  final int maxLines;
 
   @override
   Widget build(BuildContext context) {
@@ -39,19 +41,17 @@ class CustomTextField extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         Container(
-          height: 50,
+          // height: 50,
           color: AppColors.textFieldBackground,
           child: TextField(
             cursorColor: AppColors.primaryBlue1,
             autocorrect: false,
             obscureText: obscureText,
+            maxLines: maxLines,
             controller: controller,
             textAlignVertical: TextAlignVertical.center,
             decoration: InputDecoration(
-              contentPadding: const EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: 0,
-              ),
+              contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
               suffixIcon: isPassword
                   ? IconButton(
                       onPressed: onVisibilityTap,

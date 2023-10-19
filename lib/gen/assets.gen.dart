@@ -149,6 +149,9 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/package.svg
   String get package => 'assets/images/svg/package.svg';
 
+  /// File path: assets/images/svg/pick_image.svg
+  String get pickImage => 'assets/images/svg/pick_image.svg';
+
   /// File path: assets/images/svg/pin_location.svg
   String get pinLocation => 'assets/images/svg/pin_location.svg';
 
@@ -213,6 +216,7 @@ class $AssetsImagesSvgGen {
         nuforceLogo,
         offer,
         package,
+        pickImage,
         pinLocation,
         scan,
         search,
