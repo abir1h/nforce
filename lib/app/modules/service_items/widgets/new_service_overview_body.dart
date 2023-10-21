@@ -1,13 +1,19 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:nuforce/app/modules/service_items/controllers/add_new_service_controller.dart';
+import 'package:nuforce/app/shared/functions/image_picker_func.dart';
 import 'package:nuforce/app/shared/widgets/custom_dropdown.dart';
 import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 
-class NewServiceOverviewBody extends StatelessWidget {
+class NewServiceOverviewBody extends StatefulWidget {
   const NewServiceOverviewBody({
     super.key,
     required this.itemNameController,
@@ -26,18 +32,79 @@ class NewServiceOverviewBody extends StatelessWidget {
   final TextEditingController itemDiscountNoteController;
 
   @override
+  State<NewServiceOverviewBody> createState() => _NewServiceOverviewBodyState();
+}
+
+class _NewServiceOverviewBodyState extends State<NewServiceOverviewBody> {
+  final controller = Get.put(AddNewServiceController());
+  @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // Image picker
-        SvgPicture.asset(Assets.images.svg.pickImage), // TODO Make it dynamic
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            GestureDetector(
+              onTap: () async {
+                await pickImage(ImageSource.gallery).then((value) {
+                  if (value != null) controller.addToSelectedImages(value);
+                });
+              },
+              child: SvgPicture.asset(Assets.images.svg.pickImage),
+            ),
+            const SizedBox(width: 16),
+            Expanded(
+              child: SizedBox(
+                height: 64,
+                child: Obx(
+                  () => ListView.builder(
+                    itemCount: controller.selectedImages?.length ?? 0,
+                    scrollDirection: Axis.horizontal,
+                    shrinkWrap: true,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Stack(
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.only(right: 16),
+                            height: 64,
+                            width: 64,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              image: DecorationImage(
+                                image: FileImage(
+                                  File(controller.selectedImages![index]!.path),
+                                ),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            top: 3,
+                            right: 19,
+                            child: GestureDetector(
+                              onTap: () {
+                                controller.selectedImages!.removeAt(index);
+                              },
+                              child: SvgPicture.asset(Assets.images.svg.closeCircle),
+                            ),
+                          )
+                        ],
+                      );
+                    },
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
         const SizedBox(height: 16),
         CustomTextField(
           label: 'Item Name*',
           hint: 'Enter item name',
-          controller: itemNameController,
+          controller: widget.itemNameController,
         ),
         const SizedBox(height: 16),
         Text(
@@ -119,39 +186,39 @@ class NewServiceOverviewBody extends StatelessWidget {
         CustomTextField(
           label: 'Item Code*',
           hint: 'Enter item code',
-          controller: itemCodeController,
+          controller: widget.itemCodeController,
         ),
         const SizedBox(height: 16),
         CustomTextField(
           label: 'Price*',
           hint: 'Enter item code',
-          controller: priceController,
+          controller: widget.priceController,
         ),
         const SizedBox(height: 16),
         CustomTextField(
           label: 'Quantity*',
           hint: 'Enter quantity',
-          controller: quantityController,
+          controller: widget.quantityController,
         ),
         const SizedBox(height: 16),
         CustomTextField(
           label: "What's included",
           hint: 'Write details...',
-          controller: whatsIncludedController,
+          controller: widget.whatsIncludedController,
           maxLines: 3,
         ),
         const SizedBox(height: 16),
         CustomTextField(
           label: "Why choos us",
           hint: 'Write details...',
-          controller: whatsIncludedController,
+          controller: widget.whatsIncludedController,
           maxLines: 3,
         ),
         const SizedBox(height: 16),
         CustomTextField(
           label: "Item Discount",
           hint: 'Enter item discount',
-          controller: whatsIncludedController,
+          controller: widget.whatsIncludedController,
         ),
         const SizedBox(height: 3),
         Text(
@@ -166,7 +233,7 @@ class NewServiceOverviewBody extends StatelessWidget {
         CustomTextField(
           label: "Discount Notes",
           hint: 'Write discount notes...',
-          controller: itemDiscountNoteController,
+          controller: widget.itemDiscountNoteController,
           maxLines: 3,
         ),
         const SizedBox(height: 16),

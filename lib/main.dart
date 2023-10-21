@@ -9,6 +9,7 @@ import 'app/routes/app_pages.dart';
 double height = 0;
 double width = 0;
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(
     ScreenUtilInit(
       designSize: const Size(375, 812),

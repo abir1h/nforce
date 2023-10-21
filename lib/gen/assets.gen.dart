@@ -86,6 +86,9 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/calendar.svg
   String get calendar => 'assets/images/svg/calendar.svg';
 
+  /// File path: assets/images/svg/close_circle.svg
+  String get closeCircle => 'assets/images/svg/close_circle.svg';
+
   /// File path: assets/images/svg/colored_cal.svg
   String get coloredCal => 'assets/images/svg/colored_cal.svg';
 
@@ -198,6 +201,7 @@ class $AssetsImagesSvgGen {
         arrowRight,
         businessManager,
         calendar,
+        closeCircle,
         coloredCal,
         copyIcon,
         coupon,
