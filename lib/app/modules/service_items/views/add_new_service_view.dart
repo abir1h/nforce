@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/service_items/controllers/add_new_service_controller.dart';
 import 'package:nuforce/app/modules/service_items/widgets/add_new_service_tabs.dart';
+import 'package:nuforce/app/modules/service_items/widgets/faq_tile.dart';
 import 'package:nuforce/app/modules/service_items/widgets/new_service_overview_body.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
+import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
 import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/gen/assets.gen.dart';
 
 class AddNewServiceView extends StatefulWidget {
   const AddNewServiceView({super.key});
@@ -143,7 +147,61 @@ class _AddNewServiceContentViewState extends State<AddNewServiceContentView> {
               ),
             ),
           ],
-        )
+        ),
+        const SizedBox(height: 16),
+        ListView.builder(
+          itemCount: 3,
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemBuilder: (BuildContext context, int index) {
+            return const Padding(
+              padding: EdgeInsets.only(bottom: 16),
+              child: FaqTile(),
+            );
+          },
+        ),
+        Text(
+          'SEO',
+          style: TextStyle(
+            color: AppColors.nutralBlack1,
+            fontSize: 16.sp,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        // TODO : Add SEO fields
+        const SizedBox(height: 16),
+        const CustomTextField(
+          label: 'Description',
+          hint: 'Write description...',
+          controller: null,
+        ),
+        const SizedBox(height: 16),
+        const CustomTextField(
+          label: 'Specification',
+          hint: 'Write specification...',
+          controller: null,
+        ),
+        const SizedBox(height: 16),
+        const CustomTextField(
+          label: 'Terms of service',
+          hint: 'Write terms of service...',
+          controller: null,
+        ),
+        const SizedBox(height: 16),
+        const CustomTextField(
+          label: 'Requirement for Service',
+          hint: 'Write requirement for service...',
+          controller: null,
+        ),
+        const SizedBox(height: 16),
+        const CustomTextField(
+          label: 'Notice of Service',
+          hint: 'Write notice of service...',
+          controller: null,
+        ),
+        const SizedBox(height: 24),
+        PrimaryButton(onPressed: () {}, text: 'Save'),
+        const SizedBox(height: 8),
       ],
     );
   }
