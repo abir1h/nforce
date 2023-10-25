@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/home/components/recommanded_actions_widget.dart';
 import 'package:nuforce/app/modules/home/controllers/home_controller.dart';
@@ -19,13 +20,13 @@ class ActionsBody extends GetView<HomeController> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   'Today’s Activities',
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 16.sp,
                     fontWeight: FontWeight.w500,
                     color: AppColors.nutralBlack1,
                   ),
@@ -33,7 +34,7 @@ class ActionsBody extends GetView<HomeController> {
                 Text(
                   'View All',
                   style: TextStyle(
-                    fontSize: 12,
+                    fontSize: 12.sp,
                     fontWeight: FontWeight.w400,
                     color: AppColors.nutralBlack1,
                   ),

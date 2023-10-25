@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/gen/assets.gen.dart';
@@ -41,16 +42,16 @@ class ActionsTile extends StatelessWidget {
                             color: color.withOpacity(0.2),
                             borderRadius: BorderRadius.circular(100),
                           ),
-                          child: const Padding(
-                            padding: EdgeInsets.only(top: 1),
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 1),
                             child: Align(
                               alignment: Alignment.centerRight,
                               child: Padding(
-                                padding: EdgeInsets.only(right: 10),
+                                padding: const EdgeInsets.only(right: 10),
                                 child: Text(
                                   '565',
                                   style: TextStyle(
-                                    fontSize: 12,
+                                    fontSize: 12.sp,
                                     fontWeight: FontWeight.w400,
                                     color: AppColors.nutralBlack1,
                                   ),
@@ -90,8 +91,8 @@ class ActionsTile extends StatelessWidget {
                       width: width * 0.4,
                       child: Text(
                         text,
-                        style: const TextStyle(
-                          fontSize: 12,
+                        style:  TextStyle(
+                          fontSize: 12.sp,
                           fontWeight: FontWeight.w400,
                           color: AppColors.nutralBlack1,
                         ),

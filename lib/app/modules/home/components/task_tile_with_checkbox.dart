@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nuforce/app/modules/home/controllers/home_controller.dart';
 import 'package:nuforce/app/shared/widgets/custom_checkbox.dart';
 import 'package:nuforce/app/utils/colors.dart';
@@ -32,8 +33,8 @@ class TaskTileWithCheckbox extends StatelessWidget {
             children: [
               Text(
                 mockTaskApi.time,
-                style: const TextStyle(
-                  fontSize: 12,
+                style: TextStyle(
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.w400,
                   color: AppColors.nutralBlack1,
                 ),
@@ -41,7 +42,7 @@ class TaskTileWithCheckbox extends StatelessWidget {
               Text(
                 mockTaskApi.title,
                 style: TextStyle(
-                  fontSize: 12,
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.w400,
                   color: AppColors.subText,
                   decoration: mockTaskApi.isDone ? TextDecoration.lineThrough : null,

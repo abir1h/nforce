@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nuforce/app/utils/colors.dart';
 
 class CustomChart extends StatelessWidget {
@@ -49,9 +50,9 @@ class CustomChart extends StatelessWidget {
       );
 
   Widget leftTitleWidgets(double value, TitleMeta meta) {
-    const style = TextStyle(
+    final style = TextStyle(
       fontWeight: FontWeight.bold,
-      fontSize: 14,
+      fontSize: 14.sp,
     );
     String text;
     switch (value.toInt()) {
@@ -85,20 +86,20 @@ class CustomChart extends StatelessWidget {
       );
 
   Widget bottomTitleWidgets(double value, TitleMeta meta) {
-    const style = TextStyle(
+    final style = TextStyle(
       fontWeight: FontWeight.bold,
-      fontSize: 16,
+      fontSize: 16.sp,
     );
     Widget text;
     switch (value.toInt()) {
       case 2:
-        text = const Text('SEPT', style: style);
+        text = Text('SEPT', style: style);
         break;
       case 7:
-        text = const Text('OCT', style: style);
+        text = Text('OCT', style: style);
         break;
       case 12:
-        text = const Text('DEC', style: style);
+        text = Text('DEC', style: style);
         break;
       default:
         text = const Text('');

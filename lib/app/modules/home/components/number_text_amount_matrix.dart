@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/main.dart';
 
@@ -86,9 +87,9 @@ class NumberTextAmountMatrics extends StatelessWidget {
             child: Text(
               number,
               textAlign: TextAlign.center,
-              style: const TextStyle(
+              style: TextStyle(
                 color: AppColors.nutralBlack1,
-                fontSize: 18,
+                fontSize: 18.sp,
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -98,8 +99,8 @@ class NumberTextAmountMatrics extends StatelessWidget {
         Text(
           title,
           textAlign: TextAlign.center,
-          style: const TextStyle(
-            fontSize: 10,
+          style: TextStyle(
+            fontSize: 10.sp,
             fontWeight: FontWeight.w400,
             color: AppColors.subText,
           ),
@@ -107,8 +108,8 @@ class NumberTextAmountMatrics extends StatelessWidget {
         Text(
           '\$$amount',
           textAlign: TextAlign.center,
-          style: const TextStyle(
-            fontSize: 12,
+          style: TextStyle(
+            fontSize: 12.sp,
             fontWeight: FontWeight.w400,
             color: AppColors.nutralBlack1,
           ),

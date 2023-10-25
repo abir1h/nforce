@@ -1,44 +1,45 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomTextStyle {
-  static const TextStyle heading1 = TextStyle(
-    fontSize: 24,
+  static TextStyle heading1 = TextStyle(
+    fontSize: 24.sp,
     fontWeight: FontWeight.w700,
   );
 
-  static const TextStyle heading2 = TextStyle(
-    fontSize: 20,
+  static TextStyle heading2 = TextStyle(
+    fontSize: 20.sp,
     fontWeight: FontWeight.bold,
   );
 
-  static const TextStyle heading3 = TextStyle(
-    fontSize: 18,
+  static TextStyle heading3 = TextStyle(
+    fontSize: 18.sp,
     fontWeight: FontWeight.bold,
   );
 
-  static const TextStyle heading4 = TextStyle(
-    fontSize: 16,
+  static TextStyle heading4 = TextStyle(
+    fontSize: 16.sp,
     fontWeight: FontWeight.bold,
   );
 
-  static const TextStyle heading5 = TextStyle(
-    fontSize: 14,
+  static TextStyle heading5 = TextStyle(
+    fontSize: 14.sp,
     fontWeight: FontWeight.bold,
   );
 
-  static const TextStyle paragraphLarge = TextStyle(
-    fontSize: 18,
+  static TextStyle paragraphLarge = TextStyle(
+    fontSize: 18.sp,
   );
 
-  static const TextStyle paragraphMedium = TextStyle(
-    fontSize: 16,
+  static TextStyle paragraphMedium = TextStyle(
+    fontSize: 16.sp,
   );
 
-  static const TextStyle paragraphSmall = TextStyle(
-    fontSize: 14,
+  static TextStyle paragraphSmall = TextStyle(
+    fontSize: 14.sp,
   );
 
-  static const TextStyle paragraphExtraSmall = TextStyle(
-    fontSize: 12,
+  static TextStyle paragraphExtraSmall = TextStyle(
+    fontSize: 12.sp,
   );
 }

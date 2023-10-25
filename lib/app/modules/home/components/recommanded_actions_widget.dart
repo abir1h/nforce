@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nuforce/app/modules/home/components/action_tile.dart';
 import 'package:nuforce/app/modules/home/controllers/home_controller.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/main.dart';
+
 class RecommandedActionsWidget extends StatelessWidget {
   const RecommandedActionsWidget({
     super.key,
@@ -36,12 +38,12 @@ class RecommandedActionsWidget extends StatelessWidget {
                 topRight: Radius.circular(8),
               ),
             ),
-            child: const Align(
+            child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
                 'Recommanded Actions',
                 style: TextStyle(
-                  fontSize: 14,
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.w400,
                   color: AppColors.nutralBlack1,
                 ),

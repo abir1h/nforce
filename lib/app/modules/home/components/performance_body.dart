@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/home/components/colored_checkbox_with_title.dart';
 import 'package:nuforce/app/modules/home/components/custom_chart.dart';
@@ -24,10 +25,10 @@ class PerformanceBody extends GetView<HomeController> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
+                Text(
                   'Last Update 10:30 PM',
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 16.sp,
                     fontWeight: FontWeight.w500,
                     color: AppColors.nutralBlack1,
                   ),
@@ -44,8 +45,8 @@ class PerformanceBody extends GetView<HomeController> {
                     underline: const SizedBox(),
                     isExpanded: false,
                     icon: const Icon(Icons.arrow_drop_down, color: AppColors.inactiveColor),
-                    style: const TextStyle(
-                      fontSize: 12,
+                    style: TextStyle(
+                      fontSize: 12.sp,
                       fontWeight: FontWeight.w400,
                       color: AppColors.subText,
                     ),
@@ -55,8 +56,8 @@ class PerformanceBody extends GetView<HomeController> {
                             value: e,
                             child: Text(
                               e,
-                              style: const TextStyle(
-                                fontSize: 12,
+                              style:  TextStyle(
+                                fontSize: 12.sp,
                                 fontWeight: FontWeight.w400,
                                 color: AppColors.subText,
                               ),

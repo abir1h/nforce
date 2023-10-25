@@ -1,5 +1,6 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/home/components/number_text_amount_matrix.dart';
 import 'package:nuforce/app/modules/home/components/task_tile_with_checkbox.dart';
@@ -22,10 +23,10 @@ class TodayBody extends GetView<HomeController> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
+            Text(
               'Today’s Appointments',
               style: TextStyle(
-                fontSize: 16,
+                fontSize: 16.sp,
                 fontWeight: FontWeight.w500,
                 color: AppColors.nutralBlack1,
               ),
@@ -131,8 +132,8 @@ class TodayBody extends GetView<HomeController> {
                         child: Obx(
                           () => Text(
                             controller.isExpanded.value ? '- Show less' : '+ Show more',
-                            style: const TextStyle(
-                              fontSize: 12,
+                            style: TextStyle(
+                              fontSize: 12.sp,
                               fontWeight: FontWeight.w400,
                               color: AppColors.subText,
                             ),

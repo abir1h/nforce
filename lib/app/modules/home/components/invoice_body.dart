@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/home/components/invoice_status_matrics.dart';
 import 'package:nuforce/app/modules/home/components/invoice_tile.dart';
@@ -54,10 +55,10 @@ class InvoiceBody extends GetView<HomeController> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
+                Text(
                   'All Invoices',
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 16.sp,
                     fontWeight: FontWeight.w500,
                     color: AppColors.nutralBlack1,
                   ),
@@ -74,8 +75,8 @@ class InvoiceBody extends GetView<HomeController> {
                     underline: const SizedBox(),
                     isExpanded: false,
                     icon: const Icon(Icons.arrow_drop_down, color: AppColors.inactiveColor),
-                    style: const TextStyle(
-                      fontSize: 12,
+                    style: TextStyle(
+                      fontSize: 12.sp,
                       fontWeight: FontWeight.w400,
                       color: AppColors.subText,
                     ),
@@ -85,8 +86,8 @@ class InvoiceBody extends GetView<HomeController> {
                             value: e,
                             child: Text(
                               e,
-                              style: const TextStyle(
-                                fontSize: 12,
+                              style: TextStyle(
+                                fontSize: 12.sp,
                                 fontWeight: FontWeight.w400,
                                 color: AppColors.subText,
                               ),
