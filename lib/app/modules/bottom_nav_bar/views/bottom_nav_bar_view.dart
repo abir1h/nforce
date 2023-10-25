@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
@@ -13,6 +14,7 @@ class BottomNavBarView extends GetView<BottomNavBarController> {
       context,
       controller: controller.navController,
       screens: controller.screens,
+      navBarHeight: 60.h,
       onItemSelected: (value) {
         controller.changeIndex(value);
       },
