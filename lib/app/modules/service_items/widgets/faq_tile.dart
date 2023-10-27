@@ -3,9 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nuforce/app/modules/service_items/widgets/edit_faq_bottomsheet_widget.dart';
-import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
-import 'package:nuforce/app/shared/widgets/primary_button.dart';
-import 'package:nuforce/app/utils/app_sizes.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 
