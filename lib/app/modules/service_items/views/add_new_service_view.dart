@@ -5,6 +5,7 @@ import 'package:nuforce/app/modules/service_items/controllers/add_new_service_co
 import 'package:nuforce/app/modules/service_items/widgets/add_new_service_tabs.dart';
 import 'package:nuforce/app/modules/service_items/widgets/faq_tile.dart';
 import 'package:nuforce/app/modules/service_items/widgets/new_service_overview_body.dart';
+import 'package:nuforce/app/modules/service_items/widgets/tags_input_field.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
@@ -159,14 +160,15 @@ class _AddNewServiceContentViewState extends State<AddNewServiceContentView> {
           },
         ),
         Text(
-          'SEO',
+          'Tags',
           style: TextStyle(
             color: AppColors.nutralBlack1,
-            fontSize: 16.sp,
+            fontSize: 14.sp,
             fontWeight: FontWeight.w500,
           ),
         ),
-        // TODO : Add SEO fields
+        const SizedBox(height: 8),
+        const TagsInputField(),
         const SizedBox(height: 16),
         const CustomTextField(
           label: 'Description',
