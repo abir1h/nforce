@@ -40,13 +40,25 @@ class ServiceItemsView extends GetView<ServiceItemsController> {
                         svgPath: Assets.images.svg.service,
                         title: 'Service',
                         onTap: () {
+                          late ServiceItemsController controller;
+                          if (!ServiceItemsController().initialized) {
+                            controller = Get.put(ServiceItemsController());
+                          }
+                          controller.miniTabEnum.value = ServiceTabEnum.all;
                           Get.to(() => const ServiceItemsListView());
                         },
                       ),
                       ServiceButton(
                         svgPath: Assets.images.svg.material,
                         title: 'Material',
-                        onTap: () {},
+                        onTap: () {
+                          late ServiceItemsController controller;
+                          if (!ServiceItemsController().initialized) {
+                            controller = Get.put(ServiceItemsController());
+                          }
+                          controller.miniTabEnum.value = ServiceTabEnum.material;
+                          Get.to(() => const ServiceItemsListView());
+                        },
                       ),
                       ServiceButton(
                         svgPath: Assets.images.svg.package,
