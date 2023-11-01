@@ -18,7 +18,7 @@ class ServiceItemsView extends GetView<ServiceItemsController> {
     return Scaffold(
       backgroundColor: AppColors.white1,
       appBar: const CustomAppbarMinimal(
-        title: 'Service Items',
+        title: 'Service Manager',
       ),
       body: SizedBox(
         height: height,

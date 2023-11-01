@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/service_items/views/selected_service_item_details_view.dart';
 import 'package:nuforce/app/modules/service_items/widgets/material_item_card.dart';
 
 class MaterialItems extends StatelessWidget {
@@ -15,7 +16,9 @@ class MaterialItems extends StatelessWidget {
         return Padding(
           padding: const EdgeInsets.only(bottom: 16),
           child: GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Get.to(() => const SelectedServiceItemDetailsView());
+            },
             child: Obx(
               () => MaterialItemCard(
                 withBottomTitle: false,

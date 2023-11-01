@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/service_items/controllers/service_items_controller.dart';
+import 'package:nuforce/app/modules/service_items/views/add_new_service_view.dart';
 import 'package:nuforce/app/modules/service_items/widgets/content_body.dart';
 import 'package:nuforce/app/modules/service_items/widgets/overview_body.dart';
 import 'package:nuforce/app/modules/service_items/widgets/selected_service_details_tab.dart';
@@ -89,7 +90,14 @@ class _SelectedServiceItemDetailsViewState extends State<SelectedServiceItemDeta
                         children: [
                           Expanded(child: SecondaryButton(onPressed: () {}, text: 'Delete')),
                           const SizedBox(width: 15),
-                          Expanded(child: PrimaryButton(onPressed: () {}, text: 'Edit')),
+                          Expanded(
+                            child: PrimaryButton(
+                              onPressed: () {
+                                Get.to(const AddNewServiceView());
+                              },
+                              text: 'Edit',
+                            ),
+                          ),
                         ],
                       ),
               ),
