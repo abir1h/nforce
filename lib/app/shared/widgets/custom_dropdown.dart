@@ -31,7 +31,7 @@ class CustomDropdownButton extends StatelessWidget {
               // fontSize: 20,
             ),
           ),
-        const SizedBox(height: 8),
+        if (label != null) const SizedBox(height: 8),
         Container(
           height: 50,
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
