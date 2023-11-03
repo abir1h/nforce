@@ -77,7 +77,7 @@ class _AddonDetailsViewState extends State<AddonDetailsView> {
                             return Container(
                               width: MediaQuery.of(context).size.width,
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
+                                borderRadius: BorderRadius.circular(10),
                                 color: i,
                               ),
                             );
