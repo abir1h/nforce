@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:nuforce/app/modules/service_items/views/addon_details_view.dart';
 import 'package:nuforce/app/modules/service_items/widgets/addon_item_card_widget.dart';
 import 'package:nuforce/app/shared/widgets/custom_dropdown.dart';
 import 'package:nuforce/app/utils/colors.dart';
@@ -87,7 +89,9 @@ class _AddonsItemsState extends State<AddonsItems> {
                 padding: const EdgeInsets.only(bottom: 16),
                 child: AddonItemCard(
                   onInstallTap: () {},
-                  onTap: () {},
+                  onTap: () {
+                    Get.to(() => const AddonDetailsView());
+                  },
                 ),
               );
             },
