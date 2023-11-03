@@ -17,7 +17,7 @@ class MaterialItems extends StatelessWidget {
           padding: const EdgeInsets.only(bottom: 16),
           child: GestureDetector(
             onTap: () {
-              Get.to(() => const SelectedServiceItemDetailsView());
+              Get.to(() => const SelectedItemDetailsView(appbarText: 'Broom and Dust Pan'));
             },
             child: Obx(
               () => MaterialItemCard(

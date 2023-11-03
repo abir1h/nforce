@@ -26,39 +26,51 @@ class ServiceItemsListView extends GetView<ServiceItemsController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white1,
-      appBar: CustomAppbarMinimal(
-        title: 'Service Items',
-        trailing: [
-          GestureDetector(
-            onTap: () {
-              if (!AddNewServiceController().initialized) {
-                Get.put(AddNewServiceController());
-              }
-              Get.to(() => const AddNewServiceView());
-            },
-            child: Center(
-              child: Padding(
-                padding: const EdgeInsets.only(right: 20),
-                child: Text(
-                  '+ Add',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: AppColors.nutralBlack1,
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
       body: SizedBox(
         height: height,
         width: width,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Obx(
+              () => CustomAppbarMinimal(
+                title: controller.miniTabEnum.value == ServiceTabEnum.all
+                    ? 'All Items'
+                    : controller.miniTabEnum.value == ServiceTabEnum.service
+                        ? 'Service Items'
+                        : controller.miniTabEnum.value == ServiceTabEnum.material
+                            ? 'Material Items'
+                            : controller.miniTabEnum.value == ServiceTabEnum.package
+                                ? 'Package'
+                                : controller.miniTabEnum.value == ServiceTabEnum.subscription
+                                    ? 'Subscription'
+                                    : 'Addons',
+                trailing: [
+                  GestureDetector(
+                    onTap: () {
+                      if (!AddNewServiceController().initialized) {
+                        Get.put(AddNewServiceController());
+                      }
+                      Get.to(() => const AddNewServiceView());
+                    },
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 20),
+                        child: Text(
+                          '+ Add',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: AppColors.nutralBlack1,
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
             ServiceMiniTabs(controller: controller),
             SizedBox(height: 15.sp),
             const SearchWidget(),

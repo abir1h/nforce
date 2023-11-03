@@ -14,14 +14,15 @@ import 'package:nuforce/app/utils/app_sizes.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/main.dart';
 
-class SelectedServiceItemDetailsView extends StatefulWidget {
-  const SelectedServiceItemDetailsView({super.key});
+class SelectedItemDetailsView extends StatefulWidget {
+  const SelectedItemDetailsView({super.key, required this.appbarText});
+  final String appbarText;
 
   @override
-  State<SelectedServiceItemDetailsView> createState() => _SelectedServiceItemDetailsViewState();
+  State<SelectedItemDetailsView> createState() => _SelectedItemDetailsViewState();
 }
 
-class _SelectedServiceItemDetailsViewState extends State<SelectedServiceItemDetailsView> {
+class _SelectedItemDetailsViewState extends State<SelectedItemDetailsView> {
   final ServiceItemsController controller = Get.put(ServiceItemsController());
   bool _isFavorite = false;
   bool _isLoadingPageUrlSelected = true;
@@ -31,8 +32,8 @@ class _SelectedServiceItemDetailsViewState extends State<SelectedServiceItemDeta
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white1,
-      appBar: const CustomAppbarMinimal(
-        title: 'AC Hydrowash Service',
+      appBar: CustomAppbarMinimal(
+        title: widget.appbarText,
         centerTitle: false,
       ),
       body: SizedBox(

@@ -63,17 +63,56 @@ class ServiceItemsView extends GetView<ServiceItemsController> {
                       ServiceButton(
                         svgPath: Assets.images.svg.package,
                         title: 'Package',
-                        onTap: () {},
+                        onTap: () {
+                          late ServiceItemsController controller;
+                          if (!ServiceItemsController().initialized) {
+                            controller = Get.put(ServiceItemsController());
+                          }
+                          controller.miniTabEnum.value = ServiceTabEnum.package;
+                          Get.to(() => const ServiceItemsListView());
+                        },
                       ),
                       ServiceButton(
                         svgPath: Assets.images.svg.subscription,
                         title: 'Subscription',
-                        onTap: () {},
+                        onTap: () {
+                          late ServiceItemsController controller;
+                          if (!ServiceItemsController().initialized) {
+                            controller = Get.put(ServiceItemsController());
+                          }
+                          controller.miniTabEnum.value = ServiceTabEnum.subscription;
+                          Get.to(() => const ServiceItemsListView());
+                          Future.delayed(const Duration(milliseconds: 200)).then((value) {
+                            if (controller.scrollController.hasClients) {
+                              controller.scrollController.animateTo(
+                                controller.scrollController.position.maxScrollExtent,
+                                duration: const Duration(milliseconds: 500),
+                                curve: Curves.easeInOut,
+                              );
+                            }
+                          });
+                        },
                       ),
                       ServiceButton(
                         svgPath: Assets.images.svg.addons,
                         title: 'Addons',
-                        onTap: () {},
+                        onTap: () {
+                          late ServiceItemsController controller;
+                          if (!ServiceItemsController().initialized) {
+                            controller = Get.put(ServiceItemsController());
+                          }
+                          controller.miniTabEnum.value = ServiceTabEnum.addons;
+                          Get.to(() => const ServiceItemsListView());
+                          Future.delayed(const Duration(milliseconds: 200)).then((value) {
+                            if (controller.scrollController.hasClients) {
+                              controller.scrollController.animateTo(
+                                controller.scrollController.position.maxScrollExtent,
+                                duration: const Duration(milliseconds: 500),
+                                curve: Curves.easeInOut,
+                              );
+                            }
+                          });
+                        },
                       ),
                     ],
                   ),

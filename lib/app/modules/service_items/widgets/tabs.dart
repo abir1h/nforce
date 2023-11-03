@@ -15,6 +15,7 @@ class ServiceMiniTabs extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
+      controller: controller.scrollController,
       child: Row(
         children: [
           Obx(
