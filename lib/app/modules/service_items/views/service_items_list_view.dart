@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/service_items/controllers/add_new_service_controller.dart';
+import 'package:nuforce/app/modules/service_items/views/add_new_addons_view.dart';
 import 'package:nuforce/app/modules/service_items/views/add_new_service_view.dart';
 import 'package:nuforce/app/modules/service_items/widgets/addon_items_widget.dart';
 import 'package:nuforce/app/modules/service_items/widgets/all_items_widget.dart';
@@ -43,12 +44,47 @@ class ServiceItemsListView extends GetView<ServiceItemsController> {
                                     : 'Addons',
                 trailing: [
                   GestureDetector(
-                    onTap: () {
-                      if (!AddNewServiceController().initialized) {
-                        Get.put(AddNewServiceController());
-                      }
-                      Get.to(() => const AddNewServiceView());
-                    },
+                    onTap: controller.miniTabEnum.value == ServiceTabEnum.all
+                        ? () {
+                            if (!AddNewServiceController().initialized) {
+                              Get.put(AddNewServiceController());
+                            }
+                            Get.to(() => const AddNewServiceView());
+                          }
+                        : controller.miniTabEnum.value == ServiceTabEnum.service
+                            ? () {
+                                if (!AddNewServiceController().initialized) {
+                                  Get.put(AddNewServiceController());
+                                }
+                                Get.to(() => const AddNewServiceView());
+                              }
+                            : controller.miniTabEnum.value == ServiceTabEnum.material
+                                ? () {
+                                    if (!AddNewServiceController().initialized) {
+                                      Get.put(AddNewServiceController());
+                                    }
+                                    Get.to(() => const AddNewServiceView());
+                                  }
+                                : controller.miniTabEnum.value == ServiceTabEnum.package
+                                    ? () {
+                                        if (!AddNewServiceController().initialized) {
+                                          Get.put(AddNewServiceController());
+                                        }
+                                        Get.to(() => const AddNewServiceView());
+                                      }
+                                    : controller.miniTabEnum.value == ServiceTabEnum.subscription
+                                        ? () {
+                                            if (!AddNewServiceController().initialized) {
+                                              Get.put(AddNewServiceController());
+                                            }
+                                            Get.to(() => const AddNewServiceView());
+                                          }
+                                        : () {
+                                            if (!AddNewServiceController().initialized) {
+                                              Get.put(AddNewServiceController());
+                                            }
+                                            Get.to(() => const AddNewAddonsView());
+                                          },
                     child: Center(
                       child: Padding(
                         padding: const EdgeInsets.only(right: 20),
