@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/service_items/views/subscription_tile_details_view.dart';
+import 'package:nuforce/app/modules/service_items/views/subscription/subscription_tile_details_view.dart';
 import 'package:nuforce/app/modules/service_items/widgets/subscription_list_tile.dart';
 import 'package:nuforce/app/shared/widgets/custom_dropdown.dart';
 import 'package:nuforce/app/utils/colors.dart';

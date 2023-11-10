@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
+import 'package:nuforce/app/modules/service_items/views/subscription/add_or_edit_subscription_view.dart';
 import 'package:nuforce/app/modules/service_items/widgets/little_text_with_colored_bg.dart';
 import 'package:nuforce/app/modules/service_items/widgets/title_subtitle_minimal_widget.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
@@ -91,9 +94,24 @@ class SubscriptionTileDetailsView extends StatelessWidget {
                   SizedBox(height: 32.h),
                   Row(
                     children: [
-                      Expanded(child: SecondaryButton(onPressed: () {}, text: 'Delete')),
+                      Expanded(
+                        child: SecondaryButton(
+                          onPressed: () {
+                            Fluttertoast.showToast(msg: 'Deleted');
+                            Get.back();
+                          },
+                          text: 'Delete',
+                        ),
+                      ),
                       SizedBox(width: 15.w),
-                      Expanded(child: PrimaryButton(onPressed: () {}, text: 'Edit')),
+                      Expanded(
+                        child: PrimaryButton(
+                          onPressed: () {
+                            Get.to(() => const AddOrEditSubscriptionView(isEdit: true));
+                          },
+                          text: 'Edit',
+                        ),
+                      ),
                     ],
                   ),
                   SizedBox(height: 32.h),
