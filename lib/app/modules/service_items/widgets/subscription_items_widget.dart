@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:nuforce/app/modules/service_items/views/subscription_tile_details_view.dart';
 import 'package:nuforce/app/modules/service_items/widgets/subscription_list_tile.dart';
 import 'package:nuforce/app/shared/widgets/custom_dropdown.dart';
 import 'package:nuforce/app/utils/colors.dart';
@@ -81,7 +83,12 @@ class _SubscriptionItemsState extends State<SubscriptionItems> {
             itemBuilder: (BuildContext context, int index) {
               return Padding(
                 padding: EdgeInsets.only(bottom: 16.sp),
-                child: const SubscriptionListTile(),
+                child: GestureDetector(
+                  onTap: () {
+                    Get.to(() => const SubscriptionTileDetailsView());
+                  },
+                  child: const SubscriptionListTile(),
+                ),
               );
             },
           ),
