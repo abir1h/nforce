@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:nuforce/app/modules/service_items/controllers/add_new_service_controller.dart';
 import 'package:nuforce/app/modules/service_items/views/add_new_addons_view.dart';
 import 'package:nuforce/app/modules/service_items/views/add_new_service_view.dart';
+import 'package:nuforce/app/modules/service_items/views/package/add_or_edit_service_pacakge_view.dart';
 import 'package:nuforce/app/modules/service_items/views/subscription/add_or_edit_subscription_view.dart';
 import 'package:nuforce/app/modules/service_items/widgets/addon_items_widget.dart';
 import 'package:nuforce/app/modules/service_items/widgets/all_items_widget.dart';
@@ -68,10 +69,7 @@ class ServiceItemsListView extends GetView<ServiceItemsController> {
                                   }
                                 : controller.miniTabEnum.value == ServiceTabEnum.package
                                     ? () {
-                                        if (!AddNewServiceController().initialized) {
-                                          Get.put(AddNewServiceController());
-                                        }
-                                        Get.to(() => const AddNewServiceView());
+                                        Get.to(() => const AddOrEditServicePacakgeView(isEdit: false));
                                       }
                                     : controller.miniTabEnum.value == ServiceTabEnum.subscription
                                         ? () {

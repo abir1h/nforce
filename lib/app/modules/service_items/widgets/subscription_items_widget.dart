@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:nuforce/app/modules/service_items/views/subscription/subscription_tile_details_view.dart';
 import 'package:nuforce/app/modules/service_items/widgets/subscription_list_tile.dart';
 import 'package:nuforce/app/shared/widgets/custom_dropdown.dart';
+import 'package:nuforce/app/shared/widgets/searchbox_with_leading_icon.dart';
 import 'package:nuforce/app/utils/colors.dart';
 
 class SubscriptionItems extends StatefulWidget {
@@ -44,26 +45,9 @@ class _SubscriptionItemsState extends State<SubscriptionItems> {
           value: categoryDropdownValue,
         ),
         SizedBox(height: 14.h),
-        Container(
-          decoration: BoxDecoration(
-            color: AppColors.textFieldBackground,
-            borderRadius: BorderRadius.circular(10.sp),
-          ),
-          child: TextField(
-            decoration: InputDecoration(
-              hintText: 'Find by Name...',
-              hintStyle: TextStyle(
-                color: AppColors.subText,
-                fontSize: 14.sp,
-                fontWeight: FontWeight.w400,
-              ),
-              border: InputBorder.none,
-              prefixIcon: const Icon(
-                Icons.search,
-                color: AppColors.subText,
-              ),
-            ),
-          ),
+        const SearchBoxWithLeadingIcon(
+          hintText: 'Find by Name...',
+          controller: null,
         ),
         SizedBox(height: 24.h),
         Text(
