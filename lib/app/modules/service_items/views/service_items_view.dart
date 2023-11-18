@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/home/components/service_button.dart';
+import 'package:nuforce/app/modules/service_items/controllers/promotion_items_controller.dart';
+import 'package:nuforce/app/modules/service_items/views/promotion_items_view.dart';
 import 'package:nuforce/app/modules/service_items/views/service_items_list_view.dart';
 import 'package:nuforce/app/modules/service_items/widgets/plugin_item_card.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
@@ -142,22 +144,50 @@ class ServiceItemsView extends GetView<ServiceItemsController> {
                     ServiceButton(
                       svgPath: Assets.images.svg.coupon,
                       title: 'Coupon',
-                      onTap: () {},
+                      onTap: () {
+                        late PromotionItemsController controller;
+                        if (!PromotionItemsController().initialized) {
+                          controller = Get.put(PromotionItemsController());
+                        }
+                        controller.miniTabEnum.value = PromotionTabEnum.coupon;
+                        Get.to(() => const PromotionItemsListView());
+                      },
                     ),
                     ServiceButton(
                       svgPath: Assets.images.svg.discount,
                       title: 'Discount',
-                      onTap: () {},
+                      onTap: () {
+                        late PromotionItemsController controller;
+                        if (!PromotionItemsController().initialized) {
+                          controller = Get.put(PromotionItemsController());
+                        }
+                        controller.miniTabEnum.value = PromotionTabEnum.discount;
+                        Get.to(() => const PromotionItemsListView());
+                      },
                     ),
                     ServiceButton(
                       svgPath: Assets.images.svg.offer,
                       title: 'Offer',
-                      onTap: () {},
+                      onTap: () {
+                        late PromotionItemsController controller;
+                        if (!PromotionItemsController().initialized) {
+                          controller = Get.put(PromotionItemsController());
+                        }
+                        controller.miniTabEnum.value = PromotionTabEnum.offer;
+                        Get.to(() => const PromotionItemsListView());
+                      },
                     ),
                     ServiceButton(
                       svgPath: Assets.images.svg.gift,
                       title: 'Gift',
-                      onTap: () {},
+                      onTap: () {
+                        late PromotionItemsController controller;
+                        if (!PromotionItemsController().initialized) {
+                          controller = Get.put(PromotionItemsController());
+                        }
+                        controller.miniTabEnum.value = PromotionTabEnum.gift;
+                        Get.to(() => const PromotionItemsListView());
+                      },
                     ),
                   ],
                 ),
