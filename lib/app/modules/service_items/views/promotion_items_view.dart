@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/service_items/controllers/promotion_items_controller.dart';
+import 'package:nuforce/app/modules/service_items/widgets/landing_page_url_text_box.dart';
 import 'package:nuforce/app/modules/service_items/widgets/promotion_mini_tabs.dart';
+import 'package:nuforce/app/modules/service_items/widgets/textbox_with_button_inside.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/main.dart';
@@ -66,7 +68,13 @@ class PromotionItemsListView extends GetView<PromotionItemsController> {
                 padding: EdgeInsets.symmetric(horizontal: 20.sp),
                 child: Obx(
                   () => controller.miniTabEnum.value == PromotionTabEnum.coupon
-                      ? const SizedBox()
+                      ? Column(
+                          children: [
+                            TextboxWithButtonInside(
+                              controller: TextEditingController(),
+                            ),
+                          ],
+                        )
                       : controller.miniTabEnum.value == PromotionTabEnum.discount
                           ? const SizedBox()
                           : controller.miniTabEnum.value == PromotionTabEnum.offer
