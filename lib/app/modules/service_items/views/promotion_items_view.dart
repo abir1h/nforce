@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/service_items/controllers/promotion_items_controller.dart';
 import 'package:nuforce/app/modules/service_items/views/coupon/coupon_body_view.dart';
+import 'package:nuforce/app/modules/service_items/views/coupon/create_or_edit_coupon_view.dart';
 import 'package:nuforce/app/modules/service_items/widgets/promotion_mini_tabs.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/utils/colors.dart';
@@ -34,7 +35,9 @@ class PromotionItemsListView extends GetView<PromotionItemsController> {
                 trailing: [
                   GestureDetector(
                     onTap: controller.miniTabEnum.value == PromotionTabEnum.coupon
-                        ? () {}
+                        ? () {
+                            Get.to(() => const CreateOrEditCouponView(isEditing: false));
+                          }
                         : controller.miniTabEnum.value == PromotionTabEnum.discount
                             ? () {}
                             : controller.miniTabEnum.value == PromotionTabEnum.offer

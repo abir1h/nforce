@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:nuforce/app/modules/service_items/views/coupon/create_or_edit_coupon_view.dart';
 import 'package:nuforce/app/modules/service_items/widgets/coupon_widget.dart';
 import 'package:nuforce/app/modules/service_items/widgets/oval_button.dart';
 import 'package:nuforce/app/modules/service_items/widgets/textbox_with_button_inside.dart';
@@ -16,6 +18,32 @@ class CouponBody extends StatefulWidget {
 
 class _CouponBodyState extends State<CouponBody> {
   bool isAvailable = true;
+  List<CouponDataModel> dummyCouponData = <CouponDataModel>[
+    CouponDataModel(
+      offerValue: '16%',
+      expireDate: '26 June, 2023',
+      offerTitleText: 'Pest Control Offer',
+      offerDetailsText: 'Spend over \$150 and get 16% off on all services (Excludes shipping cost)',
+      backgroundColor: AppColors.powderPink,
+      offerValueColor: AppColors.red,
+    ),
+    CouponDataModel(
+      offerValue: '\$60',
+      expireDate: '30 June, 2023',
+      offerTitleText: 'Raccoon Remocal Offer',
+      offerDetailsText: 'Spend over \$150 and get 16% off on all services (Excludes shipping cost)',
+      backgroundColor: AppColors.green2,
+      offerValueColor: AppColors.primaryBlue1,
+    ),
+    CouponDataModel(
+      offerValue: '16%',
+      expireDate: '30 June, 2023',
+      offerTitleText: 'Winter Package',
+      offerDetailsText: 'Spend over \$150 and get 16% off on all services (Excludes shipping cost)',
+      backgroundColor: AppColors.blue2,
+      offerValueColor: AppColors.blue,
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -71,6 +99,25 @@ class _CouponBodyState extends State<CouponBody> {
                 padding: const EdgeInsets.only(bottom: 16),
                 child: CouponWidget(
                   coupon: dummyCouponData[index],
+                  onDeleteTap: () {
+                    setState(() {
+                      dummyCouponData.removeAt(index);
+                    });
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Coupon deleted successfully'),
+                      ),
+                    );
+                  },
+                  onEditTap: () {
+                    Get.to(
+                      () => CreateOrEditCouponView(
+                        isEditing: true,
+                        couponDataModel: dummyCouponData[index],
+                        onButtonTap: () {},
+                      ),
+                    );
+                  },
                 ),
               );
             },

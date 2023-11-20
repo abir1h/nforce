@@ -6,33 +6,6 @@ import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 import 'package:nuforce/main.dart';
 
-List<CouponDataModel> dummyCouponData = <CouponDataModel>[
-  CouponDataModel(
-    offerValue: '16%',
-    expireDate: '26 June, 2023',
-    offerTitleText: 'Pest Control Offer',
-    offerDetailsText: 'Spend over \$150 and get 16% off on all services (Excludes shipping cost)',
-    backgroundColor: AppColors.powderPink,
-    offerValueColor: AppColors.red,
-  ),
-  CouponDataModel(
-    offerValue: '\$60',
-    expireDate: '30 June, 2023',
-    offerTitleText: 'Raccoon Remocal Offer',
-    offerDetailsText: 'Spend over \$150 and get 16% off on all services (Excludes shipping cost)',
-    backgroundColor: AppColors.green2,
-    offerValueColor: AppColors.primaryBlue1,
-  ),
-  CouponDataModel(
-    offerValue: '16%',
-    expireDate: '30 June, 2023',
-    offerTitleText: 'Winter Package',
-    offerDetailsText: 'Spend over \$150 and get 16% off on all services (Excludes shipping cost)',
-    backgroundColor: AppColors.blue2,
-    offerValueColor: AppColors.blue,
-  ),
-];
-
 class CouponDataModel {
   final String offerValue;
   final String expireDate;
@@ -55,8 +28,12 @@ class CouponWidget extends StatelessWidget {
   const CouponWidget({
     super.key,
     required this.coupon,
+    this.onEditTap,
+    this.onDeleteTap,
   });
   final CouponDataModel coupon;
+  final VoidCallback? onEditTap;
+  final VoidCallback? onDeleteTap;
 
   @override
   Widget build(BuildContext context) {
@@ -156,9 +133,31 @@ class CouponWidget extends StatelessWidget {
                   icon: Icons.share,
                 ),
                 const Spacer(),
-                const Icon(
-                  Icons.more_vert,
-                  color: AppColors.nutralBlack1,
+                PopupMenuButton(
+                  itemBuilder: (BuildContext context) => <PopupMenuEntry>[
+                    PopupMenuItem(
+                      onTap: onEditTap,
+                      child: Text(
+                        'Edit',
+                        style: TextStyle(
+                          color: AppColors.subText,
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                    PopupMenuItem(
+                      onTap: onDeleteTap,
+                      child: Text(
+                        'Delete',
+                        style: TextStyle(
+                          color: AppColors.subText,
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),

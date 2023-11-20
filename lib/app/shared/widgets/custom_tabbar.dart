@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/main.dart';
 
@@ -31,7 +32,7 @@ class CustomTabBar extends StatelessWidget {
                 text,
                 style: TextStyle(
                   color: isSelected ? AppColors.primaryBlue1 : AppColors.greyText,
-                  fontSize: isMini ? 12 : 20,
+                  fontSize: isMini ? 12.sp : 18.sp,
                   fontWeight: isMini ? FontWeight.w500 : FontWeight.w600,
                 ),
               ),
