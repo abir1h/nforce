@@ -13,7 +13,7 @@ class OrganizationView extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.white1,
       appBar: const CustomAppbarMinimal(
-        title: 'Business Manager',
+        title: 'Organization',
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
