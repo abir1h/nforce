@@ -45,7 +45,9 @@ class HomeView extends GetView<HomeController> {
                       ServiceButton(
                         svgPath: Assets.images.svg.businessManager,
                         title: 'Business Manager',
-                        onTap: () {},
+                        onTap: () {
+                          Get.toNamed(Routes.BUSINESS_MANAGER);
+                        },
                       ),
                       ServiceButton(
                         svgPath: Assets.images.svg.serviceManager,

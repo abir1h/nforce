@@ -6,6 +6,8 @@ import '../modules/auth/bindings/auth_binding.dart';
 import '../modules/auth/views/auth_view.dart';
 import '../modules/bottom_nav_bar/bindings/bottom_nav_bar_binding.dart';
 import '../modules/bottom_nav_bar/views/bottom_nav_bar_view.dart';
+import '../modules/business_manager/bindings/business_manager_binding.dart';
+import '../modules/business_manager/views/business_manager_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/more/bindings/more_binding.dart';
@@ -78,6 +80,11 @@ class AppPages {
       name: _Paths.SERVICE_ITEMS,
       page: () => const ServiceItemsView(),
       binding: ServiceItemsBinding(),
+    ),
+    GetPage(
+      name: _Paths.BUSINESS_MANAGER,
+      page: () => const BusinessManagerView(),
+      binding: BusinessManagerBinding(),
     ),
   ];
 }
