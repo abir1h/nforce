@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/business_manager/views/business_manager_settings_view.dart';
 import 'package:nuforce/app/modules/business_manager/views/organization_view.dart';
 import 'package:nuforce/app/modules/home/components/service_button.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
@@ -49,7 +50,9 @@ class BusinessManagerView extends GetView<BusinessManagerController> {
                   ServiceButton(
                     svgPath: Assets.images.svg.settings,
                     title: 'Settings',
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(() => const BusinessManagerSettingsView());
+                    },
                   ),
                 ],
               ),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:nuforce/app/modules/business_manager/views/business_manager_profile_view.dart';
 import 'package:nuforce/app/modules/business_manager/widgets/big_button_with_icon.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
@@ -27,7 +29,9 @@ class OrganizationView extends StatelessWidget {
               BigButtonWithIcon(
                 svgPath: Assets.images.svg.profile,
                 lable: 'Profile',
-                onTap: () {},
+                onTap: () {
+                  Get.to(() => const BusinessManagerProfileView());
+                },
               ),
               const SizedBox(height: 16),
               BigButtonWithIcon(
