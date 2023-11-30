@@ -22,7 +22,7 @@ class BigButtonWithIcon extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+        padding: const EdgeInsets.all(5),
         decoration: BoxDecoration(
           color: AppColors.textFieldBackground,
           borderRadius: BorderRadius.circular(6),
@@ -62,9 +62,11 @@ class BigButtonWithIcon extends StatelessWidget {
                   ),
                 ),
               ],
-            ), // ToDo set imagepath as your own
-
-            const Icon(Icons.arrow_forward_ios),
+            ),
+            const Icon(
+              Icons.arrow_forward_ios,
+              size: 14,
+            ),
           ],
         ),
       ),

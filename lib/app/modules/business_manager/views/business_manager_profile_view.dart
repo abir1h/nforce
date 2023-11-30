@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:nuforce/app/modules/business_manager/widgets/image_upload_optional.dart';
+import 'package:nuforce/app/shared/functions/image_picker_func.dart';
 
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/shared/widgets/custom_dropdown.dart';
@@ -7,6 +9,7 @@ import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/shared/widgets/secondary_button.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
+import 'package:nuforce/app/utils/colors.dart';
 
 class BusinessManagerProfileView extends StatefulWidget {
   const BusinessManagerProfileView({super.key});
@@ -16,8 +19,8 @@ class BusinessManagerProfileView extends StatefulWidget {
 }
 
 class _BusinessManagerProfileViewState extends State<BusinessManagerProfileView> {
-  final controller = null;
-
+  String? businessType;
+  XFile? image;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +30,18 @@ class _BusinessManagerProfileViewState extends State<BusinessManagerProfileView>
           padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding, vertical: 15),
           child: Column(
             children: [
-              ImageUploadOptional(ontap: () {}),
+              ImageUploadOptional(
+                image: image,
+                onImageRemoveButtonTap: () {
+                  setState(() {
+                    image = null;
+                  });
+                },
+                ontap: () async {
+                  image = await pickImage(ImageSource.gallery);
+                  setState(() {});
+                },
+              ),
               const SizedBox(height: 25),
               const CustomTextField(
                 label: 'Display name',
@@ -44,13 +58,24 @@ class _BusinessManagerProfileViewState extends State<BusinessManagerProfileView>
               CustomDropdownButton(
                 label: 'Business Type',
                 hint: 'Select one',
-                onChanged: (p0) {},
-                value: null,
+                onChanged: (p0) {
+                  setState(() {
+                    businessType = p0 as String?;
+                  });
+                },
+                value: businessType,
                 items: ['Type1', 'Type2', 'Type3']
                     .map(
                       (e) => DropdownMenuItem(
                         value: e,
-                        child: Text(e),
+                        child: Text(
+                          e,
+                          style: const TextStyle(
+                            fontSize: 14,
+                            color: AppColors.nutralBlack1,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
                       ),
                     )
                     .toList(),
