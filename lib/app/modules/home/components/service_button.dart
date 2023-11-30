@@ -24,8 +24,8 @@ class ServiceButton extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            height: 64.sp,
-            width: 72.sp,
+            height: 64.h,
+            width: 72.w,
             decoration: BoxDecoration(
               color: AppColors.tabbarColor,
               borderRadius: BorderRadius.circular(4),
@@ -34,9 +34,9 @@ class ServiceButton extends StatelessWidget {
               child: SvgPicture.asset(svgPath),
             ),
           ),
-          SizedBox(height: 4.sp),
+          SizedBox(height: 4.h),
           SizedBox(
-            width: 72.sp,
+            width: 72.w,
             child: Text(
               title,
               textAlign: TextAlign.center,
