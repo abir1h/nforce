@@ -19,6 +19,10 @@ class $AssetsImagesGen {
 class $AssetsImagesPngGen {
   const $AssetsImagesPngGen();
 
+  /// File path: assets/images/png/empty_data.png
+  AssetGenImage get emptyData =>
+      const AssetGenImage('assets/images/png/empty_data.png');
+
   /// File path: assets/images/png/nuforce_splash.png
   AssetGenImage get nuforceSplash =>
       const AssetGenImage('assets/images/png/nuforce_splash.png');
@@ -49,6 +53,7 @@ class $AssetsImagesPngGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
+        emptyData,
         nuforceSplash,
         onboarding1,
         onboarding2,

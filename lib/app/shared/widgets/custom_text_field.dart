@@ -14,6 +14,7 @@ class CustomTextField extends StatelessWidget {
     this.isPassword = false,
     this.onVisibilityTap,
     this.maxLines = 1,
+    this.validator,
   });
 
   final String label;
@@ -25,6 +26,7 @@ class CustomTextField extends StatelessWidget {
   final bool isVisibile;
   final bool isPassword;
   final int maxLines;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +45,8 @@ class CustomTextField extends StatelessWidget {
         Container(
           // height: 50,
           color: AppColors.textFieldBackground,
-          child: TextField(
+          child: TextFormField(
+            validator: validator,
             cursorColor: AppColors.primaryBlue1,
             autocorrect: false,
             obscureText: obscureText,
