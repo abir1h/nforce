@@ -32,6 +32,7 @@ dependencies:
   webview_flutter: ^4.0.7
   textfield_tags: ^2.0.2
   carousel_slider: ^4.2.1
+  pie_chart: ^5.4.0
 
 dev_dependencies:
   build_runner: 2.4.6

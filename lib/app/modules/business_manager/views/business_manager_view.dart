@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/business_manager/views/business_manager_settings_view.dart';
 import 'package:nuforce/app/modules/business_manager/views/organization_view.dart';
 import 'package:nuforce/app/modules/business_manager/widgets/business_manager_daily_sales_curve.dart';
 import 'package:nuforce/app/modules/business_manager/widgets/business_manager_money_matrics.dart';
-import 'package:nuforce/app/modules/business_manager/widgets/custom_pie_chart.dart';
+import 'package:nuforce/app/modules/business_manager/widgets/custome_pie_chart.dart';
 import 'package:nuforce/app/modules/home/components/service_button.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
+import 'package:nuforce/app/shared/widgets/custom_dropdown.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 import 'package:nuforce/main.dart';
@@ -107,8 +108,70 @@ class BusinessManagerView extends GetView<BusinessManagerController> {
                     color: AppColors.white1,
                     borderRadius: BorderRadius.circular(8),
                   ),
-                  child: PieChartSample2(),
-                )
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Expanded(
+                            flex: 2,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Commission Shared',
+                                  style: TextStyle(
+                                    color: AppColors.nutralBlack1,
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                Text(
+                                  'Profit shared as commission',
+                                  style: TextStyle(
+                                    color: AppColors.nutralBlack1,
+                                    fontSize: 12.sp,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                          Expanded(
+                            child: Obx(
+                              () => CustomDropdownButton(
+                                items: ['1 day', '7 days', '1 month', '1 year'].map((e) {
+                                  return DropdownMenuItem(
+                                    value: e,
+                                    child: Text(
+                                      e,
+                                      style: TextStyle(
+                                        color: AppColors.subText,
+                                        fontSize: 12.sp,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                  );
+                                }).toList(),
+                                hint: 'Select duration',
+                                onChanged: (val) {
+                                  controller.selectedValue.value = val.toString();
+                                },
+                                value: controller.selectedValue.value,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 10),
+                      const SizedBox(
+                        height: 150,
+                        child: CustomPieChartWidget(),
+                      ),
+                      const SizedBox(height: 10),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 10),
               ],
             ),
           ),
