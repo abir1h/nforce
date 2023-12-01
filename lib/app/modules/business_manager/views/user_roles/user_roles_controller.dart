@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:equatable/equatable.dart';
 import 'package:get/get.dart';
 
 class UserRolesController extends GetxController {
@@ -9,9 +10,20 @@ class UserRolesController extends GetxController {
     userRoles.add(userRolesMock);
     update();
   }
+
+  void updateUserRoles(UserRolesMock userRolesMock) {
+    final index = userRoles.indexWhere((element) => element.id == userRolesMock.id);
+    userRoles[index] = userRolesMock;
+    update();
+  }
+
+  void removeUserRoles(UserRolesMock userRolesMock) {
+    userRoles.remove(userRolesMock);
+    update();
+  }
 }
 
-class UserRolesMock {
+class UserRolesMock extends Equatable {
   final String id;
   final String name;
   final String role;
@@ -21,7 +33,7 @@ class UserRolesMock {
   final String accessPolicy;
   final String status;
 
-  UserRolesMock({
+  const UserRolesMock({
     required this.id,
     required this.name,
     required this.role,
@@ -31,4 +43,7 @@ class UserRolesMock {
     required this.accessPolicy,
     required this.status,
   });
+
+  @override
+  List<Object?> get props => [id, name, role, image, description, accessAreas, accessPolicy, status];
 }

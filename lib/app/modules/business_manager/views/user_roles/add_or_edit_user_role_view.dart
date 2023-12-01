@@ -19,14 +19,18 @@ import 'package:nuforce/app/utils/colors.dart';
 
 GlobalKey<FormState> addRoleFormField = GlobalKey<FormState>();
 
-class AddUserRoleView extends StatefulWidget {
-  const AddUserRoleView({super.key});
+class AddOrEditUserRoleView extends StatefulWidget {
+  const AddOrEditUserRoleView({
+    super.key,
+    this.user,
+  });
+  final UserRolesMock? user;
 
   @override
-  State<AddUserRoleView> createState() => _AddUserRoleViewState();
+  State<AddOrEditUserRoleView> createState() => _AddOrEditUserRoleViewState();
 }
 
-class _AddUserRoleViewState extends State<AddUserRoleView> {
+class _AddOrEditUserRoleViewState extends State<AddOrEditUserRoleView> {
   XFile? image;
   String? role;
   String? accessPolicy;
@@ -35,6 +39,21 @@ class _AddUserRoleViewState extends State<AddUserRoleView> {
   TextEditingController nameController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   TextEditingController accessAreasController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.user != null) {
+      final user = widget.user!;
+      nameController.text = user.name;
+      descriptionController.text = user.description;
+      accessAreasController.text = user.accessAreas;
+      role = user.role;
+      accessPolicy = user.accessPolicy;
+      status = user.status;
+      image = XFile(user.image.path);
+    }
+  }
 
   @override
   void dispose() {
@@ -47,7 +66,9 @@ class _AddUserRoleViewState extends State<AddUserRoleView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppbarMinimal(title: 'Add Role'),
+      appBar: CustomAppbarMinimal(
+        title: widget.user != null ? 'Edit Role' : 'Add Role',
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding, vertical: 15),
@@ -188,15 +209,28 @@ class _AddUserRoleViewState extends State<AddUserRoleView> {
                     Expanded(
                       child: SecondaryButton(
                         onPressed: () {
-                          nameController.clear();
-                          descriptionController.clear();
-                          accessAreasController.clear();
-                          setState(() {
-                            image = null;
-                            role = null;
-                            accessPolicy = null;
-                            status = null;
-                          });
+                          if (widget.user == null) {
+                            nameController.clear();
+                            descriptionController.clear();
+                            accessAreasController.clear();
+                            setState(() {
+                              image = null;
+                              role = null;
+                              accessPolicy = null;
+                              status = null;
+                            });
+                          } else {
+                            final user = widget.user!;
+                            nameController.text = user.name;
+                            descriptionController.text = user.description;
+                            accessAreasController.text = user.accessAreas;
+                            setState(() {
+                              role = user.role;
+                              accessPolicy = user.accessPolicy;
+                              status = user.status;
+                              image = XFile(user.image.path);
+                            });
+                          }
                         },
                         text: 'Reset',
                       ),
@@ -210,21 +244,36 @@ class _AddUserRoleViewState extends State<AddUserRoleView> {
                           }
                           final controller = Get.find<BusinessManagerController>();
 
-                          controller.userRolesController.addUserRoles(
-                            UserRolesMock(
-                              id: DateTime.now().toString(),
-                              name: nameController.text,
-                              role: role!,
-                              image: File(image!.path),
-                              accessAreas: accessAreasController.text,
-                              accessPolicy: accessPolicy!,
-                              description: descriptionController.text,
-                              status: status!,
-                            ),
-                          );
+                          if (widget.user != null) {
+                            controller.userRolesController.updateUserRoles(
+                              UserRolesMock(
+                                id: widget.user!.id,
+                                name: nameController.text,
+                                role: role!,
+                                image: File(image!.path),
+                                accessAreas: accessAreasController.text,
+                                accessPolicy: accessPolicy!,
+                                description: descriptionController.text,
+                                status: status!,
+                              ),
+                            );
+                          } else {
+                            controller.userRolesController.addUserRoles(
+                              UserRolesMock(
+                                id: DateTime.now().toString(),
+                                name: nameController.text,
+                                role: role!,
+                                image: File(image!.path),
+                                accessAreas: accessAreasController.text,
+                                accessPolicy: accessPolicy!,
+                                description: descriptionController.text,
+                                status: status!,
+                              ),
+                            );
+                          }
                           Get.back();
                         },
-                        text: 'Submit',
+                        text: widget.user != null ? 'Update' : 'Submit',
                       ),
                     ),
                   ],

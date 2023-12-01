@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/business_manager/controllers/business_manager_controller.dart';
-import 'package:nuforce/app/modules/business_manager/views/user_roles/add_user_role_view.dart';
+import 'package:nuforce/app/modules/business_manager/views/user_roles/add_or_edit_user_role_view.dart';
 import 'package:nuforce/app/modules/business_manager/views/user_roles/user_role_details_view.dart';
 import 'package:nuforce/app/modules/business_manager/views/user_roles/user_roles_controller.dart';
 import 'package:nuforce/app/modules/business_manager/views/user_roles/widget/empty_user_role.dart';
@@ -33,7 +33,7 @@ class _UserRolesViewState extends State<UserRolesView> {
                   ? const SizedBox()
                   : GestureDetector(
                       onTap: () {
-                        Get.to(() => const AddUserRoleView());
+                        Get.to(() => const AddOrEditUserRoleView());
                       },
                       child: Row(
                         children: [

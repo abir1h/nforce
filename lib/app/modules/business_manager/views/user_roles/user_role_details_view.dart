@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/business_manager_controller.dart';
+import 'package:nuforce/app/modules/business_manager/views/user_roles/add_or_edit_user_role_view.dart';
 import 'package:nuforce/app/modules/business_manager/views/user_roles/user_roles_controller.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
@@ -40,19 +44,28 @@ class UserRoleDeatilsView extends StatelessWidget {
               const SizedBox(height: 16),
               TitleSubtitle(title: 'Status', subtitle: user.status),
               const SizedBox(height: 32),
+              const Spacer(),
               Row(
                 children: [
                   Expanded(
                     child: SecondaryButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.back();
+                        final controller = Get.find<BusinessManagerController>();
+                        controller.userRolesController.removeUserRoles(user);
+                        Fluttertoast.showToast(msg: 'User Role Deleted');
+                      },
                       text: 'Delete',
                     ),
                   ),
                   const SizedBox(width: 15),
                   Expanded(
                     child: PrimaryButton(
-                      onPressed: () {},
-                      text: 'Submit',
+                      onPressed: () {
+                        Get.back();
+                        Get.to(() => AddOrEditUserRoleView(user: user));
+                      },
+                      text: 'Edit',
                     ),
                   ),
                 ],

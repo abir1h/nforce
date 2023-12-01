@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/business_manager/views/user_roles/add_user_role_view.dart';
+import 'package:nuforce/app/modules/business_manager/views/user_roles/add_or_edit_user_role_view.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/gen/assets.gen.dart';
@@ -30,7 +30,7 @@ class EmptyUserRole extends StatelessWidget {
         const Expanded(child: SizedBox()),
         PrimaryButton(
           onPressed: () {
-            Get.to(() => const AddUserRoleView());
+            Get.to(() => const AddOrEditUserRoleView());
           },
           text: 'Add user role',
         ),
