@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/business_manager/views/business_manager_profile_view.dart';
+import 'package:nuforce/app/modules/business_manager/views/calendar/business_manager_calendar_view.dart';
 import 'package:nuforce/app/modules/business_manager/views/user_roles/user_roles_view.dart';
 import 'package:nuforce/app/modules/business_manager/widgets/big_button_with_icon.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
@@ -46,7 +47,9 @@ class OrganizationView extends StatelessWidget {
               BigButtonWithIcon(
                 svgPath: Assets.images.svg.simpleCalendar,
                 lable: 'Calendar',
-                onTap: () {},
+                onTap: () {
+                  Get.to(() => const BusinessManagerCalendarView());
+                },
               ),
               const SizedBox(height: 16),
               BigButtonWithIcon(

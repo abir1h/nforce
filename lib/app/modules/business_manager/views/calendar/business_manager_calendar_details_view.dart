@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/business_manager/controllers/business_manager_controller.dart';
-import 'package:nuforce/app/modules/business_manager/views/user_roles/add_or_edit_user_role_view.dart';
-import 'package:nuforce/app/modules/business_manager/views/user_roles/user_roles_controller.dart';
+import 'package:nuforce/app/modules/business_manager/views/calendar/business_manager_add_or_edit_calendar.dart';
+import 'package:nuforce/app/modules/business_manager/views/calendar/business_manager_calendar_controller.dart';
 import 'package:nuforce/app/modules/service_items/widgets/title_subtitle_minimal_widget.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
@@ -11,12 +11,12 @@ import 'package:nuforce/app/shared/widgets/secondary_button.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
 import 'package:nuforce/main.dart';
 
-class UserRoleDeatilsView extends StatelessWidget {
-  const UserRoleDeatilsView({
+class BusinessManagerCalendarDeatilsView extends StatelessWidget {
+  const BusinessManagerCalendarDeatilsView({
     super.key,
-    required this.user,
+    required this.calendar,
   });
-  final UserRolesMock user;
+  final MockCalendar calendar;
 
   @override
   Widget build(BuildContext context) {
@@ -31,17 +31,13 @@ class UserRoleDeatilsView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 16),
-              TitleSubtitleMinimal(title: 'Name', subtitle: user.name),
+              TitleSubtitleMinimal(title: 'Name', subtitle: calendar.name),
+              if (calendar.timeZone != null) const SizedBox(height: 16),
+              if (calendar.timeZone != null) TitleSubtitleMinimal(title: 'Timezone', subtitle: calendar.timeZone!),
+              if (calendar.color != null) const SizedBox(height: 16),
+              if (calendar.color != null) TitleSubtitleMinimal(title: 'Color', subtitle: '${calendar.color?.red}${calendar.color?.green}${calendar.color?.blue}'),
               const SizedBox(height: 16),
-              TitleSubtitleMinimal(title: 'For', subtitle: user.role),
-              const SizedBox(height: 16),
-              TitleSubtitleMinimal(title: 'Access Policy', subtitle: user.accessPolicy),
-              const SizedBox(height: 16),
-              TitleSubtitleMinimal(title: 'Access Areas', subtitle: user.accessAreas),
-              const SizedBox(height: 16),
-              TitleSubtitleMinimal(title: 'Description', subtitle: user.description),
-              const SizedBox(height: 16),
-              TitleSubtitleMinimal(title: 'Status', subtitle: user.status),
+              TitleSubtitleMinimal(title: 'Description', subtitle: calendar.description ?? 'N/A'),
               const SizedBox(height: 32),
               const Spacer(),
               Row(
@@ -51,8 +47,8 @@ class UserRoleDeatilsView extends StatelessWidget {
                       onPressed: () {
                         Get.back();
                         final controller = Get.find<BusinessManagerController>();
-                        controller.userRolesController.removeUserRoles(user);
-                        Fluttertoast.showToast(msg: 'User Role Deleted');
+                        controller.businessManagerCalendarController.removeCalendar(calendar);
+                        Fluttertoast.showToast(msg: 'Calendar Deleted');
                       },
                       text: 'Delete',
                     ),
@@ -62,7 +58,7 @@ class UserRoleDeatilsView extends StatelessWidget {
                     child: PrimaryButton(
                       onPressed: () {
                         Get.back();
-                        Get.to(() => AddOrEditUserRoleView(user: user));
+                        Get.to(() => BusinessManagerAddOrEditCalendar(calendar: calendar));
                       },
                       text: 'Edit',
                     ),
