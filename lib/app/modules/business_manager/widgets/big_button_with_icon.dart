@@ -24,9 +24,9 @@ class BigButtonWithIcon extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(5),
         decoration: BoxDecoration(
-          color: AppColors.textFieldBackground,
+          color: AppColors.tileBackground,
           borderRadius: BorderRadius.circular(6),
-          border: Border.all(color: AppColors.white3),
+          border: Border.all(color: AppColors.white3,width: 1.h),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

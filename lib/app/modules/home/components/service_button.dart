@@ -40,6 +40,8 @@ class ServiceButton extends StatelessWidget {
             child: Text(
               title,
               textAlign: TextAlign.center,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
               style: TextStyle(
                 fontSize: 11.sp,
                 fontWeight: FontWeight.w400,

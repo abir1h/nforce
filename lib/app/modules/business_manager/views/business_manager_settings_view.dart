@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nuforce/app/modules/business_manager/widgets/big_button_with_icon.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/gen/assets.gen.dart';
+
+import 'business_manager_preferences_view.dart';
 
 class BusinessManagerSettingsView extends StatelessWidget {
   const BusinessManagerSettingsView({super.key});
@@ -25,7 +28,9 @@ class BusinessManagerSettingsView extends StatelessWidget {
               BigButtonWithIcon(
                 svgPath: Assets.images.svg.preferences,
                 lable: 'Preferences',
-                onTap: () {},
+                onTap: () {
+                  Get.to(const BusinessManagerPreferences());
+                },
               ),
               const SizedBox(height: 16),
               BigButtonWithIcon(

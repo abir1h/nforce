@@ -36,29 +36,37 @@ class BusinessManagerView extends GetView<BusinessManagerController> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    ServiceButton(
-                      svgPath: Assets.images.svg.organization,
-                      title: 'Organization',
-                      onTap: () {
-                        Get.to(() => const OrganizationView());
-                      },
+                    Expanded(
+                      child: ServiceButton(
+                        svgPath: Assets.images.svg.organization,
+                        title: 'Organization',
+                        onTap: () {
+                          Get.to(() => const OrganizationView());
+                        },
+                      ),
                     ),
-                    ServiceButton(
-                      svgPath: Assets.images.svg.customer,
-                      title: 'Customer',
-                      onTap: () {},
+                    Expanded(
+                      child: ServiceButton(
+                        svgPath: Assets.images.svg.customer,
+                        title: 'Customer',
+                        onTap: () {},
+                      ),
                     ),
-                    ServiceButton(
-                      svgPath: Assets.images.svg.accounts,
-                      title: 'Accounts',
-                      onTap: () {},
+                    Expanded(
+                      child: ServiceButton(
+                        svgPath: Assets.images.svg.accounts,
+                        title: 'Accounts',
+                        onTap: () {},
+                      ),
                     ),
-                    ServiceButton(
-                      svgPath: Assets.images.svg.settings,
-                      title: 'Settings',
-                      onTap: () {
-                        Get.to(() => const BusinessManagerSettingsView());
-                      },
+                    Expanded(
+                      child: ServiceButton(
+                        svgPath: Assets.images.svg.settings,
+                        title: 'Settings',
+                        onTap: () {
+                          Get.to(() => const BusinessManagerSettingsView());
+                        },
+                      ),
                     ),
                   ],
                 ),

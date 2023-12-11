@@ -3,16 +3,19 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/utils/colors.dart';
 
-class CustomAppbarMinimal extends StatelessWidget implements PreferredSizeWidget {
+class CustomAppbarMinimal extends StatelessWidget
+    implements PreferredSizeWidget {
   const CustomAppbarMinimal({
     super.key,
     required this.title,
     this.centerTitle = true,
     this.trailing,
+    this.leadingPressed,
   });
   final String title;
   final bool centerTitle;
   final List<Widget>? trailing;
+  final VoidCallback? leadingPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +35,11 @@ class CustomAppbarMinimal extends StatelessWidget implements PreferredSizeWidget
       elevation: 0,
       leading: IconButton(
         onPressed: () {
-          Get.back();
+          if (leadingPressed != null) {
+            leadingPressed!();
+          } else {
+            Get.back();
+          }
         },
         icon: const Icon(
           Icons.arrow_back_ios,
