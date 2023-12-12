@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/business_manager/controllers/business_manager_controller.dart';
-import 'package:nuforce/app/modules/business_manager/views/label/business_manager_label_controller.dart';
+import 'package:nuforce/app/modules/business_manager/views/contact_group/business_manager_contact_group_controller.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/shared/widgets/custom_color_picker.dart';
 import 'package:nuforce/app/shared/widgets/custom_dropdown.dart';
@@ -11,22 +11,22 @@ import 'package:nuforce/app/shared/widgets/secondary_button.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
 import 'package:nuforce/app/utils/colors.dart';
 
-GlobalKey<FormState> addOrEditLabel = GlobalKey<FormState>();
+GlobalKey<FormState> addOrEditContactGroup = GlobalKey<FormState>();
 
-class BusinessManagerAddOrEditLabel extends StatefulWidget {
-  const BusinessManagerAddOrEditLabel({
+class BusinessManagerAddOrEditContactGroup extends StatefulWidget {
+  const BusinessManagerAddOrEditContactGroup({
     super.key,
-    this.label,
+    this.contactGroup,
   });
-  final MockLabel? label;
+  final MockContactGroup? contactGroup;
 
   @override
-  State<BusinessManagerAddOrEditLabel> createState() => _BusinessManagerAddOrEditCalendarViewState();
+  State<BusinessManagerAddOrEditContactGroup> createState() => _BusinessManagerAddOrEditCalendarViewState();
 }
 
-class _BusinessManagerAddOrEditCalendarViewState extends State<BusinessManagerAddOrEditLabel> {
+class _BusinessManagerAddOrEditCalendarViewState extends State<BusinessManagerAddOrEditContactGroup> {
   String? name;
-  String? type;
+  String? for_;
   String? color;
   String? description;
 
@@ -36,12 +36,12 @@ class _BusinessManagerAddOrEditCalendarViewState extends State<BusinessManagerAd
   @override
   void initState() {
     super.initState();
-    if (widget.label != null) {
-      final label = widget.label!;
-      nameController.text = label.name;
-      descriptionController.text = label.description ?? '';
-      type = label.type;
-      color = label.color?.value.toString();
+    if (widget.contactGroup != null) {
+      final contactGroup = widget.contactGroup!;
+      nameController.text = contactGroup.name;
+      descriptionController.text = contactGroup.description ?? '';
+      for_ = contactGroup.for_;
+      color = contactGroup.color?.value.toString();
     }
   }
 
@@ -56,31 +56,31 @@ class _BusinessManagerAddOrEditCalendarViewState extends State<BusinessManagerAd
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppbarMinimal(
-        title: widget.label != null ? 'Edit Label' : 'Add Label',
+        title: widget.contactGroup != null ? 'Edit Contact Group' : 'Add Contact Group',
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding, vertical: 15),
         child: Form(
-          key: addOrEditLabel,
+          key: addOrEditContactGroup,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 25),
               CustomTextField(
                 label: 'Name*',
-                hint: 'Enter name',
+                hint: 'Enter Group name',
                 controller: nameController,
                 validator: (p0) {
                   if (p0!.isEmpty) {
-                    return 'Please enter name';
+                    return 'Please group enter name';
                   }
                   return null;
                 },
               ),
               const SizedBox(height: 16),
               CustomDropdownButton(
-                label: 'Label',
-                items: ['Service', 'Task', 'Invoice']
+                label: 'For',
+                items: ['Primary Group', 'Secondary Group', 'Family', 'Friends', 'Others']
                     .map(
                       (e) => DropdownMenuItem(
                         value: e,
@@ -98,10 +98,10 @@ class _BusinessManagerAddOrEditCalendarViewState extends State<BusinessManagerAd
                 hint: 'Select one',
                 onChanged: (v) {
                   setState(() {
-                    type = v as String?;
+                    for_ = v as String?;
                   });
                 },
-                value: type,
+                value: for_,
               ),
               const SizedBox(height: 16),
               CustomColorPicker(
@@ -126,25 +126,25 @@ class _BusinessManagerAddOrEditCalendarViewState extends State<BusinessManagerAd
                   Expanded(
                     child: SecondaryButton(
                       onPressed: () {
-                        if (widget.label == null) {
+                        if (widget.contactGroup == null) {
                           nameController.clear();
                           descriptionController.clear();
                           setState(() {
-                            type = null;
+                            for_ = null;
                             name = null;
                             color = null;
                             description = null;
                           });
                         } else {
-                          final label = widget.label!;
-                          nameController.text = label.name;
-                          descriptionController.text = label.description ?? '';
-                          type = label.type;
+                          final contactGroup = widget.contactGroup!;
+                          nameController.text = contactGroup.name;
+                          descriptionController.text = contactGroup.description ?? '';
+                          for_ = contactGroup.for_;
                           setState(() {
-                            type = label.type;
-                            name = label.name;
-                            color = label.color?.value.toString();
-                            description = label.description;
+                            for_ = contactGroup.for_;
+                            name = contactGroup.name;
+                            color = contactGroup.color?.value.toString();
+                            description = contactGroup.description;
                           });
                         }
                       },
@@ -155,28 +155,28 @@ class _BusinessManagerAddOrEditCalendarViewState extends State<BusinessManagerAd
                   Expanded(
                     child: PrimaryButton(
                       onPressed: () {
-                        if (!addOrEditLabel.currentState!.validate()) {
+                        if (!addOrEditContactGroup.currentState!.validate()) {
                           return;
                         }
 
                         final controller = Get.find<BusinessManagerController>();
 
-                        if (widget.label != null) {
-                          controller.labelController.updateLabel(
-                            MockLabel(
-                              id: widget.label!.id,
+                        if (widget.contactGroup != null) {
+                          controller.contactGroupController.updateContactGroup(
+                            MockContactGroup(
+                              id: widget.contactGroup!.id,
                               name: nameController.text,
-                              type: type ?? widget.label?.type,
-                              color: color != null ? Color(int.parse(color!)) : widget.label?.color,
+                              for_: for_ ?? widget.contactGroup?.for_,
+                              color: color != null ? Color(int.parse(color!)) : widget.contactGroup?.color,
                               description: descriptionController.text,
                             ),
                           );
                         } else {
-                          controller.labelController.addLabel(
-                            MockLabel(
+                          controller.contactGroupController.addContactGroup(
+                            MockContactGroup(
                               id: DateTime.now().millisecondsSinceEpoch.toString(),
                               name: nameController.text,
-                              type: type,
+                              for_: for_,
                               color: color != null ? Color(int.parse(color!)) : AppColors.primaryBlue1,
                               description: descriptionController.text,
                             ),
@@ -184,7 +184,7 @@ class _BusinessManagerAddOrEditCalendarViewState extends State<BusinessManagerAd
                         }
                         Get.back();
                       },
-                      text: widget.label != null ? 'Update' : 'Submit',
+                      text: widget.contactGroup != null ? 'Update' : 'Submit',
                     ),
                   ),
                 ],
