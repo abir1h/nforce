@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/business_manager/views/estimation_setting/estimation_settings.dart';
-import 'calender_setting/calendar_settings.dart';
-import 'regional_setting/widget/custom_tile.dart';
-import 'regional_setting/regional_settings_view.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/estimation_setting/estimation_settings.dart';
+import '../sub_modules/calender_setting/calendar_settings.dart';
+import '../sub_modules/regional_setting/widget/custom_tile.dart';
+import '../sub_modules/regional_setting/regional_settings_view.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../shared/widgets/custom_appbar_minimal.dart';
