@@ -21,6 +21,7 @@ void main() {
         initialRoute: AppPages.INITIAL,
         getPages: AppPages.routes,
         theme: ThemeData(
+          useMaterial3: false,
           fontFamily: 'Poppins',
           colorScheme: ColorScheme.fromSwatch(
             // primarySwatch: AppColors.primaryBlue1,
