@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/business_manager/controllers/business_manager_controller.dart';
-import 'package:nuforce/app/modules/business_manager/views/calendar/business_manager_calendar_controller.dart';
+import 'package:nuforce/app/modules/business_manager/views/label/business_manager_label_controller.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/shared/widgets/custom_color_picker.dart';
 import 'package:nuforce/app/shared/widgets/custom_dropdown.dart';
@@ -13,20 +13,20 @@ import 'package:nuforce/app/utils/colors.dart';
 
 GlobalKey<FormState> addOrEditBMC = GlobalKey<FormState>();
 
-class BusinessManagerAddOrEditCalendar extends StatefulWidget {
-  const BusinessManagerAddOrEditCalendar({
+class BusinessManagerAddOrEditLabel extends StatefulWidget {
+  const BusinessManagerAddOrEditLabel({
     super.key,
-    this.calendar,
+    this.label,
   });
-  final MockCalendar? calendar;
+  final MockLabel? label;
 
   @override
-  State<BusinessManagerAddOrEditCalendar> createState() => _BusinessManagerAddOrEditCalendarViewState();
+  State<BusinessManagerAddOrEditLabel> createState() => _BusinessManagerAddOrEditCalendarViewState();
 }
 
-class _BusinessManagerAddOrEditCalendarViewState extends State<BusinessManagerAddOrEditCalendar> {
+class _BusinessManagerAddOrEditCalendarViewState extends State<BusinessManagerAddOrEditLabel> {
   String? name;
-  String? timeZone;
+  String? type;
   String? color;
   String? description;
 
@@ -36,12 +36,12 @@ class _BusinessManagerAddOrEditCalendarViewState extends State<BusinessManagerAd
   @override
   void initState() {
     super.initState();
-    if (widget.calendar != null) {
-      final calendar = widget.calendar!;
-      nameController.text = calendar.name;
-      descriptionController.text = calendar.description ?? '';
-      timeZone = calendar.timeZone;
-      color = calendar.color?.value.toString();
+    if (widget.label != null) {
+      final label = widget.label!;
+      nameController.text = label.name;
+      descriptionController.text = label.description ?? '';
+      type = label.type;
+      color = label.color?.value.toString();
     }
   }
 
@@ -56,7 +56,7 @@ class _BusinessManagerAddOrEditCalendarViewState extends State<BusinessManagerAd
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppbarMinimal(
-        title: widget.calendar != null ? 'Edit Calendar' : 'Add New Calendar',
+        title: widget.label != null ? 'Edit Label' : 'Add Label',
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding, vertical: 15),
@@ -79,8 +79,8 @@ class _BusinessManagerAddOrEditCalendarViewState extends State<BusinessManagerAd
               ),
               const SizedBox(height: 16),
               CustomDropdownButton(
-                label: 'Timezone',
-                items: ['Timezone 1', 'Timezone 2', 'Timezone 3', 'Timezone 4']
+                label: 'Label',
+                items: ['Service', 'Task', 'Invoice']
                     .map(
                       (e) => DropdownMenuItem(
                         value: e,
@@ -98,10 +98,10 @@ class _BusinessManagerAddOrEditCalendarViewState extends State<BusinessManagerAd
                 hint: 'Select one',
                 onChanged: (v) {
                   setState(() {
-                    timeZone = v as String?;
+                    type = v as String?;
                   });
                 },
-                value: timeZone,
+                value: type,
               ),
               const SizedBox(height: 16),
               CustomColorPicker(
@@ -126,25 +126,25 @@ class _BusinessManagerAddOrEditCalendarViewState extends State<BusinessManagerAd
                   Expanded(
                     child: SecondaryButton(
                       onPressed: () {
-                        if (widget.calendar == null) {
+                        if (widget.label == null) {
                           nameController.clear();
                           descriptionController.clear();
                           setState(() {
-                            timeZone = null;
+                            type = null;
                             name = null;
                             color = null;
                             description = null;
                           });
                         } else {
-                          final calendar = widget.calendar!;
-                          nameController.text = calendar.name;
-                          descriptionController.text = calendar.description ?? '';
-                          timeZone = calendar.timeZone;
+                          final label = widget.label!;
+                          nameController.text = label.name;
+                          descriptionController.text = label.description ?? '';
+                          type = label.type;
                           setState(() {
-                            timeZone = calendar.timeZone;
-                            name = calendar.name;
-                            color = calendar.color?.value.toString();
-                            description = calendar.description;
+                            type = label.type;
+                            name = label.name;
+                            color = label.color?.value.toString();
+                            description = label.description;
                           });
                         }
                       },
@@ -161,22 +161,22 @@ class _BusinessManagerAddOrEditCalendarViewState extends State<BusinessManagerAd
 
                         final controller = Get.find<BusinessManagerController>();
 
-                        if (widget.calendar != null) {
-                          controller.businessManagerCalendarController.updateCalendar(
-                            MockCalendar(
-                              id: widget.calendar!.id,
+                        if (widget.label != null) {
+                          controller.labelController.updateLabel(
+                            MockLabel(
+                              id: widget.label!.id,
                               name: nameController.text,
-                              timeZone: timeZone ?? widget.calendar?.timeZone,
-                              color: color != null ? Color(int.parse(color!)) : widget.calendar?.color,
+                              type: type ?? widget.label?.type,
+                              color: color != null ? Color(int.parse(color!)) : widget.label?.color,
                               description: descriptionController.text,
                             ),
                           );
                         } else {
-                          controller.businessManagerCalendarController.addCalendar(
-                            MockCalendar(
+                          controller.labelController.addLabel(
+                            MockLabel(
                               id: DateTime.now().millisecondsSinceEpoch.toString(),
                               name: nameController.text,
-                              timeZone: timeZone,
+                              type: type,
                               color: color != null ? Color(int.parse(color!)) : AppColors.primaryBlue1,
                               description: descriptionController.text,
                             ),
@@ -184,7 +184,7 @@ class _BusinessManagerAddOrEditCalendarViewState extends State<BusinessManagerAd
                         }
                         Get.back();
                       },
-                      text: widget.calendar != null ? 'Update' : 'Submit',
+                      text: widget.label != null ? 'Update' : 'Submit',
                     ),
                   ),
                 ],
