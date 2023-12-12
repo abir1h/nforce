@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
-
 import 'package:nuforce/app/utils/colors.dart';
 
 class CustomTile extends StatelessWidget {
@@ -20,11 +17,11 @@ class CustomTile extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding:  EdgeInsets.symmetric(horizontal: 16.h,vertical: 12.h),
+        padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 12.h),
         decoration: BoxDecoration(
           color: AppColors.tileBackground,
           borderRadius: BorderRadius.circular(6),
-          border: Border.all(color: AppColors.white3,width: 1.h),
+          border: Border.all(color: AppColors.white3, width: 1.h),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -35,7 +32,6 @@ class CustomTile extends StatelessWidget {
                 color: AppColors.nutralBlack1,
                 fontFamily: "Poppins",
                 fontSize: 14.sp,
-
                 fontWeight: FontWeight.w400,
               ),
             ),

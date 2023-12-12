@@ -1,8 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
-import 'package:nuforce/app/modules/business_manager/models/regional_setting.dart';
-
-import '../models/calendar_setting_model.dart';
 import '../models/estimation_setting_model.dart';
 
 class EstimationSettingController extends GetxController {

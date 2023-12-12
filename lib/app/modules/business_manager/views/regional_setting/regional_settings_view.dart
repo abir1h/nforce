@@ -2,12 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/business_manager/controllers/business_manager_controller.dart';
 import 'package:nuforce/app/modules/business_manager/controllers/regional_settings_controller.dart';
-import 'package:nuforce/app/modules/business_manager/widgets/big_button_with_icon.dart';
-import 'package:nuforce/app/routes/app_pages.dart';
 import 'package:nuforce/gen/assets.gen.dart';
-
 import '../../../../shared/widgets/custom_appbar_minimal.dart';
 import '../../../../shared/widgets/primary_button.dart';
 import '../../../../utils/colors.dart';
@@ -15,7 +11,6 @@ import 'widget/custom_button.dart';
 import 'widget/custom_text_block.dart';
 import '../business_manager_preferences_view.dart';
 import 'add_regional_settings.dart';
-
 
 class RegionalSettings extends StatefulWidget {
   const RegionalSettings({super.key});
@@ -31,7 +26,7 @@ class _RegionalSettingsState extends State<RegionalSettings> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        Get.to(BusinessManagerPreferences());
+        Get.to(() => const BusinessManagerPreferences());
         return true;
       },
       child: Scaffold(
@@ -44,8 +39,7 @@ class _RegionalSettingsState extends State<RegionalSettings> {
               ? SizedBox(
                   height: 1.sh,
                   child: Padding(
-                    padding: EdgeInsets.only(
-                        left: 20.w, right: 16.w, top: 16.h, bottom: 24.h),
+                    padding: EdgeInsets.only(left: 20.w, right: 16.w, top: 16.h, bottom: 24.h),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -83,8 +77,7 @@ class _RegionalSettingsState extends State<RegionalSettings> {
                               ),
                               CustomTextBlock(
                                 label: "First Day of the Week",
-                                value:
-                                    controller.regionalSetting!.firstDayOfWeek,
+                                value: controller.regionalSetting!.firstDayOfWeek,
                               ),
                             ],
                           ),
@@ -94,11 +87,7 @@ class _RegionalSettingsState extends State<RegionalSettings> {
                             Expanded(
                               child: CustomButton(
                                 text: "Delete",
-                                textStyle: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 16.sp,
-                                    fontFamily: "Poppins",
-                                    color: AppColors.red),
+                                textStyle: TextStyle(fontWeight: FontWeight.w600, fontSize: 16.sp, fontFamily: "Poppins", color: AppColors.red),
                                 borderColor: AppColors.red,
                                 primaryColored: false,
                                 onPressed: () {
@@ -142,11 +131,7 @@ class _RegionalSettingsState extends State<RegionalSettings> {
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
                               "Empty Data",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 16.sp,
-                                  color: AppColors.nutralBlack2,
-                                  fontFamily: "Poppins"),
+                              style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16.sp, color: AppColors.nutralBlack2, fontFamily: "Poppins"),
                             ),
                           )
                         ],
@@ -156,8 +141,7 @@ class _RegionalSettingsState extends State<RegionalSettings> {
                       height: 50.h,
                     ),
                     Padding(
-                      padding: EdgeInsets.only(
-                          bottom: 24.h, left: 20.w, right: 20.w),
+                      padding: EdgeInsets.only(bottom: 24.h, left: 20.w, right: 20.w),
                       child: PrimaryButton(
                           onPressed: () {
                             Get.to(const AddRegionalSettings());

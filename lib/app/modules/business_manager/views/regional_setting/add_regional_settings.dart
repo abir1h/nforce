@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../models/regional_setting.dart';
-import 'regional_settings.dart';
+import 'regional_settings_view.dart';
 import '../../controllers/regional_settings_controller.dart';
 import '../../../../shared/widgets/custom_appbar_minimal.dart';
 import '../../../../utils/colors.dart';
