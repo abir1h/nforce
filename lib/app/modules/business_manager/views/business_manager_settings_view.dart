@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/payment_options/payment_option_view.dart';
 import 'package:nuforce/app/modules/business_manager/widgets/big_button_with_icon.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
-import 'package:nuforce/app/utils/app_sizes.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 

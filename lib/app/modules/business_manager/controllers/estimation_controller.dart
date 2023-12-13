@@ -67,7 +67,7 @@ class EstimationSettingController extends GetxController {
     update();*/
     expirationPeriod;
     advancePayment;
-    String? cancellationFee;
+    // String? cancellationFee;
   }
 
   void delete() {
