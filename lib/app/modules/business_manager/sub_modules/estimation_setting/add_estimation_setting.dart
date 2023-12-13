@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nuforce/app/modules/business_manager/controllers/estimation_controller.dart';
 import 'package:nuforce/app/modules/business_manager/models/estimation_setting_model.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/estimation_setting/widgets/chip_textField.dart';
-import 'estimation_settings.dart';
+import 'estimation_settings_view.dart';
 import '../../../../utils/text_styles.dart';
 import '../regional_setting/widget/custom_button.dart';
 import '../../../../shared/widgets/custom_appbar_minimal.dart';
@@ -328,7 +328,7 @@ class _AddEstimationSettingState extends State<AddEstimationSetting> {
                               lockEstimation: controller.selectLockEstimation.toString(),
                               issue: controller.selectIssues.toString(),
                               commonPolices: controller.commonPolices));
-                          Get.to(const EstimationSetting());
+                          Get.to(const EstimationSettingView());
                           /*     controller.addRegionalSetting(
                                   CalendarSettingModel(serviceCalendar: controller.selectedServiceCalender.toString(),
                                       officeCalendar: controller.selectedOfficeCalender.toString(),

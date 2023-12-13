@@ -73,7 +73,7 @@ class _BusinessManagerCalendarViewState extends State<BusinessManagerCalendarVie
                               calendar: controller.businessManagerCalendarController.mockCalendar[index],
                               onTap: () {
                                 Get.to(
-                                  () => BusinessManagerCalendarDeatilsView(
+                                  () => BusinessManagerCalendarDetailsView(
                                     calendar: controller.businessManagerCalendarController.mockCalendar[index],
                                   ),
                                 );

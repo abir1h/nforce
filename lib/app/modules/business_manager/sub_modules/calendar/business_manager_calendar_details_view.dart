@@ -11,8 +11,8 @@ import 'package:nuforce/app/shared/widgets/secondary_button.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
 import 'package:nuforce/main.dart';
 
-class BusinessManagerCalendarDeatilsView extends StatelessWidget {
-  const BusinessManagerCalendarDeatilsView({
+class BusinessManagerCalendarDetailsView extends StatelessWidget {
+  const BusinessManagerCalendarDetailsView({
     super.key,
     required this.calendar,
   });

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/estimation_setting/estimation_settings.dart';
-import '../sub_modules/calender_setting/calendar_settings.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/estimation_setting/estimation_settings_view.dart';
+import '../sub_modules/calender_setting/calendar_settings_view.dart';
 import '../sub_modules/regional_setting/widget/custom_tile.dart';
 import '../sub_modules/regional_setting/regional_settings_view.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -45,14 +45,14 @@ class BusinessManagerPreferences extends StatelessWidget {
               height: 24.h,
             ),
             CustomTile(
-              onTap: ()=>Get.to(const RegionalSettings()),
+              onTap: ()=>Get.to(const RegionalSettingsView()),
               lable: "Regional Settings",
             ),
             SizedBox(
               height: 16.h,
             ),
             CustomTile(
-              onTap: ()=>Get.to(const CalenderSetting()),
+              onTap: ()=>Get.to(const CalenderSettingView()),
 
 
               lable: "Calendar Settings",
@@ -61,7 +61,7 @@ class BusinessManagerPreferences extends StatelessWidget {
               height: 16.h,
             ),
             CustomTile(
-              onTap: ()=>Get.to(const EstimationSetting()),
+              onTap: ()=>Get.to(const EstimationSettingView()),
 
               lable: "Estimation Settings",
             ),

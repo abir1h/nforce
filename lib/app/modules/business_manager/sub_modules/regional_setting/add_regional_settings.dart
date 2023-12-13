@@ -261,7 +261,7 @@ class _AddRegionalSettingsState extends State<AddRegionalSettings> {
                                   controller.selectedTimeFormat.toString(),
                               firstDayOfWeek:
                                   controller.selectedDay.toString()));
-                          Get.to(const RegionalSettings());
+                          Get.to(const RegionalSettingsView());
                         },
                       ),
                     ),

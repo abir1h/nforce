@@ -12,14 +12,14 @@ import 'widget/custom_text_block.dart';
 import '../../views/business_manager_preferences_view.dart';
 import 'add_regional_settings.dart';
 
-class RegionalSettings extends StatefulWidget {
-  const RegionalSettings({super.key});
+class RegionalSettingsView extends StatefulWidget {
+  const RegionalSettingsView({super.key});
 
   @override
-  State<RegionalSettings> createState() => _RegionalSettingsState();
+  State<RegionalSettingsView> createState() => _RegionalSettingsViewState();
 }
 
-class _RegionalSettingsState extends State<RegionalSettings> {
+class _RegionalSettingsViewState extends State<RegionalSettingsView> {
   final controller = Get.find<RegionalSettingController>();
 
   @override

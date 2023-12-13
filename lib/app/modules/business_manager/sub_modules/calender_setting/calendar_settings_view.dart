@@ -11,14 +11,14 @@ import '../regional_setting/widget/custom_button.dart';
 import '../regional_setting/widget/custom_text_block.dart';
 import 'add_calendar_setting.dart';
 
-class CalenderSetting extends StatefulWidget {
-  const CalenderSetting({super.key});
+class CalenderSettingView extends StatefulWidget {
+  const CalenderSettingView({super.key});
 
   @override
-  State<CalenderSetting> createState() => _CalenderSettingState();
+  State<CalenderSettingView> createState() => _CalenderSettingViewState();
 }
 
-class _CalenderSettingState extends State<CalenderSetting> {
+class _CalenderSettingViewState extends State<CalenderSettingView> {
   final controller = Get.find<CalenderSettingController>();
 
   @override

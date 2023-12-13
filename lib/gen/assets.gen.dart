@@ -67,6 +67,9 @@ class $AssetsImagesPngGen {
 class $AssetsImagesSvgGen {
   const $AssetsImagesSvgGen();
 
+  /// File path: assets/images/svg/Document.svg
+  String get document => 'assets/images/svg/Document.svg';
+
   /// File path: assets/images/svg/accounting.svg
   String get accounting => 'assets/images/svg/accounting.svg';
 
@@ -99,6 +102,9 @@ class $AssetsImagesSvgGen {
 
   /// File path: assets/images/svg/calendar_month.svg
   String get calendarMonth => 'assets/images/svg/calendar_month.svg';
+
+  /// File path: assets/images/svg/check.svg
+  String get check => 'assets/images/svg/check.svg';
 
   /// File path: assets/images/svg/close_circle.svg
   String get closeCircle => 'assets/images/svg/close_circle.svg';
@@ -267,6 +273,7 @@ class $AssetsImagesSvgGen {
 
   /// List of all assets
   List<String> get values => [
+        document,
         accounting,
         accounts,
         activity0,
@@ -278,6 +285,7 @@ class $AssetsImagesSvgGen {
         businessManager,
         calendar,
         calendarMonth,
+        check,
         closeCircle,
         coloredCal,
         commissions,

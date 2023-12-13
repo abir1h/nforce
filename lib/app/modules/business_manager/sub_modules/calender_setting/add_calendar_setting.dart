@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../controllers/calender_setting_controller.dart';
 import '../../models/calendar_setting_model.dart';
-import 'calendar_settings.dart';
+import 'calendar_settings_view.dart';
 import '../../../../../gen/assets.gen.dart';
 import '../../../../utils/text_styles.dart';
 import '../regional_setting/widget/custom_button.dart';
@@ -272,7 +272,7 @@ class _AddCalenderSettingState extends State<AddCalenderSetting> {
                               endAt: controller.endAt.toString(),
                               startAt: controller.endAt.toString(),
                               taskDuration: controller.taskDuration.toString()));
-                          Get.to(const CalenderSetting());
+                          Get.to(const CalenderSettingView());
                         },
                       ),
                     ),

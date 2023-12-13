@@ -14,14 +14,14 @@ import '../regional_setting/widget/custom_text_block.dart';
 import '../../views/business_manager_preferences_view.dart';
 import 'add_estimation_setting.dart';
 
-class EstimationSetting extends StatefulWidget {
-  const EstimationSetting({super.key});
+class EstimationSettingView extends StatefulWidget {
+  const EstimationSettingView({super.key});
 
   @override
-  State<EstimationSetting> createState() => _EstimationSettingState();
+  State<EstimationSettingView> createState() => _EstimationSettingViewState();
 }
 
-class _EstimationSettingState extends State<EstimationSetting> {
+class _EstimationSettingViewState extends State<EstimationSettingView> {
   final controller = Get.find<CalenderSettingController>();
 
   @override
