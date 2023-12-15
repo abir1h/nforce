@@ -13,9 +13,4 @@ class CheckController extends GetxController {
     selectStatus = value;
     update();
   }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
 }

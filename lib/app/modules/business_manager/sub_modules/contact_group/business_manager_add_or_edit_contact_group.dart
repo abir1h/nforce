@@ -72,7 +72,7 @@ class _BusinessManagerAddOrEditCalendarViewState extends State<BusinessManagerAd
                 controller: nameController,
                 validator: (p0) {
                   if (p0!.isEmpty) {
-                    return 'Please group enter name';
+                    return 'Please enter group name';
                   }
                   return null;
                 },
