@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/custom_field_controller.dart';
 import 'calender_setting_controller.dart';
 import 'cash_controller.dart';
 import 'check_controller.dart';
@@ -24,6 +25,7 @@ class BusinessManagerController extends GetxController {
   final cashController = Get.put(CashController());
   final checkController = Get.put(CheckController());
   final directDebitController = Get.put(DirectDebitController());
+  final customFieldController = Get.put(CustomFieldController());
 
   @override
   void dispose() {
