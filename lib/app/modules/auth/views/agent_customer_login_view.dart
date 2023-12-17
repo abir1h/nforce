@@ -14,6 +14,7 @@ import 'package:nuforce/main.dart';
 import '../controllers/auth_controller.dart';
 
 class AgentCustomerLoginView extends GetView<AuthController> {
+
   const AgentCustomerLoginView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {

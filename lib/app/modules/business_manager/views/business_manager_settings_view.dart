@@ -7,6 +7,7 @@ import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 
+import '../sub_modules/custom_field/custom_field_view.dart';
 import 'business_manager_preferences_view.dart';
 import 'business_manager_view.dart';
 
@@ -40,7 +41,7 @@ class BusinessManagerSettingsView extends StatelessWidget {
               BigButtonWithIcon(
                 svgPath: Assets.images.svg.customFields,
                 lable: 'Custom Fields',
-                onTap: () {},
+                onTap: () => Get.to(const CustomFieldView()),
               ),
               const SizedBox(height: 16),
               BigButtonWithIcon(
