@@ -14,6 +14,7 @@ import 'package:nuforce/gen/assets.gen.dart';
 import 'package:nuforce/main.dart';
 
 import '../controllers/business_manager_controller.dart';
+import '../sub_modules/customer_contact/customer_contact_list_view.dart';
 
 class BusinessManagerView extends GetView<BusinessManagerController> {
   const BusinessManagerView({Key? key}) : super(key: key);
@@ -49,7 +50,7 @@ class BusinessManagerView extends GetView<BusinessManagerController> {
                       child: ServiceButton(
                         svgPath: Assets.images.svg.customer,
                         title: 'Customer',
-                        onTap: () {},
+                        onTap: () {Get.to(const CustomerContactListView());},
                       ),
                     ),
                     Expanded(

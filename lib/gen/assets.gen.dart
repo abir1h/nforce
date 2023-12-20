@@ -148,6 +148,9 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/filter.svg
   String get filter => 'assets/images/svg/filter.svg';
 
+  /// File path: assets/images/svg/filter2.svg
+  String get filter2 => 'assets/images/svg/filter2.svg';
+
   /// File path: assets/images/svg/gift.svg
   String get gift => 'assets/images/svg/gift.svg';
 
@@ -300,6 +303,7 @@ class $AssetsImagesSvgGen {
         empty,
         facebook,
         filter,
+        filter2,
         gift,
         google,
         home0,
