@@ -241,6 +241,12 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/settings.svg
   String get settings => 'assets/images/svg/settings.svg';
 
+  /// File path: assets/images/svg/settings0.svg
+  String get settings0 => 'assets/images/svg/settings0.svg';
+
+  /// File path: assets/images/svg/settings1.svg
+  String get settings1 => 'assets/images/svg/settings1.svg';
+
   /// File path: assets/images/svg/simple_calendar.svg
   String get simpleCalendar => 'assets/images/svg/simple_calendar.svg';
 
@@ -334,6 +340,8 @@ class $AssetsImagesSvgGen {
         serviceRegions,
         serviceTopic,
         settings,
+        settings0,
+        settings1,
         simpleCalendar,
         sort,
         stripe,

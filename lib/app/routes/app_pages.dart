@@ -18,6 +18,8 @@ import '../modules/on_boarding/bindings/on_boarding_binding.dart';
 import '../modules/on_boarding/views/on_boarding_view.dart';
 import '../modules/service_items/bindings/service_items_binding.dart';
 import '../modules/service_items/views/service_items_view.dart';
+import '../modules/settings/bindings/settings_binding.dart';
+import '../modules/settings/views/settings_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
 import '../modules/today/bindings/today_binding.dart';
@@ -85,6 +87,11 @@ class AppPages {
       name: _Paths.BUSINESS_MANAGER,
       page: () => const BusinessManagerView(),
       binding: BusinessManagerBinding(),
+    ),
+    GetPage(
+      name: _Paths.SETTINGS,
+      page: () => const SettingsView(),
+      binding: SettingsBinding(),
     ),
   ];
 }

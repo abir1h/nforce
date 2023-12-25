@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:nuforce/app/modules/activity/views/activity_view.dart';
 import 'package:nuforce/app/modules/home/views/home_view.dart';
-import 'package:nuforce/app/modules/more/views/more_view.dart';
 import 'package:nuforce/app/modules/new_orders/views/new_orders_view.dart';
+import 'package:nuforce/app/modules/settings/views/settings_view.dart';
 import 'package:nuforce/app/modules/today/views/today_view.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/text_styles.dart';
@@ -28,7 +28,7 @@ class BottomNavBarController extends GetxController {
     const TodayView(),
     const NewOrdersView(),
     const ActivityView(),
-    const MoreView(),
+    const SettingsView(),
   ];
 
   void changeIndex(int index) {
@@ -115,14 +115,14 @@ class BottomNavBarController extends GetxController {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              index == 4 ? SvgPicture.asset(Assets.images.svg.more1) : SvgPicture.asset(Assets.images.svg.more0),
+              index == 4 ? SvgPicture.asset(Assets.images.svg.settings1) : SvgPicture.asset(Assets.images.svg.settings0),
               const SizedBox(height: 5),
               DefaultTextStyle(
                 style: CustomTextStyle.paragraphExtraSmall.copyWith(
                   fontWeight: FontWeight.w600,
                   color: index == 4 ? AppColors.primaryBlue1 : AppColors.nutralBlack2,
                 ),
-                child: const Text('More'),
+                child: const Text('Settings'),
               ),
             ],
           ),

@@ -14,6 +14,7 @@ abstract class Routes {
   static const NEW_ORDERS = _Paths.NEW_ORDERS;
   static const SERVICE_ITEMS = _Paths.SERVICE_ITEMS;
   static const BUSINESS_MANAGER = _Paths.BUSINESS_MANAGER;
+  static const SETTINGS = _Paths.SETTINGS;
 }
 
 abstract class _Paths {
@@ -29,4 +30,5 @@ abstract class _Paths {
   static const NEW_ORDERS = '/new-orders';
   static const SERVICE_ITEMS = '/service-items';
   static const BUSINESS_MANAGER = '/business-manager';
+  static const SETTINGS = '/settings';
 }
