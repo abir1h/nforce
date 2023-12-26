@@ -1,7 +1,19 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/settings/models/user_info.dart';
 
 class SettingsController extends GetxController {
-  //TODO: Implement SettingsController
+
+   UserInfo? userInfo;
+   TextEditingController firstName = TextEditingController();
+   TextEditingController lastName = TextEditingController();
+   TextEditingController email = TextEditingController();
+   TextEditingController phoneNumber = TextEditingController();
+   save(UserInfo data){
+     userInfo=data;
+     update();
+   }
+
 
   final count = 0.obs;
   @override

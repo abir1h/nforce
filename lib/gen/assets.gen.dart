@@ -19,13 +19,65 @@ class $AssetsImagesGen {
 class $AssetsImagesPngGen {
   const $AssetsImagesPngGen();
 
+  /// File path: assets/images/png/account_info.png
+  AssetGenImage get accountInfo =>
+      const AssetGenImage('assets/images/png/account_info.png');
+
+  /// File path: assets/images/png/affliation.png
+  AssetGenImage get affliation =>
+      const AssetGenImage('assets/images/png/affliation.png');
+
+  /// File path: assets/images/png/branding.png
+  AssetGenImage get branding =>
+      const AssetGenImage('assets/images/png/branding.png');
+
+  /// File path: assets/images/png/calendar_sync.png
+  AssetGenImage get calendarSync =>
+      const AssetGenImage('assets/images/png/calendar_sync.png');
+
+  /// File path: assets/images/png/chat_with_us.png
+  AssetGenImage get chatWithUs =>
+      const AssetGenImage('assets/images/png/chat_with_us.png');
+
+  /// File path: assets/images/png/contact_center.png
+  AssetGenImage get contactCenter =>
+      const AssetGenImage('assets/images/png/contact_center.png');
+
+  /// File path: assets/images/png/custom_fields.png
+  AssetGenImage get customFields =>
+      const AssetGenImage('assets/images/png/custom_fields.png');
+
   /// File path: assets/images/png/empty_data.png
   AssetGenImage get emptyData =>
       const AssetGenImage('assets/images/png/empty_data.png');
 
+  /// File path: assets/images/png/expense_tracking.png
+  AssetGenImage get expenseTracking =>
+      const AssetGenImage('assets/images/png/expense_tracking.png');
+
+  /// File path: assets/images/png/information_forms.png
+  AssetGenImage get informationForms =>
+      const AssetGenImage('assets/images/png/information_forms.png');
+
+  /// File path: assets/images/png/invoices.png
+  AssetGenImage get invoices =>
+      const AssetGenImage('assets/images/png/invoices.png');
+
+  /// File path: assets/images/png/logout.png
+  AssetGenImage get logout =>
+      const AssetGenImage('assets/images/png/logout.png');
+
+  /// File path: assets/images/png/notification.png
+  AssetGenImage get notification =>
+      const AssetGenImage('assets/images/png/notification.png');
+
   /// File path: assets/images/png/nuforce_splash.png
   AssetGenImage get nuforceSplash =>
       const AssetGenImage('assets/images/png/nuforce_splash.png');
+
+  /// File path: assets/images/png/offline_payments.png
+  AssetGenImage get offlinePayments =>
+      const AssetGenImage('assets/images/png/offline_payments.png');
 
   /// File path: assets/images/png/onboarding1.png
   AssetGenImage get onboarding1 =>
@@ -43,24 +95,90 @@ class $AssetsImagesPngGen {
   AssetGenImage get phoneText =>
       const AssetGenImage('assets/images/png/phone_text.png');
 
+  /// File path: assets/images/png/privacy.png
+  AssetGenImage get privacy =>
+      const AssetGenImage('assets/images/png/privacy.png');
+
   /// File path: assets/images/png/profile_placeholder_male.png
   AssetGenImage get profilePlaceholderMale =>
       const AssetGenImage('assets/images/png/profile_placeholder_male.png');
+
+  /// File path: assets/images/png/quick_books.png
+  AssetGenImage get quickBooks =>
+      const AssetGenImage('assets/images/png/quick_books.png');
+
+  /// File path: assets/images/png/quick_consultation.png
+  AssetGenImage get quickConsultation =>
+      const AssetGenImage('assets/images/png/quick_consultation.png');
+
+  /// File path: assets/images/png/refer.png
+  AssetGenImage get refer => const AssetGenImage('assets/images/png/refer.png');
+
+  /// File path: assets/images/png/requests.png
+  AssetGenImage get requests =>
+      const AssetGenImage('assets/images/png/requests.png');
+
+  /// File path: assets/images/png/route_suggestions.png
+  AssetGenImage get routeSuggestions =>
+      const AssetGenImage('assets/images/png/route_suggestions.png');
+
+  /// File path: assets/images/png/schedules.png
+  AssetGenImage get schedules =>
+      const AssetGenImage('assets/images/png/schedules.png');
+
+  /// File path: assets/images/png/subscription.png
+  AssetGenImage get subscription =>
+      const AssetGenImage('assets/images/png/subscription.png');
+
+  /// File path: assets/images/png/team_settings.png
+  AssetGenImage get teamSettings =>
+      const AssetGenImage('assets/images/png/team_settings.png');
+
+  /// File path: assets/images/png/terms.png
+  AssetGenImage get terms => const AssetGenImage('assets/images/png/terms.png');
 
   /// File path: assets/images/png/time_exceeded.png
   AssetGenImage get timeExceeded =>
       const AssetGenImage('assets/images/png/time_exceeded.png');
 
+  /// File path: assets/images/png/webhook_integration.png
+  AssetGenImage get webhookIntegration =>
+      const AssetGenImage('assets/images/png/webhook_integration.png');
+
   /// List of all assets
   List<AssetGenImage> get values => [
+        accountInfo,
+        affliation,
+        branding,
+        calendarSync,
+        chatWithUs,
+        contactCenter,
+        customFields,
         emptyData,
+        expenseTracking,
+        informationForms,
+        invoices,
+        logout,
+        notification,
         nuforceSplash,
+        offlinePayments,
         onboarding1,
         onboarding2,
         onboarding3,
         phoneText,
+        privacy,
         profilePlaceholderMale,
-        timeExceeded
+        quickBooks,
+        quickConsultation,
+        refer,
+        requests,
+        routeSuggestions,
+        schedules,
+        subscription,
+        teamSettings,
+        terms,
+        timeExceeded,
+        webhookIntegration
       ];
 }
 
@@ -259,6 +377,9 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/subscription.svg
   String get subscription => 'assets/images/svg/subscription.svg';
 
+  /// File path: assets/images/svg/subscriptions.svg
+  String get subscriptions => 'assets/images/svg/subscriptions.svg';
+
   /// File path: assets/images/svg/success.svg
   String get success => 'assets/images/svg/success.svg';
 
@@ -346,6 +467,7 @@ class $AssetsImagesSvgGen {
         sort,
         stripe,
         subscription,
+        subscriptions,
         success,
         termsAndPolicy,
         thumb,

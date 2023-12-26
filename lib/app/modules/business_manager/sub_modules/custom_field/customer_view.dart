@@ -2,14 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/custom_field/widgets/detail_card.dart';
 
-class Customer_View extends StatefulWidget {
+class Customer_View extends StatelessWidget {
   const Customer_View({super.key});
 
-  @override
-  State<Customer_View> createState() => _Customer_ViewState();
-}
-
-class _Customer_ViewState extends State<Customer_View> {
   @override
   Widget build(BuildContext context) {
     return ListView(
