@@ -56,7 +56,7 @@ class _ActivePlanState extends State<ActivePlan>
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        child: Container(
+        child: SizedBox(
           height: MediaQuery.of(context).size.height -
               AppBar().preferredSize.height -
               MediaQuery.of(context).padding.top,
@@ -193,13 +193,18 @@ class _ActivePlanState extends State<ActivePlan>
                       ),
                     ],
                   ),
-                ),SizedBox(height: 24.h,),
+                ),
+                SizedBox(
+                  height: 24.h,
+                ),
                 Container(
                   clipBehavior: Clip.none,
-                  decoration: const BoxDecoration(color: AppColors.textFieldBackground),
+                  decoration:
+                      const BoxDecoration(color: AppColors.textFieldBackground),
                   child: TabBar(
                     labelStyle: TextStyle(
-                        fontWeight: FontWeight.w600,color: AppColors.primaryBlue1,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.primaryBlue1,
                         fontSize: 16.sp,
                         fontFamily: "Poppins"),
                     indicatorColor: AppColors.primaryBlue1,
@@ -209,7 +214,7 @@ class _ActivePlanState extends State<ActivePlan>
                         fontSize: 16.sp,
                         fontFamily: "Poppins"),
 
-                  // Set the indicator color here
+                    // Set the indicator color here
 
                     tabs: [
                       const Tab(text: 'Usage'),
