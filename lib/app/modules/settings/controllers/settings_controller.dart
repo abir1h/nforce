@@ -9,6 +9,11 @@ class SettingsController extends GetxController {
    TextEditingController lastName = TextEditingController();
    TextEditingController email = TextEditingController();
    TextEditingController phoneNumber = TextEditingController();
+   TextEditingController businessName = TextEditingController();
+   TextEditingController businessDomain = TextEditingController();
+   TextEditingController address = TextEditingController();
+   TextEditingController contactUs = TextEditingController();
+   TextEditingController helpEmail = TextEditingController();
    save(UserInfo data){
      userInfo=data;
      update();

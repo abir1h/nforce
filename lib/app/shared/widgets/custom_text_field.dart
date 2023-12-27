@@ -14,7 +14,7 @@ class CustomTextField extends StatelessWidget {
     this.isPassword = false,
     this.onVisibilityTap,
     this.maxLines = 1,
-    this.validator,
+    this.validator, this.onChange,
   });
 
   final String label;
@@ -27,6 +27,7 @@ class CustomTextField extends StatelessWidget {
   final bool isPassword;
   final int maxLines;
   final String? Function(String?)? validator;
+  final ValueChanged<String>? onChange;
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +52,7 @@ class CustomTextField extends StatelessWidget {
             autocorrect: false,
             obscureText: obscureText,
             maxLines: maxLines,
+            onChanged: onChange!,
             controller: controller,
             textAlignVertical: TextAlignVertical.center,
             decoration: InputDecoration(

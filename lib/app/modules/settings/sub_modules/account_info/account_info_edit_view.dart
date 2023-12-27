@@ -2,14 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/settings/controllers/settings_controller.dart';
-import '../../../shared/widgets/custom_appbar_minimal.dart';
-import '../../../utils/colors.dart';
-import '../../business_manager/controllers/custom_field_controller.dart';
-import '../../business_manager/sub_modules/custom_field/customer_view.dart';
-import '../../business_manager/sub_modules/custom_field/pre_order_field_view.dart';
-import '../../business_manager/sub_modules/custom_field/project_view.dart';
-import '../../business_manager/sub_modules/custom_field/service_view.dart';
-import '../../../routes/app_pages.dart';
+import '../../../../shared/widgets/custom_appbar_minimal.dart';
+import '../../../../utils/colors.dart';
+
+import '../../../../routes/app_pages.dart';
+import 'edit_business_info.dart';
 import 'edit_personal_info.dart';
 
 class AccountInfoEditView extends StatefulWidget {
@@ -53,7 +50,7 @@ class _AccountInfoEditViewState extends State<AccountInfoEditView> {
                           .primaryBlue1 // Set the overlay color for the selected tab
                       ), // Set the indicator color here
 
-                  tabs: [
+                  tabs: const [
                     Tab(
                       text: 'Personal',
                     ),
@@ -63,9 +60,9 @@ class _AccountInfoEditViewState extends State<AccountInfoEditView> {
                   ],
                 ),
               ),
-              Expanded(
+              const Expanded(
                   child: TabBarView(
-                children: [PersonalInfoEdit(), Container()],
+                children: [PersonalInfoEdit(), BusinessInfoEdit()],
               ))
             ],
           ),

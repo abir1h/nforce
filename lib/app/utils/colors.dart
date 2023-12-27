@@ -33,6 +33,11 @@ class AppColors {
   static const Color inactiveTabbarColor = Color(0xFFF3F3F3);
   static const Color textFieldBackground = Color(0xFFF7F7F7);
   static const Color tileBackground = Color(0xFFF3F3F3);
+  static const Color strokePlan = Color(0xFF3E59C4);
+  static const Color lightYellow = Color(0xFFFFEED7);
+  static const Color darkYellow = Color(0xFFECAA00);
+  static const Color lightblue = Color(0xFFD7EDFF);
+  static const Color lightblueshade = Color(0xFFB7D8F2);
 
   static const Color purple = Color(0xFFA300F0);
   static const Color orange = Color(0xFFFD9800);

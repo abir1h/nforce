@@ -6,8 +6,9 @@ import 'package:nuforce/gen/assets.gen.dart';
 
 import '../../../utils/colors.dart';
 import '../controllers/settings_controller.dart';
+import '../sub_modules/account_info/account_information_view.dart';
+import '../sub_modules/subscriptions/view/active_plan_view.dart';
 import '../widgets/setting_tile.dart';
-import 'account_information_view.dart';
 
 class SettingsView extends GetView<SettingsController> {
   const SettingsView({Key? key}) : super(key: key);
@@ -65,14 +66,16 @@ class SettingsView extends GetView<SettingsController> {
                       SettingTile(
                         leading:
                             Assets.images.png.accountInfo.keyName.toString(),
-                        onTap: () =>Get.to(()=>const AccountInformationView()),
+                        onTap: () =>
+                            Get.to(() => const AccountInformationView()),
                         label: "Account Information",
                         hasDivider: true,
                       ),
                       SettingTile(
                         leading:
                             Assets.images.png.subscription.keyName.toString(),
-                        onTap: () {},
+                        onTap: () =>
+                            Get.to(() => const ActivePlan()),
                         label: "Subscriptions",
                         hasDivider: true,
                       ),
@@ -398,15 +401,15 @@ class SettingsView extends GetView<SettingsController> {
                         onTap: () {},
                         label: "Chat with us",
                         hasDivider: true,
-                      ), SettingTile(
-                        leading:
-                            Assets.images.png.privacy.keyName.toString(),
+                      ),
+                      SettingTile(
+                        leading: Assets.images.png.privacy.keyName.toString(),
                         onTap: () {},
                         label: "Privacy",
                         hasDivider: true,
-                      ), SettingTile(
-                        leading:
-                            Assets.images.png.terms.keyName.toString(),
+                      ),
+                      SettingTile(
+                        leading: Assets.images.png.terms.keyName.toString(),
                         onTap: () {},
                         label: "Terms & Conditions",
                         hasDivider: false,
@@ -414,25 +417,50 @@ class SettingsView extends GetView<SettingsController> {
                     ],
                   ),
                 ),
-              ),SizedBox(height: 24.h,),
-
+              ),
+              SizedBox(
+                height: 24.h,
+              ),
               Container(
                 padding: EdgeInsets.symmetric(vertical: 12.h),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.r),
                   color: Colors.white,
-
-                ),child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(Assets.images.png.logout.keyName,height: 24.r,width: 24.r,),SizedBox(width: 8.w,),
-                Text("Logout",style: TextStyle(fontFamily: "Poppins",fontWeight: FontWeight.w600,fontSize: 16.sp,color: AppColors.primaryBlue1),)
-
-              ],),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      Assets.images.png.logout.keyName,
+                      height: 24.r,
+                      width: 24.r,
+                    ),
+                    SizedBox(
+                      width: 8.w,
+                    ),
+                    Text(
+                      "Logout",
+                      style: TextStyle(
+                          fontFamily: "Poppins",
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16.sp,
+                          color: AppColors.primaryBlue1),
+                    )
+                  ],
+                ),
               ),
-              SizedBox(height: 8.h,),
-              Center(child: Text("Version : 1.0.0",style: TextStyle(fontFamily: "Poppins",fontWeight: FontWeight.w500,fontSize: 14.sp,color: AppColors.greyText),))
-
+              SizedBox(
+                height: 8.h,
+              ),
+              Center(
+                  child: Text(
+                "Version : 1.0.0",
+                style: TextStyle(
+                    fontFamily: "Poppins",
+                    fontWeight: FontWeight.w500,
+                    fontSize: 14.sp,
+                    color: AppColors.greyText),
+              ))
             ],
           ),
         ));

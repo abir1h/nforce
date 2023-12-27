@@ -4,13 +4,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/business_manager/controllers/regional_settings_controller.dart';
 import 'package:nuforce/app/modules/settings/controllers/settings_controller.dart';
-import 'package:nuforce/app/modules/settings/views/account_info_edit_view.dart';
+import 'package:nuforce/app/modules/settings/sub_modules/account_info/account_info_edit_view.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 
-import '../../../shared/widgets/custom_appbar_minimal.dart';
-import '../../../shared/widgets/primary_button.dart';
-import '../../../utils/colors.dart';
-import '../../business_manager/sub_modules/regional_setting/widget/custom_text_block.dart';
+import '../../../../shared/widgets/custom_appbar_minimal.dart';
+import '../../../../shared/widgets/primary_button.dart';
+import '../../../../utils/colors.dart';
+import '../../../business_manager/sub_modules/regional_setting/widget/custom_text_block.dart';
+
 
 class AccountInformationView extends StatefulWidget {
   const AccountInformationView({super.key});

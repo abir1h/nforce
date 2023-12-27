@@ -95,6 +95,10 @@ class $AssetsImagesPngGen {
   AssetGenImage get phoneText =>
       const AssetGenImage('assets/images/png/phone_text.png');
 
+  /// File path: assets/images/png/planbg.png
+  AssetGenImage get planbg =>
+      const AssetGenImage('assets/images/png/planbg.png');
+
   /// File path: assets/images/png/privacy.png
   AssetGenImage get privacy =>
       const AssetGenImage('assets/images/png/privacy.png');
@@ -141,6 +145,9 @@ class $AssetsImagesPngGen {
   AssetGenImage get timeExceeded =>
       const AssetGenImage('assets/images/png/time_exceeded.png');
 
+  /// File path: assets/images/png/visa.png
+  AssetGenImage get visa => const AssetGenImage('assets/images/png/visa.png');
+
   /// File path: assets/images/png/webhook_integration.png
   AssetGenImage get webhookIntegration =>
       const AssetGenImage('assets/images/png/webhook_integration.png');
@@ -166,6 +173,7 @@ class $AssetsImagesPngGen {
         onboarding2,
         onboarding3,
         phoneText,
+        planbg,
         privacy,
         profilePlaceholderMale,
         quickBooks,
@@ -178,6 +186,7 @@ class $AssetsImagesPngGen {
         teamSettings,
         terms,
         timeExceeded,
+        visa,
         webhookIntegration
       ];
 }
