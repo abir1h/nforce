@@ -19,13 +19,11 @@ class ActivePlan extends StatefulWidget {
 
 class _ActivePlanState extends State<ActivePlan>
     with SingleTickerProviderStateMixin {
-  late TabController _tabController;
   final controller = Get.put(SubscriptionController());
 
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 2, vsync: this);
   }
 
   @override
