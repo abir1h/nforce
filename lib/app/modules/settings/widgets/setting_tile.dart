@@ -20,56 +20,59 @@ class SettingTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: onTap,
-      child: Column(
-        children: [
-          const SizedBox(
-            height: 12,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                child: Row(
-                  children: [
-                    Image.asset(
-                      leading,
-                      height: 24.r,
-                      width: 24.r,
-                    ),
-                    SizedBox(
-                      width: 8.w,
-                    ),
-                    Text(
-                     label??'',
-                      style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontFamily: "Poppins",
-                          fontSize: 16.sp,
-                          color: AppColors.nutralBlack1),
-                    ),
-                  ],
+      child: SizedBox(
+        width: 1.sw,
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 12,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: Row(
+                    children: [
+                      Image.asset(
+                        leading,
+                        height: 24.r,
+                        width: 24.r,
+                      ),
+                      SizedBox(
+                        width: 8.w,
+                      ),
+                      Text(
+                       label??'',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontFamily: "Poppins",
+                            fontSize: 16.sp,
+                            color: AppColors.nutralBlack1),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              action != null
-                  ? action!
-                  : const Icon(
-                      Icons.arrow_forward_ios,
-                      color: AppColors.nutralBlack2,
-                    )
-            ],
-          ),
-          const SizedBox(
-            height: 12,
-          ),
-          hasDivider == true
-              ? const Divider(
-                  color: AppColors.white3,
-                  thickness: 1,
-                )
-              : const SizedBox()
-        ],
+                action != null
+                    ? action!
+                    : const Icon(
+                        Icons.arrow_forward_ios,
+                        color: AppColors.nutralBlack2,
+                      )
+              ],
+            ),
+            const SizedBox(
+              height: 12,
+            ),
+            hasDivider == true
+                ? const Divider(
+                    color: AppColors.white3,
+                    thickness: 1,
+                  )
+                : const SizedBox()
+          ],
+        ),
       ),
     );
   }

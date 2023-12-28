@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/settings/sub_modules/subscriptions/controller/subscription_controller.dart';
-import 'package:nuforce/app/modules/settings/views/settings_view.dart';
-import 'package:nuforce/gen/assets.gen.dart';
+import 'package:nuforce/app/modules/settings/sub_modules/subscriptions/view/subscription_view.dart';
+import 'package:nuforce/app/modules/settings/sub_modules/subscriptions/view/usage.dart';
+import '../controller/subscription_controller.dart';
+import '../../../views/settings_view.dart';
+import '../../../../../../gen/assets.gen.dart';
 
 import '../../../../../utils/colors.dart';
 import '../../../widgets/text_card.dart';
@@ -148,32 +150,37 @@ class _ActivePlanState extends State<ActivePlan>
                       SizedBox(
                         height: 24.h,
                       ),
-                      Container(
-                        padding: EdgeInsets.symmetric(
-                            vertical: 12.h, horizontal: 14.w),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8.r),
-                          color: AppColors.lightYellow,
-                        ),
-                        child: Row(
-                          children: [
-                            Expanded(
-                                child: Text(
-                              "Upgrade your  premium Plan by NuForce",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 14.sp,
-                                  fontFamily: "Poppins",
-                                  color: AppColors.nutralBlack1),
-                            )),
-                            const SizedBox(
-                              width: 35,
-                            ),
-                            const TextCard(
-                              buttonText: 'Upgrade',
-                              bgColor: AppColors.darkYellow,
-                            ),
-                          ],
+                      GestureDetector(
+                        onTap: (){
+                          Get.to(()=>const SubscriptionView());
+                        },
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                              vertical: 12.h, horizontal: 14.w),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8.r),
+                            color: AppColors.lightYellow,
+                          ),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                  child: Text(
+                                "Upgrade your  premium Plan by NuForce",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 14.sp,
+                                    fontFamily: "Poppins",
+                                    color: AppColors.nutralBlack1),
+                              )),
+                              const SizedBox(
+                                width: 35,
+                              ),
+                              const TextCard(
+                                buttonText: 'Upgrade',
+                                bgColor: AppColors.darkYellow,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       SizedBox(
@@ -214,25 +221,17 @@ class _ActivePlanState extends State<ActivePlan>
 
                     // Set the indicator color here
 
-                    tabs: [
-                      const Tab(text: 'Usage'),
-                      const Tab(text: 'Installed Plugins'),
+                    tabs: const [
+                      Tab(text: 'Usage'),
+                      Tab(text: 'Installed Plugins'),
                     ],
                   ),
                 ),
-                Expanded(
+                const Expanded(
                   child: TabBarView(
                     children: [
-                      SingleChildScrollView(
-                        padding: EdgeInsets.symmetric(
-                            vertical: 16.h, horizontal: 20.w),
-                        child: const Column(
-                          children: [
-                            // ... your existing Plan Details content
-                          ],
-                        ),
-                      ),
-                      const InstalledPlugin()
+                      Usage(),
+                      InstalledPlugin()
                     ],
                   ),
                 ),

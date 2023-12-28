@@ -47,6 +47,10 @@ class $AssetsImagesPngGen {
   AssetGenImage get customFields =>
       const AssetGenImage('assets/images/png/custom_fields.png');
 
+  /// File path: assets/images/png/delete.png
+  AssetGenImage get delete =>
+      const AssetGenImage('assets/images/png/delete.png');
+
   /// File path: assets/images/png/empty_data.png
   AssetGenImage get emptyData =>
       const AssetGenImage('assets/images/png/empty_data.png');
@@ -54,6 +58,18 @@ class $AssetsImagesPngGen {
   /// File path: assets/images/png/expense_tracking.png
   AssetGenImage get expenseTracking =>
       const AssetGenImage('assets/images/png/expense_tracking.png');
+
+  /// File path: assets/images/png/grad1.png
+  AssetGenImage get grad1 => const AssetGenImage('assets/images/png/grad1.png');
+
+  /// File path: assets/images/png/grad2.png
+  AssetGenImage get grad2 => const AssetGenImage('assets/images/png/grad2.png');
+
+  /// File path: assets/images/png/grad3.png
+  AssetGenImage get grad3 => const AssetGenImage('assets/images/png/grad3.png');
+
+  /// File path: assets/images/png/grad4.png
+  AssetGenImage get grad4 => const AssetGenImage('assets/images/png/grad4.png');
 
   /// File path: assets/images/png/information_forms.png
   AssetGenImage get informationForms =>
@@ -141,6 +157,9 @@ class $AssetsImagesPngGen {
   /// File path: assets/images/png/terms.png
   AssetGenImage get terms => const AssetGenImage('assets/images/png/terms.png');
 
+  /// File path: assets/images/png/tick.png
+  AssetGenImage get tick => const AssetGenImage('assets/images/png/tick.png');
+
   /// File path: assets/images/png/time_exceeded.png
   AssetGenImage get timeExceeded =>
       const AssetGenImage('assets/images/png/time_exceeded.png');
@@ -161,8 +180,13 @@ class $AssetsImagesPngGen {
         chatWithUs,
         contactCenter,
         customFields,
+        delete,
         emptyData,
         expenseTracking,
+        grad1,
+        grad2,
+        grad3,
+        grad4,
         informationForms,
         invoices,
         logout,
@@ -185,6 +209,7 @@ class $AssetsImagesPngGen {
         subscription,
         teamSettings,
         terms,
+        tick,
         timeExceeded,
         visa,
         webhookIntegration
@@ -233,6 +258,9 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/check.svg
   String get check => 'assets/images/svg/check.svg';
 
+  /// File path: assets/images/svg/check_icon.svg
+  String get checkIcon => 'assets/images/svg/check_icon.svg';
+
   /// File path: assets/images/svg/close_circle.svg
   String get closeCircle => 'assets/images/svg/close_circle.svg';
 
@@ -262,6 +290,9 @@ class $AssetsImagesSvgGen {
 
   /// File path: assets/images/svg/customers.svg
   String get customers => 'assets/images/svg/customers.svg';
+
+  /// File path: assets/images/svg/delete_icon.svg
+  String get deleteIcon => 'assets/images/svg/delete_icon.svg';
 
   /// File path: assets/images/svg/discount.svg
   String get discount => 'assets/images/svg/discount.svg';
@@ -425,6 +456,7 @@ class $AssetsImagesSvgGen {
         calendar,
         calendarMonth,
         check,
+        checkIcon,
         closeCircle,
         coloredCal,
         commissions,
@@ -435,6 +467,7 @@ class $AssetsImagesSvgGen {
         customer,
         customerService,
         customers,
+        deleteIcon,
         discount,
         empty,
         facebook,
