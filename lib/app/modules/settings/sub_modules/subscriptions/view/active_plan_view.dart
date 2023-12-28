@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/settings/sub_modules/subscriptions/view/subscription_view.dart';
-import 'package:nuforce/app/modules/settings/sub_modules/subscriptions/view/usage.dart';
+import 'subscription_view.dart';
+import 'usage.dart';
 import '../controller/subscription_controller.dart';
 import '../../../views/settings_view.dart';
 import '../../../../../../gen/assets.gen.dart';

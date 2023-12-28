@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/settings/widgets/add_card_bottom_sheet.dart';
-import 'package:nuforce/app/modules/settings/widgets/visa_card.dart';
-import 'package:nuforce/app/shared/widgets/primary_button.dart';
+import '../../../widgets/add_card_bottom_sheet.dart';
+import '../../../widgets/visa_card.dart';
+import '../../../../../shared/widgets/primary_button.dart';
 
 import '../../../../../../gen/assets.gen.dart';
 import '../../../../../utils/colors.dart';

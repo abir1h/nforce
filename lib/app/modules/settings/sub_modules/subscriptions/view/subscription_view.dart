@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/settings/sub_modules/subscriptions/view/payment_view.dart';
-import 'package:nuforce/app/shared/widgets/primary_button.dart';
+import 'payment_view.dart';
+import '../../../../../shared/widgets/primary_button.dart';
 
 import '../../../../../../gen/assets.gen.dart';
 import '../../../../../utils/colors.dart';

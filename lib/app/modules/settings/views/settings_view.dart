@@ -74,8 +74,7 @@ class SettingsView extends GetView<SettingsController> {
                       SettingTile(
                         leading:
                             Assets.images.png.subscription.keyName.toString(),
-                        onTap: () =>
-                            Get.to(() => const ActivePlan()),
+                        onTap: () => Get.to(() => const ActivePlan()),
                         label: "Subscriptions",
                         hasDivider: true,
                       ),
