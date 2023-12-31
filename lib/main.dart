@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/app/utils/initial_bindings.dart';
 
 import 'app/routes/app_pages.dart';
 
@@ -20,6 +21,7 @@ void main() {
         debugShowCheckedModeBanner: false,
         initialRoute: AppPages.INITIAL,
         getPages: AppPages.routes,
+        initialBinding: InitialBindings(),
         theme: ThemeData(
           useMaterial3: false,
           fontFamily: 'Poppins',
@@ -41,14 +43,14 @@ void main() {
               },
             ),
           ),
-          checkboxTheme: CheckboxThemeData(
-            splashRadius: 0,
-            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-            visualDensity: VisualDensity.compact,
-            fillColor: MaterialStateColor.resolveWith(
-              (states) => AppColors.primaryBlue1,
-            ),
-          ),
+          // checkboxTheme: CheckboxThemeData(
+          //   splashRadius: 0,
+          //   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          //   visualDensity: VisualDensity.compact,
+          //   fillColor: MaterialStateColor.resolveWith(
+          //     (states) => AppColors.primaryBlue1,
+          //   ),
+          // ),
         ),
       ),
     ),

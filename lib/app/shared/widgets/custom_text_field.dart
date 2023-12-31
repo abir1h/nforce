@@ -14,7 +14,8 @@ class CustomTextField extends StatelessWidget {
     this.isPassword = false,
     this.onVisibilityTap,
     this.maxLines = 1,
-    this.validator, this.onChange,
+    this.validator,
+    this.onChange,
   });
 
   final String label;
@@ -43,7 +44,7 @@ class CustomTextField extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 8),
-        Container(
+        ColoredBox(
           // height: 50,
           color: AppColors.textFieldBackground,
           child: TextFormField(
@@ -52,7 +53,7 @@ class CustomTextField extends StatelessWidget {
             autocorrect: false,
             obscureText: obscureText,
             maxLines: maxLines,
-            onChanged: onChange!,
+            onChanged: onChange,
             controller: controller,
             textAlignVertical: TextAlignVertical.center,
             decoration: InputDecoration(

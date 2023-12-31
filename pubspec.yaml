@@ -35,6 +35,9 @@ dependencies:
   pie_chart: ^5.4.0
   equatable: ^2.0.5
   flutter_colorpicker: ^1.0.3
+  dartz: ^0.10.1
+  logger: ^2.0.2+1
+  flutter_keyboard_visibility: ^6.0.0
 
 
 dev_dependencies:

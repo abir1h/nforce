@@ -11,7 +11,7 @@ class SplashController extends GetxController {
   }
 
   void navigateToDestination() {
-    Get.offAllNamed(Routes.BOTTOM_NAV_BAR);
-    // Get.offAllNamed(Routes.ON_BOARDING);
+    // Get.offAllNamed(Routes.BOTTOM_NAV_BAR);
+    Get.offAllNamed(Routes.ON_BOARDING);
   }
 }

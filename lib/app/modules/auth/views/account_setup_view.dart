@@ -145,7 +145,7 @@ class AccountSetupView extends GetView<AuthController> {
                   const SizedBox(height: 30),
                   PrimaryButton(
                     onPressed: () {
-                      controller.fromSetupAccount.value = true;
+                      controller.changeFromSetupAccount(true);
                       Get.to(() => const OtpView())!.then((value) {
                         accountCreationComplete(context);
                       });

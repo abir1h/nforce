@@ -9,131 +9,182 @@ import 'package:nuforce/app/shared/widgets/or_x_with.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/utils/colors.dart';
 
-class SignInPage extends StatelessWidget {
+class SignInPage extends StatefulWidget {
   const SignInPage({
     super.key,
-    required this.controller,
   });
 
-  final AuthController controller;
+  @override
+  State<SignInPage> createState() => _SignInPageState();
+}
+
+class _SignInPageState extends State<SignInPage> {
+  // final controller = Get.put(AuthController());
+
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
+  GlobalKey<FormState> businessLoginFormKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Column(
-          children: [
-            const CustomTextField(
-              controller: null,
-              hint: 'Enter your email',
-              label: 'Email',
-              keyboardType: TextInputType.emailAddress,
-            ),
-            const SizedBox(height: 16),
-            Obx(
-              () => CustomTextField(
-                controller: null,
-                hint: 'Enter your password',
-                label: 'Password',
-                keyboardType: TextInputType.visiblePassword,
-                obscureText: controller.isPasswordVisible.value,
-                isVisibile: controller.isPasswordVisible.value,
-                isPassword: true,
-                onVisibilityTap: () {
-                  controller.isPasswordVisible.value = !controller.isPasswordVisible.value;
-                },
-              ),
-            ),
-            const SizedBox(height: 16),
-            Row(
+    return GetBuilder<AuthController>(
+      builder: (controller) {
+        return IgnorePointer(
+          ignoring: controller.isLoading,
+          child: Form(
+            key: businessLoginFormKey,
+            child: Column(
               children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                Column(
                   children: [
-                    Obx(
-                      () => Checkbox(
-                        value: controller.rememberMe.value,
-                        onChanged: (value) {
-                          controller.rememberMe.value = !controller.rememberMe.value;
-                        },
-                        activeColor: AppColors.primaryBlue1,
-                        checkColor: AppColors.white1,
-                        side: const BorderSide(
-                          color: AppColors.primaryBlue1,
-                        ),
-                      ),
+                    CustomTextField(
+                      controller: emailController,
+                      hint: 'Enter your email',
+                      label: 'Email',
+                      keyboardType: TextInputType.emailAddress,
+                      validator: (v) {
+                        if (v!.isEmpty) {
+                          return 'Please enter your email';
+                        }
+                        return null;
+                      },
                     ),
-                    const SizedBox(width: 4),
+                    const SizedBox(height: 16),
+                    CustomTextField(
+                      controller: passwordController,
+                      hint: 'Enter your password',
+                      label: 'Password',
+                      keyboardType: TextInputType.visiblePassword,
+                      obscureText: controller.isPasswordVisible,
+                      isVisibile: controller.isPasswordVisible,
+                      isPassword: true,
+                      onVisibilityTap: () {
+                        controller.togglePasswordVisibility();
+                      },
+                      validator: (v) {
+                        if (v!.isEmpty) {
+                          return 'Please enter your password';
+                        }
+                        if (v.length < 6) {
+                          return 'Password must be at least 6 characters';
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 16),
+                    Row(
+                      children: [
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Checkbox(
+                              value: controller.rememberMe,
+                              onChanged: (value) {
+                                controller.toggleRememberMe();
+                              },
+                              activeColor: AppColors.primaryBlue1,
+                              checkColor: AppColors.white1,
+                              side: const BorderSide(
+                                color: AppColors.primaryBlue1,
+                              ),
+                            ),
+                            const SizedBox(width: 4),
+                            const Text(
+                              'Remember me\n(90 days)',
+                              style: TextStyle(
+                                color: AppColors.nutralBlack1,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 14,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const Spacer(),
+                        GestureDetector(
+                          onTap: () {
+                            Get.to(() => const ForgotPasswordView());
+                          },
+                          child: const Text(
+                            'Forgot Password?',
+                            style: TextStyle(
+                              color: AppColors.nutralBlack1,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 30),
+                    controller.isLoading
+                        ? const Center(child: CircularProgressIndicator())
+                        : PrimaryButton(
+                            onPressed: () {
+                              if (!businessLoginFormKey.currentState!.validate()) {
+                                return;
+                              }
+                              controller.businessLogin(
+                                context: context,
+                                email: emailController.text,
+                                password: passwordController.text,
+                              );
+                            },
+                            text: 'Sing In',
+                          ),
+                    const SizedBox(height: 15),
+                    PrimaryButton(
+                      onPressed: () {
+                        Get.to(() => const MagicLinkSingin());
+                      },
+                      text: 'Sign in with magic link',
+                      primaryColored: false,
+                    ),
+                    const SizedBox(height: 30),
+                    const OrXWith(label: 'Or log in with'),
+                    const SizedBox(height: 30),
+                    const SocialLoginButtons(),
+                  ],
+                ),
+                const Spacer(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
                     const Text(
-                      'Remember me\n(90 days)',
+                      'Don’t have a account?',
                       style: TextStyle(
                         color: AppColors.nutralBlack1,
                         fontWeight: FontWeight.w500,
                         fontSize: 14,
                       ),
                     ),
+                    const SizedBox(width: 4),
+                    GestureDetector(
+                      onTap: () {},
+                      child: const Text(
+                        'Get Started',
+                        style: TextStyle(
+                          color: AppColors.primaryBlue1,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 14,
+                        ),
+                      ),
+                    ),
                   ],
                 ),
-                const Spacer(),
-                GestureDetector(
-                  onTap: () {
-                    Get.to(() => const ForgotPasswordView());
-                  },
-                  child: const Text(
-                    'Forgot Password?',
-                    style: TextStyle(
-                      color: AppColors.nutralBlack1,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 14,
-                    ),
-                  ),
-                ),
+                const SizedBox(height: 30),
               ],
             ),
-            const SizedBox(height: 30),
-            PrimaryButton(onPressed: () {}, text: 'Sing In'),
-            const SizedBox(height: 15),
-            PrimaryButton(
-              onPressed: () {
-                Get.to(() => const MagicLinkSingin());
-              },
-              text: 'Sign in with magic link',
-              primaryColored: false,
-            ),
-            const SizedBox(height: 30),
-            const OrXWith(label: 'Or log in with'),
-            const SizedBox(height: 30),
-            const SocialLoginButtons(),
-          ],
-        ),
-        const Spacer(),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              'Don’t have a account?',
-              style: TextStyle(
-                color: AppColors.nutralBlack1,
-                fontWeight: FontWeight.w500,
-                fontSize: 14,
-              ),
-            ),
-            const SizedBox(width: 4),
-            GestureDetector(
-              onTap: () {},
-              child: const Text(
-                'Get Started',
-                style: TextStyle(
-                  color: AppColors.primaryBlue1,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 14,
-                ),
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 30),
-      ],
+          ),
+        );
+      },
     );
   }
 }

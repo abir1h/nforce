@@ -1,3 +1,5 @@
 class Url {
-  static String baseUrl = ''; // TODO 请填写服务器地址
+  static String baseUrl = 'https://nuforce.pro/api';
+
+  static String businessLogin = '$baseUrl/action/person.login';
 }

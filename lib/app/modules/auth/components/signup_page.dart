@@ -9,108 +9,115 @@ import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/text_styles.dart';
 import 'package:nuforce/main.dart';
 
-class SignUpPage extends StatelessWidget {
+class SignUpPage extends StatefulWidget {
   const SignUpPage({
     super.key,
-    required this.controller,
   });
 
-  final AuthController controller;
+  @override
+  State<SignUpPage> createState() => _SignUpPageState();
+}
 
+class _SignUpPageState extends State<SignUpPage> {
+  final controller = Get.put(AuthController());
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          const CustomTextField(
-            controller: null,
-            label: 'First Name',
-            hint: 'Enter your first name',
-            keyboardType: TextInputType.emailAddress,
-          ),
-          const SizedBox(height: 16),
-          const CustomTextField(
-            controller: null,
-            label: 'Last Name',
-            hint: 'Enter your last name',
-            keyboardType: TextInputType.emailAddress,
-          ),
-          const SizedBox(height: 16),
-          const CustomTextField(
-            controller: null,
-            label: 'Email',
-            hint: 'Enter your email',
-            keyboardType: TextInputType.emailAddress,
-          ),
-          const SizedBox(height: 16),
-          Obx(
-            () => CustomTextField(
-              controller: null,
-              hint: 'Enter your password',
-              label: 'Password',
-              keyboardType: TextInputType.visiblePassword,
-              obscureText: controller.signUpController.isPasswordVisible.value,
-              isVisibile: controller.signUpController.isPasswordVisible.value,
-              isPassword: true,
-              onVisibilityTap: () {
-                controller.isPasswordVisible.value = !controller.isPasswordVisible.value;
-              },
-            ),
-          ),
-          const SizedBox(height: 16),
-          Obx(
-            () => CustomTextField(
-              controller: null,
-              hint: 'Re-enter your password',
-              label: 'Confirm Password',
-              keyboardType: TextInputType.visiblePassword,
-              obscureText: controller.signUpController.isConfirmPasswordVisible.value,
-              isVisibile: controller.signUpController.isConfirmPasswordVisible.value,
-              isPassword: true,
-              onVisibilityTap: () {
-                controller.isPasswordVisible.value = !controller.isPasswordVisible.value;
-              },
-            ),
-          ),
-          const SizedBox(height: 16),
-          TermsAndCondition(controller: controller),
-          const SizedBox(height: 16),
-          PromotionalOfferEmail(controller: controller),
-          const SizedBox(height: 30),
-          PrimaryButton(
-            onPressed: () {
-              varifyEmailBottomSheet(context);
-            },
-            text: 'Sing Up',
-          ),
-          const SizedBox(height: 24),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+    return GetBuilder<AuthController>(
+      builder: (_) {
+        return SingleChildScrollView(
+          child: Column(
             children: [
-              Text(
-                'Have an account? ',
-                style: CustomTextStyle.heading4.copyWith(
-                  fontWeight: FontWeight.w400,
-                  color: AppColors.white4,
+              const CustomTextField(
+                controller: null,
+                label: 'First Name',
+                hint: 'Enter your first name',
+                keyboardType: TextInputType.emailAddress,
+              ),
+              const SizedBox(height: 16),
+              const CustomTextField(
+                controller: null,
+                label: 'Last Name',
+                hint: 'Enter your last name',
+                keyboardType: TextInputType.emailAddress,
+              ),
+              const SizedBox(height: 16),
+              const CustomTextField(
+                controller: null,
+                label: 'Email',
+                hint: 'Enter your email',
+                keyboardType: TextInputType.emailAddress,
+              ),
+              const SizedBox(height: 16),
+              Obx(
+                () => CustomTextField(
+                  controller: null,
+                  hint: 'Enter your password',
+                  label: 'Password',
+                  keyboardType: TextInputType.visiblePassword,
+                  obscureText: controller.signUpController.isPasswordVisible.value,
+                  isVisibile: controller.signUpController.isPasswordVisible.value,
+                  isPassword: true,
+                  onVisibilityTap: () {
+                    controller.togglePasswordVisibility();
+                  },
                 ),
               ),
-              GestureDetector(
-                onTap: () {
-                  Get.back();
+              const SizedBox(height: 16),
+              Obx(
+                () => CustomTextField(
+                  controller: null,
+                  hint: 'Re-enter your password',
+                  label: 'Confirm Password',
+                  keyboardType: TextInputType.visiblePassword,
+                  obscureText: controller.signUpController.isConfirmPasswordVisible.value,
+                  isVisibile: controller.signUpController.isConfirmPasswordVisible.value,
+                  isPassword: true,
+                  onVisibilityTap: () {
+                    controller.toggleResetPasswordVisibility();
+                  },
+                ),
+              ),
+              const SizedBox(height: 16),
+              TermsAndCondition(controller: controller),
+              const SizedBox(height: 16),
+              PromotionalOfferEmail(controller: controller),
+              const SizedBox(height: 30),
+              PrimaryButton(
+                onPressed: () {
+                  varifyEmailBottomSheet(context);
                 },
-                child: Text(
-                  'Sign in',
-                  style: CustomTextStyle.heading4.copyWith(
-                    fontWeight: FontWeight.w500,
-                    color: AppColors.primaryBlue1,
-                  ),
-                ),
+                text: 'Sing Up',
               ),
+              const SizedBox(height: 24),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Have an account? ',
+                    style: CustomTextStyle.heading4.copyWith(
+                      fontWeight: FontWeight.w400,
+                      color: AppColors.white4,
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Get.back();
+                    },
+                    child: Text(
+                      'Sign in',
+                      style: CustomTextStyle.heading4.copyWith(
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.primaryBlue1,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 30),
             ],
           ),
-          const SizedBox(height: 30),
-        ],
-      ),
+        );
+      },
     );
   }
 }
