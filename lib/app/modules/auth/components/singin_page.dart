@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/auth/components/social_login_buttons.dart';
 import 'package:nuforce/app/modules/auth/controllers/auth_controller.dart';
@@ -97,12 +98,15 @@ class _SignInPageState extends State<SignInPage> {
                               ),
                             ),
                             const SizedBox(width: 4),
-                            const Text(
-                              'Remember me\n(90 days)',
-                              style: TextStyle(
-                                color: AppColors.nutralBlack1,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 14,
+                            Padding(
+                              padding: const EdgeInsets.only(top: 8.0),
+                              child: Text(
+                                'Remember me\n(90 days)',
+                                style: TextStyle(
+                                  color: AppColors.nutralBlack1,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 14.sp,
+                                ),
                               ),
                             ),
                           ],
@@ -112,12 +116,12 @@ class _SignInPageState extends State<SignInPage> {
                           onTap: () {
                             Get.to(() => const ForgotPasswordView());
                           },
-                          child: const Text(
+                          child: Text(
                             'Forgot Password?',
                             style: TextStyle(
                               color: AppColors.nutralBlack1,
                               fontWeight: FontWeight.w500,
-                              fontSize: 14,
+                              fontSize: 14.sp,
                             ),
                           ),
                         ),
@@ -157,23 +161,23 @@ class _SignInPageState extends State<SignInPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
+                    Text(
                       'Don’t have a account?',
                       style: TextStyle(
                         color: AppColors.nutralBlack1,
                         fontWeight: FontWeight.w500,
-                        fontSize: 14,
+                        fontSize: 14.sp,
                       ),
                     ),
                     const SizedBox(width: 4),
                     GestureDetector(
                       onTap: () {},
-                      child: const Text(
+                      child: Text(
                         'Get Started',
                         style: TextStyle(
                           color: AppColors.primaryBlue1,
                           fontWeight: FontWeight.w500,
-                          fontSize: 14,
+                          fontSize: 14.sp,
                         ),
                       ),
                     ),

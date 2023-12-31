@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:nuforce/app/routes/app_pages.dart';
+import 'package:nuforce/app/utils/shared_preferences.dart';
 
 class SplashController extends GetxController {
   @override
@@ -11,7 +12,11 @@ class SplashController extends GetxController {
   }
 
   void navigateToDestination() {
-    // Get.offAllNamed(Routes.BOTTOM_NAV_BAR);
-    Get.offAllNamed(Routes.ON_BOARDING);
+    final token = SharedPreferenceService.getToken();
+    if (token != null && token.isNotEmpty) {
+      Get.offAllNamed(Routes.BOTTOM_NAV_BAR);
+    } else {
+      Get.offAllNamed(Routes.ON_BOARDING);
+    }
   }
 }
