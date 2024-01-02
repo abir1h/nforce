@@ -7,7 +7,7 @@ import 'package:nuforce/app/utils/colors.dart';
 
 Widget overviewBody({
   required bool isFavorite,
-  required Function() onTapFavorite,
+  required void Function() onTapFavorite,
 }) {
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
@@ -69,14 +69,14 @@ Widget overviewBody({
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w400,
                 ),
-              )
+              ),
             ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                '\$25.00',
+                r'$25.00',
                 style: TextStyle(
                   color: AppColors.nutralBlack1,
                   fontSize: 16.sp,
@@ -113,7 +113,7 @@ Widget overviewBody({
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w400,
                 ),
-              )
+              ),
             ],
           ),
           Row(
@@ -135,7 +135,7 @@ Widget overviewBody({
                   fontSize: 16.sp,
                   fontWeight: FontWeight.w400,
                 ),
-              )
+              ),
             ],
           ),
           const SizedBox(height: 16),

@@ -4,8 +4,8 @@ import 'package:nuforce/app/utils/colors.dart';
 
 class PluginItemCard extends StatelessWidget {
   const PluginItemCard({
-    super.key,
     required this.onTap,
+    super.key,
   });
 
   final VoidCallback onTap;
@@ -61,7 +61,7 @@ class PluginItemCard extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            '\$250.00',
+                            r'$250.00',
                             style: TextStyle(
                               color: AppColors.nutralBlack1,
                               fontSize: 14.sp,
@@ -77,7 +77,7 @@ class PluginItemCard extends StatelessWidget {
                               fontSize: 12.sp,
                               fontWeight: FontWeight.w400,
                             ),
-                          )
+                          ),
                         ],
                       ),
                       const SizedBox(height: 4),

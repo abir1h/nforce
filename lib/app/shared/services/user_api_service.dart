@@ -10,15 +10,15 @@ class UserApiService {
       final response = await ApiClient.instance.post(
         url: URL.getUserCard,
         body: <String, dynamic>{
-          "query": {
-            "user_id": userId,
-          }
+          'query': {
+            'user_id': userId,
+          },
         },
       );
       if (response.data['id'] != null) {
-        return Left(UserCard.fromJson(response.data));
+        return Left(UserCard.fromJson(response.data as Map<String, dynamic>));
       } else {
-        return Right(response.data['error'] ?? AppConstants.unknownError);
+        return Right('${response.data['error'] ?? AppConstants.unknownError}');
       }
     } catch (e) {
       return const Right(AppConstants.unknownError);

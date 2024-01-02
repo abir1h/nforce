@@ -16,8 +16,8 @@ import 'package:nuforce/main.dart';
 
 class AddOrEditServicePacakgeView extends StatefulWidget {
   const AddOrEditServicePacakgeView({
-    super.key,
     required this.isEdit,
+    super.key,
   });
   final bool isEdit;
 
@@ -55,7 +55,6 @@ class _AddOrEditServicePacakgeViewState extends State<AddOrEditServicePacakgeVie
                 children: [
                   SizedBox(height: 16.h),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       GestureDetector(
                         onTap: () async {
@@ -103,7 +102,7 @@ class _AddOrEditServicePacakgeViewState extends State<AddOrEditServicePacakgeVie
                                       },
                                       child: SvgPicture.asset(Assets.images.svg.closeCircle),
                                     ),
-                                  )
+                                  ),
                                 ],
                               );
                             },

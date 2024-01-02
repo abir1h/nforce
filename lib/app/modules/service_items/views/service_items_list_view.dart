@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/service_items/controllers/add_new_service_controller.dart';
+import 'package:nuforce/app/modules/service_items/controllers/service_items_controller.dart';
 import 'package:nuforce/app/modules/service_items/views/add_new_addons_view.dart';
 import 'package:nuforce/app/modules/service_items/views/add_new_service_view.dart';
 import 'package:nuforce/app/modules/service_items/views/package/add_or_edit_service_pacakge_view.dart';
@@ -17,10 +18,8 @@ import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/main.dart';
 
-import '../controllers/service_items_controller.dart';
-
 class ServiceItemsListView extends GetView<ServiceItemsController> {
-  const ServiceItemsListView({Key? key}) : super(key: key);
+  const ServiceItemsListView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,35 +50,35 @@ class ServiceItemsListView extends GetView<ServiceItemsController> {
                             if (!AddNewServiceController().initialized) {
                               Get.put(AddNewServiceController());
                             }
-                            Get.to(() => const AddNewServiceView());
+                            Get.to<void>(() => const AddNewServiceView());
                           }
                         : controller.miniTabEnum.value == ServiceTabEnum.service
                             ? () {
                                 if (!AddNewServiceController().initialized) {
                                   Get.put(AddNewServiceController());
                                 }
-                                Get.to(() => const AddNewServiceView());
+                                Get.to<void>(() => const AddNewServiceView());
                               }
                             : controller.miniTabEnum.value == ServiceTabEnum.material
                                 ? () {
                                     if (!AddNewServiceController().initialized) {
                                       Get.put(AddNewServiceController());
                                     }
-                                    Get.to(() => const AddNewServiceView());
+                                    Get.to<void>(() => const AddNewServiceView());
                                   }
                                 : controller.miniTabEnum.value == ServiceTabEnum.package
                                     ? () {
-                                        Get.to(() => const AddOrEditServicePacakgeView(isEdit: false));
+                                        Get.to<void>(() => const AddOrEditServicePacakgeView(isEdit: false));
                                       }
                                     : controller.miniTabEnum.value == ServiceTabEnum.subscription
                                         ? () {
-                                            Get.to(() => const AddOrEditSubscriptionView(isEdit: false));
+                                            Get.to<void>(() => const AddOrEditSubscriptionView(isEdit: false));
                                           }
                                         : () {
                                             if (!AddNewServiceController().initialized) {
                                               Get.put(AddNewServiceController());
                                             }
-                                            Get.to(() => const AddNewAddonsView());
+                                            Get.to<void>(() => const AddNewAddonsView());
                                           },
                     child: Center(
                       child: Padding(
@@ -118,7 +117,7 @@ class ServiceItemsListView extends GetView<ServiceItemsController> {
                                       : const AddonsItems(),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),

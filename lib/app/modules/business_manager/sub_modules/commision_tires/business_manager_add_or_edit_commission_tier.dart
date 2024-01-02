@@ -247,7 +247,7 @@ class _BusinessManagerAddOrEditCommissionTierState extends State<BusinessManager
                                 ),
                               );
                             }
-                            Get.back();
+                            Get.back<void>();
                             Fluttertoast.showToast(msg: 'Commission tier ${widget.commissionTier != null ? 'updated' : 'added'} successfully');
                           },
                           text: widget.commissionTier != null ? 'Update' : 'Submit',

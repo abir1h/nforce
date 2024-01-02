@@ -6,8 +6,8 @@ import 'package:nuforce/app/utils/colors.dart';
 
 class MaterialItemCard extends StatelessWidget {
   const MaterialItemCard({
-    super.key,
     required this.withBottomTitle,
+    super.key,
     this.onFavoriteTap,
     this.isFavorite = false,
   });
@@ -85,7 +85,7 @@ class MaterialItemCard extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          '\$25.00',
+                          r'$25.00',
                           style: TextStyle(
                             color: AppColors.nutralBlack1,
                             fontSize: 14.sp,
@@ -94,7 +94,7 @@ class MaterialItemCard extends StatelessWidget {
                         ),
                         SizedBox(width: 4.sp),
                         Text(
-                          '\$30.00',
+                          r'$30.00',
                           style: TextStyle(
                             color: AppColors.nutralBlack1,
                             decoration: TextDecoration.lineThrough,
@@ -127,7 +127,7 @@ class MaterialItemCard extends StatelessWidget {
                             fontSize: 12.sp,
                             fontWeight: FontWeight.w400,
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ],

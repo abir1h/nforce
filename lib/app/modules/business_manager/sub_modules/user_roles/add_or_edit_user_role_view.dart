@@ -271,7 +271,7 @@ class _AddOrEditUserRoleViewState extends State<AddOrEditUserRoleView> {
                               ),
                             );
                           }
-                          Get.back();
+                          Get.back<void>();
                         },
                         text: widget.user != null ? 'Update' : 'Submit',
                       ),

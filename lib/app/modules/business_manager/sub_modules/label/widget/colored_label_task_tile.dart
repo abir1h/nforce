@@ -7,8 +7,8 @@ import 'package:nuforce/gen/assets.gen.dart';
 
 class ColoredLabelTile extends StatelessWidget {
   const ColoredLabelTile({
-    super.key,
     required this.label,
+    super.key,
     this.onTap,
   });
 
@@ -58,7 +58,7 @@ class ColoredLabelTile extends StatelessWidget {
                       fontSize: 14.sp,
                       fontWeight: FontWeight.w400,
                     ),
-                  )
+                  ),
                 ],
               ),
             ),

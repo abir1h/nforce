@@ -3,17 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import '../../../widgets/add_card_bottom_sheet.dart';
-import '../../../widgets/visa_card.dart';
-import '../../../../../shared/widgets/primary_button.dart';
-
-import '../../../../../../gen/assets.gen.dart';
-import '../../../../../utils/colors.dart';
-import '../../../../../utils/text_styles.dart';
-import '../../../views/settings_view.dart';
-import '../../../widgets/contactus_card.dart';
-import '../../../widgets/subscription_card.dart';
-import '../controller/subscription_controller.dart';
+import 'package:nuforce/app/modules/settings/sub_modules/subscriptions/controller/subscription_controller.dart';
+import 'package:nuforce/app/modules/settings/views/settings_view.dart';
+import 'package:nuforce/app/modules/settings/widgets/add_card_bottom_sheet.dart';
+import 'package:nuforce/app/modules/settings/widgets/visa_card.dart';
+import 'package:nuforce/app/shared/widgets/primary_button.dart';
+import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/app/utils/text_styles.dart';
+import 'package:nuforce/gen/assets.gen.dart';
 
 class PaymentView extends StatefulWidget {
   const PaymentView({super.key});
@@ -28,82 +25,93 @@ class _PaymentViewState extends State<PaymentView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: AppColors.white1,
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: PrimaryButton(
-            text: "Add New Card",
-            onPressed: (){ showCupertinoModalPopup(
+      backgroundColor: AppColors.white1,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.all(8),
+        child: PrimaryButton(
+          text: 'Add New Card',
+          onPressed: () {
+            showCupertinoModalPopup<void>(
               context: context,
               builder: (context) => const AddCardBottomsheet(),
-            );},
-            primaryColored: true,
+            );
+          },
+        ),
+      ),
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: AppColors.white1,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: AppColors.nutralBlack1,
+          ),
+          onPressed: () {
+            Get.to<void>(() => const SettingsView());
+          },
+        ),
+        title: Text(
+          'Payment Method',
+          style: TextStyle(
+            fontWeight: FontWeight.w500,
+            fontSize: 18.sp,
+            fontFamily: 'Poppins',
+            color: AppColors.nutralBlack1,
           ),
         ),
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: AppColors.white1,
-          leading: IconButton(
-            icon: const Icon(
-              Icons.arrow_back_ios,
-              color: AppColors.nutralBlack1,
-            ),
-            onPressed: () {
-              Get.to(() => const SettingsView());
-            },
-          ),
-          title: Text(
-            'Payment Method',
-            style: TextStyle(
-              fontWeight: FontWeight.w500,
-              fontSize: 18.sp,
-              fontFamily: "Poppins",
-              color: AppColors.nutralBlack1,
-            ),
-          ),
-          centerTitle: true,
-        ),
-        body: GetBuilder<SubscriptionController>(builder: (_) {
+        centerTitle: true,
+      ),
+      body: GetBuilder<SubscriptionController>(
+        builder: (_) {
           return SingleChildScrollView(
             padding: EdgeInsets.symmetric(horizontal: 18.w),
             child: Column(
               children: [
                 ListView.separated(
-                    itemBuilder: (_, index) {
-                      return VisaCard(
-                        cardName:"Visa",
-                        cardNumber: controller.cardList[index].cardNumber!,
-                        onPressed: () {},
-                        trailling:  PopupMenuButton(
-                          icon: const Icon(Icons.more_vert),
-                          itemBuilder: (context) => popupMenuItems,
-                          onSelected: (value) {
-
-                          },
-                        ),
-                        borderColor: AppColors.white3,
-                      );
-                    },
-                    separatorBuilder: (_, index) {
-                      return SizedBox(
-                        height: 16.h,
-                      );
-                    },
-                    itemCount: controller.cardList.length,shrinkWrap: true,),
-
+                  itemBuilder: (_, index) {
+                    return VisaCard(
+                      cardName: 'Visa',
+                      cardNumber: controller.cardList[index].cardNumber! as String,
+                      onPressed: () {},
+                      trailling: PopupMenuButton(
+                        icon: const Icon(Icons.more_vert),
+                        itemBuilder: (context) => popupMenuItems,
+                        onSelected: (value) {},
+                      ),
+                      borderColor: AppColors.white3,
+                    );
+                  },
+                  separatorBuilder: (_, index) {
+                    return SizedBox(
+                      height: 16.h,
+                    );
+                  },
+                  itemCount: controller.cardList.length,
+                  shrinkWrap: true,
+                ),
               ],
             ),
           );
-        }));
+        },
+      ),
+    );
   }
 }
+
 List<PopupMenuEntry<int>> popupMenuItems = [
   PopupMenuItem<int>(
     value: 1,
     child: Row(
       children: [
-        SvgPicture.asset(Assets.images.svg.checkIcon,height: 24.h,width: 24.h,),SizedBox(width: 6,),
+        SvgPicture.asset(
+          Assets.images.svg.checkIcon,
+          height: 24.h,
+          width: 24.h,
+        ),
+        const SizedBox(
+          width: 6,
+        ),
         Text(
           'Make Default',
           style: CustomTextStyle.paragraphExtraSmall.copyWith(
@@ -117,7 +125,14 @@ List<PopupMenuEntry<int>> popupMenuItems = [
     value: 2,
     child: Row(
       children: [
-        SvgPicture.asset(Assets.images.svg.deleteIcon,height: 24.h,width: 24.h,),SizedBox(width: 6,),
+        SvgPicture.asset(
+          Assets.images.svg.deleteIcon,
+          height: 24.h,
+          width: 24.h,
+        ),
+        const SizedBox(
+          width: 6,
+        ),
         Text(
           'Delete',
           style: CustomTextStyle.paragraphExtraSmall.copyWith(

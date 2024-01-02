@@ -15,10 +15,10 @@ import 'package:nuforce/gen/assets.gen.dart';
 
 class NewAddonBody extends StatefulWidget {
   const NewAddonBody({
-    super.key,
     required this.titleController,
     required this.priceController,
     required this.descriptionController,
+    super.key,
   });
 
   final TextEditingController titleController;
@@ -34,12 +34,10 @@ class _NewAddonBodyState extends State<NewAddonBody> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // Image picker
         Row(
-          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             GestureDetector(
               onTap: () async {
@@ -84,7 +82,7 @@ class _NewAddonBodyState extends State<NewAddonBody> {
                               },
                               child: SvgPicture.asset(Assets.images.svg.closeCircle),
                             ),
-                          )
+                          ),
                         ],
                       );
                     },
@@ -133,7 +131,7 @@ class _NewAddonBodyState extends State<NewAddonBody> {
                   fontWeight: FontWeight.w400,
                 ),
               ),
-            )
+            ),
           ],
           hint: 'Product Type',
           onChanged: (v) {},
@@ -187,7 +185,7 @@ class _NewAddonBodyState extends State<NewAddonBody> {
                   fontWeight: FontWeight.w400,
                 ),
               ),
-            )
+            ),
           ],
           hint: 'Type',
           onChanged: (v) {},

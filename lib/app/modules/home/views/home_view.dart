@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/home/components/actions_body.dart';
 import 'package:nuforce/app/modules/home/components/home_mini_tabs.dart';
@@ -7,16 +6,15 @@ import 'package:nuforce/app/modules/home/components/invoice_body.dart';
 import 'package:nuforce/app/modules/home/components/performance_body.dart';
 import 'package:nuforce/app/modules/home/components/service_button.dart';
 import 'package:nuforce/app/modules/home/components/today_body.dart';
+import 'package:nuforce/app/modules/home/controllers/home_controller.dart';
 import 'package:nuforce/app/routes/app_pages.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 import 'package:nuforce/main.dart';
 
-import '../controllers/home_controller.dart';
-
 class HomeView extends StatefulWidget {
-  const HomeView({Key? key}) : super(key: key);
+  const HomeView({super.key});
 
   @override
   State<HomeView> createState() => _HomeViewState();
@@ -44,7 +42,6 @@ class _HomeViewState extends State<HomeView> {
                       child: Wrap(
                         spacing: 16,
                         runSpacing: 16,
-                        alignment: WrapAlignment.start,
                         children: [
                           ServiceButton(
                             svgPath: Assets.images.svg.customerService,
@@ -55,14 +52,14 @@ class _HomeViewState extends State<HomeView> {
                             svgPath: Assets.images.svg.businessManager,
                             title: 'Business Manager',
                             onTap: () {
-                              Get.toNamed(Routes.BUSINESS_MANAGER);
+                              Get.toNamed<void>(Routes.BUSINESS_MANAGER);
                             },
                           ),
                           ServiceButton(
                             svgPath: Assets.images.svg.serviceManager,
                             title: 'Service Manager',
                             onTap: () {
-                              Get.toNamed(Routes.SERVICE_ITEMS);
+                              Get.toNamed<void>(Routes.SERVICE_ITEMS);
                             },
                           ),
                           ServiceButton(

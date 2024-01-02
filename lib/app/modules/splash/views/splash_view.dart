@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/splash/controllers/splash_controller.dart';
 import 'package:nuforce/app/utils/app_constants.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/text_styles.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 import 'package:nuforce/main.dart';
 
-import '../controllers/splash_controller.dart';
-
 class SplashView extends GetView<SplashController> {
-  const SplashView({Key? key}) : super(key: key);
+  const SplashView({super.key});
   @override
   Widget build(BuildContext context) {
     height = MediaQuery.of(context).size.height;
@@ -25,7 +23,6 @@ class SplashView extends GetView<SplashController> {
           child: Stack(
             children: [
               Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Spacer(),
@@ -60,7 +57,7 @@ class SplashView extends GetView<SplashController> {
                     fontWeight: FontWeight.w400,
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),

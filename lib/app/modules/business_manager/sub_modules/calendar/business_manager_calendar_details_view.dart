@@ -13,8 +13,8 @@ import 'package:nuforce/main.dart';
 
 class BusinessManagerCalendarDetailsView extends StatelessWidget {
   const BusinessManagerCalendarDetailsView({
-    super.key,
     required this.calendar,
+    super.key,
   });
   final MockCalendar calendar;
 
@@ -45,7 +45,7 @@ class BusinessManagerCalendarDetailsView extends StatelessWidget {
                   Expanded(
                     child: SecondaryButton(
                       onPressed: () {
-                        Get.back();
+                        Get.back<void>();
                         final controller = Get.find<BusinessManagerController>();
                         controller.businessManagerCalendarController.removeCalendar(calendar);
                         Fluttertoast.showToast(msg: 'Calendar Deleted');
@@ -57,8 +57,9 @@ class BusinessManagerCalendarDetailsView extends StatelessWidget {
                   Expanded(
                     child: PrimaryButton(
                       onPressed: () {
-                        Get.back();
-                        Get.to(() => BusinessManagerAddOrEditCalendar(calendar: calendar));
+                        Get
+                          ..back<void>()
+                          ..to<void>(() => BusinessManagerAddOrEditCalendar(calendar: calendar));
                       },
                       text: 'Edit',
                     ),

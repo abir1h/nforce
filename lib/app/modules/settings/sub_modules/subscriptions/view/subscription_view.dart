@@ -2,15 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'payment_view.dart';
-import '../../../../../shared/widgets/primary_button.dart';
-
-import '../../../../../../gen/assets.gen.dart';
-import '../../../../../utils/colors.dart';
-import '../../../views/settings_view.dart';
-import '../../../widgets/contactus_card.dart';
-import '../../../widgets/subscription_card.dart';
-import '../controller/subscription_controller.dart';
+import 'package:nuforce/app/modules/settings/sub_modules/subscriptions/controller/subscription_controller.dart';
+import 'package:nuforce/app/modules/settings/sub_modules/subscriptions/view/payment_view.dart';
+import 'package:nuforce/app/modules/settings/views/settings_view.dart';
+import 'package:nuforce/app/modules/settings/widgets/contactus_card.dart';
+import 'package:nuforce/app/modules/settings/widgets/subscription_card.dart';
+import 'package:nuforce/app/shared/widgets/primary_button.dart';
+import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/gen/assets.gen.dart';
 
 class SubscriptionView extends StatefulWidget {
   const SubscriptionView({super.key});
@@ -25,31 +24,32 @@ class _SubscriptionViewState extends State<SubscriptionView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white1,
+      appBar: AppBar(
+        elevation: 0,
         backgroundColor: AppColors.white1,
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: AppColors.white1,
-          leading: IconButton(
-            icon: const Icon(
-              Icons.arrow_back_ios,
-              color: AppColors.nutralBlack1,
-            ),
-            onPressed: () {
-              Get.to(() => const SettingsView());
-            },
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: AppColors.nutralBlack1,
           ),
-          title: Text(
-            'Subscription',
-            style: TextStyle(
-              fontWeight: FontWeight.w500,
-              fontSize: 18.sp,
-              fontFamily: "Poppins",
-              color: AppColors.nutralBlack1,
-            ),
-          ),
-          centerTitle: true,
+          onPressed: () {
+            Get.to<void>(() => const SettingsView());
+          },
         ),
-        body: GetBuilder<SubscriptionController>(builder: (_) {
+        title: Text(
+          'Subscription',
+          style: TextStyle(
+            fontWeight: FontWeight.w500,
+            fontSize: 18.sp,
+            fontFamily: 'Poppins',
+            color: AppColors.nutralBlack1,
+          ),
+        ),
+        centerTitle: true,
+      ),
+      body: GetBuilder<SubscriptionController>(
+        builder: (_) {
           return SingleChildScrollView(
             padding: EdgeInsets.symmetric(horizontal: 20.w),
             child: Column(
@@ -60,21 +60,13 @@ class _SubscriptionViewState extends State<SubscriptionView> {
                 Center(
                   child: Text(
                     'Choose a Plan',
-                    style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 24.sp,
-                        fontFamily: "Poppins",
-                        color: AppColors.nutralBlack1),
+                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 24.sp, fontFamily: 'Poppins', color: AppColors.nutralBlack1),
                   ),
                 ),
                 Center(
                   child: Text(
                     'Find the best plan of your  service',
-                    style: TextStyle(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 16.sp,
-                        fontFamily: "Poppins",
-                        color: AppColors.nutralBlack1),
+                    style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16.sp, fontFamily: 'Poppins', color: AppColors.nutralBlack1),
                   ),
                 ),
                 SizedBox(
@@ -83,11 +75,7 @@ class _SubscriptionViewState extends State<SubscriptionView> {
                 Center(
                   child: Text(
                     'Vew Features ',
-                    style: TextStyle(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 16.sp,
-                        fontFamily: "Poppins",
-                        color: AppColors.primaryBlue1),
+                    style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16.sp, fontFamily: 'Poppins', color: AppColors.primaryBlue1),
                   ),
                 ),
                 SizedBox(
@@ -101,10 +89,8 @@ class _SubscriptionViewState extends State<SubscriptionView> {
                       style: TextStyle(
                         fontSize: 16.sp,
                         fontWeight: FontWeight.w400,
-                        fontFamily: "Poppins",
-                        color: controller.triggerValue == false
-                            ? AppColors.primaryBlue1
-                            : AppColors.nutralBlack2,
+                        fontFamily: 'Poppins',
+                        color: controller.triggerValue == false ? AppColors.primaryBlue1 : AppColors.nutralBlack2,
                       ),
                     ),
                     SizedBox(
@@ -114,9 +100,7 @@ class _SubscriptionViewState extends State<SubscriptionView> {
                       trackColor: AppColors.primaryBlue1,
                       value: controller.triggerValue!,
                       activeColor: AppColors.primaryBlue1,
-                      onChanged: (value) {
-                        controller.trigger(value);
-                      },
+                      onChanged: controller.trigger,
                     ),
                     SizedBox(
                       width: 12.w,
@@ -126,10 +110,8 @@ class _SubscriptionViewState extends State<SubscriptionView> {
                       style: TextStyle(
                         fontSize: 16.sp,
                         fontWeight: FontWeight.w400,
-                        fontFamily: "Poppins",
-                        color: controller.triggerValue == true
-                            ? AppColors.primaryBlue1
-                            : AppColors.nutralBlack2,
+                        fontFamily: 'Poppins',
+                        color: controller.triggerValue == true ? AppColors.primaryBlue1 : AppColors.nutralBlack2,
                       ),
                     ),
                   ],
@@ -138,28 +120,28 @@ class _SubscriptionViewState extends State<SubscriptionView> {
                   height: 24.h,
                 ),
                 SubscriptionCard(
-                  title: "Starter",
-                  subtitle1: "Upto 5 users",
-                  subtitle2: "Organize your service in one place",
+                  title: 'Starter',
+                  subtitle1: 'Upto 5 users',
+                  subtitle2: 'Organize your service in one place',
                   items: controller.data,
                   bgImage: Assets.images.png.grad1.keyName,
                 ),
                 SubscriptionCard(
-                  title: "Growth",
-                  subtitle1: "Upto 5 users",
-                  subtitle2: "Organize your service in one place",
+                  title: 'Growth',
+                  subtitle1: 'Upto 5 users',
+                  subtitle2: 'Organize your service in one place',
                   items: controller.data,
                   bgImage: Assets.images.png.grad2.keyName,
                 ),
                 SubscriptionCard(
-                  title: "Pro",
-                  subtitle1: "Upto 3 users",
-                  subtitle2: "Organize your service in one place",
+                  title: 'Pro',
+                  subtitle1: 'Upto 3 users',
+                  subtitle2: 'Organize your service in one place',
                   items: controller.data,
                   bgImage: Assets.images.png.grad3.keyName,
                 ),
                 ContactUsCard(
-                  title: "Enterprise",
+                  title: 'Enterprise',
                   subtitle: "Can't choose your package? please contact us",
                   bgImage: Assets.images.png.grad4.keyName,
                 ),
@@ -167,20 +149,22 @@ class _SubscriptionViewState extends State<SubscriptionView> {
                 Row(
                   children: [
                     Expanded(
-                        child: PrimaryButton(
-                      onPressed: () {
-                        print("tapped");
-                        Get.to(() => const PaymentView());
-                      },
-                      text: "Upgrade",
-                      primaryColored: true,
-                    )),
+                      child: PrimaryButton(
+                        onPressed: () {
+                          print('tapped');
+                          Get.to<void>(() => const PaymentView());
+                        },
+                        text: 'Upgrade',
+                      ),
+                    ),
                   ],
                 ),
                 const SizedBox(height: 20),
               ],
             ),
           );
-        }));
+        },
+      ),
+    );
   }
 }

@@ -99,7 +99,7 @@ class _SignInPageState extends State<SignInPage> {
                             ),
                             const SizedBox(width: 4),
                             Padding(
-                              padding: const EdgeInsets.only(top: 8.0),
+                              padding: const EdgeInsets.only(top: 8),
                               child: Text(
                                 'Remember me\n(90 days)',
                                 style: TextStyle(
@@ -114,7 +114,7 @@ class _SignInPageState extends State<SignInPage> {
                         const Spacer(),
                         GestureDetector(
                           onTap: () {
-                            Get.to(() => const ForgotPasswordView());
+                            Get.to<void>(() => const ForgotPasswordView());
                           },
                           child: Text(
                             'Forgot Password?',
@@ -128,25 +128,26 @@ class _SignInPageState extends State<SignInPage> {
                       ],
                     ),
                     const SizedBox(height: 30),
-                    controller.isLoading
-                        ? const Center(child: CircularProgressIndicator())
-                        : PrimaryButton(
-                            onPressed: () {
-                              if (!businessLoginFormKey.currentState!.validate()) {
-                                return;
-                              }
-                              controller.businessLogin(
-                                context: context,
-                                email: emailController.text,
-                                password: passwordController.text,
-                              );
-                            },
-                            text: 'Sing In',
-                          ),
+                    if (controller.isLoading)
+                      const Center(child: CircularProgressIndicator())
+                    else
+                      PrimaryButton(
+                        onPressed: () {
+                          if (!businessLoginFormKey.currentState!.validate()) {
+                            return;
+                          }
+                          controller.businessLogin(
+                            context: context,
+                            email: emailController.text,
+                            password: passwordController.text,
+                          );
+                        },
+                        text: 'Sing In',
+                      ),
                     const SizedBox(height: 15),
                     PrimaryButton(
                       onPressed: () {
-                        Get.to(() => const MagicLinkSingin());
+                        Get.to<void>(() => const MagicLinkSingin());
                       },
                       text: 'Sign in with magic link',
                       primaryColored: false,

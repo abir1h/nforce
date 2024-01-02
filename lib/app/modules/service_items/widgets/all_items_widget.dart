@@ -36,7 +36,7 @@ class AllItems extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 16),
                 child: GestureDetector(
                   onTap: () {
-                    Get.to(() => const SelectedItemDetailsView(appbarText: 'AC Hydrowash Service'));
+                    Get.to<void>(() => const SelectedItemDetailsView(appbarText: 'AC Hydrowash Service'));
                   },
                   child: Obx(
                     () => ServiceManagerItemCard(

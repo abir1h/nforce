@@ -4,7 +4,7 @@ import 'package:nuforce/app/utils/colors.dart';
 import 'package:textfield_tags/textfield_tags.dart';
 
 class TagsInputField extends StatefulWidget {
-  const TagsInputField({Key? key}) : super(key: key);
+  const TagsInputField({super.key});
 
   @override
   State<TagsInputField> createState() => _TagsInputFieldState();
@@ -40,11 +40,11 @@ class _TagsInputFieldState extends State<TagsInputField> {
         Autocomplete<String>(
           optionsViewBuilder: (context, onSelected, options) {
             return Container(
-              margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 4.0),
+              margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
               child: Align(
                 alignment: Alignment.topCenter,
                 child: Material(
-                  elevation: 4.0,
+                  elevation: 4,
                   child: ConstrainedBox(
                     constraints: const BoxConstraints(maxHeight: 200),
                     child: ListView.builder(
@@ -59,9 +59,9 @@ class _TagsInputFieldState extends State<TagsInputField> {
                           child: Align(
                             alignment: Alignment.centerLeft,
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 15.0),
+                              padding: const EdgeInsets.symmetric(vertical: 15),
                               child: Text(
-                                option,
+                                option as String,
                                 textAlign: TextAlign.left,
                                 style: const TextStyle(
                                   color: Color.fromARGB(255, 74, 137, 92),
@@ -101,7 +101,7 @@ class _TagsInputFieldState extends State<TagsInputField> {
               textSeparators: const [' ', ','],
               letterCase: LetterCase.normal,
               inputfieldBuilder: (context, tec, fn, error, onChanged, onSubmitted) {
-                return ((context, sc, tags, onTagDelete) {
+                return (context, sc, tags, onTagDelete) {
                   return TextField(
                     controller: tec,
                     focusNode: fn,
@@ -125,7 +125,7 @@ class _TagsInputFieldState extends State<TagsInputField> {
                         ),
                         borderRadius: BorderRadius.circular(6),
                       ),
-                      hintText: _controller.hasTags ? '' : "Enter tags",
+                      hintText: _controller.hasTags ? '' : 'Enter tags',
                       errorText: error,
                       prefixIconConstraints: BoxConstraints(maxWidth: _distanceToField * 0.74),
                       prefixIcon: tags.isNotEmpty
@@ -141,7 +141,7 @@ class _TagsInputFieldState extends State<TagsInputField> {
                                         borderRadius: BorderRadius.all(Radius.circular(4)),
                                         color: AppColors.white2,
                                       ),
-                                      margin: const EdgeInsets.only(right: 5.0),
+                                      margin: const EdgeInsets.only(right: 5),
                                       padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
                                       child: Row(
                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -149,14 +149,14 @@ class _TagsInputFieldState extends State<TagsInputField> {
                                           InkWell(
                                             child: const Icon(
                                               Icons.close,
-                                              size: 18.0,
+                                              size: 18,
                                               color: AppColors.subText,
                                             ),
                                             onTap: () {
                                               onTagDelete(tag);
                                             },
                                           ),
-                                          const SizedBox(width: 4.0),
+                                          const SizedBox(width: 4),
                                           InkWell(
                                             child: Text(
                                               tag,
@@ -180,7 +180,7 @@ class _TagsInputFieldState extends State<TagsInputField> {
                     onChanged: onChanged,
                     onSubmitted: onSubmitted,
                   );
-                });
+                };
               },
             );
           },

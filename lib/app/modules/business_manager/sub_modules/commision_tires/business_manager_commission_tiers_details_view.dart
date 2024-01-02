@@ -13,8 +13,8 @@ import 'package:nuforce/main.dart';
 
 class BusinessManagerCommissionTierDeatilsView extends StatelessWidget {
   const BusinessManagerCommissionTierDeatilsView({
-    super.key,
     required this.commissionTier,
+    super.key,
   });
   final MockCommissionTier commissionTier;
 
@@ -49,7 +49,7 @@ class BusinessManagerCommissionTierDeatilsView extends StatelessWidget {
                   Expanded(
                     child: SecondaryButton(
                       onPressed: () {
-                        Get.back();
+                        Get.back<void>();
                         final controller = Get.find<BusinessManagerController>();
                         controller.commissionTierController.removeCommissionTier(commissionTier);
                         Fluttertoast.showToast(msg: 'Commission Tier Deleted');
@@ -61,8 +61,9 @@ class BusinessManagerCommissionTierDeatilsView extends StatelessWidget {
                   Expanded(
                     child: PrimaryButton(
                       onPressed: () {
-                        Get.back();
-                        Get.to(() => BusinessManagerAddOrEditCommissionTier(commissionTier: commissionTier));
+                        Get
+                          ..back<void>()
+                          ..to<void>(() => BusinessManagerAddOrEditCommissionTier(commissionTier: commissionTier));
                       },
                       text: 'Edit',
                     ),

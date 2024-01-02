@@ -30,29 +30,30 @@ class _BusinessManagerCalendarViewState extends State<BusinessManagerCalendarVie
           appBar: CustomAppbarMinimal(
             title: 'Calendar',
             trailing: [
-              controller.businessManagerCalendarController.mockCalendar.isEmpty
-                  ? const SizedBox()
-                  : GestureDetector(
-                      onTap: () {
-                        Get.to(() => const BusinessManagerAddOrEditCalendar());
-                      },
-                      child: Row(
-                        children: [
-                          Icon(Icons.add, color: AppColors.primaryBlue1, size: 16.sp),
-                          const SizedBox(width: 8),
-                          Text(
-                            'Add New',
-                            textAlign: TextAlign.right,
-                            style: TextStyle(
-                              color: AppColors.primaryBlue1,
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          )
-                        ],
+              if (controller.businessManagerCalendarController.mockCalendar.isEmpty)
+                const SizedBox()
+              else
+                GestureDetector(
+                  onTap: () {
+                    Get.to<void>(() => const BusinessManagerAddOrEditCalendar());
+                  },
+                  child: Row(
+                    children: [
+                      Icon(Icons.add, color: AppColors.primaryBlue1, size: 16.sp),
+                      const SizedBox(width: 8),
+                      Text(
+                        'Add New',
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                          color: AppColors.primaryBlue1,
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
-                    ),
-              const SizedBox(width: 16)
+                    ],
+                  ),
+                ),
+              const SizedBox(width: 16),
             ],
           ),
           body: SizedBox(
@@ -72,7 +73,7 @@ class _BusinessManagerCalendarViewState extends State<BusinessManagerCalendarVie
                             child: ColoredCalendarTaskTile(
                               calendar: controller.businessManagerCalendarController.mockCalendar[index],
                               onTap: () {
-                                Get.to(
+                                Get.to<void>(
                                   () => BusinessManagerCalendarDetailsView(
                                     calendar: controller.businessManagerCalendarController.mockCalendar[index],
                                   ),

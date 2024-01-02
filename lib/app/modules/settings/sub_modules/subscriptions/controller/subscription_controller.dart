@@ -1,8 +1,9 @@
+// ignore_for_file: avoid_positional_boolean_parameters
+
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/settings/models/card.dart';
 import 'package:nuforce/app/modules/settings/models/user_info.dart';
-
-import '../../../models/card.dart';
 
 class SubscriptionController extends GetxController {
   UserInfo? userInfo;
@@ -16,53 +17,54 @@ class SubscriptionController extends GetxController {
   TextEditingController contactUs = TextEditingController();
   TextEditingController helpEmail = TextEditingController();
 
-   bool? triggerValue = false;
+  bool? triggerValue = false;
 
   void trigger(bool value) {
     triggerValue = value;
     update();
   }
+
   List<String> data = [
     'Service Center ',
     'Contacts',
     'Service Manager',
     'Human Resource',
     'Accounting',
-
   ];
 
-  List cardList = [
+  List<Card> cardList = [
     Card(
       cardId: 1,
-      cardHolderName: "Abir Rahman",
-      cardNumber: "12342424252442546",
+      cardHolderName: 'Abir Rahman',
+      cardNumber: '12342424252442546',
       cvv: 123,
-      mmYy: "08/28",
+      mmYy: '08/28',
     ),
     Card(
       cardId: 2,
-      cardHolderName: "Shadat Rahman",
-      cardNumber: "1234242425276532435",
+      cardHolderName: 'Shadat Rahman',
+      cardNumber: '1234242425276532435',
       cvv: 123,
-      mmYy: "08/28",
+      mmYy: '08/28',
     ),
     Card(
       cardId: 3,
-      cardHolderName: "Rayhan Islam",
-      cardNumber: "123424242529876546",
+      cardHolderName: 'Rayhan Islam',
+      cardNumber: '123424242529876546',
       cvv: 123,
-      mmYy: "08/28",
+      mmYy: '08/28',
     ),
   ];
-  save(UserInfo data) {
+
+  void save(UserInfo data) {
     userInfo = data;
     update();
   }
 
-   obscureCardNumber(String cardNumber) {
+  String obscureCardNumber(String cardNumber) {
     if (cardNumber.length >= 16) {
-      String obscuredPart = '**** **** ';
-      String lastFourDigits = cardNumber.substring(12);
+      const obscuredPart = '**** **** ';
+      final lastFourDigits = cardNumber.substring(12);
       return '$obscuredPart$lastFourDigits';
     } else {
       return cardNumber; // Return the original number if it doesn't have enough digits.
@@ -70,20 +72,6 @@ class SubscriptionController extends GetxController {
   }
 
   final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
 
   void increment() => count.value++;
 }

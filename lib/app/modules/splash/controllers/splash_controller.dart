@@ -5,18 +5,16 @@ import 'package:nuforce/app/utils/shared_preferences.dart';
 class SplashController extends GetxController {
   @override
   void onInit() {
-    Future.delayed(const Duration(seconds: 2), () {
-      navigateToDestination();
-    });
+    Future.delayed(const Duration(seconds: 2), navigateToDestination);
     super.onInit();
   }
 
   void navigateToDestination() {
     final token = SharedPreferenceService.getToken();
     if (token != null && token.isNotEmpty) {
-      Get.offAllNamed(Routes.BOTTOM_NAV_BAR);
+      Get.offAllNamed<void>(Routes.BOTTOM_NAV_BAR);
     } else {
-      Get.offAllNamed(Routes.ON_BOARDING);
+      Get.offAllNamed<void>(Routes.ON_BOARDING);
     }
   }
 }

@@ -30,29 +30,30 @@ class _BusinessManagerCommissionTiersViewState extends State<BusinessManagerComm
           appBar: CustomAppbarMinimal(
             title: 'Commission Tiers',
             trailing: [
-              controller.commissionTierController.mockCommissionTier.isEmpty
-                  ? const SizedBox()
-                  : GestureDetector(
-                      onTap: () {
-                        Get.to(() => const BusinessManagerAddOrEditCommissionTier());
-                      },
-                      child: Row(
-                        children: [
-                          Icon(Icons.add, color: AppColors.primaryBlue1, size: 16.sp),
-                          const SizedBox(width: 4),
-                          Text(
-                            'Add',
-                            textAlign: TextAlign.right,
-                            style: TextStyle(
-                              color: AppColors.primaryBlue1,
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          )
-                        ],
+              if (controller.commissionTierController.mockCommissionTier.isEmpty)
+                const SizedBox()
+              else
+                GestureDetector(
+                  onTap: () {
+                    Get.to<void>(() => const BusinessManagerAddOrEditCommissionTier());
+                  },
+                  child: Row(
+                    children: [
+                      Icon(Icons.add, color: AppColors.primaryBlue1, size: 16.sp),
+                      const SizedBox(width: 4),
+                      Text(
+                        'Add',
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                          color: AppColors.primaryBlue1,
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
-                    ),
-              const SizedBox(width: 16)
+                    ],
+                  ),
+                ),
+              const SizedBox(width: 16),
             ],
           ),
           body: SizedBox(
@@ -72,7 +73,7 @@ class _BusinessManagerCommissionTiersViewState extends State<BusinessManagerComm
                             child: CommissionTierTile(
                               commission: controller.commissionTierController.mockCommissionTier[index],
                               onTap: () {
-                                Get.to(
+                                Get.to<void>(
                                   () => BusinessManagerCommissionTierDeatilsView(
                                     commissionTier: controller.commissionTierController.mockCommissionTier[index],
                                   ),

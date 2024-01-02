@@ -5,9 +5,9 @@ import 'package:nuforce/main.dart';
 
 class PackageTileDetailsInfoWidget extends StatelessWidget {
   const PackageTileDetailsInfoWidget({
-    super.key,
     required this.left,
     required this.right,
+    super.key,
     this.rightColor = AppColors.nutralBlack1,
   });
   final String left;
@@ -45,7 +45,7 @@ class PackageTileDetailsInfoWidget extends StatelessWidget {
             fontSize: 16.sp,
             fontWeight: FontWeight.w400,
           ),
-        )
+        ),
       ],
     );
   }

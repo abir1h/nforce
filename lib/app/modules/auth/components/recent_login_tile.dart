@@ -12,7 +12,6 @@ class RecentLoginTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Row(
@@ -57,7 +56,7 @@ class RecentLoginTile extends StatelessWidget {
           onSelected: (value) {
             log(value.toString(), name: 'RecentLoginTile');
           },
-        )
+        ),
       ],
     );
   }

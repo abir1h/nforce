@@ -69,7 +69,7 @@ class _SubscriptionItemsState extends State<SubscriptionItems> {
                 padding: EdgeInsets.only(bottom: 16.sp),
                 child: GestureDetector(
                   onTap: () {
-                    Get.to(() => const SubscriptionTileDetailsView());
+                    Get.to<void>(() => const SubscriptionTileDetailsView());
                   },
                   child: const SubscriptionListTile(),
                 ),

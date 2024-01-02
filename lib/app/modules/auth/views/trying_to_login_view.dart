@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/auth/components/magic_link_bottomsheet.dart';
+import 'package:nuforce/app/modules/auth/controllers/auth_controller.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
@@ -9,10 +10,8 @@ import 'package:nuforce/app/utils/text_styles.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 import 'package:nuforce/main.dart';
 
-import '../controllers/auth_controller.dart';
-
 class TryingToLoginView extends GetView<AuthController> {
-  const TryingToLoginView({Key? key}) : super(key: key);
+  const TryingToLoginView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,8 +27,6 @@ class TryingToLoginView extends GetView<AuthController> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
                 SizedBox(
@@ -85,9 +82,7 @@ class TryingToLoginView extends GetView<AuthController> {
                       ),
                     ),
                     GestureDetector(
-                      onTap: () {
-                        Get.back();
-                      },
+                      onTap: Get.back<void>,
                       child: Text(
                         'Sign in',
                         style: CustomTextStyle.heading4.copyWith(

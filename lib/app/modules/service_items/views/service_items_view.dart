@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/home/components/service_button.dart';
 import 'package:nuforce/app/modules/service_items/controllers/promotion_items_controller.dart';
+import 'package:nuforce/app/modules/service_items/controllers/service_items_controller.dart';
 import 'package:nuforce/app/modules/service_items/views/promotion_items_view.dart';
 import 'package:nuforce/app/modules/service_items/views/service_items_list_view.dart';
 import 'package:nuforce/app/modules/service_items/widgets/plugin_item_card.dart';
@@ -12,10 +12,8 @@ import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 import 'package:nuforce/main.dart';
 
-import '../controllers/service_items_controller.dart';
-
 class ServiceItemsView extends GetView<ServiceItemsController> {
-  const ServiceItemsView({Key? key}) : super(key: key);
+  const ServiceItemsView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +34,6 @@ class ServiceItemsView extends GetView<ServiceItemsController> {
                 child: Wrap(
                   spacing: 16,
                   runSpacing: 16,
-                  alignment: WrapAlignment.start,
                   children: [
                     ServiceButton(
                       svgPath: Assets.images.svg.service,
@@ -47,7 +44,7 @@ class ServiceItemsView extends GetView<ServiceItemsController> {
                           controller = Get.put(ServiceItemsController());
                         }
                         controller.miniTabEnum.value = ServiceTabEnum.all;
-                        Get.to(() => const ServiceItemsListView());
+                        Get.to<void>(() => const ServiceItemsListView());
                       },
                     ),
                     ServiceButton(
@@ -59,7 +56,7 @@ class ServiceItemsView extends GetView<ServiceItemsController> {
                           controller = Get.put(ServiceItemsController());
                         }
                         controller.miniTabEnum.value = ServiceTabEnum.material;
-                        Get.to(() => const ServiceItemsListView());
+                        Get.to<void>(() => const ServiceItemsListView());
                       },
                     ),
                     ServiceButton(
@@ -71,7 +68,7 @@ class ServiceItemsView extends GetView<ServiceItemsController> {
                           controller = Get.put(ServiceItemsController());
                         }
                         controller.miniTabEnum.value = ServiceTabEnum.package;
-                        Get.to(() => const ServiceItemsListView());
+                        Get.to<void>(() => const ServiceItemsListView());
                       },
                     ),
                     ServiceButton(
@@ -83,8 +80,8 @@ class ServiceItemsView extends GetView<ServiceItemsController> {
                           controller = Get.put(ServiceItemsController());
                         }
                         controller.miniTabEnum.value = ServiceTabEnum.subscription;
-                        Get.to(() => const ServiceItemsListView());
-                        Future.delayed(const Duration(milliseconds: 200)).then((value) {
+                        Get.to<void>(() => const ServiceItemsListView());
+                        Future<void>.delayed(const Duration(milliseconds: 200)).then((value) {
                           if (controller.scrollController.hasClients) {
                             controller.scrollController.animateTo(
                               controller.scrollController.position.maxScrollExtent,
@@ -104,8 +101,8 @@ class ServiceItemsView extends GetView<ServiceItemsController> {
                           controller = Get.put(ServiceItemsController());
                         }
                         controller.miniTabEnum.value = ServiceTabEnum.addons;
-                        Get.to(() => const ServiceItemsListView());
-                        Future.delayed(const Duration(milliseconds: 200)).then((value) {
+                        Get.to<void>(() => const ServiceItemsListView());
+                        Future<void>.delayed(const Duration(milliseconds: 200)).then((value) {
                           if (controller.scrollController.hasClients) {
                             controller.scrollController.animateTo(
                               controller.scrollController.position.maxScrollExtent,
@@ -139,7 +136,6 @@ class ServiceItemsView extends GetView<ServiceItemsController> {
                 child: Wrap(
                   spacing: 16,
                   runSpacing: 16,
-                  alignment: WrapAlignment.start,
                   children: [
                     ServiceButton(
                       svgPath: Assets.images.svg.coupon,
@@ -150,7 +146,7 @@ class ServiceItemsView extends GetView<ServiceItemsController> {
                           controller = Get.put(PromotionItemsController());
                         }
                         controller.miniTabEnum.value = PromotionTabEnum.coupon;
-                        Get.to(() => const PromotionItemsListView());
+                        Get.to<void>(() => const PromotionItemsListView());
                       },
                     ),
                     ServiceButton(
@@ -162,7 +158,7 @@ class ServiceItemsView extends GetView<ServiceItemsController> {
                           controller = Get.put(PromotionItemsController());
                         }
                         controller.miniTabEnum.value = PromotionTabEnum.discount;
-                        Get.to(() => const PromotionItemsListView());
+                        Get.to<void>(() => const PromotionItemsListView());
                       },
                     ),
                     ServiceButton(
@@ -174,7 +170,7 @@ class ServiceItemsView extends GetView<ServiceItemsController> {
                           controller = Get.put(PromotionItemsController());
                         }
                         controller.miniTabEnum.value = PromotionTabEnum.offer;
-                        Get.to(() => const PromotionItemsListView());
+                        Get.to<void>(() => const PromotionItemsListView());
                       },
                     ),
                     ServiceButton(
@@ -186,7 +182,7 @@ class ServiceItemsView extends GetView<ServiceItemsController> {
                           controller = Get.put(PromotionItemsController());
                         }
                         controller.miniTabEnum.value = PromotionTabEnum.gift;
-                        Get.to(() => const PromotionItemsListView());
+                        Get.to<void>(() => const PromotionItemsListView());
                       },
                     ),
                   ],
@@ -215,7 +211,7 @@ class ServiceItemsView extends GetView<ServiceItemsController> {
                       fontSize: 14.sp,
                       fontWeight: FontWeight.w400,
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
@@ -236,7 +232,7 @@ class ServiceItemsView extends GetView<ServiceItemsController> {
                   },
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),

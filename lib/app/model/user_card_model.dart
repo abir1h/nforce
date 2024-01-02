@@ -1,25 +1,25 @@
 class UserCard {
-  final int? id;
-  final String? userType;
-  final int? businessId;
-  final String? orgCode;
-  final int? contactId;
-  final String? displayName;
-  final String? firstName;
-  final String? lastName;
-  final String? username;
-  final String? primaryEmail;
-  final dynamic primaryMobile;
-  final String? countryCode;
-  final bool? verified;
-  final String? status;
-  final String? timezone;
-  final String? photoUrl;
-  final String? businessName;
-  final String? primaryRole;
-  final String? lastSeenAt;
-  final String? createdAt;
-  final List<Assignment>? assignments;
+  int? id;
+  String? userType;
+  int? businessId;
+  String? orgCode;
+  int? contactId;
+  String? displayName;
+  String? firstName;
+  String? lastName;
+  String? username;
+  String? primaryEmail;
+  dynamic primaryMobile;
+  String? countryCode;
+  bool? verified;
+  String? status;
+  String? timezone;
+  String? photoUrl;
+  String? businessName;
+  String? primaryRole;
+  String? lastSeenAt;
+  String? createdAt;
+  List<Assignments>? assignments;
 
   UserCard({
     this.id,
@@ -45,145 +45,89 @@ class UserCard {
     this.assignments,
   });
 
-  UserCard copyWith({
-    int? id,
-    String? userType,
-    int? businessId,
-    String? orgCode,
-    int? contactId,
-    String? displayName,
-    String? firstName,
-    String? lastName,
-    String? username,
-    String? primaryEmail,
-    dynamic primaryMobile,
-    String? countryCode,
-    bool? verified,
-    String? status,
-    String? timezone,
-    String? photoUrl,
-    String? businessName,
-    String? primaryRole,
-    String? lastSeenAt,
-    String? createdAt,
-    List<Assignment>? assignments,
-  }) =>
-      UserCard(
-        id: id ?? this.id,
-        userType: userType ?? this.userType,
-        businessId: businessId ?? this.businessId,
-        orgCode: orgCode ?? this.orgCode,
-        contactId: contactId ?? this.contactId,
-        displayName: displayName ?? this.displayName,
-        firstName: firstName ?? this.firstName,
-        lastName: lastName ?? this.lastName,
-        username: username ?? this.username,
-        primaryEmail: primaryEmail ?? this.primaryEmail,
-        primaryMobile: primaryMobile ?? this.primaryMobile,
-        countryCode: countryCode ?? this.countryCode,
-        verified: verified ?? this.verified,
-        status: status ?? this.status,
-        timezone: timezone ?? this.timezone,
-        photoUrl: photoUrl ?? this.photoUrl,
-        businessName: businessName ?? this.businessName,
-        primaryRole: primaryRole ?? this.primaryRole,
-        lastSeenAt: lastSeenAt ?? this.lastSeenAt,
-        createdAt: createdAt ?? this.createdAt,
-        assignments: assignments ?? this.assignments,
-      );
+  UserCard.fromJson(Map<String, dynamic> json) {
+    id = json['id'] as int?;
+    userType = json['userType'] as String?;
+    businessId = json['businessId'] as int?;
+    orgCode = json['orgCode'] as String?;
+    contactId = json['contactId'] as int?;
+    displayName = json['displayName'] as String?;
+    firstName = json['firstName'] as String?;
+    lastName = json['lastName'] as String?;
+    username = json['username'] as String?;
+    primaryEmail = json['primaryEmail'] as String?;
+    primaryMobile = json['primaryMobile'] as dynamic;
+    countryCode = json['countryCode'] as String?;
+    verified = json['verified'] as bool?;
+    status = json['status'] as String?;
+    timezone = json['timezone'] as String?;
+    photoUrl = json['photoUrl'] as String?;
+    businessName = json['businessName'] as String?;
+    primaryRole = json['primaryRole'] as String?;
+    lastSeenAt = json['lastSeenAt'] as String?;
+    createdAt = json['createdAt'] as String?;
+    if (json['assignments'] != null) {
+      assignments = <Assignments>[];
+      final jsonAssignments = json['assignments'] as Iterable<dynamic>;
+      for (final assignment in jsonAssignments) {
+        assignments!.add(Assignments.fromJson(assignment as Map<String, dynamic>));
+      }
+    }
+  }
 
-  factory UserCard.fromJson(Map<String, dynamic> json) => UserCard(
-        id: json["id"],
-        userType: json["userType"],
-        businessId: json["businessId"],
-        orgCode: json["orgCode"],
-        contactId: json["contactId"],
-        displayName: json["displayName"],
-        firstName: json["firstName"],
-        lastName: json["lastName"],
-        username: json["username"],
-        primaryEmail: json["primaryEmail"],
-        primaryMobile: json["primaryMobile"],
-        countryCode: json["countryCode"],
-        verified: json["verified"],
-        status: json["status"],
-        timezone: json["timezone"],
-        photoUrl: json["photoUrl"],
-        businessName: json["businessName"],
-        primaryRole: json["primaryRole"],
-        lastSeenAt: json["lastSeenAt"],
-        createdAt: json["createdAt"],
-        assignments: json["assignments"] == null ? [] : List<Assignment>.from(json["assignments"]!.map((x) => Assignment.fromJson(x))),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "userType": userType,
-        "businessId": businessId,
-        "orgCode": orgCode,
-        "contactId": contactId,
-        "displayName": displayName,
-        "firstName": firstName,
-        "lastName": lastName,
-        "username": username,
-        "primaryEmail": primaryEmail,
-        "primaryMobile": primaryMobile,
-        "countryCode": countryCode,
-        "verified": verified,
-        "status": status,
-        "timezone": timezone,
-        "photoUrl": photoUrl,
-        "businessName": businessName,
-        "primaryRole": primaryRole,
-        "lastSeenAt": lastSeenAt,
-        "createdAt": createdAt,
-        "assignments": assignments == null ? [] : List<dynamic>.from(assignments!.map((x) => x.toJson())),
-      };
+  Map<String, dynamic> toJson() {
+    final data = <String, dynamic>{};
+    data['id'] = id;
+    data['userType'] = userType;
+    data['businessId'] = businessId;
+    data['orgCode'] = orgCode;
+    data['contactId'] = contactId;
+    data['displayName'] = displayName;
+    data['firstName'] = firstName;
+    data['lastName'] = lastName;
+    data['username'] = username;
+    data['primaryEmail'] = primaryEmail;
+    data['primaryMobile'] = primaryMobile;
+    data['countryCode'] = countryCode;
+    data['verified'] = verified;
+    data['status'] = status;
+    data['timezone'] = timezone;
+    data['photoUrl'] = photoUrl;
+    data['businessName'] = businessName;
+    data['primaryRole'] = primaryRole;
+    data['lastSeenAt'] = lastSeenAt;
+    data['createdAt'] = createdAt;
+    if (assignments != null) {
+      data['assignments'] = assignments!.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
 }
 
-class Assignment {
-  final int? id;
-  final String? groupType;
-  final String? group;
-  final String? role;
-  final List<String>? accessModules;
+class Assignments {
+  int? id;
+  String? groupType;
+  String? group;
+  String? role;
+  List<String>? accessModules;
 
-  Assignment({
-    this.id,
-    this.groupType,
-    this.group,
-    this.role,
-    this.accessModules,
-  });
+  Assignments({this.id, this.groupType, this.group, this.role, this.accessModules});
 
-  Assignment copyWith({
-    int? id,
-    String? groupType,
-    String? group,
-    String? role,
-    List<String>? accessModules,
-  }) =>
-      Assignment(
-        id: id ?? this.id,
-        groupType: groupType ?? this.groupType,
-        group: group ?? this.group,
-        role: role ?? this.role,
-        accessModules: accessModules ?? this.accessModules,
-      );
+  Assignments.fromJson(Map<String, dynamic> json) {
+    id = json['id'] as int?;
+    groupType = json['group_type'] as String?;
+    group = json['group'] as String?;
+    role = json['role'] as String?;
+    accessModules = json['access_modules'].cast<String>() as List<String>?;
+  }
 
-  factory Assignment.fromJson(Map<String, dynamic> json) => Assignment(
-        id: json["id"],
-        groupType: json["group_type"],
-        group: json["group"],
-        role: json["role"],
-        accessModules: json["access_modules"] == null ? [] : List<String>.from(json["access_modules"]!.map((x) => x)),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "group_type": groupType,
-        "group": group,
-        "role": role,
-        "access_modules": accessModules == null ? [] : List<dynamic>.from(accessModules!.map((x) => x)),
-      };
+  Map<String, dynamic> toJson() {
+    final data = <String, dynamic>{};
+    data['id'] = id;
+    data['group_type'] = groupType;
+    data['group'] = group;
+    data['role'] = role;
+    data['access_modules'] = accessModules;
+    return data;
+  }
 }

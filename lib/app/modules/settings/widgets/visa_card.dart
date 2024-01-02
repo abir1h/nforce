@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-
-import '../../../../gen/assets.gen.dart';
-import '../../../utils/colors.dart';
-import '../sub_modules/subscriptions/controller/subscription_controller.dart';
+import 'package:nuforce/app/modules/settings/sub_modules/subscriptions/controller/subscription_controller.dart';
+import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/gen/assets.gen.dart';
 
 class VisaCard extends StatelessWidget {
   final String cardName;
@@ -14,20 +13,25 @@ class VisaCard extends StatelessWidget {
   final Color? bgColor;
   final Color? borderColor;
 
-  VisaCard({
+  const VisaCard({
     required this.cardName,
     required this.cardNumber,
-    required this.onPressed, required this.trailling, this.bgColor, this.borderColor,
+    required this.onPressed,
+    required this.trailling,
+    super.key,
+    this.bgColor,
+    this.borderColor,
   });
 
   @override
-  Widget build(BuildContext context) {  final controller = Get.put(SubscriptionController());
+  Widget build(BuildContext context) {
+    final controller = Get.put(SubscriptionController());
 
-  return Container(
+    return Container(
       padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 12.w),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8.r),
-        border: Border.all(color: borderColor??Colors.transparent),
+        border: Border.all(color: borderColor ?? Colors.transparent),
         color: bgColor,
       ),
       child: Row(
@@ -36,10 +40,9 @@ class VisaCard extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8.r),
               color: AppColors.lightblueshade2,
-
             ),
             child: Padding(
-              padding: const EdgeInsets.all(12.0),
+              padding: const EdgeInsets.all(12),
               child: Image.asset(
                 Assets.images.png.visa.keyName,
                 height: 11.h,
@@ -58,26 +61,24 @@ class VisaCard extends StatelessWidget {
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
                     fontSize: 14.sp,
-                    fontFamily: "Poppins",
                     color: AppColors.nutralBlack1,
                   ),
                 ),
                 Text(
-                  controller.obscureCardNumber(cardNumber) ,
+                  controller.obscureCardNumber(cardNumber),
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     fontSize: 14.sp,
-                    fontFamily: "Poppins",
                     color: AppColors.nutralBlack2,
                   ),
                 ),
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 35,
           ),
-          trailling
+          trailling,
         ],
       ),
     );

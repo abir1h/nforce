@@ -7,11 +7,11 @@ import 'package:nuforce/main.dart';
 
 class ActionsTile extends StatelessWidget {
   const ActionsTile({
-    super.key,
     required this.text,
     required this.color,
     required this.onTap,
     required this.isLast,
+    super.key,
   });
 
   final String text;
@@ -68,7 +68,7 @@ class ActionsTile extends StatelessWidget {
                             width: 42,
                             padding: const EdgeInsets.all(8),
                             decoration: BoxDecoration(
-                              color: color.withOpacity(0.0),
+                              color: color.withOpacity(0),
                               borderRadius: BorderRadius.circular(100),
                               border: Border.all(
                                 color: AppColors.white1,
@@ -91,7 +91,7 @@ class ActionsTile extends StatelessWidget {
                       width: width * 0.4,
                       child: Text(
                         text,
-                        style:  TextStyle(
+                        style: TextStyle(
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w400,
                           color: AppColors.nutralBlack1,
@@ -109,7 +109,7 @@ class ActionsTile extends StatelessWidget {
               height: 1,
               width: width,
               color: AppColors.inactiveColor,
-            )
+            ),
         ],
       ),
     );

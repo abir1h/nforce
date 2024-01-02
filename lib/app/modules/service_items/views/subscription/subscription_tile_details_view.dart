@@ -64,7 +64,7 @@ class SubscriptionTileDetailsView extends StatelessWidget {
                   SizedBox(height: 16.h),
                   const TitleSubtitleMinimal(
                     title: 'Cost',
-                    subtitle: '\$25.00',
+                    subtitle: r'$25.00',
                   ),
                   SizedBox(height: 16.h),
                   const TitleSubtitleMinimal(
@@ -98,7 +98,7 @@ class SubscriptionTileDetailsView extends StatelessWidget {
                         child: SecondaryButton(
                           onPressed: () {
                             Fluttertoast.showToast(msg: 'Deleted');
-                            Get.back();
+                            Get.back<void>();
                           },
                           text: 'Delete',
                         ),
@@ -107,7 +107,7 @@ class SubscriptionTileDetailsView extends StatelessWidget {
                       Expanded(
                         child: PrimaryButton(
                           onPressed: () {
-                            Get.to(() => const AddOrEditSubscriptionView(isEdit: true));
+                            Get.to<void>(() => const AddOrEditSubscriptionView(isEdit: true));
                           },
                           text: 'Edit',
                         ),

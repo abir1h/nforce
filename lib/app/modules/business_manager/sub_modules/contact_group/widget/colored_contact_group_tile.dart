@@ -7,8 +7,8 @@ import 'package:nuforce/gen/assets.gen.dart';
 
 class ColoredContactGroupTile extends StatelessWidget {
   const ColoredContactGroupTile({
-    super.key,
     required this.contactGroup,
+    super.key,
     this.onTap,
   });
 
@@ -58,7 +58,7 @@ class ColoredContactGroupTile extends StatelessWidget {
                       fontSize: 14.sp,
                       fontWeight: FontWeight.w400,
                     ),
-                  )
+                  ),
                 ],
               ),
             ),

@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/on_boarding/components/next_button.dart';
 import 'package:nuforce/app/modules/on_boarding/components/skip_button.dart';
+import 'package:nuforce/app/modules/on_boarding/controllers/on_boarding_controller.dart';
 import 'package:nuforce/app/routes/app_pages.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
 import 'package:nuforce/main.dart';
 
-import '../controllers/on_boarding_controller.dart';
-
 class OnBoardingView extends GetView<OnBoardingController> {
-  const OnBoardingView({Key? key}) : super(key: key);
+  const OnBoardingView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +31,7 @@ class OnBoardingView extends GetView<OnBoardingController> {
                       children: [
                         SkipButton(
                           onTap: () {
-                            Get.offAllNamed(Routes.AUTH);
+                            Get.offAllNamed<void>(Routes.AUTH);
                           },
                         ),
                         const Spacer(),

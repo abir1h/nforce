@@ -16,8 +16,6 @@ Future<dynamic> resetPasswordBottomSheet(BuildContext context) {
       return Container(
         padding: const EdgeInsets.symmetric(horizontal: 34),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
             const SizedBox(height: 20),
@@ -41,9 +39,7 @@ Future<dynamic> resetPasswordBottomSheet(BuildContext context) {
             ),
             const SizedBox(height: 30),
             GestureDetector(
-              onTap: () {
-                Get.back();
-              },
+              onTap: Get.back<void>,
               child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
                 decoration: BoxDecoration(

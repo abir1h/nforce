@@ -62,7 +62,7 @@ class _AddonDetailsViewState extends State<AddonDetailsView> {
                 children: [
                   CarouselSlider(
                     options: CarouselOptions(
-                      height: 200.0,
+                      height: 200,
                       viewportFraction: 1,
                       onPageChanged: (index, reason) {
                         setState(() {
@@ -106,7 +106,7 @@ class _AddonDetailsViewState extends State<AddonDetailsView> {
                         ),
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
               const SizedBox(height: 16),

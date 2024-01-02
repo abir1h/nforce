@@ -30,7 +30,7 @@ class EmptyUserRole extends StatelessWidget {
         const Expanded(child: SizedBox()),
         PrimaryButton(
           onPressed: () {
-            Get.to(() => const AddOrEditUserRoleView());
+            Get.to<void>(() => const AddOrEditUserRoleView());
           },
           text: 'Add user role',
         ),

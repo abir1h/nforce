@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
-import '../models/estimation_setting_model.dart';
+import 'package:nuforce/app/modules/business_manager/models/estimation_setting_model.dart';
 
 class EstimationSettingController extends GetxController {
   //region Dropdown Data
@@ -8,14 +8,14 @@ class EstimationSettingController extends GetxController {
   String? expirationPeriod;
   String? advancePayment;
   String? cancellationFee;
-  String? selectTaxExempt = "Allow";
-  String? selectLockEstimation = "Not Allow";
-  String? selectIssues = "Not Allow";
-  List commonPolices = [];
+  String? selectTaxExempt = 'Allow';
+  String? selectLockEstimation = 'Not Allow';
+  String? selectIssues = 'Not Allow';
+  List<String> commonPolices = [];
 
-  List taxExemptList = ["Allow", "Not Allow"];
-  List lockEstimationList = ["Allow", "Not Allow"];
-  List issuesList = ["Allow", "Not Allow"];
+  List<String> taxExemptList = ['Allow', 'Not Allow'];
+  List<String> lockEstimationList = ['Allow', 'Not Allow'];
+  List<String> issuesList = ['Allow', 'Not Allow'];
 
   void setExpiration(String value) {
     expirationPeriod = value;
@@ -84,7 +84,7 @@ class EstimationSettingController extends GetxController {
 
   EstimationSettingModel? estimationSettingData;
 
-  addEstimationData(EstimationSettingModel data) {
+  void addEstimationData(EstimationSettingModel data) {
     estimationSettingData = data;
     update();
   }

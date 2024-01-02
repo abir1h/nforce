@@ -4,22 +4,21 @@ import 'package:nuforce/app/utils/colors.dart';
 
 class ColoredCheckboxWithTitle extends StatelessWidget {
   const ColoredCheckboxWithTitle({
-    super.key,
     required this.isSelected,
     required this.color,
     required this.onChanged,
     required this.title,
+    super.key,
   });
 
   final bool isSelected;
   final Color color;
-  final Function(bool?)? onChanged;
+  final void Function(bool?)? onChanged;
   final String title;
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         CustomCheckbox(
           activeColor: color,

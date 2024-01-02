@@ -22,14 +22,15 @@ class _AddCardBottomsheetState extends State<AddCardBottomsheet> {
 
   @override
   Widget build(BuildContext context) {
-    MediaQueryData mediaQuery = MediaQuery.of(context);
+    final mediaQuery = MediaQuery.of(context);
 
-    return GetBuilder<SubscriptionController>(builder: (_) {
-      return Scaffold(
-        backgroundColor: Colors.transparent,
-        body: Align(
-          alignment: Alignment.bottomCenter,
-          child: Container(
+    return GetBuilder<SubscriptionController>(
+      builder: (_) {
+        return Scaffold(
+          backgroundColor: Colors.transparent,
+          body: Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
               width: double.infinity,
               margin: EdgeInsets.only(top: mediaQuery.padding.top * 3),
               padding: EdgeInsets.only(top: 10.h, right: 16.w, left: 20.w),
@@ -40,15 +41,15 @@ class _AddCardBottomsheetState extends State<AddCardBottomsheet> {
                   topRight: Radius.circular(30.r),
                 ),
               ),
-              child: Column(
+              child: const Column(
                 children: [
-                  SizedBox(
-                    height: 200,
-                  )
+                  SizedBox(height: 200),
                 ],
-              )),
-        ),
-      );
-    });
+              ),
+            ),
+          ),
+        );
+      },
+    );
   }
 }

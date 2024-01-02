@@ -3,13 +3,13 @@ import 'package:nuforce/app/utils/colors.dart';
 
 class CustomCheckbox extends StatelessWidget {
   const CustomCheckbox({
-    super.key,
     required this.value,
     required this.onChanged,
+    super.key,
     this.activeColor,
   });
   final bool? value;
-  final Function(bool?)? onChanged;
+  final void Function(bool?)? onChanged;
   final Color? activeColor;
   @override
   Widget build(BuildContext context) {

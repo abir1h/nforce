@@ -15,13 +15,13 @@ import 'package:nuforce/gen/assets.gen.dart';
 
 class NewServiceOverviewBody extends StatefulWidget {
   const NewServiceOverviewBody({
-    super.key,
     required this.itemNameController,
     required this.itemCodeController,
     required this.priceController,
     required this.quantityController,
     required this.whatsIncludedController,
     required this.itemDiscountNoteController,
+    super.key,
   });
 
   final TextEditingController itemNameController;
@@ -40,12 +40,10 @@ class _NewServiceOverviewBodyState extends State<NewServiceOverviewBody> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // Image picker
         Row(
-          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             GestureDetector(
               onTap: () async {
@@ -90,7 +88,7 @@ class _NewServiceOverviewBodyState extends State<NewServiceOverviewBody> {
                               },
                               child: SvgPicture.asset(Assets.images.svg.closeCircle),
                             ),
-                          )
+                          ),
                         ],
                       );
                     },
@@ -138,7 +136,7 @@ class _NewServiceOverviewBodyState extends State<NewServiceOverviewBody> {
                   fontWeight: FontWeight.w400,
                 ),
               ),
-            )
+            ),
           ],
           hint: 'Select Category',
           onChanged: (v) {},
@@ -176,7 +174,7 @@ class _NewServiceOverviewBodyState extends State<NewServiceOverviewBody> {
                   fontWeight: FontWeight.w400,
                 ),
               ),
-            )
+            ),
           ],
           hint: 'Select Category',
           onChanged: (v) {},
@@ -209,14 +207,14 @@ class _NewServiceOverviewBodyState extends State<NewServiceOverviewBody> {
         ),
         const SizedBox(height: 16),
         CustomTextField(
-          label: "Why choos us",
+          label: 'Why choos us',
           hint: 'Write details...',
           controller: widget.whatsIncludedController,
           maxLines: 3,
         ),
         const SizedBox(height: 16),
         CustomTextField(
-          label: "Item Discount",
+          label: 'Item Discount',
           hint: 'Enter item discount',
           controller: widget.whatsIncludedController,
         ),
@@ -231,7 +229,7 @@ class _NewServiceOverviewBodyState extends State<NewServiceOverviewBody> {
         ),
         const SizedBox(height: 16),
         CustomTextField(
-          label: "Discount Notes",
+          label: 'Discount Notes',
           hint: 'Write discount notes...',
           controller: widget.itemDiscountNoteController,
           maxLines: 3,
@@ -268,7 +266,7 @@ class _NewServiceOverviewBodyState extends State<NewServiceOverviewBody> {
                   fontWeight: FontWeight.w400,
                 ),
               ),
-            )
+            ),
           ],
           hint: 'Select Category',
           onChanged: (v) {},

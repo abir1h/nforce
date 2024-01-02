@@ -13,8 +13,8 @@ import 'package:nuforce/main.dart';
 
 class BusinessManagerLabelDeatilsView extends StatelessWidget {
   const BusinessManagerLabelDeatilsView({
-    super.key,
     required this.label,
+    super.key,
   });
   final MockLabel label;
 
@@ -45,7 +45,7 @@ class BusinessManagerLabelDeatilsView extends StatelessWidget {
                   Expanded(
                     child: SecondaryButton(
                       onPressed: () {
-                        Get.back();
+                        Get.back<void>();
                         final controller = Get.find<BusinessManagerController>();
                         controller.labelController.removeLabel(label);
                         Fluttertoast.showToast(msg: 'Label Deleted');
@@ -57,8 +57,9 @@ class BusinessManagerLabelDeatilsView extends StatelessWidget {
                   Expanded(
                     child: PrimaryButton(
                       onPressed: () {
-                        Get.back();
-                        Get.to(() => BusinessManagerAddOrEditLabel(label: label));
+                        Get
+                          ..back<void>()
+                          ..to<void>(() => BusinessManagerAddOrEditLabel(label: label));
                       },
                       text: 'Edit',
                     ),

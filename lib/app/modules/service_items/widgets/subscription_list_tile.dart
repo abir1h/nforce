@@ -58,13 +58,13 @@ class SubscriptionListTile extends StatelessWidget {
               ),
               SizedBox(width: 4.w),
               Text(
-                '\$25.00',
+                r'$25.00',
                 style: TextStyle(
                   color: AppColors.nutralBlack1,
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w500,
                 ),
-              )
+              ),
             ],
           ),
         ],

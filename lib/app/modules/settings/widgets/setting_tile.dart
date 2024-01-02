@@ -2,21 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nuforce/app/utils/colors.dart';
 
-import '../../../../gen/assets.gen.dart';
-
 class SettingTile extends StatelessWidget {
   final String leading;
   final String? label;
   final Widget? action;
   final bool? hasDivider;
   final VoidCallback? onTap;
-  const SettingTile(
-      {super.key,
-      required this.leading,
-      this.label,
-      this.action,
-      this.hasDivider,
-      this.onTap});
+  const SettingTile({
+    required this.leading,
+    super.key,
+    this.label,
+    this.action,
+    this.hasDivider,
+    this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -44,33 +43,31 @@ class SettingTile extends StatelessWidget {
                         width: 8.w,
                       ),
                       Text(
-                       label??'',
-                        style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontFamily: "Poppins",
-                            fontSize: 16.sp,
-                            color: AppColors.nutralBlack1),
+                        label ?? '',
+                        style: TextStyle(fontWeight: FontWeight.w400, fontFamily: 'Poppins', fontSize: 16.sp, color: AppColors.nutralBlack1),
                       ),
                     ],
                   ),
                 ),
-                action != null
-                    ? action!
-                    : const Icon(
-                        Icons.arrow_forward_ios,
-                        color: AppColors.nutralBlack2,
-                      )
+                if (action != null)
+                  action!
+                else
+                  const Icon(
+                    Icons.arrow_forward_ios,
+                    color: AppColors.nutralBlack2,
+                  ),
               ],
             ),
             const SizedBox(
               height: 12,
             ),
-            hasDivider == true
-                ? const Divider(
-                    color: AppColors.white3,
-                    thickness: 1,
-                  )
-                : const SizedBox()
+            if (hasDivider == true)
+              const Divider(
+                color: AppColors.white3,
+                thickness: 1,
+              )
+            else
+              const SizedBox(),
           ],
         ),
       ),

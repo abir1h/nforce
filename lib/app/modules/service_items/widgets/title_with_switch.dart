@@ -1,17 +1,19 @@
+// ignore_for_file: avoid_positional_boolean_parameters
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nuforce/app/utils/colors.dart';
 
 class TitleWithSwitch extends StatelessWidget {
   const TitleWithSwitch({
-    super.key,
     required this.text,
     required this.isSwitchSelected,
     required this.onSwitchChanged,
+    super.key,
   });
   final String text;
   final bool isSwitchSelected;
-  final Function(bool) onSwitchChanged;
+  final void Function(bool) onSwitchChanged;
 
   @override
   Widget build(BuildContext context) {

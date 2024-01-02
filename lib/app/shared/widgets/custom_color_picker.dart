@@ -6,10 +6,10 @@ import 'package:nuforce/app/utils/text_styles.dart';
 
 class CustomColorPicker extends StatefulWidget {
   const CustomColorPicker({
+    required this.onColorChanged,
     super.key,
     this.label,
     this.pickerColor = AppColors.primaryBlue1,
-    required this.onColorChanged,
   });
 
   final String? label;
@@ -37,7 +37,7 @@ class _CustomColorPickerState extends State<CustomColorPicker> {
           ),
         InkWell(
           onTap: () {
-            showDialog(
+            showDialog<void>(
               context: context,
               builder: (context) {
                 return AlertDialog(
@@ -104,7 +104,7 @@ class _CustomColorPickerState extends State<CustomColorPicker> {
                       const Icon(
                         Icons.arrow_drop_down,
                         color: AppColors.nutralBlack2,
-                      )
+                      ),
                     ],
                   ),
                 ),

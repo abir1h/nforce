@@ -30,29 +30,30 @@ class _BusinessManagerContactGroupViewState extends State<BusinessManagerContact
           appBar: CustomAppbarMinimal(
             title: 'Contact Group',
             trailing: [
-              controller.contactGroupController.mockContactGroup.isEmpty
-                  ? const SizedBox()
-                  : GestureDetector(
-                      onTap: () {
-                        Get.to(() => const BusinessManagerAddOrEditContactGroup());
-                      },
-                      child: Row(
-                        children: [
-                          Icon(Icons.add, color: AppColors.primaryBlue1, size: 16.sp),
-                          const SizedBox(width: 8),
-                          Text(
-                            'Add New',
-                            textAlign: TextAlign.right,
-                            style: TextStyle(
-                              color: AppColors.primaryBlue1,
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          )
-                        ],
+              if (controller.contactGroupController.mockContactGroup.isEmpty)
+                const SizedBox()
+              else
+                GestureDetector(
+                  onTap: () {
+                    Get.to<void>(() => const BusinessManagerAddOrEditContactGroup());
+                  },
+                  child: Row(
+                    children: [
+                      Icon(Icons.add, color: AppColors.primaryBlue1, size: 16.sp),
+                      const SizedBox(width: 8),
+                      Text(
+                        'Add New',
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                          color: AppColors.primaryBlue1,
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
-                    ),
-              const SizedBox(width: 16)
+                    ],
+                  ),
+                ),
+              const SizedBox(width: 16),
             ],
           ),
           body: SizedBox(
@@ -72,7 +73,7 @@ class _BusinessManagerContactGroupViewState extends State<BusinessManagerContact
                             child: ColoredContactGroupTile(
                               contactGroup: controller.contactGroupController.mockContactGroup[index],
                               onTap: () {
-                                Get.to(
+                                Get.to<void>(
                                   () => BusinessManagerContactGroupDeatilsView(
                                     contactGroup: controller.contactGroupController.mockContactGroup[index],
                                   ),

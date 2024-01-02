@@ -30,7 +30,7 @@ class EmptyCommissionTier extends StatelessWidget {
         const Expanded(child: SizedBox()),
         PrimaryButton(
           onPressed: () {
-            Get.to(() => const BusinessManagerAddOrEditCommissionTier());
+            Get.to<void>(() => const BusinessManagerAddOrEditCommissionTier());
           },
           text: 'Add Commission Tier',
         ),

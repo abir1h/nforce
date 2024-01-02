@@ -13,8 +13,8 @@ import 'package:nuforce/main.dart';
 
 class BusinessManagerContactGroupDeatilsView extends StatelessWidget {
   const BusinessManagerContactGroupDeatilsView({
-    super.key,
     required this.contactGroup,
+    super.key,
   });
   final MockContactGroup contactGroup;
 
@@ -45,7 +45,7 @@ class BusinessManagerContactGroupDeatilsView extends StatelessWidget {
                   Expanded(
                     child: SecondaryButton(
                       onPressed: () {
-                        Get.back();
+                        Get.back<void>();
                         final controller = Get.find<BusinessManagerController>();
                         controller.contactGroupController.removeContactGroup(contactGroup);
                         Fluttertoast.showToast(msg: 'Contact Group Deleted');
@@ -57,8 +57,9 @@ class BusinessManagerContactGroupDeatilsView extends StatelessWidget {
                   Expanded(
                     child: PrimaryButton(
                       onPressed: () {
-                        Get.back();
-                        Get.to(() => BusinessManagerAddOrEditContactGroup(contactGroup: contactGroup));
+                        Get
+                          ..back<void>()
+                          ..to<void>(() => BusinessManagerAddOrEditContactGroup(contactGroup: contactGroup));
                       },
                       text: 'Edit',
                     ),

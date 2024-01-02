@@ -5,10 +5,10 @@ import 'package:nuforce/app/utils/colors.dart';
 
 class ServiceButton extends StatelessWidget {
   const ServiceButton({
-    super.key,
     required this.onTap,
     required this.svgPath,
     required this.title,
+    super.key,
   });
   final VoidCallback onTap;
   final String svgPath;
@@ -19,7 +19,6 @@ class ServiceButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -48,7 +47,7 @@ class ServiceButton extends StatelessWidget {
                 color: AppColors.subText,
               ),
             ),
-          )
+          ),
         ],
       ),
     );

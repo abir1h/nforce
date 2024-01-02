@@ -23,7 +23,6 @@ class _AddonsItemsState extends State<AddonsItems> {
         SizedBox(
           width: width,
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Expanded(
                 flex: 3,
@@ -90,7 +89,7 @@ class _AddonsItemsState extends State<AddonsItems> {
                 child: AddonItemCard(
                   onInstallTap: () {},
                   onTap: () {
-                    Get.to(() => const AddonDetailsView());
+                    Get.to<void>(() => const AddonDetailsView());
                   },
                 ),
               );

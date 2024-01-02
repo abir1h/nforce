@@ -29,29 +29,30 @@ class _UserRolesViewState extends State<UserRolesView> {
           appBar: CustomAppbarMinimal(
             title: 'User Roles',
             trailing: [
-              controller.userRolesController.userRoles.isEmpty
-                  ? const SizedBox()
-                  : GestureDetector(
-                      onTap: () {
-                        Get.to(() => const AddOrEditUserRoleView());
-                      },
-                      child: Row(
-                        children: [
-                          Icon(Icons.add, color: AppColors.primaryBlue1, size: 16.sp),
-                          const SizedBox(width: 8),
-                          Text(
-                            'Add New',
-                            textAlign: TextAlign.right,
-                            style: TextStyle(
-                              color: AppColors.primaryBlue1,
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          )
-                        ],
+              if (controller.userRolesController.userRoles.isEmpty)
+                const SizedBox()
+              else
+                GestureDetector(
+                  onTap: () {
+                    Get.to<void>(() => const AddOrEditUserRoleView());
+                  },
+                  child: Row(
+                    children: [
+                      Icon(Icons.add, color: AppColors.primaryBlue1, size: 16.sp),
+                      const SizedBox(width: 8),
+                      Text(
+                        'Add New',
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                          color: AppColors.primaryBlue1,
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
-                    ),
-              const SizedBox(width: 16)
+                    ],
+                  ),
+                ),
+              const SizedBox(width: 16),
             ],
           ),
           body: SizedBox(
@@ -68,7 +69,7 @@ class _UserRolesViewState extends State<UserRolesView> {
                           padding: const EdgeInsets.only(bottom: 16),
                           child: GestureDetector(
                             onTap: () {
-                              Get.to(() => UserRoleDeatilsView(user: controller.userRolesController.userRoles[index]));
+                              Get.to<void>(() => UserRoleDeatilsView(user: controller.userRolesController.userRoles[index]));
                             },
                             child: UserRoleTile(user: controller.userRolesController.userRoles[index]),
                           ),
@@ -85,8 +86,8 @@ class _UserRolesViewState extends State<UserRolesView> {
 
 class UserRoleTile extends StatelessWidget {
   const UserRoleTile({
-    super.key,
     required this.user,
+    super.key,
   });
   final UserRolesMock user;
 

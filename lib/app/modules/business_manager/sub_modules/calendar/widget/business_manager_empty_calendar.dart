@@ -30,7 +30,7 @@ class EmptyCalendar extends StatelessWidget {
         const Expanded(child: SizedBox()),
         PrimaryButton(
           onPressed: () {
-            Get.to(() => const BusinessManagerAddOrEditCalendar());
+            Get.to<void>(() => const BusinessManagerAddOrEditCalendar());
           },
           text: 'Add Calendar',
         ),

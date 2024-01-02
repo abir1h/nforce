@@ -6,8 +6,8 @@ import 'package:nuforce/app/utils/colors.dart';
 class CustomAppbarMinimal extends StatelessWidget
     implements PreferredSizeWidget {
   const CustomAppbarMinimal({
-    super.key,
     required this.title,
+    super.key,
     this.centerTitle = true,
     this.trailing,
     this.leadingPressed,
@@ -38,7 +38,7 @@ class CustomAppbarMinimal extends StatelessWidget
           if (leadingPressed != null) {
             leadingPressed!();
           } else {
-            Get.back();
+            Get.back<void>();
           }
         },
         icon: const Icon(

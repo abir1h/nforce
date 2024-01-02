@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_positional_boolean_parameters
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/auth/controllers/agent_customer_auth_controller.dart';
@@ -61,13 +63,13 @@ class AuthController extends GetxController {
 
   void navigateFromOtpView() {
     if (fromSetupAccount) {
-      Get.back();
+      Get.back<void>();
       return;
     }
     if (fromSignUp) {
-      Get.to(() => const AccountSetupView());
+      Get.to<void>(() => const AccountSetupView());
     } else {
-      Get.to(() => const ResetPasswordView());
+      Get.to<void>(() => const ResetPasswordView());
     }
   }
 
@@ -83,27 +85,25 @@ class AuthController extends GetxController {
     await LoginService.businessLogin(email: email, password: password).then((value) {
       value.fold(
         (success) async {
-          if (success.data?.accessToken != null && success.data!.accessToken != "" && success.data?.id != null) {
+          if (success.data?.accessToken != null && success.data!.accessToken != '' && success.data?.id != null) {
             SharedPreferenceService.setToken(success.data!.accessToken!);
             SharedPreferenceService.setUserId(success.data!.id!);
             await ApiClient.init();
             if (!rememberMe) {
-              SharedPreferenceService.setToken("");
+              SharedPreferenceService.setToken('');
             }
-            Get.offAllNamed(Routes.BOTTOM_NAV_BAR);
+            await Get.offAllNamed<void>(Routes.BOTTOM_NAV_BAR);
           }
         },
         (error) {
-          showDialog(
+          showDialog<void>(
             context: context,
             builder: (ctx) => AlertDialog(
               title: const Text('Login Error'),
               content: Text(error),
               actions: [
                 TextButton(
-                  onPressed: () {
-                    Get.back();
-                  },
+                  onPressed: Get.back<void>,
                   child: const Text('OK'),
                 ),
               ],

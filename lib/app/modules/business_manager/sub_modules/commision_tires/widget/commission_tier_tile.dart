@@ -8,8 +8,8 @@ import 'package:nuforce/main.dart';
 
 class CommissionTierTile extends StatelessWidget {
   const CommissionTierTile({
-    super.key,
     required this.commission,
+    super.key,
     this.onTap,
   });
 
@@ -62,7 +62,7 @@ class CommissionTierTile extends StatelessWidget {
                             fontSize: 14.sp,
                             fontWeight: FontWeight.w600,
                           ),
-                        )
+                        ),
                       ],
                     ),
                     SizedBox(width: width * 0.3),
@@ -84,7 +84,7 @@ class CommissionTierTile extends StatelessWidget {
                             fontSize: 14.sp,
                             fontWeight: FontWeight.w600,
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ],

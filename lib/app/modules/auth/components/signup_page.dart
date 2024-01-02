@@ -57,9 +57,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   obscureText: controller.signUpController.isPasswordVisible.value,
                   isVisibile: controller.signUpController.isPasswordVisible.value,
                   isPassword: true,
-                  onVisibilityTap: () {
-                    controller.togglePasswordVisibility();
-                  },
+                  onVisibilityTap: controller.togglePasswordVisibility,
                 ),
               ),
               const SizedBox(height: 16),
@@ -72,9 +70,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   obscureText: controller.signUpController.isConfirmPasswordVisible.value,
                   isVisibile: controller.signUpController.isConfirmPasswordVisible.value,
                   isPassword: true,
-                  onVisibilityTap: () {
-                    controller.toggleResetPasswordVisibility();
-                  },
+                  onVisibilityTap: controller.toggleResetPasswordVisibility,
                 ),
               ),
               const SizedBox(height: 16),
@@ -100,9 +96,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                   ),
                   GestureDetector(
-                    onTap: () {
-                      Get.back();
-                    },
+                    onTap: Get.back<void>,
                     child: Text(
                       'Sign in',
                       style: CustomTextStyle.heading4.copyWith(
@@ -124,8 +118,8 @@ class _SignUpPageState extends State<SignUpPage> {
 
 class TermsAndCondition extends StatelessWidget {
   const TermsAndCondition({
-    super.key,
     required this.controller,
+    super.key,
   });
 
   final AuthController controller;
@@ -180,8 +174,8 @@ class TermsAndCondition extends StatelessWidget {
 
 class PromotionalOfferEmail extends StatelessWidget {
   const PromotionalOfferEmail({
-    super.key,
     required this.controller,
+    super.key,
   });
 
   final AuthController controller;

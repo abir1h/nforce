@@ -16,8 +16,6 @@ Future<dynamic> magicLinkBottomSheet(BuildContext context) {
       return Container(
         padding: const EdgeInsets.symmetric(horizontal: 34),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
             const SizedBox(height: 20),
@@ -51,9 +49,7 @@ Future<dynamic> magicLinkBottomSheet(BuildContext context) {
                   ),
                 ),
                 GestureDetector(
-                  onTap: () {
-                    Get.back();
-                  },
+                  onTap: Get.back<void>,
                   child: Text(
                     'Sign in',
                     style: CustomTextStyle.heading4.copyWith(

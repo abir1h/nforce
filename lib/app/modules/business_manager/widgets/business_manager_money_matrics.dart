@@ -23,9 +23,8 @@ class BusinessManagerMoneyMatrics extends StatelessWidget {
           BoxShadow(
             color: AppColors.nutralBlack1.withOpacity(0.05),
             blurRadius: 4,
-            offset: const Offset(0, 0),
             spreadRadius: 2,
-          )
+          ),
         ],
         color: AppColors.white1,
         borderRadius: BorderRadius.circular(8),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/auth/controllers/auth_controller.dart';
 import 'package:nuforce/app/modules/auth/views/otp_view.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
@@ -10,10 +11,8 @@ import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/text_styles.dart';
 import 'package:nuforce/main.dart';
 
-import '../controllers/auth_controller.dart';
-
 class ForgotPasswordView extends GetView<AuthController> {
-  const ForgotPasswordView({Key? key}) : super(key: key);
+  const ForgotPasswordView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,8 +28,6 @@ class ForgotPasswordView extends GetView<AuthController> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
@@ -60,7 +57,7 @@ class ForgotPasswordView extends GetView<AuthController> {
                 const SizedBox(height: 30),
                 PrimaryButton(
                   onPressed: () {
-                    Get.to(() => const OtpView());
+                    Get.to<void>(() => const OtpView());
                   },
                   text: 'Send verification code',
                 ),
@@ -77,9 +74,7 @@ class ForgotPasswordView extends GetView<AuthController> {
                 const OrXWith(label: 'Or'),
                 const SizedBox(height: 30),
                 GestureDetector(
-                  onTap: () {
-                    Get.back();
-                  },
+                  onTap: Get.back<void>,
                   child: Text(
                     'Create new account',
                     style: CustomTextStyle.heading4.copyWith(

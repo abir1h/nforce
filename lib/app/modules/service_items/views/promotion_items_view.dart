@@ -10,7 +10,7 @@ import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/main.dart';
 
 class PromotionItemsListView extends GetView<PromotionItemsController> {
-  const PromotionItemsListView({Key? key}) : super(key: key);
+  const PromotionItemsListView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +36,7 @@ class PromotionItemsListView extends GetView<PromotionItemsController> {
                   GestureDetector(
                     onTap: controller.miniTabEnum.value == PromotionTabEnum.coupon
                         ? () {
-                            Get.to(() => const CreateOrEditCouponView(isEditing: false));
+                            Get.to<void>(() => const CreateOrEditCouponView(isEditing: false));
                           }
                         : controller.miniTabEnum.value == PromotionTabEnum.discount
                             ? () {}
@@ -80,7 +80,7 @@ class PromotionItemsListView extends GetView<PromotionItemsController> {
                                   : const SizedBox(),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),

@@ -47,9 +47,8 @@ Future<dynamic> varifyEmailBottomSheet(BuildContext context) {
               width: 150,
               child: PrimaryButton(
                 onPressed: () {
-                  final controller = Get.put(AuthController());
-                  controller.changeFromSignUp(true);
-                  Get.to(() => const OtpView());
+                  Get.put(AuthController()).changeFromSignUp(true);
+                  Get.to<void>(() => const OtpView());
                 },
                 text: 'Got It!',
               ),

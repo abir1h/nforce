@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/auth/components/social_login_buttons.dart';
+import 'package:nuforce/app/modules/auth/controllers/auth_controller.dart';
 import 'package:nuforce/app/modules/auth/views/agent_customer_login_view.dart';
 import 'package:nuforce/app/modules/auth/views/login_singup_view.dart';
 import 'package:nuforce/app/shared/widgets/or_x_with.dart';
@@ -13,10 +13,8 @@ import 'package:nuforce/app/utils/text_styles.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 import 'package:nuforce/main.dart';
 
-import '../controllers/auth_controller.dart';
-
 class AuthView extends GetView<AuthController> {
-  const AuthView({Key? key}) : super(key: key);
+  const AuthView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +27,6 @@ class AuthView extends GetView<AuthController> {
             height: height,
             width: width,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(height: 40),
                 SvgPicture.asset(Assets.images.svg.nuforceLogo),
@@ -55,10 +52,11 @@ class AuthView extends GetView<AuthController> {
                   text: 'Try NuForce For Free',
                   onPressed: () {
                     if (AuthController().initialized) {
-                      Get.to(() => const LoginSignupView());
+                      Get.to<void>(() => const LoginSignupView());
                     } else {
-                      Get.put(AuthController());
-                      Get.to(() => const LoginSignupView());
+                      Get
+                        ..put(AuthController())
+                        ..to<void>(() => const LoginSignupView());
                     }
                   },
                 ),
@@ -67,7 +65,7 @@ class AuthView extends GetView<AuthController> {
                   text: 'Log in to your Business',
                   onPressed: () {
                     // Get.offAllNamed(Routes.BOTTOM_NAV_BAR);
-                    Get.to(() => const LoginSignupView());
+                    Get.to<void>(() => const LoginSignupView());
                   },
                   primaryColored: false,
                 ),
@@ -89,10 +87,11 @@ class AuthView extends GetView<AuthController> {
                     GestureDetector(
                       onTap: () {
                         if (AuthController().initialized) {
-                          Get.to(() => const AgentCustomerLoginView());
+                          Get.to<void>(() => const AgentCustomerLoginView());
                         } else {
-                          Get.put(AuthController());
-                          Get.to(() => const AgentCustomerLoginView());
+                          Get
+                            ..put(AuthController())
+                            ..to<void>(() => const AgentCustomerLoginView());
                         }
                       },
                       child: Text(
@@ -113,10 +112,11 @@ class AuthView extends GetView<AuthController> {
                     GestureDetector(
                       onTap: () {
                         if (AuthController().initialized) {
-                          Get.to(() => const AgentCustomerLoginView());
+                          Get.to<void>(() => const AgentCustomerLoginView());
                         } else {
-                          Get.put(AuthController());
-                          Get.to(() => const AgentCustomerLoginView());
+                          Get
+                            ..put(AuthController())
+                            ..to<void>(() => const AgentCustomerLoginView());
                         }
                       },
                       child: Text(

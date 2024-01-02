@@ -23,7 +23,6 @@ class SearchWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(6),
           border: Border.all(
             color: AppColors.greyText,
-            width: 1,
           ),
         ),
         child: Row(
@@ -55,7 +54,7 @@ class SearchWidget extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                showModalBottomSheet(
+                showModalBottomSheet<void>(
                   shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(30),
@@ -142,7 +141,6 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
               borderRadius: BorderRadius.circular(6),
               border: Border.all(
                 color: AppColors.greyText,
-                width: 1,
               ),
             ),
             child: Row(
@@ -235,7 +233,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
           ),
           const SizedBox(height: 8),
           SfRangeSlider(
-            min: 0.0,
+            min: 0,
             max: 300.0,
             values: SfRangeValues(sliderStartValue, sliderEndValue),
             interval: 20,
@@ -251,8 +249,8 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
             },
             onChanged: (SfRangeValues values) {
               setState(() {
-                sliderStartValue = values.start;
-                sliderEndValue = values.end;
+                sliderStartValue = values.start as double;
+                sliderEndValue = values.end as double;
               });
             },
           ),
@@ -271,23 +269,19 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
             children: [
               Expanded(
                 child: SecondaryButton(
-                  onPressed: () {
-                    Get.back();
-                  },
+                  onPressed: Get.back<void>,
                   text: 'Reset',
                 ),
               ),
               const SizedBox(width: 10),
               Expanded(
                 child: PrimaryButton(
-                  onPressed: () {
-                    Get.back();
-                  },
+                  onPressed: Get.back<void>,
                   text: 'Apply',
                 ),
               ),
             ],
-          )
+          ),
         ],
       ),
     );

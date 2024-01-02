@@ -23,15 +23,15 @@ class _CouponBodyState extends State<CouponBody> {
       offerValue: '16%',
       expireDate: '26 June, 2023',
       offerTitleText: 'Pest Control Offer',
-      offerDetailsText: 'Spend over \$150 and get 16% off on all services (Excludes shipping cost)',
+      offerDetailsText: r'Spend over $150 and get 16% off on all services (Excludes shipping cost)',
       backgroundColor: AppColors.powderPink,
       offerValueColor: AppColors.red,
     ),
     CouponDataModel(
-      offerValue: '\$60',
+      offerValue: r'$60',
       expireDate: '30 June, 2023',
       offerTitleText: 'Raccoon Remocal Offer',
-      offerDetailsText: 'Spend over \$150 and get 16% off on all services (Excludes shipping cost)',
+      offerDetailsText: r'Spend over $150 and get 16% off on all services (Excludes shipping cost)',
       backgroundColor: AppColors.green2,
       offerValueColor: AppColors.primaryBlue1,
     ),
@@ -39,7 +39,7 @@ class _CouponBodyState extends State<CouponBody> {
       offerValue: '16%',
       expireDate: '30 June, 2023',
       offerTitleText: 'Winter Package',
-      offerDetailsText: 'Spend over \$150 and get 16% off on all services (Excludes shipping cost)',
+      offerDetailsText: r'Spend over $150 and get 16% off on all services (Excludes shipping cost)',
       backgroundColor: AppColors.blue2,
       offerValueColor: AppColors.blue,
     ),
@@ -82,7 +82,6 @@ class _CouponBodyState extends State<CouponBody> {
           decoration: const ShapeDecoration(
             shape: RoundedRectangleBorder(
               side: BorderSide(
-                width: 1,
                 strokeAlign: BorderSide.strokeAlignCenter,
                 color: AppColors.white3,
               ),
@@ -110,7 +109,7 @@ class _CouponBodyState extends State<CouponBody> {
                     );
                   },
                   onEditTap: () {
-                    Get.to(
+                    Get.to<void>(
                       () => CreateOrEditCouponView(
                         isEditing: true,
                         couponDataModel: dummyCouponData[index],

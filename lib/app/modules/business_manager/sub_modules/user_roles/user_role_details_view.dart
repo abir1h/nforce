@@ -13,8 +13,8 @@ import 'package:nuforce/main.dart';
 
 class UserRoleDeatilsView extends StatelessWidget {
   const UserRoleDeatilsView({
-    super.key,
     required this.user,
+    super.key,
   });
   final UserRolesMock user;
 
@@ -49,7 +49,7 @@ class UserRoleDeatilsView extends StatelessWidget {
                   Expanded(
                     child: SecondaryButton(
                       onPressed: () {
-                        Get.back();
+                        Get.back<void>();
                         final controller = Get.find<BusinessManagerController>();
                         controller.userRolesController.removeUserRoles(user);
                         Fluttertoast.showToast(msg: 'User Role Deleted');
@@ -61,8 +61,9 @@ class UserRoleDeatilsView extends StatelessWidget {
                   Expanded(
                     child: PrimaryButton(
                       onPressed: () {
-                        Get.back();
-                        Get.to(() => AddOrEditUserRoleView(user: user));
+                        Get
+                          ..back<void>()
+                          ..to<void>(() => AddOrEditUserRoleView(user: user));
                       },
                       text: 'Edit',
                     ),

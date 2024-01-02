@@ -30,7 +30,7 @@ class EmptyLabel extends StatelessWidget {
         const Expanded(child: SizedBox()),
         PrimaryButton(
           onPressed: () {
-            Get.to(() => const BusinessManagerAddOrEditLabel());
+            Get.to<void>(() => const BusinessManagerAddOrEditLabel());
           },
           text: 'Add Labels',
         ),

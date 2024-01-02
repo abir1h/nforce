@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-import '../models/customer_contact_model.dart';
+import "package:nuforce/app/modules/business_manager/models/customer_contact_model.dart";
 
 class CustomerContactController extends GetxController {
   List<CustomerContactModel> customerList = [];
@@ -11,9 +11,9 @@ class CustomerContactController extends GetxController {
   TextEditingController tags = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController mobile = TextEditingController();
-  String? selectFolder = "Customer";
-  List folderList = ["Customer", "Others"];
-  saveCustomerContact(CustomerContactModel data) {
+  String? selectFolder = 'Customer';
+  List<String> folderList = ['Customer', 'Others'];
+  void saveCustomerContact(CustomerContactModel data) {
     customerList.add(data);
     update();
   }
@@ -25,7 +25,6 @@ class CustomerContactController extends GetxController {
 
   @override
   void onInit() {
-    // TODO: implement onInit
     super.onInit();
     reset();
   }
@@ -43,12 +42,11 @@ class CustomerContactController extends GetxController {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     reset();
   }
 
-  reset() {
+  void reset() {
     name.clear();
     refCode.clear();
     company.clear();

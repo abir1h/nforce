@@ -13,17 +13,17 @@ class LoginService {
       final response = await ApiClient.instance.post(
         url: URL.businessLogin,
         body: {
-          "data": {
-            "identity": email,
-            "password": password,
-          }
+          'data': {
+            'identity': email,
+            'password': password,
+          },
         },
       );
 
       if (response.data['data'] != null) {
-        return Left(LoginResponse.fromJson(response.data));
+        return Left(LoginResponse.fromJson(response.data as Map<String, dynamic>));
       } else {
-        return Right(response.data['error'] ?? AppConstants.unknownError);
+        return Right('${response.data['error'] ?? AppConstants.unknownError}');
       }
     } catch (e) {
       return const Right(AppConstants.unknownError);

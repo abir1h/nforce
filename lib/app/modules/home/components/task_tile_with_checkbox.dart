@@ -6,13 +6,13 @@ import 'package:nuforce/app/utils/colors.dart';
 
 class TaskTileWithCheckbox extends StatelessWidget {
   const TaskTileWithCheckbox({
-    super.key,
     required this.mockTaskApi,
     required this.onChanged,
+    super.key,
   });
 
   final MockTaskApi mockTaskApi;
-  final Function(bool?)? onChanged;
+  final void Function(bool?)? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +54,7 @@ class TaskTileWithCheckbox extends StatelessWidget {
           CustomCheckbox(
             value: mockTaskApi.isDone,
             onChanged: onChanged,
-          )
+          ),
         ],
       ),
     );

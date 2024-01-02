@@ -111,7 +111,7 @@ class _PackageTileDetailsViewState extends State<PackageTileDetailsView> {
                           fontSize: 14.sp,
                           fontWeight: FontWeight.w400,
                         ),
-                      )
+                      ),
                     ],
                   ),
                   Row(
@@ -126,7 +126,7 @@ class _PackageTileDetailsViewState extends State<PackageTileDetailsView> {
                         ),
                       ),
                       Text(
-                        '\$150.00',
+                        r'$150.00',
                         textAlign: TextAlign.right,
                         style: TextStyle(
                           color: AppColors.nutralBlack1,
@@ -141,7 +141,7 @@ class _PackageTileDetailsViewState extends State<PackageTileDetailsView> {
                   SizedBox(height: 16.h),
                   const PackageTileDetailsInfoWidget(
                     left: 'Minumum Partial Pay.',
-                    right: '\$50',
+                    right: r'$50',
                   ),
                   SizedBox(height: 8.h),
                   const PackageTileDetailsInfoWidget(
@@ -156,7 +156,7 @@ class _PackageTileDetailsViewState extends State<PackageTileDetailsView> {
                   SizedBox(height: 8.h),
                   const PackageTileDetailsInfoWidget(
                     left: 'Cancellation Fee',
-                    right: '\$20',
+                    right: r'$20',
                   ),
                   SizedBox(height: 8.h),
                   const PackageTileDetailsInfoWidget(
@@ -211,7 +211,7 @@ class _PackageTileDetailsViewState extends State<PackageTileDetailsView> {
                       Expanded(
                         child: SecondaryButton(
                           onPressed: () {
-                            Get.back();
+                            Get.back<void>();
                             Fluttertoast.showToast(msg: 'Service deleted successfully');
                           },
                           text: 'Delete',
@@ -221,7 +221,7 @@ class _PackageTileDetailsViewState extends State<PackageTileDetailsView> {
                       Expanded(
                         child: PrimaryButton(
                           onPressed: () {
-                            Get.to(() => const AddOrEditServicePacakgeView(isEdit: true));
+                            Get.to<void>(() => const AddOrEditServicePacakgeView(isEdit: true));
                           },
                           text: 'Edit',
                         ),

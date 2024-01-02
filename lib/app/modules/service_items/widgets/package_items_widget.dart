@@ -69,7 +69,7 @@ class _PackageItemsState extends State<PackageItems> {
                 padding: const EdgeInsets.only(bottom: 16),
                 child: GestureDetector(
                   onTap: () {
-                    Get.to(() => const PackageTileDetailsView());
+                    Get.to<void>(() => const PackageTileDetailsView());
                   },
                   child: const PackageListTile(),
                 ),

@@ -26,8 +26,8 @@ class CouponDataModel {
 
 class CouponWidget extends StatelessWidget {
   const CouponWidget({
-    super.key,
     required this.coupon,
+    super.key,
     this.onEditTap,
     this.onDeleteTap,
   });
@@ -101,7 +101,7 @@ class CouponWidget extends StatelessWidget {
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w400,
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),
@@ -134,6 +134,7 @@ class CouponWidget extends StatelessWidget {
                 ),
                 const Spacer(),
                 PopupMenuButton(
+                  // ignore: strict_raw_type
                   itemBuilder: (BuildContext context) => <PopupMenuEntry>[
                     PopupMenuItem(
                       onTap: onEditTap,
@@ -161,7 +162,7 @@ class CouponWidget extends StatelessWidget {
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );

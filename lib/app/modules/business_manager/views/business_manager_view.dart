@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+
+import 'package:nuforce/app/modules/business_manager/controllers/business_manager_controller.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/customer_contact/customer_contact_list_view.dart';
 import 'package:nuforce/app/modules/business_manager/views/business_manager_settings_view.dart';
 import 'package:nuforce/app/modules/business_manager/views/organization_view.dart';
 import 'package:nuforce/app/modules/business_manager/widgets/business_manager_daily_sales_curve.dart';
@@ -13,11 +16,8 @@ import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 import 'package:nuforce/main.dart';
 
-import '../controllers/business_manager_controller.dart';
-import '../sub_modules/customer_contact/customer_contact_list_view.dart';
-
 class BusinessManagerView extends GetView<BusinessManagerController> {
-  const BusinessManagerView({Key? key}) : super(key: key);
+  const BusinessManagerView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +42,7 @@ class BusinessManagerView extends GetView<BusinessManagerController> {
                         svgPath: Assets.images.svg.organization,
                         title: 'Organization',
                         onTap: () {
-                          Get.to(() => const OrganizationView());
+                          Get.to<void>(() => const OrganizationView());
                         },
                       ),
                     ),
@@ -50,7 +50,9 @@ class BusinessManagerView extends GetView<BusinessManagerController> {
                       child: ServiceButton(
                         svgPath: Assets.images.svg.customer,
                         title: 'Customer',
-                        onTap: () {Get.to(const CustomerContactListView());},
+                        onTap: () {
+                          Get.to<void>(() => const CustomerContactListView());
+                        },
                       ),
                     ),
                     Expanded(
@@ -65,7 +67,7 @@ class BusinessManagerView extends GetView<BusinessManagerController> {
                         svgPath: Assets.images.svg.settings,
                         title: 'Settings',
                         onTap: () {
-                          Get.to(() => const BusinessManagerSettingsView());
+                          Get.to<void>(() => const BusinessManagerSettingsView());
                         },
                       ),
                     ),
@@ -78,19 +80,19 @@ class BusinessManagerView extends GetView<BusinessManagerController> {
                   child: Row(
                     children: [
                       BusinessManagerMoneyMatrics(
-                        amount: '+\$17,800',
+                        amount: r'+$17,800',
                         title: 'Services Profit',
                         type: 'Average weekly Profit',
                       ),
                       SizedBox(width: 10),
                       BusinessManagerMoneyMatrics(
-                        amount: '+\$17,800',
+                        amount: r'+$17,800',
                         title: 'Work Orders',
                         type: 'Weekly Customer Orders',
                       ),
                       SizedBox(width: 10),
                       BusinessManagerMoneyMatrics(
-                        amount: '+\$17,800',
+                        amount: r'+$17,800',
                         title: 'Missed Leads',
                         type: 'Failed to scheudle',
                       ),
@@ -110,9 +112,7 @@ class BusinessManagerView extends GetView<BusinessManagerController> {
                       BoxShadow(
                         color: Color(0x19000000),
                         blurRadius: 4,
-                        offset: Offset(0, 0),
-                        spreadRadius: 0,
-                      )
+                      ),
                     ],
                     color: AppColors.white1,
                     borderRadius: BorderRadius.circular(8),
@@ -141,7 +141,7 @@ class BusinessManagerView extends GetView<BusinessManagerController> {
                                     fontSize: 12.sp,
                                     fontWeight: FontWeight.w400,
                                   ),
-                                )
+                                ),
                               ],
                             ),
                           ),

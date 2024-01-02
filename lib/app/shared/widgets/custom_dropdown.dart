@@ -1,14 +1,16 @@
+// ignore_for_file: strict_raw_type, inference_failure_on_function_return_type
+
 import 'package:flutter/material.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/text_styles.dart';
 
 class CustomDropdownButton extends StatelessWidget {
   const CustomDropdownButton({
-    super.key,
     required this.items,
     required this.hint,
     required this.onChanged,
     required this.value,
+    super.key,
     this.label,
   });
   final List<DropdownMenuItem> items;

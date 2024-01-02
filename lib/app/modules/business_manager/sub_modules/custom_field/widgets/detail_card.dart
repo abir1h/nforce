@@ -8,11 +8,11 @@ class DetailCard extends StatelessWidget {
   final IconData? icon;
 
   const DetailCard({
-    Key? key,
     required this.title,
+    super.key,
     this.subtitle,
     this.icon,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,6 @@ class DetailCard extends StatelessWidget {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    fontFamily: "Poppins",
                     color: AppColors.nutralBlack1,
                     fontWeight: FontWeight.w600,
                     fontSize: 16.sp,
@@ -44,19 +43,17 @@ class DetailCard extends StatelessWidget {
                 SizedBox(
                   height: 4.h,
                 ),
-                subtitle != null
-                    ? Text(
-                        subtitle!,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          fontFamily: "Poppins",
-                          color: AppColors.nutralBlack2,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 14.sp,
-                        ),
-                      )
-                    : const SizedBox(),
+                if (subtitle != null)
+                  Text(
+                    subtitle!,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      color: AppColors.nutralBlack2,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 14.sp,
+                    ),
+                  ),
               ],
             ),
           ),
@@ -64,7 +61,7 @@ class DetailCard extends StatelessWidget {
             icon ?? Icons.arrow_forward_ios,
             color: AppColors.nutralBlack1,
             size: 24.r,
-          )
+          ),
         ],
       ),
     );

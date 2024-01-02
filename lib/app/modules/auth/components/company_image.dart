@@ -60,7 +60,7 @@ class CompanyImage extends StatelessWidget {
                   ),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ],

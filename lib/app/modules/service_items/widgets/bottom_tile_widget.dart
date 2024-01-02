@@ -33,14 +33,14 @@ class BottomTileWidget extends StatelessWidget {
           ),
           const Spacer(),
           Text(
-            '\$7.00',
+            r'$7.00',
             textAlign: TextAlign.right,
             style: TextStyle(
               color: AppColors.nutralBlack1,
               fontSize: 12.sp,
               fontWeight: FontWeight.w400,
             ),
-          )
+          ),
         ],
       ),
     );

@@ -182,7 +182,7 @@ class _BusinessManagerAddOrEditCalendarViewState extends State<BusinessManagerAd
                             ),
                           );
                         }
-                        Get.back();
+                        Get.back<void>();
                       },
                       text: widget.label != null ? 'Update' : 'Submit',
                     ),

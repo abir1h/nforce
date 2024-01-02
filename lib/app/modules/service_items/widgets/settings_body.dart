@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_positional_boolean_parameters
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,9 +12,9 @@ Widget settingsBody({
   required bool isLandingPageUrlSelected,
   required bool isShareSelected,
   required bool isCommissionSelected,
-  required Function(bool) onLandingSwitchChanged,
-  required Function(bool) onShareSwitchChanged,
-  required Function(bool) onCommissionSwitchChanged,
+  required void Function(bool) onLandingSwitchChanged,
+  required void Function(bool) onShareSwitchChanged,
+  required void Function(bool) onCommissionSwitchChanged,
 }) {
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 20),

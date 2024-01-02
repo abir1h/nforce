@@ -69,11 +69,9 @@ class RatingTile extends StatelessWidget {
                     RatingBar.builder(
                       initialRating: 4,
                       minRating: 1,
-                      direction: Axis.horizontal,
                       allowHalfRating: true,
-                      itemCount: 5,
                       itemSize: 14.sp,
-                      itemPadding: const EdgeInsets.symmetric(horizontal: 1.0),
+                      itemPadding: const EdgeInsets.symmetric(horizontal: 1),
                       itemBuilder: (context, _) => const Icon(
                         Icons.star_rounded,
                         color: AppColors.yellow,
@@ -82,7 +80,7 @@ class RatingTile extends StatelessWidget {
                     ),
                   ],
                 ),
-              )
+              ),
             ],
           ),
           const SizedBox(height: 10),
@@ -115,7 +113,7 @@ class RatingTile extends StatelessWidget {
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );

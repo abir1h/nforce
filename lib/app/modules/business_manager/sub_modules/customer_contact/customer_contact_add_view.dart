@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/customer_contact_controller.dart';
 import 'package:nuforce/app/modules/business_manager/models/customer_contact_model.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/customer_contact/customer_contact_list_view.dart';
-
-import '../../../../shared/widgets/custom_appbar_minimal.dart';
-import '../../../../utils/colors.dart';
-import '../../../../utils/text_styles.dart';
-import '../../controllers/customer_contact_controller.dart';
-import '../../views/business_manager_preferences_view.dart';
-import '../regional_setting/widget/custom_button.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/regional_setting/widget/custom_button.dart';
+import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
+import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/app/utils/text_styles.dart';
 
 class CustomerContactAddView extends StatefulWidget {
   const CustomerContactAddView({super.key});
@@ -28,7 +26,7 @@ class _CustomerContactAddViewState extends State<CustomerContactAddView> {
       appBar: CustomAppbarMinimal(
         title: 'Add Customer Contacts',
         leadingPressed: () {
-          Get.to(const CustomerContactListView());
+          Get.to<void>(const CustomerContactListView());
         },
       ),
       body: SingleChildScrollView(
@@ -37,17 +35,18 @@ class _CustomerContactAddViewState extends State<CustomerContactAddView> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Name",
+              'Name',
               style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontFamily: "Poppins",
-                  fontSize: 14.sp,
-                  color: AppColors.nutralBlack1),
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Poppins',
+                fontSize: 14.sp,
+                color: AppColors.nutralBlack1,
+              ),
             ),
             SizedBox(
               height: 8.h,
             ),
-            Container(
+            ColoredBox(
               // height: 50,
               color: AppColors.textFieldBackground,
               child: TextFormField(
@@ -56,9 +55,8 @@ class _CustomerContactAddViewState extends State<CustomerContactAddView> {
                 autocorrect: false,
                 textAlignVertical: TextAlignVertical.center,
                 decoration: InputDecoration(
-                  contentPadding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                  hintText: "Enter display name",
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                  hintText: 'Enter display name',
                   hintStyle: CustomTextStyle.paragraphSmall.copyWith(
                     fontWeight: FontWeight.w400,
                   ),
@@ -87,29 +85,31 @@ class _CustomerContactAddViewState extends State<CustomerContactAddView> {
             Padding(
               padding: EdgeInsets.only(top: 4.h),
               child: Text(
-                "Contact Name",
+                'Contact Name',
                 style: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 12.sp,
-                    fontFamily: "Poppins",
-                    color: AppColors.greyText),
+                  fontWeight: FontWeight.w400,
+                  fontSize: 12.sp,
+                  fontFamily: 'Poppins',
+                  color: AppColors.greyText,
+                ),
               ),
             ),
             SizedBox(
               height: 16.h,
             ),
             Text(
-              "Ref Code",
+              'Ref Code',
               style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontFamily: "Poppins",
-                  fontSize: 14.sp,
-                  color: AppColors.nutralBlack1),
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Poppins',
+                fontSize: 14.sp,
+                color: AppColors.nutralBlack1,
+              ),
             ),
             SizedBox(
               height: 8.h,
             ),
-            Container(
+            ColoredBox(
               // height: 50,
               color: AppColors.textFieldBackground,
               child: TextFormField(
@@ -118,9 +118,8 @@ class _CustomerContactAddViewState extends State<CustomerContactAddView> {
                 autocorrect: false,
                 textAlignVertical: TextAlignVertical.center,
                 decoration: InputDecoration(
-                  contentPadding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                  hintText: "Enter ref code",
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                  hintText: 'Enter ref code',
                   hintStyle: CustomTextStyle.paragraphSmall.copyWith(
                     fontWeight: FontWeight.w400,
                   ),
@@ -150,17 +149,18 @@ class _CustomerContactAddViewState extends State<CustomerContactAddView> {
               height: 16.h,
             ),
             Text(
-              "Company",
+              'Company',
               style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontFamily: "Poppins",
-                  fontSize: 14.sp,
-                  color: AppColors.nutralBlack1),
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Poppins',
+                fontSize: 14.sp,
+                color: AppColors.nutralBlack1,
+              ),
             ),
             SizedBox(
               height: 8.h,
             ),
-            Container(
+            ColoredBox(
               // height: 50,
               color: AppColors.textFieldBackground,
               child: TextFormField(
@@ -169,9 +169,8 @@ class _CustomerContactAddViewState extends State<CustomerContactAddView> {
                 autocorrect: false,
                 textAlignVertical: TextAlignVertical.center,
                 decoration: InputDecoration(
-                  contentPadding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                  hintText: "Company name",
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                  hintText: 'Company name',
                   hintStyle: CustomTextStyle.paragraphSmall.copyWith(
                     fontWeight: FontWeight.w400,
                   ),
@@ -201,17 +200,18 @@ class _CustomerContactAddViewState extends State<CustomerContactAddView> {
               height: 16.h,
             ),
             Text(
-              "Tags",
+              'Tags',
               style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontFamily: "Poppins",
-                  fontSize: 14.sp,
-                  color: AppColors.nutralBlack1),
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Poppins',
+                fontSize: 14.sp,
+                color: AppColors.nutralBlack1,
+              ),
             ),
             SizedBox(
               height: 8.h,
             ),
-            Container(
+            ColoredBox(
               // height: 50,
               color: AppColors.textFieldBackground,
               child: TextFormField(
@@ -220,9 +220,8 @@ class _CustomerContactAddViewState extends State<CustomerContactAddView> {
                 autocorrect: false,
                 textAlignVertical: TextAlignVertical.center,
                 decoration: InputDecoration(
-                  contentPadding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                  hintText: "Add a tag",
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                  hintText: 'Add a tag',
                   hintStyle: CustomTextStyle.paragraphSmall.copyWith(
                     fontWeight: FontWeight.w400,
                   ),
@@ -252,17 +251,18 @@ class _CustomerContactAddViewState extends State<CustomerContactAddView> {
               height: 16.h,
             ),
             Text(
-              "Email",
+              'Email',
               style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontFamily: "Poppins",
-                  fontSize: 14.sp,
-                  color: AppColors.nutralBlack1),
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Poppins',
+                fontSize: 14.sp,
+                color: AppColors.nutralBlack1,
+              ),
             ),
             SizedBox(
               height: 8.h,
             ),
-            Container(
+            ColoredBox(
               // height: 50,
               color: AppColors.textFieldBackground,
               child: TextFormField(
@@ -271,9 +271,8 @@ class _CustomerContactAddViewState extends State<CustomerContactAddView> {
                 autocorrect: false,
                 textAlignVertical: TextAlignVertical.center,
                 decoration: InputDecoration(
-                  contentPadding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                  hintText: "Enter Email address",
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                  hintText: 'Enter Email address',
                   hintStyle: CustomTextStyle.paragraphSmall.copyWith(
                     fontWeight: FontWeight.w400,
                   ),
@@ -303,17 +302,18 @@ class _CustomerContactAddViewState extends State<CustomerContactAddView> {
               height: 16.h,
             ),
             Text(
-              "Mobile",
+              'Mobile',
               style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontFamily: "Poppins",
-                  fontSize: 14.sp,
-                  color: AppColors.nutralBlack1),
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Poppins',
+                fontSize: 14.sp,
+                color: AppColors.nutralBlack1,
+              ),
             ),
             SizedBox(
               height: 8.h,
             ),
-            Container(
+            ColoredBox(
               // height: 50,
               color: AppColors.textFieldBackground,
               child: TextFormField(
@@ -323,9 +323,8 @@ class _CustomerContactAddViewState extends State<CustomerContactAddView> {
                 autocorrect: false,
                 textAlignVertical: TextAlignVertical.center,
                 decoration: InputDecoration(
-                  contentPadding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                  hintText: "Enter phone number",
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                  hintText: 'Enter phone number',
                   hintStyle: CustomTextStyle.paragraphSmall.copyWith(
                     fontWeight: FontWeight.w400,
                   ),
@@ -355,12 +354,13 @@ class _CustomerContactAddViewState extends State<CustomerContactAddView> {
               height: 16.h,
             ),
             Text(
-              "Folder",
+              'Folder',
               style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontFamily: "Poppins",
-                  fontSize: 14.sp,
-                  color: AppColors.nutralBlack1),
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Poppins',
+                fontSize: 14.sp,
+                color: AppColors.nutralBlack1,
+              ),
             ),
             SizedBox(
               height: 8.h,
@@ -370,21 +370,21 @@ class _CustomerContactAddViewState extends State<CustomerContactAddView> {
               isExpanded: true,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10.0),
+                  borderRadius: BorderRadius.circular(10),
                 ),
                 filled: true,
                 fillColor: AppColors.textFieldBackground,
-                contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
+                contentPadding: const EdgeInsets.symmetric(horizontal: 16),
               ),
               borderRadius: BorderRadius.circular(6.r),
               value: controller.selectFolder,
-              hint: const Text("Select Folder"),
+              hint: const Text('Select Folder'),
               onChanged: (String? value) {
                 controller.setFolder(value!);
               },
               items: controller.folderList.map((item) {
                 return DropdownMenuItem<String>(
-                  value: item,
+                  value: item as String,
                   child: Text(item),
                 );
               }).toList(),
@@ -396,17 +396,11 @@ class _CustomerContactAddViewState extends State<CustomerContactAddView> {
               children: [
                 Expanded(
                   child: CustomButton(
-                    text: "Reset",
-                    textStyle: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 16.sp,
-                        fontFamily: "Poppins",
-                        color: AppColors.red),
+                    text: 'Reset',
+                    textStyle: TextStyle(fontWeight: FontWeight.w600, fontSize: 16.sp, fontFamily: 'Poppins', color: AppColors.red),
                     borderColor: AppColors.red,
                     primaryColored: false,
-                    onPressed: () {
-                      controller.reset();
-                    },
+                    onPressed: controller.reset,
                   ),
                 ),
                 SizedBox(
@@ -414,20 +408,21 @@ class _CustomerContactAddViewState extends State<CustomerContactAddView> {
                 ),
                 Expanded(
                   child: CustomButton(
-                    text: "Submit",
-                    primaryColored: true,
+                    text: 'Submit',
                     onPressed: () {
-                      controller.saveCustomerContact(CustomerContactModel(
-                        customerContactId: controller.customerList.length + 1,
-                        name: controller.name.text,
-                        refCode: controller.refCode.text,
-                        companyName: controller.company.text,
-                        email: controller.email.text,
-                        folderName: controller.selectFolder,
-                        mobile: controller.mobile.text,
-                        tags: controller.tags.text,
-                      ));
-                      Get.to(const CustomerContactListView());
+                      controller.saveCustomerContact(
+                        CustomerContactModel(
+                          customerContactId: controller.customerList.length + 1,
+                          name: controller.name.text,
+                          refCode: controller.refCode.text,
+                          companyName: controller.company.text,
+                          email: controller.email.text,
+                          folderName: controller.selectFolder,
+                          mobile: controller.mobile.text,
+                          tags: controller.tags.text,
+                        ),
+                      );
+                      Get.to<void>(const CustomerContactListView());
                       /*  controller.addRegionalSetting(CalendarSettingModel(
                           serviceCalendar: controller.selectedServiceCalender.toString(),
                           officeCalendar: controller.selectedOfficeCalender.toString(),
@@ -442,7 +437,7 @@ class _CustomerContactAddViewState extends State<CustomerContactAddView> {
                 ),
               ],
             ),
-            const SizedBox(height: 24)
+            const SizedBox(height: 24),
           ],
         ),
       ),

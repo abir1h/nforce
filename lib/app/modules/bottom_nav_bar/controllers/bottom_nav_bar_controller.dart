@@ -1,7 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:flutter/material.dart';
 import 'package:nuforce/app/modules/activity/views/activity_view.dart';
 import 'package:nuforce/app/modules/home/views/home_view.dart';
 import 'package:nuforce/app/modules/new_orders/views/new_orders_view.dart';
@@ -17,7 +17,7 @@ import 'package:nuforce/gen/assets.gen.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 class BottomNavBarController extends GetxController {
-  final PersistentTabController navController = PersistentTabController(initialIndex: 0);
+  final PersistentTabController navController = PersistentTabController();
 
   @override
   void onInit() {
@@ -46,13 +46,10 @@ class BottomNavBarController extends GetxController {
     if (userId != null) {
       await UserApiService().getUser(userId: userId).then((value) {
         value.fold(
-          (success) {
-            // GlobalStates.app.setUser(success);
-            appstateController.setUser(success);
-          },
+          appstateController.setUser,
           (error) {
             SharedPreferenceService.clear();
-            Get.offAllNamed(Routes.AUTH);
+            Get.offAllNamed<void>(Routes.AUTH);
             Fluttertoast.showToast(msg: error);
           },
         );
@@ -74,7 +71,7 @@ class BottomNavBarController extends GetxController {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              index == 0 ? SvgPicture.asset(Assets.images.svg.home1) : SvgPicture.asset(Assets.images.svg.home0),
+              if (index == 0) SvgPicture.asset(Assets.images.svg.home1) else SvgPicture.asset(Assets.images.svg.home0),
               const SizedBox(height: 5),
               DefaultTextStyle(
                 style: CustomTextStyle.paragraphExtraSmall.copyWith(
@@ -93,7 +90,7 @@ class BottomNavBarController extends GetxController {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              index == 1 ? SvgPicture.asset(Assets.images.svg.today1) : SvgPicture.asset(Assets.images.svg.today0),
+              if (index == 1) SvgPicture.asset(Assets.images.svg.today1) else SvgPicture.asset(Assets.images.svg.today0),
               const SizedBox(height: 5),
               DefaultTextStyle(
                 style: CustomTextStyle.paragraphExtraSmall.copyWith(
@@ -130,7 +127,7 @@ class BottomNavBarController extends GetxController {
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: [
-              index == 3 ? SvgPicture.asset(Assets.images.svg.activity1) : SvgPicture.asset(Assets.images.svg.activity0),
+              if (index == 3) SvgPicture.asset(Assets.images.svg.activity1) else SvgPicture.asset(Assets.images.svg.activity0),
               const SizedBox(height: 5),
               DefaultTextStyle(
                 style: CustomTextStyle.paragraphExtraSmall.copyWith(
@@ -149,7 +146,7 @@ class BottomNavBarController extends GetxController {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              index == 4 ? SvgPicture.asset(Assets.images.svg.settings1) : SvgPicture.asset(Assets.images.svg.settings0),
+              if (index == 4) SvgPicture.asset(Assets.images.svg.settings1) else SvgPicture.asset(Assets.images.svg.settings0),
               const SizedBox(height: 5),
               DefaultTextStyle(
                 style: CustomTextStyle.paragraphExtraSmall.copyWith(

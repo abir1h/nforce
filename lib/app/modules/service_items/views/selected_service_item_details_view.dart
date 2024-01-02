@@ -15,7 +15,10 @@ import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/main.dart';
 
 class SelectedItemDetailsView extends StatefulWidget {
-  const SelectedItemDetailsView({super.key, required this.appbarText});
+  const SelectedItemDetailsView({
+    required this.appbarText,
+    super.key,
+  });
   final String appbarText;
 
   @override
@@ -94,7 +97,7 @@ class _SelectedItemDetailsViewState extends State<SelectedItemDetailsView> {
                           Expanded(
                             child: PrimaryButton(
                               onPressed: () {
-                                Get.to(const AddNewServiceView());
+                                Get.to<void>(const AddNewServiceView());
                               },
                               text: 'Edit',
                             ),

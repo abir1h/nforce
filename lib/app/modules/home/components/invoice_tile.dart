@@ -4,7 +4,6 @@ import 'package:nuforce/app/utils/text_styles.dart';
 
 class InvoiceTile extends StatelessWidget {
   const InvoiceTile({
-    super.key,
     required this.isHighlighted,
     required this.title,
     required this.price,
@@ -12,6 +11,7 @@ class InvoiceTile extends StatelessWidget {
     required this.invoiceDate,
     required this.status,
     required this.statusColor,
+    super.key,
   });
   final bool isHighlighted;
   final String title;
@@ -48,7 +48,7 @@ class InvoiceTile extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                   color: AppColors.nutralBlack1,
                 ),
-              )
+              ),
             ],
           ),
           const SizedBox(height: 10),
@@ -72,7 +72,7 @@ class InvoiceTile extends StatelessWidget {
                       fontWeight: FontWeight.w400,
                       color: AppColors.nutralBlack1,
                     ),
-                  )
+                  ),
                 ],
               ),
               Column(
@@ -92,7 +92,7 @@ class InvoiceTile extends StatelessWidget {
                       fontWeight: FontWeight.w400,
                       color: AppColors.nutralBlack1,
                     ),
-                  )
+                  ),
                 ],
               ),
               Container(
@@ -111,7 +111,7 @@ class InvoiceTile extends StatelessWidget {
                     ),
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ],

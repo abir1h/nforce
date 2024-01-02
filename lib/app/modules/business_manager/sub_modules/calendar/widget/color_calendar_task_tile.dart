@@ -7,8 +7,8 @@ import 'package:nuforce/gen/assets.gen.dart';
 
 class ColoredCalendarTaskTile extends StatelessWidget {
   const ColoredCalendarTaskTile({
-    super.key,
     required this.calendar,
+    super.key,
     this.onTap,
   });
 
@@ -58,7 +58,7 @@ class ColoredCalendarTaskTile extends StatelessWidget {
                       fontSize: 14.sp,
                       fontWeight: FontWeight.w400,
                     ),
-                  )
+                  ),
                 ],
               ),
             ),

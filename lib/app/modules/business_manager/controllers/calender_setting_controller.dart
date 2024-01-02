@@ -1,5 +1,5 @@
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
-import '../models/calendar_setting_model.dart';
+import 'package:nuforce/app/modules/business_manager/models/calendar_setting_model.dart';
 
 class CalenderSettingController extends GetxController {
   //region Dropdown Data
@@ -7,20 +7,20 @@ class CalenderSettingController extends GetxController {
   String? taskDuration;
   String? startAt;
   String? endAt;
-  String? selectedServiceCalender = "Select One";
-  String? selectedOfficeCalender = "Select One";
+  String? selectedServiceCalender = 'Select One';
+  String? selectedOfficeCalender = 'Select One';
 
-  List serviceCalendarList = [
-    "Select One",
-    "Service Calendar 1",
-    "Service Calendar 2",
-    "Service Calendar 3",
+  List<String> serviceCalendarList = [
+    'Select One',
+    'Service Calendar 1',
+    'Service Calendar 2',
+    'Service Calendar 3',
   ];
-  List officeCalendarList = [
-    "Select One",
-    "office Calendar 1",
-    "office Calendar 2",
-    "office Calendar 3",
+  List<String> officeCalendarList = [
+    'Select One',
+    'office Calendar 1',
+    'office Calendar 2',
+    'office Calendar 3',
   ];
 
   void setServiceCalendar(String value) {
@@ -49,28 +49,29 @@ class CalenderSettingController extends GetxController {
   }
 
   void reset() {
-    taskDuration=null;
-    selectedOfficeCalender=officeCalendarList.first;
-    selectedServiceCalender=serviceCalendarList.first;
-    startAt=null;
-    endAt=null;
+    taskDuration = null;
+    selectedOfficeCalender = officeCalendarList.first;
+    selectedServiceCalender = serviceCalendarList.first;
+    startAt = null;
+    endAt = null;
     update();
   }
+
   void delete() {
-   taskDuration=null;
-   selectedOfficeCalender=officeCalendarList.first;
-   selectedServiceCalender=serviceCalendarList.first;
-   startAt=null;
-   endAt=null;
-   calendarSettingData=null;
-   update();
+    taskDuration = null;
+    selectedOfficeCalender = officeCalendarList.first;
+    selectedServiceCalender = serviceCalendarList.first;
+    startAt = null;
+    endAt = null;
+    calendarSettingData = null;
+    update();
   }
 
   //endregion
 
   CalendarSettingModel? calendarSettingData;
 
-  addRegionalSetting(CalendarSettingModel data) {
+  void addRegionalSetting(CalendarSettingModel data) {
     calendarSettingData = data;
     update();
   }

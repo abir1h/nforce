@@ -28,9 +28,7 @@ class BusinessManagerDailySalesCurve extends StatelessWidget {
           BoxShadow(
             color: Color(0x19000000),
             blurRadius: 4,
-            offset: Offset(0, 0),
-            spreadRadius: 0,
-          )
+          ),
         ],
         color: AppColors.white1,
         borderRadius: BorderRadius.circular(8),

@@ -30,7 +30,7 @@ class EmptyContactGroup extends StatelessWidget {
         const Expanded(child: SizedBox()),
         PrimaryButton(
           onPressed: () {
-            Get.to(() => const BusinessManagerAddOrEditContactGroup());
+            Get.to<void>(() => const BusinessManagerAddOrEditContactGroup());
           },
           text: 'Add Contact Group',
         ),

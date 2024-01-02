@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/auth/components/account_creation_complete_sheet.dart';
 import 'package:nuforce/app/modules/auth/components/company_image.dart';
+import 'package:nuforce/app/modules/auth/controllers/auth_controller.dart';
 import 'package:nuforce/app/modules/auth/views/otp_view.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/shared/widgets/custom_dropdown.dart';
@@ -13,10 +14,8 @@ import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/text_styles.dart';
 import 'package:nuforce/main.dart';
 
-import '../controllers/auth_controller.dart';
-
 class AccountSetupView extends GetView<AuthController> {
-  const AccountSetupView({Key? key}) : super(key: key);
+  const AccountSetupView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,8 +32,6 @@ class AccountSetupView extends GetView<AuthController> {
             padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
             child: SingleChildScrollView(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
@@ -58,21 +55,23 @@ class AccountSetupView extends GetView<AuthController> {
                   Obx(
                     () => CustomDropdownButton(
                       items: controller.signUpController.industryType
-                          .map((e) => DropdownMenuItem(
-                                value: e,
-                                child: Text(
-                                  e,
-                                  style: const TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400,
-                                    color: AppColors.subText,
-                                  ),
+                          .map(
+                            (e) => DropdownMenuItem(
+                              value: e,
+                              child: Text(
+                                e,
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.subText,
                                 ),
-                              ))
+                              ),
+                            ),
+                          )
                           .toList(),
                       hint: controller.signUpController.selectedIndustry.value,
                       onChanged: (v) {
-                        controller.signUpController.selectedIndustry.value = v;
+                        controller.signUpController.selectedIndustry.value = v as String;
                       },
                       label: 'Industry Type',
                       value: null,
@@ -96,21 +95,23 @@ class AccountSetupView extends GetView<AuthController> {
                   Obx(
                     () => CustomDropdownButton(
                       items: controller.signUpController.country
-                          .map((e) => DropdownMenuItem(
-                                value: e,
-                                child: Text(
-                                  e,
-                                  style: const TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400,
-                                    color: AppColors.subText,
-                                  ),
+                          .map(
+                            (e) => DropdownMenuItem(
+                              value: e,
+                              child: Text(
+                                e,
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.subText,
                                 ),
-                              ))
+                              ),
+                            ),
+                          )
                           .toList(),
                       hint: controller.signUpController.selectedCountry.value,
                       onChanged: (v) {
-                        controller.signUpController.selectedCountry.value = v;
+                        controller.signUpController.selectedCountry.value = v as String;
                       },
                       label: 'Country',
                       value: null,
@@ -120,21 +121,23 @@ class AccountSetupView extends GetView<AuthController> {
                   Obx(
                     () => CustomDropdownButton(
                       items: controller.signUpController.state
-                          .map((e) => DropdownMenuItem(
-                                value: e,
-                                child: Text(
-                                  e,
-                                  style: const TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400,
-                                    color: AppColors.subText,
-                                  ),
+                          .map(
+                            (e) => DropdownMenuItem(
+                              value: e,
+                              child: Text(
+                                e,
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.subText,
                                 ),
-                              ))
+                              ),
+                            ),
+                          )
                           .toList(),
                       hint: controller.signUpController.selectedState.value,
                       onChanged: (v) {
-                        controller.signUpController.selectedState.value = v;
+                        controller.signUpController.selectedState.value = v as String;
                       },
                       label: 'State',
                       value: null,
@@ -146,7 +149,7 @@ class AccountSetupView extends GetView<AuthController> {
                   PrimaryButton(
                     onPressed: () {
                       controller.changeFromSetupAccount(true);
-                      Get.to(() => const OtpView())!.then((value) {
+                      Get.to<void>(() => const OtpView())!.then((value) {
                         accountCreationComplete(context);
                       });
                     },
