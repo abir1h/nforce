@@ -1,69 +1,72 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/home/controllers/home_controller.dart';
 import 'package:nuforce/app/shared/widgets/custom_tabbar.dart';
+import 'package:nuforce/main.dart';
 
 class HomeMiniTabs extends StatelessWidget {
-  const HomeMiniTabs({
-    super.key,
-    required this.controller,
-  });
-
-  final HomeController controller;
+  const HomeMiniTabs({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: Obx(
-            () => CustomTabBar(
-              isSelected: controller.miniTabEnum.value == MiniTabIndexEnum.today,
-              onTap: () {
-                controller.miniTabEnum.value = MiniTabIndexEnum.today;
-              },
-              text: 'Today',
-              isMini: true,
+    return GetBuilder<HomeController>(
+      builder: (controller) {
+        return SizedBox(
+          width: width,
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                SizedBox(
+                  width: 100.w,
+                  child: CustomTabBar(
+                    isSelected: controller.miniTabEnum == MiniTabIndexEnum.today,
+                    onTap: () {
+                      controller.updateMiniTabEnum(MiniTabIndexEnum.today);
+                    },
+                    text: 'Today',
+                    isMini: true,
+                  ),
+                ),
+                SizedBox(
+                  width: 100.w,
+                  child: CustomTabBar(
+                    isSelected: controller.miniTabEnum == MiniTabIndexEnum.actions,
+                    onTap: () {
+                      controller.updateMiniTabEnum(MiniTabIndexEnum.actions);
+                    },
+                    text: 'Actions',
+                    isMini: true,
+                  ),
+                ),
+                SizedBox(
+                  width: 150.w,
+                  child: CustomTabBar(
+                    isSelected: controller.miniTabEnum == MiniTabIndexEnum.performance,
+                    onTap: () {
+                      controller.updateMiniTabEnum(MiniTabIndexEnum.performance);
+                    },
+                    text: 'Performance',
+                    isMini: true,
+                  ),
+                ),
+                SizedBox(
+                  width: 100.w,
+                  child: CustomTabBar(
+                    isSelected: controller.miniTabEnum == MiniTabIndexEnum.invoices,
+                    onTap: () {
+                      controller.updateMiniTabEnum(MiniTabIndexEnum.invoices);
+                    },
+                    text: 'Invoices',
+                    isMini: true,
+                  ),
+                ),
+              ],
             ),
           ),
-        ),
-        Expanded(
-          child: Obx(
-            () => CustomTabBar(
-              isSelected: controller.miniTabEnum.value == MiniTabIndexEnum.actions,
-              onTap: () {
-                controller.miniTabEnum.value = MiniTabIndexEnum.actions;
-              },
-              text: 'Actions',
-              isMini: true,
-            ),
-          ),
-        ),
-        Expanded(
-          child: Obx(
-            () => CustomTabBar(
-              isSelected: controller.miniTabEnum.value == MiniTabIndexEnum.performance,
-              onTap: () {
-                controller.miniTabEnum.value = MiniTabIndexEnum.performance;
-              },
-              text: 'Performance',
-              isMini: true,
-            ),
-          ),
-        ),
-        Expanded(
-          child: Obx(
-            () => CustomTabBar(
-              isSelected: controller.miniTabEnum.value == MiniTabIndexEnum.invoices,
-              onTap: () {
-                controller.miniTabEnum.value = MiniTabIndexEnum.invoices;
-              },
-              text: 'Invoices',
-              isMini: true,
-            ),
-          ),
-        ),
-      ],
+        );
+      },
     );
   }
 }

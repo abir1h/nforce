@@ -1,22 +1,22 @@
-class User {
+class LoginResponse {
   final Data? data;
   final String? redirect;
 
-  User({
+  LoginResponse({
     this.data,
     this.redirect,
   });
 
-  User copyWith({
+  LoginResponse copyWith({
     Data? data,
     String? redirect,
   }) =>
-      User(
+      LoginResponse(
         data: data ?? this.data,
         redirect: redirect ?? this.redirect,
       );
 
-  factory User.fromJson(Map<String, dynamic> json) => User(
+  factory LoginResponse.fromJson(Map<String, dynamic> json) => LoginResponse(
         data: json["data"] == null ? null : Data.fromJson(json["data"]),
         redirect: json["redirect"],
       );

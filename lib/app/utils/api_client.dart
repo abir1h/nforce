@@ -18,7 +18,7 @@ class ApiClient {
 
   static init() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    dio.options.baseUrl = Url.baseUrl;
+    dio.options.baseUrl = URL.baseUrl;
     dio.options.connectTimeout = const Duration(milliseconds: 60000);
     dio.options.receiveTimeout = const Duration(milliseconds: 60000);
     dio.options.receiveDataWhenStatusError = true;
@@ -43,7 +43,7 @@ class ApiClient {
     return response;
   }
 
-  Future post({
+  Future<Response> post({
     required String url,
     Map<String, dynamic>? body,
   }) async {
@@ -51,7 +51,7 @@ class ApiClient {
     developer.log('body: $body', name: 'API');
     developer.log('headers: ${dio.options.headers.entries}', name: 'API');
 
-    final response = await dio.post(url, data: body);
+    final Response response = await dio.post(url, data: body);
     Logger().i(response);
     return response;
   }

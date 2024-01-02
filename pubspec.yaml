@@ -6,6 +6,7 @@ environment:
   sdk: ">=3.0.6 <4.0.0"
 
 dependencies:
+  cached_network_image: ^3.3.1
   cupertino_icons: ^1.0.2
   dio: ^5.3.2
   expandable: ^5.0.1
@@ -38,7 +39,6 @@ dependencies:
   dartz: ^0.10.1
   logger: ^2.0.2+1
   flutter_keyboard_visibility: ^6.0.0
-
 
 dev_dependencies:
   build_runner: 2.4.6

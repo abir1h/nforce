@@ -15,86 +15,95 @@ import 'package:nuforce/main.dart';
 
 import '../controllers/home_controller.dart';
 
-class HomeView extends GetView<HomeController> {
+class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
+
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  // final controller = Get.find<HomeController>();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.white1,
-      appBar: const CustomAppBar(),
-      body: SizedBox(
-        height: height,
-        width: width,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(
-                width: width,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
-                  child: Wrap(
-                    spacing: 16,
-                    runSpacing: 16,
-                    alignment: WrapAlignment.start,
-                    children: [
-                      ServiceButton(
-                        svgPath: Assets.images.svg.customerService,
-                        title: 'Service Center',
-                        onTap: () {},
+    return GetBuilder<HomeController>(
+      builder: (hcontroller) {
+        return Scaffold(
+          backgroundColor: AppColors.white1,
+          appBar: const CustomAppBar(),
+          body: SizedBox(
+            height: height,
+            width: width,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(
+                    width: width,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+                      child: Wrap(
+                        spacing: 16,
+                        runSpacing: 16,
+                        alignment: WrapAlignment.start,
+                        children: [
+                          ServiceButton(
+                            svgPath: Assets.images.svg.customerService,
+                            title: 'Service Center',
+                            onTap: () {},
+                          ),
+                          ServiceButton(
+                            svgPath: Assets.images.svg.businessManager,
+                            title: 'Business Manager',
+                            onTap: () {
+                              Get.toNamed(Routes.BUSINESS_MANAGER);
+                            },
+                          ),
+                          ServiceButton(
+                            svgPath: Assets.images.svg.serviceManager,
+                            title: 'Service Manager',
+                            onTap: () {
+                              Get.toNamed(Routes.SERVICE_ITEMS);
+                            },
+                          ),
+                          ServiceButton(
+                            svgPath: Assets.images.svg.humanResource,
+                            title: 'Human Resource',
+                            onTap: () {},
+                          ),
+                          ServiceButton(
+                            svgPath: Assets.images.svg.calendar,
+                            title: 'Calendar',
+                            onTap: () {},
+                          ),
+                          ServiceButton(
+                            svgPath: Assets.images.svg.accounting,
+                            title: 'Accounting',
+                            onTap: () {},
+                          ),
+                          ServiceButton(
+                            svgPath: Assets.images.svg.customer,
+                            title: 'Customer',
+                            onTap: () {},
+                          ),
+                        ],
                       ),
-                      ServiceButton(
-                        svgPath: Assets.images.svg.businessManager,
-                        title: 'Business Manager',
-                        onTap: () {
-                          Get.toNamed(Routes.BUSINESS_MANAGER);
-                        },
-                      ),
-                      ServiceButton(
-                        svgPath: Assets.images.svg.serviceManager,
-                        title: 'Service Manager',
-                        onTap: () {
-                          Get.toNamed(Routes.SERVICE_ITEMS);
-                        },
-                      ),
-                      ServiceButton(
-                        svgPath: Assets.images.svg.humanResource,
-                        title: 'Human Resource',
-                        onTap: () {},
-                      ),
-                      ServiceButton(
-                        svgPath: Assets.images.svg.calendar,
-                        title: 'Calendar',
-                        onTap: () {},
-                      ),
-                      ServiceButton(
-                        svgPath: Assets.images.svg.accounting,
-                        title: 'Accounting',
-                        onTap: () {},
-                      ),
-                      ServiceButton(
-                        svgPath: Assets.images.svg.customer,
-                        title: 'Customer',
-                        onTap: () {},
-                      ),
-                    ],
+                    ),
                   ),
-                ),
+                  const SizedBox(height: 10),
+                  const HomeMiniTabs(),
+                  const SizedBox(height: 16),
+                  switch (hcontroller.miniTabEnum) {
+                    MiniTabIndexEnum.today => const TodayBody(),
+                    MiniTabIndexEnum.actions => const ActionsBody(),
+                    MiniTabIndexEnum.performance => const PerformanceBody(),
+                    MiniTabIndexEnum.invoices => const InvoiceBody(),
+                  },
+                ],
               ),
-              const SizedBox(height: 10),
-              HomeMiniTabs(controller: controller),
-              const SizedBox(height: 16),
-              Obx(
-                () => switch (controller.miniTabEnum.value) {
-                  MiniTabIndexEnum.today => const TodayBody(),
-                  MiniTabIndexEnum.actions => const ActionsBody(),
-                  MiniTabIndexEnum.performance => const PerformanceBody(),
-                  MiniTabIndexEnum.invoices => const InvoiceBody(),
-                },
-              ),
-            ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

@@ -31,6 +31,14 @@ class SharedPreferenceService extends GetxService {
     _sharedPreferences.setString(TOKEN, token);
   }
 
+  static void setUserId(int userId) {
+    _sharedPreferences.setInt(USER_ID, userId);
+  }
+
+  static int? getUserId() {
+    return _sharedPreferences.getInt(USER_ID);
+  }
+
   static Future<void> clear() async {
     await _sharedPreferences.clear();
     return;

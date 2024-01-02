@@ -1,4 +1,5 @@
 import 'package:flutter_svg/svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:nuforce/app/modules/activity/views/activity_view.dart';
@@ -6,7 +7,11 @@ import 'package:nuforce/app/modules/home/views/home_view.dart';
 import 'package:nuforce/app/modules/new_orders/views/new_orders_view.dart';
 import 'package:nuforce/app/modules/settings/views/settings_view.dart';
 import 'package:nuforce/app/modules/today/views/today_view.dart';
+import 'package:nuforce/app/routes/app_pages.dart';
+import 'package:nuforce/app/shared/services/user_api_service.dart';
 import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/app/utils/global_states.dart';
+import 'package:nuforce/app/utils/shared_preferences.dart';
 import 'package:nuforce/app/utils/text_styles.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
@@ -16,12 +21,14 @@ class BottomNavBarController extends GetxController {
 
   @override
   void onInit() {
-    changeIndex(0);
     super.onInit();
+    changeIndex(0);
+    getUser();
   }
 
-  RxInt currentIndex = 0.obs;
-  RxList<PersistentBottomNavBarItem> items = <PersistentBottomNavBarItem>[].obs;
+  bool isLoading = false;
+  int currentIndex = 0;
+  List<PersistentBottomNavBarItem> items = <PersistentBottomNavBarItem>[];
 
   List<Widget> screens = [
     const HomeView(),
@@ -30,10 +37,37 @@ class BottomNavBarController extends GetxController {
     const ActivityView(),
     const SettingsView(),
   ];
+  final appstateController = Get.put(AppState());
+  Future<void> getUser() async {
+    isLoading = true;
+    update();
+
+    final userId = SharedPreferenceService.getUserId();
+    if (userId != null) {
+      await UserApiService().getUser(userId: userId).then((value) {
+        value.fold(
+          (success) {
+            // GlobalStates.app.setUser(success);
+            appstateController.setUser(success);
+          },
+          (error) {
+            SharedPreferenceService.clear();
+            Get.offAllNamed(Routes.AUTH);
+            Fluttertoast.showToast(msg: error);
+          },
+        );
+      });
+    }
+
+    isLoading = false;
+    update();
+  }
 
   void changeIndex(int index) {
-    currentIndex.value = index;
-    items.value = [
+    currentIndex = index;
+    update();
+
+    items = [
       PersistentBottomNavBarItem(
         icon: SizedBox(
           height: 30,
@@ -129,5 +163,6 @@ class BottomNavBarController extends GetxController {
         ),
       ),
     ];
+    update();
   }
 }

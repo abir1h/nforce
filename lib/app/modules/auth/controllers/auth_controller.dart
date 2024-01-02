@@ -37,7 +37,7 @@ class AuthController extends GetxController {
     update();
   }
 
-  bool rememberMe = false;
+  bool rememberMe = true;
   void toggleRememberMe() {
     rememberMe = !rememberMe;
     update();
@@ -83,8 +83,9 @@ class AuthController extends GetxController {
     await LoginService.businessLogin(email: email, password: password).then((value) {
       value.fold(
         (success) async {
-          if (success.data?.accessToken != null && success.data!.accessToken != "") {
+          if (success.data?.accessToken != null && success.data!.accessToken != "" && success.data?.id != null) {
             SharedPreferenceService.setToken(success.data!.accessToken!);
+            SharedPreferenceService.setUserId(success.data!.id!);
             await ApiClient.init();
             if (!rememberMe) {
               SharedPreferenceService.setToken("");

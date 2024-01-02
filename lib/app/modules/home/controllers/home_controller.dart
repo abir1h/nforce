@@ -8,13 +8,15 @@ import 'dart:developer' as developer show log;
 class HomeController extends GetxController {
   @override
   void onInit() {
-    expandableController.value.addListener(() {
-      if (expandableController.value.expanded) {
-        isExpanded.value = true;
-        developer.log('isExpanded.value ${isExpanded.value}');
+    expandableController.addListener(() {
+      if (expandableController.expanded) {
+        isExpanded = true;
+        update();
+        developer.log('isExpanded.value $isExpanded');
       } else {
-        isExpanded.value = false;
-        developer.log('isExpanded.value ${isExpanded.value}');
+        isExpanded = false;
+        update();
+        developer.log('isExpanded.value $isExpanded');
       }
     });
     super.onInit();
@@ -22,14 +24,16 @@ class HomeController extends GetxController {
 
   final chartController = Get.put(ChartController());
 
-  Rx<MiniTabIndexEnum> miniTabEnum = MiniTabIndexEnum.today.obs;
-  Rx<ExpandableController> expandableController = ExpandableController().obs;
+  bool isExpanded = false;
 
-  RxBool isExpanded = false.obs;
-  // void toggleExpandable() {
-  //   isExpanded.value = !isExpanded.value;
-  //   expandableController.value.toggle();
-  // }
+  MiniTabIndexEnum miniTabEnum = MiniTabIndexEnum.today;
+  void updateMiniTabEnum(MiniTabIndexEnum value) {
+    miniTabEnum = value;
+    update();
+  }
+  
+  ExpandableController expandableController = ExpandableController();
+
 
   RxList<MockTaskApi> mockTaskApiList = <MockTaskApi>[
     MockTaskApi(
