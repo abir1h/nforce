@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:nuforce/app/modules/business_manager/controllers/customer_contact_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/commision_tires/business_manager_commission_tiers_controller.dart';
 import 'package:nuforce/app/modules/business_manager/controllers/custom_field_controller.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/service_category/business_manager_service_catalog_controller.dart';
 import 'calender_setting_controller.dart';
 import 'cash_controller.dart';
 import 'check_controller.dart';
@@ -28,6 +29,7 @@ class BusinessManagerController extends GetxController {
   final commissionTierController = Get.put(BusinessManagerCommissionTiersController());
   final customFieldController = Get.put(CustomFieldController());
   final customerContactController = Get.put(CustomerContactController());
+  final serviceCatalogsController = Get.put(BusinessManagerServiceCatalogsController());
 
   @override
   void dispose() {

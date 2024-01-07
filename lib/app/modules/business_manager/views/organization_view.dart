@@ -4,6 +4,7 @@ import 'package:nuforce/app/modules/business_manager/sub_modules/calendar/busine
 import 'package:nuforce/app/modules/business_manager/sub_modules/commision_tires/business_manager_commission_tiers_view.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/contact_group/business_manager_contact_group_view.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/label/business_manager_label_view.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/service_category/business_manager_service_catalog_view.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/user_roles/user_roles_view.dart';
 import 'package:nuforce/app/modules/business_manager/views/business_manager_profile_view.dart';
 import 'package:nuforce/app/modules/business_manager/widgets/big_button_with_icon.dart';
@@ -82,7 +83,9 @@ class OrganizationView extends StatelessWidget {
               BigButtonWithIcon(
                 svgPath: Assets.images.svg.serviceCategory,
                 lable: 'Service Category',
-                onTap: () {},
+                onTap: () {
+                  Get.to<void>(() => const BusinessManagerServiceCatalogsView());
+                },
               ),
               const SizedBox(height: 16),
               BigButtonWithIcon(

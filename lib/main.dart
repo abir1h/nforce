@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:get/get.dart';
+import 'package:nuforce/app/routes/app_pages.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/initial_bindings.dart';
-
-import 'app/routes/app_pages.dart';
 
 double height = 0;
 double width = 0;
@@ -18,7 +16,7 @@ void main() {
       minTextAdapt: true,
       splitScreenMode: true,
       child: GetMaterialApp(
-        title: "Nuforce",
+        title: 'Nuforce',
         debugShowCheckedModeBanner: false,
         initialRoute: AppPages.INITIAL,
         getPages: AppPages.routes,

@@ -163,7 +163,7 @@ class _SignInPageState extends State<SignInPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Don’t have a account?',
+                      "Don't have an account?",
                       style: TextStyle(
                         color: AppColors.nutralBlack1,
                         fontWeight: FontWeight.w500,
