@@ -12,6 +12,9 @@ import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/shared_preferences.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 
+import '../sub_modules/branding/branding_view.dart';
+import '../sub_modules/offline_payment/offine_payment_view.dart';
+
 class SettingsView extends GetView<SettingsController> {
   const SettingsView({super.key});
   @override
@@ -75,13 +78,13 @@ class SettingsView extends GetView<SettingsController> {
                     ),
                     SettingTile(
                       leading: Assets.images.png.branding.keyName,
-                      onTap: () {},
+                      onTap: () => Get.to<void>(() => const BrandingView()),
                       label: 'Branding',
                       hasDivider: true,
                     ),
                     SettingTile(
                       leading: Assets.images.png.offlinePayments.keyName,
-                      onTap: () {},
+                      onTap: () => Get.to<void>(() => const OfflinePayment()),
                       label: 'Offline Payments',
                       hasDivider: true,
                     ),
