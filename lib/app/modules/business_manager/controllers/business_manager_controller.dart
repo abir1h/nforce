@@ -1,18 +1,19 @@
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/business_manager/controllers/customer_contact_controller.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/commision_tires/business_manager_commission_tiers_controller.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/calender_setting_controller.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/cash_controller.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/check_controller.dart';
 import 'package:nuforce/app/modules/business_manager/controllers/custom_field_controller.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/customer_contact_controller.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/direct_debit_controller.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/estimation_controller.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/regional_settings_controller.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/calendar/business_manager_calendar_controller.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/commision_tires/business_manager_commission_tiers_controller.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/contact_group/business_manager_contact_group_controller.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/label/business_manager_label_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/service_category/business_manager_service_catalog_controller.dart';
-import 'calender_setting_controller.dart';
-import 'cash_controller.dart';
-import 'check_controller.dart';
-import 'direct_debit_controller.dart';
-import 'estimation_controller.dart';
-import 'regional_settings_controller.dart';
-import '../sub_modules/calendar/business_manager_calendar_controller.dart';
-import '../sub_modules/contact_group/business_manager_contact_group_controller.dart';
-import '../sub_modules/label/business_manager_label_controller.dart';
-import '../sub_modules/user_roles/user_roles_controller.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/service_topic/business_manager_service_topic_controller.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/user_roles/user_roles_controller.dart';
 
 class BusinessManagerController extends GetxController {
   RxString selectedValue = '7 days'.obs;
@@ -30,6 +31,7 @@ class BusinessManagerController extends GetxController {
   final customFieldController = Get.put(CustomFieldController());
   final customerContactController = Get.put(CustomerContactController());
   final serviceCatalogsController = Get.put(BusinessManagerServiceCatalogsController());
+  final serviceTopicController = Get.put(BusinessManagerServiceTopicController());
 
   @override
   void dispose() {
