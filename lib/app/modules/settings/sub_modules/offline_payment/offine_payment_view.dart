@@ -2,13 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/settings/widgets/offline_payment_card.dart';
 import 'package:nuforce/app/modules/settings/views/settings_view.dart';
 
 import '../../../../../gen/assets.gen.dart';
 import '../../../../routes/app_pages.dart';
 import '../../../../shared/widgets/custom_appbar_minimal.dart';
 import '../../../../utils/colors.dart';
+import '../../../../utils/text_styles.dart';
 import '../../../business_manager/sub_modules/customer_contact/widgets/custom_search_widget.dart';
+import 'add_payment.dart';
+
 class OfflinePayment extends StatefulWidget {
   const OfflinePayment({super.key});
 
@@ -28,7 +32,7 @@ class _OfflinePaymentState extends State<OfflinePayment> {
           Padding(
             padding: EdgeInsets.only(right: 20.w),
             child: GestureDetector(
-              onTap: () => Get.to(const SettingsView()),
+              onTap: () => Get.to(const AddPayment()),
               child: Row(
                 children: [
                   Icon(
@@ -50,7 +54,8 @@ class _OfflinePaymentState extends State<OfflinePayment> {
           ),
         ],
       ),
-      body: SingleChildScrollView(   physics: const NeverScrollableScrollPhysics(),
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
         child: Column(
           children: [
@@ -93,20 +98,90 @@ class _OfflinePaymentState extends State<OfflinePayment> {
                 SizedBox(
                   width: 16.w,
                 ),
-                Container(
-                  padding: EdgeInsets.all(16.h),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8.r),
-                    color: AppColors.primaryBlue1,
+                PopupMenuButton(
+                  onSelected: (value) {
+                    // Handle the selected value here
+                  },
+                  itemBuilder: (context) => popupMenuItems,
+                  child: Container(
+                    padding: EdgeInsets.all(16.h),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8.r),
+                      color: AppColors.primaryBlue1,
+                    ),
+                    child: SvgPicture.asset(Assets.images.svg.filter2),
                   ),
-                  child: SvgPicture.asset(Assets.images.svg.filter2),
                 ),
               ],
             ),
-
+            SizedBox(
+              height: 14.h,
+            ),
+            ListView(
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              children: [
+                const OfflinePaymentCard(),
+                SizedBox(
+                  height: 16.h,
+                ),
+                const OfflinePaymentCard(),
+                SizedBox(
+                  height: 16.h,
+                ),
+                const OfflinePaymentCard(),
+                SizedBox(
+                  height: 16.h,
+                ),
+                const OfflinePaymentCard(),
+                SizedBox(
+                  height: 16.h,
+                ),
+                const OfflinePaymentCard(),
+              ],
+            ),
           ],
         ),
       ),
     );
   }
+
+  List<PopupMenuEntry<int>> popupMenuItems = [
+    PopupMenuItem<int>(
+      value: 1,
+      child: Text(
+        'Pending',
+        style: CustomTextStyle.paragraphExtraSmall.copyWith(
+          color: AppColors.subText,
+        ),
+      ),
+    ),
+    PopupMenuItem<int>(
+      value: 2,
+      child: Text(
+        'Processing',
+        style: CustomTextStyle.paragraphExtraSmall.copyWith(
+          color: AppColors.subText,
+        ),
+      ),
+    ),
+    PopupMenuItem<int>(
+      value: 3,
+      child: Text(
+        'Complete',
+        style: CustomTextStyle.paragraphExtraSmall.copyWith(
+          color: AppColors.subText,
+        ),
+      ),
+    ),
+    PopupMenuItem<int>(
+      value: 4,
+      child: Text(
+        'Cancelled',
+        style: CustomTextStyle.paragraphExtraSmall.copyWith(
+          color: AppColors.subText,
+        ),
+      ),
+    ),
+  ];
 }

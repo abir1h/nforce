@@ -12,7 +12,10 @@ import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/shared_preferences.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 
+import '../../business_manager/sub_modules/custom_field/custom_field_view.dart';
 import '../sub_modules/branding/branding_view.dart';
+import '../sub_modules/customField/customfield_view_settings.dart';
+import '../sub_modules/notification/notification_view.dart';
 import '../sub_modules/offline_payment/offine_payment_view.dart';
 
 class SettingsView extends GetView<SettingsController> {
@@ -102,7 +105,7 @@ class SettingsView extends GetView<SettingsController> {
                     ),
                     SettingTile(
                       leading: Assets.images.png.customFields.keyName,
-                      onTap: () {},
+                      onTap: () => Get.to<void>(() => const CustomFieldSettingsView()),
                       label: 'Custom Fields',
                       hasDivider: true,
                     ),
@@ -120,7 +123,7 @@ class SettingsView extends GetView<SettingsController> {
                     ),
                     SettingTile(
                       leading: Assets.images.png.notification.keyName,
-                      onTap: () {},
+                      onTap: () => Get.to<void>(() => const NotificationView()),
                       label: 'Notifications',
                       hasDivider: false,
                     ),
