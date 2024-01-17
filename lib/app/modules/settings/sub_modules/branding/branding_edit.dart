@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_material_color_picker/flutter_material_color_picker.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/settings/sub_modules/branding/branding_view.dart';
+import 'package:nuforce/app/modules/settings/widgets/choose_button.dart';
+import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
+import 'package:nuforce/app/shared/widgets/primary_button.dart';
+import 'package:nuforce/app/shared/widgets/secondary_button.dart';
 import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/app/utils/text_styles.dart';
 import 'package:nuforce/gen/assets.gen.dart';
-
-import '../../../../shared/widgets/custom_text_field.dart';
-import '../../../../shared/widgets/primary_button.dart';
-import '../../../../shared/widgets/secondary_button.dart';
-import '../../../../utils/text_styles.dart';
-import '../../widgets/choose_button.dart';
-import 'branding_view.dart';
 
 class BrandingEdit extends StatefulWidget {
   const BrandingEdit({super.key});

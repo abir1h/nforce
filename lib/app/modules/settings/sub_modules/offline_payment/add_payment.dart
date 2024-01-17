@@ -3,17 +3,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
-
-import '../../../../../gen/assets.gen.dart';
-import '../../../../shared/widgets/custom_appbar_minimal.dart';
-import '../../../../shared/widgets/custom_checkbox.dart';
-import '../../../../shared/widgets/custom_dropdown.dart';
-import '../../../../shared/widgets/custom_text_field.dart';
-import '../../../../shared/widgets/primary_button.dart';
-import '../../../../shared/widgets/secondary_button.dart';
-import '../../../../utils/colors.dart';
-import '../../../../utils/text_styles.dart';
-import '../../views/settings_view.dart';
+import 'package:nuforce/app/modules/settings/views/settings_view.dart';
+import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
+import 'package:nuforce/app/shared/widgets/custom_checkbox.dart';
+import 'package:nuforce/app/shared/widgets/custom_dropdown.dart';
+import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
+import 'package:nuforce/app/shared/widgets/primary_button.dart';
+import 'package:nuforce/app/shared/widgets/secondary_button.dart';
+import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/app/utils/text_styles.dart';
+import 'package:nuforce/gen/assets.gen.dart';
 
 class AddPayment extends StatefulWidget {
   const AddPayment({super.key});
@@ -338,9 +337,7 @@ class _AddPaymentState extends State<AddPayment> {
             Row(
               children: [
                 CustomCheckbox(
-                  activeColor: isSelected == false
-                      ? Colors.grey.withOpacity(.4)
-                      : AppColors.primaryBlue1,
+                  activeColor: isSelected == false ? Colors.grey.withOpacity(.4) : AppColors.primaryBlue1,
                   value: isSelected,
                   onChanged: (v) {
                     setState(() {
@@ -350,36 +347,40 @@ class _AddPaymentState extends State<AddPayment> {
                 ),
                 Text.rich(
                   style: TextStyle(
-                      color: AppColors.nutralBlack2,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 14.sp,
-                      fontFamily: "Poppins",),
+                    color: AppColors.nutralBlack2,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 14.sp,
+                    fontFamily: "Poppins",
+                  ),
                   TextSpan(
                     text: 'Agree with ',
                     children: <InlineSpan>[
                       TextSpan(
                         text: 'Terms ',
                         style: TextStyle(
-                            color: AppColors.blue,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 14.sp,
-                            fontFamily: "Poppins",),
+                          color: AppColors.blue,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 14.sp,
+                          fontFamily: "Poppins",
+                        ),
                       ),
                       TextSpan(
                         text: ' and ',
                         style: TextStyle(
-                            color: AppColors.nutralBlack2,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 14.sp,
-                            fontFamily: "Poppins",),
+                          color: AppColors.nutralBlack2,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 14.sp,
+                          fontFamily: "Poppins",
+                        ),
                       ),
                       TextSpan(
                         text: 'Conditions',
                         style: TextStyle(
-                            color: AppColors.blue,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 14.sp,
-                            fontFamily: "Poppins",),
+                          color: AppColors.blue,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 14.sp,
+                          fontFamily: "Poppins",
+                        ),
                       ),
                     ],
                   ),
@@ -402,31 +403,32 @@ class _AddPaymentState extends State<AddPayment> {
                   child: Text(
                     "Total billing amount",
                     style: TextStyle(
-                        color: AppColors.nutralBlack2,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 16.sp,
-                        fontFamily: "Poppins",),
-                  ),
-                ), Text(
-                  "\$100000",
-                  style: TextStyle(
-                      color: AppColors.nutralBlack1,
+                      color: AppColors.nutralBlack2,
                       fontWeight: FontWeight.w600,
                       fontSize: 16.sp,
-                      fontFamily: "Poppins",),
+                      fontFamily: "Poppins",
+                    ),
+                  ),
                 ),
-
-
+                Text(
+                  "\$100000",
+                  style: TextStyle(
+                    color: AppColors.nutralBlack1,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16.sp,
+                    fontFamily: "Poppins",
+                  ),
+                ),
               ],
-            ),  SizedBox(
+            ),
+            SizedBox(
               height: 24.h,
-            ),            Row(
+            ),
+            Row(
               children: [
                 Expanded(
                   child: SecondaryButton(
-                    onPressed: () {
-
-                    },
+                    onPressed: () {},
                     text: 'Reset',
                   ),
                 ),
@@ -435,9 +437,8 @@ class _AddPaymentState extends State<AddPayment> {
                   child: PrimaryButton(
                     onPressed: () {
                       Get.to(SettingsView());
-
                     },
-                    text:  'Submit',
+                    text: 'Submit',
                   ),
                 ),
               ],

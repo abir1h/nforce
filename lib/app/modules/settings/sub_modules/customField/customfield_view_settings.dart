@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:nuforce/app/modules/service_items/widgets/title_with_switch.dart';
-
-import '../../../../shared/widgets/custom_appbar_minimal.dart';
-import '../../../../utils/colors.dart';
-import '../../../home/components/colored_checkbox_with_title.dart';
-import '../../views/settings_view.dart';
-import '../../widgets/notication_checkbox.dart';
+import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
+import 'package:nuforce/app/utils/colors.dart';
 
 class CustomFieldSettingsView extends StatefulWidget {
   const CustomFieldSettingsView({super.key});

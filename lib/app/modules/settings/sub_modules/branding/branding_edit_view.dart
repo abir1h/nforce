@@ -2,13 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/settings/controllers/settings_controller.dart';
-import 'package:nuforce/app/modules/settings/sub_modules/account_info/edit_business_info.dart';
-import 'package:nuforce/app/modules/settings/sub_modules/account_info/edit_personal_info.dart';
+import 'package:nuforce/app/modules/settings/sub_modules/branding/branding_edit.dart';
 import 'package:nuforce/app/modules/settings/sub_modules/branding/persona_edit.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/utils/colors.dart';
-
-import 'branding_edit.dart';
 
 class BrandingEditView extends StatefulWidget {
   const BrandingEditView({super.key});

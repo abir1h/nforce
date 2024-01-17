@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:nuforce/app/modules/settings/widgets/choose_button.dart';
 import 'package:nuforce/app/modules/settings/widgets/roundbutton.dart';
 import 'package:nuforce/app/utils/colors.dart';
 
@@ -30,7 +29,8 @@ class OfflinePaymentCard extends StatelessWidget {
           SizedBox(
             height: 8.h,
           ),
-          Row(crossAxisAlignment: CrossAxisAlignment.start,
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
                 child: Column(
@@ -56,7 +56,10 @@ class OfflinePaymentCard extends StatelessWidget {
                     ),
                   ],
                 ),
-              ),SizedBox(width: 20.w,),
+              ),
+              SizedBox(
+                width: 20.w,
+              ),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -81,7 +84,10 @@ class OfflinePaymentCard extends StatelessWidget {
                     ),
                   ],
                 ),
-              ),SizedBox(width: 20.w,),
+              ),
+              SizedBox(
+                width: 20.w,
+              ),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

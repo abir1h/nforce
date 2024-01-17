@@ -2,16 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/settings/sub_modules/offline_payment/add_payment.dart';
 import 'package:nuforce/app/modules/settings/widgets/offline_payment_card.dart';
-import 'package:nuforce/app/modules/settings/views/settings_view.dart';
-
-import '../../../../../gen/assets.gen.dart';
-import '../../../../routes/app_pages.dart';
-import '../../../../shared/widgets/custom_appbar_minimal.dart';
-import '../../../../utils/colors.dart';
-import '../../../../utils/text_styles.dart';
-import '../../../business_manager/sub_modules/customer_contact/widgets/custom_search_widget.dart';
-import 'add_payment.dart';
+import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
+import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/app/utils/text_styles.dart';
+import 'package:nuforce/gen/assets.gen.dart';
 
 class OfflinePayment extends StatefulWidget {
   const OfflinePayment({super.key});

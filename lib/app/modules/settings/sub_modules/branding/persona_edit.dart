@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nuforce/app/modules/settings/widgets/choose_button.dart';
+import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
+import 'package:nuforce/app/shared/widgets/primary_button.dart';
+import 'package:nuforce/app/shared/widgets/secondary_button.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/gen/assets.gen.dart';
-
-import '../../../../shared/widgets/custom_text_field.dart';
-import '../../../../shared/widgets/primary_button.dart';
-import '../../../../shared/widgets/secondary_button.dart';
-import '../../widgets/choose_button.dart';
 
 class PersonaEdit extends StatelessWidget {
   const PersonaEdit({super.key});
@@ -27,9 +26,7 @@ class PersonaEdit extends StatelessWidget {
             const SizedBox(width: 15),
             Expanded(
               child: PrimaryButton(
-                onPressed: () {
-
-                },
+                onPressed: () {},
                 text: 'Update',
               ),
             ),
@@ -61,10 +58,11 @@ class PersonaEdit extends StatelessWidget {
                     Text(
                       "Image",
                       style: TextStyle(
-                          fontFamily: "Poppins",
-                          fontWeight: FontWeight.w500,
-                          fontSize: 14.sp,
-                          color: AppColors.nutralBlack1,),
+                        fontFamily: "Poppins",
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14.sp,
+                        color: AppColors.nutralBlack1,
+                      ),
                     ),
                     ChooseButton(buttonText: 'Choose File', onPressed: () {}),
                   ],
@@ -90,7 +88,6 @@ class PersonaEdit extends StatelessWidget {
               onChange: (v) {},
               maxLines: 5,
             ),
-
           ],
         ),
       ),

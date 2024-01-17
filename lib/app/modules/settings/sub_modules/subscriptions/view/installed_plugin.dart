@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../service_items/widgets/plugin_item_card.dart';
+import 'package:nuforce/app/modules/service_items/widgets/plugin_item_card.dart';
 class InstalledPlugin extends StatefulWidget {
   const InstalledPlugin({super.key});
 

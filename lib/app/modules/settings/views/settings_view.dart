@@ -2,21 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-
 import 'package:nuforce/app/modules/settings/controllers/settings_controller.dart';
 import 'package:nuforce/app/modules/settings/sub_modules/account_info/account_information_view.dart';
+import 'package:nuforce/app/modules/settings/sub_modules/branding/branding_view.dart';
+import 'package:nuforce/app/modules/settings/sub_modules/customField/customfield_view_settings.dart';
+import 'package:nuforce/app/modules/settings/sub_modules/notification/notification_view.dart';
+import 'package:nuforce/app/modules/settings/sub_modules/offline_payment/offine_payment_view.dart';
 import 'package:nuforce/app/modules/settings/sub_modules/subscriptions/view/active_plan_view.dart';
 import 'package:nuforce/app/modules/settings/widgets/setting_tile.dart';
 import 'package:nuforce/app/routes/app_pages.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/shared_preferences.dart';
 import 'package:nuforce/gen/assets.gen.dart';
-
-import '../../business_manager/sub_modules/custom_field/custom_field_view.dart';
-import '../sub_modules/branding/branding_view.dart';
-import '../sub_modules/customField/customfield_view_settings.dart';
-import '../sub_modules/notification/notification_view.dart';
-import '../sub_modules/offline_payment/offine_payment_view.dart';
 
 class SettingsView extends GetView<SettingsController> {
   const SettingsView({super.key});

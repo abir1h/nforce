@@ -3,8 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:nuforce/app/modules/settings/controllers/settings_controller.dart';
-import 'package:nuforce/app/modules/settings/models/user_info.dart';
-import 'package:nuforce/app/modules/settings/sub_modules/account_info/account_information_view.dart';
 import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/shared/widgets/secondary_button.dart';
@@ -38,9 +36,7 @@ class _PersonalInfoEditState extends State<PersonalInfoEdit> {
             const SizedBox(width: 15),
             Expanded(
               child: PrimaryButton(
-                onPressed: () {
-
-                },
+                onPressed: () {},
                 text: 'Update',
               ),
             ),
@@ -136,7 +132,6 @@ class _PersonalInfoEditState extends State<PersonalInfoEdit> {
                         ),
                       ),
                     ),
-
                   ],
                 ),
               ],

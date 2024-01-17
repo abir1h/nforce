@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../controllers/today_controller.dart';
+import 'package:nuforce/app/modules/today/controllers/today_controller.dart';
 
 class TodayView extends GetView<TodayController> {
-  const TodayView({Key? key}) : super(key: key);
+  const TodayView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
