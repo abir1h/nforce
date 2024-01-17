@@ -15,7 +15,7 @@ class CustomTextField extends StatelessWidget {
     this.onVisibilityTap,
     this.maxLines = 1,
     this.validator,
-    this.onChange,
+    this.onChange, this.suffix, this.enable=true,
   });
 
   final String label;
@@ -26,9 +26,11 @@ class CustomTextField extends StatelessWidget {
   final VoidCallback? onVisibilityTap;
   final bool isVisibile;
   final bool isPassword;
+  final bool? enable;
   final int maxLines;
   final String? Function(String?)? validator;
   final ValueChanged<String>? onChange;
+  final Widget? suffix;
 
   @override
   Widget build(BuildContext context) {
@@ -51,9 +53,11 @@ class CustomTextField extends StatelessWidget {
             validator: validator,
             cursorColor: AppColors.primaryBlue1,
             autocorrect: false,
+
             obscureText: obscureText,
             maxLines: maxLines,
             onChanged: onChange,
+            enabled: enable,
             controller: controller,
             textAlignVertical: TextAlignVertical.center,
             decoration: InputDecoration(
@@ -66,7 +70,7 @@ class CustomTextField extends StatelessWidget {
                         color: AppColors.greyText,
                       ),
                     )
-                  : null,
+                  : suffix??const SizedBox(),
               hintText: hint,
               hintStyle: CustomTextStyle.paragraphSmall.copyWith(
                 fontWeight: FontWeight.w400,

@@ -27,6 +27,10 @@ class $AssetsImagesPngGen {
   AssetGenImage get affliation =>
       const AssetGenImage('assets/images/png/affliation.png');
 
+  /// File path: assets/images/png/brandImage.png
+  AssetGenImage get brandImage =>
+      const AssetGenImage('assets/images/png/brandImage.png');
+
   /// File path: assets/images/png/branding.png
   AssetGenImage get branding =>
       const AssetGenImage('assets/images/png/branding.png');
@@ -70,6 +74,10 @@ class $AssetsImagesPngGen {
 
   /// File path: assets/images/png/grad4.png
   AssetGenImage get grad4 => const AssetGenImage('assets/images/png/grad4.png');
+
+  /// File path: assets/images/png/greyAvatar.png
+  AssetGenImage get greyAvatar =>
+      const AssetGenImage('assets/images/png/greyAvatar.png');
 
   /// File path: assets/images/png/information_forms.png
   AssetGenImage get informationForms =>
@@ -118,6 +126,10 @@ class $AssetsImagesPngGen {
   /// File path: assets/images/png/privacy.png
   AssetGenImage get privacy =>
       const AssetGenImage('assets/images/png/privacy.png');
+
+  /// File path: assets/images/png/profile_avatar.png
+  AssetGenImage get profileAvatar =>
+      const AssetGenImage('assets/images/png/profile_avatar.png');
 
   /// File path: assets/images/png/profile_placeholder_male.png
   AssetGenImage get profilePlaceholderMale =>
@@ -175,6 +187,7 @@ class $AssetsImagesPngGen {
   List<AssetGenImage> get values => [
         accountInfo,
         affliation,
+        brandImage,
         branding,
         calendarSync,
         chatWithUs,
@@ -187,6 +200,7 @@ class $AssetsImagesPngGen {
         grad2,
         grad3,
         grad4,
+        greyAvatar,
         informationForms,
         invoices,
         logout,
@@ -199,6 +213,7 @@ class $AssetsImagesPngGen {
         phoneText,
         planbg,
         privacy,
+        profileAvatar,
         profilePlaceholderMale,
         quickBooks,
         quickConsultation,
