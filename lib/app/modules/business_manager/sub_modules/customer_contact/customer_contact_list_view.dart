@@ -54,9 +54,7 @@ class _CustomerContactListViewState extends State<CustomerContactListView> {
             ),
           ),
         ],
-        leadingPressed: () {
-          Get.to<void>(const CustomerContactListView());
-        },
+        leadingPressed: Get.back<void>,
       ),
       body: GetBuilder<CustomerContactController>(
         builder: (_) {
