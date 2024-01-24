@@ -227,7 +227,7 @@ class _BusinessManagerAddOrEditTermsAndPolicyViewState extends State<BusinessMan
                     ),
                   ],
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: 32),
                 Row(
                   children: [
                     Expanded(
@@ -237,8 +237,8 @@ class _BusinessManagerAddOrEditTermsAndPolicyViewState extends State<BusinessMan
                             nameController.clear();
                             briefDescriptionController.clear();
                             instructionController.clear();
-                            _controller.document = Document.fromJson([jsonDecode('{"ops":[{"insert":"\n"}]}')]);
                             setState(() {
+                              _controller.document = Document.fromJson([jsonDecode('{"ops":[{"insert":"\n"}]}')]);
                               policyType = '';
                               availableToNewProposals = false;
                             });
@@ -247,8 +247,8 @@ class _BusinessManagerAddOrEditTermsAndPolicyViewState extends State<BusinessMan
                             nameController.text = termsAndPolicy.policyName;
                             briefDescriptionController.text = termsAndPolicy.briefDescription;
                             instructionController.text = termsAndPolicy.instructions;
-                            _controller.document = Document.fromJson([jsonDecode(termsAndPolicy.policy)]);
                             setState(() {
+                              _controller.document = Document.fromJson(jsonDecode(termsAndPolicy.policy) as List<dynamic>);
                               policyType = termsAndPolicy.policyType;
                               availableToNewProposals = termsAndPolicy.availableToNewProposals;
                             });
