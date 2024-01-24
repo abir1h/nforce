@@ -30,7 +30,7 @@ class MockTermsAndPolicy extends Equatable {
   final String briefDescription;
   final String instructions;
   final bool availableToNewProposals;
-  final String policy; // TODO convert it to rich text
+  final String policy;
 
   const MockTermsAndPolicy({
     required this.id,

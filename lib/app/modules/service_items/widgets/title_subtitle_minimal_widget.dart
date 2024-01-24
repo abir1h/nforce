@@ -4,9 +4,9 @@ import 'package:nuforce/app/utils/colors.dart';
 
 class TitleSubtitleMinimal extends StatelessWidget {
   const TitleSubtitleMinimal({
-    super.key,
     required this.title,
     required this.subtitle,
+    super.key,
   });
   final String title;
   final String subtitle;
