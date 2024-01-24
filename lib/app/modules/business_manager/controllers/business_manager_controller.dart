@@ -14,6 +14,7 @@ import 'package:nuforce/app/modules/business_manager/sub_modules/label/business_
 import 'package:nuforce/app/modules/business_manager/sub_modules/service_category/business_manager_service_catalog_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/service_region/business_manager_service_region_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/service_topic/business_manager_service_topic_controller.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/terms_and_policy/business_manager_terms_and_policy_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/user_roles/user_roles_controller.dart';
 
 class BusinessManagerController extends GetxController {
@@ -34,6 +35,7 @@ class BusinessManagerController extends GetxController {
   final serviceCatalogsController = Get.put(BusinessManagerServiceCatalogsController());
   final serviceTopicController = Get.put(BusinessManagerServiceTopicController());
   final serviceRegionController = Get.put(BusinessManagerServiceRegionController());
+  final termsAndPolicyController = Get.put(BusinessManagerTermsAndPolicyController());
 
   @override
   void dispose() {

@@ -7,6 +7,7 @@ import 'package:nuforce/app/modules/business_manager/sub_modules/label/business_
 import 'package:nuforce/app/modules/business_manager/sub_modules/service_category/business_manager_service_catalog_view.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/service_region/business_manager_service_region_view.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/service_topic/business_manager_service_topic_view.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/terms_and_policy/business_manager_terms_and_policy_view.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/user_roles/user_roles_view.dart';
 import 'package:nuforce/app/modules/business_manager/views/business_manager_profile_view.dart';
 import 'package:nuforce/app/modules/business_manager/widgets/big_button_with_icon.dart';
@@ -109,7 +110,9 @@ class OrganizationView extends StatelessWidget {
               BigButtonWithIcon(
                 svgPath: Assets.images.svg.termsAndPolicy,
                 lable: 'Terms and Policy',
-                onTap: () {},
+                onTap: () {
+                  Get.to<void>(() => const BusinessManagerTermsAndConditionView());
+                },
               ),
             ],
           ),
