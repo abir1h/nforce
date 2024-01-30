@@ -34,7 +34,7 @@ class EmptyCalendar extends StatelessWidget {
           },
           text: 'Add Calendar',
         ),
-        const SizedBox(height: 24),
+        const SizedBox(height: 32),
       ],
     );
   }

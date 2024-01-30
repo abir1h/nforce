@@ -36,7 +36,7 @@ class EmptyServiceCatalogs extends StatelessWidget {
           },
           text: 'Add Service Catalog',
         ),
-        const SizedBox(height: 24),
+        const SizedBox(height: 32),
       ],
     );
   }

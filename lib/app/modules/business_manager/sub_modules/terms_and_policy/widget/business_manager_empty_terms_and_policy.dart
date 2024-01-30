@@ -34,7 +34,7 @@ class EmptyTermsAndPolicy extends StatelessWidget {
           },
           text: 'Add Terms & Policy',
         ),
-        const SizedBox(height: 24),
+        const SizedBox(height: 32),
       ],
     );
   }

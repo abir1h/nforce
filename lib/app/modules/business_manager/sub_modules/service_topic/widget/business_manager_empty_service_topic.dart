@@ -34,7 +34,7 @@ class EmptyServiceTopic extends StatelessWidget {
           },
           text: 'Add Service Topic',
         ),
-        const SizedBox(height: 24),
+        const SizedBox(height: 32),
       ],
     );
   }

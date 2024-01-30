@@ -301,7 +301,7 @@ class _BusinessManagerAddOrEditServiceCatalogsState extends State<BusinessManage
                       ),
                     ],
                   ),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 32),
                 ],
               ),
             ),
