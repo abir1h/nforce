@@ -34,7 +34,7 @@ class EmptyContactGroup extends StatelessWidget {
           },
           text: 'Add Contact Group',
         ),
-        const SizedBox(height: 24),
+        const SizedBox(height: 32),
       ],
     );
   }

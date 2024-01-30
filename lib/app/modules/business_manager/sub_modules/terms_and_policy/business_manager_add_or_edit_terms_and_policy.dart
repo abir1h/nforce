@@ -304,7 +304,7 @@ class _BusinessManagerAddOrEditTermsAndPolicyViewState extends State<BusinessMan
                     ),
                   ],
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: 32),
               ],
             ),
           ),

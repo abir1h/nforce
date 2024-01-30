@@ -147,7 +147,7 @@ class _BusinessManagerProfileViewState extends State<BusinessManagerProfileView>
                   ),
                 ],
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 32),
             ],
           ),
         ),

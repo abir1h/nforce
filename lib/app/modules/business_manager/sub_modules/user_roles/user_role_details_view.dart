@@ -70,7 +70,7 @@ class UserRoleDeatilsView extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 32),
             ],
           ),
         ),

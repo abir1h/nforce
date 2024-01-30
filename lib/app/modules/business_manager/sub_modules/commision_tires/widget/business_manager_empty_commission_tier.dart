@@ -34,7 +34,7 @@ class EmptyCommissionTier extends StatelessWidget {
           },
           text: 'Add Commission Tier',
         ),
-        const SizedBox(height: 24),
+        const SizedBox(height: 32),
       ],
     );
   }

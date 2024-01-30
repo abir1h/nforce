@@ -217,7 +217,7 @@ class _BusinessManagerAddOrEditServiceTopicViewState extends State<BusinessManag
                   ),
                 ],
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 32),
             ],
           ),
         ),
