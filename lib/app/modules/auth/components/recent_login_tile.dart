@@ -6,58 +6,63 @@ import 'package:nuforce/app/utils/text_styles.dart';
 
 class RecentLoginTile extends StatelessWidget {
   const RecentLoginTile({
+    required this.onTap,
     super.key,
   });
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Row(
-          children: [
-            Container(
-              height: 44,
-              width: 44,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(4),
-                color: AppColors.white3,
-              ),
-              child: const Center(
-                child: Icon(Icons.person, color: AppColors.white1),
-              ),
-            ),
-            const SizedBox(width: 10),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'WildLife Express LLC',
-                  style: CustomTextStyle.heading4.copyWith(
-                    fontWeight: FontWeight.w500,
-                    color: AppColors.nutralBlack1,
-                  ),
+    return GestureDetector(
+      onTap: onTap,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            children: [
+              Container(
+                height: 44,
+                width: 44,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(4),
+                  color: AppColors.white3,
                 ),
-                Text(
-                  'Last logged in 12 hours ago',
-                  style: CustomTextStyle.paragraphExtraSmall.copyWith(
-                    fontWeight: FontWeight.w400,
-                    color: AppColors.subText,
-                  ),
+                child: const Center(
+                  child: Icon(Icons.person, color: AppColors.white1),
                 ),
-              ],
-            ),
-          ],
-        ),
-        PopupMenuButton(
-          icon: const Icon(Icons.more_vert),
-          itemBuilder: (context) => popupMenuItems,
-          onSelected: (value) {
-            log(value.toString(), name: 'RecentLoginTile');
-          },
-        ),
-      ],
+              ),
+              const SizedBox(width: 10),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'WildLife Express LLC',
+                    style: CustomTextStyle.heading4.copyWith(
+                      fontWeight: FontWeight.w500,
+                      color: AppColors.nutralBlack1,
+                    ),
+                  ),
+                  Text(
+                    'Last logged in 12 hours ago',
+                    style: CustomTextStyle.paragraphExtraSmall.copyWith(
+                      fontWeight: FontWeight.w400,
+                      color: AppColors.subText,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          PopupMenuButton(
+            icon: const Icon(Icons.more_vert),
+            itemBuilder: (context) => popupMenuItems,
+            onSelected: (value) {
+              log(value.toString(), name: 'RecentLoginTile');
+            },
+          ),
+        ],
+      ),
     );
   }
 }

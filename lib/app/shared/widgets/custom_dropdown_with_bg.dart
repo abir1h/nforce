@@ -13,12 +13,14 @@ class CustomDropdownButtonWithBG extends StatelessWidget {
     required this.value,
     super.key,
     this.label,
+    this.bgColor,
   });
   final List<DropdownMenuItem> items;
   final String hint;
   final Function(dynamic)? onChanged;
   final dynamic value;
   final String? label;
+  final Color? bgColor;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +41,7 @@ class CustomDropdownButtonWithBG extends StatelessWidget {
           height: 32.h,
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
           decoration: BoxDecoration(
-            color: AppColors.lightButtonColor,
+            color: bgColor ?? AppColors.lightButtonColor,
             borderRadius: BorderRadius.circular(6),
           ),
           child: DropdownButton(
