@@ -46,6 +46,7 @@ class AppColors {
 
   static const Color powderPink = Color(0xFFFFCEDF);
   static const Color green2 = Color(0xFF0CE279);
+  static const Color green3 = Color(0xFF4CAF50);
   static const Color blue2 = Color(0xFFCED3FF);
   static const Color statusCanceldBg = Color(0xFFffe0e0);
   static const Color statusOverDuedBg = Color(0xFFfef8e6);
