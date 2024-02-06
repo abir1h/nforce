@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/model/user_card_model.dart';
 import 'package:nuforce/app/modules/customer/customer_work_order/providers/work_order_provider.dart';
+import 'package:nuforce/app/modules/customer/customer_work_order/views/work_order_details_view.dart';
 import 'package:nuforce/app/modules/customer/widgets/customer_work_order_tile.dart';
 import 'package:nuforce/app/modules/service_items/widgets/search_widget.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar.dart';
@@ -96,6 +97,13 @@ class _CustomerViewState extends State<CustomerView> {
                       return Padding(
                         padding: const EdgeInsets.only(bottom: 16),
                         child: CustomerWorkOrderTile(
+                          onTap: () {
+                            Get.to<void>(
+                              () => WorkOrderDetailsView(
+                                order: WorkOrderProvider.workOrderList[index],
+                              ),
+                            );
+                          },
                           order: WorkOrderProvider.workOrderList[index],
                         ),
                       );
