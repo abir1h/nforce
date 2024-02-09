@@ -106,19 +106,6 @@ class BottomNavBarController extends GetxController {
       PersistentBottomNavBarItem(
         icon: const Icon(Icons.add, color: AppColors.white1),
         activeColorPrimary: AppColors.primaryBlue1,
-        // Column(
-        //   children: [
-        //     const Icon(Icons.add, color: AppColors.white1),
-        //     const SizedBox(height: 5),
-        //     DefaultTextStyle(
-        //       style: CustomTextStyle.paragraphExtraSmall.copyWith(
-        //         fontWeight: FontWeight.w600,
-        //         color: index == 2 ? AppColors.primaryBlue1 : AppColors.nutralBlack2,
-        //       ),
-        //       child: const Text('New Orders'),
-        //     ),
-        //   ],
-        // ),
       ),
       PersistentBottomNavBarItem(
         icon: SizedBox(

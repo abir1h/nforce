@@ -106,7 +106,7 @@ class _SelectedItemDetailsViewState extends State<SelectedItemDetailsView> {
                       ),
               ),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 32),
           ],
         ),
       ),

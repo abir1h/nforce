@@ -278,7 +278,7 @@ class _AddOrEditUserRoleViewState extends State<AddOrEditUserRoleView> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: 32),
               ],
             ),
           ),

@@ -34,7 +34,7 @@ class EmptyServiceRegion extends StatelessWidget {
           },
           text: 'Add Service Region',
         ),
-        const SizedBox(height: 24),
+        const SizedBox(height: 32),
       ],
     );
   }

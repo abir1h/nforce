@@ -34,7 +34,7 @@ class EmptyUserRole extends StatelessWidget {
           },
           text: 'Add user role',
         ),
-        const SizedBox(height: 24),
+        const SizedBox(height: 32),
       ],
     );
   }
