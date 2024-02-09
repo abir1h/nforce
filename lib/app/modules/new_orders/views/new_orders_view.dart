@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-
-import '../controllers/new_orders_controller.dart';
+import 'package:nuforce/app/modules/new_orders/controllers/new_orders_controller.dart';
 
 class NewOrdersView extends GetView<NewOrdersController> {
-  const NewOrdersView({Key? key}) : super(key: key);
+  const NewOrdersView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
