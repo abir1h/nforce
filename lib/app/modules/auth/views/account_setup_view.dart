@@ -14,7 +14,7 @@ import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/text_styles.dart';
 import 'package:nuforce/main.dart';
 
-class AccountSetupView extends GetView<AuthController> {
+class AccountSetupView extends StatelessWidget {
   const AccountSetupView({super.key});
   @override
   Widget build(BuildContext context) {
@@ -52,30 +52,32 @@ class AccountSetupView extends GetView<AuthController> {
                   ),
 
                   const SizedBox(height: 16),
-                  Obx(
-                    () => CustomDropdownButton(
-                      items: controller.signUpController.industryType
-                          .map(
-                            (e) => DropdownMenuItem(
-                              value: e,
-                              child: Text(
-                                e,
-                                style: const TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400,
-                                  color: AppColors.subText,
+                  GetBuilder<AuthController>(
+                    builder: (controller) {
+                      return CustomDropdownButton(
+                        items: controller.signUpController.industryType
+                            .map(
+                              (e) => DropdownMenuItem(
+                                value: e,
+                                child: Text(
+                                  e,
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                    color: AppColors.subText,
+                                  ),
                                 ),
                               ),
-                            ),
-                          )
-                          .toList(),
-                      hint: controller.signUpController.selectedIndustry.value,
-                      onChanged: (v) {
-                        controller.signUpController.selectedIndustry.value = v as String;
-                      },
-                      label: 'Industry Type',
-                      value: null,
-                    ),
+                            )
+                            .toList(),
+                        hint: controller.signUpController.selectedIndustry,
+                        onChanged: (v) {
+                          controller.signUpController.selectedIndustry = v as String;
+                        },
+                        label: 'Industry Type',
+                        value: null,
+                      );
+                    },
                   ),
                   const SizedBox(height: 16),
                   const CustomPhoneInput(
@@ -92,63 +94,67 @@ class AccountSetupView extends GetView<AuthController> {
                   ),
 
                   const SizedBox(height: 16),
-                  Obx(
-                    () => CustomDropdownButton(
-                      items: controller.signUpController.country
-                          .map(
-                            (e) => DropdownMenuItem(
-                              value: e,
-                              child: Text(
-                                e,
-                                style: const TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400,
-                                  color: AppColors.subText,
+                  GetBuilder<AuthController>(
+                    builder: (controller) {
+                      return CustomDropdownButton(
+                        items: controller.signUpController.country
+                            .map(
+                              (e) => DropdownMenuItem(
+                                value: e,
+                                child: Text(
+                                  e,
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                    color: AppColors.subText,
+                                  ),
                                 ),
                               ),
-                            ),
-                          )
-                          .toList(),
-                      hint: controller.signUpController.selectedCountry.value,
-                      onChanged: (v) {
-                        controller.signUpController.selectedCountry.value = v as String;
-                      },
-                      label: 'Country',
-                      value: null,
-                    ),
+                            )
+                            .toList(),
+                        hint: controller.signUpController.selectedCountry,
+                        onChanged: (v) {
+                          controller.signUpController.selectedCountry = v as String;
+                        },
+                        label: 'Country',
+                        value: null,
+                      );
+                    },
                   ),
                   const SizedBox(height: 16),
-                  Obx(
-                    () => CustomDropdownButton(
-                      items: controller.signUpController.state
-                          .map(
-                            (e) => DropdownMenuItem(
-                              value: e,
-                              child: Text(
-                                e,
-                                style: const TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400,
-                                  color: AppColors.subText,
+                  GetBuilder<AuthController>(
+                    builder: (controller) {
+                      return CustomDropdownButton(
+                        items: controller.signUpController.state
+                            .map(
+                              (e) => DropdownMenuItem(
+                                value: e,
+                                child: Text(
+                                  e,
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                    color: AppColors.subText,
+                                  ),
                                 ),
                               ),
-                            ),
-                          )
-                          .toList(),
-                      hint: controller.signUpController.selectedState.value,
-                      onChanged: (v) {
-                        controller.signUpController.selectedState.value = v as String;
-                      },
-                      label: 'State',
-                      value: null,
-                    ),
+                            )
+                            .toList(),
+                        hint: controller.signUpController.selectedState,
+                        onChanged: (v) {
+                          controller.signUpController.selectedState = v as String;
+                        },
+                        label: 'State',
+                        value: null,
+                      );
+                    },
                   ),
 
                   //d
                   const SizedBox(height: 30),
                   PrimaryButton(
                     onPressed: () {
-                      controller.changeFromSetupAccount(true);
+                      Get.find<AuthController>().changeFromSetupAccount(true);
                       Get.to<void>(() => const OtpView())!.then((value) {
                         accountCreationComplete(context);
                       });
