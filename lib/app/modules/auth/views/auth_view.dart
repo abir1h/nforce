@@ -13,8 +13,26 @@ import 'package:nuforce/app/utils/text_styles.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 import 'package:nuforce/main.dart';
 
-class AuthView extends GetView<AuthController> {
+class AuthView extends StatefulWidget {
   const AuthView({super.key});
+
+  @override
+  State<AuthView> createState() => _AuthViewState();
+}
+
+class _AuthViewState extends State<AuthView> {
+  late AuthController authController;
+
+  @override
+  void initState() {
+    super.initState();
+    if (AuthController().initialized) {
+      authController = Get.find<AuthController>();
+    } else {
+      authController = Get.put(AuthController());
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
