@@ -17,6 +17,9 @@ import 'package:nuforce/gen/assets.gen.dart';
 
 import '../sub_modules/calendar_sync/views/calendar_sync.dart';
 import '../sub_modules/faq/view/faq_view.dart';
+import '../sub_modules/privacy_terms/privacy_policy_screen.dart';
+import '../sub_modules/privacy_terms/terms_contdition.dart';
+import '../sub_modules/refer/refer_screen.dart';
 
 class SettingsView extends GetView<SettingsController> {
   const SettingsView({super.key});
@@ -277,7 +280,7 @@ class SettingsView extends GetView<SettingsController> {
                     ),
                     SettingTile(
                       leading: Assets.images.png.refer.keyName,
-                      onTap: () {},
+                      onTap: () => Get.to<void>(() => const ReferScreen()),
                       label: 'Refer a Friend',
                       hasDivider: true,
                     ),
@@ -389,13 +392,13 @@ class SettingsView extends GetView<SettingsController> {
                     ),
                     SettingTile(
                       leading: Assets.images.png.privacy.keyName,
-                      onTap: () {},
+                      onTap: () => Get.to<void>(() => const PrivacyPolicyScreen()),
                       label: 'Privacy',
                       hasDivider: true,
                     ),
                     SettingTile(
                       leading: Assets.images.png.terms.keyName,
-                      onTap: () {},
+                      onTap: () => Get.to<void>(() => const TermsCondtionScreen()),
                       label: 'Terms & Conditions',
                       hasDivider: false,
                     ),

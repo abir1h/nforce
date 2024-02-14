@@ -63,6 +63,14 @@ class $AssetsImagesPngGen {
   AssetGenImage get expenseTracking =>
       const AssetGenImage('assets/images/png/expense_tracking.png');
 
+  /// File path: assets/images/png/facebook.png
+  AssetGenImage get facebook =>
+      const AssetGenImage('assets/images/png/facebook.png');
+
+  /// File path: assets/images/png/google.png
+  AssetGenImage get google =>
+      const AssetGenImage('assets/images/png/google.png');
+
   /// File path: assets/images/png/grad1.png
   AssetGenImage get grad1 => const AssetGenImage('assets/images/png/grad1.png');
 
@@ -82,6 +90,9 @@ class $AssetsImagesPngGen {
   /// File path: assets/images/png/information_forms.png
   AssetGenImage get informationForms =>
       const AssetGenImage('assets/images/png/information_forms.png');
+
+  /// File path: assets/images/png/insta.png
+  AssetGenImage get insta => const AssetGenImage('assets/images/png/insta.png');
 
   /// File path: assets/images/png/invoices.png
   AssetGenImage get invoices =>
@@ -146,6 +157,10 @@ class $AssetsImagesPngGen {
   /// File path: assets/images/png/refer.png
   AssetGenImage get refer => const AssetGenImage('assets/images/png/refer.png');
 
+  /// File path: assets/images/png/referIm.png
+  AssetGenImage get referIm =>
+      const AssetGenImage('assets/images/png/referIm.png');
+
   /// File path: assets/images/png/requests.png
   AssetGenImage get requests =>
       const AssetGenImage('assets/images/png/requests.png');
@@ -176,6 +191,10 @@ class $AssetsImagesPngGen {
   AssetGenImage get timeExceeded =>
       const AssetGenImage('assets/images/png/time_exceeded.png');
 
+  /// File path: assets/images/png/twitter.png
+  AssetGenImage get twitter =>
+      const AssetGenImage('assets/images/png/twitter.png');
+
   /// File path: assets/images/png/visa.png
   AssetGenImage get visa => const AssetGenImage('assets/images/png/visa.png');
 
@@ -196,12 +215,15 @@ class $AssetsImagesPngGen {
         delete,
         emptyData,
         expenseTracking,
+        facebook,
+        google,
         grad1,
         grad2,
         grad3,
         grad4,
         greyAvatar,
         informationForms,
+        insta,
         invoices,
         logout,
         notification,
@@ -218,6 +240,7 @@ class $AssetsImagesPngGen {
         quickBooks,
         quickConsultation,
         refer,
+        referIm,
         requests,
         routeSuggestions,
         schedules,
@@ -226,6 +249,7 @@ class $AssetsImagesPngGen {
         terms,
         tick,
         timeExceeded,
+        twitter,
         visa,
         webhookIntegration
       ];
