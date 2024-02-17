@@ -142,7 +142,7 @@ class _SignInPageState extends State<SignInPage> {
                             password: passwordController.text,
                           );
                         },
-                        text: 'Sing In',
+                        text: 'Sign In',
                       ),
                     const SizedBox(height: 15),
                     PrimaryButton(

@@ -43,7 +43,7 @@ class _LoginSignupViewState extends State<LoginSignupView> {
                             onTap: () {
                               controller.changeTabIndex(0);
                             },
-                            text: 'Sing In',
+                            text: 'Sign In',
                           ),
                         ),
                         Expanded(
@@ -52,7 +52,7 @@ class _LoginSignupViewState extends State<LoginSignupView> {
                             onTap: () {
                               controller.changeTabIndex(1);
                             },
-                            text: 'Sing Up',
+                            text: 'Sign Up',
                           ),
                         ),
                       ],

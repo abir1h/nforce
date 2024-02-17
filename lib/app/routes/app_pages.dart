@@ -8,6 +8,10 @@ import '../modules/bottom_nav_bar/bindings/bottom_nav_bar_binding.dart';
 import '../modules/bottom_nav_bar/views/bottom_nav_bar_view.dart';
 import '../modules/business_manager/bindings/business_manager_binding.dart';
 import '../modules/business_manager/views/business_manager_view.dart';
+import '../modules/customer/bindings/customer_binding.dart';
+import '../modules/customer/customer_work_order/bindings/customer_work_order_binding.dart';
+import '../modules/customer/customer_work_order/views/customer_work_order_view.dart';
+import '../modules/customer/views/customer_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/more/bindings/more_binding.dart';
@@ -92,6 +96,18 @@ class AppPages {
       name: _Paths.SETTINGS,
       page: () => const SettingsView(),
       binding: SettingsBinding(),
+    ),
+    GetPage(
+      name: _Paths.CUSTOMER,
+      page: () => const CustomerView(),
+      binding: CustomerBinding(),
+      children: [
+        GetPage(
+          name: _Paths.CUSTOMER_WORK_ORDER,
+          page: () => const CustomerWorkOrderView(),
+          binding: CustomerWorkOrderBinding(),
+        ),
+      ],
     ),
   ];
 }

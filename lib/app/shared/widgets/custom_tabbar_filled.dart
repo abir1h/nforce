@@ -4,10 +4,10 @@ import 'package:nuforce/app/utils/colors.dart';
 
 class CustomTabBarFilled extends StatelessWidget {
   const CustomTabBarFilled({
-    super.key,
     required this.text,
     required this.onTap,
     required this.isSelected,
+    super.key,
     this.isMini = false,
   });
 
@@ -23,7 +23,6 @@ class CustomTabBarFilled extends StatelessWidget {
         border: Border(
           bottom: BorderSide(
             color: AppColors.greyText,
-            width: 1,
           ),
         ),
       ),
@@ -37,7 +36,7 @@ class CustomTabBarFilled extends StatelessWidget {
               text,
               style: TextStyle(
                 color: isSelected ? AppColors.white1 : AppColors.nutralBlack1,
-                fontSize: isMini ? 12 : 20,
+                fontSize: isMini ? 12.sp : 20.sp,
                 fontWeight: isMini ? FontWeight.w500 : FontWeight.w600,
               ),
             ),

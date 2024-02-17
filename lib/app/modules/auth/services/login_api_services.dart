@@ -11,7 +11,7 @@ class LoginService {
   }) async {
     try {
       final response = await ApiClient.instance.post(
-        url: URL.businessLogin,
+        url: URL.login,
         body: {
           'data': {
             'identity': email,
