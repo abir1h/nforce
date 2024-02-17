@@ -9,7 +9,7 @@ import 'package:nuforce/app/modules/business_manager/sub_modules/service_region/
 import 'package:nuforce/app/modules/business_manager/sub_modules/service_topic/business_manager_service_topic_view.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/terms_and_policy/business_manager_terms_and_policy_view.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/user_roles/user_roles_view.dart';
-import 'package:nuforce/app/modules/business_manager/views/business_manager_profile_view.dart';
+import 'package:nuforce/app/modules/business_manager/views/organization_profile_view.dart';
 import 'package:nuforce/app/modules/business_manager/widgets/big_button_with_icon.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
@@ -39,7 +39,7 @@ class OrganizationView extends StatelessWidget {
                 svgPath: Assets.images.svg.profile,
                 lable: 'Profile',
                 onTap: () {
-                  Get.to<void>(() => const BusinessManagerProfileView());
+                  Get.to<void>(() => const OrganizationProfileView());
                 },
               ),
               const SizedBox(height: 16),

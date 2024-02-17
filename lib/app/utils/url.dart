@@ -5,4 +5,6 @@ class URL {
   static String login = '$baseUrl/action/person.login';
   static String passwordReset = '$baseUrl/public/hello.requestPasswordReset';
   static String getUserCard = '$baseUrl/action/person.usercard';
+
+  static String businessProfileForm = '$baseUrl/form/business.profile-form';
 }
