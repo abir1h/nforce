@@ -1,32 +1,32 @@
 // ignore_for_file: constant_identifier_names
 
-class OranizationProfileFormModel {
+class FormModel {
   final List<Control>? controls;
   final List<Action>? actions;
   final List<dynamic>? data;
   final Map<String, dynamic>? query;
 
-  OranizationProfileFormModel({
+  FormModel({
     this.controls,
     this.actions,
     this.data,
     this.query,
   });
 
-  OranizationProfileFormModel copyWith({
+  FormModel copyWith({
     List<Control>? controls,
     List<Action>? actions,
     List<dynamic>? data,
     Map<String, dynamic>? query,
   }) =>
-      OranizationProfileFormModel(
+      FormModel(
         controls: controls ?? this.controls,
         actions: actions ?? this.actions,
         data: data ?? this.data,
         query: query ?? this.query,
       );
 
-  factory OranizationProfileFormModel.fromJson(Map<String, dynamic> json) => OranizationProfileFormModel(
+  factory FormModel.fromJson(Map<String, dynamic> json) => FormModel(
         controls: json['controls'] == null ? [] : List<Control>.from(json['controls']!.map((x) => Control.fromJson(x))),
         actions: json['actions'] == null ? [] : List<Action>.from(json['actions']!.map((x) => Action.fromJson(x))),
         data: json['data'] == null ? [] : List<Map<String, dynamic>>.from(json['data']!.map((x) => x)),
@@ -171,9 +171,9 @@ class Control {
       };
 }
 
-enum Editor { DROPDOWN, FILEINPUT, TEXT }
+enum Editor { DROPDOWN, FILEINPUT, TEXT, SWTICH }
 
-final editorValues = EnumValues({'dropdown': Editor.DROPDOWN, 'fileinput': Editor.FILEINPUT, 'text': Editor.TEXT});
+final editorValues = EnumValues({'dropdown': Editor.DROPDOWN, 'fileinput': Editor.FILEINPUT, 'text': Editor.TEXT, 'swtich': Editor.SWTICH});
 
 class Option {
   final String? label;
