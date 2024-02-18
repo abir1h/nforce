@@ -98,6 +98,9 @@ class $AssetsImagesPngGen {
   AssetGenImage get invoices =>
       const AssetGenImage('assets/images/png/invoices.png');
 
+  /// File path: assets/images/png/link.png
+  AssetGenImage get link => const AssetGenImage('assets/images/png/link.png');
+
   /// File path: assets/images/png/logout.png
   AssetGenImage get logout =>
       const AssetGenImage('assets/images/png/logout.png');
@@ -125,6 +128,10 @@ class $AssetsImagesPngGen {
   /// File path: assets/images/png/onboarding3.png
   AssetGenImage get onboarding3 =>
       const AssetGenImage('assets/images/png/onboarding3.png');
+
+  /// File path: assets/images/png/personImage.png
+  AssetGenImage get personImage =>
+      const AssetGenImage('assets/images/png/personImage.png');
 
   /// File path: assets/images/png/phone_text.png
   AssetGenImage get phoneText =>
@@ -225,6 +232,7 @@ class $AssetsImagesPngGen {
         informationForms,
         insta,
         invoices,
+        link,
         logout,
         notification,
         nuforceSplash,
@@ -232,6 +240,7 @@ class $AssetsImagesPngGen {
         onboarding1,
         onboarding2,
         onboarding3,
+        personImage,
         phoneText,
         planbg,
         privacy,
