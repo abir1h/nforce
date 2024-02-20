@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/service_items/views/addon_details_view.dart';
 import 'package:nuforce/app/modules/service_items/widgets/addon_item_card_widget.dart';
@@ -78,7 +79,7 @@ class _AddonsItemsState extends State<AddonsItems> {
               ),
             ],
           ),
-        ),
+        ),SizedBox(height: 16.h,),
         Expanded(
           child: ListView.builder(
             shrinkWrap: true,
