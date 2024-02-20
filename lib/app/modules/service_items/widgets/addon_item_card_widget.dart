@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/gen/assets.gen.dart';
 
 class AddonItemCard extends StatelessWidget {
   const AddonItemCard({
@@ -35,6 +36,7 @@ class AddonItemCard extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: AppColors.primaryBlue3,
                     borderRadius: BorderRadius.circular(4.sp),
+                    image: DecorationImage(image: AssetImage(Assets.images.png.worker.keyName),fit: BoxFit.contain),
                   ),
                 ),
                 SizedBox(width: 12.sp),
