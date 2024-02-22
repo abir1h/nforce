@@ -77,13 +77,17 @@ class OrganizationRoleController extends GetxController {
   Future<void> getData() async {
     _isLoading = true;
     update();
+    print('getData');
     await BusinessManagerApiServices.businessRoleForm().then((value) {
       value.fold(
         (l) {
           _businessRoleFormModel = l;
+          print(_businessRoleFormModel?.controls?.length);
           update();
         },
-        (r) {},
+        (r) {
+          print(_businessRoleFormModel?.controls?.length);
+        },
       );
     });
     setData();

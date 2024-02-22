@@ -65,28 +65,28 @@ class BusinessManagerApiServices {
     Map<String, dynamic>? body,
   ]) async {
     developer.log(body.toString(), name: 'testing');
-    // try {
-    final response = await ApiClient.instance.post(
-      url: URL.businessRoleForm,
-      body: body ??
-          {
-            "data": {
-              "groupType": "role",
-              "name": "",
+    try {
+      final response = await ApiClient.instance.post(
+        url: URL.businessRoleForm,
+        body: body ??
+            {
+              "data": {
+                "groupType": "role",
+                "name": "",
+              },
+              "query": {}
             },
-            "query": {}
-          },
-    );
-    if (response.statusCode == 200) {
-      Logger().i('budget ${FormModel.fromJson(response.data as Map<String, dynamic>)}');
-      return Left(FormModel.fromJson(response.data as Map<String, dynamic>));
-    } else {
-      Logger().i('budget ${FormModel.fromJson(response.data as Map<String, dynamic>)}');
-      return const Right('Error');
+      );
+      if (response.statusCode == 200) {
+        Logger().i('budget ${FormModel.fromJson(response.data as Map<String, dynamic>)}');
+        return Left(FormModel.fromJson(response.data as Map<String, dynamic>));
+      } else {
+        Logger().i('budget ${FormModel.fromJson(response.data as Map<String, dynamic>)}');
+        return const Right('Error');
+      }
+    } catch (e) {
+      Logger().i('budget $e');
+      return right(e.toString());
     }
-    // } catch (e) {
-    //   Logger().i('budget $e');
-    //   return right(e.toString());
-    // }
   }
 }
