@@ -63,6 +63,14 @@ class $AssetsImagesPngGen {
   AssetGenImage get expenseTracking =>
       const AssetGenImage('assets/images/png/expense_tracking.png');
 
+  /// File path: assets/images/png/facebook.png
+  AssetGenImage get facebook =>
+      const AssetGenImage('assets/images/png/facebook.png');
+
+  /// File path: assets/images/png/google.png
+  AssetGenImage get google =>
+      const AssetGenImage('assets/images/png/google.png');
+
   /// File path: assets/images/png/grad1.png
   AssetGenImage get grad1 => const AssetGenImage('assets/images/png/grad1.png');
 
@@ -83,9 +91,15 @@ class $AssetsImagesPngGen {
   AssetGenImage get informationForms =>
       const AssetGenImage('assets/images/png/information_forms.png');
 
+  /// File path: assets/images/png/insta.png
+  AssetGenImage get insta => const AssetGenImage('assets/images/png/insta.png');
+
   /// File path: assets/images/png/invoices.png
   AssetGenImage get invoices =>
       const AssetGenImage('assets/images/png/invoices.png');
+
+  /// File path: assets/images/png/link.png
+  AssetGenImage get link => const AssetGenImage('assets/images/png/link.png');
 
   /// File path: assets/images/png/logout.png
   AssetGenImage get logout =>
@@ -114,6 +128,10 @@ class $AssetsImagesPngGen {
   /// File path: assets/images/png/onboarding3.png
   AssetGenImage get onboarding3 =>
       const AssetGenImage('assets/images/png/onboarding3.png');
+
+  /// File path: assets/images/png/personImage.png
+  AssetGenImage get personImage =>
+      const AssetGenImage('assets/images/png/personImage.png');
 
   /// File path: assets/images/png/phone_text.png
   AssetGenImage get phoneText =>
@@ -146,6 +164,10 @@ class $AssetsImagesPngGen {
   /// File path: assets/images/png/refer.png
   AssetGenImage get refer => const AssetGenImage('assets/images/png/refer.png');
 
+  /// File path: assets/images/png/referIm.png
+  AssetGenImage get referIm =>
+      const AssetGenImage('assets/images/png/referIm.png');
+
   /// File path: assets/images/png/requests.png
   AssetGenImage get requests =>
       const AssetGenImage('assets/images/png/requests.png');
@@ -176,12 +198,20 @@ class $AssetsImagesPngGen {
   AssetGenImage get timeExceeded =>
       const AssetGenImage('assets/images/png/time_exceeded.png');
 
+  /// File path: assets/images/png/twitter.png
+  AssetGenImage get twitter =>
+      const AssetGenImage('assets/images/png/twitter.png');
+
   /// File path: assets/images/png/visa.png
   AssetGenImage get visa => const AssetGenImage('assets/images/png/visa.png');
 
   /// File path: assets/images/png/webhook_integration.png
   AssetGenImage get webhookIntegration =>
       const AssetGenImage('assets/images/png/webhook_integration.png');
+
+  /// File path: assets/images/png/worker.png
+  AssetGenImage get worker =>
+      const AssetGenImage('assets/images/png/worker.png');
 
   /// List of all assets
   List<AssetGenImage> get values => [
@@ -196,13 +226,17 @@ class $AssetsImagesPngGen {
         delete,
         emptyData,
         expenseTracking,
+        facebook,
+        google,
         grad1,
         grad2,
         grad3,
         grad4,
         greyAvatar,
         informationForms,
+        insta,
         invoices,
+        link,
         logout,
         notification,
         nuforceSplash,
@@ -210,6 +244,7 @@ class $AssetsImagesPngGen {
         onboarding1,
         onboarding2,
         onboarding3,
+        personImage,
         phoneText,
         planbg,
         privacy,
@@ -218,6 +253,7 @@ class $AssetsImagesPngGen {
         quickBooks,
         quickConsultation,
         refer,
+        referIm,
         requests,
         routeSuggestions,
         schedules,
@@ -226,8 +262,10 @@ class $AssetsImagesPngGen {
         terms,
         tick,
         timeExceeded,
+        twitter,
         visa,
-        webhookIntegration
+        webhookIntegration,
+        worker
       ];
 }
 
@@ -345,6 +383,12 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/labels.svg
   String get labels => 'assets/images/svg/labels.svg';
 
+  /// File path: assets/images/svg/location.svg
+  String get location => 'assets/images/svg/location.svg';
+
+  /// File path: assets/images/svg/mail.svg
+  String get mail => 'assets/images/svg/mail.svg';
+
   /// File path: assets/images/svg/material.svg
   String get material => 'assets/images/svg/material.svg';
 
@@ -366,6 +410,9 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/offer.svg
   String get offer => 'assets/images/svg/offer.svg';
 
+  /// File path: assets/images/svg/office_logo.svg
+  String get officeLogo => 'assets/images/svg/office_logo.svg';
+
   /// File path: assets/images/svg/organization.svg
   String get organization => 'assets/images/svg/organization.svg';
 
@@ -377,6 +424,9 @@ class $AssetsImagesSvgGen {
 
   /// File path: assets/images/svg/pencil.svg
   String get pencil => 'assets/images/svg/pencil.svg';
+
+  /// File path: assets/images/svg/phone.svg
+  String get phone => 'assets/images/svg/phone.svg';
 
   /// File path: assets/images/svg/pick_image.svg
   String get pickImage => 'assets/images/svg/pick_image.svg';
@@ -495,6 +545,8 @@ class $AssetsImagesSvgGen {
         humanResource,
         imageFrame,
         labels,
+        location,
+        mail,
         material,
         microsoft,
         more0,
@@ -502,10 +554,12 @@ class $AssetsImagesSvgGen {
         notification,
         nuforceLogo,
         offer,
+        officeLogo,
         organization,
         package,
         paymentOptions,
         pencil,
+        phone,
         pickImage,
         pinLocation,
         preferences,
