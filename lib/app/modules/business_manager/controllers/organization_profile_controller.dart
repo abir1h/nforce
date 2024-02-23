@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:nuforce/app/modules/business_manager/apis/business_manager_api_services.dart';
-import 'package:nuforce/app/modules/business_manager/models/business_profile_form_model.dart';
+import 'package:nuforce/app/modules/business_manager/models/form_model.dart';
 import 'package:nuforce/app/shared/functions/image_picker_func.dart';
 import 'package:nuforce/app/utils/shared_preferences.dart';
 
@@ -22,8 +22,8 @@ class OrganizationProfileController extends GetxController {
   XFile? _image;
   XFile? get image => _image;
 
-  OranizationProfileFormModel? _businessProfileFormModel;
-  OranizationProfileFormModel? get businessProfileFormModel => _businessProfileFormModel;
+  FormModel? _businessProfileFormModel;
+  FormModel? get businessProfileFormModel => _businessProfileFormModel;
 
   String? businessTypeLabel;
   DropdownModel? _selectedBusinessType;
