@@ -1,8 +1,12 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:logger/logger.dart';
+import 'package:nuforce/app/model/business_manager/role_model.dart';
 import 'package:nuforce/app/modules/business_manager/apis/business_manager_api_services.dart';
 import 'package:nuforce/app/modules/business_manager/models/form_model.dart';
 import 'package:nuforce/app/shared/functions/image_picker_func.dart';
@@ -20,6 +24,9 @@ class OrganizationRoleController extends GetxController {
 
   FormModel? _businessRoleFormModel;
   FormModel? get businessRoleFormModel => _businessRoleFormModel;
+
+  RoleModel _roleModel = RoleModel();
+  RoleModel get roleModel => _roleModel;
 
   String? subTypeLabel;
   DropdownModel? _selectedSubType;
@@ -77,17 +84,52 @@ class OrganizationRoleController extends GetxController {
   Future<void> getData() async {
     _isLoading = true;
     update();
-    print('getData');
+    await BusinessManagerApiServices.getRoles().then((value) {
+      value.fold(
+        (l) {
+          _roleModel = l;
+          update();
+        },
+        (r) {},
+      );
+    });
+    setData();
+    _isLoading = false;
+    update();
+  }
+
+  Future<void> getFormData([int? id]) async {
+    _isLoading = true;
+    update();
+
+    Map<String, dynamic> body = {};
+
+    if (id != null) {
+      body = {
+        "data": {},
+        "query": {
+          "id": id,
+        }
+      };
+    } else {
+      body['data'] = {
+        {
+          "data": {
+            "groupType": "role",
+            "name": "",
+          },
+          "query": {}
+        }
+      };
+    }
+
     await BusinessManagerApiServices.businessRoleForm().then((value) {
       value.fold(
         (l) {
           _businessRoleFormModel = l;
-          print(_businessRoleFormModel?.controls?.length);
           update();
         },
-        (r) {
-          print(_businessRoleFormModel?.controls?.length);
-        },
+        (r) {},
       );
     });
     setData();
@@ -99,9 +141,10 @@ class OrganizationRoleController extends GetxController {
     try {
       _businessRoleFormModel?.controls?.forEach((control) {
         if (control.name == 'name') {
+          log('name23123: ${control.toJson()}');
           nameLable = control.label ?? 'Name';
-          nameController.text = control.value ?? '';
-        } else if (control.name == 'subType' && control.editor == Editor.DROPDOWN) {
+          nameController.text = control.value ?? 'N/A';
+        } else if (control.name == 'subType' && control.editor == 'dropdown') {
           subTypeLabel = control.label ?? 'For';
           if (subTypeList.isEmpty) {
             control.options?.forEach((element) {
@@ -116,7 +159,7 @@ class OrganizationRoleController extends GetxController {
               _selectedSubType = null;
             }
           }
-        } else if (control.name == 'accessPolicy' && control.editor == Editor.DROPDOWN) {
+        } else if (control.name == 'accessPolicy' && control.editor == 'dropdown') {
           accessPolicy = control.label ?? 'Access Policy';
           if (accessPolicyList.isEmpty) {
             control.options?.forEach((element) {
@@ -133,7 +176,7 @@ class OrganizationRoleController extends GetxController {
           }
         } else if (control.name == 'detailsDescription') {
           detailsDescriptionLabel = control.label ?? 'Details Description';
-          detailsDescriptionController.text = control.value ?? '';
+          detailsDescriptionController.text = control.value ?? 'N/A';
         } else if (control.name == 'detailsAccessModules') {
           detailsAccessModulesLabel = control.label ?? 'Access Areas';
           if (detailsAccessModulesList.isEmpty) {
@@ -143,7 +186,7 @@ class OrganizationRoleController extends GetxController {
           }
           _selecteddetailsAccessModules = [];
           // TODO need to work on this part
-        } else if (control.name == 'active' && control.editor == Editor.SWTICH) {
+        } else if (control.name == 'active' && control.editor == 'dropdown') {
           active = true;
         }
       });
@@ -198,7 +241,7 @@ class OrganizationRoleController extends GetxController {
           body['data'][control.key!] = active ? 1 : 0;
         }
       });
-      await BusinessManagerApiServices.businessRoleForm(body).then((value) {
+      await BusinessManagerApiServices.businessRoleForm(body: body).then((value) {
         value.fold(
           (l) {
             return const Left('Success');

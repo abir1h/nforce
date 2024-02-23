@@ -48,7 +48,7 @@ class BusinessManagerApiServices {
           "order": "id asc",
           "transform": "",
           "humanized": true,
-          "columns": true,
+          "columns": false,
         },
       );
       if (response.statusCode == 200 && response.data['data'] != null) {
@@ -61,21 +61,13 @@ class BusinessManagerApiServices {
     }
   }
 
-  static Future<Either<FormModel, String>> businessRoleForm([
+  static Future<Either<FormModel, String>> businessRoleForm({
     Map<String, dynamic>? body,
-  ]) async {
-    developer.log(body.toString(), name: 'testing');
+  }) async {
     try {
       final response = await ApiClient.instance.post(
         url: URL.businessRoleForm,
-        body: body ??
-            {
-              "data": {
-                "groupType": "role",
-                "name": "",
-              },
-              "query": {}
-            },
+        body: body,
       );
       if (response.statusCode == 200) {
         Logger().i('budget ${FormModel.fromJson(response.data as Map<String, dynamic>)}');

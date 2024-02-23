@@ -1,43 +1,51 @@
-// ignore_for_file: constant_identifier_names
+// To parse this JSON data, do
+//
+//     final formModel = formModelFromJson(jsonString);
+
+import 'dart:convert';
+
+FormModel formModelFromJson(String str) => FormModel.fromJson(json.decode(str));
+
+String formModelToJson(FormModel data) => json.encode(data.toJson());
 
 class FormModel {
   final List<Control>? controls;
   final List<Action>? actions;
   final List<dynamic>? data;
-  final Map<String, dynamic>? query;
+  final List<dynamic>? tools;
 
   FormModel({
     this.controls,
     this.actions,
     this.data,
-    this.query,
+    this.tools,
   });
 
   FormModel copyWith({
     List<Control>? controls,
     List<Action>? actions,
     List<dynamic>? data,
-    Map<String, dynamic>? query,
+    List<dynamic>? tools,
   }) =>
       FormModel(
         controls: controls ?? this.controls,
         actions: actions ?? this.actions,
         data: data ?? this.data,
-        query: query ?? this.query,
+        tools: tools ?? this.tools,
       );
 
   factory FormModel.fromJson(Map<String, dynamic> json) => FormModel(
-        controls: json['controls'] == null ? [] : List<Control>.from(json['controls']!.map((x) => Control.fromJson(x))),
-        actions: json['actions'] == null ? [] : List<Action>.from(json['actions']!.map((x) => Action.fromJson(x))),
-        data: json['data'] == null ? [] : List<Map<String, dynamic>>.from(json['data']!.map((x) => x)),
-        query: json['query'] == null ? {} : Map<String, dynamic>.from(json['query']!),
+        controls: json["controls"] == null ? [] : List<Control>.from(json["controls"]!.map((x) => Control.fromJson(x))),
+        actions: json["actions"] == null ? [] : List<Action>.from(json["actions"]!.map((x) => Action.fromJson(x))),
+        data: json["data"] == null ? [] : List<dynamic>.from(json["data"]!.map((x) => x)),
+        tools: json["tools"] == null ? [] : List<dynamic>.from(json["tools"]!.map((x) => x)),
       );
 
   Map<String, dynamic> toJson() => {
-        'controls': controls == null ? [] : List<dynamic>.from(controls!.map((x) => x.toJson())),
-        'actions': actions == null ? [] : List<dynamic>.from(actions!.map((x) => x.toJson())),
-        'data': data == null ? [] : List<dynamic>.from(data!.map((x) => x)),
-        'query': query == null ? [] : Map<String, dynamic>.from(query!)
+        "controls": controls == null ? [] : List<dynamic>.from(controls!.map((x) => x.toJson())),
+        "actions": actions == null ? [] : List<dynamic>.from(actions!.map((x) => x.toJson())),
+        "data": data == null ? [] : List<dynamic>.from(data!.map((x) => x)),
+        "tools": tools == null ? [] : List<dynamic>.from(tools!.map((x) => x)),
       };
 }
 
@@ -45,7 +53,7 @@ class Action {
   final String? action;
   final String? label;
   final String? color;
-  final bool? confirm;
+  final String? confirm;
   final String? warning;
 
   Action({
@@ -60,7 +68,7 @@ class Action {
     String? action,
     String? label,
     String? color,
-    bool? confirm,
+    String? confirm,
     String? warning,
   }) =>
       Action(
@@ -72,19 +80,19 @@ class Action {
       );
 
   factory Action.fromJson(Map<String, dynamic> json) => Action(
-        action: json['action'],
-        label: json['label'],
-        color: json['color'],
-        confirm: json['confirm'],
-        warning: json['warning'],
+        action: json["action"],
+        label: json["label"],
+        color: json["color"],
+        confirm: json["confirm"],
+        warning: json["warning"],
       );
 
   Map<String, dynamic> toJson() => {
-        'action': action,
-        'label': label,
-        'color': color,
-        'confirm': confirm,
-        'warning': warning,
+        "action": action,
+        "label": label,
+        "color": color,
+        "confirm": confirm,
+        "warning": warning,
       };
 }
 
@@ -95,10 +103,10 @@ class Control {
   final int? order;
   final bool? readonly;
   final bool? actions;
-  final Editor? editor;
-  final List<dynamic>? validators;
+  final String? editor;
+  // final List<dynamic>? validators;
   final Params? params;
-  final String? value;
+  final dynamic value;
   final List<Option>? options;
 
   Control({
@@ -109,7 +117,7 @@ class Control {
     this.readonly,
     this.actions,
     this.editor,
-    this.validators,
+    // this.validators,
     this.params,
     this.value,
     this.options,
@@ -122,7 +130,7 @@ class Control {
     int? order,
     bool? readonly,
     bool? actions,
-    Editor? editor,
+    String? editor,
     List<dynamic>? validators,
     Params? params,
     dynamic value,
@@ -136,48 +144,44 @@ class Control {
         readonly: readonly ?? this.readonly,
         actions: actions ?? this.actions,
         editor: editor ?? this.editor,
-        validators: validators ?? this.validators,
+        // validators: validators ?? this.validators,
         params: params ?? this.params,
         value: value ?? this.value,
         options: options ?? this.options,
       );
 
   factory Control.fromJson(Map<String, dynamic> json) => Control(
-        name: json['name'],
-        key: json['key'],
-        label: json['label'],
-        order: json['order'],
-        readonly: json['readonly'],
-        actions: json['actions'],
-        editor: editorValues.map[json['editor']]!,
-        validators: json['validators'] == null ? [] : List<dynamic>.from(json['validators']!.map((x) => x)),
-        params: json['params'] == null ? null : Params.fromJson(json['params']),
-        value: json['value'],
-        options: json['options'] == null ? [] : List<Option>.from(json['options']!.map((x) => Option.fromJson(x))),
+        name: json["name"],
+        key: json["key"],
+        label: json["label"],
+        order: json["order"],
+        readonly: json["readonly"],
+        actions: json["actions"],
+        editor: json["editor"],
+        // validators: json["validators"] == null ? [] : List<dynamic>.from(json["validators"]!.map((x) => x)),
+        params: json["params"] == null ? null : Params.fromJson(json["params"]),
+        value: json["value"],
+        options: json["options"] == null ? [] : List<Option>.from(json["options"]!.map((x) => Option.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
-        'name': name,
-        'key': key,
-        'label': label,
-        'order': order,
-        'readonly': readonly,
-        'actions': actions,
-        'editor': editorValues.reverse[editor],
-        'validators': validators == null ? [] : List<dynamic>.from(validators!.map((x) => x)),
-        'params': params?.toJson(),
-        'value': value,
-        'options': options == null ? [] : List<dynamic>.from(options!.map((x) => x.toJson())),
+        "name": name,
+        "key": key,
+        "label": label,
+        "order": order,
+        "readonly": readonly,
+        "actions": actions,
+        "editor": editor,
+        // "validators": validators == null ? [] : List<dynamic>.from(validators!.map((x) => x)),
+        "params": params?.toJson(),
+        "value": value,
+        "options": options == null ? [] : List<dynamic>.from(options!.map((x) => x.toJson())),
       };
 }
 
-enum Editor { DROPDOWN, FILEINPUT, TEXT, SWTICH }
-
-final editorValues = EnumValues({'dropdown': Editor.DROPDOWN, 'fileinput': Editor.FILEINPUT, 'text': Editor.TEXT, 'swtich': Editor.SWTICH});
-
 class Option {
   final String? label;
-  final String? value;
+  final dynamic value;
 
   Option({
     this.label,
@@ -186,7 +190,7 @@ class Option {
 
   Option copyWith({
     String? label,
-    String? value,
+    dynamic value,
   }) =>
       Option(
         label: label ?? this.label,
@@ -194,23 +198,23 @@ class Option {
       );
 
   factory Option.fromJson(Map<String, dynamic> json) => Option(
-        label: json['label'],
-        value: json['value'],
+        label: json["label"],
+        value: json["value"],
       );
 
   Map<String, dynamic> toJson() => {
-        'label': label,
-        'value': value,
+        "label": label,
+        "value": value,
       };
 }
 
 class Params {
-  final Type? type;
+  final String? type;
   final String? leftIcon;
   final String? paramsClass;
   final int? public;
   final dynamic csrf;
-  final dynamic thumbUrl;
+  final String? thumbUrl;
 
   Params({
     this.type,
@@ -222,12 +226,12 @@ class Params {
   });
 
   Params copyWith({
-    Type? type,
+    String? type,
     String? leftIcon,
     String? paramsClass,
     int? public,
     dynamic csrf,
-    dynamic thumbUrl,
+    String? thumbUrl,
   }) =>
       Params(
         type: type ?? this.type,
@@ -239,36 +243,20 @@ class Params {
       );
 
   factory Params.fromJson(Map<String, dynamic> json) => Params(
-        type: typeValues.map[json['type']]!,
-        leftIcon: json['leftIcon'],
-        paramsClass: json['class'],
-        public: json['public'],
-        csrf: json['csrf'],
-        thumbUrl: json['thumbUrl'],
+        type: json["type"],
+        leftIcon: json["leftIcon"],
+        paramsClass: json["class"],
+        public: json["public"],
+        csrf: json["csrf"],
+        thumbUrl: json["thumbUrl"],
       );
 
   Map<String, dynamic> toJson() => {
-        'type': typeValues.reverse[type],
-        'leftIcon': leftIcon,
-        'class': paramsClass,
-        'public': public,
-        'csrf': csrf,
-        'thumbUrl': thumbUrl,
+        "type": type,
+        "leftIcon": leftIcon,
+        "class": paramsClass,
+        "public": public,
+        "csrf": csrf,
+        "thumbUrl": thumbUrl,
       };
-}
-
-enum Type { TEXT, TEXTAREA }
-
-final typeValues = EnumValues({'text': Type.TEXT, 'textarea': Type.TEXTAREA});
-
-class EnumValues<T> {
-  Map<String, T> map;
-  late Map<T, String> reverseMap;
-
-  EnumValues(this.map);
-
-  Map<T, String> get reverse {
-    reverseMap = map.map((k, v) => MapEntry(v, k));
-    return reverseMap;
-  }
 }

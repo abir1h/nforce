@@ -1,14 +1,17 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/business_manager/controllers/business_manager_controller.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/user_roles/add_or_edit_user_role_view.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/user_roles/user_role_details_view.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/user_roles/user_roles_controller.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/user_roles/widget/empty_user_role.dart';
+import 'package:nuforce/app/model/business_manager/role_model.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/organization_roles/add_or_edit_organization_role_view.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/organization_roles/controllers/organization_role_controller.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/organization_roles/organization_role_details_view.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/organization_roles/widget/empty_user_role.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
 import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/app/utils/custom_loading_widget.dart';
 
 class UserRolesView extends StatefulWidget {
   const UserRolesView({super.key});
@@ -18,18 +21,18 @@ class UserRolesView extends StatefulWidget {
 }
 
 class _UserRolesViewState extends State<UserRolesView> {
-  final controller = Get.find<BusinessManagerController>();
+  // final controller = Get.find<BusinessManagerController>();
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<UserRolesController>(
-      builder: (_) {
+    return GetBuilder<OrganizationRoleController>(
+      builder: (controller) {
         return Scaffold(
           backgroundColor: AppColors.white1,
           appBar: CustomAppbarMinimal(
             title: 'User Roles',
             trailing: [
-              if (controller.userRolesController.userRoles.isEmpty)
+              if (controller.roleModel.data?.isEmpty == true)
                 const SizedBox()
               else
                 GestureDetector(
@@ -55,27 +58,40 @@ class _UserRolesViewState extends State<UserRolesView> {
               const SizedBox(width: 16),
             ],
           ),
-          body: SizedBox(
-            width: Get.width,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
-              child: controller.userRolesController.userRoles.isEmpty
-                  ? const EmptyUserRole()
-                  : ListView.builder(
-                      itemCount: controller.userRolesController.userRoles.length,
-                      shrinkWrap: true,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Padding(
-                          padding: const EdgeInsets.only(bottom: 16),
-                          child: GestureDetector(
-                            onTap: () {
-                              Get.to<void>(() => UserRoleDeatilsView(user: controller.userRolesController.userRoles[index]));
+          body: CustomLoadingWidget(
+            isLoading: controller.isLoading,
+            child: SizedBox(
+              width: Get.width,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
+                child: controller.roleModel.data?.isEmpty == true
+                    ? const EmptyUserRole()
+                    : controller.isLoading
+                        ? const SizedBox()
+                        : ListView.builder(
+                            itemCount: controller.roleModel.data?.length,
+                            shrinkWrap: true,
+                            itemBuilder: (BuildContext context, int index) {
+                              return Padding(
+                                padding: const EdgeInsets.only(bottom: 16),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    if (controller.roleModel.data != null) {
+                                      if (controller.roleModel.data![index].id != null) {
+                                        controller.getFormData(controller.roleModel.data![index].id!);
+                                        log('role id: ${controller.roleModel.data![index].id}');
+                                        Get.to<void>(
+                                          () => const OrganizationRoleDeatilsView(),
+                                        );
+                                      }
+                                    }
+                                  },
+                                  child: UserRoleTile(role: controller.roleModel.data![index]),
+                                ),
+                              );
                             },
-                            child: UserRoleTile(user: controller.userRolesController.userRoles[index]),
                           ),
-                        );
-                      },
-                    ),
+              ),
             ),
           ),
         );
@@ -86,10 +102,10 @@ class _UserRolesViewState extends State<UserRolesView> {
 
 class UserRoleTile extends StatelessWidget {
   const UserRoleTile({
-    required this.user,
+    required this.role,
     super.key,
   });
-  final UserRolesMock user;
+  final Role role;
 
   @override
   Widget build(BuildContext context) {
@@ -107,10 +123,11 @@ class UserRoleTile extends StatelessWidget {
             width: 48,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(500),
-              child: Image.file(
-                user.image,
-                fit: BoxFit.cover,
-              ),
+              child: const ColoredBox(color: AppColors.primaryBlue1),
+              // child: Image.file(
+              //   role.image,
+              //   fit: BoxFit.cover,
+              // ),
             ),
           ),
           const SizedBox(width: 8),
@@ -119,7 +136,7 @@ class UserRoleTile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  user.name,
+                  role.name ?? '',
                   style: TextStyle(
                     color: AppColors.nutralBlack1,
                     fontSize: 16.sp,
@@ -128,7 +145,7 @@ class UserRoleTile extends StatelessWidget {
                 ),
                 const SizedBox(height: 2),
                 Text(
-                  user.description,
+                  role.subType ?? '',
                   style: TextStyle(
                     color: AppColors.subText,
                     fontSize: 14.sp,
