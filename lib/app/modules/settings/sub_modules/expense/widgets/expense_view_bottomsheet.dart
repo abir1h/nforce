@@ -6,6 +6,8 @@ import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
 import 'package:nuforce/app/utils/colors.dart';
 
 import '../../../../../shared/widgets/custom_dropdown.dart';
+import '../../../../../shared/widgets/primary_button.dart';
+import '../../../../../shared/widgets/secondary_button.dart';
 
 class ExpenseViewBottomsheet extends StatefulWidget {
   const ExpenseViewBottomsheet({
@@ -29,7 +31,7 @@ class _ExpenseViewBottomsheetState extends State<ExpenseViewBottomsheet> {
         alignment: Alignment.bottomCenter,
         child: Container(
           width: double.infinity,
-          margin: EdgeInsets.only(top: mediaQuery.padding.top * 8),
+          margin: EdgeInsets.only(top: mediaQuery.padding.top * 5),
           padding: EdgeInsets.only(top: 16.h, right: 16.w, left: 20.w),
           decoration: BoxDecoration(
             color: AppColors.white1,
@@ -173,6 +175,29 @@ class _ExpenseViewBottomsheetState extends State<ExpenseViewBottomsheet> {
                     enable: false,
                     suffix: Icon(Icons.calendar_month),
                     controller: TextEditingController()),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: SecondaryButton(
+                        onPressed: () {},
+                        text: 'Reset',
+                      ),
+                    ),
+                    const SizedBox(width: 15),
+                    Expanded(
+                      child: PrimaryButton(
+                        onPressed: () {
+                          Get.back();
+
+                        },
+                        text: 'Apply',
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
