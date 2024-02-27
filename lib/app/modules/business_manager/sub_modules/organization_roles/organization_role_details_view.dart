@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/model/business_manager/role_model.dart';
-import 'package:nuforce/app/modules/business_manager/controllers/business_manager_controller.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/organization_roles/add_or_edit_organization_role_view.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/organization_roles/controllers/organization_role_controller.dart';
 import 'package:nuforce/app/modules/service_items/widgets/title_subtitle_minimal_widget.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
@@ -61,7 +58,7 @@ class _OrganizationRoleDeatilsViewState extends State<OrganizationRoleDeatilsVie
                           child: SecondaryButton(
                             onPressed: () {
                               Get.back<void>();
-                              final controller = Get.find<BusinessManagerController>();
+                              // final controller = Get.find<BusinessManagerController>();
                               // TODO: implement delete user role
                               // controller.userRolesController.removeUserRoles(role);
                               Fluttertoast.showToast(msg: 'User Role Deleted');

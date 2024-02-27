@@ -5,7 +5,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:logger/logger.dart';
 import 'package:nuforce/app/model/business_manager/role_model.dart';
 import 'package:nuforce/app/modules/business_manager/apis/business_manager_api_services.dart';
 import 'package:nuforce/app/modules/business_manager/models/form_model.dart';
