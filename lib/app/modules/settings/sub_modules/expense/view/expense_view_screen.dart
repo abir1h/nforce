@@ -2,9 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:nuforce/app/modules/settings/sub_modules/expense/widgets/expense_item_card.dart';
+import 'package:get/get.dart';
+import 'package:nuforce/app/modules/settings/sub_modules/expense/view/add_new_expanse.dart';
+import 'package:nuforce/app/modules/settings/sub_modules/expense/view/expense_code_screen.dart';
+import 'expense_detail_screen.dart';
+import '../widgets/expense_item_card.dart';
 
-import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
+import '../../../../../shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/text_styles.dart';
 import 'package:nuforce/gen/assets.gen.dart';
@@ -26,9 +30,13 @@ class _ExpenseViewState extends State<ExpenseView> {
       resizeToAvoidBottomInset: true,
       appBar: CustomAppbarMinimal(
         title: 'Expenses',
-        trailing: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
+        trailing: [   Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: GestureDetector(
+            onTap: (){
+              Get.to<void>(() => const ExpenseCodeScreen());
+
+            },
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 12.w,vertical: 4.h),
 
@@ -47,6 +55,7 @@ class _ExpenseViewState extends State<ExpenseView> {
               ),
             ),
           ),
+        ),
         ],
       ),
       body: SingleChildScrollView(
@@ -94,9 +103,10 @@ class _ExpenseViewState extends State<ExpenseView> {
                   width: 16.w,
                 ),
                 GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     showCupertinoModalPopup<void>(
-                      context: context,barrierDismissible: true,
+                      context: context,
+                      barrierDismissible: true,
                       builder: (context) => const ExpenseViewBottomsheet(),
                     );
                   },
@@ -112,21 +122,110 @@ class _ExpenseViewState extends State<ExpenseView> {
               ],
             ),
             SizedBox(
+              height: 24.h,
+            ),Row(
+              children: [
+                Expanded(child:    Text(
+                  ' Expenses',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16.sp,
+                    color: AppColors.nutralBlack1,
+                  ),
+                ),),
+                GestureDetector(
+                  onTap: (){
+                    Get.to<void>(() => const AddExpenseViewScreen());
+
+                  },
+                  child: Row(
+                    children: [
+                      Icon(Icons.add),
+                      Text(
+                        'Add',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 14.sp,
+                          color: AppColors.nutralBlack1,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ), SizedBox(
               height: 14.h,
             ),
             ListView(
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               children: [
-               ExpenseItemCard(onTap: (){}, onInstallTap: (){}),SizedBox(height: 16.h,),
-               ExpenseItemCard(onTap: (){}, onInstallTap: (){}),SizedBox(height: 16.h,),
-               ExpenseItemCard(onTap: (){}, onInstallTap: (){}),SizedBox(height: 16.h,),
-               ExpenseItemCard(onTap: (){}, onInstallTap: (){}),SizedBox(height: 16.h,),
-               ExpenseItemCard(onTap: (){}, onInstallTap: (){}),SizedBox(height: 16.h,),
-               ExpenseItemCard(onTap: (){}, onInstallTap: (){}),SizedBox(height: 16.h,),
-               ExpenseItemCard(onTap: (){}, onInstallTap: (){}),SizedBox(height: 16.h,),
+                ExpenseItemCard(
+                  onTap: () {
+                    Get.to<void>(() => const ExpenseDetailScreen());
+                  },
+                  onInstallTap: () {},
+                ),
+                SizedBox(
+                  height: 16.h,
+                ),
+                ExpenseItemCard(
+                  onTap: () {
+                    Get.to<void>(() => const ExpenseDetailScreen());
+                  },
+                  onInstallTap: () {},
+                ),
+                SizedBox(
+                  height: 16.h,
+                ),
+                ExpenseItemCard(
+                  onTap: () {
+                    Get.to<void>(() => const ExpenseDetailScreen());
+                  },
+                  onInstallTap: () {},
+                ),
+                SizedBox(
+                  height: 16.h,
+                ),
+                ExpenseItemCard(
+                  onTap: () {
+                    Get.to<void>(() => const ExpenseDetailScreen());
+                  },
+                  onInstallTap: () {},
+                ),
+                SizedBox(
+                  height: 16.h,
+                ),
+                ExpenseItemCard(
+                  onTap: () {
+                    Get.to<void>(() => const ExpenseDetailScreen());
+                  },
+                  onInstallTap: () {},
+                ),
+                SizedBox(
+                  height: 16.h,
+                ),
+                ExpenseItemCard(
+                  onTap: () {
+                    Get.to<void>(() => const ExpenseDetailScreen());
+                  },
+                  onInstallTap: () {},
+                ),
+                SizedBox(
+                  height: 16.h,
+                ),
+                ExpenseItemCard(
+                  onTap: () {
+                    Get.to<void>(() => const ExpenseDetailScreen());
+                  },
+                  onInstallTap: () {},
+                ),
+                SizedBox(
+                  height: 16.h,
+                ),
               ],
-            ),   SizedBox(
+            ),
+            SizedBox(
               height: 32.h,
             ),
           ],

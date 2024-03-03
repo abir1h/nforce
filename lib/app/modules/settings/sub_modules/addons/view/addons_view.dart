@@ -8,7 +8,7 @@ import '../../../../../shared/widgets/custom_appbar_minimal.dart';
 import '../../../../../utils/colors.dart';
 
 import '../../../../service_items/widgets/addon_items_widget.dart';
-import 'add_expense_view.dart';
+import 'add_plugin_view.dart';
 
 class AddonsView extends StatefulWidget {
   const AddonsView({super.key});
@@ -32,7 +32,7 @@ class _AddonsViewState extends State<AddonsView> {
           Padding(
             padding: EdgeInsets.only(right: 20.w),
             child: GestureDetector(
-              onTap: () => Get.to<void>(() => const AddExpenseViewScreen()),
+              onTap: () => Get.to<void>(() => const AddPluginViewScreen()),
               child: Row(
                 children: [
                   Icon(

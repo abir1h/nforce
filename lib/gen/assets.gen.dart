@@ -59,6 +59,10 @@ class $AssetsImagesPngGen {
   AssetGenImage get emptyData =>
       const AssetGenImage('assets/images/png/empty_data.png');
 
+  /// File path: assets/images/png/expReport.png
+  AssetGenImage get expReport =>
+      const AssetGenImage('assets/images/png/expReport.png');
+
   /// File path: assets/images/png/expense_tracking.png
   AssetGenImage get expenseTracking =>
       const AssetGenImage('assets/images/png/expense_tracking.png');
@@ -225,6 +229,7 @@ class $AssetsImagesPngGen {
         customFields,
         delete,
         emptyData,
+        expReport,
         expenseTracking,
         facebook,
         google,

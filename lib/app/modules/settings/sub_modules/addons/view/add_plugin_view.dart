@@ -11,14 +11,14 @@ import '../../../../../shared/widgets/custom_appbar_minimal.dart';
 import '../../../../../utils/colors.dart';
 import '../../../../../utils/text_styles.dart';
 
-class AddExpenseViewScreen extends StatefulWidget {
-  const AddExpenseViewScreen({super.key});
+class AddPluginViewScreen extends StatefulWidget {
+  const AddPluginViewScreen({super.key});
 
   @override
-  State<AddExpenseViewScreen> createState() => _AddExpenseViewScreenState();
+  State<AddPluginViewScreen> createState() => _AddPluginViewScreenState();
 }
 
-class _AddExpenseViewScreenState extends State<AddExpenseViewScreen> {
+class _AddPluginViewScreenState extends State<AddPluginViewScreen> {
   final controller = Get.put(AddonController());
 
   @override

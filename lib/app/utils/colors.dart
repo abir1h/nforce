@@ -41,6 +41,7 @@ class AppColors {
   static const Color lightblue = Color(0xFFD7EDFF);
   static const Color lightblueshade = Color(0xFFB7D8F2);
   static const Color lightblueshade2 = Color(0xFFEAF5FD);
+  static const Color tableBorder = Color(0xFFD4D4D4);
 
   static const Color purple = Color(0xFFA300F0);
   static const Color orange = Color(0xFFFD9800);
