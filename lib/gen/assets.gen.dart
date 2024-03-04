@@ -355,6 +355,9 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/discount.svg
   String get discount => 'assets/images/svg/discount.svg';
 
+  /// File path: assets/images/svg/edit_rounded.svg
+  String get editRounded => 'assets/images/svg/edit_rounded.svg';
+
   /// File path: assets/images/svg/empty.svg
   String get empty => 'assets/images/svg/empty.svg';
 
@@ -539,6 +542,7 @@ class $AssetsImagesSvgGen {
         customers,
         deleteIcon,
         discount,
+        editRounded,
         empty,
         facebook,
         filter,

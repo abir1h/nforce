@@ -1,0 +1,310 @@
+{
+	"today": {
+		"matrix": [
+			{
+				"id": 1,
+				"color_code": "0xffaasddd",
+				"value": "28",
+				"label": "Total",
+				"total_value_humanized": "$100k"
+			},
+			{
+				"id": 2,
+				"color_code": "0xffaasddd",
+				"value": "29",
+				"label": "To Go",
+				"total_value_humanized": "$23k"
+			},
+			{
+				"id": 3,
+				"color_code": "0xffaasddd",
+				"value": "30",
+				"label": "Active",
+				"total_value_humanized": "$30k"
+			},
+			{
+				"id": 4,
+				"color_code": "0xffaasddd",
+				"value": "31",
+				"label": "Completed",
+				"total_value_humanized": "$4k"
+			}
+		],
+		"x_list": [
+			{
+				"id": 12,
+				"name": "John Doe",
+				"image_url": "https://nuforce.pro/api/public/asset/1",
+				"cards": [
+					{
+						"order": 1,
+						"time": "UTC format",
+						"status": true,
+						"label": "Service Call"
+					}
+				]
+			},
+			{
+				"id": 13,
+				"name": "John Doe",
+				"image_url": "https://nuforce.pro/api/public/asset/1",
+				"cards": [
+					{
+						"order": 2,
+						"time": "UTC format",
+						"status": false,
+						"label": "Inspection"
+					}
+				]
+			}
+		]
+	},
+	"actions": {
+		"recommended_actions": [
+			{
+				"id": 1,
+				"count": 565,
+				"title": "Scheduled items overdue"
+			},
+			{
+				"id": 2,
+				"count": 565,
+				"title": "Unassigned scheduled items"
+			},
+			{
+				"id": 3,
+				"count": 565,
+				"title": "Requests ready for review"
+			}
+		],
+		"recent_actions": [
+			{
+				"id": 1,
+				"count": 565,
+				"title": "Scheduled items overdue"
+			},
+			{
+				"id": 2,
+				"count": 565,
+				"title": "Unassigned scheduled items"
+			},
+			{
+				"id": 3,
+				"count": 565,
+				"title": "Requests ready for review"
+			}
+		]
+	},
+	"performance": {
+		"matrix": [
+			{
+				"id": 1,
+				"color_code": "0xffaasddd",
+				"value_humanized": "12.7%",
+				"sub_value_humanized": "+2.3%",
+				"label": "Pest"
+			},
+			{
+				"id": 2,
+				"color_code": "0xffaasddd",
+				"value_humanized": "65.4%",
+				"sub_value_humanized": "+2.3%",
+				"label": "Safer"
+			},
+			{
+				"id": 3,
+				"color_code": "0xffaasddd",
+				"value_humanized": "99.3%",
+				"sub_value_humanized": "+2.3%",
+				"label": "Cleaner"
+			},
+			{
+				"id": 4,
+				"color_code": "0xffaasddd",
+				"value_humanized": "86.7%",
+				"sub_value_humanized": "+2.3%",
+				"label": "On Time"
+			}
+		],
+		"chart": {
+			"chart_type": "line",
+			"chart_data": [
+				{
+					"id": 1,
+					"color_code": "0xffaasddd",
+					"label": "Smoother",
+					"values": [
+						{
+							"x": 1,
+							"y": 1
+						},
+						{
+							"x": 3,
+							"y": 2.8
+						},
+						{
+							"x": 7,
+							"y": 1.2
+						},
+						{
+							"x": 10,
+							"y": 2.8
+						},
+						{
+							"x": 12,
+							"y": 2.6
+						},
+						{
+							"x": 13,
+							"y": 3.9
+						}
+					]
+				},
+				{
+					"id": 2,
+					"color_code": "0xffaasddd",
+					"label": "Safer",
+					"values": [
+						{
+							"x": 1,
+							"y": 1
+						},
+						{
+							"x": 3,
+							"y": 2.8
+						},
+						{
+							"x": 7,
+							"y": 1.2
+						},
+						{
+							"x": 10,
+							"y": 2.8
+						},
+						{
+							"x": 12,
+							"y": 2.6
+						},
+						{
+							"x": 13,
+							"y": 3.9
+						}
+					]
+				},
+				{
+					"id": 3,
+					"color_code": "0xffaasddd",
+					"label": "Cleaner",
+					"values": [
+						{
+							"x": 1,
+							"y": 1
+						},
+						{
+							"x": 3,
+							"y": 2.8
+						},
+						{
+							"x": 7,
+							"y": 1.2
+						},
+						{
+							"x": 10,
+							"y": 2.8
+						},
+						{
+							"x": 12,
+							"y": 2.6
+						},
+						{
+							"x": 13,
+							"y": 3.9
+						}
+					]
+				},
+				{
+					"id": 4,
+					"color_code": "0xffaasddd",
+					"label": "On Time",
+					"values": [
+						{
+							"x": 1,
+							"y": 1
+						},
+						{
+							"x": 3,
+							"y": 2.8
+						},
+						{
+							"x": 7,
+							"y": 1.2
+						},
+						{
+							"x": 10,
+							"y": 2.8
+						},
+						{
+							"x": 12,
+							"y": 2.6
+						},
+						{
+							"x": 13,
+							"y": 3.9
+						}
+					]
+				}
+			]
+		}
+	},
+	"invoices": {
+		"matrix": [
+			{
+				"id": 1,
+				"color_code": "0xffaasddd",
+				"value": "90",
+				"sub_value_humanized": "$15K",
+				"label": "Pending"
+			},
+			{
+				"id": 2,
+				"color_code": "0xffaasddd",
+				"value_humanized": "17",
+				"sub_value_humanized": "$14K",
+				"label": "Due"
+			},
+			{
+				"id": 3,
+				"color_code": "0xffaasddd",
+				"value_humanized": "60",
+				"sub_value_humanized": "$15K",
+				"label": "Paid"
+			}
+		],
+		"data": [
+			{
+				"id": 1,
+				"service_name": "Ac fixing",
+				"user_name": "Abu Bokkor",
+				"invoice_date": "UTC format",
+				"amount": "$100.50",
+				"status": "Paid"
+			},
+			{
+				"id": 2,
+				"service_name": "Ac fixing",
+				"user_name": "Abu Bokkor",
+				"invoice_date": "UTC format",
+				"amount": "$100.60",
+				"status": "Pending"
+			},
+			{
+				"id": 3,
+				"service_name": "Ac fixing",
+				"user_name": "Abu Bokkor",
+				"invoice_date": "UTC format",
+				"amount": "$100.70",
+				"status": "Pending"
+			}
+		]
+	}
+}

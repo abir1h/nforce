@@ -6,9 +6,9 @@ class RoleModel {
   final int? nextPage;
   final int? prevPage;
   final List<int>? pageChunks;
-  final List<Datum>? data;
+  final List<Role>? data;
   final int? count;
-  final List<Column>? columns;
+  final List<ColumnOfRole>? columns;
   final List<Action>? actions;
   final List<Tool>? tools;
 
@@ -35,9 +35,9 @@ class RoleModel {
     int? nextPage,
     int? prevPage,
     List<int>? pageChunks,
-    List<Datum>? data,
+    List<Role>? data,
     int? count,
-    List<Column>? columns,
+    List<ColumnOfRole>? columns,
     List<Action>? actions,
     List<Tool>? tools,
   }) =>
@@ -64,9 +64,9 @@ class RoleModel {
         nextPage: json["nextPage"],
         prevPage: json["prevPage"],
         pageChunks: json["pageChunks"] == null ? [] : List<int>.from(json["pageChunks"]!.map((x) => x)),
-        data: json["data"] == null ? [] : List<Datum>.from(json["data"]!.map((x) => Datum.fromJson(x))),
+        data: json["data"] == null ? [] : List<Role>.from(json["data"]!.map((x) => Role.fromJson(x))),
         count: json["count"],
-        columns: json["columns"] == null ? [] : List<Column>.from(json["columns"]!.map((x) => Column.fromJson(x))),
+        columns: json["columns"] == null ? [] : List<ColumnOfRole>.from(json["columns"]!.map((x) => ColumnOfRole.fromJson(x))),
         actions: json["actions"] == null ? [] : List<Action>.from(json["actions"]!.map((x) => Action.fromJson(x))),
         tools: json["tools"] == null ? [] : List<Tool>.from(json["tools"]!.map((x) => Tool.fromJson(x))),
       );
@@ -122,7 +122,7 @@ class Action {
       };
 }
 
-class Column {
+class ColumnOfRole {
   final String? label;
   final String? key;
   final bool? hidden;
@@ -130,7 +130,7 @@ class Column {
   final String? name;
   final String? description;
 
-  Column({
+  ColumnOfRole({
     this.label,
     this.key,
     this.hidden,
@@ -139,7 +139,7 @@ class Column {
     this.description,
   });
 
-  Column copyWith({
+  ColumnOfRole copyWith({
     String? label,
     String? key,
     bool? hidden,
@@ -147,7 +147,7 @@ class Column {
     String? name,
     String? description,
   }) =>
-      Column(
+      ColumnOfRole(
         label: label ?? this.label,
         key: key ?? this.key,
         hidden: hidden ?? this.hidden,
@@ -156,7 +156,7 @@ class Column {
         description: description ?? this.description,
       );
 
-  factory Column.fromJson(Map<String, dynamic> json) => Column(
+  factory ColumnOfRole.fromJson(Map<String, dynamic> json) => ColumnOfRole(
         label: json["label"],
         key: json["key"],
         hidden: json["hidden"],
@@ -175,7 +175,7 @@ class Column {
       };
 }
 
-class Datum {
+class Role {
   final int? id;
   final int? businessId;
   final String? groupType;
@@ -184,7 +184,7 @@ class Datum {
   final String? subType;
   final String? name;
 
-  Datum({
+  Role({
     this.id,
     this.businessId,
     this.groupType,
@@ -194,7 +194,7 @@ class Datum {
     this.name,
   });
 
-  Datum copyWith({
+  Role copyWith({
     int? id,
     int? businessId,
     String? groupType,
@@ -203,7 +203,7 @@ class Datum {
     String? subType,
     String? name,
   }) =>
-      Datum(
+      Role(
         id: id ?? this.id,
         businessId: businessId ?? this.businessId,
         groupType: groupType ?? this.groupType,
@@ -213,7 +213,7 @@ class Datum {
         name: name ?? this.name,
       );
 
-  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+  factory Role.fromJson(Map<String, dynamic> json) => Role(
         id: json["id"],
         businessId: json["businessId"],
         groupType: json["groupType"],

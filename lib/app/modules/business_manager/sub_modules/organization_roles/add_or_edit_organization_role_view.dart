@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/user_roles/controllers/business_manager_role_controller.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/user_roles/user_roles_controller.dart';
+import 'package:nuforce/app/model/business_manager/role_model.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/organization_roles/controllers/organization_role_controller.dart';
 import 'package:nuforce/app/modules/business_manager/widgets/image_upload_optional.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
@@ -17,9 +17,9 @@ GlobalKey<FormState> addRoleFormField = GlobalKey<FormState>();
 class AddOrEditUserRoleView extends StatefulWidget {
   const AddOrEditUserRoleView({
     super.key,
-    this.user,
+    this.role,
   });
-  final UserRolesMock? user;
+  final Role? role;
 
   @override
   State<AddOrEditUserRoleView> createState() => _AddOrEditUserRoleViewState();
@@ -45,7 +45,7 @@ class _AddOrEditUserRoleViewState extends State<AddOrEditUserRoleView> {
     } else {
       controller = Get.put(OrganizationRoleController());
     }
-    controller.getData();
+    controller.getFormData();
     // if (widget.user != null) {
     //   final user = widget.user!;
     //   nameController.text = user.name;
@@ -70,7 +70,7 @@ class _AddOrEditUserRoleViewState extends State<AddOrEditUserRoleView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppbarMinimal(
-        title: widget.user != null ? 'Edit Role' : 'Add Role',
+        title: widget.role != null ? 'Edit Role' : 'Add Role',
       ),
       body: GetBuilder<OrganizationRoleController>(builder: (controller) {
         return CustomLoadingWidget(

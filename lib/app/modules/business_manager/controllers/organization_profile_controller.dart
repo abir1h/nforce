@@ -108,7 +108,7 @@ class OrganizationProfileController extends GetxController {
         } else if (control.name == 'profileTagline') {
           brandTaglineLabel = control.label ?? 'Brand Tagline';
           brandTaglineController.text = control.value ?? '';
-        } else if (control.name == 'businessType' && control.editor == Editor.DROPDOWN) {
+        } else if (control.name == 'businessType' && control.editor == 'dropdown') {
           businessTypeLabel = control.label ?? 'Business Type';
           if (businessTypeList.isEmpty) {
             control.options?.forEach((element) {
@@ -187,7 +187,7 @@ class OrganizationProfileController extends GetxController {
           submitButtonLabel = action.label ?? 'Submit';
         } else if (action.action == 'reset') {
           resetButtonLabel = action.label ?? 'Reset';
-          showResetWarning = action.confirm ?? false;
+          showResetWarning = action.confirm == true;
           resetWarning = action.warning ?? 'Are you sure?';
         }
       });
@@ -235,7 +235,7 @@ class OrganizationProfileController extends GetxController {
           body['data'][control.key!] = displayNameController.text;
         } else if (control.name == 'profileTagline') {
           body['data'][control.key!] = brandTaglineController.text;
-        } else if (control.name == 'businessType' && control.editor == Editor.DROPDOWN) {
+        } else if (control.name == 'businessType' && control.editor == 'dropdown') {
           body['data'][control.key!] = _selectedBusinessType?.value;
         } else if (control.name == 'profileAbout') {
           body['data'][control.key!] = aboutYourBusinessController.text;
