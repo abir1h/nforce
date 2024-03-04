@@ -8,6 +8,7 @@ import 'package:nuforce/app/modules/new_orders/controllers/invoice_controller.da
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/global_states.dart';
+import 'package:nuforce/app/utils/text_styles.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 
 class CreateInvoiceView extends StatefulWidget {
@@ -54,7 +55,22 @@ class _CreateInvoiceViewState extends State<CreateInvoiceView> {
             Row(
               children: [
                 _profileImagePicker(),
-                
+                Container(
+                  height: 38.h,
+                  decoration: BoxDecoration(
+                    color: AppColors.primaryBlue1.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: Center(
+                    child: Text(
+                      '+ Add Agent',
+                      style: CustomTextStyle.heading5.copyWith(
+                        fontWeight: FontWeight.w400,
+                        color: AppColors.primaryBlue1,
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ],
