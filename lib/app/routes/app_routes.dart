@@ -18,6 +18,7 @@ abstract class Routes {
   static const CUSTOMER = _Paths.CUSTOMER;
   static const CUSTOMER_WORK_ORDER =
       _Paths.CUSTOMER + _Paths.CUSTOMER_WORK_ORDER;
+  static const SERVICE_CENTER = _Paths.SERVICE_CENTER;
 }
 
 abstract class _Paths {
@@ -36,4 +37,5 @@ abstract class _Paths {
   static const SETTINGS = '/settings';
   static const CUSTOMER = '/customer';
   static const CUSTOMER_WORK_ORDER = '/customer-work-order';
+  static const SERVICE_CENTER = '/service-center';
 }

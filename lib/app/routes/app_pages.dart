@@ -20,6 +20,8 @@ import '../modules/new_orders/bindings/new_orders_binding.dart';
 import '../modules/new_orders/views/new_orders_view.dart';
 import '../modules/on_boarding/bindings/on_boarding_binding.dart';
 import '../modules/on_boarding/views/on_boarding_view.dart';
+import '../modules/service_center/bindings/service_center_binding.dart';
+import '../modules/service_center/views/service_center_view.dart';
 import '../modules/service_items/bindings/service_items_binding.dart';
 import '../modules/service_items/views/service_items_view.dart';
 import '../modules/settings/bindings/settings_binding.dart';
@@ -108,6 +110,11 @@ class AppPages {
           binding: CustomerWorkOrderBinding(),
         ),
       ],
+    ),
+    GetPage(
+      name: _Paths.SERVICE_CENTER,
+      page: () => const ServiceCenterView(),
+      binding: ServiceCenterBinding(),
     ),
   ];
 }
