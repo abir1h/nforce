@@ -19,6 +19,7 @@ import '../sub_modules/addons/view/addons_view.dart';
 import '../sub_modules/calendar_sync/views/calendar_sync.dart';
 import '../sub_modules/chat/view/chat_screen.dart';
 import '../sub_modules/contact_center/view/contact_center_view.dart';
+import '../sub_modules/expense/view/expense_view_screen.dart';
 import '../sub_modules/faq/view/faq_view.dart';
 import '../sub_modules/privacy_terms/privacy_policy_screen.dart';
 import '../sub_modules/privacy_terms/terms_contdition.dart';
@@ -105,7 +106,7 @@ class SettingsView extends GetView<SettingsController> {
                     ),
                     SettingTile(
                       leading: Assets.images.png.expenseTracking.keyName,
-                      onTap: () {},
+                      onTap: () => Get.to<void>(() => const ExpenseView()),
                       label: 'Expense Tracking',
                       hasDivider: true,
                     ),
