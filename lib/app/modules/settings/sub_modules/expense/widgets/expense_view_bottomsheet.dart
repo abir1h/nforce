@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
 import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/app/utils/extension_methods.dart';
 
 import '../../../../../shared/widgets/custom_dropdown.dart';
 import '../../../../../shared/widgets/primary_button.dart';
@@ -77,9 +78,7 @@ class _ExpenseViewBottomsheetState extends State<ExpenseViewBottomsheet> {
                   color: AppColors.nutralBlack1,
                 ),
               ),
-              SizedBox(
-                height: 8.h,
-              ),
+              8.h.vSpace,
               CustomDropdownButton(
                 items: const [
                   DropdownMenuItem(
@@ -160,8 +159,7 @@ class _ExpenseViewBottomsheetState extends State<ExpenseViewBottomsheet> {
                   showCustomDateRangePicker(
                     context,
                     dismissible: true,
-                    minimumDate:
-                        DateTime.now().subtract(const Duration(days: 30)),
+                    minimumDate: DateTime.now().subtract(const Duration(days: 30)),
                     maximumDate: DateTime.now().add(const Duration(days: 30)),
                     backgroundColor: Colors.white,
                     primaryColor: AppColors.primaryBlue1,
@@ -170,11 +168,12 @@ class _ExpenseViewBottomsheetState extends State<ExpenseViewBottomsheet> {
                   );
                 },
                 child: CustomTextField(
-                    label: 'Date range',
-                    hint: "DD-MM-YYYY : DD-MM-YYYY",
-                    enable: false,
-                    suffix: Icon(Icons.calendar_month),
-                    controller: TextEditingController(),),
+                  label: 'Date range',
+                  hint: "DD-MM-YYYY : DD-MM-YYYY",
+                  enable: false,
+                  suffix: Icon(Icons.calendar_month),
+                  controller: TextEditingController(),
+                ),
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
@@ -191,7 +190,6 @@ class _ExpenseViewBottomsheetState extends State<ExpenseViewBottomsheet> {
                       child: PrimaryButton(
                         onPressed: () {
                           Get.back();
-
                         },
                         text: 'Apply',
                       ),

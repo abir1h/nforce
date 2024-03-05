@@ -5,10 +5,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/new_orders/controllers/invoice_controller.dart';
+import 'package:nuforce/app/modules/new_orders/widgets/agents_widget.dart';
+import 'package:nuforce/app/modules/new_orders/widgets/order_summary.dart';
+import 'package:nuforce/app/shared/widgets/colored_button.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
+import 'package:nuforce/app/shared/widgets/text_with_bottom_border.dart';
 import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/app/utils/extension_methods.dart';
 import 'package:nuforce/app/utils/global_states.dart';
-import 'package:nuforce/app/utils/text_styles.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 
 class CreateInvoiceView extends StatefulWidget {
@@ -36,6 +40,7 @@ class _CreateInvoiceViewState extends State<CreateInvoiceView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.bgWithOpacity,
       appBar: CustomAppbarMinimal(
         title: 'Invoice #0022',
         trailing: [
@@ -51,28 +56,41 @@ class _CreateInvoiceViewState extends State<CreateInvoiceView> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            10.h.vSpace,
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 _profileImagePicker(),
-                Container(
-                  height: 38.h,
-                  decoration: BoxDecoration(
-                    color: AppColors.primaryBlue1.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: Center(
-                    child: Text(
-                      '+ Add Agent',
-                      style: CustomTextStyle.heading5.copyWith(
-                        fontWeight: FontWeight.w400,
-                        color: AppColors.primaryBlue1,
-                      ),
-                    ),
-                  ),
-                ),
+                const Agents(),
               ],
             ),
+            18.h.vSpace,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const TextWithBottomBorder(
+                      hint: 'Invoice ID: AT352375124',
+                      type: CustomType.text,
+                    ),
+                    8.h.vSpace,
+                    const TextWithBottomBorder(
+                      hint: 'Estimation',
+                      textColor: AppColors.red,
+                      type: CustomType.text,
+                    ),
+                  ],
+                ),
+                const ColoredButton(text: 'Pending', textColor: AppColors.yellow),
+              ],
+            ),
+            16.h.vSpace,
+            const OrderSummary(),
+            16.h.vSpace,
           ],
         ),
       ),

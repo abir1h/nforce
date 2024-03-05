@@ -1,7 +1,10 @@
 import 'package:intl/intl.dart';
 
 class DatetimeCustomFunc {
-  static String getFormattedDate(DateTime dateTime) {
+  static String getFormattedDate(DateTime? dateTime) {
+    if (dateTime == null) {
+      return '';
+    }
     return DateFormat.yMMMd().format(dateTime);
   }
 

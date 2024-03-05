@@ -55,4 +55,6 @@ class AppColors {
   static const Color statusCanceldBg = Color(0xFFffe0e0);
   static const Color statusOverDuedBg = Color(0xFFfef8e6);
   static const Color statusPendingBg = Color(0xFFe9f5fe);
+
+  static const Color bgWithOpacity = Color(0xFFF5F6FA);
 }
