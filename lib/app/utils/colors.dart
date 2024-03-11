@@ -57,4 +57,7 @@ class AppColors {
   static const Color statusPendingBg = Color(0xFFe9f5fe);
 
   static const Color bgWithOpacity = Color(0xFFF5F6FA);
+
+  static const Color agentCardBg1 = Color(0x3345B369);
+  static const Color agentCardBg2 = Color(0x33FFC02D);
 }
