@@ -1,6 +1,10 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_maps_flutter_android/google_maps_flutter_android.dart';
 import 'package:nuforce/app/routes/app_pages.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/initial_bindings.dart';
@@ -8,8 +12,12 @@ import 'package:nuforce/app/utils/initial_bindings.dart';
 double height = 0;
 double width = 0;
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  if (Platform.isAndroid && kReleaseMode) {
+    await GoogleMapsFlutterAndroid().initializeWithRenderer(AndroidMapRenderer.latest);
+  }
+
   runApp(
     ScreenUtilInit(
       designSize: const Size(375, 812),
