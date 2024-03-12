@@ -109,6 +109,10 @@ class $AssetsImagesPngGen {
   AssetGenImage get logout =>
       const AssetGenImage('assets/images/png/logout.png');
 
+  /// File path: assets/images/png/mapImage.png
+  AssetGenImage get mapImage =>
+      const AssetGenImage('assets/images/png/mapImage.png');
+
   /// File path: assets/images/png/notification.png
   AssetGenImage get notification =>
       const AssetGenImage('assets/images/png/notification.png');
@@ -243,6 +247,7 @@ class $AssetsImagesPngGen {
         invoices,
         link,
         logout,
+        mapImage,
         notification,
         nuforceSplash,
         offlinePayments,

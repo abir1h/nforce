@@ -24,6 +24,8 @@ import '../sub_modules/faq/view/faq_view.dart';
 import '../sub_modules/privacy_terms/privacy_policy_screen.dart';
 import '../sub_modules/privacy_terms/terms_contdition.dart';
 import '../sub_modules/refer/refer_screen.dart';
+import '../sub_modules/route_suggestions/view/route_suggestion_screen.dart';
+import '../sub_modules/terms_policy/view/terms_policy_screen.dart';
 
 class SettingsView extends GetView<SettingsController> {
   const SettingsView({super.key});
@@ -190,7 +192,7 @@ class SettingsView extends GetView<SettingsController> {
                     ),
                     SettingTile(
                       leading: Assets.images.png.routeSuggestions.keyName,
-                      onTap: () {},
+                      onTap: () => Get.to<void>(() => const RouteSuggestionScreen()),
                       label: 'Route Suggestions',
                       hasDivider: true,
                     ),
@@ -404,6 +406,11 @@ class SettingsView extends GetView<SettingsController> {
                       leading: Assets.images.png.terms.keyName,
                       onTap: () => Get.to<void>(() => const TermsCondtionScreen()),
                       label: 'Terms & Conditions',
+                      hasDivider: false,
+                    ), SettingTile(
+                      leading: Assets.images.png.terms.keyName,
+                      onTap: () => Get.to<void>(() => const TermsPolicyScreen()),
+                      label: 'Terms & policy',
                       hasDivider: false,
                     ),
                   ],
