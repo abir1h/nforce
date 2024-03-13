@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter_android/google_maps_flutter_android.dart';
+// import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart' as mapbox;
 import 'package:nuforce/app/routes/app_pages.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/initial_bindings.dart';
@@ -17,6 +18,7 @@ Future<void> main() async {
   if (Platform.isAndroid && kReleaseMode) {
     await GoogleMapsFlutterAndroid().initializeWithRenderer(AndroidMapRenderer.latest);
   }
+  // mapbox.MapboxOptions.setAccessToken('');
 
   runApp(
     ScreenUtilInit(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nuforce/app/modules/new_orders/widgets/take_payment_bottomsheet.dart';
 import 'package:nuforce/app/utils/colors.dart';
 
 class EmptyPaymentView extends StatelessWidget {
@@ -27,7 +28,14 @@ class EmptyPaymentView extends StatelessWidget {
           ),
           const Spacer(),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              showModalBottomSheet(
+                context: context,
+                builder: (ctx) {
+                  return const TakePaymentBottomSheet();
+                },
+              );
+            },
             child: Text(
               'Take Payment',
               style: TextStyle(
