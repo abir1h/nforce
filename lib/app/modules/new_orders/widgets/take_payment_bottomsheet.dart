@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/new_orders/widgets/confirm_payment_bottomsheet.dart';
 import 'package:nuforce/app/shared/widgets/payment_tile.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/extension_methods.dart';
@@ -54,20 +55,44 @@ class TakePaymentBottomSheet extends StatelessWidget {
             child: Column(
               children: [
                 PaymentTile(
-                  onTap: () {},
+                  onTap: () {
+                    Get.back();
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (ctx) {
+                        return const ConfirmPaymentBottomSheet(title: '**** **** **** 5696', canChange: true);
+                      },
+                    );
+                  },
                   cardNumber: '**** **** **** 1234',
                   iconSvgPath: Assets.images.svg.paymentOptions,
                   title: 'Card',
                 ),
                 10.h.vSpace,
                 PaymentTile(
-                  onTap: () {},
+                  onTap: () {
+                    Get.back();
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (ctx) {
+                        return const ConfirmPaymentBottomSheet(title: 'Cash');
+                      },
+                    );
+                  },
                   iconSvgPath: Assets.images.svg.paymentOptions,
                   title: 'Cash',
                 ),
                 10.h.vSpace,
                 PaymentTile(
-                  onTap: () {},
+                  onTap: () {
+                    Get.back();
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (ctx) {
+                        return const ConfirmPaymentBottomSheet(title: 'Check');
+                      },
+                    );
+                  },
                   iconSvgPath: Assets.images.svg.paymentOptions,
                   title: 'Check',
                 ),
