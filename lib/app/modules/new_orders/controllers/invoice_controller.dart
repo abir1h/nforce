@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:nuforce/app/model/agents_model.dart';
 import 'package:nuforce/app/model/line_item_model.dart';
+import 'package:nuforce/app/modules/new_orders/models/payment_method_model.dart';
 import 'package:nuforce/app/shared/functions/image_picker_func.dart';
 import 'package:nuforce/app/utils/colors.dart';
 
@@ -77,4 +78,13 @@ class InvoiceController extends GetxController {
 
   List<LineItem> get lineItems => _lineItems;
   final List<LineItem> _lineItems = const <LineItem>[];
+
+  PaymentMethodModel? _selectedPaymentMethod;
+
+  PaymentMethodModel? get selectedPaymentMethod => _selectedPaymentMethod;
+
+  void updateSelectedPaymentMethod(PaymentMethodModel paymentMethod) {
+    _selectedPaymentMethod = paymentMethod;
+    update();
+  }
 }

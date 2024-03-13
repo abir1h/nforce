@@ -40,7 +40,7 @@ class PaymentTile extends StatelessWidget {
                 color: AppColors.primaryBlue3,
                 borderRadius: BorderRadius.circular(6.r),
               ),
-              child: SvgPicture.asset(Assets.images.svg.paymentOptions),
+              child: SvgPicture.asset(iconSvgPath),
             ),
             10.w.hSpace,
             Text(

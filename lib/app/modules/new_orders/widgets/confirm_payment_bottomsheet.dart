@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/new_orders/controllers/invoice_controller.dart';
+import 'package:nuforce/app/modules/new_orders/models/payment_method_model.dart';
+
 import 'package:nuforce/app/shared/widgets/payment_tile.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/utils/colors.dart';
@@ -10,12 +14,14 @@ import 'package:nuforce/main.dart';
 
 class ConfirmPaymentBottomSheet extends StatefulWidget {
   const ConfirmPaymentBottomSheet({
-    required this.title,
+    required this.paymentMethodType,
+    this.cardNumber,
     this.canChange = false,
     super.key,
   });
-  final String title;
+  final String? cardNumber;
   final bool canChange;
+  final PaymentMethodType paymentMethodType;
 
   @override
   State<ConfirmPaymentBottomSheet> createState() => _ConfirmPaymentBottomSheetState();
@@ -62,7 +68,7 @@ class _ConfirmPaymentBottomSheetState extends State<ConfirmPaymentBottomSheet> {
               PaymentTile(
                 onTap: () {},
                 iconSvgPath: Assets.images.svg.paymentOptions,
-                title: widget.title,
+                title: widget.paymentMethodType.name,
                 trailing: widget.canChange ? TextButton(onPressed: () {}, child: const Text('Change')) : null,
               ),
               10.h.vSpace,
@@ -159,7 +165,26 @@ class _ConfirmPaymentBottomSheetState extends State<ConfirmPaymentBottomSheet> {
                 ],
               ),
               10.h.vSpace,
-              PrimaryButton(onPressed: () {}, text: 'Confirm Payment'),
+              PrimaryButton(
+                onPressed: () {
+                  final invoiceController = Get.find<InvoiceController>();
+                  invoiceController.updateSelectedPaymentMethod(
+                    PaymentMethodModel(
+                      paymentMethodType: widget.paymentMethodType,
+                      paymentMethodSvgIcon: Assets.images.svg.paymentOptions,
+                      cardNumber: widget.cardNumber,
+                      amount: '\$5,000.00',
+                      date: DateTime.now(),
+                      dueDate: DateTime.now().add(const Duration(days: 30)),
+                      remainingAmount: '\$50.00',
+                      paymentTerm: 'Payment terms',
+                    ),
+                  );
+                  Fluttertoast.showToast(msg: 'Payment Confirmed');
+                  Get.back();
+                },
+                text: 'Confirm Payment',
+              ),
               10.h.vSpace,
               SizedBox(
                 width: width,

@@ -10,7 +10,7 @@ import 'package:nuforce/app/modules/new_orders/widgets/cancellation_widget.dart'
 import 'package:nuforce/app/modules/new_orders/widgets/empty_activity_log_view.dart';
 import 'package:nuforce/app/modules/new_orders/widgets/empty_expense_view.dart';
 import 'package:nuforce/app/modules/new_orders/widgets/empty_note_view.dart';
-import 'package:nuforce/app/modules/new_orders/widgets/empty_payment_view.dart';
+import 'package:nuforce/app/modules/new_orders/widgets/invoice_payment_section.dart';
 import 'package:nuforce/app/modules/new_orders/widgets/empty_schedule_view.dart';
 import 'package:nuforce/app/modules/new_orders/widgets/empty_terms_view.dart';
 import 'package:nuforce/app/modules/new_orders/widgets/invoice_attachments.dart';
@@ -115,7 +115,7 @@ class _CreateInvoiceViewState extends State<CreateInvoiceView> {
               16.h.vSpace,
               const CancellationWidget(),
               16.h.vSpace,
-              const EmptyPaymentView(),
+              const InvoicePaymentSection(),
               16.h.vSpace,
               const EmptyExpense(),
               16.h.vSpace,

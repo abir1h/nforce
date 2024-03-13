@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/new_orders/models/payment_method_model.dart';
 import 'package:nuforce/app/modules/new_orders/widgets/confirm_payment_bottomsheet.dart';
 import 'package:nuforce/app/shared/widgets/payment_tile.dart';
 import 'package:nuforce/app/utils/colors.dart';
@@ -60,7 +61,11 @@ class TakePaymentBottomSheet extends StatelessWidget {
                     showModalBottomSheet(
                       context: context,
                       builder: (ctx) {
-                        return const ConfirmPaymentBottomSheet(title: '**** **** **** 5696', canChange: true);
+                        return const ConfirmPaymentBottomSheet(
+                          cardNumber: '**** **** **** 5696',
+                          canChange: true,
+                          paymentMethodType: PaymentMethodType.card,
+                        );
                       },
                     );
                   },
@@ -75,7 +80,9 @@ class TakePaymentBottomSheet extends StatelessWidget {
                     showModalBottomSheet(
                       context: context,
                       builder: (ctx) {
-                        return const ConfirmPaymentBottomSheet(title: 'Cash');
+                        return const ConfirmPaymentBottomSheet(
+                          paymentMethodType: PaymentMethodType.cash,
+                        );
                       },
                     );
                   },
@@ -89,7 +96,9 @@ class TakePaymentBottomSheet extends StatelessWidget {
                     showModalBottomSheet(
                       context: context,
                       builder: (ctx) {
-                        return const ConfirmPaymentBottomSheet(title: 'Check');
+                        return const ConfirmPaymentBottomSheet(
+                          paymentMethodType: PaymentMethodType.check,
+                        );
                       },
                     );
                   },
