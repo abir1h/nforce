@@ -134,6 +134,11 @@ class _InvoicePaymentSectionState extends State<InvoicePaymentSection> {
                     TextButton(
                       onPressed: () {
                         showModalBottomSheet(
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.vertical(
+                              top: Radius.circular(30),
+                            ),
+                          ),
                           context: context,
                           builder: (ctx) {
                             return const TakePaymentBottomSheet();
@@ -235,6 +240,11 @@ class InvoiceEmptyPaymentView extends StatelessWidget {
             onPressed: () {
               showModalBottomSheet(
                 context: context,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(30),
+                  ),
+                ),
                 builder: (ctx) {
                   return const TakePaymentBottomSheet();
                 },

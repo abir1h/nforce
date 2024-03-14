@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:nuforce/app/model/agents_model.dart';
+import 'package:nuforce/app/model/card_model.dart';
 import 'package:nuforce/app/model/line_item_model.dart';
 import 'package:nuforce/app/modules/new_orders/models/payment_method_model.dart';
 import 'package:nuforce/app/shared/functions/image_picker_func.dart';
@@ -95,6 +96,13 @@ class InvoiceController extends GetxController {
   String? get cancellationNote => _cancellationNote;
   void updateCancellationNote(String note) {
     _cancellationNote = note;
+    update();
+  }
+
+  Card? _savedCard;
+  Card? get savedCard => _savedCard;
+  void updateSavedCard(Card card) {
+    _savedCard = card;
     update();
   }
 }

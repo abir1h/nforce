@@ -10,14 +10,14 @@ class PaymentTile extends StatelessWidget {
     super.key,
     required this.onTap,
     required this.title,
-    required this.iconSvgPath,
+    this.iconSvgPath,
     this.cardNumber,
     this.trailing,
   });
 
   final VoidCallback onTap;
   final String title;
-  final String iconSvgPath;
+  final String? iconSvgPath;
   final String? cardNumber;
   final Widget? trailing;
 
@@ -34,15 +34,18 @@ class PaymentTile extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: AppColors.primaryBlue3,
-                borderRadius: BorderRadius.circular(6.r),
+            if (iconSvgPath != null) ...[
+              Container(
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: AppColors.primaryBlue3,
+                  borderRadius: BorderRadius.circular(6.r),
+                ),
+                child: SvgPicture.asset(iconSvgPath!),
               ),
-              child: SvgPicture.asset(iconSvgPath),
-            ),
-            10.w.hSpace,
+              10.w.hSpace,
+            ],
+            if (iconSvgPath == null) 5.w.hSpace,
             Text(
               title,
               style: TextStyle(

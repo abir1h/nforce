@@ -47,7 +47,6 @@ class CustomTextField extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         ColoredBox(
-          // height: 50,
           color: AppColors.textFieldBackground,
           child: TextFormField(
             validator: validator,
