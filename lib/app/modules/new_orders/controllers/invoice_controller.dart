@@ -90,4 +90,11 @@ class InvoiceController extends GetxController {
     _selectedPaymentMethod = paymentMethod;
     update();
   }
+
+  String? _cancellationNote = r'$5.00 cancellation fee might be applied if cancelled after activation.';
+  String? get cancellationNote => _cancellationNote;
+  void updateCancellationNote(String note) {
+    _cancellationNote = note;
+    update();
+  }
 }
