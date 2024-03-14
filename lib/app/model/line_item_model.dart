@@ -21,6 +21,41 @@ class LineItem extends Equatable {
     required this.totoalBill,
   });
 
+  LineItem copyWith({
+    int? id,
+    String? itemType,
+    String? name,
+    String? description,
+    String? unitPrice,
+    String? discount,
+    String? quantity,
+    String? totoalBill,
+  }) {
+    return LineItem(
+      id: id ?? this.id,
+      itemType: itemType ?? this.itemType,
+      name: name ?? this.name,
+      description: description ?? this.description,
+      unitPrice: unitPrice ?? this.unitPrice,
+      discount: discount ?? this.discount,
+      quantity: quantity ?? this.quantity,
+      totoalBill: totoalBill ?? this.totoalBill,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'itemType': itemType,
+      'name': name,
+      'description': description,
+      'unitPrice': unitPrice,
+      'discount': discount,
+      'quantity': quantity,
+      'totoalBill': totoalBill,
+    };
+  }
+
   @override
   List<Object?> get props => [id, itemType, name, description, unitPrice, discount, quantity, totoalBill];
 }

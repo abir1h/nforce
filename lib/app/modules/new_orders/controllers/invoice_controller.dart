@@ -75,9 +75,6 @@ class InvoiceController extends GetxController {
     update();
   }
 
-  List<LineItem> get lineItems => _lineItems;
-  final List<LineItem> _lineItems = const <LineItem>[];
-
   double _dueAmount = 5000;
   double get dueAmount => _dueAmount;
   void updateDueAmount(double amount) {
@@ -103,6 +100,19 @@ class InvoiceController extends GetxController {
   Card? get savedCard => _savedCard;
   void updateSavedCard(Card card) {
     _savedCard = card;
+    update();
+  }
+
+  // add to cart
+  final List<LineItem> _cartItems = [];
+  List<LineItem> get cartItems => _cartItems;
+  void addLineItem(LineItem item) {
+    _cartItems.add(item);
+    update();
+  }
+
+  void removeLineItem(int index) {
+    _cartItems.removeAt(index);
     update();
   }
 }

@@ -14,6 +14,8 @@ import '../modules/customer/customer_work_order/views/customer_work_order_view.d
 import '../modules/customer/views/customer_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/line_item/bindings/line_item_binding.dart';
+import '../modules/line_item/views/line_item_view.dart';
 import '../modules/more/bindings/more_binding.dart';
 import '../modules/more/views/more_view.dart';
 import '../modules/new_orders/bindings/new_orders_binding.dart';
@@ -115,6 +117,11 @@ class AppPages {
       name: _Paths.SERVICE_CENTER,
       page: () => const ServiceCenterView(),
       binding: ServiceCenterBinding(),
+    ),
+    GetPage(
+      name: _Paths.LINE_ITEM,
+      page: () => const LineItemView(),
+      binding: LineItemBinding(),
     ),
   ];
 }
