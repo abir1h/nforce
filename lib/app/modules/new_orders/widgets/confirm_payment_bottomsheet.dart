@@ -42,7 +42,7 @@ class _ConfirmPaymentBottomSheetState extends State<ConfirmPaymentBottomSheet> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Take Payment',
+                'Confirm Payment',
                 style: TextStyle(
                   color: AppColors.nutralBlack1,
                   fontSize: 18.sp,

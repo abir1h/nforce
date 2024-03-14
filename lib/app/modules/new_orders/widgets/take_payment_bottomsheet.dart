@@ -305,6 +305,14 @@ class _AddCardBottomSheetState extends State<AddCardBottomSheet> {
                     ),
                   );
                   Get.back();
+                  showModalBottomSheet(
+                    context: context,
+                    builder: (ctx) => ConfirmPaymentBottomSheet(
+                      paymentMethodType: PaymentMethodType.card,
+                      canChange: true,
+                      cardNumber: cardNumberController.text,
+                    ),
+                  );
                 },
                 text: 'Add Card',
               ),
