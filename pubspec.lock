@@ -1266,6 +1266,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.8.4"
+  syncfusion_flutter_charts:
+    dependency: "direct main"
+    description:
+      name: syncfusion_flutter_charts
+      sha256: "40ee155cded99fa4f5abd3aa707e86662ee663d55cf10102bccd91a1094ef8bb"
+      url: "https://pub.dev"
+    source: hosted
+    version: "23.1.40"
   syncfusion_flutter_core:
     dependency: transitive
     description:

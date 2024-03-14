@@ -21,6 +21,12 @@ import '../modules/new_orders/views/new_orders_view.dart';
 import '../modules/on_boarding/bindings/on_boarding_binding.dart';
 import '../modules/on_boarding/views/on_boarding_view.dart';
 import '../modules/service_center/bindings/service_center_binding.dart';
+import '../modules/service_center/sub_modules/dashboard/bindings/dashboard_binding.dart';
+import '../modules/service_center/sub_modules/dashboard/views/dashboard_view.dart';
+import '../modules/service_center/sub_modules/work_order/bindings/work_order_binding.dart';
+import '../modules/service_center/sub_modules/work_order/views/work_order_view.dart';
+import '../modules/service_center/sub_modules/work_order_search/bindings/work_order_search_binding.dart';
+import '../modules/service_center/sub_modules/work_order_search/views/work_order_search_view.dart';
 import '../modules/service_center/views/service_center_view.dart';
 import '../modules/service_items/bindings/service_items_binding.dart';
 import '../modules/service_items/views/service_items_view.dart';
@@ -115,6 +121,23 @@ class AppPages {
       name: _Paths.SERVICE_CENTER,
       page: () => const ServiceCenterView(),
       binding: ServiceCenterBinding(),
+      children: [
+        GetPage(
+          name: _Paths.DASHBOARD,
+          page: () => const DashboardView(),
+          binding: DashboardBinding(),
+        ),
+        GetPage(
+          name: _Paths.WORK_ORDER,
+          page: () => const WorkOrderView(),
+          binding: WorkOrderBinding(),
+        ),
+        GetPage(
+          name: _Paths.WORK_ORDER_SEARCH,
+          page: () => const WorkOrderSearchView(),
+          binding: WorkOrderSearchBinding(),
+        ),
+      ],
     ),
   ];
 }

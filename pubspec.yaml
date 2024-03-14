@@ -46,6 +46,7 @@ dependencies:
   webview_flutter: ^4.0.7
   custom_date_range_picker: ^1.0.10
   dotted_border: ^2.1.0
+  syncfusion_flutter_charts: ^23.1.40
 
 
 dev_dependencies:

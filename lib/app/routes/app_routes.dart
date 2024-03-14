@@ -19,6 +19,10 @@ abstract class Routes {
   static const CUSTOMER_WORK_ORDER =
       _Paths.CUSTOMER + _Paths.CUSTOMER_WORK_ORDER;
   static const SERVICE_CENTER = _Paths.SERVICE_CENTER;
+  static const DASHBOARD = _Paths.SERVICE_CENTER + _Paths.DASHBOARD;
+  static const WORK_ORDER = _Paths.SERVICE_CENTER + _Paths.WORK_ORDER;
+  static const WORK_ORDER_SEARCH =
+      _Paths.SERVICE_CENTER + _Paths.WORK_ORDER_SEARCH;
 }
 
 abstract class _Paths {
@@ -38,4 +42,7 @@ abstract class _Paths {
   static const CUSTOMER = '/customer';
   static const CUSTOMER_WORK_ORDER = '/customer-work-order';
   static const SERVICE_CENTER = '/service-center';
+  static const DASHBOARD = '/dashboard';
+  static const WORK_ORDER = '/work-order';
+  static const WORK_ORDER_SEARCH = '/work-order-search';
 }

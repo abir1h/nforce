@@ -3,32 +3,31 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:pie_chart/pie_chart.dart';
 
-class CustomPieChartWidget extends StatelessWidget {
-  const CustomPieChartWidget({
+class DashBoardChartWidget extends StatelessWidget {
+  const DashBoardChartWidget({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return PieChart(
-
       dataMap: const {
-        "19% Others": 3,
-        "37% Agents": 3,
-        "47% Sales": 3,
+        "+10% New York": 3,
+        "-7% London": 3,
+        "+20% California": 3,
       },
       animationDuration: const Duration(milliseconds: 800),
       chartLegendSpacing: 32,
       chartRadius: MediaQuery.of(context).size.width / 3.2,
       colorList: const [
-        AppColors.red,
-        AppColors.blue,
-        AppColors.green,
+        AppColors.primaryBlue1,
+        AppColors.yellow,
+        AppColors.agentCardBg1,
       ],
       initialAngleInDegree: 0,
       chartType: ChartType.ring,
       ringStrokeWidth: 32,
-      centerText: "45",
+      centerText: "10",
       centerTextStyle: TextStyle(
         color: AppColors.primaryBlue1,
         fontSize: 20.sp,
