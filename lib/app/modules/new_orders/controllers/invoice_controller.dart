@@ -68,9 +68,7 @@ class InvoiceController extends GetxController {
   ];
 
   Agent? _selectedAgent;
-
   Agent? get selectedAgent => _selectedAgent;
-
   void updateSelectedAgent(Agent agent) {
     _selectedAgent = agent;
     update();
@@ -79,10 +77,15 @@ class InvoiceController extends GetxController {
   List<LineItem> get lineItems => _lineItems;
   final List<LineItem> _lineItems = const <LineItem>[];
 
+  double _dueAmount = 5000;
+  double get dueAmount => _dueAmount;
+  void updateDueAmount(double amount) {
+    _dueAmount = amount;
+    update();
+  }
+
   PaymentMethodModel? _selectedPaymentMethod;
-
   PaymentMethodModel? get selectedPaymentMethod => _selectedPaymentMethod;
-
   void updateSelectedPaymentMethod(PaymentMethodModel paymentMethod) {
     _selectedPaymentMethod = paymentMethod;
     update();
