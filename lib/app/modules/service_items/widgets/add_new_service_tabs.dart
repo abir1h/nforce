@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/service_items/controllers/add_new_service_controller.dart';
 import 'package:nuforce/app/shared/widgets/custom_tabbar_filled.dart';
+import 'package:nuforce/main.dart';
 
 class AddNewServiceTabs extends StatelessWidget {
   const AddNewServiceTabs({
@@ -13,22 +15,23 @@ class AddNewServiceTabs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: Obx(
-            () => CustomTabBarFilled(
-              isSelected: controller.selectedServiceTabEnum.value == AddNewServiceTabEnum.overview,
-              onTap: () {
-                controller.selectedServiceTabEnum.value = AddNewServiceTabEnum.overview;
-              },
-              text: 'Overview',
-              isMini: true,
+    return SizedBox(
+      width: width,
+      child: Row(
+        children: [
+          Expanded(
+            child: Obx(
+              () => CustomTabBarFilled(
+                isSelected: controller.selectedServiceTabEnum.value == AddNewServiceTabEnum.overview,
+                onTap: () {
+                  controller.selectedServiceTabEnum.value = AddNewServiceTabEnum.overview;
+                },
+                text: 'Overview',
+                isMini: true,
+              ),
             ),
           ),
-        ),
-        Expanded(
-          child: Obx(
+          Obx(
             () => CustomTabBarFilled(
               isSelected: controller.selectedServiceTabEnum.value == AddNewServiceTabEnum.addSubItems,
               onTap: () {
@@ -38,20 +41,20 @@ class AddNewServiceTabs extends StatelessWidget {
               isMini: true,
             ),
           ),
-        ),
-        Expanded(
-          child: Obx(
-            () => CustomTabBarFilled(
-              isSelected: controller.selectedServiceTabEnum.value == AddNewServiceTabEnum.content,
-              onTap: () {
-                controller.selectedServiceTabEnum.value = AddNewServiceTabEnum.content;
-              },
-              text: 'Content',
-              isMini: true,
+          Expanded(
+            child: Obx(
+              () => CustomTabBarFilled(
+                isSelected: controller.selectedServiceTabEnum.value == AddNewServiceTabEnum.content,
+                onTap: () {
+                  controller.selectedServiceTabEnum.value = AddNewServiceTabEnum.content;
+                },
+                text: 'Content',
+                isMini: true,
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

@@ -2,9 +2,10 @@ import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/model/line_item_model.dart';
+import 'package:nuforce/app/modules/line_item/controllers/line_item_controller.dart';
 import 'package:nuforce/app/modules/new_orders/controllers/invoice_controller.dart';
 import 'package:nuforce/app/modules/new_orders/widgets/line_item_view_tile.dart';
+import 'package:nuforce/app/routes/app_pages.dart';
 import 'package:nuforce/app/shared/widgets/details_with_header_skleton.dart';
 import 'package:nuforce/app/utils/colors.dart';
 
@@ -18,44 +19,19 @@ class InvoiceLineItemsWidget extends StatefulWidget {
 }
 
 class _InvoiceLineItemsWidgetState extends State<InvoiceLineItemsWidget> {
-  List<LineItem> items = [
-    const LineItem(
-      id: 1,
-      itemType: 'itemType',
-      name: 'name',
-      description: 'description',
-      unitPrice: 'unitPrice',
-      discount: 'discount',
-      quantity: 'quantity',
-      totoalBill: 'totoalBill',
-    ),
-    const LineItem(
-      id: 1,
-      itemType: 'itemType',
-      name: 'name',
-      description: 'description',
-      unitPrice: 'unitPrice',
-      discount: 'discount',
-      quantity: 'quantity',
-      totoalBill: 'totoalBill',
-    ),
-    const LineItem(
-      id: 1,
-      itemType: 'itemType',
-      name: 'name',
-      description: 'description',
-      unitPrice: 'unitPrice',
-      discount: 'discount',
-      quantity: 'quantity',
-      totoalBill: 'totoalBill',
-    ),
-  ];
+  @override
+  void initState() {
+    super.initState();
+    if (!LineItemController().initialized) {
+      Get.put(LineItemController());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<InvoiceController>(
       builder: (controller) {
-        if (controller.lineItems.isEmpty) {
+        if (controller.cartItems.isEmpty) {
           return const EmptyLineItemView();
         }
         return DetailsWithHeaderSkleton(
@@ -76,17 +52,21 @@ class _InvoiceLineItemsWidgetState extends State<InvoiceLineItemsWidget> {
           ),
           body: Column(
             children: [
-              ListView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: items.length,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.only(bottom: 5),
-                    child: LineItemViewTile(
-                      index: index,
-                      item: items[index],
-                    ),
+              GetBuilder<InvoiceController>(
+                builder: (controller) {
+                  return ListView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: controller.cartItems.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 5),
+                        child: LineItemViewTile(
+                          index: index,
+                          item: controller.cartItems[index],
+                        ),
+                      );
+                    },
                   );
                 },
               ),
@@ -153,7 +133,9 @@ class EmptyLineItemView extends StatelessWidget {
           ),
           const Spacer(),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.toNamed(Routes.LINE_ITEM);
+            },
             child: Text(
               'Add line item',
               style: TextStyle(

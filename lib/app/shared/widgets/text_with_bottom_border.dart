@@ -61,10 +61,16 @@ class CustomDialogWithTextField extends StatelessWidget {
   const CustomDialogWithTextField({
     required this.controller,
     required this.hint,
+    required this.onPrimaryButtonPressed,
+    required this.onSecondaryButtonPressed,
+    this.keyboardType = TextInputType.text,
     super.key,
   });
   final TextEditingController? controller;
   final String hint;
+  final VoidCallback onPrimaryButtonPressed;
+  final VoidCallback onSecondaryButtonPressed;
+  final TextInputType keyboardType;
 
   @override
   Widget build(BuildContext context) {
@@ -87,14 +93,14 @@ class CustomDialogWithTextField extends StatelessWidget {
               children: [
                 Expanded(
                   child: SecondaryButton(
-                    onPressed: () {},
+                    onPressed: onSecondaryButtonPressed,
                     text: 'Cancel',
                   ),
                 ),
                 10.w.hSpace,
                 Expanded(
                   child: PrimaryButton(
-                    onPressed: () {},
+                    onPressed: onPrimaryButtonPressed,
                     text: 'Ok',
                   ),
                 ),

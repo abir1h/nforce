@@ -17,6 +17,14 @@ class OrderSummary extends StatefulWidget {
 }
 
 class _OrderSummaryState extends State<OrderSummary> {
+  final TextEditingController dueAmountController = TextEditingController();
+
+  @override
+  void dispose() {
+    dueAmountController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -42,10 +50,31 @@ class _OrderSummaryState extends State<OrderSummary> {
                 'Due Amount:',
                 style: _localLabelStyle(),
               ),
-              Text(
-                '\$5,000.00',
-                style: _localValueStyle(),
-              ),
+              GetBuilder<InvoiceController>(builder: (controller) {
+                return TextWithBottomBorder(
+                  hint: '\$${controller.dueAmount.toStringAsFixed(2)}',
+                  type: CustomType.text,
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return CustomDialogWithTextField(
+                          controller: dueAmountController,
+                          keyboardType: TextInputType.number,
+                          hint: 'Enter Due Amount',
+                          onPrimaryButtonPressed: () {
+                            setState(() {
+                              controller.updateDueAmount(double.parse(dueAmountController.text));
+                            });
+                            Get.back();
+                          },
+                          onSecondaryButtonPressed: () {},
+                        );
+                      },
+                    );
+                  },
+                );
+              }),
               // const Spacer(),
             ],
           ),

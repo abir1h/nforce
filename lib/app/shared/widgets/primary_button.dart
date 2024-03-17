@@ -11,18 +11,20 @@ class PrimaryButton extends StatelessWidget {
     required this.text,
     this.primaryColored = true,
     this.isOutlined = false,
+    this.height,
   });
   final VoidCallback onPressed;
   final String text;
   final bool primaryColored;
   final bool isOutlined;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
-        height: 50.h,
+        height: height?.h ?? 50.h,
         width: width,
         decoration: BoxDecoration(
           color: isOutlined ? AppColors.white1 : (primaryColored ? AppColors.primaryBlue1 : AppColors.lightButtonColor),
