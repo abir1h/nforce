@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/auth/controllers/auth_controller.dart';
 import 'package:nuforce/app/modules/auth/controllers/signup_controller.dart';
 import 'package:nuforce/app/routes/app_pages.dart';
 import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
@@ -219,7 +220,10 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                   ),
                   GestureDetector(
-                    onTap: Get.back<void>,
+                    onTap: () {
+                      final controller = Get.find<AuthController>();
+                      controller.changeTabIndex(0);
+                    },
                     child: Text(
                       'Sign in',
                       style: CustomTextStyle.heading4.copyWith(
