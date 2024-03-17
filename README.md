@@ -1,16 +1,22 @@
 # nuforce
 
-A new Flutter project.
+Welcome to the nuforce project! This project is a mobile application that allows users to connect with other users and share their experiences. The application is built using the Flutter framework and is available for both Android and iOS devices.
 
-## Getting Started
+## Development Environment
 
-This project is a starting point for a Flutter application.
+### Flutter Version
+ - Channel stable - `3.19.3`
 
-A few resources to get you started if this is your first Flutter project:
+### Java Version
+- java 17.0.9 2023-10-17 LTS
+- Java(TM) SE Runtime Environment (build 17.0.9+11-LTS-201)
+- Java HotSpot(TM) 64-Bit Server VM (build 17.0.9+11-LTS-201, mixed mode, sharing)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Kotlin Version
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Kotlin: `1.9.23`
+
+### Xcode Version
+
+- Xcode `15.0.1`
+

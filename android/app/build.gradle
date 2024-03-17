@@ -37,7 +37,7 @@ def keystoreProperties = new Properties()
 android {
     namespace "com.nuforce.pro"
     compileSdkVersion 34// flutter.compileSdkVersion
-    ndkVersion flutter.ndkVersion
+    ndkVersion "25.1.8937393" //flutter.ndkVersion
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
