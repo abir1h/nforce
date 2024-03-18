@@ -111,9 +111,9 @@ class OrganizationProfileController extends GetxController {
         } else if (control.name == 'businessType' && control.editor == 'dropdown') {
           businessTypeLabel = control.label ?? 'Business Type';
           if (businessTypeList.isEmpty) {
-            control.options?.forEach((element) {
-              businessTypeList.add(DropdownModel(label: element.label, value: element.value));
-            });
+            // control.options?.forEach((element) {
+            //   businessTypeList.add(DropdownModel(label: element.label, value: element.value));
+            // });
           }
           for (final type in businessTypeList) {
             if (control.value == type.value) {

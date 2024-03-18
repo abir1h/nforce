@@ -2,60 +2,50 @@ import 'package:equatable/equatable.dart';
 
 class LineItem extends Equatable {
   final int id;
-  final String itemType;
-  final String name;
-  final String description;
-  final String unitPrice;
-  final String discount;
+  final String unitCost;
   final String quantity;
-  final String totoalBill;
+  final String discount;
+  final String details;
+  final String totalCost;
 
   const LineItem({
     required this.id,
-    required this.itemType,
-    required this.name,
-    required this.description,
-    required this.unitPrice,
-    required this.discount,
+    required this.unitCost,
     required this.quantity,
-    required this.totoalBill,
+    required this.discount,
+    required this.details,
+    required this.totalCost,
   });
 
   LineItem copyWith({
     int? id,
-    String? itemType,
-    String? name,
-    String? description,
-    String? unitPrice,
-    String? discount,
+    String? unitCost,
     String? quantity,
-    String? totoalBill,
+    String? discount,
+    String? details,
+    String? totalCost,
   }) {
     return LineItem(
       id: id ?? this.id,
-      itemType: itemType ?? this.itemType,
-      name: name ?? this.name,
-      description: description ?? this.description,
-      unitPrice: unitPrice ?? this.unitPrice,
-      discount: discount ?? this.discount,
+      unitCost: unitCost ?? this.unitCost,
       quantity: quantity ?? this.quantity,
-      totoalBill: totoalBill ?? this.totoalBill,
+      discount: discount ?? this.discount,
+      details: details ?? this.details,
+      totalCost: totalCost ?? this.totalCost,
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'itemType': itemType,
-      'name': name,
-      'description': description,
-      'unitPrice': unitPrice,
-      'discount': discount,
+      'unitCost': unitCost,
       'quantity': quantity,
-      'totoalBill': totoalBill,
+      'discount': discount,
+      'details': details,
+      'totalCost': totalCost,
     };
   }
 
   @override
-  List<Object?> get props => [id, itemType, name, description, unitPrice, discount, quantity, totoalBill];
+  List<Object?> get props => [id, unitCost, quantity, discount, details, totalCost];
 }

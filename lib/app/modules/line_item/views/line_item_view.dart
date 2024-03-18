@@ -71,18 +71,16 @@ class _LineItemViewState extends State<LineItemView> {
               },
             ),
             Expanded(
-              child: SingleChildScrollView(
-                child: GetBuilder<LineItemController>(
-                  builder: (controller) {
-                    if (controller.selectedTab == LineItemTab.lineItems) {
-                      return const LineItemsList();
-                    } else if (controller.selectedTab == LineItemTab.findItems) {
-                      return Container();
-                    } else {
-                      return const AddNewLineItem();
-                    }
-                  },
-                ),
+              child: GetBuilder<LineItemController>(
+                builder: (controller) {
+                  if (controller.selectedTab == LineItemTab.lineItems) {
+                    return const LineItemsList();
+                  } else if (controller.selectedTab == LineItemTab.findItems) {
+                    return Container();
+                  } else {
+                    return const AddNewLineItem();
+                  }
+                },
               ),
             ),
           ],

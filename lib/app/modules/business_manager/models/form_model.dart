@@ -1,12 +1,4 @@
-// To parse this JSON data, do
-//
-//     final formModel = formModelFromJson(jsonString);
-
-import 'dart:convert';
-
-FormModel formModelFromJson(String str) => FormModel.fromJson(json.decode(str));
-
-String formModelToJson(FormModel data) => json.encode(data.toJson());
+import 'package:nuforce/app/modules/line_item/models/control.dart';
 
 class FormModel {
   final List<Control>? controls;
@@ -93,89 +85,6 @@ class Action {
         "color": color,
         "confirm": confirm,
         "warning": warning,
-      };
-}
-
-class Control {
-  final String? name;
-  final String? key;
-  final String? label;
-  final int? order;
-  final bool? readonly;
-  final bool? actions;
-  final String? editor;
-  // final List<dynamic>? validators;
-  final Params? params;
-  final dynamic value;
-  final List<Option>? options;
-
-  Control({
-    this.name,
-    this.key,
-    this.label,
-    this.order,
-    this.readonly,
-    this.actions,
-    this.editor,
-    // this.validators,
-    this.params,
-    this.value,
-    this.options,
-  });
-
-  Control copyWith({
-    String? name,
-    String? key,
-    String? label,
-    int? order,
-    bool? readonly,
-    bool? actions,
-    String? editor,
-    List<dynamic>? validators,
-    Params? params,
-    dynamic value,
-    List<Option>? options,
-  }) =>
-      Control(
-        name: name ?? this.name,
-        key: key ?? this.key,
-        label: label ?? this.label,
-        order: order ?? this.order,
-        readonly: readonly ?? this.readonly,
-        actions: actions ?? this.actions,
-        editor: editor ?? this.editor,
-        // validators: validators ?? this.validators,
-        params: params ?? this.params,
-        value: value ?? this.value,
-        options: options ?? this.options,
-      );
-
-  factory Control.fromJson(Map<String, dynamic> json) => Control(
-        name: json["name"],
-        key: json["key"],
-        label: json["label"],
-        order: json["order"],
-        readonly: json["readonly"],
-        actions: json["actions"],
-        editor: json["editor"],
-        // validators: json["validators"] == null ? [] : List<dynamic>.from(json["validators"]!.map((x) => x)),
-        params: json["params"] == null ? null : Params.fromJson(json["params"]),
-        value: json["value"],
-        options: json["options"] == null ? [] : List<Option>.from(json["options"]!.map((x) => Option.fromJson(x))),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "name": name,
-        "key": key,
-        "label": label,
-        "order": order,
-        "readonly": readonly,
-        "actions": actions,
-        "editor": editor,
-        // "validators": validators == null ? [] : List<dynamic>.from(validators!.map((x) => x)),
-        "params": params?.toJson(),
-        "value": value,
-        "options": options == null ? [] : List<dynamic>.from(options!.map((x) => x.toJson())),
       };
 }
 

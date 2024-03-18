@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/model/line_item_model.dart';
 import 'package:nuforce/app/modules/new_orders/controllers/invoice_controller.dart';
@@ -49,7 +48,7 @@ class _LineItemTileState extends State<LineItemTile> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            widget.item.name,
+            widget.item.unitCost,
             style: TextStyle(
               color: AppColors.nutralBlack1,
               fontSize: 16.sp,
@@ -57,7 +56,7 @@ class _LineItemTileState extends State<LineItemTile> {
             ),
           ),
           Text(
-            'Unit Rate \$${widget.item.unitPrice}',
+            'Unit Rate \$${widget.item.unitCost}',
             style: TextStyle(
               color: AppColors.nutralBlack2,
               fontSize: 16.sp,
@@ -139,14 +138,15 @@ class _LineItemTileState extends State<LineItemTile> {
 
                     if (_amountController.text.isNotEmpty) {
                       newItem = newItem!.copyWith(
-                        unitPrice: _amountController.text,
+                        // unitPrice: _amountController.text,
+                        unitCost: _amountController.text,
                       );
                     }
 
                     for (int i = 0; i < count; i++) {
                       invoiceController.addLineItem(newItem!);
                     }
-                    Fluttertoast.showToast(msg: '$count ${newItem!.name} added to invoice');
+                    // Fluttertoast.showToast(msg: '$count ${newItem!.name} added to invoice');
                   },
                   text: 'Confirm',
                 ),

@@ -138,57 +138,57 @@ class OrganizationRoleController extends GetxController {
 
   void setData() {
     try {
-      _businessRoleFormModel?.controls?.forEach((control) {
-        if (control.name == 'name') {
-          log('name23123: ${control.toJson()}');
-          nameLable = control.label ?? 'Name';
-          nameController.text = control.value ?? 'N/A';
-        } else if (control.name == 'subType' && control.editor == 'dropdown') {
-          subTypeLabel = control.label ?? 'For';
-          if (subTypeList.isEmpty) {
-            control.options?.forEach((element) {
-              subTypeList.add(DropdownModel(label: element.label, value: element.value));
-            });
-          }
-          for (final type in subTypeList) {
-            if (control.value == type.value) {
-              _selectedSubType = type;
-              break;
-            } else {
-              _selectedSubType = null;
-            }
-          }
-        } else if (control.name == 'accessPolicy' && control.editor == 'dropdown') {
-          accessPolicy = control.label ?? 'Access Policy';
-          if (accessPolicyList.isEmpty) {
-            control.options?.forEach((element) {
-              accessPolicyList.add(DropdownModel(label: element.label, value: element.value));
-            });
-          }
-          for (final type in accessPolicyList) {
-            if (control.value == type.value) {
-              _selectedaccessPolicy = type;
-              break;
-            } else {
-              _selectedaccessPolicy = null;
-            }
-          }
-        } else if (control.name == 'detailsDescription') {
-          detailsDescriptionLabel = control.label ?? 'Details Description';
-          detailsDescriptionController.text = control.value ?? 'N/A';
-        } else if (control.name == 'detailsAccessModules') {
-          detailsAccessModulesLabel = control.label ?? 'Access Areas';
-          if (detailsAccessModulesList.isEmpty) {
-            control.options?.forEach((element) {
-              detailsAccessModulesList.add(DropdownModel(label: element.label, value: element.value));
-            });
-          }
-          _selecteddetailsAccessModules = [];
-          // TODO need to work on this part
-        } else if (control.name == 'active' && control.editor == 'dropdown') {
-          active = true;
-        }
-      });
+      // _businessRoleFormModel?.controls?.forEach((control) {
+      //   if (control.name == 'name') {
+      //     log('name23123: ${control.toJson()}');
+      //     nameLable = control.label ?? 'Name';
+      //     nameController.text = control.value ?? 'N/A';
+      //   } else if (control.name == 'subType' && control.editor == 'dropdown') {
+      //     subTypeLabel = control.label ?? 'For';
+      //     if (subTypeList.isEmpty) {
+      //       control.options?.forEach((element) {
+      //         subTypeList.add(DropdownModel(label: element.label, value: element.value));
+      //       });
+      //     }
+      //     for (final type in subTypeList) {
+      //       if (control.value == type.value) {
+      //         _selectedSubType = type;
+      //         break;
+      //       } else {
+      //         _selectedSubType = null;
+      //       }
+      //     }
+      //   } else if (control.name == 'accessPolicy' && control.editor == 'dropdown') {
+      //     accessPolicy = control.label ?? 'Access Policy';
+      //     if (accessPolicyList.isEmpty) {
+      //       control.options?.forEach((element) {
+      //         accessPolicyList.add(DropdownModel(label: element.label, value: element.value));
+      //       });
+      //     }
+      //     for (final type in accessPolicyList) {
+      //       if (control.value == type.value) {
+      //         _selectedaccessPolicy = type;
+      //         break;
+      //       } else {
+      //         _selectedaccessPolicy = null;
+      //       }
+      //     }
+      //   } else if (control.name == 'detailsDescription') {
+      //     detailsDescriptionLabel = control.label ?? 'Details Description';
+      //     detailsDescriptionController.text = control.value ?? 'N/A';
+      //   } else if (control.name == 'detailsAccessModules') {
+      //     detailsAccessModulesLabel = control.label ?? 'Access Areas';
+      //     if (detailsAccessModulesList.isEmpty) {
+      //       control.options?.forEach((element) {
+      //         detailsAccessModulesList.add(DropdownModel(label: element.label, value: element.value));
+      //       });
+      //     }
+      //     _selecteddetailsAccessModules = [];
+      //     // TODO need to work on this part
+      //   } else if (control.name == 'active' && control.editor == 'dropdown') {
+      //     active = true;
+      //   }
+      // });
     } catch (e) {
       if (kDebugMode) {
         print(e);

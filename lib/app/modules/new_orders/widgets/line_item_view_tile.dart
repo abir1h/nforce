@@ -38,7 +38,7 @@ class LineItemViewTile extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              item.name,
+              item.unitCost,
               style: TextStyle(
                 color: AppColors.nutralBlack1,
                 fontSize: 14.sp,
@@ -62,7 +62,7 @@ class LineItemViewTile extends StatelessWidget {
               ),
             ),
             Text(
-              'Unit: \$${item.unitPrice}',
+              'Unit: \$${item.unitCost}',
               style: TextStyle(
                 color: AppColors.nutralBlack2,
                 fontSize: 12.sp,
@@ -73,7 +73,7 @@ class LineItemViewTile extends StatelessWidget {
         ),
         const Spacer(),
         Text(
-          '\$${item.unitPrice}',
+          '\$${item.unitCost}',
           style: TextStyle(
             color: AppColors.nutralBlack1,
             fontSize: 14.sp,
