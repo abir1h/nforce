@@ -363,6 +363,9 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/discount.svg
   String get discount => 'assets/images/svg/discount.svg';
 
+  /// File path: assets/images/svg/down_arrow.svg
+  String get downArrow => 'assets/images/svg/down_arrow.svg';
+
   /// File path: assets/images/svg/edit.svg
   String get edit => 'assets/images/svg/edit.svg';
 
@@ -380,6 +383,9 @@ class $AssetsImagesSvgGen {
 
   /// File path: assets/images/svg/filter2.svg
   String get filter2 => 'assets/images/svg/filter2.svg';
+
+  /// File path: assets/images/svg/fullScreen.svg
+  String get fullScreen => 'assets/images/svg/fullScreen.svg';
 
   /// File path: assets/images/svg/gift.svg
   String get gift => 'assets/images/svg/gift.svg';
@@ -516,6 +522,12 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/ticket_ripper.svg
   String get ticketRipper => 'assets/images/svg/ticket_ripper.svg';
 
+  /// File path: assets/images/svg/timechart.svg
+  String get timechart => 'assets/images/svg/timechart.svg';
+
+  /// File path: assets/images/svg/timeline.svg
+  String get timeline => 'assets/images/svg/timeline.svg';
+
   /// File path: assets/images/svg/today0.svg
   String get today0 => 'assets/images/svg/today0.svg';
 
@@ -554,12 +566,14 @@ class $AssetsImagesSvgGen {
         customers,
         deleteIcon,
         discount,
+        downArrow,
         edit,
         editRounded,
         empty,
         facebook,
         filter,
         filter2,
+        fullScreen,
         gift,
         google,
         home0,
@@ -605,6 +619,8 @@ class $AssetsImagesSvgGen {
         termsAndPolicy,
         thumb,
         ticketRipper,
+        timechart,
+        timeline,
         today0,
         today1,
         userRoles

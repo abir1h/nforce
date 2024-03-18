@@ -21,6 +21,9 @@ import '../modules/new_orders/views/new_orders_view.dart';
 import '../modules/on_boarding/bindings/on_boarding_binding.dart';
 import '../modules/on_boarding/views/on_boarding_view.dart';
 import '../modules/service_center/bindings/service_center_binding.dart';
+
+import '../modules/service_center/sub_modules/calendar/bindings/calendar_binding.dart';
+import '../modules/service_center/sub_modules/calendar/views/calendar_view.dart';
 import '../modules/service_center/sub_modules/dashboard/bindings/dashboard_binding.dart';
 import '../modules/service_center/sub_modules/dashboard/views/dashboard_view.dart';
 import '../modules/service_center/sub_modules/work_order/bindings/work_order_binding.dart';
@@ -136,6 +139,11 @@ class AppPages {
           name: _Paths.WORK_ORDER_SEARCH,
           page: () => const WorkOrderSearchView(),
           binding: WorkOrderSearchBinding(),
+        ),
+        GetPage(
+          name: _Paths.CALENDAR,
+          page: () => const ServiceCenterCalendarView(),
+          binding: ServiceCenterCalendarBinding(),
         ),
       ],
     ),
