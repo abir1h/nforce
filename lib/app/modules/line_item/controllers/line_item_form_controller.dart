@@ -29,7 +29,10 @@ class LineItemFormController extends GetxController {
 
   @override
   void dispose() {
-    formBuilder.controllers.forEach((key, value) {
+    formBuilder.controllers.forEach((key, value) {15
+ 
+Mbps
+
       value.dispose();
     });
     super.dispose();
