@@ -384,6 +384,9 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/filter2.svg
   String get filter2 => 'assets/images/svg/filter2.svg';
 
+  /// File path: assets/images/svg/filterOutlined.svg
+  String get filterOutlined => 'assets/images/svg/filterOutlined.svg';
+
   /// File path: assets/images/svg/fullScreen.svg
   String get fullScreen => 'assets/images/svg/fullScreen.svg';
 
@@ -573,6 +576,7 @@ class $AssetsImagesSvgGen {
         facebook,
         filter,
         filter2,
+        filterOutlined,
         fullScreen,
         gift,
         google,

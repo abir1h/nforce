@@ -24,6 +24,8 @@ abstract class Routes {
   static const WORK_ORDER_SEARCH =
       _Paths.SERVICE_CENTER + _Paths.WORK_ORDER_SEARCH;
   static const CALENDAR = _Paths.SERVICE_CENTER + _Paths.CALENDAR;
+  static const SERVICE_CENTER_MAPS =
+      _Paths.SERVICE_CENTER + _Paths.SERVICE_CENTER_MAPS;
 }
 
 abstract class _Paths {
@@ -47,4 +49,5 @@ abstract class _Paths {
   static const WORK_ORDER = '/work-order';
   static const WORK_ORDER_SEARCH = '/work-order-search';
   static const CALENDAR = '/calendar';
+  static const SERVICE_CENTER_MAPS = '/service-center-maps';
 }

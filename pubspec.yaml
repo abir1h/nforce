@@ -47,6 +47,9 @@ dependencies:
   custom_date_range_picker: ^1.0.10
   dotted_border: ^2.1.0
   syncfusion_flutter_charts: ^23.1.40
+  table_calendar: ^3.0.9
+  google_maps_flutter: ^2.5.0
+
 
 
 

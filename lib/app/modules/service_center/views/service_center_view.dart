@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/service_center/sub_modules/calendar/controllers/calendar_controller.dart';
+import 'package:nuforce/app/modules/service_center/sub_modules/calendar/views/calendar_view.dart';
 import 'package:nuforce/app/modules/service_center/sub_modules/dashboard/views/dashboard_view.dart';
+import 'package:nuforce/app/modules/service_center/sub_modules/service_center_maps/controllers/service_center_maps_controller.dart';
+import 'package:nuforce/app/modules/service_center/sub_modules/service_center_maps/views/service_center_maps_view.dart';
 import 'package:nuforce/app/modules/service_center/sub_modules/work_order/controllers/work_order_controller.dart';
 import 'package:nuforce/app/modules/service_center/sub_modules/work_order/views/work_order_view.dart';
 import 'package:nuforce/app/modules/service_center/sub_modules/work_order_search/controllers/work_order_search_controller.dart';
@@ -20,6 +24,8 @@ class ServiceCenterView extends GetView<ServiceCenterController> {
     Get.put(DashboardController());
     Get.put(WorkOrderController());
     Get.put(WorkOrderSearchController());
+    Get.put(ServiceCenterCalendarController());
+    Get.put(ServiceCenterMapsController());
     return Scaffold(
       backgroundColor: AppColors.white1,
       resizeToAvoidBottomInset: true,
@@ -85,14 +91,14 @@ class ServiceCenterView extends GetView<ServiceCenterController> {
             ),
 
             Expanded(
-              child: TabBarView(
+              child: TabBarView(physics: NeverScrollableScrollPhysics(),
                 children: [
                   const DashboardView(),
                   const WorkOrderView(),
                   Container(),
                   Container(),
-                  Container(),
-                  Container(),
+                  const ServiceCenterCalendarView(),
+                  const ServiceCenterMapsView(),
                 ],
               ),
             ),

@@ -21,11 +21,12 @@ import '../modules/new_orders/views/new_orders_view.dart';
 import '../modules/on_boarding/bindings/on_boarding_binding.dart';
 import '../modules/on_boarding/views/on_boarding_view.dart';
 import '../modules/service_center/bindings/service_center_binding.dart';
-
 import '../modules/service_center/sub_modules/calendar/bindings/calendar_binding.dart';
 import '../modules/service_center/sub_modules/calendar/views/calendar_view.dart';
 import '../modules/service_center/sub_modules/dashboard/bindings/dashboard_binding.dart';
 import '../modules/service_center/sub_modules/dashboard/views/dashboard_view.dart';
+import '../modules/service_center/sub_modules/service_center_maps/bindings/service_center_maps_binding.dart';
+import '../modules/service_center/sub_modules/service_center_maps/views/service_center_maps_view.dart';
 import '../modules/service_center/sub_modules/work_order/bindings/work_order_binding.dart';
 import '../modules/service_center/sub_modules/work_order/views/work_order_view.dart';
 import '../modules/service_center/sub_modules/work_order_search/bindings/work_order_search_binding.dart';
@@ -144,6 +145,11 @@ class AppPages {
           name: _Paths.CALENDAR,
           page: () => const ServiceCenterCalendarView(),
           binding: ServiceCenterCalendarBinding(),
+        ),
+        GetPage(
+          name: _Paths.SERVICE_CENTER_MAPS,
+          page: () => const ServiceCenterMapsView(),
+          binding: ServiceCenterMapsBinding(),
         ),
       ],
     ),
