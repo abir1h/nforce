@@ -1,3 +1,79 @@
+class LineItemControllerModel {
+  final List<Control>? controls;
+  final List<Action>? actions;
+  // final List<dynamic>? data;
+  // final List<dynamic>? query;
+  // final List<dynamic>? tools;
+
+  LineItemControllerModel({
+    this.controls,
+    this.actions,
+    // this.data,
+    // this.query,
+    // this.tools,
+  });
+
+  LineItemControllerModel copyWith({
+    List<Control>? controls,
+    List<Action>? actions,
+    // List<dynamic>? data,
+    // List<dynamic>? query,
+    // List<dynamic>? tools,
+  }) =>
+      LineItemControllerModel(
+        controls: controls ?? this.controls,
+        actions: actions ?? this.actions,
+        // data: data ?? this.data,
+        // query: query ?? this.query,
+        // tools: tools ?? this.tools,
+      );
+
+  factory LineItemControllerModel.fromJson(Map<String, dynamic> json) => LineItemControllerModel(
+        controls: json["controls"] == null ? [] : List<Control>.from(json["controls"]!.map((x) => Control.fromJson(x))),
+        actions: json["actions"] == null ? [] : List<Action>.from(json["actions"]!.map((x) => Action.fromJson(x))),
+        // data: json["data"] == null ? [] : List<dynamic>.from(json["data"]!.map((x) => x)),
+        // query: json["query"] == null ? [] : List<dynamic>.from(json["query"]!.map((x) => x)),
+        // tools: json["tools"] == null ? [] : List<dynamic>.from(json["tools"]!.map((x) => x)),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "controls": controls == null ? [] : List<dynamic>.from(controls!.map((x) => x.toJson())),
+        "actions": actions == null ? [] : List<dynamic>.from(actions!.map((x) => x.toJson())),
+        // "data": data == null ? [] : List<dynamic>.from(data!.map((x) => x)),
+        // "query": query == null ? [] : List<dynamic>.from(query!.map((x) => x)),
+        // "tools": tools == null ? [] : List<dynamic>.from(tools!.map((x) => x)),
+      };
+}
+
+class Action {
+  final String? action;
+  final String? label;
+
+  Action({
+    this.action,
+    this.label,
+  });
+
+  Action copyWith({
+    String? action,
+    String? label,
+  }) =>
+      Action(
+        action: action ?? this.action,
+        label: label ?? this.label,
+      );
+
+  factory Action.fromJson(Map<String, dynamic> json) => Action(
+        action: json["action"],
+        label: json["label"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "action": action,
+        "label": label,
+      };
+}
+
 class Control {
   final String? name;
   final String? key;
@@ -9,6 +85,7 @@ class Control {
   final List<dynamic>? validators;
   final Params? params;
   final dynamic value;
+  final List<Option>? options;
 
   Control({
     this.name,
@@ -21,6 +98,7 @@ class Control {
     this.validators,
     this.params,
     this.value,
+    this.options,
   });
 
   Control copyWith({
@@ -33,7 +111,8 @@ class Control {
     String? editor,
     List<dynamic>? validators,
     Params? params,
-    int? value,
+    dynamic value,
+    List<Option>? options,
   }) =>
       Control(
         name: name ?? this.name,
@@ -46,6 +125,7 @@ class Control {
         validators: validators ?? this.validators,
         params: params ?? this.params,
         value: value ?? this.value,
+        options: options ?? this.options,
       );
 
   factory Control.fromJson(Map<String, dynamic> json) => Control(
@@ -55,10 +135,11 @@ class Control {
         order: json["order"],
         readonly: json["readonly"],
         actions: json["actions"],
-        editor: json["editor"],
+        editor: json["editor"]!,
         validators: json["validators"] == null ? [] : List<dynamic>.from(json["validators"]!.map((x) => x)),
         params: json["params"] == null ? null : Params.fromJson(json["params"]),
         value: json["value"],
+        options: json["options"] == null ? [] : List<Option>.from(json["options"]!.map((x) => Option.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -72,6 +153,36 @@ class Control {
         "validators": validators == null ? [] : List<dynamic>.from(validators!.map((x) => x)),
         "params": params?.toJson(),
         "value": value,
+        "options": options == null ? [] : List<dynamic>.from(options!.map((x) => x.toJson())),
+      };
+}
+
+class Option {
+  final String? label;
+  final dynamic value;
+
+  Option({
+    this.label,
+    this.value,
+  });
+
+  Option copyWith({
+    String? label,
+    dynamic value,
+  }) =>
+      Option(
+        label: label ?? this.label,
+        value: value ?? this.value,
+      );
+
+  factory Option.fromJson(Map<String, dynamic> json) => Option(
+        label: json["label"],
+        value: json["value"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "label": label,
+        "value": value,
       };
 }
 
@@ -79,39 +190,33 @@ class Params {
   final String? type;
   final String? paramsClass;
   final String? help;
-  final String? queryUrl;
 
   Params({
     this.type,
     this.paramsClass,
     this.help,
-    this.queryUrl,
   });
 
   Params copyWith({
     String? type,
     String? paramsClass,
     String? help,
-    String? queryUrl,
   }) =>
       Params(
         type: type ?? this.type,
         paramsClass: paramsClass ?? this.paramsClass,
         help: help ?? this.help,
-        queryUrl: queryUrl ?? this.queryUrl,
       );
 
   factory Params.fromJson(Map<String, dynamic> json) => Params(
-        type: json["type"],
+        type: json["type"]!,
         paramsClass: json["class"],
         help: json["help"],
-        queryUrl: json["queryUrl"],
       );
 
   Map<String, dynamic> toJson() => {
         "type": type,
         "class": paramsClass,
         "help": help,
-        "queryUrl": queryUrl,
       };
 }

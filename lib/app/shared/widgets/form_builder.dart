@@ -1,17 +1,52 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nuforce/app/modules/line_item/models/control.dart';
+import 'package:nuforce/app/shared/widgets/custom_dropdown.dart';
 import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
+import 'package:nuforce/app/utils/colors.dart';
 
 class CustomFormBuilder {
-  List<String> fieldNames = [];
-  Map<String, TextEditingController> controllers = {};
-  Map<String, String? Function(String?)?> validator = {};
-  Map<String, VoidCallback> onTap = {};
-  Map<String, Widget> widgets = {};
+  final List<String> fieldNames;
+  final Map<String, TextEditingController> textEditingControllers;
+  final Map<String, void Function(Option?)?> onChanged;
+  final Map<String, Option?> dropdownValue;
+  final Map<String, String? Function(String?)?> validator;
+  final Map<String, VoidCallback> onTap;
+  final Map<String, Widget> widgets;
+
+  CustomFormBuilder({
+    this.fieldNames = const [],
+    this.textEditingControllers = const {},
+    this.onChanged = const {},
+    this.dropdownValue = const {},
+    this.validator = const {},
+    this.onTap = const {},
+    this.widgets = const {},
+  });
+
+  CustomFormBuilder copyWith({
+    List<String>? fieldNames,
+    Map<String, TextEditingController>? textEditingControllers,
+    Map<String, void Function(Option?)?>? onChanged,
+    Map<String, Option?>? dropdownValue,
+    Map<String, String? Function(String?)?>? validator,
+    Map<String, VoidCallback>? onTap,
+    Map<String, Widget>? widgets,
+  }) {
+    return CustomFormBuilder(
+      fieldNames: fieldNames ?? this.fieldNames,
+      textEditingControllers: textEditingControllers ?? this.textEditingControllers,
+      onChanged: onChanged ?? this.onChanged,
+      dropdownValue: dropdownValue ?? this.dropdownValue,
+      validator: validator ?? this.validator,
+      onTap: onTap ?? this.onTap,
+      widgets: widgets ?? this.widgets,
+    );
+  }
 }
 
-CustomFormBuilder getForm(List<Control>? controls) {
-  final formBuilder = CustomFormBuilder();
+CustomFormBuilder getForm({List<Control>? controls}) {
+  CustomFormBuilder formBuilder = CustomFormBuilder();
   if (controls == null) {
     return formBuilder;
   }
@@ -19,21 +54,85 @@ CustomFormBuilder getForm(List<Control>? controls) {
     if (control.name != null && control.params?.type != 'hidden') {
       switch (control.editor) {
         case 'text':
-          formBuilder.fieldNames.add(control.name!);
-          formBuilder.controllers[control.name!] = TextEditingController();
-          formBuilder.validator[control.name!] = (v) {
-            if (v!.isEmpty) {
-              return 'Please enter ${control.label}';
-            }
-            return null;
-          };
-          formBuilder.widgets[control.name!] = CustomTextField(
-            label: control.label ?? '',
-            hint: control.label ?? '',
-            controller: formBuilder.controllers[control.name!],
-            validator: formBuilder.validator[control.name!],
+          formBuilder = formBuilder.copyWith(
+            fieldNames: [...formBuilder.fieldNames, control.name!],
+          );
+          formBuilder = formBuilder.copyWith(
+            textEditingControllers: {
+              ...formBuilder.textEditingControllers,
+              control.name!: TextEditingController(),
+            },
+          );
+          formBuilder = formBuilder.copyWith(
+            validator: {
+              ...formBuilder.validator,
+              control.name!: (v) {
+                if (v!.isEmpty) {
+                  return 'Please enter ${control.label}';
+                }
+                return null;
+              },
+            },
+          );
+          formBuilder = formBuilder.copyWith(
+            widgets: {
+              ...formBuilder.widgets,
+              control.name!: CustomTextField(
+                label: control.label ?? '',
+                hint: control.label ?? '',
+                controller: formBuilder.textEditingControllers[control.name!],
+                validator: formBuilder.validator[control.name!],
+              ),
+            },
           );
           break;
+
+        case 'dropdown':
+          formBuilder = formBuilder.copyWith(
+            fieldNames: [...formBuilder.fieldNames, control.name!],
+          );
+          formBuilder = formBuilder.copyWith(
+            onChanged: {
+              ...formBuilder.onChanged,
+              control.name!: (value) {
+                formBuilder.dropdownValue[control.name!] = value;
+              },
+            },
+          );
+          formBuilder = formBuilder.copyWith(
+            dropdownValue: {
+              ...formBuilder.dropdownValue,
+              control.name!: control.value,
+            },
+          );
+
+          formBuilder = formBuilder.copyWith(
+            widgets: {
+              ...formBuilder.widgets,
+              control.name!: CustomDropdownButton<Option?>(
+                label: control.label ?? '',
+                hint: control.label ?? '',
+                onChanged: formBuilder.onChanged[control.name!]!,
+                value: formBuilder.dropdownValue[control.name!],
+                items: control.options
+                        ?.map(
+                          (e) => DropdownMenuItem(
+                            value: e,
+                            child: Text(
+                              e.label ?? '',
+                              style: TextStyle(
+                                color: AppColors.nutralBlack2,
+                                fontSize: 16.sp,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ),
+                        )
+                        .toList() ??
+                    [],
+              ),
+            },
+          );
         default:
           break;
       }
@@ -41,31 +140,3 @@ CustomFormBuilder getForm(List<Control>? controls) {
   }
   return formBuilder;
 }
-
-/** 
-if (controls.isEmpty) {
-      return const SizedBox.shrink();
-    } else {
-      if (controls.first.params?.type != 'hidden') {
-        switch (controls.first.editor) {
-          case 'text':
-            return CustomTextField(
-              label: controls.first.label ?? '',
-              hint: controls.first.label ?? '',
-              controller: nameController,
-              validator: (v) {
-                if (v!.isEmpty) {
-                  return 'Please enter item name';
-                }
-                return null;
-              },
-            );
-          default:
-            return const SizedBox.shrink();
-        }
-      } else {
-        return const SizedBox.shrink();
-      }
-    }
-
-**/

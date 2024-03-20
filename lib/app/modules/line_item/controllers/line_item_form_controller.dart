@@ -1,6 +1,8 @@
 import 'dart:developer';
 
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/business_manager/models/form_model.dart';
+import 'package:nuforce/app/modules/line_item/models/control.dart' as ctrl;
 import 'package:nuforce/app/modules/line_item/models/line_item_controller_model.dart';
 import 'package:nuforce/app/modules/line_item/services/line_item_data_repo.dart';
 import 'package:nuforce/app/shared/widgets/form_builder.dart';
@@ -10,17 +12,21 @@ class LineItemFormController extends GetxController {
   void onInit() {
     super.onInit();
     setLineItemControllerModel().then((value) {
-      formBuilder.controllers['unitCost']?.addListener(() {
-        if (formBuilder.controllers['quantity']?.text != null && formBuilder.controllers['quantity']?.text.isNotEmpty == true && formBuilder.controllers['unitCost']?.text != null) {
+      formBuilder.textEditingControllers['unitCost']?.addListener(() {
+        if (formBuilder.textEditingControllers['quantity']?.text != null &&
+            formBuilder.textEditingControllers['quantity']?.text.isNotEmpty == true &&
+            formBuilder.textEditingControllers['unitCost']?.text != null) {
           setTotalBill(
-            double.parse('${formBuilder.controllers['quantity']?.text ?? 0}') * double.parse('${formBuilder.controllers['unitCost']?.text ?? 0}'),
+            double.parse('${formBuilder.textEditingControllers['quantity']?.text ?? 0}') * double.parse('${formBuilder.textEditingControllers['unitCost']?.text ?? 0}'),
           );
         }
       });
-      formBuilder.controllers['quantity']?.addListener(() {
-        if (formBuilder.controllers['quantity']?.text != null && formBuilder.controllers['unitCost']?.text != null && formBuilder.controllers['quantity']?.text.isNotEmpty == true) {
+      formBuilder.textEditingControllers['quantity']?.addListener(() {
+        if (formBuilder.textEditingControllers['quantity']?.text != null &&
+            formBuilder.textEditingControllers['unitCost']?.text != null &&
+            formBuilder.textEditingControllers['quantity']?.text.isNotEmpty == true) {
           setTotalBill(
-            double.parse('${formBuilder.controllers['quantity']?.text ?? 0}') * double.parse('${formBuilder.controllers['unitCost']?.text ?? 0}'),
+            double.parse('${formBuilder.textEditingControllers['quantity']?.text ?? 0}') * double.parse('${formBuilder.textEditingControllers['unitCost']?.text ?? 0}'),
           );
         }
       });
@@ -29,7 +35,7 @@ class LineItemFormController extends GetxController {
 
   @override
   void dispose() {
-    formBuilder.controllers.forEach((key, value) {
+    formBuilder.textEditingControllers.forEach((key, value) {
       value.dispose();
     });
     super.dispose();
@@ -66,7 +72,7 @@ class LineItemFormController extends GetxController {
         (l) {
           _lineItemControllerModel = l;
           if (_lineItemControllerModel?.controls != null) {
-            setFormBuilder(getForm(_lineItemControllerModel?.controls));
+            setFormBuilder(getForm(controls: _lineItemControllerModel?.controls));
           }
           update();
         },

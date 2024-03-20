@@ -11,5 +11,5 @@ class URL {
   static const String businessRoleForm = '$baseUrl/form/role.entry-form';
 
   // Line Item
-  static const String lineItem = '$baseUrl/form/invoice.add-lineitem-form';
+  static const String lineItem = '$baseUrl/form/lineitem.register-form';
 }
