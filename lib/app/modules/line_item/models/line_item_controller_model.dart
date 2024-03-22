@@ -32,10 +32,6 @@ class LineItemControllerModel {
 
   factory LineItemControllerModel.fromJson(Map<String, dynamic> json) => LineItemControllerModel(
         controls: json["controls"] == null ? [] : List<Control>.from(json["controls"]!.map((x) => Control.fromJson(x))),
-        // actions: json["actions"] == null ? [] : List<Action>.from(json["actions"]!.map((x) => Action.fromJson(x))),
-        // data: json["data"] == null ? null : Data.fromJson(json["data"]),
-        // query: json["query"] == null ? [] : List<dynamic>.from(json["query"]!.map((x) => x)),
-        // tools: json["tools"] == null ? [] : List<dynamic>.from(json["tools"]!.map((x) => x)),
       );
 
   Map<String, dynamic> toJson() => {

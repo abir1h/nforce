@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:nuforce/app/model/line_item_model.dart';
 import 'package:nuforce/app/modules/line_item/controllers/line_item_controller.dart';
 import 'package:nuforce/app/modules/line_item/controllers/line_item_form_controller.dart';
-import 'package:nuforce/app/modules/line_item/models/control.dart';
 import 'package:nuforce/app/shared/widgets/custom_dropdown.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/shared/widgets/secondary_button.dart';
