@@ -8,11 +8,12 @@ class ColoredCheckboxWithTitle extends StatelessWidget {
     required this.color,
     required this.onChanged,
     required this.title,
-    super.key,
+    super.key,  this.titleColor,
   });
 
   final bool isSelected;
   final Color color;
+  final Color? titleColor;
   final void Function(bool?)? onChanged;
   final String title;
 
@@ -27,10 +28,10 @@ class ColoredCheckboxWithTitle extends StatelessWidget {
         ),
         Text(
           title,
-          style: const TextStyle(
-            fontSize: 12,
-            fontWeight: FontWeight.w400,
-            color: AppColors.subText,
+          style:  TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+            color: titleColor??AppColors.subText,
           ),
         ),
       ],

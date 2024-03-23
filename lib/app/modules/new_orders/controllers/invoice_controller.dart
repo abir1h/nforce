@@ -1,7 +1,9 @@
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:nuforce/app/model/agents_model.dart';
+import 'package:nuforce/app/model/card_model.dart';
 import 'package:nuforce/app/model/line_item_model.dart';
+import 'package:nuforce/app/modules/new_orders/models/payment_method_model.dart';
 import 'package:nuforce/app/shared/functions/image_picker_func.dart';
 import 'package:nuforce/app/utils/colors.dart';
 
@@ -67,14 +69,50 @@ class InvoiceController extends GetxController {
   ];
 
   Agent? _selectedAgent;
-
   Agent? get selectedAgent => _selectedAgent;
-
   void updateSelectedAgent(Agent agent) {
     _selectedAgent = agent;
     update();
   }
 
-  List<LineItem> get lineItems => _lineItems;
-  final List<LineItem> _lineItems = const <LineItem>[];
+  double _dueAmount = 5000;
+  double get dueAmount => _dueAmount;
+  void updateDueAmount(double amount) {
+    _dueAmount = amount;
+    update();
+  }
+
+  PaymentMethodModel? _selectedPaymentMethod;
+  PaymentMethodModel? get selectedPaymentMethod => _selectedPaymentMethod;
+  void updateSelectedPaymentMethod(PaymentMethodModel paymentMethod) {
+    _selectedPaymentMethod = paymentMethod;
+    update();
+  }
+
+  String? _cancellationNote = r'$5.00 cancellation fee might be applied if cancelled after activation.';
+  String? get cancellationNote => _cancellationNote;
+  void updateCancellationNote(String note) {
+    _cancellationNote = note;
+    update();
+  }
+
+  Card? _savedCard;
+  Card? get savedCard => _savedCard;
+  void updateSavedCard(Card card) {
+    _savedCard = card;
+    update();
+  }
+
+  // add to cart
+  final List<LineItem> _cartItems = [];
+  List<LineItem> get cartItems => _cartItems;
+  void addLineItem(LineItem item) {
+    _cartItems.add(item);
+    update();
+  }
+
+  void removeLineItem(int index) {
+    _cartItems.removeAt(index);
+    update();
+  }
 }

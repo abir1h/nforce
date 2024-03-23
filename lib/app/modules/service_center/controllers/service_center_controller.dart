@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 class ServiceCenterController extends GetxController {
   //TODO: Implement ServiceCenterController
 
+
   final count = 0.obs;
   @override
   void onInit() {

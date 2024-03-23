@@ -10,11 +10,11 @@ import 'package:nuforce/app/modules/new_orders/widgets/cancellation_widget.dart'
 import 'package:nuforce/app/modules/new_orders/widgets/empty_activity_log_view.dart';
 import 'package:nuforce/app/modules/new_orders/widgets/empty_expense_view.dart';
 import 'package:nuforce/app/modules/new_orders/widgets/empty_note_view.dart';
-import 'package:nuforce/app/modules/new_orders/widgets/empty_payment_view.dart';
+import 'package:nuforce/app/modules/new_orders/widgets/invoice_payment_section.dart';
 import 'package:nuforce/app/modules/new_orders/widgets/empty_schedule_view.dart';
 import 'package:nuforce/app/modules/new_orders/widgets/empty_terms_view.dart';
 import 'package:nuforce/app/modules/new_orders/widgets/invoice_attachments.dart';
-import 'package:nuforce/app/modules/new_orders/widgets/invoice_contact.dart';
+import 'package:nuforce/app/modules/new_orders/widgets/invoice_contact_view.dart';
 import 'package:nuforce/app/modules/new_orders/widgets/invoice_line_items_widget.dart';
 import 'package:nuforce/app/modules/new_orders/widgets/order_summary.dart';
 import 'package:nuforce/app/shared/widgets/colored_button.dart';
@@ -107,7 +107,7 @@ class _CreateInvoiceViewState extends State<CreateInvoiceView> {
               16.h.vSpace,
               const OrderSummary(),
               16.h.vSpace,
-              const InvoiceContact(),
+              const InvoiceContactView(),
               16.h.vSpace,
               const InvoiceAttachments(),
               16.h.vSpace,
@@ -115,7 +115,7 @@ class _CreateInvoiceViewState extends State<CreateInvoiceView> {
               16.h.vSpace,
               const CancellationWidget(),
               16.h.vSpace,
-              const EmptyPaymentView(),
+              const InvoicePaymentSection(),
               16.h.vSpace,
               const EmptyExpense(),
               16.h.vSpace,

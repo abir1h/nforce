@@ -109,6 +109,10 @@ class $AssetsImagesPngGen {
   AssetGenImage get logout =>
       const AssetGenImage('assets/images/png/logout.png');
 
+  /// File path: assets/images/png/mapImage.png
+  AssetGenImage get mapImage =>
+      const AssetGenImage('assets/images/png/mapImage.png');
+
   /// File path: assets/images/png/notification.png
   AssetGenImage get notification =>
       const AssetGenImage('assets/images/png/notification.png');
@@ -243,6 +247,7 @@ class $AssetsImagesPngGen {
         invoices,
         link,
         logout,
+        mapImage,
         notification,
         nuforceSplash,
         offlinePayments,
@@ -313,6 +318,9 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/calendar_month.svg
   String get calendarMonth => 'assets/images/svg/calendar_month.svg';
 
+  /// File path: assets/images/svg/calendar_report.svg
+  String get calendarReport => 'assets/images/svg/calendar_report.svg';
+
   /// File path: assets/images/svg/check.svg
   String get check => 'assets/images/svg/check.svg';
 
@@ -355,6 +363,9 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/discount.svg
   String get discount => 'assets/images/svg/discount.svg';
 
+  /// File path: assets/images/svg/down_arrow.svg
+  String get downArrow => 'assets/images/svg/down_arrow.svg';
+
   /// File path: assets/images/svg/edit.svg
   String get edit => 'assets/images/svg/edit.svg';
 
@@ -372,6 +383,12 @@ class $AssetsImagesSvgGen {
 
   /// File path: assets/images/svg/filter2.svg
   String get filter2 => 'assets/images/svg/filter2.svg';
+
+  /// File path: assets/images/svg/filterOutlined.svg
+  String get filterOutlined => 'assets/images/svg/filterOutlined.svg';
+
+  /// File path: assets/images/svg/fullScreen.svg
+  String get fullScreen => 'assets/images/svg/fullScreen.svg';
 
   /// File path: assets/images/svg/gift.svg
   String get gift => 'assets/images/svg/gift.svg';
@@ -508,6 +525,12 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/ticket_ripper.svg
   String get ticketRipper => 'assets/images/svg/ticket_ripper.svg';
 
+  /// File path: assets/images/svg/timechart.svg
+  String get timechart => 'assets/images/svg/timechart.svg';
+
+  /// File path: assets/images/svg/timeline.svg
+  String get timeline => 'assets/images/svg/timeline.svg';
+
   /// File path: assets/images/svg/today0.svg
   String get today0 => 'assets/images/svg/today0.svg';
 
@@ -531,6 +554,7 @@ class $AssetsImagesSvgGen {
         businessManager,
         calendar,
         calendarMonth,
+        calendarReport,
         check,
         checkIcon,
         closeCircle,
@@ -545,12 +569,15 @@ class $AssetsImagesSvgGen {
         customers,
         deleteIcon,
         discount,
+        downArrow,
         edit,
         editRounded,
         empty,
         facebook,
         filter,
         filter2,
+        filterOutlined,
+        fullScreen,
         gift,
         google,
         home0,
@@ -596,6 +623,8 @@ class $AssetsImagesSvgGen {
         termsAndPolicy,
         thumb,
         ticketRipper,
+        timechart,
+        timeline,
         today0,
         today1,
         userRoles

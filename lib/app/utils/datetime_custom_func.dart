@@ -12,4 +12,8 @@ class DatetimeCustomFunc {
     return DateFormat.yMMMd().add_jm().format(dateTime);
     // return DateFormat.yMMMd().format(dateTime);
   }
+
+  static String getDashedDate(DateTime dateTime) {
+    return DateFormat('yyyy-MM-dd').format(dateTime);
+  }
 }

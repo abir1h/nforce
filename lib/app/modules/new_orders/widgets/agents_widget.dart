@@ -83,6 +83,11 @@ class _AgentsState extends State<Agents> {
 
   Future<dynamic> _availableAgentsBottomSheet(BuildContext context) {
     return showModalBottomSheet(
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(30),
+        ),
+      ),
       context: context,
       builder: (context) {
         return SafeArea(

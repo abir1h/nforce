@@ -38,21 +38,21 @@ class LineItemViewTile extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Bed bug extermination',
+              item.unitCost,
               style: TextStyle(
                 color: AppColors.nutralBlack1,
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w500,
               ),
             ),
-            Text(
-              'Pest Control > Line Items',
-              style: TextStyle(
-                color: AppColors.nutralBlack2,
-                fontSize: 10.sp,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
+            // Text(
+            //   'Pest Control > Line Items',
+            //   style: TextStyle(
+            //     color: AppColors.nutralBlack2,
+            //     fontSize: 10.sp,
+            //     fontWeight: FontWeight.w400,
+            //   ),
+            // ),
             Text(
               'Quantity: 1',
               style: TextStyle(
@@ -62,7 +62,7 @@ class LineItemViewTile extends StatelessWidget {
               ),
             ),
             Text(
-              'Unit: \$1500.00',
+              'Unit: \$${item.unitCost}',
               style: TextStyle(
                 color: AppColors.nutralBlack2,
                 fontSize: 12.sp,
@@ -73,7 +73,7 @@ class LineItemViewTile extends StatelessWidget {
         ),
         const Spacer(),
         Text(
-          '\$100.00',
+          '\$${item.unitCost}',
           style: TextStyle(
             color: AppColors.nutralBlack1,
             fontSize: 14.sp,

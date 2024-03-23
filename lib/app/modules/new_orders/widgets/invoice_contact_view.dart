@@ -2,15 +2,17 @@ import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:nuforce/app/shared/widgets/details_with_header_skleton.dart';
+import 'package:nuforce/app/shared/widgets/full_screen_map.dart';
 import 'package:nuforce/app/shared/widgets/text_with_bottom_border.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/extension_methods.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 import 'package:nuforce/main.dart';
 
-class InvoiceContact extends StatelessWidget {
-  const InvoiceContact({
+class InvoiceContactView extends StatelessWidget {
+  const InvoiceContactView({
     super.key,
   });
 
@@ -58,7 +60,9 @@ class InvoiceContact extends StatelessWidget {
             TextWithBottomBorder(
               hint: '+ Add Address',
               type: CustomType.dateTime,
-              onTap: () {},
+              onTap: () {
+                Get.to(() => const FullScreenMap());
+              },
             ),
           ],
         ),

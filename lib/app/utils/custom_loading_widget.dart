@@ -17,23 +17,22 @@ class CustomLoadingWidget extends StatefulWidget {
 class _CustomLoadingWidgetState extends State<CustomLoadingWidget> {
   @override
   Widget build(BuildContext context) {
-    return widget.isLoading
-        ? Stack(
-            children: [
-              IgnorePointer(
-                ignoring: true,
-                child: Opacity(
-                  opacity: 0.2,
-                  child: widget.child,
-                ),
-              ),
-              Center(
-                child: CircularProgressIndicator.adaptive(
-                  backgroundColor: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black,
-                ),
-              ),
-            ],
-          )
-        : widget.child;
+    return Stack(
+      children: [
+        IgnorePointer(
+          ignoring: widget.isLoading,
+          child: Opacity(
+            opacity: widget.isLoading ? (Theme.of(context).brightness == Brightness.dark ? 0.2 : 0.2) : 1,
+            child: widget.child,
+          ),
+        ),
+        if (widget.isLoading)
+          Center(
+            child: CircularProgressIndicator.adaptive(
+              backgroundColor: Theme.of(context).colorScheme.onBackground,
+            ),
+          ),
+      ],
+    );
   }
 }
