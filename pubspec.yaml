@@ -48,7 +48,7 @@ dependencies:
   dotted_border: ^2.1.0
   google_maps_flutter: ^2.5.3
   google_maps_flutter_android: ^2.7.0
-  # mapbox_maps_flutter: ^1.0.0
+  table_calendar: ^3.0.9
 
 dev_dependencies:
   build_runner: 2.4.6

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nuforce/app/utils/colors.dart';
 
 class CustomTextStyle {
   static TextStyle heading1 = TextStyle(
@@ -42,4 +43,9 @@ class CustomTextStyle {
   static TextStyle paragraphExtraSmall = TextStyle(
     fontSize: 12.sp,
   );
+  static TextStyle commonBold = TextStyle(
+      fontSize: 16.sp,
+      color: AppColors.nutralBlack1,
+      fontWeight: FontWeight.w600,
+      fontFamily: "Poppins");
 }
