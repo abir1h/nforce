@@ -151,7 +151,7 @@ class _BusinessManagerAddOrEditCalendarViewState extends State<BusinessManagerAd
                   ),
                 ],
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 32),
             ],
           ),
         ),

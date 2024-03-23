@@ -34,7 +34,7 @@ class EmptyLabel extends StatelessWidget {
           },
           text: 'Add Labels',
         ),
-        const SizedBox(height: 24),
+        const SizedBox(height: 32),
       ],
     );
   }

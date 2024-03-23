@@ -46,7 +46,9 @@ class _HomeViewState extends State<HomeView> {
                           ServiceButton(
                             svgPath: Assets.images.svg.customerService,
                             title: 'Service Center',
-                            onTap: () {},
+                            onTap: () {
+                              Get.toNamed(Routes.SERVICE_CENTER);
+                            },
                           ),
                           ServiceButton(
                             svgPath: Assets.images.svg.businessManager,

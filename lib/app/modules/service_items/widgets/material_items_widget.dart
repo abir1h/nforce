@@ -14,7 +14,10 @@ class MaterialItems extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SearchWidget(),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.sp),
+          child: const SearchWidget(),
+        ),
         SizedBox(height: 20.sp),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.sp),

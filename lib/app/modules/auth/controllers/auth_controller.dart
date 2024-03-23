@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/auth/controllers/agent_customer_auth_controller.dart';
 import 'package:nuforce/app/modules/auth/controllers/signup_controller.dart';
-import 'package:nuforce/app/modules/auth/services/login_services.dart';
+import 'package:nuforce/app/modules/auth/services/login_api_services.dart';
 import 'package:nuforce/app/modules/auth/views/account_setup_view.dart';
 import 'package:nuforce/app/modules/auth/views/reset_password_view.dart';
 import 'package:nuforce/app/routes/app_pages.dart';

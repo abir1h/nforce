@@ -8,6 +8,10 @@ import '../modules/bottom_nav_bar/bindings/bottom_nav_bar_binding.dart';
 import '../modules/bottom_nav_bar/views/bottom_nav_bar_view.dart';
 import '../modules/business_manager/bindings/business_manager_binding.dart';
 import '../modules/business_manager/views/business_manager_view.dart';
+import '../modules/customer/bindings/customer_binding.dart';
+import '../modules/customer/customer_work_order/bindings/customer_work_order_binding.dart';
+import '../modules/customer/customer_work_order/views/customer_work_order_view.dart';
+import '../modules/customer/views/customer_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/more/bindings/more_binding.dart';
@@ -16,6 +20,8 @@ import '../modules/new_orders/bindings/new_orders_binding.dart';
 import '../modules/new_orders/views/new_orders_view.dart';
 import '../modules/on_boarding/bindings/on_boarding_binding.dart';
 import '../modules/on_boarding/views/on_boarding_view.dart';
+import '../modules/service_center/bindings/service_center_binding.dart';
+import '../modules/service_center/views/service_center_view.dart';
 import '../modules/service_items/bindings/service_items_binding.dart';
 import '../modules/service_items/views/service_items_view.dart';
 import '../modules/settings/bindings/settings_binding.dart';
@@ -92,6 +98,23 @@ class AppPages {
       name: _Paths.SETTINGS,
       page: () => const SettingsView(),
       binding: SettingsBinding(),
+    ),
+    GetPage(
+      name: _Paths.CUSTOMER,
+      page: () => const CustomerView(),
+      binding: CustomerBinding(),
+      children: [
+        GetPage(
+          name: _Paths.CUSTOMER_WORK_ORDER,
+          page: () => const CustomerWorkOrderView(),
+          binding: CustomerWorkOrderBinding(),
+        ),
+      ],
+    ),
+    GetPage(
+      name: _Paths.SERVICE_CENTER,
+      page: () => const ServiceCenterView(),
+      binding: ServiceCenterBinding(),
     ),
   ];
 }
