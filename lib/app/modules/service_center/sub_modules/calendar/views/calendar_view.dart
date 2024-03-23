@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/business_manager/widgets/big_button_with_icon.dart';
 import 'package:nuforce/app/modules/service_center/sub_modules/calendar/widgets/add_schedule_bottomsheet.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/gen/assets.gen.dart';
@@ -14,24 +13,22 @@ import '../../../../../shared/widgets/custom_dropdown.dart';
 import '../controllers/calendar_controller.dart';
 import '../widgets/view_schedule_bottomsheet.dart';
 
-class ServiceCenterCalendarView
-    extends GetView<ServiceCenterCalendarController> {
+class ServiceCenterCalendarView extends GetView<ServiceCenterCalendarController> {
   const ServiceCenterCalendarView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: GestureDetector(
-        onTap: ()=> showCupertinoModalPopup<void>(
+        onTap: () => showCupertinoModalPopup<void>(
           context: context,
           builder: (context) => const AddScheduleBottoMSheet(),
         ),
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 14.h),
-          decoration: BoxDecoration(
-              color: AppColors.primaryBlue1,
-              borderRadius: BorderRadius.circular(4.r)),
-          child: Row(mainAxisSize: MainAxisSize.min,
+          decoration: BoxDecoration(color: AppColors.primaryBlue1, borderRadius: BorderRadius.circular(4.r)),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
             children: [
               Icon(
                 Icons.add,
@@ -40,10 +37,7 @@ class ServiceCenterCalendarView
               ),
               Text(
                 'Add Schedule',
-                style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 16.sp,
-                    color: AppColors.white1),
+                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16.sp, color: AppColors.white1),
               )
             ],
           ),
@@ -58,8 +52,7 @@ class ServiceCenterCalendarView
               children: [
                 Flexible(
                   child: Container(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 4.w, vertical: 12.h),
+                    padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 12.h),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(4.r),
                       border: Border.all(color: AppColors.greyStrokColor),
@@ -86,8 +79,7 @@ class ServiceCenterCalendarView
                 SizedBox(width: 8),
                 Flexible(
                   child: Container(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 4.w, vertical: 12.h),
+                    padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 12.h),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(4.r),
                       border: Border.all(color: AppColors.greyStrokColor),
@@ -114,8 +106,7 @@ class ServiceCenterCalendarView
                 SizedBox(width: 8),
                 Flexible(
                   child: Container(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 2.w, vertical: 12.h),
+                    padding: EdgeInsets.symmetric(horizontal: 2.w, vertical: 12.h),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(4.r),
                       border: Border.all(color: AppColors.greyStrokColor),
@@ -213,9 +204,8 @@ class ServiceCenterCalendarView
             ),
             TableCalendar(
               firstDay: DateTime.utc(2020, 1, 1),
-              lastDay: DateTime.utc(2030, 12, 31),calendarStyle: CalendarStyle(
-                outsideDaysVisible:false
-            ),
+              lastDay: DateTime.utc(2030, 12, 31),
+              calendarStyle: CalendarStyle(outsideDaysVisible: false),
               focusedDay: DateTime.now(),
               calendarFormat: CalendarFormat.month,
               selectedDayPredicate: (day) {
@@ -224,8 +214,7 @@ class ServiceCenterCalendarView
                 return isSameDay(DateTime.now(), day);
               },
               onDaySelected: (selectedDay, focusedDay) {
-
-                   showCupertinoModalPopup<void>(
+                showCupertinoModalPopup<void>(
                   context: context,
                   builder: (context) => const ViewScheduleBottomsheet(),
                 );

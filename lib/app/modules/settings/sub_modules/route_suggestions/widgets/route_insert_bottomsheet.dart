@@ -1,16 +1,12 @@
-import 'package:custom_date_range_picker/custom_date_range_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/extension_methods.dart';
 
 import '../../../../../shared/widgets/custom_checkbox.dart';
-import '../../../../../shared/widgets/custom_dropdown.dart';
 import '../../../../../shared/widgets/primary_button.dart';
 import '../../../../../shared/widgets/secondary_button.dart';
-import '../../../../../utils/text_styles.dart';
 import 'button_with_border.dart';
 
 class InsertRouteBttomSheet extends StatefulWidget {
@@ -99,22 +95,14 @@ class _InsertRouteBttomSheetState extends State<InsertRouteBttomSheet> {
                 8.h.vSpace,
                 Text(
                   "Details",
-                  style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16.sp,
-                      fontFamily: "Poppins",
-                      color: AppColors.nutralBlack1),
+                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16.sp, fontFamily: "Poppins", color: AppColors.nutralBlack1),
                 ),
                 SizedBox(
                   height: 4.h,
                 ),
                 Text(
                   "John Williamson",
-                  style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16.sp,
-                      fontFamily: "Poppins",
-                      color: AppColors.primaryBlue1),
+                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16.sp, fontFamily: "Poppins", color: AppColors.primaryBlue1),
                 ),
                 Divider(
                   thickness: 1,
@@ -125,11 +113,7 @@ class _InsertRouteBttomSheetState extends State<InsertRouteBttomSheet> {
                   children: [
                     Text(
                       "Team",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 16.sp,
-                          fontFamily: "Poppins",
-                          color: AppColors.nutralBlack1),
+                      style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16.sp, fontFamily: "Poppins", color: AppColors.nutralBlack1),
                     ),
                     BorderButton(
                       text: "Assign",
@@ -146,11 +130,7 @@ class _InsertRouteBttomSheetState extends State<InsertRouteBttomSheet> {
                   children: [
                     Text(
                       "Location",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 16.sp,
-                          fontFamily: "Poppins",
-                          color: AppColors.nutralBlack1),
+                      style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16.sp, fontFamily: "Poppins", color: AppColors.nutralBlack1),
                     ),
                     BorderButton(
                       text: "Route from here",
@@ -169,19 +149,17 @@ class _InsertRouteBttomSheetState extends State<InsertRouteBttomSheet> {
                     fontFamily: "Poppins",
                     color: AppColors.nutralBlack2,
                   ),
-                ), Divider(
+                ),
+                Divider(
                   thickness: 1,
                   color: AppColors.white3,
-                ),      Row(
+                ),
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       "Line Items",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 16.sp,
-                          fontFamily: "Poppins",
-                          color: AppColors.nutralBlack1),
+                      style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16.sp, fontFamily: "Poppins", color: AppColors.nutralBlack1),
                     ),
                     BorderButton(
                       text: "Add Line items",
@@ -200,14 +178,13 @@ class _InsertRouteBttomSheetState extends State<InsertRouteBttomSheet> {
                     fontFamily: "Poppins",
                     color: AppColors.nutralBlack2,
                   ),
-                ), Divider(
+                ),
+                Divider(
                   thickness: 1,
                   color: AppColors.white3,
                 ),
-
                 Padding(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+                  padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
                   child: Row(
                     children: [
                       Expanded(

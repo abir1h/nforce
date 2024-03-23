@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/routes/app_pages.dart';
-import 'package:nuforce/app/utils/extension_methods.dart';
 
 import '../../../../../shared/widgets/custom_appbar_minimal.dart';
 import '../../../../../shared/widgets/custom_dropdown.dart';
@@ -44,31 +43,19 @@ class _AddContactState extends State<AddContact> {
               SizedBox(
                 height: 16.h,
               ),
-              CustomTextField(
-                  label: "Name*",
-                  hint: "Enter Contact Name",
-                  controller: TextEditingController()),
+              CustomTextField(label: "Name*", hint: "Enter Contact Name", controller: TextEditingController()),
               SizedBox(
                 height: 16.h,
               ),
-              CustomTextField(
-                  label: "Ref Code",
-                  hint: "Enter code",
-                  controller: TextEditingController()),
+              CustomTextField(label: "Ref Code", hint: "Enter code", controller: TextEditingController()),
               Text(
                 'Internal Customer No or Ref Code',
-                style: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 12.sp,
-                    color: AppColors.nutralBlack2),
+                style: TextStyle(fontWeight: FontWeight.w400, fontSize: 12.sp, color: AppColors.nutralBlack2),
               ),
               SizedBox(
                 height: 16.h,
               ),
-              CustomTextField(
-                  label: "Company",
-                  hint: "Enter company name",
-                  controller: TextEditingController()),
+              CustomTextField(label: "Company", hint: "Enter company name", controller: TextEditingController()),
               SizedBox(
                 height: 16.h,
               ),
@@ -87,24 +74,16 @@ class _AddContactState extends State<AddContact> {
               SizedBox(
                 height: 16.h,
               ),
-              CustomTextField(
-                  label: "Email",
-                  hint: "Enter email address",
-                  controller: TextEditingController()),
+              CustomTextField(label: "Email", hint: "Enter email address", controller: TextEditingController()),
               Text(
                 'Active email address',
-                style: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 12.sp,
-                    color: AppColors.nutralBlack2),
+                style: TextStyle(fontWeight: FontWeight.w400, fontSize: 12.sp, color: AppColors.nutralBlack2),
               ),
               SizedBox(
                 height: 16.h,
               ),
-              CustomPhoneInput(
-                  label: "Phone Number ",
-                  hint: "Enter number",
-                  controller: TextEditingController()), SizedBox(
+              CustomPhoneInput(label: "Phone Number ", hint: "Enter number", controller: TextEditingController()),
+              SizedBox(
                 height: 16.h,
               ),
               Text(

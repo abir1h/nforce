@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/service_center/sub_modules/work_order_search/controllers/add_work_order_controller.dart';
 import 'package:nuforce/app/utils/colors.dart';
 
 import '../widgets/service_centre_search_card.dart';
@@ -28,14 +27,10 @@ class _WorkOrderScreenState extends State<WorkOrderScreen> {
             children: [
               Text(
                 "Total work order (20)",
-                style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14.sp,
-                    fontFamily: "Poppins",
-                    color: AppColors.nutralBlack1),
+                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14.sp, fontFamily: "Poppins", color: AppColors.nutralBlack1),
               ),
               GestureDetector(
-                onTap: () => Get.to(() =>  const AddWorkOrder()),
+                onTap: () => Get.to(() => const AddWorkOrder()),
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 5.h),
                   decoration: BoxDecoration(
@@ -52,11 +47,7 @@ class _WorkOrderScreenState extends State<WorkOrderScreen> {
                       ),
                       Text(
                         "Add New",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 14.sp,
-                            fontFamily: "Poppins",
-                            color: AppColors.primaryBlue1),
+                        style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14.sp, fontFamily: "Poppins", color: AppColors.primaryBlue1),
                       ),
                     ],
                   ),

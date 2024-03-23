@@ -12,8 +12,6 @@ import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/text_styles.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 
-import '../../../../service_center/sub_modules/calendar/widgets/add_schedule_bottomsheet.dart';
-
 class PaymentView extends StatefulWidget {
   const PaymentView({super.key});
 

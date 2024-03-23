@@ -101,7 +101,7 @@ class _AddPaymentState extends State<AddPayment> {
                     ),
                   ),
                   onInputChanged: (PhoneNumber number) {
-                    var phoneNumber = number.phoneNumber!;
+                    // var phoneNumber = number.phoneNumber!;
                   },
                   onInputValidated: (bool value) {},
                   selectorConfig: const SelectorConfig(

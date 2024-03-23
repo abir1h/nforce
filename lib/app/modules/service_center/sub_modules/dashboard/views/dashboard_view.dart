@@ -7,7 +7,6 @@ import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-import '../../../../business_manager/widgets/custome_pie_chart.dart';
 import '../controllers/dashboard_controller.dart';
 import '../widgets/dashboard_chart.dart';
 import '../widgets/user_progress_card.dart';
@@ -25,29 +24,18 @@ class DashboardView extends GetView<DashboardController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.w),
+                  padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.w),
                   decoration: const BoxDecoration(color: AppColors.white1),
                   child: Row(
                     children: [
                       Expanded(
-                        child: Text.rich(TextSpan(
-                            text: 'Report',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 16.sp,
-                                fontFamily: "Poppins",
-                                color: AppColors.nutralBlack1),
-                            children: <InlineSpan>[
-                              TextSpan(
-                                text: '(Dashboard & Colander )',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 16.sp,
-                                    fontFamily: "Poppins",
-                                    color: AppColors.nutralBlack1),
-                              )
-                            ])),
+                        child: Text.rich(
+                            TextSpan(text: 'Report', style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16.sp, fontFamily: "Poppins", color: AppColors.nutralBlack1), children: <InlineSpan>[
+                          TextSpan(
+                            text: '(Dashboard & Colander )',
+                            style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16.sp, fontFamily: "Poppins", color: AppColors.nutralBlack1),
+                          )
+                        ])),
                       ),
                       SvgPicture.asset(Assets.images.svg.calendarReport)
                     ],
@@ -90,9 +78,7 @@ class DashboardView extends GetView<DashboardController> {
                     padding: EdgeInsets.symmetric(
                       vertical: 16.h,
                     ),
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(8.r)),
+                    decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(8.r)),
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Column(
@@ -100,18 +86,11 @@ class DashboardView extends GetView<DashboardController> {
                         children: [
                           Text(
                             'Revenue Change',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 16.sp,
-                                fontFamily: "Poppins"),
+                            style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16.sp, fontFamily: "Poppins"),
                           ),
                           Text(
                             'Revenue change breakdown by cities',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 12.sp,
-                                fontFamily: "Poppins",
-                                color: AppColors.nutralBlack2),
+                            style: TextStyle(fontWeight: FontWeight.w400, fontSize: 12.sp, fontFamily: "Poppins", color: AppColors.nutralBlack2),
                           ),
                           SizedBox(
                             height: 10.h,
@@ -131,11 +110,7 @@ class DashboardView extends GetView<DashboardController> {
                   ),
                   child: Text(
                     "User Progress",
-                    style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 16.sp,
-                        fontFamily: 'Poppins',
-                        color: AppColors.nutralBlack1),
+                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16.sp, fontFamily: 'Poppins', color: AppColors.nutralBlack1),
                   ),
                 ),
                 SizedBox(

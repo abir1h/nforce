@@ -4,12 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/service_center/sub_modules/calendar/controllers/calendar_controller.dart';
-import 'package:nuforce/app/modules/settings/sub_modules/subscriptions/controller/subscription_controller.dart';
 import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
 import 'package:nuforce/app/utils/colors.dart';
 
 import '../../../../../../gen/assets.gen.dart';
-import '../../../../../routes/app_pages.dart';
 import '../../../../../shared/widgets/primary_button.dart';
 import '../../../../../shared/widgets/secondary_button.dart';
 import '../../../../../utils/text_styles.dart';
@@ -58,24 +56,13 @@ class _AddScheduleBottoMSheetState extends State<AddScheduleBottoMSheet> {
                   Center(
                     child: Text(
                       'Add New Schedule',
-                      style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 20.sp,
-                          color: AppColors.nutralBlack1),
+                      style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20.sp, color: AppColors.nutralBlack1),
                     ),
                   ),
                   SizedBox(height: 24.h),
-                  CustomTextField(
-                      label: "Schedule Name*",
-                      hint: 'AC Fixing Service',
-                      controller: TextEditingController()),
+                  CustomTextField(label: "Schedule Name*", hint: 'AC Fixing Service', controller: TextEditingController()),
                   SizedBox(height: 16.h),
-                  CustomTextField(
-                      label: "Schedule Note",
-                      hint:
-                          'Urna turpis ante nunc nibh amet enim nec. Placerat in turpis ultrices amet mauris.',
-                      maxLines: 3,
-                      controller: TextEditingController()),
+                  CustomTextField(label: "Schedule Note", hint: 'Urna turpis ante nunc nibh amet enim nec. Placerat in turpis ultrices amet mauris.', maxLines: 3, controller: TextEditingController()),
                   SizedBox(height: 16.h),
                   GestureDetector(
                     onTap: () {
@@ -146,8 +133,7 @@ class _AddScheduleBottoMSheetState extends State<AddScheduleBottoMSheet> {
                       ).then((value) {});
                     },
                     child: Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 16, vertical: 12),
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                       decoration: BoxDecoration(
                         color: AppColors.textFieldBackground,
                         borderRadius: BorderRadius.circular(6),
@@ -196,9 +182,11 @@ class _AddScheduleBottoMSheetState extends State<AddScheduleBottoMSheet> {
                           ),
                         ),
                       ),
-
                     ],
-                  ),SizedBox(height: 32.h,),
+                  ),
+                  SizedBox(
+                    height: 32.h,
+                  ),
                   Row(
                     children: [
                       Expanded(

@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
 
 class DashboardController extends GetxController {
   //TODO: Implement DashboardController
@@ -31,6 +30,7 @@ class DashboardController extends GetxController {
 
   void increment() => count.value++;
 }
+
 class ChartData {
   ChartData(this.x, this.y);
 

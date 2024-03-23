@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nuforce/app/utils/colors.dart';
 
-import '../../../../../../gen/assets.gen.dart';
 import '../../../../settings/widgets/text_card.dart';
 
 class ServiceCentreSearchCardLineItem extends StatelessWidget {
@@ -12,8 +11,7 @@ class ServiceCentreSearchCardLineItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8.r), color: AppColors.white1),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(8.r), color: AppColors.white1),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -26,19 +24,11 @@ class ServiceCentreSearchCardLineItem extends StatelessWidget {
                 children: [
                   Text(
                     "Insultation Blow over",
-                    style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 16.sp,
-                        fontFamily: "Poppins",
-                        color: AppColors.nutralBlack1),
+                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16.sp, fontFamily: "Poppins", color: AppColors.nutralBlack1),
                   ),
                   Text(
                     "27 Aug, 2023",
-                    style: TextStyle(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 14.sp,
-                        fontFamily: "Poppins",
-                        color: AppColors.nutralBlack2),
+                    style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14.sp, fontFamily: "Poppins", color: AppColors.nutralBlack2),
                   ),
                 ],
               ),

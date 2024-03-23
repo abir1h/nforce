@@ -5,10 +5,9 @@ import 'package:nuforce/app/modules/settings/sub_modules/route_suggestions/widge
 import 'package:nuforce/app/utils/colors.dart';
 
 import '../../../../../utils/text_styles.dart';
-import '../../expense/widgets/expense_view_bottomsheet.dart';
 
 class LocationCard extends StatelessWidget {
-   LocationCard({super.key});
+  LocationCard({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -44,10 +43,11 @@ class LocationCard extends StatelessWidget {
                 Text(
                   "John Williamson",
                   style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 18.sp,
-                      fontFamily: "Poppins",
-                      color: AppColors.nutralBlack1,),
+                    fontWeight: FontWeight.w600,
+                    fontSize: 18.sp,
+                    fontFamily: "Poppins",
+                    color: AppColors.nutralBlack1,
+                  ),
                 ),
                 SizedBox(
                   height: 4.h,
@@ -55,10 +55,11 @@ class LocationCard extends StatelessWidget {
                 Text(
                   "505 Carlton Pointe Dr #90Palmetto, Georgia(GA), 30268",
                   style: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 14.sp,
-                      fontFamily: "Poppins",
-                      color: AppColors.nutralBlack2,),
+                    fontWeight: FontWeight.w400,
+                    fontSize: 14.sp,
+                    fontFamily: "Poppins",
+                    color: AppColors.nutralBlack2,
+                  ),
                 ),
               ],
             ),
@@ -67,7 +68,7 @@ class LocationCard extends StatelessWidget {
             icon: const Icon(Icons.more_vert),
             itemBuilder: (context) => popupMenuItems,
             onSelected: (value) {
-              if(value==1){
+              if (value == 1) {
                 showCupertinoModalPopup<void>(
                   context: context,
                   barrierDismissible: true,
@@ -75,10 +76,13 @@ class LocationCard extends StatelessWidget {
                 );
               }
             },
-          ),        ],
+          ),
+        ],
       ),
     );
-  }  List<PopupMenuEntry<int>> popupMenuItems = [
+  }
+
+  final List<PopupMenuEntry<int>> popupMenuItems = [
     PopupMenuItem<int>(
       value: 1,
       child: Text(
@@ -97,7 +101,5 @@ class LocationCard extends StatelessWidget {
         ),
       ),
     ),
-
   ];
-
 }

@@ -6,11 +6,7 @@ import 'package:get/get.dart';
 import 'package:nuforce/app/modules/service_center/sub_modules/work_order/controllers/work_order_controller.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/gen/assets.gen.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
-
-import '../../../../business_manager/widgets/custome_pie_chart.dart';
 import '../widgets/work_order_card.dart';
-
 
 class WorkOrderView extends GetView<WorkOrderController> {
   const WorkOrderView({Key? key}) : super(key: key);
@@ -24,29 +20,18 @@ class WorkOrderView extends GetView<WorkOrderController> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                padding:
-                EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.w),
+                padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.w),
                 decoration: const BoxDecoration(color: AppColors.white1),
                 child: Row(
                   children: [
                     Expanded(
-                      child: Text.rich(TextSpan(
-                          text: 'Report',
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 16.sp,
-                              fontFamily: "Poppins",
-                              color: AppColors.nutralBlack1),
-                          children: <InlineSpan>[
-                            TextSpan(
-                              text: '(Dashboard & Colander )',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 16.sp,
-                                  fontFamily: "Poppins",
-                                  color: AppColors.nutralBlack1),
-                            )
-                          ])),
+                      child: Text.rich(
+                          TextSpan(text: 'Report', style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16.sp, fontFamily: "Poppins", color: AppColors.nutralBlack1), children: <InlineSpan>[
+                        TextSpan(
+                          text: '(Dashboard & Colander )',
+                          style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16.sp, fontFamily: "Poppins", color: AppColors.nutralBlack1),
+                        )
+                      ])),
                     ),
                     SvgPicture.asset(Assets.images.svg.calendarReport)
                   ],

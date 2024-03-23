@@ -7,8 +7,6 @@ import 'package:nuforce/gen/assets.gen.dart';
 
 import '../../../../../routes/app_pages.dart';
 import '../../../../../shared/widgets/custom_appbar_minimal.dart';
-import '../../../../../shared/widgets/custom_dropdown.dart';
-import '../../../../../shared/widgets/custom_text_field.dart';
 import '../../../../../shared/widgets/primary_button.dart';
 import '../../../../../shared/widgets/secondary_button.dart';
 import '../../../../../utils/colors.dart';
@@ -29,7 +27,7 @@ class _AddWorkOrderState extends State<AddWorkOrder> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-         return true;
+        return true;
       },
       child: SafeArea(
           child: Scaffold(
@@ -38,27 +36,27 @@ class _AddWorkOrderState extends State<AddWorkOrder> {
         appBar: const CustomAppbarMinimal(
           title: 'Add Estimation/Work Order',
         ),
-            floatingActionButton: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: SecondaryButton(
-                      onPressed:(){},
-                      text: 'Reset',
-                    ),
-                  ),
-                  const SizedBox(width: 15),
-                  Expanded(
-                    child: PrimaryButton(
-                      onPressed:()=> Get.toNamed(Routes.WORK_ORDER_SEARCH),
-                      text: 'Add',
-                    ),
-                  ),
-                ],
+        floatingActionButton: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+          child: Row(
+            children: [
+              Expanded(
+                child: SecondaryButton(
+                  onPressed: () {},
+                  text: 'Reset',
+                ),
               ),
-            ),
-            floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+              const SizedBox(width: 15),
+              Expanded(
+                child: PrimaryButton(
+                  onPressed: () => Get.toNamed(Routes.WORK_ORDER_SEARCH),
+                  text: 'Add',
+                ),
+              ),
+            ],
+          ),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         body: SingleChildScrollView(
           padding: EdgeInsets.symmetric(horizontal: 16.w),
           child: Column(
@@ -80,8 +78,7 @@ class _AddWorkOrderState extends State<AddWorkOrder> {
               ),
               GestureDetector(
                 onTap: () {
-                  controller.showSearchableDialog(context, controller.items,
-                      (selectedItem) {
+                  controller.showSearchableDialog(context, controller.items, (selectedItem) {
                     setState(() {
                       controller.selectedRegion = selectedItem;
                     });
@@ -89,21 +86,14 @@ class _AddWorkOrderState extends State<AddWorkOrder> {
                 },
                 child: Container(
                   width: 1.sw,
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 14.w, vertical: 14.h),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(6.r),
-                      color: Colors.white,
-                      border: Border.all(color: AppColors.greyStrokColor)),
+                  padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 14.h),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(6.r), color: Colors.white, border: Border.all(color: AppColors.greyStrokColor)),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
                         controller.selectedRegion ?? "Select One",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 14.sp,
-                            color: AppColors.nutralBlack2),
+                        style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14.sp, color: AppColors.nutralBlack2),
                       ),
                       SvgPicture.asset(Assets.images.svg.downArrow)
                     ],
@@ -126,8 +116,7 @@ class _AddWorkOrderState extends State<AddWorkOrder> {
               ),
               GestureDetector(
                 onTap: () {
-                  controller.showSearchableDialog(
-                      context, controller.itemsContact, (selectedItem) {
+                  controller.showSearchableDialog(context, controller.itemsContact, (selectedItem) {
                     setState(() {
                       controller.selectedContact = selectedItem;
                     });
@@ -135,28 +124,25 @@ class _AddWorkOrderState extends State<AddWorkOrder> {
                 },
                 child: Container(
                   width: 1.sw,
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 14.w, vertical: 14.h),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(6.r),
-                      color: Colors.white,
-                      border: Border.all(color: AppColors.greyStrokColor)),
+                  padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 14.h),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(6.r), color: Colors.white, border: Border.all(color: AppColors.greyStrokColor)),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
                         controller.selectedContact ?? "Select One",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 14.sp,
-                            color: AppColors.nutralBlack2),
+                        style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14.sp, color: AppColors.nutralBlack2),
                       ),
                       SvgPicture.asset(Assets.images.svg.downArrow)
                     ],
                   ),
                 ),
               ),
-              Text('Search customer contact by name',style: TextStyle(fontWeight: FontWeight.w400,fontSize: 12.sp,color:AppColors.nutralBlack2 ),),SizedBox(
+              Text(
+                'Search customer contact by name',
+                style: TextStyle(fontWeight: FontWeight.w400, fontSize: 12.sp, color: AppColors.nutralBlack2),
+              ),
+              SizedBox(
                 height: 16.h,
               ),
               Text(
@@ -172,8 +158,7 @@ class _AddWorkOrderState extends State<AddWorkOrder> {
               ),
               GestureDetector(
                 onTap: () {
-                  controller.showSearchableDialog(
-                      context, controller.itemsPackage, (selectedItem) {
+                  controller.showSearchableDialog(context, controller.itemsPackage, (selectedItem) {
                     setState(() {
                       controller.selectedPackage = selectedItem;
                     });
@@ -181,29 +166,27 @@ class _AddWorkOrderState extends State<AddWorkOrder> {
                 },
                 child: Container(
                   width: 1.sw,
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 14.w, vertical: 14.h),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(6.r),
-                      color: Colors.white,
-                      border: Border.all(color: AppColors.greyStrokColor)),
+                  padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 14.h),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(6.r), color: Colors.white, border: Border.all(color: AppColors.greyStrokColor)),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
                         controller.selectedPackage ?? "Select One",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 14.sp,
-                            color: AppColors.nutralBlack2),
+                        style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14.sp, color: AppColors.nutralBlack2),
                       ),
                       SvgPicture.asset(Assets.images.svg.downArrow)
                     ],
                   ),
                 ),
               ),
-              Text('Service package to copy line items for estimation (Optional)',style: TextStyle(fontWeight: FontWeight.w400,fontSize: 12.sp,color:AppColors.nutralBlack2 ),),
-              SizedBox(height: 16.h,),
+              Text(
+                'Service package to copy line items for estimation (Optional)',
+                style: TextStyle(fontWeight: FontWeight.w400, fontSize: 12.sp, color: AppColors.nutralBlack2),
+              ),
+              SizedBox(
+                height: 16.h,
+              ),
               ColoredCheckboxWithTitle(
                 color: AppColors.primaryBlue1,
                 isSelected: true,

@@ -53,27 +53,31 @@ class _ContactCenterViewState extends State<ContactCenterView> {
         ],
       ),
       body: controller.contactCenter != null
-          ? SingleChildScrollView(padding: EdgeInsets.symmetric(vertical: 20.h,horizontal: 20.h),
-              child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+          ? SingleChildScrollView(
+              padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 20.h),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    controller.contactCenter!.title!??"",
+                    controller.contactCenter?.title ?? "",
                     style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 20.sp,
-                        fontFamily: "Poppins",
-                        color: AppColors.nutralBlack1,),
+                      fontWeight: FontWeight.w600,
+                      fontSize: 20.sp,
+                      fontFamily: "Poppins",
+                      color: AppColors.nutralBlack1,
+                    ),
                   ),
                   SizedBox(
                     height: 16.h,
                   ),
                   Text(
-                    controller.contactCenter!.description!??"",
+                    controller.contactCenter?.description ?? "",
                     style: TextStyle(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 16.sp,
-                        fontFamily: "Poppins",
-                        color: AppColors.nutralBlack2,),
+                      fontWeight: FontWeight.w400,
+                      fontSize: 16.sp,
+                      fontFamily: "Poppins",
+                      color: AppColors.nutralBlack2,
+                    ),
                   ),
                   SizedBox(
                     height: 24.h,
@@ -89,12 +93,13 @@ class _ContactCenterViewState extends State<ContactCenterView> {
                         width: 12.w,
                       ),
                       Text(
-                        controller.contactCenter!.officeName!??"",
+                        controller.contactCenter?.officeName ?? "",
                         style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 16.sp,
-                            fontFamily: "Poppins",
-                            color: AppColors.nutralBlack1,),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16.sp,
+                          fontFamily: "Poppins",
+                          color: AppColors.nutralBlack1,
+                        ),
                       ),
                     ],
                   ),
@@ -108,12 +113,13 @@ class _ContactCenterViewState extends State<ContactCenterView> {
                         width: 12.w,
                       ),
                       Text(
-                        controller.contactCenter!.officeAdress!??"",
+                        controller.contactCenter?.officeAdress ?? "",
                         style: TextStyle(
                           fontWeight: FontWeight.w400,
                           fontSize: 16.sp,
                           fontFamily: "Poppins",
-                          color: AppColors.nutralBlack2,),
+                          color: AppColors.nutralBlack2,
+                        ),
                       ),
                     ],
                   ),
@@ -127,12 +133,13 @@ class _ContactCenterViewState extends State<ContactCenterView> {
                         width: 12.w,
                       ),
                       Text(
-                        controller.contactCenter!.phoneNumber!??"",
+                        controller.contactCenter?.phoneNumber ?? "",
                         style: TextStyle(
                           fontWeight: FontWeight.w400,
                           fontSize: 16.sp,
                           fontFamily: "Poppins",
-                          color: AppColors.nutralBlack2,),
+                          color: AppColors.nutralBlack2,
+                        ),
                       ),
                     ],
                   ),
@@ -146,12 +153,13 @@ class _ContactCenterViewState extends State<ContactCenterView> {
                         width: 12.w,
                       ),
                       Text(
-                        controller.contactCenter!.email!??"",
+                        controller.contactCenter?.email ?? "",
                         style: TextStyle(
                           fontWeight: FontWeight.w400,
                           fontSize: 16.sp,
                           fontFamily: "Poppins",
-                          color: AppColors.nutralBlack2,),
+                          color: AppColors.nutralBlack2,
+                        ),
                       ),
                     ],
                   ),
@@ -177,10 +185,11 @@ class _ContactCenterViewState extends State<ContactCenterView> {
                         child: Text(
                           'Empty Data',
                           style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 16.sp,
-                              color: AppColors.nutralBlack2,
-                              fontFamily: 'Poppins',),
+                            fontWeight: FontWeight.w600,
+                            fontSize: 16.sp,
+                            color: AppColors.nutralBlack2,
+                            fontFamily: 'Poppins',
+                          ),
                         ),
                       ),
                     ],
@@ -190,8 +199,7 @@ class _ContactCenterViewState extends State<ContactCenterView> {
                   height: 50.h,
                 ),
                 Padding(
-                  padding:
-                      EdgeInsets.only(bottom: 24.h, left: 20.w, right: 20.w),
+                  padding: EdgeInsets.only(bottom: 24.h, left: 20.w, right: 20.w),
                   child: PrimaryButton(
                     onPressed: () {
                       Get.to<void>(const AddContactCenterView());

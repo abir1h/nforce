@@ -129,8 +129,7 @@ class _AddExpenseViewScreenState extends State<AddExpenseViewScreen> {
                         lastDate: DateTime.now().add(const Duration(days: 365)),
                       ).then((value) {
                         setState(() {
-                          selectedDate =
-                              '${value!.day}-${value.month}-${value.year}';
+                          selectedDate = '${value!.day}-${value.month}-${value.year}';
                         });
                       });
                     },
@@ -159,7 +158,7 @@ class _AddExpenseViewScreenState extends State<AddExpenseViewScreen> {
                           child: Row(
                             children: [
                               Text(
-                                selectedDate ?? 'DD-MM-YYYY',
+                                selectedDate,
                                 style: TextStyle(
                                   color: AppColors.subText,
                                   fontSize: 16.sp,
@@ -299,7 +298,8 @@ class _AddExpenseViewScreenState extends State<AddExpenseViewScreen> {
                   ),
                 ),
               ],
-            ),SizedBox(
+            ),
+            SizedBox(
               height: 70.h,
             ),
           ],

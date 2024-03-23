@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:nuforce/app/modules/settings/sub_modules/route_suggestions/view/properties_tab.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 import '../../../../../shared/widgets/custom_appbar_minimal.dart';
 import '../../../../../utils/colors.dart';
@@ -39,8 +38,9 @@ class _RouteSuggestionScreenState extends State<RouteSuggestionScreen> {
               height: 1.sh,
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    topRight: Radius.circular(20),),
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
+                ),
                 color: AppColors.textFieldBackground,
               ),
               child: DefaultTabController(
@@ -65,22 +65,22 @@ class _RouteSuggestionScreenState extends State<RouteSuggestionScreen> {
                     ),
                     Container(
                       width: 1.sw,
-                      decoration:
-                          const BoxDecoration(color: AppColors.tabbarColor),
+                      decoration: const BoxDecoration(color: AppColors.tabbarColor),
                       child: TabBar(
                         labelStyle: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 16.sp,
-                            fontFamily: 'Poppins',),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16.sp,
+                          fontFamily: 'Poppins',
+                        ),
                         indicatorColor: AppColors.nutralBlack1,
                         unselectedLabelColor: AppColors.nutralBlack2,
                         unselectedLabelStyle: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 16.sp,
-                            fontFamily: 'Poppins',),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16.sp,
+                          fontFamily: 'Poppins',
+                        ),
                         indicator: const BoxDecoration(
-                          color: AppColors
-                              .primaryBlue1, // Set the overlay color for the selected tab
+                          color: AppColors.primaryBlue1, // Set the overlay color for the selected tab
                         ), // Set the indicator color here
                         tabs: const [
                           Tab(
@@ -96,10 +96,10 @@ class _RouteSuggestionScreenState extends State<RouteSuggestionScreen> {
                       child: TabBarView(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 20),
-                            child: Column(children: [
-                              LocationCard()
-                            ],),
+                            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                            child: Column(
+                              children: [LocationCard()],
+                            ),
                           ),
                           Container(),
                         ],
@@ -114,5 +114,4 @@ class _RouteSuggestionScreenState extends State<RouteSuggestionScreen> {
       ),
     );
   }
-
 }
