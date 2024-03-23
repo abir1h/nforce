@@ -8,8 +8,9 @@ import 'package:nuforce/app/modules/business_manager/sub_modules/service_categor
 import 'package:nuforce/app/modules/business_manager/sub_modules/service_region/business_manager_service_region_view.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/service_topic/business_manager_service_topic_view.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/terms_and_policy/business_manager_terms_and_policy_view.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/user_roles/user_roles_view.dart';
-import 'package:nuforce/app/modules/business_manager/views/business_manager_profile_view.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/organization_roles/controllers/organization_role_controller.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/organization_roles/organization_roles_view.dart';
+import 'package:nuforce/app/modules/business_manager/views/organization_profile_view.dart';
 import 'package:nuforce/app/modules/business_manager/widgets/big_button_with_icon.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
@@ -39,7 +40,7 @@ class OrganizationView extends StatelessWidget {
                 svgPath: Assets.images.svg.profile,
                 lable: 'Profile',
                 onTap: () {
-                  Get.to<void>(() => const BusinessManagerProfileView());
+                  Get.to<void>(() => const OrganizationProfileView());
                 },
               ),
               const SizedBox(height: 16),
@@ -47,6 +48,14 @@ class OrganizationView extends StatelessWidget {
                 svgPath: Assets.images.svg.userRoles,
                 lable: 'User Roles',
                 onTap: () {
+                  late final OrganizationRoleController orgRoleController;
+                  if (OrganizationRoleController().initialized) {
+                    orgRoleController = Get.find<OrganizationRoleController>();
+                    orgRoleController.getData();
+                  } else {
+                    orgRoleController = Get.put(OrganizationRoleController());
+                    orgRoleController.getData();
+                  }
                   Get.to<void>(() => const UserRolesView());
                 },
               ),

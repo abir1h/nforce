@@ -86,7 +86,7 @@ class _TagsInputFieldState extends State<TagsInputField> {
             // });
           },
           onSelected: (String selectedTag) {
-            _controller.addTag = selectedTag;
+            _controller.addTag(selectedTag);
           },
           fieldViewBuilder: (context, ttec, tfn, onFieldSubmitted) {
             return TextFieldTags(
@@ -100,87 +100,82 @@ class _TagsInputFieldState extends State<TagsInputField> {
               ],
               textSeparators: const [' ', ','],
               letterCase: LetterCase.normal,
-              inputfieldBuilder: (context, tec, fn, error, onChanged, onSubmitted) {
-                return (context, sc, tags, onTagDelete) {
-                  return TextField(
-                    controller: tec,
-                    focusNode: fn,
-                    decoration: InputDecoration(
-                      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                      border: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: AppColors.greyText,
-                        ),
-                        borderRadius: BorderRadius.circular(6),
+              inputFieldBuilder: (context, inputFieldValues) {
+                return TextField(
+                  decoration: InputDecoration(
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(
+                        color: AppColors.greyText,
                       ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: AppColors.greyText,
-                        ),
-                        borderRadius: BorderRadius.circular(6),
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(
+                        color: AppColors.greyText,
                       ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: AppColors.primaryBlue1,
-                        ),
-                        borderRadius: BorderRadius.circular(6),
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(
+                        color: AppColors.primaryBlue1,
                       ),
-                      hintText: _controller.hasTags ? '' : 'Enter tags',
-                      errorText: error,
-                      prefixIconConstraints: BoxConstraints(maxWidth: _distanceToField * 0.74),
-                      prefixIcon: tags.isNotEmpty
-                          ? Padding(
-                              padding: EdgeInsets.only(left: 16.sp),
-                              child: SingleChildScrollView(
-                                controller: sc,
-                                scrollDirection: Axis.horizontal,
-                                child: Row(
-                                  children: tags.map((String tag) {
-                                    return Container(
-                                      decoration: const BoxDecoration(
-                                        borderRadius: BorderRadius.all(Radius.circular(4)),
-                                        color: AppColors.white2,
-                                      ),
-                                      margin: const EdgeInsets.only(right: 5),
-                                      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-                                      child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          InkWell(
-                                            child: const Icon(
-                                              Icons.close,
-                                              size: 18,
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    prefixIconConstraints: BoxConstraints(maxWidth: _distanceToField * 0.74),
+                    prefixIcon: inputFieldValues.tags.isNotEmpty
+                        ? Padding(
+                            padding: EdgeInsets.only(left: 16.sp),
+                            child: SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Row(
+                                children: inputFieldValues.tags.map<Widget>((dynamic tag) {
+                                  return Container(
+                                    decoration: const BoxDecoration(
+                                      borderRadius: BorderRadius.all(Radius.circular(4)),
+                                      color: AppColors.white2,
+                                    ),
+                                    margin: const EdgeInsets.only(right: 5),
+                                    padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        InkWell(
+                                          child: const Icon(
+                                            Icons.close,
+                                            size: 18,
+                                            color: AppColors.subText,
+                                          ),
+                                          onTap: () {
+                                            // onTagDelete(tag);
+                                            inputFieldValues.tags.remove(tag);
+                                            setState(() {});
+                                          },
+                                        ),
+                                        const SizedBox(width: 4),
+                                        InkWell(
+                                          child: Text(
+                                            tag,
+                                            style: const TextStyle(
                                               color: AppColors.subText,
                                             ),
-                                            onTap: () {
-                                              onTagDelete(tag);
-                                            },
                                           ),
-                                          const SizedBox(width: 4),
-                                          InkWell(
-                                            child: Text(
-                                              tag,
-                                              style: const TextStyle(
-                                                color: AppColors.subText,
-                                              ),
-                                            ),
-                                            onTap: () {
-                                              //print("$tag selected");
-                                            },
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  }).toList(),
-                                ),
+                                          onTap: () {
+                                            //print("$tag selected");
+                                          },
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                }).toList(),
                               ),
-                            )
-                          : null,
-                    ),
-                    onChanged: onChanged,
-                    onSubmitted: onSubmitted,
-                  );
-                };
+                            ),
+                          )
+                        : null,
+                  ),
+                  onChanged: inputFieldValues.onChanged,
+                  onSubmitted: inputFieldValues.onSubmitted,
+                );
               },
             );
           },

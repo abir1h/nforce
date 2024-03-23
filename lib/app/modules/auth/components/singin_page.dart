@@ -142,7 +142,7 @@ class _SignInPageState extends State<SignInPage> {
                             password: passwordController.text,
                           );
                         },
-                        text: 'Sing In',
+                        text: 'Sign In',
                       ),
                     const SizedBox(height: 15),
                     PrimaryButton(
@@ -172,9 +172,11 @@ class _SignInPageState extends State<SignInPage> {
                     ),
                     const SizedBox(width: 4),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        controller.changeTabIndex(1);
+                      },
                       child: Text(
-                        'Get Started',
+                        'Sign Up',
                         style: TextStyle(
                           color: AppColors.primaryBlue1,
                           fontWeight: FontWeight.w500,

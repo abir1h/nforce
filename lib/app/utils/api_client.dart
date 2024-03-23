@@ -35,10 +35,12 @@ class ApiClient {
   Future<Response> get({
     required String url,
     Map<String, dynamic>? params,
+    Map<String, dynamic>? data,
   }) async {
     final response = await dio.get(
       url,
       queryParameters: params,
+      data: data,
     );
     developer.log('URL: $url', name: 'API');
     developer.log('params: $params', name: 'API');

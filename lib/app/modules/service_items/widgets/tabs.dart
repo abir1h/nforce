@@ -5,8 +5,8 @@ import 'package:nuforce/app/shared/widgets/custom_tabbar_filled.dart';
 
 class ServiceMiniTabs extends StatelessWidget {
   const ServiceMiniTabs({
-    super.key,
     required this.controller,
+    super.key,
   });
 
   final ServiceItemsController controller;

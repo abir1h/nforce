@@ -3,6 +3,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/auth/components/new_login_form_widget.dart';
 import 'package:nuforce/app/modules/auth/components/recent_login_tile.dart';
+import 'package:nuforce/app/modules/auth/controllers/agent_customer_auth_controller.dart';
+import 'package:nuforce/app/routes/app_pages.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/shared/widgets/custom_tabbar.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
@@ -11,11 +13,8 @@ import 'package:nuforce/app/utils/text_styles.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 import 'package:nuforce/main.dart';
 
-import '../controllers/auth_controller.dart';
-
-class AgentCustomerLoginView extends GetView<AuthController> {
-
-  const AgentCustomerLoginView({Key? key}) : super(key: key);
+class AgentCustomerLoginView extends StatelessWidget {
+  const AgentCustomerLoginView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,7 +73,6 @@ class AgentCustomerLoginView extends GetView<AuthController> {
                 const SizedBox(height: 50),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     SvgPicture.asset(Assets.images.svg.nuforceLogo),
                     const SizedBox(height: 24),
@@ -100,25 +98,29 @@ class AgentCustomerLoginView extends GetView<AuthController> {
                 Row(
                   children: [
                     Expanded(
-                      child: Obx(
-                        () => CustomTabBar(
-                          isSelected: controller.agentCustomerAuthController.tabIndex.value == 0,
-                          onTap: () {
-                            controller.agentCustomerAuthController.tabIndex.value = 0;
-                          },
-                          text: 'Recent Login',
-                        ),
+                      child: GetBuilder<AgentCustomerAuthController>(
+                        builder: (controller) {
+                          return CustomTabBar(
+                            isSelected: controller.tabIndex == 0,
+                            onTap: () {
+                              controller.changeTabIndex(0);
+                            },
+                            text: 'Recent Login',
+                          );
+                        },
                       ),
                     ),
                     Expanded(
-                      child: Obx(
-                        () => CustomTabBar(
-                          isSelected: controller.agentCustomerAuthController.tabIndex.value == 1,
-                          onTap: () {
-                            controller.agentCustomerAuthController.tabIndex.value = 1;
-                          },
-                          text: 'New Login',
-                        ),
+                      child: GetBuilder<AgentCustomerAuthController>(
+                        builder: (controller) {
+                          return CustomTabBar(
+                            isSelected: controller.tabIndex == 1,
+                            onTap: () {
+                              controller.changeTabIndex(1);
+                            },
+                            text: 'New Login',
+                          );
+                        },
                       ),
                     ),
                   ],
@@ -126,22 +128,28 @@ class AgentCustomerLoginView extends GetView<AuthController> {
                 const SizedBox(height: 24),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
-                  child: Obx(
-                    () => controller.agentCustomerAuthController.tabIndex.value == 0
-                        ? SizedBox(
-                            child: ListView.builder(
-                              shrinkWrap: true,
-                              itemCount: 2,
-                              physics: const NeverScrollableScrollPhysics(),
-                              itemBuilder: (context, index) {
-                                return const Padding(
-                                  padding: EdgeInsets.only(bottom: 10),
-                                  child: RecentLoginTile(),
-                                );
-                              },
-                            ),
-                          )
-                        : const NewLoginFormWidget(),
+                  child: GetBuilder<AgentCustomerAuthController>(
+                    builder: (controller) {
+                      return controller.tabIndex == 0
+                          ? SizedBox(
+                              child: ListView.builder(
+                                shrinkWrap: true,
+                                itemCount: 2,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemBuilder: (context, index) {
+                                  return Padding(
+                                    padding: const EdgeInsets.only(bottom: 10),
+                                    child: RecentLoginTile(
+                                      onTap: () {
+                                        Get.offAllNamed<void>(Routes.CUSTOMER);
+                                      },
+                                    ),
+                                  );
+                                },
+                              ),
+                            )
+                          : const NewLoginFormWidget();
+                    },
                   ),
                 ),
               ],

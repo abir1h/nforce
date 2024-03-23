@@ -15,6 +15,18 @@ import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/shared_preferences.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 
+import '../sub_modules/addons/view/addons_view.dart';
+import '../sub_modules/calendar_sync/views/calendar_sync.dart';
+import '../sub_modules/chat/view/chat_screen.dart';
+import '../sub_modules/contact_center/view/contact_center_view.dart';
+import '../sub_modules/expense/view/expense_view_screen.dart';
+import '../sub_modules/faq/view/faq_view.dart';
+import '../sub_modules/privacy_terms/privacy_policy_screen.dart';
+import '../sub_modules/privacy_terms/terms_contdition.dart';
+import '../sub_modules/refer/refer_screen.dart';
+import '../sub_modules/route_suggestions/view/route_suggestion_screen.dart';
+import '../sub_modules/terms_policy/view/terms_policy_screen.dart';
+
 class SettingsView extends GetView<SettingsController> {
   const SettingsView({super.key});
   @override
@@ -26,7 +38,12 @@ class SettingsView extends GetView<SettingsController> {
         backgroundColor: AppColors.white1,
         title: Text(
           'Settings',
-          style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18.sp, fontFamily: 'Poppins', color: AppColors.nutralBlack1),
+          style: TextStyle(
+            fontWeight: FontWeight.w500,
+            fontSize: 18.sp,
+            fontFamily: 'Poppins',
+            color: AppColors.nutralBlack1,
+          ),
         ),
         centerTitle: true,
       ),
@@ -36,18 +53,6 @@ class SettingsView extends GetView<SettingsController> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'General',
-              style: TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 14.sp,
-                fontFamily: 'Poppins',
-                color: AppColors.nutralBlack1,
-              ),
-            ),
-            SizedBox(
-              height: 8.h,
-            ),
             Container(
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -64,9 +69,22 @@ class SettingsView extends GetView<SettingsController> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Text(
+                      'General',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14.sp,
+                        fontFamily: 'Poppins',
+                        color: AppColors.nutralBlack1,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 8.h,
+                    ),
                     SettingTile(
                       leading: Assets.images.png.accountInfo.keyName,
-                      onTap: () => Get.to<void>(() => const AccountInformationView()),
+                      onTap: () =>
+                          Get.to<void>(() => const AccountInformationView()),
                       label: 'Account Information',
                       hasDivider: true,
                     ),
@@ -90,19 +108,14 @@ class SettingsView extends GetView<SettingsController> {
                     ),
                     SettingTile(
                       leading: Assets.images.png.expenseTracking.keyName,
-                      onTap: () {},
-                      label: 'Expense Tracking',
-                      hasDivider: true,
-                    ),
-                    SettingTile(
-                      leading: Assets.images.png.offlinePayments.keyName,
-                      onTap: () {},
+                      onTap: () => Get.to<void>(() => const ExpenseView()),
                       label: 'Expense Tracking',
                       hasDivider: true,
                     ),
                     SettingTile(
                       leading: Assets.images.png.customFields.keyName,
-                      onTap: () => Get.to<void>(() => const CustomFieldSettingsView()),
+                      onTap: () =>
+                          Get.to<void>(() => const CustomFieldSettingsView()),
                       label: 'Custom Fields',
                       hasDivider: true,
                     ),
@@ -114,7 +127,7 @@ class SettingsView extends GetView<SettingsController> {
                     ),
                     SettingTile(
                       leading: Assets.images.png.subscription.keyName,
-                      onTap: () {},
+                      onTap: () => Get.to<void>(() => const AddonsView()),
                       label: 'Plugins',
                       hasDivider: true,
                     ),
@@ -131,18 +144,6 @@ class SettingsView extends GetView<SettingsController> {
             SizedBox(
               height: 16.h,
             ),
-            Text(
-              'Team Management',
-              style: TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 14.sp,
-                fontFamily: 'Poppins',
-                color: AppColors.nutralBlack1,
-              ),
-            ),
-            SizedBox(
-              height: 8.h,
-            ),
             Container(
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -159,6 +160,18 @@ class SettingsView extends GetView<SettingsController> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Text(
+                      'Team Management',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14.sp,
+                        fontFamily: 'Poppins',
+                        color: AppColors.nutralBlack1,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 8.h,
+                    ),
                     SettingTile(
                       leading: Assets.images.png.teamSettings.keyName,
                       onTap: () {},
@@ -173,13 +186,13 @@ class SettingsView extends GetView<SettingsController> {
                     ),
                     SettingTile(
                       leading: Assets.images.png.calendarSync.keyName,
-                      onTap: () {},
+                      onTap: () => Get.to<void>(() => const CalendarSyncView()),
                       label: 'Calendar Sync',
                       hasDivider: true,
                     ),
                     SettingTile(
                       leading: Assets.images.png.routeSuggestions.keyName,
-                      onTap: () {},
+                      onTap: () => Get.to<void>(() => const RouteSuggestionScreen()),
                       label: 'Route Suggestions',
                       hasDivider: true,
                     ),
@@ -196,18 +209,6 @@ class SettingsView extends GetView<SettingsController> {
             SizedBox(
               height: 16.h,
             ),
-            Text(
-              'Integrations',
-              style: TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 14.sp,
-                fontFamily: 'Poppins',
-                color: AppColors.nutralBlack1,
-              ),
-            ),
-            SizedBox(
-              height: 8.h,
-            ),
             Container(
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -224,6 +225,18 @@ class SettingsView extends GetView<SettingsController> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Text(
+                      'Integrations',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14.sp,
+                        fontFamily: 'Poppins',
+                        color: AppColors.nutralBlack1,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 8.h,
+                    ),
                     SettingTile(
                       leading: Assets.images.png.webhookIntegration.keyName,
                       onTap: () {},
@@ -243,18 +256,6 @@ class SettingsView extends GetView<SettingsController> {
             SizedBox(
               height: 16.h,
             ),
-            Text(
-              'Affiliation',
-              style: TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 14.sp,
-                fontFamily: 'Poppins',
-                color: AppColors.nutralBlack1,
-              ),
-            ),
-            SizedBox(
-              height: 8.h,
-            ),
             Container(
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -271,9 +272,21 @@ class SettingsView extends GetView<SettingsController> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Text(
+                      'Affiliation',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14.sp,
+                        fontFamily: 'Poppins',
+                        color: AppColors.nutralBlack1,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 8.h,
+                    ),
                     SettingTile(
                       leading: Assets.images.png.refer.keyName,
-                      onTap: () {},
+                      onTap: () => Get.to<void>(() => const ReferScreen()),
                       label: 'Refer a Friend',
                       hasDivider: true,
                     ),
@@ -290,18 +303,6 @@ class SettingsView extends GetView<SettingsController> {
             SizedBox(
               height: 16.h,
             ),
-            Text(
-              'Messaging',
-              style: TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 14.sp,
-                fontFamily: 'Poppins',
-                color: AppColors.nutralBlack1,
-              ),
-            ),
-            SizedBox(
-              height: 8.h,
-            ),
             Container(
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -318,9 +319,21 @@ class SettingsView extends GetView<SettingsController> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Text(
+                      'Messaging',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14.sp,
+                        fontFamily: 'Poppins',
+                        color: AppColors.nutralBlack1,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 8.h,
+                    ),
                     SettingTile(
                       leading: Assets.images.png.contactCenter.keyName,
-                      onTap: () {},
+                      onTap: () => Get.to<void>(() => const ContactCenterView()),
                       label: 'Contact Center',
                       hasDivider: true,
                     ),
@@ -337,18 +350,6 @@ class SettingsView extends GetView<SettingsController> {
             SizedBox(
               height: 16.h,
             ),
-            Text(
-              'Help & Support',
-              style: TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 14.sp,
-                fontFamily: 'Poppins',
-                color: AppColors.nutralBlack1,
-              ),
-            ),
-            SizedBox(
-              height: 8.h,
-            ),
             Container(
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -365,6 +366,18 @@ class SettingsView extends GetView<SettingsController> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Text(
+                      'Help & Support',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14.sp,
+                        fontFamily: 'Poppins',
+                        color: AppColors.nutralBlack1,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 8.h,
+                    ),
                     SettingTile(
                       leading: Assets.images.png.quickConsultation.keyName,
                       onTap: () {},
@@ -373,26 +386,31 @@ class SettingsView extends GetView<SettingsController> {
                     ),
                     SettingTile(
                       leading: Assets.images.png.requests.keyName,
-                      onTap: () {},
+                      onTap: () => Get.to<void>(() => const FaqView()),
                       label: 'FAQs',
                       hasDivider: true,
                     ),
                     SettingTile(
                       leading: Assets.images.png.chatWithUs.keyName,
-                      onTap: () {},
+                      onTap: () => Get.to<void>(() => const ChatScreen()),
                       label: 'Chat with us',
                       hasDivider: true,
                     ),
                     SettingTile(
                       leading: Assets.images.png.privacy.keyName,
-                      onTap: () {},
+                      onTap: () => Get.to<void>(() => const PrivacyPolicyScreen()),
                       label: 'Privacy',
                       hasDivider: true,
                     ),
                     SettingTile(
                       leading: Assets.images.png.terms.keyName,
-                      onTap: () {},
+                      onTap: () => Get.to<void>(() => const TermsCondtionScreen()),
                       label: 'Terms & Conditions',
+                      hasDivider: false,
+                    ), SettingTile(
+                      leading: Assets.images.png.terms.keyName,
+                      onTap: () => Get.to<void>(() => const TermsPolicyScreen()),
+                      label: 'Terms & policy',
                       hasDivider: false,
                     ),
                   ],
@@ -451,6 +469,9 @@ class SettingsView extends GetView<SettingsController> {
                   color: AppColors.greyText,
                 ),
               ),
+            ),
+            SizedBox(
+              height: 32.h,
             ),
           ],
         ),

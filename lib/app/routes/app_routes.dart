@@ -15,6 +15,15 @@ abstract class Routes {
   static const SERVICE_ITEMS = _Paths.SERVICE_ITEMS;
   static const BUSINESS_MANAGER = _Paths.BUSINESS_MANAGER;
   static const SETTINGS = _Paths.SETTINGS;
+  static const CUSTOMER = _Paths.CUSTOMER;
+  static const CUSTOMER_WORK_ORDER = _Paths.CUSTOMER + _Paths.CUSTOMER_WORK_ORDER;
+  static const SERVICE_CENTER = _Paths.SERVICE_CENTER;
+  static const DASHBOARD = _Paths.SERVICE_CENTER + _Paths.DASHBOARD;
+  static const WORK_ORDER = _Paths.SERVICE_CENTER + _Paths.WORK_ORDER;
+  static const WORK_ORDER_SEARCH = _Paths.SERVICE_CENTER + _Paths.WORK_ORDER_SEARCH;
+  static const CALENDAR = _Paths.SERVICE_CENTER + _Paths.CALENDAR;
+  static const SERVICE_CENTER_MAPS = _Paths.SERVICE_CENTER + _Paths.SERVICE_CENTER_MAPS;
+  static const LINE_ITEM = _Paths.LINE_ITEM;
 }
 
 abstract class _Paths {
@@ -31,4 +40,13 @@ abstract class _Paths {
   static const SERVICE_ITEMS = '/service-items';
   static const BUSINESS_MANAGER = '/business-manager';
   static const SETTINGS = '/settings';
+  static const CUSTOMER = '/customer';
+  static const CUSTOMER_WORK_ORDER = '/customer-work-order';
+  static const SERVICE_CENTER = '/service-center';
+  static const LINE_ITEM = '/line-item';
+  static const DASHBOARD = '/dashboard';
+  static const WORK_ORDER = '/work-order';
+  static const WORK_ORDER_SEARCH = '/work-order-search';
+  static const CALENDAR = '/calendar';
+  static const SERVICE_CENTER_MAPS = '/service-center-maps';
 }

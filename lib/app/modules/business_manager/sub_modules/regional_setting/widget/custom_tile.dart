@@ -7,10 +7,12 @@ class CustomTile extends StatelessWidget {
     required this.lable,
     required this.onTap,
     super.key,
+    this.hasTraillingIcon = true,
   });
 
   final String lable;
   final VoidCallback onTap;
+  final bool? hasTraillingIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -35,10 +37,12 @@ class CustomTile extends StatelessWidget {
                 fontWeight: FontWeight.w400,
               ),
             ),
-            const Icon(
-              Icons.arrow_forward_ios,
-              size: 14,
-            ),
+            hasTraillingIcon == false
+                ? const SizedBox()
+                : const Icon(
+                    Icons.arrow_forward_ios,
+                    size: 14,
+                  ),
           ],
         ),
       ),

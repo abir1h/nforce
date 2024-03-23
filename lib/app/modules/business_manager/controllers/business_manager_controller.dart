@@ -15,11 +15,11 @@ import 'package:nuforce/app/modules/business_manager/sub_modules/service_categor
 import 'package:nuforce/app/modules/business_manager/sub_modules/service_region/business_manager_service_region_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/service_topic/business_manager_service_topic_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/terms_and_policy/business_manager_terms_and_policy_controller.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/user_roles/user_roles_controller.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/organization_roles/controllers/organization_role_controller.dart';
 
 class BusinessManagerController extends GetxController {
   RxString selectedValue = '7 days'.obs;
-  final userRolesController = Get.put(UserRolesController());
+  final userRolesController = Get.put(OrganizationRoleController());
   final businessManagerCalendarController = Get.put(BusinessManagerCalendarController());
   final regionalSettingController = Get.put(RegionalSettingController());
   final calendarSettingController = Get.put(CalenderSettingController());

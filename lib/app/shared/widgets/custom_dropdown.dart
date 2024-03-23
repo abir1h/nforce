@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/text_styles.dart';
 
-class CustomDropdownButton extends StatelessWidget {
+class CustomDropdownButton<T> extends StatelessWidget {
   const CustomDropdownButton({
     required this.items,
     required this.hint,
@@ -13,9 +13,26 @@ class CustomDropdownButton extends StatelessWidget {
     super.key,
     this.label,
   });
-  final List<DropdownMenuItem> items;
+
+  CustomDropdownButton copyWith({
+    List<DropdownMenuItem<T>>? items,
+    String? hint,
+    void Function(T?)? onChanged,
+    T? value,
+    String? label,
+  }) {
+    return CustomDropdownButton<T>(
+      items: items ?? this.items,
+      hint: hint ?? this.hint,
+      onChanged: onChanged ?? this.onChanged,
+      value: value ?? this.value,
+      label: label ?? this.label,
+    );
+  }
+
+  final List<DropdownMenuItem<T>> items;
   final String hint;
-  final Function(dynamic)? onChanged;
+  final void Function(T?)? onChanged;
   final dynamic value;
   final String? label;
 
@@ -42,7 +59,7 @@ class CustomDropdownButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(6),
             border: Border.all(color: AppColors.greyText),
           ),
-          child: DropdownButton(
+          child: DropdownButton<T>(
             hint: Text(
               hint,
               style: const TextStyle(

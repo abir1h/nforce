@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -34,10 +33,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                           shape: BoxShape.circle,
                         ),
                         child: controller.user?.photoUrl != null
-                            ? CachedNetworkImage(
-                                imageUrl: controller.user!.photoUrl!,
-                                placeholder: (context, url) => const CircularProgressIndicator.adaptive(),
-                                errorWidget: (context, url, error) => Image.asset(Assets.images.png.profilePlaceholderMale.path),
+                            ? Image.network(
+                                controller.user!.photoUrl!,
+                                errorBuilder: (context, error, stackTrace) {
+                                  return Image.asset(Assets.images.png.profilePlaceholderMale.path);
+                                },
                               )
                             : const CircularProgressIndicator.adaptive(backgroundColor: AppColors.white3),
                       ),

@@ -6,6 +6,8 @@ import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
 import 'package:nuforce/app/utils/colors.dart';
 
+import '../../../../gen/assets.gen.dart';
+
 class AddonDetailsView extends StatefulWidget {
   const AddonDetailsView({super.key});
 
@@ -15,7 +17,11 @@ class AddonDetailsView extends StatefulWidget {
 
 class _AddonDetailsViewState extends State<AddonDetailsView> {
   int _current = 0;
-  List<Color> listColor = [AppColors.primaryBlue1, AppColors.primaryBlue2, AppColors.primaryBlue3];
+  List<Color> listColor = [
+    AppColors.primaryBlue1,
+    AppColors.primaryBlue2,
+    AppColors.primaryBlue3,
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +36,8 @@ class _AddonDetailsViewState extends State<AddonDetailsView> {
                 onTap: () {},
                 child: Container(
                   height: 30,
-                  padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(4),
                     color: AppColors.primaryBlue1,
@@ -53,7 +60,8 @@ class _AddonDetailsViewState extends State<AddonDetailsView> {
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
+        padding:
+            const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -77,9 +85,12 @@ class _AddonDetailsViewState extends State<AddonDetailsView> {
                             return Container(
                               width: MediaQuery.of(context).size.width,
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: i,
-                              ),
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: i,
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          Assets.images.png.worker.keyName,),
+                                      fit: BoxFit.contain,),),
                             );
                           },
                         );
