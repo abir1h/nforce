@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:nuforce/app/model/line_item_model.dart';
 import 'package:nuforce/app/modules/line_item/controllers/line_item_controller.dart';
 import 'package:nuforce/app/modules/line_item/controllers/line_item_form_controller.dart';
+import 'package:nuforce/app/modules/line_item/models/control.dart';
 import 'package:nuforce/app/shared/widgets/custom_dropdown.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/shared/widgets/secondary_button.dart';
@@ -59,41 +60,20 @@ class _AddNewLineItemState extends State<AddNewLineItem> {
                     itemBuilder: (BuildContext context, int index) {
                       final name = controller.formBuilder.fieldNames[index];
                       Widget? widget = controller.formBuilder.widgets[name];
-
-                      // use the copywith method to change the onChanged function if the runtimetype is CustomDropdownButton
-                      if (widget.runtimeType == CustomDropdownButton) {
-                        // controller.formBuilder.onChanged[name] = (value) {
-                        //   print(value);
-                        //   // controller.formBuilder.onChanged[name]?.call(value);
-                        // };
-                        controller.setFormBuilder(controller.formBuilder.copyWith(
-                          onChanged: {
-                            ...controller.formBuilder.onChanged,
-                            name: (value) {
-                              print(value);
-                              // controller.formBuilder.onChanged[name]?.call(value);
-                            },
+                      if (widget != null && widget.runtimeType == CustomDropdownButton<Option?>) {
+                        widget = (widget as CustomDropdownButton<Option?>).copyWith(
+                          onChanged: (value) {
+                            controller.updateOnChanged(name, value);
                           },
-                        ));
+                          value: controller.formBuilder.dropdownValue[name],
+                        );
 
                         return Padding(
                           padding: EdgeInsets.only(bottom: 16.h),
-                          child: widget ?? const SizedBox.shrink(),
+                          child: widget,
                         );
                       }
 
-                      // if (widget.runtimeType == CustomDropdownButton) {
-                      //   return Padding(
-                      //     padding: EdgeInsets.only(bottom: 16.h),
-                      //     child: (widget as CustomDropdownButton<Option>).copyWith(
-                      //       onChanged: (value) {
-                      //         print(value);
-                      //         // controller.formBuilder.onChanged[name]?.call(value);
-                      //       },
-                      //       value: controller.formBuilder.dropdownValue[name],
-                      //     ),
-                      //   );
-                      // }
                       return Padding(
                         padding: EdgeInsets.only(bottom: 16.h),
                         child: widget ?? const SizedBox.shrink(),

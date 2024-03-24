@@ -1,9 +1,11 @@
 import 'dart:developer';
 
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/line_item/models/control.dart' as ctrl;
 import 'package:nuforce/app/modules/line_item/models/line_item_controller_model.dart';
 import 'package:nuforce/app/modules/line_item/services/line_item_data_repo.dart';
 import 'package:nuforce/app/shared/widgets/form_builder.dart';
+import 'dart:developer' as developer show log;
 
 class LineItemFormController extends GetxController {
   @override
@@ -50,6 +52,13 @@ class LineItemFormController extends GetxController {
   CustomFormBuilder get formBuilder => _formBuilder;
   void setFormBuilder(CustomFormBuilder value) {
     _formBuilder = value;
+    update();
+  }
+
+  void updateOnChanged(String name, ctrl.Option? value) {
+    developer.log('Previous value: ${formBuilder.dropdownValue[name]?.label}');
+    _formBuilder.dropdownValue[name] = value;
+    developer.log('Dropdown value: ${formBuilder.dropdownValue[name]?.label}');
     update();
   }
 
