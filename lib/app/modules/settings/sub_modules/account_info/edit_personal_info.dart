@@ -9,6 +9,8 @@ import 'package:nuforce/app/shared/widgets/secondary_button.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/text_styles.dart';
 
+import 'account_information_view.dart';
+
 class PersonalInfoEdit extends StatefulWidget {
   const PersonalInfoEdit({super.key});
 
@@ -23,6 +25,7 @@ class _PersonalInfoEditState extends State<PersonalInfoEdit> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       floatingActionButton: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
         child: Row(
@@ -36,7 +39,9 @@ class _PersonalInfoEditState extends State<PersonalInfoEdit> {
             const SizedBox(width: 15),
             Expanded(
               child: PrimaryButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.back();
+                },
                 text: 'Update',
               ),
             ),
@@ -111,7 +116,10 @@ class _PersonalInfoEditState extends State<PersonalInfoEdit> {
                             ),
                             border: InputBorder.none,
                             hintText: 'Enter number',
-                            hintStyle: CustomTextStyle.paragraphSmall.copyWith(fontWeight: FontWeight.w400, color: AppColors.white3, fontFamily: 'Poppins'),
+                            hintStyle: CustomTextStyle.paragraphSmall.copyWith(
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.white3,
+                                fontFamily: 'Poppins'),
                           ),
                           onInputChanged: (PhoneNumber number) {
                             phoneNumber = number.phoneNumber!;
@@ -121,9 +129,11 @@ class _PersonalInfoEditState extends State<PersonalInfoEdit> {
                             trailingSpace: false,
                           ),
                           ignoreBlank: true,
-                          selectorTextStyle: const TextStyle(color: AppColors.subText),
+                          selectorTextStyle:
+                              const TextStyle(color: AppColors.subText),
                           textFieldController: controller.phoneNumber,
-                          keyboardType: const TextInputType.numberWithOptions(signed: true, decimal: true),
+                          keyboardType: const TextInputType.numberWithOptions(
+                              signed: true, decimal: true),
                           inputBorder: const OutlineInputBorder(
                             borderSide: BorderSide(color: AppColors.greyText),
                             borderRadius: BorderRadius.all(Radius.circular(6)),

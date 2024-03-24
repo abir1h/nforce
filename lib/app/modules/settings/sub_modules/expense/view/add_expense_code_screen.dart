@@ -32,7 +32,7 @@ class _AddExpenseCodeViewScreenState extends State<AddExpenseCodeViewScreen> {
             Expanded(
               child: PrimaryButton(
                 onPressed: () {
-                  Get.to<void>(() => const ExpenseView());
+                Get.back();
                 },
                 text: 'Submit Expense',
               ),

@@ -23,6 +23,7 @@ class _BusinessInfoEditState extends State<BusinessInfoEdit> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       floatingActionButton: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
         child: Row(
@@ -49,7 +50,7 @@ class _BusinessInfoEditState extends State<BusinessInfoEdit> {
                     helpEmail: controller.helpEmail.text,
                   );
                   controller.save(data);
-                  Get.to<void>(() => const AccountInformationView());
+                  Get.back();
                 },
                 text: 'Update',
               ),

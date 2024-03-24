@@ -30,7 +30,7 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
     return Scaffold(
       backgroundColor: AppColors.white1,
       resizeToAvoidBottomInset: false,
-      appBar: CustomAppbarMinimal(
+      appBar: const CustomAppbarMinimal(
         title: 'Privacy Policy',
       ),
       floatingActionButton: Padding(
@@ -39,16 +39,14 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
           children: [
             Expanded(
               child: SecondaryButton(
-                onPressed: () {},
+                onPressed: () =>Get.back(),
                 text: 'Reset',
               ),
             ),
             const SizedBox(width: 15),
             Expanded(
               child: PrimaryButton(
-                onPressed: () {
-                  Get.to(() => SettingsView());
-                },
+                onPressed: () =>Get.back(),
                 text: 'Submit',
               ),
             ),

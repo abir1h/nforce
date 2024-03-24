@@ -30,32 +30,32 @@ class _ExpenseViewState extends State<ExpenseView> {
       resizeToAvoidBottomInset: true,
       appBar: CustomAppbarMinimal(
         title: 'Expenses',
-        trailing: [   Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: GestureDetector(
-            onTap: (){
-              Get.to<void>(() => const ExpenseCodeScreen());
-
-            },
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 12.w,vertical: 4.h),
-
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(4.r),color: AppColors.white2,
-              ),
-              child: Center(
-                child: Text(
-                  'Code',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 14.sp,
-                    color: AppColors.primaryBlue1,
+        trailing: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: GestureDetector(
+              onTap: () {
+                Get.to<void>(() => const ExpenseCodeScreen());
+              },
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 4.h),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(4.r),
+                  color: AppColors.white2,
+                ),
+                child: Center(
+                  child: Text(
+                    'Code',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 14.sp,
+                      color: AppColors.primaryBlue1,
+                    ),
                   ),
                 ),
               ),
             ),
           ),
-        ),
         ],
       ),
       body: SingleChildScrollView(
@@ -123,20 +123,22 @@ class _ExpenseViewState extends State<ExpenseView> {
             ),
             SizedBox(
               height: 24.h,
-            ),Row(
+            ),
+            Row(
               children: [
-                Expanded(child:    Text(
-                  ' Expenses',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 16.sp,
-                    color: AppColors.nutralBlack1,
+                Expanded(
+                  child: Text(
+                    ' Expenses',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16.sp,
+                      color: AppColors.nutralBlack1,
+                    ),
                   ),
-                ),),
+                ),
                 GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     Get.to<void>(() => const AddExpenseViewScreen());
-
                   },
                   child: Row(
                     children: [
@@ -153,7 +155,8 @@ class _ExpenseViewState extends State<ExpenseView> {
                   ),
                 ),
               ],
-            ), SizedBox(
+            ),
+            SizedBox(
               height: 14.h,
             ),
             ListView(

@@ -28,7 +28,7 @@ class _OfflinePaymentState extends State<OfflinePayment> {
           Padding(
             padding: EdgeInsets.only(right: 20.w),
             child: GestureDetector(
-              onTap: () => Get.to(const AddPayment()),
+              onTap: () => Get.to<void>(() => const AddPayment()),
               child: Row(
                 children: [
                   Icon(

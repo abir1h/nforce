@@ -33,31 +33,7 @@ class _AddPaymentState extends State<AddPayment> {
       resizeToAvoidBottomInset: true,
       appBar: CustomAppbarMinimal(
         title: 'Add Payment',
-        trailing: [
-          Padding(
-            padding: EdgeInsets.only(right: 20.w),
-            child: GestureDetector(
-              onTap: () => Get.to(const SettingsView()),
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.add,
-                    size: 24.r,
-                    color: AppColors.nutralBlack1,
-                  ),
-                  Text(
-                    'Add',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 14.sp,
-                      color: AppColors.nutralBlack1,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
+
       ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
@@ -436,7 +412,7 @@ class _AddPaymentState extends State<AddPayment> {
                 Expanded(
                   child: PrimaryButton(
                     onPressed: () {
-                      Get.to(SettingsView());
+                     Get.back();
                     },
                     text: 'Submit',
                   ),

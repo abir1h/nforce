@@ -20,13 +20,13 @@ class ContactCenterController extends GetxController {
       officeName: officeNameController.text,
       phoneNumber: phoneController.text,
     );
-    Get.to(ContactCenterView());
+    Get.back();
     update();
   }
 
   removeContactCenter() {
     contactCenter = null;
-    Get.to(ContactCenterView());
+    Get.back();
 
     update();
   }

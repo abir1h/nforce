@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 import '../../../../../shared/widgets/custom_text_field.dart';
 import '../../../../../shared/widgets/custom_dropdown.dart';
@@ -35,14 +36,14 @@ class _AddTermsPolicyScreenState extends State<AddTermsPolicyScreen> {
           children: [
             Expanded(
               child: SecondaryButton(
-                onPressed: () {},
+                onPressed: () =>Get.back(),
                 text: 'Reset',
               ),
             ),
             const SizedBox(width: 15),
             Expanded(
               child: PrimaryButton(
-                onPressed: () {},
+                onPressed: () =>Get.back(),
                 text: 'Submit',
               ),
             ),
