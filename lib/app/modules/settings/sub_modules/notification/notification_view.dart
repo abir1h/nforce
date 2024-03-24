@@ -18,7 +18,7 @@ class _NotificationViewState extends State<NotificationView> {
     return Scaffold(
       backgroundColor: AppColors.white1,
       resizeToAvoidBottomInset: true,
-      appBar: CustomAppbarMinimal(
+      appBar: const CustomAppbarMinimal(
         title: 'Notification',
         trailing: [],
       ),

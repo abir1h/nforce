@@ -20,9 +20,9 @@ class _AccountInfoEditViewState extends State<AccountInfoEditView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white1,
-      resizeToAvoidBottomInset: true,
+      resizeToAvoidBottomInset: false,
       appBar: const CustomAppbarMinimal(
-        title: 'Edit account informtaion',
+        title: 'Edit account information',
       ),
       body: DefaultTabController(
         length: 2,

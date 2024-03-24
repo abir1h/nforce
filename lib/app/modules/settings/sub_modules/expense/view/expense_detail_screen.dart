@@ -26,13 +26,15 @@ class _ExpenseDetailScreenState extends State<ExpenseDetailScreen> {
     return Scaffold(
       backgroundColor: AppColors.white1,
       resizeToAvoidBottomInset: true,
-       floatingActionButton: Padding(
+      floatingActionButton: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
         child: Row(
           children: [
             Expanded(
               child: SecondaryButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.back();
+                },
                 text: 'Decline',
               ),
             ),
@@ -40,7 +42,7 @@ class _ExpenseDetailScreenState extends State<ExpenseDetailScreen> {
             Expanded(
               child: PrimaryButton(
                 onPressed: () {
-                  Get.to<void>(() => const ExpenseView());
+                  Get.back();
                 },
                 text: 'Approve',
               ),
@@ -55,10 +57,10 @@ class _ExpenseDetailScreenState extends State<ExpenseDetailScreen> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 12.w,vertical: 4.h),
-
+              padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 4.h),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(4.r),color: AppColors.white2,
+                borderRadius: BorderRadius.circular(4.r),
+                color: AppColors.white2,
               ),
               child: Center(
                 child: Text(
@@ -77,17 +79,58 @@ class _ExpenseDetailScreenState extends State<ExpenseDetailScreen> {
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
-        child:Column(crossAxisAlignment: CrossAxisAlignment.start,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.asset(Assets.images.png.expReport.keyName,height: 200.h,width: 1.sw,),
-            SizedBox(height: 16.h,),
-            Text("Electricity Bill",style: TextStyle(fontWeight: FontWeight.w600,fontSize: 18.sp,fontFamily: "Poppins",color: AppColors.nutralBlack1),),
-            SizedBox(height: 4.h,),
-            Text(r"$20,000.00",style: TextStyle(fontWeight: FontWeight.w600,fontSize: 14.sp,fontFamily: "Poppins",color: AppColors.primaryBlue1),),   SizedBox(height: 4.h,),
-            Text("Jan 05, 2024 - 10:30 PM",style: TextStyle(fontWeight: FontWeight.w400,fontSize: 16.sp,fontFamily: "Poppins",color: AppColors.nutralBlack2),),
-            SizedBox(height: 16.h,),
-            Text("Payable amount Receipt. Important Notic All Payment Done by Cheque shou ld be in the name of Account Officer.",style: TextStyle(fontWeight: FontWeight.w400,fontSize: 16.sp,fontFamily: "Poppins",color: AppColors.nutralBlack2),),
-
+            Image.asset(
+              Assets.images.png.expReport.keyName,
+              height: 200.h,
+              width: 1.sw,
+            ),
+            SizedBox(
+              height: 16.h,
+            ),
+            Text(
+              "Electricity Bill",
+              style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 18.sp,
+                  fontFamily: "Poppins",
+                  color: AppColors.nutralBlack1),
+            ),
+            SizedBox(
+              height: 4.h,
+            ),
+            Text(
+              r"$20,000.00",
+              style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 14.sp,
+                  fontFamily: "Poppins",
+                  color: AppColors.primaryBlue1),
+            ),
+            SizedBox(
+              height: 4.h,
+            ),
+            Text(
+              "Jan 05, 2024 - 10:30 PM",
+              style: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 16.sp,
+                  fontFamily: "Poppins",
+                  color: AppColors.nutralBlack2),
+            ),
+            SizedBox(
+              height: 16.h,
+            ),
+            Text(
+              "Payable amount Receipt. Important Notic All Payment Done by Cheque shou ld be in the name of Account Officer.",
+              style: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 16.sp,
+                  fontFamily: "Poppins",
+                  color: AppColors.nutralBlack2),
+            ),
           ],
         ),
       ),

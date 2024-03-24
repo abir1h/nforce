@@ -41,9 +41,7 @@ class _AddExpenseViewScreenState extends State<AddExpenseViewScreen> {
             const SizedBox(width: 15),
             Expanded(
               child: PrimaryButton(
-                onPressed: () {
-                  Get.to<void>(() => const ExpenseView());
-                },
+                onPressed: () =>Get.back(),
                 text: 'Save',
               ),
             ),
@@ -129,7 +127,8 @@ class _AddExpenseViewScreenState extends State<AddExpenseViewScreen> {
                         lastDate: DateTime.now().add(const Duration(days: 365)),
                       ).then((value) {
                         setState(() {
-                          selectedDate = '${value!.day}-${value.month}-${value.year}';
+                          selectedDate =
+                              '${value!.day}-${value.month}-${value.year}';
                         });
                       });
                     },

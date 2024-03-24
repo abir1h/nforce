@@ -12,6 +12,8 @@ import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/text_styles.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 
+import '../../../../../shared/widgets/custom_appbar_minimal.dart';
+
 class PaymentView extends StatefulWidget {
   const PaymentView({super.key});
 
@@ -39,28 +41,8 @@ class _PaymentViewState extends State<PaymentView> {
           },
         ),
       ),
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: AppColors.white1,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back_ios,
-            color: AppColors.nutralBlack1,
-          ),
-          onPressed: () {
-            Get.to<void>(() => const SettingsView());
-          },
-        ),
-        title: Text(
-          'Payment Method',
-          style: TextStyle(
-            fontWeight: FontWeight.w500,
-            fontSize: 18.sp,
-            fontFamily: 'Poppins',
-            color: AppColors.nutralBlack1,
-          ),
-        ),
-        centerTitle: true,
+      appBar:  const CustomAppbarMinimal(
+        title: 'Payment Method',centerTitle: true,
       ),
       body: GetBuilder<SubscriptionController>(
         builder: (_) {

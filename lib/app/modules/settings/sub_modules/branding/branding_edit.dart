@@ -102,7 +102,7 @@ class _BrandingEditState extends State<BrandingEdit> {
             const SizedBox(width: 15),
             Expanded(
               child: PrimaryButton(
-                onPressed: () {Get.to(const BrandingView());},
+                onPressed: () {Get.back();},
                 text: 'Update',
               ),
             ),

@@ -18,7 +18,7 @@ class _ReferScreenState extends State<ReferScreen> {
     return Scaffold(
       backgroundColor: AppColors.white1,
       resizeToAvoidBottomInset: false,
-      appBar: CustomAppbarMinimal(
+      appBar: const CustomAppbarMinimal(
         title: 'Refer & Earn',
       ),
       body: SizedBox(
@@ -100,14 +100,14 @@ class _ReferScreenState extends State<ReferScreen> {
                     ),
                     padding:
                         EdgeInsets.symmetric(vertical: 14.h, horizontal: 16.h),
-                    child: Icon(
+                    child: const Icon(
                       Icons.copy,
                       color: Colors.white,
                     ),
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 14,
               ),
               Text(
@@ -119,7 +119,7 @@ class _ReferScreenState extends State<ReferScreen> {
                   fontFamily: "Poppins",
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 24,
               ),
               Row(

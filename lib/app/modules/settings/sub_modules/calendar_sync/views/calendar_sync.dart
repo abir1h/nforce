@@ -34,13 +34,12 @@ class _CalendarSyncViewState extends State<CalendarSyncView> {
         padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 20.w),
         child: Column(
           children: [
-
             PopupMenuButton(
               onSelected: (value) {
                 // Handle the selected value here
               },
               itemBuilder: (context) => popupMenuItems,
-              child:  const CalendarSyncCard(
+              child: const CalendarSyncCard(
                 title: "First day of the week",
                 subtitile: 'Local Default',
               ),
@@ -48,12 +47,13 @@ class _CalendarSyncViewState extends State<CalendarSyncView> {
             SizedBox(
               height: 16.h,
             ),
-             CalendarSyncCard(
+            CalendarSyncCard(
               title: "Alternate Calendar",
               subtitile: 'None',
-              onTap: (){
+              onTap: () {
                 showCupertinoModalPopup<void>(
-                  context: context,barrierDismissible: true,
+                  context: context,
+                  barrierDismissible: true,
                   builder: (context) => const AlternateCalendarBottomSheet(),
                 );
               },
@@ -78,7 +78,9 @@ class _CalendarSyncViewState extends State<CalendarSyncView> {
               height: 16.h,
             ),
             CustomTile(
-              onTap: () {Get.to(()=>const AlertSettings());},
+              onTap: () {
+                Get.to(() => const AlertSettings());
+              },
               lable: 'Alert Settings',
               hasTraillingIcon: false,
             ),
@@ -93,12 +95,13 @@ class _CalendarSyncViewState extends State<CalendarSyncView> {
             SizedBox(
               height: 16.h,
             ),
-             CalendarSyncCard(
+            CalendarSyncCard(
               title: "Time zone",
               subtitile: '(GMT +6.00) United states ',
-              onTap: (){
+              onTap: () {
                 showCupertinoModalPopup<void>(
-                  context: context,barrierDismissible: true,
+                  context: context,
+                  barrierDismissible: true,
                   builder: (context) => const TimeZoneBottomSheet(),
                 );
               },

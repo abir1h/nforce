@@ -30,7 +30,7 @@ class _TermsCondtionScreenState extends State<TermsCondtionScreen> {
     return Scaffold(
       backgroundColor: AppColors.white1,
       resizeToAvoidBottomInset: false,
-      appBar: CustomAppbarMinimal(
+      appBar: const CustomAppbarMinimal(
         title: 'Terms & Conditions',
       ),
       floatingActionButton: Padding(
@@ -39,16 +39,15 @@ class _TermsCondtionScreenState extends State<TermsCondtionScreen> {
           children: [
             Expanded(
               child: SecondaryButton(
-                onPressed: () {},
+                onPressed: () =>Get.back(),
                 text: 'Reset',
               ),
             ),
             const SizedBox(width: 15),
             Expanded(
               child: PrimaryButton(
-                onPressed: () {
-                  Get.to(() => SettingsView());
-                },
+                onPressed: () =>Get.back(),
+
                 text: 'Submit',
               ),
             ),

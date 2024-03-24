@@ -17,9 +17,9 @@ class _CustomFieldSettingsViewState extends State<CustomFieldSettingsView> {
     return Scaffold(
       backgroundColor: AppColors.white1,
       resizeToAvoidBottomInset: true,
-      appBar: CustomAppbarMinimal(
+      appBar: const CustomAppbarMinimal(
         title: 'Notification',
-        trailing: [],
+
       ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),

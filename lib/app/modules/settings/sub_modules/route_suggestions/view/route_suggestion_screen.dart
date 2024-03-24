@@ -65,7 +65,8 @@ class _RouteSuggestionScreenState extends State<RouteSuggestionScreen> {
                     ),
                     Container(
                       width: 1.sw,
-                      decoration: const BoxDecoration(color: AppColors.tabbarColor),
+                      decoration:
+                          const BoxDecoration(color: AppColors.tabbarColor),
                       child: TabBar(
                         labelStyle: TextStyle(
                           fontWeight: FontWeight.w600,
@@ -80,7 +81,8 @@ class _RouteSuggestionScreenState extends State<RouteSuggestionScreen> {
                           fontFamily: 'Poppins',
                         ),
                         indicator: const BoxDecoration(
-                          color: AppColors.primaryBlue1, // Set the overlay color for the selected tab
+                          color: AppColors
+                              .primaryBlue1, // Set the overlay color for the selected tab
                         ), // Set the indicator color here
                         tabs: const [
                           Tab(
@@ -96,7 +98,8 @@ class _RouteSuggestionScreenState extends State<RouteSuggestionScreen> {
                       child: TabBarView(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 20),
                             child: Column(
                               children: [LocationCard()],
                             ),

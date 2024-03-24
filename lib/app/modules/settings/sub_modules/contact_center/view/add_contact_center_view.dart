@@ -27,7 +27,7 @@ class _AddContactCenterViewState extends State<AddContactCenterView> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
-      appBar: CustomAppbarMinimal(
+      appBar: const CustomAppbarMinimal(
         title: 'Add New Contact Center',
 
       ),

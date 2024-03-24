@@ -25,9 +25,7 @@ class _AddonsViewState extends State<AddonsView> {
       resizeToAvoidBottomInset: true,
       appBar: CustomAppbarMinimal(
         title: 'Plugins',
-        leadingPressed:(){
-          Get.to<void>(() => const SettingsView());
-        },
+
         trailing: [
           Padding(
             padding: EdgeInsets.only(right: 20.w),

@@ -25,36 +25,37 @@ class _AddPluginViewScreenState extends State<AddPluginViewScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white1,
-      resizeToAvoidBottomInset: true,      floatingActionButton: Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-      child: Row(
-        children: [
-          Expanded(
-            child: SecondaryButton(
-              onPressed: () {},
-              text: 'Reset',
+      resizeToAvoidBottomInset: true,
+      floatingActionButton: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+        child: Row(
+          children: [
+            Expanded(
+              child: SecondaryButton(
+                onPressed: () => Get.back(),
+                text: 'Reset',
+              ),
             ),
-          ),
-          const SizedBox(width: 15),
-          Expanded(
-            child: PrimaryButton(
-              onPressed: () {
-
-                Get.to<void>(() => const AddonsView());
-              },
-              text: 'Save',
+            const SizedBox(width: 15),
+            Expanded(
+              child: PrimaryButton(
+                onPressed: () {
+                  Get.back();
+                },
+                text: 'Save',
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
-    ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       appBar: const CustomAppbarMinimal(
         title: 'Add New Expense',
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomTextField(
               label: 'Plugin Name',
@@ -93,16 +94,19 @@ class _AddPluginViewScreenState extends State<AddPluginViewScreen> {
               child: Row(
                 children: [
                   Expanded(
-                    child: Container(                  color: AppColors.textFieldBackground,
-
+                    child: Container(
+                      color: AppColors.textFieldBackground,
                       child: TextFormField(
                         controller: controller.featureController,
-                        cursorColor: AppColors.primaryBlue1,focusNode: controller.focusNode,
+                        cursorColor: AppColors.primaryBlue1,
+                        focusNode: controller.focusNode,
                         autocorrect: false,
                         textAlignVertical: TextAlignVertical.center,
                         decoration: InputDecoration(
                           contentPadding: const EdgeInsets.symmetric(
-                              horizontal: 16, vertical: 10,),
+                            horizontal: 16,
+                            vertical: 10,
+                          ),
                           hintText: "Enter Features",
                           hintStyle: CustomTextStyle.paragraphSmall.copyWith(
                             fontWeight: FontWeight.w400,
@@ -113,11 +117,11 @@ class _AddPluginViewScreenState extends State<AddPluginViewScreen> {
                     ),
                   ),
                   GestureDetector(
-                    onTap: (){
-                      if(controller.featureController.text.isNotEmpty){
-                        controller.addFeature(controller.featureController.text);
-                       controller.focusNode.unfocus();
-
+                    onTap: () {
+                      if (controller.featureController.text.isNotEmpty) {
+                        controller
+                            .addFeature(controller.featureController.text);
+                        controller.focusNode.unfocus();
                       }
                     },
                     child: Container(
@@ -127,14 +131,17 @@ class _AddPluginViewScreenState extends State<AddPluginViewScreen> {
                       ),
                       child: Padding(
                         padding: EdgeInsets.symmetric(
-                            horizontal: 21.w, vertical: 11.h,),
+                          horizontal: 21.w,
+                          vertical: 11.h,
+                        ),
                         child: Text(
                           'Save',
                           style: TextStyle(
-                              color: AppColors.primaryBlue1,
-                              fontWeight: FontWeight.w400,
-                              fontSize: 16.sp,
-                              fontFamily: "Poppins",),
+                            color: AppColors.primaryBlue1,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 16.sp,
+                            fontFamily: "Poppins",
+                          ),
                         ),
                       ),
                     ),
@@ -146,7 +153,7 @@ class _AddPluginViewScreenState extends State<AddPluginViewScreen> {
               height: 16.h,
             ),
             Obx(
-                  () {
+              () {
                 if (controller.featureList.isNotEmpty) {
                   return Container(
                     width: 1.sw,
@@ -158,10 +165,11 @@ class _AddPluginViewScreenState extends State<AddPluginViewScreen> {
                     child: Wrap(
                       children: List.generate(
                         controller.featureList.length,
-                            (index) => Padding(
+                        (index) => Padding(
                           padding: const EdgeInsets.all(8),
                           child: Container(
-                            padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 4),
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 3, horizontal: 4),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(4),
                               color: AppColors.white2,
@@ -171,7 +179,9 @@ class _AddPluginViewScreenState extends State<AddPluginViewScreen> {
                               children: [
                                 GestureDetector(
                                   onTap: () {
-                                    controller.removeFeature( controller.featureList[index].toString());
+                                    controller.removeFeature(controller
+                                        .featureList[index]
+                                        .toString());
                                   },
                                   child: const Icon(
                                     Icons.close,
@@ -200,13 +210,20 @@ class _AddPluginViewScreenState extends State<AddPluginViewScreen> {
                 }
               },
             ),
-            SizedBox(height: 16.h,),
+            SizedBox(
+              height: 16.h,
+            ),
             Row(
               children: [
-                DottedRect(color: Colors.grey,gap: 5,
+                DottedRect(
+                  color: Colors.grey,
+                  gap: 5,
                   child: Container(
                     padding: EdgeInsets.all(20.r),
-                    child: Icon(Icons.camera_alt_outlined,color: Colors.grey,),
+                    child: Icon(
+                      Icons.camera_alt_outlined,
+                      color: Colors.grey,
+                    ),
                   ),
                 ),
               ],

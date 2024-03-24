@@ -11,6 +11,8 @@ import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 
+import '../../../../../shared/widgets/custom_appbar_minimal.dart';
+
 class SubscriptionView extends StatefulWidget {
   const SubscriptionView({super.key});
 
@@ -25,28 +27,8 @@ class _SubscriptionViewState extends State<SubscriptionView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white1,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: AppColors.white1,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back_ios,
-            color: AppColors.nutralBlack1,
-          ),
-          onPressed: () {
-            Get.to<void>(() => const SettingsView());
-          },
-        ),
-        title: Text(
-          'Subscription',
-          style: TextStyle(
-            fontWeight: FontWeight.w500,
-            fontSize: 18.sp,
-            fontFamily: 'Poppins',
-            color: AppColors.nutralBlack1,
-          ),
-        ),
-        centerTitle: true,
+      appBar: const CustomAppbarMinimal(
+        title: 'Subscription',centerTitle: true,
       ),
       body: GetBuilder<SubscriptionController>(
         builder: (_) {
