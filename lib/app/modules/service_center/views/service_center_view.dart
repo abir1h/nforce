@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:nuforce/app/modules/service_center/sub_modules/calendar/controllers/calendar_controller.dart';
 import 'package:nuforce/app/modules/service_center/sub_modules/calendar/views/calendar_view.dart';
 import 'package:nuforce/app/modules/service_center/sub_modules/dashboard/views/dashboard_view.dart';
+import 'package:nuforce/app/modules/service_center/sub_modules/estimation/controllers/estimation_controller.dart';
 import 'package:nuforce/app/modules/service_center/sub_modules/service_center_maps/controllers/service_center_maps_controller.dart';
 import 'package:nuforce/app/modules/service_center/sub_modules/service_center_maps/views/service_center_maps_view.dart';
 import 'package:nuforce/app/modules/service_center/sub_modules/work_order/controllers/work_order_controller.dart';
@@ -16,6 +17,7 @@ import 'package:nuforce/app/utils/colors.dart';
 
 import '../controllers/service_center_controller.dart';
 import '../sub_modules/dashboard/controllers/dashboard_controller.dart';
+import '../sub_modules/estimation/views/estimation_view.dart';
 
 class ServiceCenterView extends GetView<ServiceCenterController> {
   const ServiceCenterView({Key? key}) : super(key: key);
@@ -24,6 +26,7 @@ class ServiceCenterView extends GetView<ServiceCenterController> {
     Get.put(DashboardController());
     Get.put(WorkOrderController());
     Get.put(WorkOrderSearchController());
+    Get.put(EstimationController());
     Get.put(ServiceCenterCalendarController());
     Get.put(ServiceCenterMapsController());
     return Scaffold(
@@ -31,12 +34,11 @@ class ServiceCenterView extends GetView<ServiceCenterController> {
       resizeToAvoidBottomInset: true,
       appBar: CustomAppbarMinimal(
         title: 'Service Center',
-
         trailing: [
           Padding(
             padding: EdgeInsets.only(right: 20.w),
             child: GestureDetector(
-              onTap: ()=>Get.toNamed(Routes.WORK_ORDER_SEARCH),
+              onTap: () => Get.toNamed(Routes.WORK_ORDER_SEARCH),
               child: Row(
                 children: [
                   Icon(
@@ -44,7 +46,6 @@ class ServiceCenterView extends GetView<ServiceCenterController> {
                     size: 24.r,
                     color: AppColors.nutralBlack1,
                   ),
-
                 ],
               ),
             ),
@@ -63,16 +64,22 @@ class ServiceCenterView extends GetView<ServiceCenterController> {
               decoration: const BoxDecoration(color: AppColors.white1),
               child: TabBar(
                 isScrollable: true,
-                labelStyle: TextStyle(fontWeight: FontWeight.w600, fontSize: 16.sp, fontFamily: 'Poppins'),
+                labelStyle: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16.sp,
+                    fontFamily: 'Poppins'),
                 indicatorColor: AppColors.nutralBlack1,
                 unselectedLabelColor: AppColors.nutralBlack2,
-                unselectedLabelStyle: TextStyle(fontWeight: FontWeight.w600, fontSize: 16.sp, fontFamily: 'Poppins'),
+                unselectedLabelStyle: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16.sp,
+                    fontFamily: 'Poppins'),
 
                 indicator: const BoxDecoration(
-                  color: AppColors.primaryBlue1, // Set the overlay color for the selected tab
+                  color: AppColors
+                      .primaryBlue1, // Set the overlay color for the selected tab
                 ),
                 padding: EdgeInsets.zero,
-
 
                 // Set the indicator color here
 
@@ -85,17 +92,18 @@ class ServiceCenterView extends GetView<ServiceCenterController> {
                   Tab(text: 'Map'),
                 ],
               ),
-            ),            Container(
+            ),
+            Container(
               height: 1.h,
               color: AppColors.greyStrokColor,
             ),
-
             Expanded(
-              child: TabBarView(physics: NeverScrollableScrollPhysics(),
+              child: TabBarView(
+                physics: const NeverScrollableScrollPhysics(),
                 children: [
                   const DashboardView(),
                   const WorkOrderView(),
-                  Container(),
+                  const EstimationView(),
                   Container(),
                   const ServiceCenterCalendarView(),
                   const ServiceCenterMapsView(),

@@ -11,8 +11,10 @@ class CustomAppbarMinimal extends StatelessWidget
     this.centerTitle = true,
     this.trailing,
     this.leadingPressed,
+    this.subTitle,
   });
   final String title;
+  final String? subTitle;
   final bool centerTitle;
   final List<Widget>? trailing;
   final VoidCallback? leadingPressed;
@@ -24,14 +26,28 @@ class CustomAppbarMinimal extends StatelessWidget
       centerTitle: centerTitle,
       title: title == ''
           ? null
-          : Text(
-              title,
-              style: TextStyle(
-                color: AppColors.nutralBlack1,
-                fontSize: 18.sp,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
+          : Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                  title,
+                  style: TextStyle(
+                    color: AppColors.nutralBlack1,
+                    fontSize: 18.sp,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              if(subTitle!=null)
+              Text(
+                subTitle!,
+                  style: TextStyle(
+                    color: AppColors.nutralBlack2,
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+            ],
+          ),
       elevation: 0,
       leading: IconButton(
         onPressed: () {
