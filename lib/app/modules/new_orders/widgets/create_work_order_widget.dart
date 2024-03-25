@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/home/components/colored_checkbox_with_title.dart';
 import 'package:nuforce/app/modules/new_orders/controllers/work_order_controller.dart';
@@ -206,13 +207,28 @@ class _CreateOrderWidgetState extends State<CreateOrderWidget> {
                         ),
                         const SizedBox(height: 24),
                         PrimaryButton(
-                          onPressed: () {
-                            Get
-                              ..back<void>()
-                              ..to<void>(
-                                () => const CreateInvoiceView(),
-                                transition: Transition.downToUp,
-                              );
+                          onPressed: () async {
+                            if (controller.contactDetails.address == null || controller.contactDetails.address!.isEmpty) {
+                              Fluttertoast.showToast(msg: 'The Selected contact does not have an address');
+                              return;
+                            }
+                            await controller
+                                .createWorkOrder(
+                              contactId: '${controller.selectedContact?.id ?? 0}',
+                              billingAddressId: '${controller.contactDetails.address?[0].id}',
+                              serviceId: '${controller.selectedServicePackage?.id ?? 0}',
+                              regionId: '${controller.selectedServiceRegion?.id ?? 0}',
+                            )
+                                .then((value) {
+                              if (value) {
+                                Get
+                                  ..back<void>()
+                                  ..to<void>(
+                                    () => const CreateInvoiceView(),
+                                    transition: Transition.downToUp,
+                                  );
+                              }
+                            });
                           },
                           text: 'Create',
                         ),
@@ -285,6 +301,7 @@ class SearchResult extends StatelessWidget {
                                   controller.setShowSearchList(false);
                                   findContactController.text = contact.name ?? '';
                                   FocusScope.of(context).unfocus();
+                                  controller.getContactDetails();
                                 },
                               ),
                             ),

@@ -1,8 +1,12 @@
+import 'dart:developer';
+
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/new_orders/models/contact_details_model.dart';
 import 'package:nuforce/app/modules/new_orders/models/work_order_contact_search_model.dart';
 import 'package:nuforce/app/modules/new_orders/models/work_order_service_package_model.dart';
 import 'package:nuforce/app/modules/new_orders/models/work_order_service_region_model.dart';
+import 'package:nuforce/app/modules/new_orders/models/work_order_success_model.dart';
 import 'package:nuforce/app/modules/new_orders/services/work_order_api_service.dart';
 
 class WorkOrderController extends GetxController {
@@ -129,5 +133,78 @@ class WorkOrderController extends GetxController {
       },
     );
     setContactLoading(false);
+  }
+
+  ContactDetails _contactDetails = ContactDetails();
+  ContactDetails get contactDetails => _contactDetails;
+
+  void addContactDetails(ContactDetails contactDetails) {
+    _contactDetails = contactDetails;
+    update();
+  }
+
+  Future<void> getContactDetails() async {
+    setLoading(true);
+    final id = selectedContact?.id;
+    if (id == null) {
+      setLoading(false);
+      return;
+    }
+    await WorkOrderApiService.getContactDetails(id.toString()).then(
+      (response) {
+        response.fold(
+          (contactDetails) {
+            addContactDetails(contactDetails);
+            log('Contact Details: ${contactDetails.toJson()}');
+          },
+          (error) {
+            Fluttertoast.showToast(msg: error);
+          },
+        );
+      },
+    );
+    setLoading(false);
+  }
+
+  WorkOrderSuccessModel _workOrderSuccessModel = WorkOrderSuccessModel();
+  WorkOrderSuccessModel get workOrderSuccessModel => _workOrderSuccessModel;
+
+  void addWorkOrderSuccessModel(WorkOrderSuccessModel workOrderSuccessModel) {
+    _workOrderSuccessModel = workOrderSuccessModel;
+    update();
+  }
+
+  Future<bool> createWorkOrder({
+    required String contactId,
+    required String billingAddressId,
+    required String serviceId,
+    required String regionId,
+    String? taxExempt,
+    String? standalone,
+  }) async {
+    bool isSuccess = false;
+    setLoading(true);
+    await WorkOrderApiService.createWorkOrder(
+      contactId: contactId,
+      billingAddressId: billingAddressId,
+      serviceId: serviceId,
+      regionId: regionId,
+      taxExempt: taxExempt,
+      standalone: standalone,
+    ).then(
+      (response) {
+        response.fold(
+          (workOrderSuccessModel) {
+            addWorkOrderSuccessModel(workOrderSuccessModel);
+            isSuccess = true;
+          },
+          (error) {
+            Fluttertoast.showToast(msg: error);
+          },
+        );
+      },
+    );
+    setLoading(false);
+    return isSuccess;
   }
 }

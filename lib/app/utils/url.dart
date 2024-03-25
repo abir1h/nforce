@@ -19,4 +19,6 @@ class URL {
   static const String workOrderServiceRegion = '$baseUrl/action/services.regions';
   static const String workOrderServicePackage = '$baseUrl/action/services.packages';
   static const String contactLookup = '$baseUrl/action/contact.searchForContact?query[term]=@';
+  static const String contactDetails = '$baseUrl/action/contact.getContactDetails';
+  static const String createWorkOrder = '$baseUrl/action/invoice.launchEstimation';
 }
