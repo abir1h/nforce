@@ -102,7 +102,9 @@ class _BrandingEditState extends State<BrandingEdit> {
             const SizedBox(width: 15),
             Expanded(
               child: PrimaryButton(
-                onPressed: () {Get.back();},
+                onPressed: () {
+                  Get.back();
+                },
                 text: 'Update',
               ),
             ),
@@ -161,8 +163,7 @@ class _BrandingEditState extends State<BrandingEdit> {
               // height: 50,
               color: AppColors.textFieldBackground,
               child: Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                 decoration: BoxDecoration(
                   border: Border.all(
                     color: Colors.grey,
@@ -175,10 +176,11 @@ class _BrandingEditState extends State<BrandingEdit> {
                       child: Text(
                         colorCodeController.text,
                         style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 16.sp,
-                            fontFamily: "Poppins",
-                            color: AppColors.nutralBlack1,),
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16.sp,
+                          fontFamily: "Poppins",
+                          color: AppColors.nutralBlack1,
+                        ),
                       ),
                     ),
                     InkWell(
@@ -224,7 +226,7 @@ class _BrandingEditState extends State<BrandingEdit> {
               controller: TextEditingController(),
               hint: 'Enter brand slogan',
               label: 'Brand Slogan',
-              onChange: (v) {},
+              onChanged: (v) {},
               maxLines: 3,
             ),
           ],

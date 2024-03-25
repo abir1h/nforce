@@ -74,7 +74,7 @@ class _BusinessInfoEditState extends State<BusinessInfoEdit> {
                       controller: controller.businessName,
                       hint: 'Enter business name',
                       label: 'Business Name',
-                      onChange: (v) {},
+                      onChanged: (v) {},
                     ),
                     SizedBox(
                       height: 16.h,
@@ -83,7 +83,7 @@ class _BusinessInfoEditState extends State<BusinessInfoEdit> {
                       controller: controller.businessDomain,
                       hint: 'Enter business domain',
                       label: 'Business Domain',
-                      onChange: (v) {},
+                      onChanged: (v) {},
                     ),
                     SizedBox(
                       height: 16.h,
@@ -92,7 +92,7 @@ class _BusinessInfoEditState extends State<BusinessInfoEdit> {
                       controller: controller.businessDomain,
                       hint: 'Enter address',
                       label: 'Address',
-                      onChange: (v) {},
+                      onChanged: (v) {},
                     ),
                     SizedBox(
                       height: 16.h,
@@ -101,7 +101,7 @@ class _BusinessInfoEditState extends State<BusinessInfoEdit> {
                       controller: controller.businessDomain,
                       hint: 'Enter contact us',
                       label: 'Contact us',
-                      onChange: (v) {},
+                      onChanged: (v) {},
                     ),
                     SizedBox(
                       height: 16.h,
@@ -110,7 +110,7 @@ class _BusinessInfoEditState extends State<BusinessInfoEdit> {
                       controller: controller.businessDomain,
                       hint: 'Enter help email',
                       label: 'Help email',
-                      onChange: (v) {},
+                      onChanged: (v) {},
                     ),
                   ],
                 ),

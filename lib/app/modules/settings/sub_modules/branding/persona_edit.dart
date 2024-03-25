@@ -15,7 +15,6 @@ class PersonaEdit extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-
       floatingActionButton: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
         child: Row(
@@ -83,7 +82,7 @@ class PersonaEdit extends StatelessWidget {
               controller: TextEditingController(),
               hint: 'Enter agent name',
               label: 'Agent Name',
-              onChange: (v) {},
+              onChanged: (v) {},
             ),
             SizedBox(
               height: 20.h,
@@ -92,7 +91,7 @@ class PersonaEdit extends StatelessWidget {
               controller: TextEditingController(),
               hint: 'Enter agent greetin',
               label: 'Agent Greeting ',
-              onChange: (v) {},
+              onChanged: (v) {},
               maxLines: 5,
             ),
           ],

@@ -15,7 +15,7 @@ class CustomTextField extends StatelessWidget {
     this.onVisibilityTap,
     this.maxLines = 1,
     this.validator,
-    this.onChange,
+    this.onChanged,
     this.suffix,
     this.enable = true,
   });
@@ -48,7 +48,7 @@ class CustomTextField extends StatelessWidget {
       enable: enable ?? this.enable,
       maxLines: maxLines ?? this.maxLines,
       validator: validator ?? this.validator,
-      onChange: onChange ?? this.onChange,
+      onChanged: onChange ?? this.onChanged,
       suffix: suffix ?? this.suffix,
     );
   }
@@ -64,7 +64,7 @@ class CustomTextField extends StatelessWidget {
   final bool? enable;
   final int maxLines;
   final String? Function(String?)? validator;
-  final ValueChanged<String>? onChange;
+  final ValueChanged<String>? onChanged;
   final Widget? suffix;
 
   @override
@@ -89,7 +89,7 @@ class CustomTextField extends StatelessWidget {
             autocorrect: false,
             obscureText: obscureText,
             maxLines: maxLines,
-            onChanged: onChange,
+            onChanged: onChanged,
             enabled: enable,
             controller: controller,
             textAlignVertical: TextAlignVertical.center,

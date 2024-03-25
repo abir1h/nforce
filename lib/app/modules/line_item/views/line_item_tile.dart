@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:nuforce/app/modules/line_item/models/line_item_lookup_model.dart';
-import 'package:nuforce/app/modules/new_orders/controllers/invoice_controller.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/extension_methods.dart';
@@ -134,7 +132,7 @@ class _LineItemTileState extends State<LineItemTile> {
                   onPressed: () {
                     if (newItem == null) return;
 
-                    final invoiceController = Get.find<InvoiceController>();
+                    // final invoiceController = Get.find<InvoiceController>();
 
                     if (_amountController.text.isNotEmpty) {
                       newItem = newItem!.copyWith(

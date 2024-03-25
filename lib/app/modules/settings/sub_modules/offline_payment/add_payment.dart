@@ -33,7 +33,6 @@ class _AddPaymentState extends State<AddPayment> {
       resizeToAvoidBottomInset: true,
       appBar: CustomAppbarMinimal(
         title: 'Add Payment',
-
       ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
@@ -188,7 +187,7 @@ class _AddPaymentState extends State<AddPayment> {
               controller: TextEditingController(),
               hint: 'Enter bank name',
               label: 'Bank Name',
-              onChange: (v) {},
+              onChanged: (v) {},
             ),
             SizedBox(
               height: 16.h,
@@ -197,7 +196,7 @@ class _AddPaymentState extends State<AddPayment> {
               controller: TextEditingController(),
               hint: 'Enter account no',
               label: 'Account No',
-              onChange: (v) {},
+              onChanged: (v) {},
             ),
             SizedBox(
               height: 16.h,
@@ -294,7 +293,7 @@ class _AddPaymentState extends State<AddPayment> {
               hint: 'Write details',
               label: 'Additional Details',
               maxLines: 4,
-              onChange: (v) {},
+              onChanged: (v) {},
             ),
             SizedBox(
               height: 8.h,
@@ -412,7 +411,7 @@ class _AddPaymentState extends State<AddPayment> {
                 Expanded(
                   child: PrimaryButton(
                     onPressed: () {
-                     Get.back();
+                      Get.back();
                     },
                     text: 'Submit',
                   ),

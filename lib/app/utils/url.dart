@@ -14,4 +14,9 @@ class URL {
   static const String lineItem = '$baseUrl/form/lineitem.register-form';
   static const String lineItemFromInvoice = '$baseUrl/form/invoice.add-lineitem-form';
   static const String lookupLineItem = '$baseUrl/action/lineitems.lookup_lineitem?query[term]=@';
+
+  // Work Order
+  static const String workOrderServiceRegion = '$baseUrl/action/services.regions';
+  static const String workOrderServicePackage = '$baseUrl/action/services.packages';
+  static const String contactLookup = '$baseUrl/action/contact.searchForContact?query[term]=@';
 }
