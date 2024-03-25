@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/model/line_item_model.dart';
+import 'package:nuforce/app/modules/line_item/models/line_item_lookup_model.dart';
 import 'package:nuforce/app/modules/new_orders/controllers/invoice_controller.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/utils/colors.dart';
@@ -12,14 +12,14 @@ class LineItemTile extends StatefulWidget {
     required this.item,
     super.key,
   });
-  final LineItem item;
+  final LineItemLookupModel item;
 
   @override
   State<LineItemTile> createState() => _LineItemTileState();
 }
 
 class _LineItemTileState extends State<LineItemTile> {
-  LineItem? newItem;
+  LineItemLookupModel? newItem;
 
   int count = 1;
   final TextEditingController _amountController = TextEditingController();
@@ -48,7 +48,7 @@ class _LineItemTileState extends State<LineItemTile> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            widget.item.unitCost,
+            widget.item.cost ?? '',
             style: TextStyle(
               color: AppColors.nutralBlack1,
               fontSize: 16.sp,
@@ -144,7 +144,7 @@ class _LineItemTileState extends State<LineItemTile> {
                     }
 
                     for (int i = 0; i < count; i++) {
-                      invoiceController.addLineItem(newItem!);
+                      // invoiceController.addLineItem(newItem!);
                     }
                     // Fluttertoast.showToast(msg: '$count ${newItem!.name} added to invoice');
                   },

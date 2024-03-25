@@ -19,6 +19,14 @@ class LineItemLookupController extends GetxController {
     update();
   }
 
+  LineItemLookupModel? _selectedLineItem;
+  LineItemLookupModel? get selectedLineItem => _selectedLineItem;
+
+  void setSelectedLineItem(LineItemLookupModel? value) {
+    _selectedLineItem = value;
+    update();
+  }
+
   bool _loading = false;
   bool get loading => _loading;
 

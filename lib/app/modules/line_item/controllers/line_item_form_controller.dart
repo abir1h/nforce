@@ -32,7 +32,7 @@ class LineItemFormController extends GetxController {
     });
   }
 
-@override
+  @override
   void dispose() {
     formBuilder.textEditingControllers.forEach((key, value) {
       value.dispose();
@@ -40,10 +40,17 @@ class LineItemFormController extends GetxController {
     super.dispose();
   }
 
-  bool _loading = false;
-  bool get loading => _loading;
+  bool _isLoading = false;
+  bool get isLoading => _isLoading;
   void setLoading(bool value) {
-    _loading = value;
+    _isLoading = value;
+    update();
+  }
+
+  bool _formLoading = false;
+  bool get formLoading => _formLoading;
+  void setFormLoading(bool value) {
+    _formLoading = value;
     update();
   }
 
