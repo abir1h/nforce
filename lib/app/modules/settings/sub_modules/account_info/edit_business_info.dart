@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 
 import 'package:nuforce/app/modules/settings/controllers/settings_controller.dart';
 import 'package:nuforce/app/modules/settings/models/user_info.dart';
-import 'package:nuforce/app/modules/settings/sub_modules/account_info/account_information_view.dart';
 import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/shared/widgets/secondary_button.dart';

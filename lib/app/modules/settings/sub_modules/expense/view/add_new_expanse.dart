@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/settings/sub_modules/expense/view/expense_view_screen.dart';
 import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
 
 import '../../../../../../gen/assets.gen.dart';
@@ -41,7 +40,7 @@ class _AddExpenseViewScreenState extends State<AddExpenseViewScreen> {
             const SizedBox(width: 15),
             Expanded(
               child: PrimaryButton(
-                onPressed: () =>Get.back(),
+                onPressed: () => Get.back(),
                 text: 'Save',
               ),
             ),
@@ -127,8 +126,7 @@ class _AddExpenseViewScreenState extends State<AddExpenseViewScreen> {
                         lastDate: DateTime.now().add(const Duration(days: 365)),
                       ).then((value) {
                         setState(() {
-                          selectedDate =
-                              '${value!.day}-${value.month}-${value.year}';
+                          selectedDate = '${value!.day}-${value.month}-${value.year}';
                         });
                       });
                     },

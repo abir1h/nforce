@@ -9,7 +9,6 @@ import 'package:nuforce/gen/assets.gen.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
 import '../controllers/over_view_controller.dart';
-import '../widgets/stepper.dart';
 import '../widgets/text_with_title.dart';
 import '../widgets/text_with_widget.dart';
 import 'edit_work_order.dart';
@@ -20,8 +19,8 @@ class OverView extends GetView<OverViewController> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: AppColors.bgWithOpacity,
-        body: SingleChildScrollView(          physics: const BouncingScrollPhysics(),
-
+        body: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
           child: Column(
             children: [
@@ -85,17 +84,13 @@ class OverView extends GetView<OverViewController> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       AnimatedSwitcher(
-                        duration: const Duration(
-                            milliseconds: 300), // Adjust the duration as needed
-                        switchInCurve:
-                            Curves.easeInOut, // Animation curve for appearing
-                        switchOutCurve: Curves
-                            .easeInOut, // Animation curve for disappearing
+                        duration: const Duration(milliseconds: 300), // Adjust the duration as needed
+                        switchInCurve: Curves.easeInOut, // Animation curve for appearing
+                        switchOutCurve: Curves.easeInOut, // Animation curve for disappearing
                         child: controller.isExpanded.value
                             ? Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                key: const Key(
-                                    'expanded'), // Key to differentiate between different children of AnimatedSwitcher
+                                key: const Key('expanded'), // Key to differentiate between different children of AnimatedSwitcher
                                 children: [
                                   const TextWithWidget(
                                     firstItem: 'Priority',
@@ -156,64 +151,41 @@ class OverView extends GetView<OverViewController> {
                                   ),
                                   Row(
                                     mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             "Additonal Details",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 16.sp,
-                                                fontFamily: "poppins",
-                                                color: AppColors.nutralBlack1),
+                                            style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16.sp, fontFamily: "poppins", color: AppColors.nutralBlack1),
                                           ),
                                           SizedBox(
                                             height: 12.h,
                                           ),
                                           Text(
                                             "Payment Details",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w400,
-                                                fontSize: 14.sp,
-                                                fontFamily: "poppins",
-                                                color: AppColors.nutralBlack2),
+                                            style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14.sp, fontFamily: "poppins", color: AppColors.nutralBlack2),
                                           ),
                                           Text(
                                             " First Responder",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w400,
-                                                fontSize: 14.sp,
-                                                fontFamily: "poppins",
-                                                color: AppColors.nutralBlack2),
+                                            style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14.sp, fontFamily: "poppins", color: AppColors.nutralBlack2),
                                           ),
                                         ],
                                       ),
                                       Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 12),
+                                        padding: const EdgeInsets.symmetric(horizontal: 12),
                                         child: GestureDetector(
-                                          onTap: (){
+                                          onTap: () {
                                             Get.to<void>(() => const EditWorkOrder());
-
                                           },
                                           child: Container(
-                                            padding: EdgeInsets.symmetric(
-                                                horizontal: 12.w,
-                                                vertical: 5.h),
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(4.r),
-                                                color: AppColors.lightBlueBg),
+                                            padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 5.h),
+                                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(4.r), color: AppColors.lightBlueBg),
                                             child: Row(
                                               children: [
-                                                SvgPicture.asset(
-                                                    Assets.images.svg.edit),
+                                                SvgPicture.asset(Assets.images.svg.edit),
                                                 const SizedBox(
                                                   width: 4,
                                                 ),
@@ -223,8 +195,7 @@ class OverView extends GetView<OverViewController> {
                                                     fontWeight: FontWeight.w400,
                                                     fontSize: 14.sp,
                                                     fontFamily: "Poppins",
-                                                    color:
-                                                        AppColors.primaryBlue1,
+                                                    color: AppColors.primaryBlue1,
                                                   ),
                                                 )
                                               ],
@@ -239,11 +210,7 @@ class OverView extends GetView<OverViewController> {
                                   ),
                                   Text(
                                     "Additional Details",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 16.sp,
-                                        fontFamily: "poppins",
-                                        color: AppColors.nutralBlack1),
+                                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16.sp, fontFamily: "poppins", color: AppColors.nutralBlack1),
                                   ),
                                   SizedBox(
                                     height: 16.h,
@@ -254,13 +221,9 @@ class OverView extends GetView<OverViewController> {
                                     indicatorStyle: const IndicatorStyle(
                                       color: AppColors.primaryBlue1,
                                     ),
-                                    beforeLineStyle: const LineStyle(
-                                        color: AppColors.primaryBlue1),
-                                    afterLineStyle: const LineStyle(
-                                        color: AppColors.primaryBlue1),
-                                    endChild: const Padding(
-                                        padding: EdgeInsets.all(8.0),
-                                        child: TimeLineCard()),
+                                    beforeLineStyle: const LineStyle(color: AppColors.primaryBlue1),
+                                    afterLineStyle: const LineStyle(color: AppColors.primaryBlue1),
+                                    endChild: const Padding(padding: EdgeInsets.all(8.0), child: TimeLineCard()),
                                   ),
                                   TimelineTile(
                                     alignment: TimelineAlign.start,
@@ -268,13 +231,9 @@ class OverView extends GetView<OverViewController> {
                                     indicatorStyle: const IndicatorStyle(
                                       color: AppColors.primaryBlue1,
                                     ),
-                                    beforeLineStyle: const LineStyle(
-                                        color: AppColors.primaryBlue1),
-                                    afterLineStyle: const LineStyle(
-                                        color: AppColors.primaryBlue1),
-                                    endChild: const Padding(
-                                        padding: EdgeInsets.all(8.0),
-                                        child: TimeLineCard()),
+                                    beforeLineStyle: const LineStyle(color: AppColors.primaryBlue1),
+                                    afterLineStyle: const LineStyle(color: AppColors.primaryBlue1),
+                                    endChild: const Padding(padding: EdgeInsets.all(8.0), child: TimeLineCard()),
                                   ),
                                   TimelineTile(
                                     alignment: TimelineAlign.start,
@@ -282,13 +241,9 @@ class OverView extends GetView<OverViewController> {
                                     indicatorStyle: const IndicatorStyle(
                                       color: AppColors.primaryBlue1,
                                     ),
-                                    beforeLineStyle: const LineStyle(
-                                        color: AppColors.primaryBlue1),
-                                    afterLineStyle: const LineStyle(
-                                        color: AppColors.primaryBlue1),
-                                    endChild: const Padding(
-                                        padding: EdgeInsets.all(8.0),
-                                        child: TimeLineCard()),
+                                    beforeLineStyle: const LineStyle(color: AppColors.primaryBlue1),
+                                    afterLineStyle: const LineStyle(color: AppColors.primaryBlue1),
+                                    endChild: const Padding(padding: EdgeInsets.all(8.0), child: TimeLineCard()),
                                   ),
                                   TimelineTile(
                                     alignment: TimelineAlign.start,
@@ -296,13 +251,9 @@ class OverView extends GetView<OverViewController> {
                                     indicatorStyle: const IndicatorStyle(
                                       color: AppColors.greyStrokColor,
                                     ),
-                                    beforeLineStyle: const LineStyle(
-                                        color: AppColors.primaryBlue1),
-                                    afterLineStyle: const LineStyle(
-                                        color: AppColors.greyStrokColor),
-                                    endChild: const Padding(
-                                        padding: EdgeInsets.all(8.0),
-                                        child: TimeLineCard()),
+                                    beforeLineStyle: const LineStyle(color: AppColors.primaryBlue1),
+                                    afterLineStyle: const LineStyle(color: AppColors.greyStrokColor),
+                                    endChild: const Padding(padding: EdgeInsets.all(8.0), child: TimeLineCard()),
                                   ),
                                   TimelineTile(
                                     alignment: TimelineAlign.start,
@@ -310,35 +261,23 @@ class OverView extends GetView<OverViewController> {
                                     indicatorStyle: const IndicatorStyle(
                                       color: AppColors.greyStrokColor,
                                     ),
-                                    beforeLineStyle: const LineStyle(
-                                        color: AppColors.greyStrokColor),
-                                    afterLineStyle: const LineStyle(
-                                        color: AppColors.greyStrokColor),
-                                    endChild: const Padding(
-                                        padding: EdgeInsets.all(8.0),
-                                        child: TimeLineCard()),
+                                    beforeLineStyle: const LineStyle(color: AppColors.greyStrokColor),
+                                    afterLineStyle: const LineStyle(color: AppColors.greyStrokColor),
+                                    endChild: const Padding(padding: EdgeInsets.all(8.0), child: TimeLineCard()),
                                   ),
                                   SizedBox(
                                     height: 20.h,
                                   ),
                                   Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
                                         "Invoice List",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 16.sp,
-                                            fontFamily: "poppins",
-                                            color: AppColors.nutralBlack1),
+                                        style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16.sp, fontFamily: "poppins", color: AppColors.nutralBlack1),
                                       ),
                                       Text(
                                         '+ Create Invoice',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 14.sp,
-                                            color: AppColors.primaryBlue1),
+                                        style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14.sp, color: AppColors.primaryBlue1),
                                       )
                                     ],
                                   ),
@@ -371,34 +310,20 @@ class OverView extends GetView<OverViewController> {
                       ),
                       InkWell(
                         onTap: () {
-                          controller.isExpanded.value =
-                              !controller.isExpanded.value;
+                          controller.isExpanded.value = !controller.isExpanded.value;
                         },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              controller.isExpanded.value == false
-                                  ? 'See More'
-                                  : 'See Less',
-                              style: TextStyle(
-                                  color: AppColors.primaryBlue1,
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 16.sp,
-                                  fontFamily: "Poppins"),
+                              controller.isExpanded.value == false ? 'See More' : 'See Less',
+                              style: TextStyle(color: AppColors.primaryBlue1, fontWeight: FontWeight.w500, fontSize: 16.sp, fontFamily: "Poppins"),
                             ),
                             AnimatedSwitcher(
-                                duration: const Duration(
-                                    milliseconds:
-                                        300), // Adjust the duration as needed
-                                switchInCurve: Curves
-                                    .easeInOut, // Animation curve for appearing
-                                switchOutCurve: Curves
-                                    .easeInOut, // Animation curve for disappearing
-                                child: controller.isExpanded.value
-                                    ? const Icon(Icons.keyboard_arrow_up_sharp)
-                                    : const Icon(
-                                        Icons.keyboard_arrow_down_sharp))
+                                duration: const Duration(milliseconds: 300), // Adjust the duration as needed
+                                switchInCurve: Curves.easeInOut, // Animation curve for appearing
+                                switchOutCurve: Curves.easeInOut, // Animation curve for disappearing
+                                child: controller.isExpanded.value ? const Icon(Icons.keyboard_arrow_up_sharp) : const Icon(Icons.keyboard_arrow_down_sharp))
                           ],
                         ),
                       ),
@@ -420,8 +345,7 @@ class TimeLineCard extends StatelessWidget {
       constraints: const BoxConstraints(
         minHeight: 120,
       ),
-      decoration: BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(8.r)),
+      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(8.r)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -435,15 +359,13 @@ class TimeLineCard extends StatelessWidget {
             'Dilruba Khanam Jesey',
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: CustomTextStyle.heading5
-                .copyWith(color: AppColors.nutralBlack2, fontFamily: "Poppins"),
+            style: CustomTextStyle.heading5.copyWith(color: AppColors.nutralBlack2, fontFamily: "Poppins"),
           ),
           Text(
             '25 Jan 2023 - 08:30PM',
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: CustomTextStyle.heading5
-                .copyWith(color: AppColors.nutralBlack2, fontFamily: "Poppins"),
+            style: CustomTextStyle.heading5.copyWith(color: AppColors.nutralBlack2, fontFamily: "Poppins"),
           ),
         ],
       ),
@@ -458,8 +380,7 @@ class InvoiceCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-      decoration: BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(8.r)),
+      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(8.r)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -486,14 +407,11 @@ class InvoiceCard extends StatelessWidget {
                 'Due to: 27 Aug, 2023',
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style: CustomTextStyle.heading5.copyWith(
-                    color: AppColors.nutralBlack2, fontFamily: "Poppins"),
+                style: CustomTextStyle.heading5.copyWith(color: AppColors.nutralBlack2, fontFamily: "Poppins"),
               ),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 2.h),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(24.r),
-                    color: AppColors.lightYellow2),
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(24.r), color: AppColors.lightYellow2),
                 child: Text(
                   "pending",
                   style: TextStyle(
@@ -515,11 +433,8 @@ class InvoiceCard extends StatelessWidget {
               children: [
                 Expanded(
                   child: Container(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 8.w, vertical: 2.h),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5.r),
-                        color: AppColors.primaryBlue1),
+                    padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 2.h),
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(5.r), color: AppColors.primaryBlue1),
                     child: Center(
                       child: Text(
                         "View Invoice",
@@ -538,12 +453,8 @@ class InvoiceCard extends StatelessWidget {
                 ),
                 Expanded(
                   child: Container(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 8.w, vertical: 2.h),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5.r),
-                        border: Border.all(color: AppColors.primaryBlue1),
-                        color: AppColors.white1),
+                    padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 2.h),
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(5.r), border: Border.all(color: AppColors.primaryBlue1), color: AppColors.white1),
                     child: Center(
                       child: Text(
                         "Customer Preview",

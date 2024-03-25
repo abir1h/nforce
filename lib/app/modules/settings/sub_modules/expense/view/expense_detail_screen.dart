@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/utils/colors.dart';
@@ -11,7 +9,6 @@ import 'package:nuforce/gen/assets.gen.dart';
 
 import '../../../../../shared/widgets/primary_button.dart';
 import '../../../../../shared/widgets/secondary_button.dart';
-import 'expense_view_screen.dart';
 
 class ExpenseDetailScreen extends StatefulWidget {
   const ExpenseDetailScreen({super.key});
@@ -92,44 +89,28 @@ class _ExpenseDetailScreenState extends State<ExpenseDetailScreen> {
             ),
             Text(
               "Electricity Bill",
-              style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 18.sp,
-                  fontFamily: "Poppins",
-                  color: AppColors.nutralBlack1),
+              style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18.sp, fontFamily: "Poppins", color: AppColors.nutralBlack1),
             ),
             SizedBox(
               height: 4.h,
             ),
             Text(
               r"$20,000.00",
-              style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 14.sp,
-                  fontFamily: "Poppins",
-                  color: AppColors.primaryBlue1),
+              style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14.sp, fontFamily: "Poppins", color: AppColors.primaryBlue1),
             ),
             SizedBox(
               height: 4.h,
             ),
             Text(
               "Jan 05, 2024 - 10:30 PM",
-              style: TextStyle(
-                  fontWeight: FontWeight.w400,
-                  fontSize: 16.sp,
-                  fontFamily: "Poppins",
-                  color: AppColors.nutralBlack2),
+              style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16.sp, fontFamily: "Poppins", color: AppColors.nutralBlack2),
             ),
             SizedBox(
               height: 16.h,
             ),
             Text(
               "Payable amount Receipt. Important Notic All Payment Done by Cheque shou ld be in the name of Account Officer.",
-              style: TextStyle(
-                  fontWeight: FontWeight.w400,
-                  fontSize: 16.sp,
-                  fontFamily: "Poppins",
-                  color: AppColors.nutralBlack2),
+              style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16.sp, fontFamily: "Poppins", color: AppColors.nutralBlack2),
             ),
           ],
         ),
