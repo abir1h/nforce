@@ -12,4 +12,6 @@ class URL {
 
   // Line Item
   static const String lineItem = '$baseUrl/form/lineitem.register-form';
+  static const String lineItemFromInvoice = '$baseUrl/form/invoice.add-lineitem-form';
+  static const String lookupLineItem = '$baseUrl/action/lineitems.lookup_lineitem?query[term]=@';
 }

@@ -4,8 +4,10 @@ import 'package:get/get.dart';
 import 'package:nuforce/app/model/line_item_model.dart';
 import 'package:nuforce/app/modules/line_item/controllers/line_item_controller.dart';
 import 'package:nuforce/app/modules/line_item/controllers/line_item_form_controller.dart';
+import 'package:nuforce/app/modules/line_item/controllers/line_item_lookup_controller.dart';
 import 'package:nuforce/app/modules/line_item/models/control.dart';
 import 'package:nuforce/app/shared/widgets/custom_dropdown.dart';
+import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/shared/widgets/secondary_button.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
@@ -32,10 +34,12 @@ class _AddNewLineItemState extends State<AddNewLineItem> {
   void initState() {
     super.initState();
     formController = Get.put(LineItemFormController());
+    Get.put(LineItemLookupController());
   }
 
   @override
   void dispose() {
+    Get.delete<LineItemLookupController>();
     super.dispose();
   }
 
@@ -49,38 +53,62 @@ class _AddNewLineItemState extends State<AddNewLineItem> {
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding, vertical: 5),
-              child: GetBuilder<LineItemFormController>(
-                builder: (controller) {
-                  if (controller.loading) {
-                    return const Center(child: CircularProgressIndicator());
-                  }
-                  return ListView.builder(
-                    itemCount: controller.formBuilder.fieldNames.length,
-                    shrinkWrap: true,
-                    itemBuilder: (BuildContext context, int index) {
-                      final name = controller.formBuilder.fieldNames[index];
-                      Widget? widget = controller.formBuilder.widgets[name];
-                      if (widget != null && widget.runtimeType == CustomDropdownButton<Option?>) {
-                        widget = (widget as CustomDropdownButton<Option?>).copyWith(
-                          onChanged: (value) {
-                            controller.updateOnChanged(name, value);
-                          },
-                          value: controller.formBuilder.dropdownValue[name],
-                        );
-
-                        return Padding(
-                          padding: EdgeInsets.only(bottom: 16.h),
-                          child: widget,
-                        );
+              child: Stack(
+                children: [
+                  GetBuilder<LineItemFormController>(
+                    builder: (controller) {
+                      if (controller.loading) {
+                        return const Center(child: CircularProgressIndicator());
                       }
+                      return ListView.builder(
+                        itemCount: controller.formBuilder.fieldNames.length,
+                        shrinkWrap: true,
+                        itemBuilder: (BuildContext context, int index) {
+                          final name = controller.formBuilder.fieldNames[index];
+                          Widget? widget = controller.formBuilder.widgets[name];
+                          if (widget != null && widget.runtimeType == CustomDropdownButton<Option?>) {
+                            widget = (widget as CustomDropdownButton<Option?>).copyWith(
+                              onChanged: (value) {
+                                controller.updateOnChanged(name, value);
+                              },
+                              value: controller.formBuilder.dropdownValue[name],
+                            );
 
-                      return Padding(
-                        padding: EdgeInsets.only(bottom: 16.h),
-                        child: widget ?? const SizedBox.shrink(),
+                            return Padding(
+                              padding: EdgeInsets.only(bottom: 16.h),
+                              child: widget,
+                            );
+                          }
+
+                          if (name == 'paramsLineitemFinder') {
+                            widget = (widget as CustomTextField).copyWith(
+                              onChange: (v) {
+                                if (v.isNotEmpty && v.length > 2) {
+                                  Get.find<LineItemLookupController>().lookup(v);
+                                } else {
+                                  Get.find<LineItemLookupController>().clearSearchResult();
+                                }
+                              },
+                            );
+                            return Padding(
+                              padding: EdgeInsets.only(bottom: 16.h),
+                              child: widget,
+                            );
+                          }
+
+                          return Padding(
+                            padding: EdgeInsets.only(bottom: 16.h),
+                            child: widget ?? const SizedBox.shrink(),
+                          );
+                        },
                       );
                     },
-                  );
-                },
+                  ),
+                  Positioned(
+                    top: 80.h,
+                    child: SearchResult(formController: formController, name: 'paramsLineitemFinder'),
+                  ),
+                ],
               ),
             ),
           ),
@@ -161,6 +189,74 @@ class _AddNewLineItemState extends State<AddNewLineItem> {
           ),
         ],
       ),
+    );
+  }
+}
+
+class SearchResult extends StatelessWidget {
+  const SearchResult({
+    super.key,
+    required this.formController,
+    required this.name,
+  });
+
+  final LineItemFormController formController;
+  final String name;
+
+  @override
+  Widget build(BuildContext context) {
+    return GetBuilder<LineItemLookupController>(
+      builder: (controller) {
+        if (controller.loading) {
+          return SizedBox(
+            width: width - (AppSizes.horizontalPadding * 2),
+            child: const Center(child: CircularProgressIndicator()),
+          );
+        }
+
+        return Container(
+          padding: const EdgeInsets.all(8),
+          height: controller.showSearchResult ? 200.h : 0,
+          width: width - (AppSizes.horizontalPadding * 2),
+          decoration: BoxDecoration(
+            color: AppColors.white1,
+            borderRadius: BorderRadius.circular(4),
+            border: Border.all(
+              color: AppColors.greyText,
+              width: 1,
+            ),
+          ),
+          child: controller.showSearchResult
+              ? ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: controller.searchResult.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    final lineItem = controller.searchResult[index];
+                    return Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text('${index + 1}.'),
+                        Expanded(
+                          child: ListTile(
+                            title: Text(lineItem.name ?? ''),
+                            onTap: () {
+                              controller.setShowSearchResult(false);
+                              controller.clearSearchResult();
+                              formController.formBuilder.textEditingControllers[name]?.text = lineItem.name ?? '';
+                              formController.formBuilder.textEditingControllers['unitCost']?.text = lineItem.unitCost ?? '';
+                              formController.formBuilder.textEditingControllers['quantity']?.text = '${lineItem.quantity ?? 1}';
+                              formController.formBuilder.textEditingControllers['discount']?.text = '${lineItem.discount ?? 0}';
+                              formController.formBuilder.textEditingControllers['description']?.text = lineItem.description ?? '';
+                            },
+                          ),
+                        ),
+                      ],
+                    );
+                  },
+                )
+              : const SizedBox.shrink(),
+        );
+      },
     );
   }
 }
