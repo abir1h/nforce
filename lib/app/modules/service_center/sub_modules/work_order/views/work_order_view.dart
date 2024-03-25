@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/service_center/sub_modules/work_order/controllers/work_order_controller.dart';
+import 'package:nuforce/app/routes/app_pages.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 import '../widgets/work_order_card.dart';
@@ -40,13 +41,13 @@ class WorkOrderView extends GetView<WorkOrderController> {
               SizedBox(
                 height: 16.h,
               ),
-              WorkOrderCard(),
-              WorkOrderCard(),
-              WorkOrderCard(),
-              WorkOrderCard(),
-              WorkOrderCard(),
-              WorkOrderCard(),
-              WorkOrderCard(),
+               WorkOrderCard(onPressed: ()=>Get.toNamed(Routes.WORK_ORDER_VIEW),),
+               WorkOrderCard(onPressed: ()=>Get.toNamed(Routes.WORK_ORDER_VIEW),),
+               WorkOrderCard(onPressed: ()=>Get.toNamed(Routes.WORK_ORDER_VIEW),),
+               WorkOrderCard(onPressed: ()=>Get.toNamed(Routes.WORK_ORDER_VIEW),),
+               WorkOrderCard(onPressed: ()=>Get.toNamed(Routes.WORK_ORDER_VIEW),),
+               WorkOrderCard(onPressed: ()=>Get.toNamed(Routes.WORK_ORDER_VIEW),),
+
               SizedBox(
                 height: 32.h,
               ),

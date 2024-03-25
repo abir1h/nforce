@@ -16,14 +16,26 @@ abstract class Routes {
   static const BUSINESS_MANAGER = _Paths.BUSINESS_MANAGER;
   static const SETTINGS = _Paths.SETTINGS;
   static const CUSTOMER = _Paths.CUSTOMER;
-  static const CUSTOMER_WORK_ORDER = _Paths.CUSTOMER + _Paths.CUSTOMER_WORK_ORDER;
+  static const CUSTOMER_WORK_ORDER =
+      _Paths.CUSTOMER + _Paths.CUSTOMER_WORK_ORDER;
   static const SERVICE_CENTER = _Paths.SERVICE_CENTER;
   static const DASHBOARD = _Paths.SERVICE_CENTER + _Paths.DASHBOARD;
   static const WORK_ORDER = _Paths.SERVICE_CENTER + _Paths.WORK_ORDER;
-  static const WORK_ORDER_SEARCH = _Paths.SERVICE_CENTER + _Paths.WORK_ORDER_SEARCH;
+  static const WORK_ORDER_SEARCH =
+      _Paths.SERVICE_CENTER + _Paths.WORK_ORDER_SEARCH;
   static const CALENDAR = _Paths.SERVICE_CENTER + _Paths.CALENDAR;
-  static const SERVICE_CENTER_MAPS = _Paths.SERVICE_CENTER + _Paths.SERVICE_CENTER_MAPS;
+  static const SERVICE_CENTER_MAPS =
+      _Paths.SERVICE_CENTER + _Paths.SERVICE_CENTER_MAPS;
   static const LINE_ITEM = _Paths.LINE_ITEM;
+  static const WORK_ORDER_DETAILS =
+      _Paths.SERVICE_CENTER + _Paths.WORK_ORDER_DETAILS;
+  static const WORK_ORDER_VIEW = _Paths.SERVICE_CENTER + _Paths.WORK_ORDER_VIEW;
+  static const OVER_VIEW =
+      _Paths.SERVICE_CENTER + _Paths.WORK_ORDER_VIEW + _Paths.OVER_VIEW;
+  static const ESTIMATION = _Paths.SERVICE_CENTER + _Paths.ESTIMATION;
+  static const INVOICE = _Paths.SERVICE_CENTER +
+      _Paths.WORK_ORDER_VIEW +
+      _Paths.INVOICE;
 }
 
 abstract class _Paths {
@@ -49,4 +61,9 @@ abstract class _Paths {
   static const WORK_ORDER_SEARCH = '/work-order-search';
   static const CALENDAR = '/calendar';
   static const SERVICE_CENTER_MAPS = '/service-center-maps';
+  static const WORK_ORDER_DETAILS = '/work-order-details';
+  static const WORK_ORDER_VIEW = '/work-order-view';
+  static const OVER_VIEW = '/over-view';
+  static const ESTIMATION = '/estimation';
+  static const INVOICE = '/invoice';
 }

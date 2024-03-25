@@ -27,12 +27,21 @@ import '../modules/service_center/sub_modules/calendar/bindings/calendar_binding
 import '../modules/service_center/sub_modules/calendar/views/calendar_view.dart';
 import '../modules/service_center/sub_modules/dashboard/bindings/dashboard_binding.dart';
 import '../modules/service_center/sub_modules/dashboard/views/dashboard_view.dart';
+import '../modules/service_center/sub_modules/estimation/bindings/estimation_binding.dart';
+import '../modules/service_center/sub_modules/estimation/views/estimation_view.dart';
 import '../modules/service_center/sub_modules/service_center_maps/bindings/service_center_maps_binding.dart';
 import '../modules/service_center/sub_modules/service_center_maps/views/service_center_maps_view.dart';
 import '../modules/service_center/sub_modules/work_order/bindings/work_order_binding.dart';
 import '../modules/service_center/sub_modules/work_order/views/work_order_view.dart';
 import '../modules/service_center/sub_modules/work_order_search/bindings/work_order_search_binding.dart';
 import '../modules/service_center/sub_modules/work_order_search/views/work_order_search_view.dart';
+import '../modules/service_center/sub_modules/work_order_view/bindings/work_order_view_binding.dart';
+
+import '../modules/service_center/sub_modules/work_order_view/sub_modules/invoice/bindings/invoice_binding.dart';
+import '../modules/service_center/sub_modules/work_order_view/sub_modules/invoice/views/invoice_view.dart';
+import '../modules/service_center/sub_modules/work_order_view/sub_modules/over_view/bindings/over_view_binding.dart';
+import '../modules/service_center/sub_modules/work_order_view/sub_modules/over_view/views/over_view.dart';
+import '../modules/service_center/sub_modules/work_order_view/views/work_order_view.dart';
 import '../modules/service_center/views/service_center_view.dart';
 import '../modules/service_items/bindings/service_items_binding.dart';
 import '../modules/service_items/views/service_items_view.dart';
@@ -152,6 +161,28 @@ class AppPages {
           name: _Paths.SERVICE_CENTER_MAPS,
           page: () => const ServiceCenterMapsView(),
           binding: ServiceCenterMapsBinding(),
+        ),
+        GetPage(
+          name: _Paths.WORK_ORDER_VIEW,
+          page: () => const WorkOrderViewView(),
+          binding: WorkOrderViewBinding(),
+          children: [
+            GetPage(
+              name: _Paths.OVER_VIEW,
+              page: () => const OverView(),
+              binding: OverViewBinding(),
+            ),
+            GetPage(
+              name: _Paths.INVOICE,
+              page: () => const InvoiceView(),
+              binding: InvoiceBinding(),
+            ),
+          ],
+        ),
+        GetPage(
+          name: _Paths.ESTIMATION,
+          page: () => const EstimationView(),
+          binding: EstimationBinding(),
         ),
       ],
     ),
