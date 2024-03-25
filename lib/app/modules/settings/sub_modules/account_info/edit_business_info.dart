@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 
 import 'package:nuforce/app/modules/settings/controllers/settings_controller.dart';
 import 'package:nuforce/app/modules/settings/models/user_info.dart';
-import 'package:nuforce/app/modules/settings/sub_modules/account_info/account_information_view.dart';
 import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/shared/widgets/secondary_button.dart';
@@ -74,7 +73,7 @@ class _BusinessInfoEditState extends State<BusinessInfoEdit> {
                       controller: controller.businessName,
                       hint: 'Enter business name',
                       label: 'Business Name',
-                      onChange: (v) {},
+                      onChanged: (v) {},
                     ),
                     SizedBox(
                       height: 16.h,
@@ -83,7 +82,7 @@ class _BusinessInfoEditState extends State<BusinessInfoEdit> {
                       controller: controller.businessDomain,
                       hint: 'Enter business domain',
                       label: 'Business Domain',
-                      onChange: (v) {},
+                      onChanged: (v) {},
                     ),
                     SizedBox(
                       height: 16.h,
@@ -92,7 +91,7 @@ class _BusinessInfoEditState extends State<BusinessInfoEdit> {
                       controller: controller.businessDomain,
                       hint: 'Enter address',
                       label: 'Address',
-                      onChange: (v) {},
+                      onChanged: (v) {},
                     ),
                     SizedBox(
                       height: 16.h,
@@ -101,7 +100,7 @@ class _BusinessInfoEditState extends State<BusinessInfoEdit> {
                       controller: controller.businessDomain,
                       hint: 'Enter contact us',
                       label: 'Contact us',
-                      onChange: (v) {},
+                      onChanged: (v) {},
                     ),
                     SizedBox(
                       height: 16.h,
@@ -110,7 +109,7 @@ class _BusinessInfoEditState extends State<BusinessInfoEdit> {
                       controller: controller.businessDomain,
                       hint: 'Enter help email',
                       label: 'Help email',
-                      onChange: (v) {},
+                      onChanged: (v) {},
                     ),
                   ],
                 ),

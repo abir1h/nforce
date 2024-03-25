@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/settings/sub_modules/expense/view/expense_view_screen.dart';
 import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
 
 import '../../../../../shared/widgets/custom_appbar_minimal.dart';
 import '../../../../../shared/widgets/custom_dropdown.dart';
 import '../../../../../shared/widgets/primary_button.dart';
 import '../../../../../utils/colors.dart';
-
 
 class AddExpenseCodeViewScreen extends StatefulWidget {
   const AddExpenseCodeViewScreen({super.key});
@@ -28,11 +26,10 @@ class _AddExpenseCodeViewScreenState extends State<AddExpenseCodeViewScreen> {
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
         child: Row(
           children: [
-
             Expanded(
               child: PrimaryButton(
                 onPressed: () {
-                Get.back();
+                  Get.back();
                 },
                 text: 'Submit Expense',
               ),
@@ -48,19 +45,23 @@ class _AddExpenseCodeViewScreenState extends State<AddExpenseCodeViewScreen> {
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [   CustomTextField(
-            label: 'Code title',
-            hint: 'Enter code title ',
-            controller: TextEditingController(),
-          ),  SizedBox(
-            height: 16.h,
-          ), CustomTextField(
-            label: 'Code ',
-            hint: 'Enter code  ',
-            controller: TextEditingController(),
-          ),  SizedBox(
-            height: 16.h,
-          ),
+          children: [
+            CustomTextField(
+              label: 'Code title',
+              hint: 'Enter code title ',
+              controller: TextEditingController(),
+            ),
+            SizedBox(
+              height: 16.h,
+            ),
+            CustomTextField(
+              label: 'Code ',
+              hint: 'Enter code  ',
+              controller: TextEditingController(),
+            ),
+            SizedBox(
+              height: 16.h,
+            ),
             Text(
               'Code type',
               style: TextStyle(
@@ -97,7 +98,7 @@ class _AddExpenseCodeViewScreenState extends State<AddExpenseCodeViewScreen> {
               onChanged: (newVal) {},
               value: null,
             ),
-        SizedBox(
+            SizedBox(
               height: 70.h,
             ),
           ],

@@ -15,8 +15,43 @@ class CustomTextField extends StatelessWidget {
     this.onVisibilityTap,
     this.maxLines = 1,
     this.validator,
-    this.onChange, this.suffix, this.enable=true,
+    this.onChanged,
+    this.suffix,
+    this.enable = true,
   });
+
+  //copywith method
+  CustomTextField copyWith({
+    String? label,
+    String? hint,
+    TextEditingController? controller,
+    bool? obscureText,
+    TextInputType? keyboardType,
+    VoidCallback? onVisibilityTap,
+    bool? isVisibile,
+    bool? isPassword,
+    bool? enable,
+    int? maxLines,
+    String? Function(String?)? validator,
+    ValueChanged<String>? onChange,
+    Widget? suffix,
+  }) {
+    return CustomTextField(
+      label: label ?? this.label,
+      hint: hint ?? this.hint,
+      controller: controller ?? this.controller,
+      obscureText: obscureText ?? this.obscureText,
+      keyboardType: keyboardType ?? this.keyboardType,
+      onVisibilityTap: onVisibilityTap ?? this.onVisibilityTap,
+      isVisibile: isVisibile ?? this.isVisibile,
+      isPassword: isPassword ?? this.isPassword,
+      enable: enable ?? this.enable,
+      maxLines: maxLines ?? this.maxLines,
+      validator: validator ?? this.validator,
+      onChanged: onChange ?? this.onChanged,
+      suffix: suffix ?? this.suffix,
+    );
+  }
 
   final String label;
   final String hint;
@@ -29,7 +64,7 @@ class CustomTextField extends StatelessWidget {
   final bool? enable;
   final int maxLines;
   final String? Function(String?)? validator;
-  final ValueChanged<String>? onChange;
+  final ValueChanged<String>? onChanged;
   final Widget? suffix;
 
   @override
@@ -52,10 +87,9 @@ class CustomTextField extends StatelessWidget {
             validator: validator,
             cursorColor: AppColors.primaryBlue1,
             autocorrect: false,
-
             obscureText: obscureText,
             maxLines: maxLines,
-            onChanged: onChange,
+            onChanged: onChanged,
             enabled: enable,
             controller: controller,
             textAlignVertical: TextAlignVertical.center,
@@ -69,7 +103,7 @@ class CustomTextField extends StatelessWidget {
                         color: AppColors.greyText,
                       ),
                     )
-                  : suffix??const SizedBox(),
+                  : suffix ?? const SizedBox(),
               hintText: hint,
               hintStyle: CustomTextStyle.paragraphSmall.copyWith(
                 fontWeight: FontWeight.w400,

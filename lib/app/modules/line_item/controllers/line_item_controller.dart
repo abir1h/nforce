@@ -1,5 +1,7 @@
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/model/line_item_model.dart';
+import 'package:nuforce/app/modules/line_item/models/line_item_lookup_model.dart';
+import 'package:nuforce/app/modules/line_item/services/line_item_data_repo.dart';
 
 enum LineItemTab { lineItems, findItems, addNew }
 
@@ -20,10 +22,10 @@ class LineItemController extends GetxController {
     update();
   }
 
-  final List<LineItem> _items = [];
-  List<LineItem> get items => _items;
+  final List<LineItemLookupModel> _items = [];
+  List<LineItemLookupModel> get items => _items;
 
-  void addItem(LineItem item) {
+  void addItem(LineItemLookupModel item) {
     _items.add(item);
     update();
   }
@@ -31,5 +33,43 @@ class LineItemController extends GetxController {
   void removeItem(int index) {
     _items.removeAt(index);
     update();
+  }
+
+  Future<bool> addLineItem({
+    required int workOrderId,
+    required int invoiceId,
+    required int lineItemId,
+    required String lineItemFinder,
+    required String unitCost,
+    required String quantity,
+    required String discount,
+    required String description,
+  }) async {
+    bool isSuccessful = false;
+    setLoading(true);
+    await LineItemRepository()
+        .addLineItem(
+      workOrderId: workOrderId,
+      invoiceId: invoiceId,
+      lineItemId: lineItemId,
+      lineItemFinder: lineItemFinder,
+      unitCost: unitCost,
+      quantity: quantity,
+      discount: discount,
+      description: description,
+    )
+        .then((value) {
+      value.fold(
+        (success) {
+          Fluttertoast.showToast(msg: success);
+          isSuccessful = true;
+        },
+        (error) {
+          Fluttertoast.showToast(msg: error);
+        },
+      );
+    });
+    setLoading(false);
+    return isSuccessful;
   }
 }

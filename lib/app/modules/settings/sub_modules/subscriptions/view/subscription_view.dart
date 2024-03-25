@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/settings/sub_modules/subscriptions/controller/subscription_controller.dart';
 import 'package:nuforce/app/modules/settings/sub_modules/subscriptions/view/payment_view.dart';
-import 'package:nuforce/app/modules/settings/views/settings_view.dart';
 import 'package:nuforce/app/modules/settings/widgets/contactus_card.dart';
 import 'package:nuforce/app/modules/settings/widgets/subscription_card.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
@@ -28,7 +27,8 @@ class _SubscriptionViewState extends State<SubscriptionView> {
     return Scaffold(
       backgroundColor: AppColors.white1,
       appBar: const CustomAppbarMinimal(
-        title: 'Subscription',centerTitle: true,
+        title: 'Subscription',
+        centerTitle: true,
       ),
       body: GetBuilder<SubscriptionController>(
         builder: (_) {

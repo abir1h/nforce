@@ -79,7 +79,7 @@ CustomFormBuilder getForm({List<Control>? controls}) {
               ...formBuilder.widgets,
               control.name!: CustomTextField(
                 label: control.label ?? '',
-                hint: control.label ?? '',
+                hint: control.params?.help ?? control.label ?? '',
                 controller: formBuilder.textEditingControllers[control.name!],
                 validator: formBuilder.validator[control.name!],
               ),

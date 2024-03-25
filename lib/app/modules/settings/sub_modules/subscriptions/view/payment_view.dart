@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/settings/sub_modules/subscriptions/controller/subscription_controller.dart';
-import 'package:nuforce/app/modules/settings/views/settings_view.dart';
 import 'package:nuforce/app/modules/settings/widgets/add_card_bottom_sheet.dart';
 import 'package:nuforce/app/modules/settings/widgets/visa_card.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
@@ -41,8 +40,9 @@ class _PaymentViewState extends State<PaymentView> {
           },
         ),
       ),
-      appBar:  const CustomAppbarMinimal(
-        title: 'Payment Method',centerTitle: true,
+      appBar: const CustomAppbarMinimal(
+        title: 'Payment Method',
+        centerTitle: true,
       ),
       body: GetBuilder<SubscriptionController>(
         builder: (_) {

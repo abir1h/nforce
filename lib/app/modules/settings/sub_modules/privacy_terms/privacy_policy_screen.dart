@@ -8,7 +8,6 @@ import 'package:nuforce/app/utils/colors.dart';
 
 import '../../../../shared/widgets/primary_button.dart';
 import '../../../../shared/widgets/secondary_button.dart';
-import '../../views/settings_view.dart';
 
 class PrivacyPolicyScreen extends StatefulWidget {
   const PrivacyPolicyScreen({super.key});
@@ -39,14 +38,14 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
           children: [
             Expanded(
               child: SecondaryButton(
-                onPressed: () =>Get.back(),
+                onPressed: () => Get.back(),
                 text: 'Reset',
               ),
             ),
             const SizedBox(width: 15),
             Expanded(
               child: PrimaryButton(
-                onPressed: () =>Get.back(),
+                onPressed: () => Get.back(),
                 text: 'Submit',
               ),
             ),
@@ -55,7 +54,7 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: SingleChildScrollView(
-        child:  Column(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
@@ -93,7 +92,6 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
                   sharedConfigurations: const QuillSharedConfigurations(
                     locale: Locale('en'),
                   ),
-
                 ),
               ),
             ),
