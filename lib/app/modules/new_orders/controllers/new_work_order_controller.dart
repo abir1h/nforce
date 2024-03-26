@@ -9,7 +9,7 @@ import 'package:nuforce/app/modules/new_orders/models/work_order_service_region_
 import 'package:nuforce/app/modules/new_orders/models/work_order_success_model.dart';
 import 'package:nuforce/app/modules/new_orders/services/work_order_api_service.dart';
 
-class WorkOrderController extends GetxController {
+class NewWorkOrderController extends GetxController {
   bool _loading = false;
   bool get loading => _loading;
   void setLoading(bool value) {
@@ -34,8 +34,18 @@ class WorkOrderController extends GetxController {
     update();
   }
 
+  void clearSelectedServiceRegion() {
+    _selectedServiceRegion = null;
+    update();
+  }
+
   void addServiceRegion(WorkOrderServiceRegionModel serviceRegionModel) {
     _serviceRegionModel = serviceRegionModel;
+    update();
+  }
+
+  void clearServiceRegion() {
+    _serviceRegionModel = WorkOrderServiceRegionModel();
     update();
   }
 
@@ -63,6 +73,11 @@ class WorkOrderController extends GetxController {
 
   void setSelectedServicePackage(ServicePackage servicePackage) {
     _selectedServicePackage = servicePackage;
+    update();
+  }
+
+  void clearSelectedServicePackage() {
+    _selectedServicePackage = null;
     update();
   }
 

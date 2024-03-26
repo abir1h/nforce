@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'dart:developer' as developer show log;
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:nuforce/app/modules/new_orders/models/contact_details_model.dart';
@@ -111,8 +112,10 @@ class WorkOrderApiService {
 
       log('Response: $response', name: 'createWorkOrder');
       if (response.statusCode == 200 && response.data != null) {
+        developer.log('Response: $response', name: 'createWorkOrder');
         return Left(WorkOrderSuccessModel.fromJson(response.data));
       } else {
+        developer.log('Response: $response', name: 'createWorkOrder');
         return Right(response.data['error'] ?? 'An error occurred.');
       }
     } on DioException catch (e) {

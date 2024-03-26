@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/home/components/colored_checkbox_with_title.dart';
-import 'package:nuforce/app/modules/new_orders/controllers/work_order_controller.dart';
+import 'package:nuforce/app/modules/new_orders/controllers/new_work_order_controller.dart';
 import 'package:nuforce/app/modules/new_orders/models/work_order_service_package_model.dart';
 import 'package:nuforce/app/modules/new_orders/models/work_order_service_region_model.dart';
 import 'package:nuforce/app/modules/new_orders/views/create_invoice_view.dart';
@@ -44,25 +44,30 @@ class _CreateOrderWidgetState extends State<CreateOrderWidget> {
 
   bool isCreateInvoiceSelected = true;
 
-  late final WorkOrderController workOrderServiceRegionController;
+  late final NewWorkOrderController workOrderController;
 
   final TextEditingController findContactController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    if (WorkOrderController().initialized) {
-      workOrderServiceRegionController = Get.find<WorkOrderController>();
+    if (NewWorkOrderController().initialized) {
+      workOrderController = Get.find<NewWorkOrderController>();
     } else {
-      workOrderServiceRegionController = Get.put(WorkOrderController());
+      workOrderController = Get.put(NewWorkOrderController());
     }
-    workOrderServiceRegionController.getServiceRegion();
-    workOrderServiceRegionController.fetchServicePackages();
+    workOrderController.getServiceRegion();
+    workOrderController.fetchServicePackages();
   }
 
   @override
   void dispose() {
     findContactController.dispose();
+    workOrderController.clearContactSearchList();
+    workOrderController.clearServiceRegion();
+    workOrderController.clearContactSearchList();
+    workOrderController.clearSelectedServicePackage();
+    workOrderController.clearSelectedServiceRegion();
     super.dispose();
   }
 
@@ -106,7 +111,7 @@ class _CreateOrderWidgetState extends State<CreateOrderWidget> {
           ),
           const Divider(color: AppColors.white3, height: 2),
           const SizedBox(height: 16),
-          GetBuilder<WorkOrderController>(
+          GetBuilder<NewWorkOrderController>(
             builder: (controller) {
               if (controller.loading) {
                 return Column(
@@ -226,6 +231,7 @@ class _CreateOrderWidgetState extends State<CreateOrderWidget> {
                                   ..to<void>(
                                     () => const CreateInvoiceView(),
                                     transition: Transition.downToUp,
+                                    arguments: controller.workOrderSuccessModel.invoice,
                                   );
                               }
                             });
@@ -264,7 +270,7 @@ class SearchResult extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<WorkOrderController>(
+    return GetBuilder<NewWorkOrderController>(
       builder: (controller) {
         if (controller.contactLoading) {
           return const Center(child: CircularProgressIndicator());
