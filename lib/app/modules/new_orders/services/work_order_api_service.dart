@@ -86,10 +86,10 @@ class WorkOrderApiService {
   }
 
   static Future<Either<WorkOrderSuccessModel, String>> createWorkOrder({
-    required String contactId,
-    required String billingAddressId,
-    required String serviceId,
-    required String regionId,
+    required int contactId,
+    required int billingAddressId,
+    required int serviceId,
+    required int regionId,
     String? taxExempt,
     String? standalone,
   }) async {
