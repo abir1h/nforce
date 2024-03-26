@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/contact/views/contact_view.dart';
 import 'package:nuforce/app/modules/home/components/colored_checkbox_with_title.dart';
 import 'package:nuforce/app/modules/new_orders/controllers/new_work_order_controller.dart';
 import 'package:nuforce/app/modules/new_orders/models/work_order_contact_search_model.dart';
@@ -161,7 +162,7 @@ class _CreateOrderWidgetState extends State<CreateOrderWidget> {
                             ignoring: true,
                             child: CustomTextField(
                               label: 'Find Contact',
-                              hint: controller.selectedContact?.name ?? '',
+                              hint: controller.selectedContact?.name ?? 'Find Contact',
                               controller: null,
                             ),
                           ),
@@ -299,7 +300,12 @@ class SearchResult extends StatelessWidget {
                         ),
                       ),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.to(
+                            () => const ContactView(),
+                            transition: Transition.downToUp,
+                          );
+                        },
                         child: const Text('+ Add Contact'),
                       ),
                     ],
