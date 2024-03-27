@@ -301,6 +301,7 @@ class SearchResult extends StatelessWidget {
                       ),
                       TextButton(
                         onPressed: () {
+                          Get.back();
                           Get.to(
                             () => const ContactView(),
                             transition: Transition.downToUp,

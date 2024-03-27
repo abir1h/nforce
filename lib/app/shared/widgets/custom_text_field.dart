@@ -48,7 +48,7 @@ class CustomTextField extends StatelessWidget {
       enable: enable ?? this.enable,
       maxLines: maxLines ?? this.maxLines,
       validator: validator ?? this.validator,
-      onChanged: onChange ?? this.onChanged,
+      onChanged: onChange ?? onChanged,
       suffix: suffix ?? this.suffix,
     );
   }

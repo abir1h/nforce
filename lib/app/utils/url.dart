@@ -21,4 +21,6 @@ class URL {
   static const String contactLookup = '$baseUrl/action/contact.searchForContact?query[term]=@';
   static const String contactDetails = '$baseUrl/action/contact.getContactDetails';
   static const String createWorkOrder = '$baseUrl/action/invoice.launchEstimation';
+
+  static const String contactForm = '$baseUrl/form/contact.quick-form';
 }

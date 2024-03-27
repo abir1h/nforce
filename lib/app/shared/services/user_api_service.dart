@@ -1,3 +1,4 @@
+import 'dart:developer' as developer show log;
 import 'package:dartz/dartz.dart';
 import 'package:nuforce/app/model/user_card_model.dart';
 import 'package:nuforce/app/utils/api_client.dart';
@@ -15,6 +16,7 @@ class UserApiService {
           },
         },
       );
+      developer.log('Response: ${response.data}', name: 'logout-debug');
       if (response.data['id'] != null) {
         return Left(UserCard.fromJson(response.data as Map<String, dynamic>));
       } else {
