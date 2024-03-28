@@ -51,6 +51,8 @@ dependencies:
   syncfusion_flutter_charts: ^23.2.7
   easy_stepper: ^0.8.3
   curl_logger_dio_interceptor: ^1.0.0
+  firebase_core: ^2.27.2
+  firebase_messaging: ^14.7.21
 dev_dependencies:
   build_runner: 2.4.6
   change_app_package_name: ^1.1.0

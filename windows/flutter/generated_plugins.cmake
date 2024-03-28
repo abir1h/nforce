@@ -4,6 +4,7 @@
 
 list(APPEND FLUTTER_PLUGIN_LIST
   file_selector_windows
+  firebase_core
   irondash_engine_context
   smart_auth
   super_native_extensions
