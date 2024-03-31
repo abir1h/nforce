@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/customer_address/customer_address_view.dart';
 import 'package:nuforce/app/modules/contact/views/contact_view.dart';
 import 'package:nuforce/app/modules/home/components/colored_checkbox_with_title.dart';
 import 'package:nuforce/app/modules/new_orders/controllers/new_work_order_controller.dart';
@@ -131,24 +132,6 @@ class _CreateOrderWidgetState extends State<CreateOrderWidget> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CustomDropdownButton(
-                          label: 'Service Region*',
-                          items: controller.serviceRegionModel.serviceRegion
-                                  ?.map(
-                                    (e) => DropdownMenuItem<ServiceRegion>(
-                                      value: e,
-                                      child: Text(e.name ?? ''),
-                                    ),
-                                  )
-                                  .toList() ??
-                              [],
-                          hint: 'Select one',
-                          onChanged: (v) {
-                            controller.setSelectedServiceRegion(v as ServiceRegion);
-                          },
-                          value: controller.selectedServiceRegion,
-                        ),
-                        const SizedBox(height: 16),
                         InkWell(
                           onTap: () {
                             showDialog(
@@ -175,7 +158,39 @@ class _CreateOrderWidgetState extends State<CreateOrderWidget> {
                             fontWeight: FontWeight.w400,
                           ),
                         ),
-                        const SizedBox(height: 16),
+                        16.h.vSpace,
+                        if (controller.selectedContactDetails.address?.isEmpty ?? false)
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'No address found',
+                                style: TextStyle(
+                                  color: AppColors.red,
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              TextButton(
+                                onPressed: () {
+                                  Get.to(
+                                    () => CustomerAddressView(
+                                      contactDetails: controller.selectedContactDetails,
+                                    ),
+                                  );
+                                },
+                                child: Text(
+                                  '+ Add Address',
+                                  style: TextStyle(
+                                    color: AppColors.primaryBlue1,
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        16.h.vSpace,
                         CustomDropdownButton(
                           label: 'Service Package',
                           items: controller.servicePackageModel.servicePackage
@@ -202,6 +217,24 @@ class _CreateOrderWidgetState extends State<CreateOrderWidget> {
                           ),
                         ),
                         const SizedBox(height: 16),
+                        CustomDropdownButton(
+                          label: 'Service Region*',
+                          items: controller.serviceRegionModel.serviceRegion
+                                  ?.map(
+                                    (e) => DropdownMenuItem<ServiceRegion>(
+                                      value: e,
+                                      child: Text(e.name ?? ''),
+                                    ),
+                                  )
+                                  .toList() ??
+                              [],
+                          hint: 'Select one',
+                          onChanged: (v) {
+                            controller.setSelectedServiceRegion(v as ServiceRegion);
+                          },
+                          value: controller.selectedServiceRegion,
+                        ),
+                        const SizedBox(height: 16),
                         Row(
                           children: [
                             ColoredCheckboxWithTitle(
@@ -219,14 +252,14 @@ class _CreateOrderWidgetState extends State<CreateOrderWidget> {
                         const SizedBox(height: 24),
                         PrimaryButton(
                           onPressed: () async {
-                            if (controller.contactDetails.address == null || controller.contactDetails.address!.isEmpty) {
+                            if (controller.selectedContactDetails.address == null || controller.selectedContactDetails.address!.isEmpty) {
                               Fluttertoast.showToast(msg: 'The Selected contact does not have an address');
                               return;
                             }
                             await controller
                                 .createWorkOrder(
                               contactId: controller.selectedContact?.id ?? 0,
-                              billingAddressId: controller.contactDetails.address?[0].id ?? 0,
+                              billingAddressId: controller.selectedContactDetails.address?[0].id ?? 0,
                               serviceId: controller.selectedServicePackage?.id ?? 0,
                               regionId: controller.selectedServiceRegion?.id ?? 0,
                             )

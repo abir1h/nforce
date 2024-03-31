@@ -423,6 +423,27 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/microsoft.svg
   String get microsoft => 'assets/images/svg/microsoft.svg';
 
+  /// File path: assets/images/svg/mini_email.svg
+  String get miniEmail => 'assets/images/svg/mini_email.svg';
+
+  /// File path: assets/images/svg/mini_events.svg
+  String get miniEvents => 'assets/images/svg/mini_events.svg';
+
+  /// File path: assets/images/svg/mini_notes.svg
+  String get miniNotes => 'assets/images/svg/mini_notes.svg';
+
+  /// File path: assets/images/svg/mini_phone.svg
+  String get miniPhone => 'assets/images/svg/mini_phone.svg';
+
+  /// File path: assets/images/svg/mini_pin_location.svg
+  String get miniPinLocation => 'assets/images/svg/mini_pin_location.svg';
+
+  /// File path: assets/images/svg/mini_service_region.svg
+  String get miniServiceRegion => 'assets/images/svg/mini_service_region.svg';
+
+  /// File path: assets/images/svg/mni_license.svg
+  String get mniLicense => 'assets/images/svg/mni_license.svg';
+
   /// File path: assets/images/svg/more0.svg
   String get more0 => 'assets/images/svg/more0.svg';
 
@@ -589,6 +610,13 @@ class $AssetsImagesSvgGen {
         mail,
         material,
         microsoft,
+        miniEmail,
+        miniEvents,
+        miniNotes,
+        miniPhone,
+        miniPinLocation,
+        miniServiceRegion,
+        mniLicense,
         more0,
         more1,
         notification,

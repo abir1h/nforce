@@ -150,10 +150,10 @@ class NewWorkOrderController extends GetxController {
     setContactLoading(false);
   }
 
-  ContactDetails _contactDetails = ContactDetails();
-  ContactDetails get contactDetails => _contactDetails;
+  SelectedContactDetails _contactDetails = SelectedContactDetails();
+  SelectedContactDetails get selectedContactDetails => _contactDetails;
 
-  void addContactDetails(ContactDetails contactDetails) {
+  void addSelectedContactDetails(SelectedContactDetails contactDetails) {
     _contactDetails = contactDetails;
     update();
   }
@@ -169,7 +169,7 @@ class NewWorkOrderController extends GetxController {
       (response) {
         response.fold(
           (contactDetails) {
-            addContactDetails(contactDetails);
+            addSelectedContactDetails(contactDetails);
             log('Contact Details: ${contactDetails.toJson()}');
           },
           (error) {

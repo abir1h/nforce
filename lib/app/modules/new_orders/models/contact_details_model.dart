@@ -1,4 +1,4 @@
-class ContactDetails {
+class SelectedContactDetails {
   final Contact? contact;
   final List<Address>? address;
   final List<Email>? phones;
@@ -8,7 +8,7 @@ class ContactDetails {
   final List<Date>? licenses;
   final List<Email>? regions;
 
-  ContactDetails({
+  SelectedContactDetails({
     this.contact,
     this.address,
     this.phones,
@@ -19,7 +19,7 @@ class ContactDetails {
     this.regions,
   });
 
-  ContactDetails copyWith({
+  SelectedContactDetails copyWith({
     Contact? contact,
     List<Address>? address,
     List<Email>? phones,
@@ -29,7 +29,7 @@ class ContactDetails {
     List<Date>? licenses,
     List<Email>? regions,
   }) =>
-      ContactDetails(
+      SelectedContactDetails(
         contact: contact ?? this.contact,
         address: address ?? this.address,
         phones: phones ?? this.phones,
@@ -40,7 +40,7 @@ class ContactDetails {
         regions: regions ?? this.regions,
       );
 
-  factory ContactDetails.fromJson(Map<String, dynamic> json) => ContactDetails(
+  factory SelectedContactDetails.fromJson(Map<String, dynamic> json) => SelectedContactDetails(
         contact: json["contact"] == null ? null : Contact.fromJson(json["contact"]),
         address: json["address"] == null ? [] : List<Address>.from(json["address"]!.map((x) => Address.fromJson(x))),
         phones: json["phones"] == null ? [] : List<Email>.from(json["phones"]!.map((x) => Email.fromJson(x))),

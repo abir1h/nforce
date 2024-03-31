@@ -62,7 +62,7 @@ class WorkOrderApiService {
     }
   }
 
-  static Future<Either<ContactDetails, String>> getContactDetails(String id) async {
+  static Future<Either<SelectedContactDetails, String>> getContactDetails(String id) async {
     try {
       final response = await ApiClient.instance.get(
         url: URL.contactDetails,
@@ -74,7 +74,7 @@ class WorkOrderApiService {
       );
 
       if (response.statusCode == 200 && response.data != null) {
-        return Left(ContactDetails.fromJson(response.data));
+        return Left(SelectedContactDetails.fromJson(response.data));
       } else {
         return Right(response.data['error'] ?? 'An error occurred.');
       }
