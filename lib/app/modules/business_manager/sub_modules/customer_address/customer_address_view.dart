@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/customer_address/customer_address_controller.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/customer_address/widgets/address_with_static_map.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/customer_address/widgets/customer_address_mini_tabs.dart';
-import 'package:nuforce/app/modules/customer/customer_work_order/controllers/customer_work_order_controller.dart';
 import 'package:nuforce/app/modules/new_orders/models/contact_details_model.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/shared/widgets/edit_button.dart';
@@ -61,10 +60,11 @@ class _CustomerAddressViewState extends State<CustomerAddressView> {
           ),
           const CustomerAddressMinMiniTabs(),
           // write a switch case for the tabEnum
+          16.h.vSpace,
           GetBuilder<CustomerAddressController>(
             builder: (controller) {
               return switch (controller.tabEnum) {
-                ContactDetailsTabEnum.addresses => _addresses(),
+                ContactDetailsTabEnum.addresses => Expanded(child: _addresses()),
                 ContactDetailsTabEnum.phones => Container(),
                 ContactDetailsTabEnum.emails => Container(),
                 ContactDetailsTabEnum.events => Container(),
@@ -79,7 +79,18 @@ class _CustomerAddressViewState extends State<CustomerAddressView> {
     );
   }
 
-  Container _addresses() => Container();
+  Widget _addresses() => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+        child: ListView.builder(
+          itemCount: 10,
+          itemBuilder: (BuildContext context, int index) {
+            return const Padding(
+              padding: EdgeInsets.only(bottom: 10),
+              child: AddressWithStaticMap(),
+            );
+          },
+        ),
+      );
 
   TableRow _tableRow({required String title, required String value}) {
     return TableRow(
