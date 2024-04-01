@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/customer_address/add_new_phone_view.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/customer_address/customer_address_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/customer_address/widgets/address_with_static_map.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/customer_address/widgets/custom_fab.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/customer_address/widgets/customer_address_mini_tabs.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/customer_address/widgets/phone.dart';
 import 'package:nuforce/app/modules/new_orders/models/contact_details_model.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/shared/widgets/edit_button.dart';
@@ -25,6 +28,7 @@ class _CustomerAddressViewState extends State<CustomerAddressView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: _getFloatingActionButton(),
       appBar: CustomAppbarMinimal(
         title: 'Contact Details',
         trailing: [
@@ -65,7 +69,7 @@ class _CustomerAddressViewState extends State<CustomerAddressView> {
             builder: (controller) {
               return switch (controller.tabEnum) {
                 ContactDetailsTabEnum.addresses => Expanded(child: _addresses()),
-                ContactDetailsTabEnum.phones => Container(),
+                ContactDetailsTabEnum.phones => Expanded(child: _phone()),
                 ContactDetailsTabEnum.emails => Container(),
                 ContactDetailsTabEnum.events => Container(),
                 ContactDetailsTabEnum.notes => Container(),
@@ -78,6 +82,19 @@ class _CustomerAddressViewState extends State<CustomerAddressView> {
       ),
     );
   }
+
+  Widget _phone() => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+        child: ListView.builder(
+          itemCount: 1,
+          itemBuilder: (BuildContext context, int index) {
+            return const Padding(
+              padding: EdgeInsets.only(bottom: 10),
+              child: Phone(),
+            );
+          },
+        ),
+      );
 
   Widget _addresses() => Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
@@ -118,6 +135,45 @@ class _CustomerAddressViewState extends State<CustomerAddressView> {
           ),
         ),
       ],
+    );
+  }
+
+  Widget _getFloatingActionButton() {
+    return GetBuilder<CustomerAddressController>(
+      builder: (controller) {
+        return switch (controller.tabEnum) {
+          ContactDetailsTabEnum.addresses => CustomFloatingActionButton(
+              onTap: () {},
+              title: '+ Add Address',
+            ),
+          ContactDetailsTabEnum.phones => CustomFloatingActionButton(
+              onTap: () {
+                Get.to(() => const AddNewPhoneNumberView());
+              },
+              title: 'Add Phone',
+            ),
+          ContactDetailsTabEnum.emails => CustomFloatingActionButton(
+              onTap: () {},
+              title: 'Add Email',
+            ),
+          ContactDetailsTabEnum.events => CustomFloatingActionButton(
+              onTap: () {},
+              title: 'Add Event',
+            ),
+          ContactDetailsTabEnum.notes => CustomFloatingActionButton(
+              onTap: () {},
+              title: 'Add Note',
+            ),
+          ContactDetailsTabEnum.licenses => CustomFloatingActionButton(
+              onTap: () {},
+              title: 'Add License',
+            ),
+          ContactDetailsTabEnum.serviceRegions => CustomFloatingActionButton(
+              onTap: () {},
+              title: 'Add Service Region',
+            ),
+        };
+      },
     );
   }
 }
