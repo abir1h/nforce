@@ -23,4 +23,6 @@ class URL {
   static const String createWorkOrder = '$baseUrl/action/invoice.launchEstimation';
 
   static const String contactForm = '$baseUrl/form/contact.quick-form';
+
+  static const String staticMap = "http://maps.google.com/maps/api/staticmap?center=lat,lng&zoom=15&size=200x200&sensor=false&key=AIzaSyDinOI_yEHrib-KuJHs9JeLPl7vdf1YNhM";
 }

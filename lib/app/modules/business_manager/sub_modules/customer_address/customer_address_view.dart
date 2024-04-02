@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/customer_address/add_new_email_view.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/customer_address/add_new_event_view.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/customer_address/add_new_phone_view.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/customer_address/customer_address_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/customer_address/widgets/address_with_static_map.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/customer_address/widgets/custom_fab.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/customer_address/widgets/customer_address_mini_tabs.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/customer_address/widgets/mini_email_tile.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/customer_address/widgets/mini_event_tile.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/customer_address/widgets/mini_view_bottomsheet.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/customer_address/widgets/phone.dart';
 import 'package:nuforce/app/modules/new_orders/models/contact_details_model.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
@@ -70,8 +75,8 @@ class _CustomerAddressViewState extends State<CustomerAddressView> {
               return switch (controller.tabEnum) {
                 ContactDetailsTabEnum.addresses => Expanded(child: _addresses()),
                 ContactDetailsTabEnum.phones => Expanded(child: _phone()),
-                ContactDetailsTabEnum.emails => Container(),
-                ContactDetailsTabEnum.events => Container(),
+                ContactDetailsTabEnum.emails => Expanded(child: _email()),
+                ContactDetailsTabEnum.events => Expanded(child: _event()),
                 ContactDetailsTabEnum.notes => Container(),
                 ContactDetailsTabEnum.licenses => Container(),
                 ContactDetailsTabEnum.serviceRegions => Container(),
@@ -88,9 +93,80 @@ class _CustomerAddressViewState extends State<CustomerAddressView> {
         child: ListView.builder(
           itemCount: 1,
           itemBuilder: (BuildContext context, int index) {
-            return const Padding(
-              padding: EdgeInsets.only(bottom: 10),
-              child: Phone(),
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: GestureDetector(
+                onTap: () {
+                  miniViewBottomSheet(
+                    context: context,
+                    titleSubtitles: [
+                      TitleSubtitle(title: 'Title', subtitle: 'Primary'),
+                      TitleSubtitle(title: 'Phone', subtitle: '61123123123'),
+                    ],
+                    onEdit: () {
+                      Get.to(() => const AddNewPhoneNumberView());
+                    },
+                    onDelete: () {},
+                  );
+                },
+                child: const Phone(),
+              ),
+            );
+          },
+        ),
+      );
+  Widget _email() => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+        child: ListView.builder(
+          itemCount: 1,
+          itemBuilder: (BuildContext context, int index) {
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: GestureDetector(
+                onTap: () {
+                  miniViewBottomSheet(
+                    context: context,
+                    titleSubtitles: [
+                      TitleSubtitle(title: 'Title', subtitle: 'Primary'),
+                      TitleSubtitle(title: 'Email', subtitle: 'info@numail.com'),
+                    ],
+                    onEdit: () {
+                      Get.to(() => const AddNewEmailView());
+                    },
+                    onDelete: () {},
+                  );
+                },
+                child: const MiniEmailTile(),
+              ),
+            );
+          },
+        ),
+      );
+
+  Widget _event() => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+        child: ListView.builder(
+          itemCount: 1,
+          itemBuilder: (BuildContext context, int index) {
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: GestureDetector(
+                onTap: () {
+                  miniViewBottomSheet(
+                    context: context,
+                    titleSubtitles: [
+                      TitleSubtitle(title: 'Title', subtitle: 'Primary'),
+                      TitleSubtitle(title: 'Date', subtitle: '23-12-24'),
+                      TitleSubtitle(title: 'Description', subtitle: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'),
+                    ],
+                    onEdit: () {
+                      Get.to(() => const AddNewEmailView());
+                    },
+                    onDelete: () {},
+                  );
+                },
+                child: const MiniEventTile(),
+              ),
             );
           },
         ),
@@ -153,11 +229,15 @@ class _CustomerAddressViewState extends State<CustomerAddressView> {
               title: 'Add Phone',
             ),
           ContactDetailsTabEnum.emails => CustomFloatingActionButton(
-              onTap: () {},
+              onTap: () {
+                Get.to(() => const AddNewEmailView());
+              },
               title: 'Add Email',
             ),
           ContactDetailsTabEnum.events => CustomFloatingActionButton(
-              onTap: () {},
+              onTap: () {
+                Get.to(() => const AddNewEventView());
+              },
               title: 'Add Event',
             ),
           ContactDetailsTabEnum.notes => CustomFloatingActionButton(
@@ -176,4 +256,14 @@ class _CustomerAddressViewState extends State<CustomerAddressView> {
       },
     );
   }
+}
+
+class TitleSubtitle {
+  final String title;
+  final String subtitle;
+
+  TitleSubtitle({
+    required this.title,
+    required this.subtitle,
+  });
 }

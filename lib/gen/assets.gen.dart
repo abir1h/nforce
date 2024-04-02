@@ -318,6 +318,9 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/calendar_month.svg
   String get calendarMonth => 'assets/images/svg/calendar_month.svg';
 
+  /// File path: assets/images/svg/calendar_pick.svg
+  String get calendarPick => 'assets/images/svg/calendar_pick.svg';
+
   /// File path: assets/images/svg/calendar_report.svg
   String get calendarReport => 'assets/images/svg/calendar_report.svg';
 
@@ -575,6 +578,7 @@ class $AssetsImagesSvgGen {
         businessManager,
         calendar,
         calendarMonth,
+        calendarPick,
         calendarReport,
         check,
         checkIcon,
