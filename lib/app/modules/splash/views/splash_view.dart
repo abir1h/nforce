@@ -35,11 +35,12 @@ class SplashView extends GetView<SplashController> {
                     child: Container(
                       height: 180,
                       width: 180,
+                      padding: const EdgeInsets.all(20),
                       decoration: const BoxDecoration(
                         color: Colors.white,
                         shape: BoxShape.circle,
                       ),
-                      child: Image.asset(Assets.images.png.nuforceSplash.path),
+                      child: Image.asset(Assets.images.png.nuforceLogo.path),
                     ),
                   ),
                   const Spacer(),

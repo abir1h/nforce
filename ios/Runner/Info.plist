@@ -50,6 +50,6 @@
 		<key>UIStatusBarHidden</key>
 		<false/>
 		<key>NSLocationWhenInUseUsageDescription</key>
-    	<string>We need your location to show the distance between you and the customers.</string>
+		<string>We need your location to show the distance between you and the customers.</string>
 	</dict>
 </plist>

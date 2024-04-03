@@ -12,8 +12,37 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  $AssetsImagesIconGen get icon => const $AssetsImagesIconGen();
   $AssetsImagesPngGen get png => const $AssetsImagesPngGen();
   $AssetsImagesSvgGen get svg => const $AssetsImagesSvgGen();
+}
+
+class $AssetsImagesIconGen {
+  const $AssetsImagesIconGen();
+
+  /// File path: assets/images/icon/icon_android.png
+  AssetGenImage get iconAndroid =>
+      const AssetGenImage('assets/images/icon/icon_android.png');
+
+  /// File path: assets/images/icon/icon_background.png
+  AssetGenImage get iconBackground =>
+      const AssetGenImage('assets/images/icon/icon_background.png');
+
+  /// File path: assets/images/icon/icon_foreground.png
+  AssetGenImage get iconForeground =>
+      const AssetGenImage('assets/images/icon/icon_foreground.png');
+
+  /// File path: assets/images/icon/icon_ios.png
+  AssetGenImage get iconIos =>
+      const AssetGenImage('assets/images/icon/icon_ios.png');
+
+  /// File path: assets/images/icon/icon_rounded.png
+  AssetGenImage get iconRounded =>
+      const AssetGenImage('assets/images/icon/icon_rounded.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values =>
+      [iconAndroid, iconBackground, iconForeground, iconIos, iconRounded];
 }
 
 class $AssetsImagesPngGen {
@@ -116,6 +145,10 @@ class $AssetsImagesPngGen {
   /// File path: assets/images/png/notification.png
   AssetGenImage get notification =>
       const AssetGenImage('assets/images/png/notification.png');
+
+  /// File path: assets/images/png/nuforce_logo.png
+  AssetGenImage get nuforceLogo =>
+      const AssetGenImage('assets/images/png/nuforce_logo.png');
 
   /// File path: assets/images/png/nuforce_splash.png
   AssetGenImage get nuforceSplash =>
@@ -249,6 +282,7 @@ class $AssetsImagesPngGen {
         logout,
         mapImage,
         notification,
+        nuforceLogo,
         nuforceSplash,
         offlinePayments,
         onboarding1,

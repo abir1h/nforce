@@ -8,7 +8,8 @@
         android:label="nuforce"
         android:name="${applicationName}"
         android:enableOnBackInvokedCallback="true"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+		android:roundIcon="@mipmap/ic_launcher_rounded">
         <meta-data android:name="com.google.android.geo.API_KEY"
                android:value="AIzaSyDinOI_yEHrib-KuJHs9JeLPl7vdf1YNhM"/>
         <activity
