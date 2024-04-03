@@ -13,6 +13,7 @@ Future<dynamic> miniViewBottomSheet({
   required VoidCallback onDelete,
 }) {
   return showModalBottomSheet(
+    isScrollControlled: true,
     context: context,
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(
@@ -28,13 +29,13 @@ Future<dynamic> miniViewBottomSheet({
             topRight: Radius.circular(30),
           ),
         ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Row(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
@@ -53,12 +54,19 @@ Future<dynamic> miniViewBottomSheet({
                   ),
                 ],
               ),
-              6.h.vSpace,
-              const Divider(),
-              6.h.vSpace,
-              for (int i = 0; i < titleSubtitles.length; i++)
-                Column(
+            ),
+            6.h.vSpace,
+            const Divider(
+              color: AppColors.nutralBlack1,
+              height: 2,
+            ),
+            6.h.vSpace,
+            for (int i = 0; i < titleSubtitles.length; i++)
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
                       titleSubtitles[i].title,
@@ -76,10 +84,13 @@ Future<dynamic> miniViewBottomSheet({
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                    16.h.vSpace,
+                    // 16.h.vSpace,
                   ],
                 ),
-              Row(
+              ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              child: Row(
                 children: [
                   Expanded(
                     child: SecondaryButton(
@@ -102,8 +113,9 @@ Future<dynamic> miniViewBottomSheet({
                   ),
                 ],
               ),
-            ],
-          ),
+            ),
+            20.h.vSpace,
+          ],
         ),
       );
     },

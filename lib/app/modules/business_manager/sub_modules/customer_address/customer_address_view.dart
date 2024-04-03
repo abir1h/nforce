@@ -1,15 +1,23 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/customer_address/add_new_email_view.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/customer_address/add_new_event_view.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/customer_address/add_new_license_view.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/customer_address/add_new_note_view.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/customer_address/add_new_phone_view.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/customer_address/add_new_service_region_view.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/customer_address/customer_address_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/customer_address/widgets/address_with_static_map.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/customer_address/widgets/custom_fab.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/customer_address/widgets/customer_address_mini_tabs.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/customer_address/widgets/mini_email_tile.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/customer_address/widgets/mini_event_tile.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/customer_address/widgets/mini_license_tile.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/customer_address/widgets/mini_note_tile.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/customer_address/widgets/mini_service_region_tile.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/customer_address/widgets/mini_view_bottomsheet.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/customer_address/widgets/phone.dart';
 import 'package:nuforce/app/modules/new_orders/models/contact_details_model.dart';
@@ -77,9 +85,9 @@ class _CustomerAddressViewState extends State<CustomerAddressView> {
                 ContactDetailsTabEnum.phones => Expanded(child: _phone()),
                 ContactDetailsTabEnum.emails => Expanded(child: _email()),
                 ContactDetailsTabEnum.events => Expanded(child: _event()),
-                ContactDetailsTabEnum.notes => Container(),
-                ContactDetailsTabEnum.licenses => Container(),
-                ContactDetailsTabEnum.serviceRegions => Container(),
+                ContactDetailsTabEnum.notes => Expanded(child: _note()),
+                ContactDetailsTabEnum.licenses => Expanded(child: _license()),
+                ContactDetailsTabEnum.serviceRegions => Expanded(child: _serviceRegion()),
               };
             },
           ),
@@ -137,6 +145,90 @@ class _CustomerAddressViewState extends State<CustomerAddressView> {
                   );
                 },
                 child: const MiniEmailTile(),
+              ),
+            );
+          },
+        ),
+      );
+
+  Widget _serviceRegion() => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+        child: ListView.builder(
+          itemCount: 1,
+          itemBuilder: (BuildContext context, int index) {
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: GestureDetector(
+                onTap: () {
+                  miniViewBottomSheet(
+                    context: context,
+                    titleSubtitles: [
+                      TitleSubtitle(title: 'Service Region', subtitle: 'Dhaka'),
+                    ],
+                    onEdit: () {
+                      Get.to(() => const AddNewNoteView());
+                    },
+                    onDelete: () {},
+                  );
+                },
+                child: const MiniServiceRegionTile(),
+              ),
+            );
+          },
+        ),
+      );
+
+  Widget _license() => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+        child: ListView.builder(
+          itemCount: 1,
+          itemBuilder: (BuildContext context, int index) {
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: GestureDetector(
+                onTap: () {
+                  miniViewBottomSheet(
+                    context: context,
+                    titleSubtitles: [
+                      TitleSubtitle(title: 'License or Compliance Title', subtitle: 'Home service license'),
+                      TitleSubtitle(title: 'License or Compliance No', subtitle: 'HS2023-12345'),
+                      TitleSubtitle(title: 'Date of Award', subtitle: '30 Aug, 2023'),
+                      TitleSubtitle(title: 'Details of Award', subtitle: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'),
+                    ],
+                    onEdit: () {
+                      Get.to(() => const AddNewNoteView());
+                    },
+                    onDelete: () {},
+                  );
+                },
+                child: const MiniLicenseTile(),
+              ),
+            );
+          },
+        ),
+      );
+
+  Widget _note() => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+        child: ListView.builder(
+          itemCount: 1,
+          itemBuilder: (BuildContext context, int index) {
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: GestureDetector(
+                onTap: () {
+                  miniViewBottomSheet(
+                    context: context,
+                    titleSubtitles: [
+                      TitleSubtitle(title: 'Note', subtitle: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'),
+                    ],
+                    onEdit: () {
+                      Get.to(() => const AddNewNoteView());
+                    },
+                    onDelete: () {},
+                  );
+                },
+                child: const MiniNoteTile(),
               ),
             );
           },
@@ -241,15 +333,21 @@ class _CustomerAddressViewState extends State<CustomerAddressView> {
               title: 'Add Event',
             ),
           ContactDetailsTabEnum.notes => CustomFloatingActionButton(
-              onTap: () {},
+              onTap: () {
+                Get.to(() => const AddNewNoteView());
+              },
               title: 'Add Note',
             ),
           ContactDetailsTabEnum.licenses => CustomFloatingActionButton(
-              onTap: () {},
+              onTap: () {
+                Get.to(() => const AddNewLicenseView());
+              },
               title: 'Add License',
             ),
           ContactDetailsTabEnum.serviceRegions => CustomFloatingActionButton(
-              onTap: () {},
+              onTap: () {
+                Get.to(() => const AddNewServiceRegionView());
+              },
               title: 'Add Service Region',
             ),
         };
