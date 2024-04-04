@@ -33,12 +33,10 @@ class _AddExpenseViewScreenState extends State<AddExpenseViewScreen> {
   @override
   void initState() {
     super.initState();
-    Get.put(AddNewExpenseController());
   }
 
   @override
   void dispose() {
-    Get.delete<AddNewExpenseController>();
     itemNameController.dispose();
     spendByController.dispose();
     totalAmountController.dispose();

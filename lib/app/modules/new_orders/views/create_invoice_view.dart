@@ -8,8 +8,8 @@ import 'package:nuforce/app/modules/new_orders/controllers/invoice_controller.da
 import 'package:nuforce/app/modules/new_orders/widgets/agents_widget.dart';
 import 'package:nuforce/app/modules/new_orders/widgets/cancellation_widget.dart';
 import 'package:nuforce/app/modules/new_orders/widgets/empty_activity_log_view.dart';
-import 'package:nuforce/app/modules/new_orders/widgets/empty_expense_view.dart';
 import 'package:nuforce/app/modules/new_orders/widgets/empty_note_view.dart';
+import 'package:nuforce/app/modules/new_orders/widgets/invoice_expense_view.dart';
 import 'package:nuforce/app/modules/new_orders/widgets/invoice_payment_section.dart';
 import 'package:nuforce/app/modules/new_orders/widgets/empty_schedule_view.dart';
 import 'package:nuforce/app/modules/new_orders/widgets/empty_terms_view.dart';
@@ -121,7 +121,7 @@ class _CreateInvoiceViewState extends State<CreateInvoiceView> {
                   16.h.vSpace,
                   const InvoicePaymentSection(),
                   16.h.vSpace,
-                  const EmptyExpense(),
+                  const InvoiceExpenseView(),
                   16.h.vSpace,
                   const EmptyScheduleView(),
                   16.h.vSpace,
