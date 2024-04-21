@@ -9,7 +9,6 @@ import 'package:nuforce/gen/assets.gen.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
 import '../controllers/over_view_controller.dart';
-import '../widgets/stepper.dart';
 import '../widgets/text_with_title.dart';
 import '../widgets/text_with_widget.dart';
 import 'edit_work_order.dart';
@@ -321,50 +320,7 @@ class OverView extends GetView<OverViewController> {
                                   SizedBox(
                                     height: 20.h,
                                   ),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        "Invoice List",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 16.sp,
-                                            fontFamily: "poppins",
-                                            color: AppColors.nutralBlack1),
-                                      ),
-                                      Text(
-                                        '+ Create Invoice',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 14.sp,
-                                            color: AppColors.primaryBlue1),
-                                      )
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 16.h,
-                                  ),
-                                  const InvoiceCard(),
-                                  SizedBox(
-                                    height: 16.h,
-                                  ),
-                                  const InvoiceCard(),
-                                  SizedBox(
-                                    height: 16.h,
-                                  ),
-                                  const InvoiceCard(),
-                                  SizedBox(
-                                    height: 16.h,
-                                  ),
-                                  const InvoiceCard(),
-                                  SizedBox(
-                                    height: 16.h,
-                                  ),
-                                  const InvoiceCard(),
-                                  SizedBox(
-                                    height: 16.h,
-                                  ),
+
                                 ],
                               )
                             : const SizedBox(), // Use SizedBox to make sure there's no visual artifact when the column is not expanded
@@ -401,6 +357,49 @@ class OverView extends GetView<OverViewController> {
                                         Icons.keyboard_arrow_down_sharp))
                           ],
                         ),
+                      ),Row(
+                        mainAxisAlignment:
+                        MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Invoice List",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 16.sp,
+                                fontFamily: "poppins",
+                                color: AppColors.nutralBlack1),
+                          ),
+                          Text(
+                            '+ Create Invoice',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 14.sp,
+                                color: AppColors.primaryBlue1),
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 16.h,
+                      ),
+                      const InvoiceCard(),
+                      SizedBox(
+                        height: 16.h,
+                      ),
+                      const InvoiceCard(),
+                      SizedBox(
+                        height: 16.h,
+                      ),
+                      const InvoiceCard(),
+                      SizedBox(
+                        height: 16.h,
+                      ),
+                      const InvoiceCard(),
+                      SizedBox(
+                        height: 16.h,
+                      ),
+                      const InvoiceCard(),
+                      SizedBox(
+                        height: 32.h,
                       ),
                     ],
                   ))

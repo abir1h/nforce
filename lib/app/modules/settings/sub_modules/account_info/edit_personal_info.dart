@@ -9,8 +9,6 @@ import 'package:nuforce/app/shared/widgets/secondary_button.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/text_styles.dart';
 
-import 'account_information_view.dart';
-
 class PersonalInfoEdit extends StatefulWidget {
   const PersonalInfoEdit({super.key});
 
