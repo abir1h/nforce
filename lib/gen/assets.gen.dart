@@ -27,6 +27,10 @@ class $AssetsImagesPngGen {
   AssetGenImage get affliation =>
       const AssetGenImage('assets/images/png/affliation.png');
 
+  /// File path: assets/images/png/b_logo.png
+  AssetGenImage get bLogo =>
+      const AssetGenImage('assets/images/png/b_logo.png');
+
   /// File path: assets/images/png/brandImage.png
   AssetGenImage get brandImage =>
       const AssetGenImage('assets/images/png/brandImage.png');
@@ -225,6 +229,7 @@ class $AssetsImagesPngGen {
   List<AssetGenImage> get values => [
         accountInfo,
         affliation,
+        bLogo,
         brandImage,
         branding,
         calendarSync,
@@ -362,6 +367,9 @@ class $AssetsImagesSvgGen {
 
   /// File path: assets/images/svg/discount.svg
   String get discount => 'assets/images/svg/discount.svg';
+
+  /// File path: assets/images/svg/document_filled.svg
+  String get documentFilled => 'assets/images/svg/document_filled.svg';
 
   /// File path: assets/images/svg/down_arrow.svg
   String get downArrow => 'assets/images/svg/down_arrow.svg';
@@ -569,6 +577,7 @@ class $AssetsImagesSvgGen {
         customers,
         deleteIcon,
         discount,
+        documentFilled,
         downArrow,
         edit,
         editRounded,
