@@ -40,9 +40,24 @@ class $AssetsImagesIconGen {
   AssetGenImage get iconRounded =>
       const AssetGenImage('assets/images/icon/icon_rounded.png');
 
+  /// File path: assets/images/icon/logo_monochromatic.png
+  AssetGenImage get logoMonochromatic =>
+      const AssetGenImage('assets/images/icon/logo_monochromatic.png');
+
+  /// File path: assets/images/icon/logo_monochromatic_no_bg.png
+  AssetGenImage get logoMonochromaticNoBg =>
+      const AssetGenImage('assets/images/icon/logo_monochromatic_no_bg.png');
+
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [iconAndroid, iconBackground, iconForeground, iconIos, iconRounded];
+  List<AssetGenImage> get values => [
+        iconAndroid,
+        iconBackground,
+        iconForeground,
+        iconIos,
+        iconRounded,
+        logoMonochromatic,
+        logoMonochromaticNoBg
+      ];
 }
 
 class $AssetsImagesPngGen {
@@ -149,10 +164,6 @@ class $AssetsImagesPngGen {
   /// File path: assets/images/png/nuforce_logo.png
   AssetGenImage get nuforceLogo =>
       const AssetGenImage('assets/images/png/nuforce_logo.png');
-
-  /// File path: assets/images/png/nuforce_splash.png
-  AssetGenImage get nuforceSplash =>
-      const AssetGenImage('assets/images/png/nuforce_splash.png');
 
   /// File path: assets/images/png/offline_payments.png
   AssetGenImage get offlinePayments =>
@@ -283,7 +294,6 @@ class $AssetsImagesPngGen {
         mapImage,
         notification,
         nuforceLogo,
-        nuforceSplash,
         offlinePayments,
         onboarding1,
         onboarding2,
@@ -342,6 +352,9 @@ class $AssetsImagesSvgGen {
 
   /// File path: assets/images/svg/arrow_right.svg
   String get arrowRight => 'assets/images/svg/arrow_right.svg';
+
+  /// File path: assets/images/svg/blue_mark.svg
+  String get blueMark => 'assets/images/svg/blue_mark.svg';
 
   /// File path: assets/images/svg/business_manager.svg
   String get businessManager => 'assets/images/svg/business_manager.svg';
@@ -411,6 +424,9 @@ class $AssetsImagesSvgGen {
 
   /// File path: assets/images/svg/empty.svg
   String get empty => 'assets/images/svg/empty.svg';
+
+  /// File path: assets/images/svg/empty_checkbox.svg
+  String get emptyCheckbox => 'assets/images/svg/empty_checkbox.svg';
 
   /// File path: assets/images/svg/facebook.svg
   String get facebook => 'assets/images/svg/facebook.svg';
@@ -517,6 +533,9 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/pick_image.svg
   String get pickImage => 'assets/images/svg/pick_image.svg';
 
+  /// File path: assets/images/svg/pin_filled.svg
+  String get pinFilled => 'assets/images/svg/pin_filled.svg';
+
   /// File path: assets/images/svg/pin_location.svg
   String get pinLocation => 'assets/images/svg/pin_location.svg';
 
@@ -525,6 +544,9 @@ class $AssetsImagesSvgGen {
 
   /// File path: assets/images/svg/profile.svg
   String get profile => 'assets/images/svg/profile.svg';
+
+  /// File path: assets/images/svg/red_cross.svg
+  String get redCross => 'assets/images/svg/red_cross.svg';
 
   /// File path: assets/images/svg/scan.svg
   String get scan => 'assets/images/svg/scan.svg';
@@ -609,6 +631,7 @@ class $AssetsImagesSvgGen {
         addons,
         apple,
         arrowRight,
+        blueMark,
         businessManager,
         calendar,
         calendarMonth,
@@ -632,6 +655,7 @@ class $AssetsImagesSvgGen {
         edit,
         editRounded,
         empty,
+        emptyCheckbox,
         facebook,
         filter,
         filter2,
@@ -667,9 +691,11 @@ class $AssetsImagesSvgGen {
         pencil,
         phone,
         pickImage,
+        pinFilled,
         pinLocation,
         preferences,
         profile,
+        redCross,
         scan,
         search,
         service,

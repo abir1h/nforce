@@ -16,4 +16,8 @@ class DatetimeCustomFunc {
   static String getDashedDate(DateTime dateTime) {
     return DateFormat('yyyy-MM-dd').format(dateTime);
   }
+
+  static String getFormattedDateWithMonth(DateTime dateTime) {
+    return DateFormat('d MMM, yyyy').format(dateTime);
+  }
 }
