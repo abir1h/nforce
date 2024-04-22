@@ -1,20 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/customer/customer_work_order/providers/work_order_provider.dart';
-import 'package:nuforce/app/modules/customer/customer_work_order/views/invoice_screen.dart';
-import 'package:nuforce/app/modules/customer/customer_work_order/views/overview_screen.dart';
-import 'package:nuforce/app/modules/customer/widgets/work_order_mini_tabs.dart';
-import 'package:nuforce/app/utils/app_sizes.dart';
-import 'package:nuforce/app/utils/colors.dart';
-import 'package:nuforce/app/utils/datetime_custom_func.dart';
-import 'package:nuforce/app/utils/extension_methods.dart';
-import 'package:nuforce/app/utils/text_styles.dart';
-import 'package:nuforce/gen/assets.gen.dart';
+import 'package:timeline_tile/timeline_tile.dart';
 
+import '../../../../utils/colors.dart';
+import '../../../../../gen/assets.gen.dart';
+import '../../../../utils/text_styles.dart';
+import '../../../service_center/sub_modules/work_order_view/sub_modules/over_view/views/edit_work_order.dart';
 import '../../../settings/widgets/text_card.dart';
-import '../controllers/customer_work_order_controller.dart';
 
 class ViewInvoiceScreen extends StatefulWidget {
   const ViewInvoiceScreen({
@@ -289,7 +284,7 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
                         children: [
                           TableRow(children: [
                             Container(
-                              padding: EdgeInsets.all(4.0),
+                              padding: const EdgeInsets.all(4.0),
                               color: AppColors.white3,
                               child: Text(
                                 "Due On",
@@ -302,7 +297,7 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
                               ),
                             ),
                             Container(
-                              padding: EdgeInsets.all(4.0),
+                              padding: const EdgeInsets.all(4.0),
                               color: AppColors.white3,
                               child: Text(
                                 "Due on receipt",
@@ -317,7 +312,7 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
                           ]),
                           TableRow(children: [
                             Container(
-                              padding: EdgeInsets.all(4.0),
+                              padding: const EdgeInsets.all(4.0),
                               child: Text(
                                 "Next Payment Amount",
                                 textAlign: TextAlign.right,
@@ -329,7 +324,7 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
                               ),
                             ),
                             Container(
-                              padding: EdgeInsets.all(4.0),
+                              padding: const EdgeInsets.all(4.0),
                               child: Text(
                                 r"$5.00",
                                 textAlign: TextAlign.right,
@@ -343,7 +338,7 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
                           ]),
                           TableRow(children: [
                             Container(
-                              padding: EdgeInsets.all(4.0),
+                              padding: const EdgeInsets.all(4.0),
                               color: AppColors.white3,
                               child: Text(
                                 "Expiration Period",
@@ -356,7 +351,7 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
                               ),
                             ),
                             Container(
-                              padding: EdgeInsets.all(4.0),
+                              padding: const EdgeInsets.all(4.0),
                               color: AppColors.white3,
                               child: Text(
                                 "10 Days",
@@ -371,7 +366,7 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
                           ]),
                           TableRow(children: [
                             Container(
-                              padding: EdgeInsets.all(4.0),
+                              padding: const EdgeInsets.all(4.0),
                               child: Text(
                                 "Expires On",
                                 textAlign: TextAlign.right,
@@ -383,7 +378,7 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
                               ),
                             ),
                             Container(
-                              padding: EdgeInsets.all(4.0),
+                              padding: const EdgeInsets.all(4.0),
                               child: Text(
                                 "Expires On",
                                 textAlign: TextAlign.right,
@@ -404,11 +399,730 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
               SizedBox(
                 height: 16.h,
               ),
+              Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(4.r),
+                        topLeft: Radius.circular(4.r))),
+                child: Table(
+                  textDirection: TextDirection.ltr,
+                  columnWidths: const {
+                    0: FlexColumnWidth(2),
+                    1: FlexColumnWidth(4),
+                    2: FlexColumnWidth(),
+                    3: FlexColumnWidth(),
+                    4: FlexColumnWidth(2)
+                  },
+                  defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+                  children: [
+                    TableRow(children: [
+                      Container(
+                        padding: const EdgeInsets.all(4.0),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(
+                                4.r), // Adjust border radius as needed
+                          ),
+                          color: AppColors.purple2,
+                        ),
+                        child: Text(
+                          "Date",
+                          textAlign: TextAlign.right,
+                          style: TextStyle(
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w600,
+                            color: AppColors.white1,
+                            fontFamily: 'Poppins',
+                          ),
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(4.0),
+                        decoration: const BoxDecoration(
+                          color: AppColors.purple2,
+                        ),
+                        child: Text(
+                          "Item",
+                          textAlign: TextAlign.right,
+                          style: TextStyle(
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w600,
+                            color: AppColors.white1,
+                            fontFamily: 'Poppins',
+                          ),
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(4.0),
+                        decoration: const BoxDecoration(
+                          color: AppColors.purple2,
+                        ),
+                        child: Text(
+                          "Qty",
+                          textAlign: TextAlign.right,
+                          style: TextStyle(
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w600,
+                            color: AppColors.white1,
+                            fontFamily: 'Poppins',
+                          ),
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(4.0),
+                        decoration: const BoxDecoration(
+                          color: AppColors.purple2,
+                        ),
+                        child: Text(
+                          "Unit",
+                          textAlign: TextAlign.right,
+                          style: TextStyle(
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w600,
+                            color: AppColors.white1,
+                            fontFamily: 'Poppins',
+                          ),
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(4.0),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(
+                                4.r), // Adjust border radius as needed
+                          ),
+                          color: AppColors.purple2,
+                        ),
+                        child: Text(
+                          "Amount",
+                          textAlign: TextAlign.right,
+                          style: TextStyle(
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w600,
+                            color: AppColors.white1,
+                            fontFamily: 'Poppins',
+                          ),
+                        ),
+                      ),
+                    ]),
+                    TableRow(children: [
+                      Container(
+                        height: 60.h, // Set a fixed height for the cell
+
+                        padding: const EdgeInsets.all(4),
+                        decoration: const BoxDecoration(
+                          border: Border(
+                            right:
+                                BorderSide(width: 1.5, color: AppColors.white2),
+                            bottom:
+                                BorderSide(width: 1.5, color: AppColors.white2),
+                          ),
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Invalid date",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 10.sp,
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.nutralBlack1,
+                                fontFamily: 'Poppins'),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(4),
+                        height: 60.h, // Set a fixed height for the cell
+
+                        decoration: const BoxDecoration(
+                          border: Border(
+                            right:
+                                BorderSide(width: 1.5, color: AppColors.white2),
+                            bottom:
+                                BorderSide(width: 1.5, color: AppColors.white2),
+                          ),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Bed bug extermination",
+                              textAlign: TextAlign.start,
+                              style: TextStyle(
+                                  fontSize: 10.sp,
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColors.nutralBlack1,
+                                  fontFamily: 'Poppins'),
+                            ),
+                            Text(
+                              "Pest Control > Bed Bug Extermination",
+                              textAlign: TextAlign.start,
+                              style: TextStyle(
+                                  fontSize: 10.sp,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.nutralBlack2,
+                                  fontFamily: 'Poppins'),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(4),
+                        height: 60.h, // Set a fixed height for the cell
+
+                        decoration: const BoxDecoration(
+                          border: Border(
+                            right:
+                                BorderSide(width: 1.5, color: AppColors.white2),
+                            bottom:
+                                BorderSide(width: 1.5, color: AppColors.white2),
+                          ),
+                        ),
+                        child: Center(
+                          child: Text(
+                            "1",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.nutralBlack1,
+                                fontFamily: 'Poppins'),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(4),
+                        height: 60.h, // Set a fixed height for the cell
+
+                        decoration: const BoxDecoration(
+                          border: Border(
+                            right:
+                                BorderSide(width: 1.5, color: AppColors.white2),
+                            bottom:
+                                BorderSide(width: 1.5, color: AppColors.white2),
+                          ),
+                        ),
+                        child: Center(
+                          child: Text(
+                            r"$50",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.nutralBlack1,
+                                fontFamily: 'Poppins'),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(4),
+                        height: 60.h, // Set a fixed height for the cell
+
+                        decoration: const BoxDecoration(
+                          border: Border(
+                            right:
+                                BorderSide(width: 1.5, color: AppColors.white2),
+                            bottom:
+                                BorderSide(width: 1.5, color: AppColors.white2),
+                          ),
+                        ),
+                        child: Center(
+                          child: Text(
+                            r"$50.00",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.nutralBlack1,
+                                fontFamily: 'Poppins'),
+                          ),
+                        ),
+                      ),
+                    ])
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 16.h,
+              ),
+              Table(
+                columnWidths: const {
+                  0: FlexColumnWidth(),
+                  1: FlexColumnWidth(),
+                  2: FlexColumnWidth(2),
+                  3: FlexColumnWidth(),
+                },
+                defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+                children: [
+                  TableRow(children: [
+                    const SizedBox(
+                      width: 30,
+                    ),
+                    const SizedBox(
+                      width: 30,
+                    ),
+                    Container(
+                      color: AppColors.white1,
+                      padding: const EdgeInsets.all(4),
+                      child: Text(
+                        "Subtotal",
+                        textAlign: TextAlign.end,
+                        style: TextStyle(
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w500,
+                            color: AppColors.nutralBlack2,
+                            fontFamily: 'Poppins'),
+                      ),
+                    ),
+                    Container(
+                      color: AppColors.white1,
+                      padding: const EdgeInsets.all(4),
+                      child: Text(
+                        r"$50.00",
+                        textAlign: TextAlign.end,
+                        style: TextStyle(
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w700,
+                            color: AppColors.nutralBlack1,
+                            fontFamily: 'Poppins'),
+                      ),
+                    ),
+                  ]),
+                  TableRow(children: [
+                    const SizedBox(
+                      width: 30,
+                    ),
+                    const SizedBox(
+                      width: 30,
+                    ),
+                    Container(
+                      color: AppColors.white1,
+                      padding: const EdgeInsets.all(4),
+                      child: Text(
+                        "Discount ",
+                        textAlign: TextAlign.end,
+                        style: TextStyle(
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w500,
+                            color: AppColors.nutralBlack2,
+                            fontFamily: 'Poppins'),
+                      ),
+                    ),
+                    Container(
+                      color: AppColors.white1,
+                      padding: const EdgeInsets.all(4),
+                      child: Text(
+                        r"0.00",
+                        textAlign: TextAlign.end,
+                        style: TextStyle(
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w700,
+                            color: AppColors.nutralBlack1,
+                            fontFamily: 'Poppins'),
+                      ),
+                    ),
+                  ]),
+                  TableRow(children: [
+                    const SizedBox(
+                      width: 30,
+                    ),
+                    const SizedBox(
+                      width: 30,
+                    ),
+                    Container(
+                      decoration: const BoxDecoration(
+                        border: Border(
+
+                          bottom:
+                          BorderSide(width: 1.5, color: AppColors.white2),
+                        ), color: AppColors.white1,
+                      ),
+                      padding: const EdgeInsets.all(4),
+                      child: Text(
+                        "Taxable ",
+                        textAlign: TextAlign.end,
+                        style: TextStyle(
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w500,
+                            color: AppColors.nutralBlack2,
+                            fontFamily: 'Poppins'),
+                      ),
+                    ),
+                    Container(
+                      decoration: const BoxDecoration(
+                        border: Border(
+
+                          bottom:
+                          BorderSide(width: 1.5, color: AppColors.white2),
+                        ), color: AppColors.white1,
+                      ),
+                      padding: const EdgeInsets.all(4),
+                      child: Text(
+                        r"0.00",
+                        textAlign: TextAlign.end,
+                        style: TextStyle(
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w700,
+                            color: AppColors.nutralBlack1,
+                            fontFamily: 'Poppins'),
+                      ),
+                    ),
+                  ]),
+                  TableRow(children: [
+                    const SizedBox(
+                      width: 30,
+                    ),
+                    const SizedBox(
+                      width: 30,
+                    ),
+                    Container(
+                      decoration: const BoxDecoration(
+                      color: AppColors.white1,
+                      ),
+                      padding: const EdgeInsets.all(4),
+                      child: Text(
+                        "Total ",
+                        textAlign: TextAlign.end,
+                        style: TextStyle(
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w700,
+                            color: AppColors.nutralBlack1,
+                            fontFamily: 'Poppins'),
+                      ),
+                    ),
+                    Container(
+                      decoration: const BoxDecoration(
+                        color: AppColors.white1,
+                      ),
+                      padding: const EdgeInsets.all(4),
+                      child: Text(
+                        r"$50.00",
+                        textAlign: TextAlign.end,
+                        style: TextStyle(
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w700,
+                            color: AppColors.nutralBlack1,
+                            fontFamily: 'Poppins'),
+                      ),
+                    ),
+                  ]),                  TableRow(children: [
+                    const SizedBox(
+                      width: 30,
+                    ),
+                    const SizedBox(
+                      width: 30,
+                    ),
+                    Container(
+                      color: AppColors.white1,
+                      padding: const EdgeInsets.all(4),
+                      child: Text(
+                        "Paid ",
+                        textAlign: TextAlign.end,
+                        style: TextStyle(
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w500,
+                            color: AppColors.nutralBlack2,
+                            fontFamily: 'Poppins'),
+                      ),
+                    ),
+                    Container(
+                      color: AppColors.white1,
+                      padding: const EdgeInsets.all(4),
+                      child: Text(
+                        r"0.00",
+                        textAlign: TextAlign.end,
+                        style: TextStyle(
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w700,
+                            color: AppColors.nutralBlack1,
+                            fontFamily: 'Poppins'),
+                      ),
+                    ),
+                  ]),
+                  TableRow(children: [
+                    const SizedBox(
+                      width: 30,
+                    ),
+                    const SizedBox(
+                      width: 30,
+                    ),
+                    Container(
+                      decoration: const BoxDecoration(
+                        color: AppColors.white1,
+                      ),
+                      padding: const EdgeInsets.all(4),
+                      child: Text(
+                        "Minimum Payment ",
+                        textAlign: TextAlign.end,
+                        style: TextStyle(
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w700,
+                            color: AppColors.nutralBlack1,
+                            fontFamily: 'Poppins'),
+                      ),
+                    ),
+                    Container(
+                      decoration: const BoxDecoration(
+                        color: AppColors.white1,
+                      ),
+                      padding: const EdgeInsets.all(4),
+                      child: Text(
+                        r"$5.00",
+                        textAlign: TextAlign.end,
+                        style: TextStyle(
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w700,
+                            color: AppColors.nutralBlack1,
+                            fontFamily: 'Poppins'),
+                      ),
+                    ),
+                  ]),
+
+                ],
+              ),
+              SizedBox(
+                height: 30.h,
+              ),   Text(
+                "Cancellation",
+                style: TextStyle(
+                    fontSize: 14.sp,
+                    color: AppColors.nutralBlack1,
+                    fontWeight: FontWeight.w600,
+                    fontFamily: "Poppins"),
+              ),  Text(
+                r"$5.00 cancellation fee might be applied if cancelled after activation.",
+                style: TextStyle(
+                    fontSize: 10.sp,
+                    color: AppColors.nutralBlack2,
+                    fontWeight: FontWeight.w400,
+                    fontFamily: "Poppins"),
+              ),
+              SizedBox(
+                height: 24.h,
+              ),   Text(
+                "Deposit to A/R",
+                style: TextStyle(
+                    fontSize: 14.sp,
+                    color: AppColors.primaryBlue1,
+                    fontWeight: FontWeight.w600,
+                    fontFamily: "Poppins"),
+              ), SizedBox(
+                height: 8.h,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      "Jhon Williamson",
+                      style: TextStyle(
+                          fontSize: 14.sp,
+                          color: AppColors.nutralBlack1,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: "Poppins"),
+                    ),
+                  ), Text(
+                    r"$40.00",
+                    style: TextStyle(
+                        fontSize: 14.sp,
+                        color: AppColors.nutralBlack1,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: "Poppins"),
+                  ),
+                ],
+              ),
+              Row(mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(
+                    "Payment via:Bank",
+                    style: TextStyle(
+                        fontSize: 14.sp,
+                        color: AppColors.nutralBlack2,
+                        fontWeight: FontWeight.w400,
+                        fontFamily: "Poppins"),
+                  ),
+                ],
+              ),   Row(mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Text(
+                      "Date: 18 Dec, 2023",
+                      style: TextStyle(
+                          fontSize: 14.sp,
+                          color: AppColors.nutralBlack2,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: "Poppins"),
+                    ),
+                  ),TextCard(buttonText: "Paid",bgColor:AppColors.green4 ,textColor: AppColors.greendark,)
+                ],
+              ),   SizedBox(
+                height: 30.h,
+              ),   Text(
+                "Note  ",
+                style: TextStyle(
+                    fontSize: 14.sp,
+                    color: AppColors.nutralBlack1,
+                    fontWeight: FontWeight.w600,
+                    fontFamily: "Poppins"),
+              ),  SizedBox(
+                height: 16.h,
+              ), Text(
+                "In today's interconnected world, teams have become the backbone of successful organi zations. However, the effectiveness of a team heavily relies on various factors  ",
+                style: TextStyle(
+                    fontSize: 12.sp,
+                    color: AppColors.nutralBlack2,
+                    fontWeight: FontWeight.w400,
+                    fontFamily: "Poppins"),
+              ), SizedBox(
+                height: 30.h,
+              ),   Text(
+                "Terms & conditions  ",
+                style: TextStyle(
+                    fontSize: 14.sp,
+                    color: AppColors.nutralBlack1,
+                    fontWeight: FontWeight.w600,
+                    fontFamily: "Poppins"),
+              ),
+              Text("1. Please pay within 10 days",
+                style: TextStyle(
+                    fontSize: 12.sp,
+                    color: AppColors.nutralBlack2,
+                    fontWeight: FontWeight.w400,
+                    fontFamily: "Poppins"),
+              ),  Text("2. Please pay within 10 days",
+                style: TextStyle(
+                    fontSize: 12.sp,
+                    color: AppColors.nutralBlack2,
+                    fontWeight: FontWeight.w400,
+                    fontFamily: "Poppins"),
+              ),  Text("3. Please pay within 10 days",
+                style: TextStyle(
+                    fontSize: 12.sp,
+                    color: AppColors.nutralBlack2,
+                    fontWeight: FontWeight.w400,
+                    fontFamily: "Poppins"),
+              ),
+              SizedBox(
+                height: 30.h,
+              ),   Text(
+                "Activity Logs ",
+                style: TextStyle(
+                    fontSize: 14.sp,
+                    color: AppColors.nutralBlack1,
+                    fontWeight: FontWeight.w600,
+                    fontFamily: "Poppins"),
+              ),
+              SizedBox(
+                height: 16.h,
+              ),   TimelineTile(
+                isFirst: true,
+                alignment: TimelineAlign.start,
+                indicatorStyle: const IndicatorStyle(
+                  color: AppColors.primaryBlue1,
+                ),
+                beforeLineStyle: const LineStyle(color: AppColors.primaryBlue1),
+                afterLineStyle: const LineStyle(color: AppColors.primaryBlue1),
+                endChild: const Padding(
+                    padding: EdgeInsets.all(8.0), child: ActivityLogCard()),
+              ),
+              TimelineTile(
+                alignment: TimelineAlign.start,
+                lineXY: 0.3,
+                indicatorStyle: const IndicatorStyle(
+                  color: AppColors.primaryBlue1,
+                ),
+                beforeLineStyle: const LineStyle(color: AppColors.primaryBlue1),
+                afterLineStyle: const LineStyle(color: AppColors.primaryBlue1),
+                endChild: const Padding(
+                    padding: EdgeInsets.all(8.0), child: ActivityLogCard()),
+              ),
+              TimelineTile(
+                alignment: TimelineAlign.start,
+                lineXY: 0.3,
+                indicatorStyle: const IndicatorStyle(
+                  color: AppColors.primaryBlue1,
+                ),
+                beforeLineStyle: const LineStyle(color: AppColors.primaryBlue1),
+                afterLineStyle: const LineStyle(color: AppColors.primaryBlue1),
+                endChild: const Padding(
+                    padding: EdgeInsets.all(8.0), child: ActivityLogCard()),
+              ),
+              TimelineTile(
+                alignment: TimelineAlign.start,
+                lineXY: 0.3,
+                indicatorStyle: const IndicatorStyle(
+                  color: AppColors.greyStrokColor,
+                ),
+                beforeLineStyle: const LineStyle(color: AppColors.primaryBlue1),
+                afterLineStyle: const LineStyle(color: AppColors.greyStrokColor),
+                endChild: const Padding(
+                    padding: EdgeInsets.all(8.0), child: ActivityLogCard()),
+              ),
+              TimelineTile(
+                alignment: TimelineAlign.start,
+                lineXY: 0.3,
+                indicatorStyle: const IndicatorStyle(
+                  color: AppColors.greyStrokColor,
+                ),
+                beforeLineStyle: const LineStyle(color: AppColors.greyStrokColor),
+                afterLineStyle: const LineStyle(color: AppColors.greyStrokColor),
+                endChild: const Padding(
+                    padding: EdgeInsets.all(8.0), child: ActivityLogCard()),
+              ),
               SizedBox(
                 height: 32.h,
               ),
             ],
           ),
         ));
+  }
+}
+
+class ActivityLogCard extends StatelessWidget {
+  const ActivityLogCard({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      decoration: BoxDecoration(
+        border: Border.all(color:AppColors.greyStrokColor),
+          color: Colors.white, borderRadius: BorderRadius.circular(8.r)),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Jhon Williamson',
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: CustomTextStyle.commonBold,
+              ),
+
+            ],
+          ),
+          Text(r"Payment: $40.00",
+            style: TextStyle(
+                fontSize: 12.sp,
+                color: AppColors.nutralBlack2,
+                fontWeight: FontWeight.w400,
+                fontFamily: "Poppins"),
+          ),  Text("Payment via: Bank",
+            style: TextStyle(
+                fontSize: 12.sp,
+                color: AppColors.nutralBlack2,
+                fontWeight: FontWeight.w400,
+                fontFamily: "Poppins"),
+          ), Text("18 Dec, 2023 - 08:30 PM",
+            style: TextStyle(
+                fontSize: 12.sp,
+                color: AppColors.nutralBlack2,
+                fontWeight: FontWeight.w400,
+                fontFamily: "Poppins"),
+          ),
+        ],
+      ),
+    );
   }
 }
