@@ -69,8 +69,8 @@ class _WorkOrderDetailsViewState extends State<WorkOrderDetailsView> {
                   controller.tabEnum == WorkOrderTabEnum.overview
                       ? OverViewScreen(order: widget.order)
                       : controller.tabEnum == WorkOrderTabEnum.invoices
-                          ? InvoiceScreen() : controller.tabEnum == WorkOrderTabEnum.schedules
-                      ? ScheduleScreen()
+                          ? const InvoiceScreen() : controller.tabEnum == WorkOrderTabEnum.schedules
+                      ? const ScheduleScreen()
                           : Container()
                 ],
               ),

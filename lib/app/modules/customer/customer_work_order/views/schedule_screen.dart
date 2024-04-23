@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/customer/customer_work_order/views/schedule_calendar_screen.dart';
+import 'package:nuforce/app/modules/customer/customer_work_order/views/schedule_map_screen.dart';
 import 'package:nuforce/app/modules/settings/widgets/text_card.dart';
 import '../../widgets/rounded_tabs.dart';
 import '../controllers/customer_work_order_controller.dart';
@@ -24,11 +25,13 @@ class ScheduleScreen extends StatefulWidget {
 }
 
 class _ScheduleScreenState extends State<ScheduleScreen> {
+  final controller = Get.put(CustomerWorkOrderController());
   @override
   Widget build(BuildContext context) {
     return GetBuilder<CustomerWorkOrderController>(
       builder: (controller) {
-        return Column(crossAxisAlignment: CrossAxisAlignment.start,
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(
@@ -66,17 +69,18 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                   SizedBox(
                     height: 16.h,
                   ),
-
                 ],
               ),
             ),
-            Tabs(),
+            const Tabs(),
             SizedBox(
               height: 16.h,
             ),
-            controller.tabEnumSchedule==SchedulesTabEnum.calendar?ScheduleCalendarScreen():Container(),
-
-
+            controller.tabEnumSchedule == SchedulesTabEnum.calendar
+                ? const ScheduleCalendarScreen()
+                : controller.tabEnumSchedule == SchedulesTabEnum.map
+                    ? const ScheduleMapScreen()
+                    : Container(),
             SizedBox(
               height: 32.h,
             ),
@@ -183,29 +187,32 @@ class _TabsState extends State<Tabs> {
             children: [
               Expanded(
                 child: RoundedTabs(
-                  isSelected: controller.tabEnumSchedule == SchedulesTabEnum.calendar,
+                  isSelected:
+                      controller.tabEnumSchedule == SchedulesTabEnum.calendar,
                   onTap: () {
                     controller.updateScheduleTabEnum(SchedulesTabEnum.calendar);
                   },
                   text: 'Calendar',
-                  isTopLeftCurved: true,                isTopRightCurved: false,
-                
+                  isTopLeftCurved: true,
+                  isTopRightCurved: false,
                 ),
               ),
-               Expanded(
-                 child: RoundedTabs(
-                  isSelected: controller.tabEnumSchedule == SchedulesTabEnum.timeline,
+              Expanded(
+                child: RoundedTabs(
+                  isSelected:
+                      controller.tabEnumSchedule == SchedulesTabEnum.timeline,
                   onTap: () {
                     controller.updateScheduleTabEnum(SchedulesTabEnum.timeline);
                   },
                   text: 'Timeline',
                   isTopRightCurved: false,
                   isTopLeftCurved: false,
-                               ),
-               ),
+                ),
+              ),
               Expanded(
                 child: RoundedTabs(
-                  isSelected: controller.tabEnumSchedule == SchedulesTabEnum.map,
+                  isSelected:
+                      controller.tabEnumSchedule == SchedulesTabEnum.map,
                   onTap: () {
                     controller.updateScheduleTabEnum(SchedulesTabEnum.map);
                   },
