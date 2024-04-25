@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class DatetimeCustomFunc {
@@ -10,7 +11,6 @@ class DatetimeCustomFunc {
 
   static String dateWithTime(DateTime dateTime) {
     return DateFormat.yMMMd().add_jm().format(dateTime);
-    // return DateFormat.yMMMd().format(dateTime);
   }
 
   static String getDashedDate(DateTime dateTime) {
@@ -19,5 +19,13 @@ class DatetimeCustomFunc {
 
   static String getFormattedDateWithMonth(DateTime dateTime) {
     return DateFormat('d MMM, yyyy').format(dateTime);
+  }
+
+  static String getDayName(DateTime dateTime) {
+    return DateFormat('EEEE').format(dateTime);
+  }
+
+  static String getFormattedTime(TimeOfDay time) {
+    return '${time.hour}:${time.minute.toString().padLeft(2, '0')} ${time.period == DayPeriod.am ? 'AM' : 'PM'}';
   }
 }

@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/text_styles.dart';
-import 'package:nuforce/gen/assets.gen.dart';
 
-class CustomDateField extends StatelessWidget {
-  const CustomDateField({
+class CustomTimeField extends StatelessWidget {
+  const CustomTimeField({
     super.key,
     this.label,
+    this.selectedTime,
+    this.hint,
     this.onChanged,
-    this.selectedDate,
   });
 
   final String? label;
-  final String? selectedDate;
-  final ValueChanged<DateTime>? onChanged;
+  final String? selectedTime;
+  final String? hint;
+  final ValueChanged<TimeOfDay>? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -35,11 +35,9 @@ class CustomDateField extends StatelessWidget {
         ],
         GestureDetector(
           onTap: () {
-            showDatePicker(
+            showTimePicker(
               context: context,
-              initialDate: DateTime.now(),
-              firstDate: DateTime(2000),
-              lastDate: DateTime(2025),
+              initialTime: TimeOfDay.now(),
             ).then((value) {
               if (value != null) {
                 onChanged?.call(value);
@@ -58,14 +56,14 @@ class CustomDateField extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  selectedDate ?? 'DD-MM-YYYY',
+                  selectedTime ?? 'Select Time',
                   style: TextStyle(
                     color: AppColors.nutralBlack1,
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w400,
                   ),
                 ),
-                SvgPicture.asset(Assets.images.svg.calendarPick),
+                const Icon(Icons.schedule, color: AppColors.nutralBlack1)
               ],
             ),
           ),

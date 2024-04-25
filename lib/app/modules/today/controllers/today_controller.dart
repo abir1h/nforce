@@ -64,17 +64,25 @@ class MockEvents {
   final List<EventChild> eventChild = [
     EventChild(
       id: 1,
-      title: "Alex",
+      assignedTo: "Alex",
+      title: "AC Fixing Service",
+      description: "Urna turpis ante nunc nibh amet enim nec. Placerat in turpis ultrices amet mauris.",
       status: 'Completed',
       color: AppColors.green3,
       error: false,
-      time: const TimeOfDay(hour: 12, minute: 0),
+      startsAt: const TimeOfDay(hour: 12, minute: 0),
+      endsAt: const TimeOfDay(hour: 13, minute: 20),
       isCompleted: true,
+      date: DateTime(2024, 2, 1),
     ),
     EventChild(
       id: 2,
-      title: "Rudigar",
-      time: const TimeOfDay(hour: 13, minute: 0),
+      assignedTo: "Rudigar",
+      title: "AC Fixing Service",
+      description: "Urna turpis ante nunc nibh amet enim nec. Placerat in turpis ultrices amet mauris.",
+      startsAt: const TimeOfDay(hour: 13, minute: 0),
+      endsAt: const TimeOfDay(hour: 14, minute: 20),
+      date: DateTime(2024, 2, 1),
       color: AppColors.red,
       status: 'Missed',
       error: true,
@@ -82,8 +90,12 @@ class MockEvents {
     ),
     EventChild(
       id: 3,
-      title: "Brahim Diaz",
-      time: const TimeOfDay(hour: 14, minute: 0),
+      assignedTo: "Brahim Diaz",
+      date: DateTime(2024, 2, 1),
+      title: "AC Fixing Service",
+      description: "Urna turpis ante nunc nibh amet enim nec. Placerat in turpis ultrices amet mauris.",
+      startsAt: const TimeOfDay(hour: 14, minute: 0),
+      endsAt: const TimeOfDay(hour: 15, minute: 20),
       color: AppColors.yellow,
       error: false,
       status: '15 min late',
@@ -91,8 +103,12 @@ class MockEvents {
     ),
     EventChild(
       id: 4,
-      title: "Alaba",
-      time: const TimeOfDay(hour: 15, minute: 0),
+      assignedTo: "Alaba",
+      title: "AC Fixing Service",
+      description: "Urna turpis ante nunc nibh amet enim nec. Placerat in turpis ultrices amet mauris.",
+      startsAt: const TimeOfDay(hour: 15, minute: 0),
+      endsAt: const TimeOfDay(hour: 16, minute: 20),
+      date: DateTime(2024, 2, 1),
       color: AppColors.purple,
       error: false,
       status: '10 min early',
@@ -100,8 +116,12 @@ class MockEvents {
     ),
     EventChild(
       id: 5,
-      title: "Bellingham",
-      time: const TimeOfDay(hour: 16, minute: 0),
+      assignedTo: "Bellingham",
+      title: "AC Fixing Service",
+      description: "Urna turpis ante nunc nibh amet enim nec. Placerat in turpis ultrices amet mauris.",
+      startsAt: const TimeOfDay(hour: 16, minute: 0),
+      endsAt: const TimeOfDay(hour: 17, minute: 20),
+      date: DateTime(2024, 2, 1),
       color: AppColors.blue,
       error: false,
       status: 'On going',
@@ -109,8 +129,12 @@ class MockEvents {
     ),
     EventChild(
       id: 6,
-      title: "Bellingham",
-      time: const TimeOfDay(hour: 17, minute: 0),
+      assignedTo: "Bellingham",
+      date: DateTime(2024, 2, 1),
+      description: "Urna turpis ante nunc nibh amet enim nec. Placerat in turpis ultrices amet mauris.",
+      title: "AC Fixing Service",
+      endsAt: const TimeOfDay(hour: 17, minute: 0),
+      startsAt: const TimeOfDay(hour: 17, minute: 0),
       color: AppColors.white3,
       error: false,
       status: 'Open',
@@ -128,8 +152,12 @@ class MockEvents {
 class EventChild {
   final int id;
   final String title;
+  final String description;
+  final String assignedTo;
   final String status;
-  final TimeOfDay time;
+  final TimeOfDay startsAt;
+  final TimeOfDay endsAt;
+  final DateTime date;
   final Color color;
   final bool error;
   final bool isCompleted;
@@ -137,8 +165,12 @@ class EventChild {
   EventChild({
     required this.id,
     required this.title,
+    required this.description,
     required this.status,
-    required this.time,
+    required this.startsAt,
+    required this.endsAt,
+    required this.date,
+    required this.assignedTo,
     required this.color,
     required this.error,
     required this.isCompleted,
