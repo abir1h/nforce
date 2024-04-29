@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -26,17 +27,7 @@ class FullScreenMapController extends GetxController {
   RxBool isSearching = false.obs;
   Rx<FocusNode> searchFocus = FocusNode().obs;
   GoogleMapPlace? places;
-
-  // Add a marker to the map
   RxSet<Marker> markers = <Marker>{}.obs;
-
-  Future<void> getLocation() async {
-    Location loca = Location();
-    var locationData = await loca.getLocation();
-    userCurrentLocation = LatLng(locationData.latitude!, locationData.longitude!).obs;
-    focusPoint.value = userCurrentLocation?.value ?? AppConstants.defaultLocation;
-    mapController?.animateCamera(CameraUpdate.newLatLng(focusPoint.value));
-  }
 
   //Search
   Timer? searchActive;
@@ -115,6 +106,10 @@ class FullScreenMapController extends GetxController {
       places = null;
       isSearching.value = false;
       searchFocus.value.unfocus();
+      markers.add(Marker(
+        markerId: const MarkerId('1'),
+        position: focusPoint.value,
+      ));
     } catch (e) {
       developer.log(e.toString(), name: 'getPlaceDetails');
     }
@@ -123,7 +118,7 @@ class FullScreenMapController extends GetxController {
   late bool serviceEnabled;
   late PermissionStatus permissionGranted;
   late LocationData locationData;
-  LatLng userLocation = const LatLng(37.42796133580664, -122.085749655962);
+  Rx<LatLng> userLocation = const LatLng(37.42796133580664, -122.085749655962).obs;
 
   Future<void> getLocation() async {
     Location location = Location();
@@ -152,12 +147,17 @@ class FullScreenMapController extends GetxController {
 
       try {
         locationData = await location.getLocation().timeout(const Duration(seconds: 1));
-        userLocation = LatLng(locationData.latitude!, locationData.longitude!);
+        userLocation.value = LatLng(locationData.latitude!, locationData.longitude!);
+        markers.add(Marker(
+          markerId: const MarkerId('1'),
+          position: userLocation.value,
+        ));
+        mapController!.animateCamera(CameraUpdate.newLatLng(userLocation.value));
       } catch (e) {
         developer.log('error: $e', name: 'splash_controller3');
       }
     } catch (e) {
-      userLocation = const LatLng(37.42796133580664, -122.085749655962);
+      userLocation.value = const LatLng(37.42796133580664, -122.085749655962);
     }
   }
 }
