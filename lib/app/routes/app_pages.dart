@@ -24,6 +24,8 @@ import '../modules/new_orders/bindings/new_orders_binding.dart';
 import '../modules/new_orders/views/new_orders_view.dart';
 import '../modules/on_boarding/bindings/on_boarding_binding.dart';
 import '../modules/on_boarding/views/on_boarding_view.dart';
+import '../modules/order/bindings/order_binding.dart';
+import '../modules/order/views/order_view.dart';
 import '../modules/service_center/bindings/service_center_binding.dart';
 import '../modules/service_center/sub_modules/calendar/bindings/calendar_binding.dart';
 import '../modules/service_center/sub_modules/calendar/views/calendar_view.dart';
@@ -196,6 +198,11 @@ class AppPages {
       name: _Paths.CONTACT,
       page: () => const ContactView(),
       binding: ContactBinding(),
+    ),
+    GetPage(
+      name: _Paths.ORDER,
+      page: () => const OrderView(),
+      binding: OrderBinding(),
     ),
   ];
 }

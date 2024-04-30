@@ -36,6 +36,7 @@ abstract class Routes {
   static const INVOICE =
       _Paths.SERVICE_CENTER + _Paths.WORK_ORDER_VIEW + _Paths.INVOICE;
   static const CONTACT = _Paths.CONTACT;
+  static const ORDER = _Paths.ORDER;
 }
 
 abstract class _Paths {
@@ -67,4 +68,5 @@ abstract class _Paths {
   static const ESTIMATION = '/estimation';
   static const INVOICE = '/invoice';
   static const CONTACT = '/contact';
+  static const ORDER = '/order';
 }

@@ -515,6 +515,12 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/office_logo.svg
   String get officeLogo => 'assets/images/svg/office_logo.svg';
 
+  /// File path: assets/images/svg/order_0.svg
+  String get order0 => 'assets/images/svg/order_0.svg';
+
+  /// File path: assets/images/svg/order_1.svg
+  String get order1 => 'assets/images/svg/order_1.svg';
+
   /// File path: assets/images/svg/organization.svg
   String get organization => 'assets/images/svg/organization.svg';
 
@@ -685,6 +691,8 @@ class $AssetsImagesSvgGen {
         nuforceLogo,
         offer,
         officeLogo,
+        order0,
+        order1,
         organization,
         package,
         paymentOptions,
