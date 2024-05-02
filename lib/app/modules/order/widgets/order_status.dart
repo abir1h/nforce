@@ -29,7 +29,7 @@ class OrderCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(8.r),
         color: AppColors.white1,
       ),
-      child: GestureDetector(
+      child: InkWell(
         onTap: onTap,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

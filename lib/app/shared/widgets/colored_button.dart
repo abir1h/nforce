@@ -33,6 +33,7 @@ class ColoredButton extends StatelessWidget {
             style: CustomTextStyle.heading5.copyWith(
               fontWeight: FontWeight.w400,
               color: textColor,
+              fontSize: height <= 22 ? 12.sp : null,
             ),
           ),
         ),

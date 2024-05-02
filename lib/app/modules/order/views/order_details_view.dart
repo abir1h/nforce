@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/order/controllers/order_controller.dart';
+import 'package:nuforce/app/modules/order/views/order_overview.dart';
 import 'package:nuforce/app/modules/order/widgets/order_mini_tab.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/extension_methods.dart';
@@ -68,11 +69,35 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
           _editButton(onTap: () {}),
         ],
       ),
-      body: Column(
-        children: [
-          10.h.vSpace,
-          const OrderMiniTabs(),
-        ],
+      body: NestedScrollView(
+        headerSliverBuilder: (context, innerBoxIsScrolled) {
+          return [];
+        },
+        body: Column(
+          children: [
+            const OrderMiniTabs(),
+            Expanded(
+              child: GetBuilder<OrderController>(
+                builder: (controller) {
+                  switch (controller.tabEnum) {
+                    case OrderTabEnum.overview:
+                      return const OrderOverview();
+                    case OrderTabEnum.invoices:
+                      return const SizedBox();
+                    case OrderTabEnum.schedules:
+                      return const SizedBox();
+                    case OrderTabEnum.locations:
+                      return const SizedBox();
+                    case OrderTabEnum.policies:
+                      return const SizedBox();
+                    default:
+                      return const SizedBox();
+                  }
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
