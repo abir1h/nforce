@@ -117,6 +117,10 @@ class $AssetsImagesPngGen {
   AssetGenImage get mapImage =>
       const AssetGenImage('assets/images/png/mapImage.png');
 
+  /// File path: assets/images/png/mapImage2.png
+  AssetGenImage get mapImage2 =>
+      const AssetGenImage('assets/images/png/mapImage2.png');
+
   /// File path: assets/images/png/notification.png
   AssetGenImage get notification =>
       const AssetGenImage('assets/images/png/notification.png');
@@ -253,6 +257,7 @@ class $AssetsImagesPngGen {
         link,
         logout,
         mapImage,
+        mapImage2,
         notification,
         nuforceSplash,
         offlinePayments,
@@ -286,6 +291,9 @@ class $AssetsImagesPngGen {
 
 class $AssetsImagesSvgGen {
   const $AssetsImagesSvgGen();
+
+  /// File path: assets/images/svg/Delete.svg
+  String get delete => 'assets/images/svg/Delete.svg';
 
   /// File path: assets/images/svg/Document.svg
   String get document => 'assets/images/svg/Document.svg';
@@ -376,6 +384,9 @@ class $AssetsImagesSvgGen {
 
   /// File path: assets/images/svg/edit.svg
   String get edit => 'assets/images/svg/edit.svg';
+
+  /// File path: assets/images/svg/edit_ic.svg
+  String get editIc => 'assets/images/svg/edit_ic.svg';
 
   /// File path: assets/images/svg/edit_rounded.svg
   String get editRounded => 'assets/images/svg/edit_rounded.svg';
@@ -550,6 +561,7 @@ class $AssetsImagesSvgGen {
 
   /// List of all assets
   List<String> get values => [
+        delete,
         document,
         accounting,
         accounts,
@@ -580,6 +592,7 @@ class $AssetsImagesSvgGen {
         documentFilled,
         downArrow,
         edit,
+        editIc,
         editRounded,
         empty,
         facebook,

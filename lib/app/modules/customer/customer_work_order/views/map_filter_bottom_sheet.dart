@@ -3,10 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/service_center/sub_modules/calendar/controllers/calendar_controller.dart';
-import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
-import 'package:nuforce/app/utils/colors.dart';
 
+import 'package:nuforce/app/utils/colors.dart';
 import '../../../../../../gen/assets.gen.dart';
 import '../../../../shared/widgets/custom_dropdown.dart';
 import '../../../../shared/widgets/primary_button.dart';

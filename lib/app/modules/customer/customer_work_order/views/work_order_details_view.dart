@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:nuforce/app/modules/customer/customer_work_order/providers/work_order_provider.dart';
 import 'package:nuforce/app/modules/customer/customer_work_order/views/invoice_screen.dart';
 import 'package:nuforce/app/modules/customer/customer_work_order/views/overview_screen.dart';
+import 'package:nuforce/app/modules/customer/customer_work_order/views/policy_screen.dart';
 import 'package:nuforce/app/modules/customer/customer_work_order/views/schedule_screen.dart';
 import 'package:nuforce/app/modules/customer/widgets/work_order_mini_tabs.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
@@ -12,6 +13,7 @@ import 'package:nuforce/app/utils/datetime_custom_func.dart';
 import 'package:nuforce/app/utils/extension_methods.dart';
 
 import '../controllers/customer_work_order_controller.dart';
+import 'location_screen.dart';
 
 class WorkOrderDetailsView extends StatefulWidget {
   const WorkOrderDetailsView({
@@ -70,7 +72,8 @@ class _WorkOrderDetailsViewState extends State<WorkOrderDetailsView> {
                       ? OverViewScreen(order: widget.order)
                       : controller.tabEnum == WorkOrderTabEnum.invoices
                           ? const InvoiceScreen() : controller.tabEnum == WorkOrderTabEnum.schedules
-                      ? const ScheduleScreen()
+                      ? const ScheduleScreen(): controller.tabEnum == WorkOrderTabEnum.locations?const LocationScreen():
+                  controller.tabEnum == WorkOrderTabEnum.policies?const PolicySscreen()
                           : Container()
                 ],
               ),
