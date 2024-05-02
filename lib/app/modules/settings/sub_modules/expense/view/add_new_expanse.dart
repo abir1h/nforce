@@ -76,323 +76,234 @@ class _AddExpenseViewScreenState extends State<AddExpenseViewScreen> {
       body: Form(
         key: addExpenseFormKey,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Expanded(
-              child: SingleChildScrollView(
-                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Expense code',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 14.sp,
-                        color: AppColors.nutralBlack1,
-                      ),
-                    ),
-                    SizedBox(height: 8.h),
-                    CustomDropdownButton(
-                      items: expenseCodes
-                          .map(
-                            (e) => DropdownMenuItem(
-                              value: e,
-                              child: Text(e),
-                            ),
-                          )
-                          .toList(),
-                      hint: 'Select one',
-                      onChanged: (newVal) {
+            Text(
+              'Expense code',
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 14.sp,
+                color: AppColors.nutralBlack1,
+              ),
+            ),
+            SizedBox(
+              height: 8.h,
+            ),
+
+            CustomDropdownButton(
+              items: const [
+                DropdownMenuItem(
+                  value: 'X',
+                  child: Text(
+                    'x',
+                  ),
+                ),
+                DropdownMenuItem(
+                  value: 'Y',
+                  child: Text(
+                    'X',
+                  ),
+                ),
+                DropdownMenuItem(
+                  value: 'Z',
+                  child: Text(
+                    'z',
+                  ),
+                ),
+              ],
+              hint: 'Select one',
+              onChanged: (newVal) {},
+              value: null,
+            ),
+            SizedBox(
+              height: 16.h,
+            ),
+            CustomTextField(
+              label: 'Item name',
+              hint: 'Enter item name',
+              controller: TextEditingController(),
+            ),
+            SizedBox(
+              height: 16.h,
+            ),
+            SizedBox(
+              height: 16.h,
+            ),
+            CustomTextField(
+              label: 'Spend By',
+              hint: 'Enter spend by',
+              controller: TextEditingController(),
+            ),
+            SizedBox(
+              height: 16.h,
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      showDatePicker(
+                        context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime.now(),
+                        lastDate: DateTime.now().add(const Duration(days: 365)),
+                      ).then((value) {
                         setState(() {
-                          selectedExpenseCode = newVal as String;
+                          selectedDate =
+                              '${value!.day}-${value.month}-${value.year}';
                         });
-                      },
-                      value: selectedExpenseCode,
-                    ),
-                    SizedBox(height: 16.h),
-                    CustomTextField(
-                      label: 'Item name',
-                      hint: 'Enter item name',
-                      controller: itemNameController,
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'Please enter item name';
-                        }
-                        return null;
-                      },
-                    ),
-                    SizedBox(height: 16.h),
-                    CustomTextField(
-                      label: 'Spend By',
-                      hint: 'Enter spend by',
-                      controller: spendByController,
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'Please enter spend by';
-                        }
-                        return null;
-                      },
-                    ),
-                    SizedBox(height: 16.h),
-                    Row(
+                      });
+                    },
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Expanded(
-                          child: GestureDetector(
-                            onTap: () {
-                              showDatePicker(
-                                context: context,
-                                initialDate: DateTime.now(),
-                                firstDate: DateTime.now(),
-                                lastDate: DateTime.now().add(const Duration(days: 365)),
-                              ).then((value) {
-                                setState(() {
-                                  expireDate = value;
-                                });
-                              });
-                            },
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Expire date',
-                                  style: CustomTextStyle.paragraphSmall.copyWith(
-                                    fontWeight: FontWeight.w500,
-                                    color: AppColors.nutralBlack1,
-                                    // fontSize: 20,
-                                  ),
-                                ),
-                                const SizedBox(height: 8),
-                                Container(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 16,
-                                    vertical: 12,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: AppColors.textFieldBackground,
-                                    borderRadius: BorderRadius.circular(6),
-                                    border: Border.all(color: AppColors.greyText),
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        expireDate != null ? DatetimeCustomFunc.getDashedDate(expireDate!) : 'Select date',
-                                        style: TextStyle(
-                                          color: AppColors.subText,
-                                          fontSize: 16.sp,
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      ),
-                                      const Spacer(),
-                                      SvgPicture.asset(Assets.images.svg.calendarMonth),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
+                        Text(
+                          'Expire date',
+                          style: CustomTextStyle.paragraphSmall.copyWith(
+                            fontWeight: FontWeight.w500,
+                            color: AppColors.nutralBlack1,
+                            // fontSize: 20,
                           ),
                         ),
-                        SizedBox(width: 15.w),
-                        Expanded(
-                          child: CustomTextField(
-                            label: 'Duration Time',
-                            hint: 'Enter duration in minutes',
-                            controller: durationController,
-                            validator: (value) {
-                              if (value!.isEmpty) {
-                                return 'Please enter duration';
-                              }
-                              return null;
-                            },
+                        const SizedBox(height: 8),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 16,
+                            vertical: 12,
+                          ),
+                          decoration: BoxDecoration(
+                            color: AppColors.textFieldBackground,
+                            borderRadius: BorderRadius.circular(6),
+                            border: Border.all(color: AppColors.greyText),
+                          ),
+                          child: Row(
+                            children: [
+                              Text(
+                                selectedDate,
+                                style: TextStyle(
+                                  color: AppColors.subText,
+                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                              const Spacer(),
+                              SvgPicture.asset(Assets.images.svg.calendarMonth),
+                            ],
                           ),
                         ),
                       ],
                     ),
-                    SizedBox(height: 16.h),
-                    CustomTextField(
-                      label: r'Total $',
-                      hint: r'$0.00',
-                      controller: totalAmountController,
-                    ),
-                    SizedBox(height: 16.h),
-                    Text(
-                      'Fund Source',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 14.sp,
-                        color: AppColors.nutralBlack1,
-                      ),
-                    ),
-                    SizedBox(height: 8.h),
-                    CustomDropdownButton(
-                      items: fundSources
-                          .map(
-                            (e) => DropdownMenuItem(
-                              value: e,
-                              child: Text(e),
-                            ),
-                          )
-                          .toList(),
-                      hint: 'Select one',
-                      onChanged: (newVal) {
-                        setState(() {
-                          selectedFundSource = newVal as String;
-                        });
-                      },
-                      value: selectedFundSource,
-                    ),
-                    SizedBox(height: 16.h),
-                    CustomTextField(
-                      label: 'Details',
-                      hint: 'Write description...',
-                      maxLines: 4,
-                      controller: detailsController,
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'Please enter details';
-                        }
-                        return null;
-                      },
-                    ),
-                    SizedBox(height: 16.h),
-                    Text(
-                      'Reimburse to',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 14.sp,
-                        color: AppColors.nutralBlack1,
-                      ),
-                    ),
-                    SizedBox(height: 8.h),
-                    CustomDropdownButton(
-                      items: reimbursableTo
-                          .map(
-                            (e) => DropdownMenuItem(
-                              value: e,
-                              child: Text(e),
-                            ),
-                          )
-                          .toList(),
-                      hint: 'Not Reimbursable',
-                      onChanged: (newVal) {
-                        setState(() {
-                          selectedReimbursableTo = newVal as String;
-                        });
-                      },
-                      value: selectedReimbursableTo,
-                    ),
-                    SizedBox(height: 16.h),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              pickImage(ImageSource.gallery).then(
-                                (image) {
-                                  if (image != null) {
-                                    setState(() {
-                                      images.add(image);
-                                    });
-                                  }
-                                },
-                              );
-                            },
-                            child: DottedRect(
-                              color: Colors.grey,
-                              gap: 5,
-                              child: Container(
-                                height: 70.h,
-                                width: 70.h,
-                                padding: EdgeInsets.all(20.r),
-                                child: const Icon(
-                                  Icons.camera_alt_outlined,
-                                  color: Colors.grey,
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 70.h,
-                            child: ListView.builder(
-                              itemCount: images.length,
-                              shrinkWrap: true,
-                              physics: const NeverScrollableScrollPhysics(),
-                              scrollDirection: Axis.horizontal,
-                              itemBuilder: (BuildContext context, int index) {
-                                return InkWell(
-                                  onTap: () {
-                                    showDialog(
-                                      context: context,
-                                      builder: (ctx) {
-                                        return AlertDialog(
-                                          title: const Text('Remove Image'),
-                                          content: const Text('Are you sure you want to remove this image?'),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () {
-                                                Get.back();
-                                              },
-                                              child: const Text('Cancel'),
-                                            ),
-                                            TextButton(
-                                              onPressed: () {
-                                                Get.back();
-                                                setState(() {
-                                                  images.removeAt(index);
-                                                });
-                                              },
-                                              child: const Text('Remove'),
-                                            ),
-                                          ],
-                                        );
-                                      },
-                                    );
-                                  },
-                                  child: Stack(
-                                    children: [
-                                      Container(
-                                        height: 70.h,
-                                        width: 70.h,
-                                        margin: EdgeInsets.only(left: 10.w),
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(8.r),
-                                          color: AppColors.primaryBlue1,
-                                          image: DecorationImage(
-                                            image: FileImage(File(images[index].path)),
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                      ),
-                                      Positioned(
-                                        right: 5,
-                                        top: 5,
-                                        child: Container(
-                                          height: 20.h,
-                                          width: 20.h,
-                                          decoration: BoxDecoration(
-                                            border: Border.all(color: AppColors.red),
-                                            shape: BoxShape.circle,
-                                          ),
-                                          child: const Icon(
-                                            Icons.close,
-                                            size: 16,
-                                            color: AppColors.red,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                );
-                              },
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    50.h.vSpace,
-                  ],
+                  ),
                 ),
+                SizedBox(
+                  width: 15.w,
+                ),
+                Expanded(
+                  child: CustomTextField(
+                    label: 'Duration Time',
+                    hint: '45 Min',
+                    controller: TextEditingController(),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 16.h,
+            ),
+            CustomTextField(
+              label: r'Total $',
+              hint: r'$0.00',
+              controller: TextEditingController(),
+            ),
+            SizedBox(
+              height: 16.h,
+            ),
+            Text(
+              'Fund Source',
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 14.sp,
+                color: AppColors.nutralBlack1,
               ),
+            ),
+            SizedBox(
+              height: 8.h,
+            ),
+            CustomDropdownButton(
+              items: const [
+                DropdownMenuItem(
+                  value: 'X',
+                  child: Text(
+                    'x',
+                  ),
+                ),
+                DropdownMenuItem(
+                  value: 'Y',
+                  child: Text(
+                    'X',
+                  ),
+                ),
+                DropdownMenuItem(
+                  value: 'Z',
+                  child: Text(
+                    'z',
+                  ),
+                ),
+              ],
+              hint: 'Select one',
+              onChanged: (newVal) {},
+              value: null,
+            ),
+            SizedBox(
+              height: 16.h,
+            ),
+            CustomTextField(
+              label: 'Details',
+              hint: 'Write description...',
+              maxLines: 4,
+              controller: TextEditingController(),
+            ),
+            SizedBox(
+              height: 16.h,
+            ),
+            Text(
+              'Reimburse to',
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 14.sp,
+                color: AppColors.nutralBlack1,
+              ),
+            ),
+            SizedBox(
+              height: 8.h,
+            ),
+            CustomDropdownButton(
+              items: const [
+                DropdownMenuItem(
+                  value: 'X',
+                  child: Text(
+                    'x',
+                  ),
+                ),
+                DropdownMenuItem(
+                  value: 'Y',
+                  child: Text(
+                    'X',
+                  ),
+                ),
+                DropdownMenuItem(
+                  value: 'Z',
+                  child: Text(
+                    'z',
+                  ),
+                ),
+              ],
+              hint: 'Not Reimbursable',
+              onChanged: (newVal) {},
+              value: null,
+            ),
+            SizedBox(
+              height: 16.h,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),

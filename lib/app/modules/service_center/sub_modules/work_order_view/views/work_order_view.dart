@@ -73,7 +73,7 @@ class WorkOrderViewView extends GetView<WorkOrderViewController> {
                 ),
                 child: Row(
                   children: [
-                    SvgPicture.asset(Assets.images.svg.edit),SizedBox(width: 4,),
+                    SvgPicture.asset(Assets.images.svg.edit),const SizedBox(width: 4,),
                     Text(
                       "Edit",
                       style: TextStyle(
@@ -160,10 +160,10 @@ class WorkOrderViewView extends GetView<WorkOrderViewController> {
             ),
             Expanded(
               child: TabBarView(
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 children: [
-                  OverView(),
-                  InvoiceView(),
+                  const OverView(),
+                  const InvoiceView(),
                   Container(),
                   Container(),
                   Container(),

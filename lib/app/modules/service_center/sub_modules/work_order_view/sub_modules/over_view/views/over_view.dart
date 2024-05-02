@@ -268,64 +268,86 @@ class OverView extends GetView<OverViewController> {
                                   SizedBox(
                                     height: 20.h,
                                   ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        "Invoice List",
-                                        style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16.sp, fontFamily: "poppins", color: AppColors.nutralBlack1),
-                                      ),
-                                      Text(
-                                        '+ Create Invoice',
-                                        style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14.sp, color: AppColors.primaryBlue1),
-                                      )
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 16.h,
-                                  ),
-                                  const InvoiceCard(),
-                                  SizedBox(
-                                    height: 16.h,
-                                  ),
-                                  const InvoiceCard(),
-                                  SizedBox(
-                                    height: 16.h,
-                                  ),
-                                  const InvoiceCard(),
-                                  SizedBox(
-                                    height: 16.h,
-                                  ),
-                                  const InvoiceCard(),
-                                  SizedBox(
-                                    height: 16.h,
-                                  ),
-                                  const InvoiceCard(),
-                                  SizedBox(
-                                    height: 16.h,
-                                  ),
+
                                 ],
                               )
                             : const SizedBox(), // Use SizedBox to make sure there's no visual artifact when the column is not expanded
                       ),
                       InkWell(
                         onTap: () {
-                          controller.isExpanded.value = !controller.isExpanded.value;
+                          controller.isExpanded.value =
+                              !controller.isExpanded.value;
                         },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              controller.isExpanded.value == false ? 'See More' : 'See Less',
-                              style: TextStyle(color: AppColors.primaryBlue1, fontWeight: FontWeight.w500, fontSize: 16.sp, fontFamily: "Poppins"),
+                              controller.isExpanded.value == false
+                                  ? 'See More'
+                                  : 'See Less',
+                              style: TextStyle(
+                                  color: AppColors.primaryBlue1,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 16.sp,
+                                  fontFamily: "Poppins"),
                             ),
                             AnimatedSwitcher(
-                                duration: const Duration(milliseconds: 300), // Adjust the duration as needed
-                                switchInCurve: Curves.easeInOut, // Animation curve for appearing
-                                switchOutCurve: Curves.easeInOut, // Animation curve for disappearing
-                                child: controller.isExpanded.value ? const Icon(Icons.keyboard_arrow_up_sharp) : const Icon(Icons.keyboard_arrow_down_sharp))
+                                duration: const Duration(
+                                    milliseconds:
+                                        300), // Adjust the duration as needed
+                                switchInCurve: Curves
+                                    .easeInOut, // Animation curve for appearing
+                                switchOutCurve: Curves
+                                    .easeInOut, // Animation curve for disappearing
+                                child: controller.isExpanded.value
+                                    ? const Icon(Icons.keyboard_arrow_up_sharp)
+                                    : const Icon(
+                                        Icons.keyboard_arrow_down_sharp))
                           ],
                         ),
+                      ),Row(
+                        mainAxisAlignment:
+                        MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Invoice List",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 16.sp,
+                                fontFamily: "poppins",
+                                color: AppColors.nutralBlack1),
+                          ),
+                          Text(
+                            '+ Create Invoice',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 14.sp,
+                                color: AppColors.primaryBlue1),
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 16.h,
+                      ),
+                      const InvoiceCard(),
+                      SizedBox(
+                        height: 16.h,
+                      ),
+                      const InvoiceCard(),
+                      SizedBox(
+                        height: 16.h,
+                      ),
+                      const InvoiceCard(),
+                      SizedBox(
+                        height: 16.h,
+                      ),
+                      const InvoiceCard(),
+                      SizedBox(
+                        height: 16.h,
+                      ),
+                      const InvoiceCard(),
+                      SizedBox(
+                        height: 32.h,
                       ),
                     ],
                   ))
