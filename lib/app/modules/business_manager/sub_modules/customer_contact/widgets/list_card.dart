@@ -28,7 +28,8 @@ class ListCard extends StatelessWidget {
                   backgroundColor: AppColors.primaryBlue1,
                   radius: 20.r,
                   child: Text(
-                    mainModel.mobile.toString().substring(0, 2),
+                    // mainModel.mobile.toString().substring(0, 2),
+                    get2DigitString(mainModel.mobile),
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
                       fontSize: 16.sp,
@@ -36,9 +37,7 @@ class ListCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(
-                  width: 10.w,
-                ),
+                SizedBox(width: 10.w),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -77,5 +76,15 @@ class ListCard extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+String get2DigitString(String? value) {
+  if (value == null || value.isEmpty) {
+    return '00';
+  } else if (value.length == 1) {
+    return '0$value';
+  } else {
+    return value.substring(0, 2);
   }
 }

@@ -1,13 +1,10 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:nuforce/app/modules/settings/sub_modules/addons/widgets/dotted_border.dart';
 import 'package:nuforce/app/modules/settings/sub_modules/expense/controllers/add_new_expense_controller.dart';
-import 'package:nuforce/app/shared/functions/image_picker_func.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/shared/widgets/custom_dropdown.dart';
 import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
@@ -15,7 +12,6 @@ import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/shared/widgets/secondary_button.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
 import 'package:nuforce/app/utils/colors.dart';
-import 'package:nuforce/app/utils/datetime_custom_func.dart';
 import 'package:nuforce/app/utils/extension_methods.dart';
 import 'package:nuforce/app/utils/text_styles.dart';
 import 'package:nuforce/gen/assets.gen.dart';
@@ -34,6 +30,8 @@ class _AddExpenseViewScreenState extends State<AddExpenseViewScreen> {
   void initState() {
     super.initState();
   }
+
+  String selectedDate = '';
 
   @override
   void dispose() {
@@ -89,7 +87,6 @@ class _AddExpenseViewScreenState extends State<AddExpenseViewScreen> {
             SizedBox(
               height: 8.h,
             ),
-
             CustomDropdownButton(
               items: const [
                 DropdownMenuItem(
@@ -149,8 +146,7 @@ class _AddExpenseViewScreenState extends State<AddExpenseViewScreen> {
                         lastDate: DateTime.now().add(const Duration(days: 365)),
                       ).then((value) {
                         setState(() {
-                          selectedDate =
-                              '${value!.day}-${value.month}-${value.year}';
+                          selectedDate = '${value!.day}-${value.month}-${value.year}';
                         });
                       });
                     },
