@@ -1,27 +1,75 @@
 import 'dart:io';
 
+import 'dart:developer' as developer show log;
+// import 'package:firebase_core/firebase_core.dart';
+// import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter_android/google_maps_flutter_android.dart';
-// import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart' as mapbox;
 import 'package:nuforce/app/routes/app_pages.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/initial_bindings.dart';
+import 'package:nuforce/firebase_options.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 double height = 0;
 double width = 0;
 
+@pragma("vm:entry-point")
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  developer.log('Handling a background message ${message.messageId}');
+}
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
+    alert: true,
+    badge: true,
+    sound: true,
+  );
+
   if (Platform.isAndroid && kReleaseMode) {
     await GoogleMapsFlutterAndroid().initializeWithRenderer(AndroidMapRenderer.latest);
   }
-  // mapbox.MapboxOptions.setAccessToken('');
 
-  runApp(
-    ScreenUtilInit(
+  if (kReleaseMode) {
+    FlutterError.onError = (errorDetails) {
+      FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
+    };
+    PlatformDispatcher.instance.onError = (error, stack) {
+      FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+      return true;
+    };
+    await SentryFlutter.init(
+      (options) {
+        options.dsn = 'https://d0606ce3f3c7d4468dd3461951223f7e@o4507192223334400.ingest.us.sentry.io/4507192229756928';
+        options.tracesSampleRate = 1.0;
+        options.profilesSampleRate = 1.0;
+      },
+      appRunner: () => runApp(const MainApp()),
+    );
+  } else {
+    runApp(const MainApp());
+  }
+}
+
+class MainApp extends StatelessWidget {
+  const MainApp({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ScreenUtilInit(
       designSize: const Size(375, 812),
       minTextAdapt: true,
       splitScreenMode: true,
@@ -35,7 +83,6 @@ Future<void> main() async {
           useMaterial3: false,
           fontFamily: 'Poppins',
           colorScheme: ColorScheme.fromSwatch(
-            // primarySwatch: AppColors.primaryBlue1,
             primarySwatch: MaterialColor(
               AppColors.primaryBlue1.value,
               const <int, Color>{
@@ -52,16 +99,8 @@ Future<void> main() async {
               },
             ),
           ),
-          // checkboxTheme: CheckboxThemeData(
-          //   splashRadius: 0,
-          //   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-          //   visualDensity: VisualDensity.compact,
-          //   fillColor: MaterialStateColor.resolveWith(
-          //     (states) => AppColors.primaryBlue1,
-          //   ),
-          // ),
         ),
       ),
-    ),
-  );
+    );
+  }
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/new_orders/controllers/invoice_controller.dart';
 import 'package:nuforce/app/shared/widgets/details_with_header_skleton.dart';
 import 'package:nuforce/app/shared/widgets/full_screen_map.dart';
 import 'package:nuforce/app/shared/widgets/text_with_bottom_border.dart';
@@ -36,35 +37,40 @@ class InvoiceContactView extends StatelessWidget {
       ),
       body: SizedBox(
         width: width,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            TextWithBottomBorder(
-              hint: 'Name',
-              type: CustomType.dateTime,
-              onTap: () {},
-            ),
-            8.h.vSpace,
-            TextWithBottomBorder(
-              hint: 'Phone',
-              type: CustomType.dateTime,
-              onTap: () {},
-            ),
-            8.h.vSpace,
-            TextWithBottomBorder(
-              hint: 'Mail',
-              type: CustomType.dateTime,
-              onTap: () {},
-            ),
-            8.h.vSpace,
-            TextWithBottomBorder(
-              hint: '+ Add Address',
-              type: CustomType.dateTime,
-              onTap: () {
-                Get.to(() => const FullScreenMap());
-              },
-            ),
-          ],
+        child: GetBuilder<InvoiceController>(
+          builder: (controller) {
+            final contact = controller.invoice?.billingAddress;
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                TextWithBottomBorder(
+                  hint: contact?.name ?? '-',
+                  type: CustomType.dateTime,
+                  onTap: () {},
+                ),
+                8.h.vSpace,
+                TextWithBottomBorder(
+                  hint: contact?.mobile ?? '-',
+                  type: CustomType.dateTime,
+                  onTap: () {},
+                ),
+                8.h.vSpace,
+                TextWithBottomBorder(
+                  hint: contact?.email ?? '-',
+                  type: CustomType.dateTime,
+                  onTap: () {},
+                ),
+                8.h.vSpace,
+                TextWithBottomBorder(
+                  hint: '+ Add Address',
+                  type: CustomType.dateTime,
+                  onTap: () {
+                    Get.to(() => const FullScreenMap());
+                  },
+                ),
+              ],
+            );
+          },
         ),
       ),
     );

@@ -8,6 +8,8 @@ import '../modules/bottom_nav_bar/bindings/bottom_nav_bar_binding.dart';
 import '../modules/bottom_nav_bar/views/bottom_nav_bar_view.dart';
 import '../modules/business_manager/bindings/business_manager_binding.dart';
 import '../modules/business_manager/views/business_manager_view.dart';
+import '../modules/contact/bindings/contact_binding.dart';
+import '../modules/contact/views/contact_view.dart';
 import '../modules/customer/bindings/customer_binding.dart';
 import '../modules/customer/customer_work_order/bindings/customer_work_order_binding.dart';
 import '../modules/customer/customer_work_order/views/customer_work_order_view.dart';
@@ -22,6 +24,8 @@ import '../modules/new_orders/bindings/new_orders_binding.dart';
 import '../modules/new_orders/views/new_orders_view.dart';
 import '../modules/on_boarding/bindings/on_boarding_binding.dart';
 import '../modules/on_boarding/views/on_boarding_view.dart';
+import '../modules/order/bindings/order_binding.dart';
+import '../modules/order/views/order_view.dart';
 import '../modules/service_center/bindings/service_center_binding.dart';
 import '../modules/service_center/sub_modules/calendar/bindings/calendar_binding.dart';
 import '../modules/service_center/sub_modules/calendar/views/calendar_view.dart';
@@ -36,7 +40,6 @@ import '../modules/service_center/sub_modules/work_order/views/work_order_view.d
 import '../modules/service_center/sub_modules/work_order_search/bindings/work_order_search_binding.dart';
 import '../modules/service_center/sub_modules/work_order_search/views/work_order_search_view.dart';
 import '../modules/service_center/sub_modules/work_order_view/bindings/work_order_view_binding.dart';
-
 import '../modules/service_center/sub_modules/work_order_view/sub_modules/invoice/bindings/invoice_binding.dart';
 import '../modules/service_center/sub_modules/work_order_view/sub_modules/invoice/views/invoice_view.dart';
 import '../modules/service_center/sub_modules/work_order_view/sub_modules/over_view/bindings/over_view_binding.dart';
@@ -190,6 +193,16 @@ class AppPages {
       name: _Paths.LINE_ITEM,
       page: () => const LineItemView(),
       binding: LineItemBinding(),
+    ),
+    GetPage(
+      name: _Paths.CONTACT,
+      page: () => const ContactView(),
+      binding: ContactBinding(),
+    ),
+    GetPage(
+      name: _Paths.ORDER,
+      page: () => const OrderView(),
+      binding: OrderBinding(),
     ),
   ];
 }

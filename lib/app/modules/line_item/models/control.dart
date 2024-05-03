@@ -82,7 +82,7 @@ class Control {
   final bool? readonly;
   final bool? actions;
   final String? editor;
-  final List<dynamic>? validators;
+  final dynamic validators;
   final Params? params;
   final dynamic value;
   final List<Option>? options;
@@ -109,7 +109,7 @@ class Control {
     bool? readonly,
     bool? actions,
     String? editor,
-    List<dynamic>? validators,
+    dynamic validators,
     Params? params,
     dynamic value,
     List<Option>? options,
@@ -135,8 +135,8 @@ class Control {
         order: json["order"],
         readonly: json["readonly"],
         actions: json["actions"],
-        editor: json["editor"]!,
-        validators: json["validators"] == null ? [] : List<dynamic>.from(json["validators"]!.map((x) => x)),
+        editor: json["editor"],
+        validators: json["validators"],
         params: json["params"] == null ? null : Params.fromJson(json["params"]),
         value: json["value"],
         options: json["options"] == null ? [] : List<Option>.from(json["options"]!.map((x) => Option.fromJson(x))),
@@ -150,7 +150,7 @@ class Control {
         "readonly": readonly,
         "actions": actions,
         "editor": editor,
-        "validators": validators == null ? [] : List<dynamic>.from(validators!.map((x) => x)),
+        "validators": validators,
         "params": params?.toJson(),
         "value": value,
         "options": options == null ? [] : List<dynamic>.from(options!.map((x) => x.toJson())),
@@ -159,7 +159,7 @@ class Control {
 
 class Option {
   final String? label;
-  final dynamic value;
+  final int? value;
 
   Option({
     this.label,
@@ -168,7 +168,7 @@ class Option {
 
   Option copyWith({
     String? label,
-    dynamic value,
+    int? value,
   }) =>
       Option(
         label: label ?? this.label,

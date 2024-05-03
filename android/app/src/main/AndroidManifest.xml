@@ -2,15 +2,15 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
 
     <application
         android:label="nuforce"
         android:name="${applicationName}"
         android:enableOnBackInvokedCallback="true"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+		android:roundIcon="@mipmap/ic_launcher_rounded">
         <meta-data android:name="com.google.android.geo.API_KEY"
-               android:value="AIzaSyDinOI_yEHrib-KuJHs9JeLPl7vdf1YNhM"/>
+               android:value="AIzaSyAujWWDfe6danzgRhbgQ0vY8lItGu9J5lM"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

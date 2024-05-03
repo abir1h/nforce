@@ -7,19 +7,20 @@ class DottedRect extends StatelessWidget {
   final double gap;
   final Widget child;
 
-  const DottedRect(
-      {super.key,
-        this.color = Colors.black,
-        this.strokeWidth = 1.0,
-        this.gap = 5.0,
-        required this.child,});
+  const DottedRect({
+    super.key,
+    this.color = Colors.black,
+    this.strokeWidth = 1.0,
+    this.gap = 5.0,
+    required this.child,
+  });
 
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-        painter:
-        DashRectPainter(color: color, strokeWidth: strokeWidth, gap: gap),
-        child: child,);
+      painter: DashRectPainter(color: color, strokeWidth: strokeWidth, gap: gap),
+      child: child,
+    );
   }
 }
 
@@ -28,8 +29,11 @@ class DashRectPainter extends CustomPainter {
   Color color;
   double gap;
 
-  DashRectPainter(
-      {this.strokeWidth = 5.0, this.color = Colors.red, this.gap = 5.0,});
+  DashRectPainter({
+    this.strokeWidth = 5.0,
+    this.color = Colors.red,
+    this.gap = 5.0,
+  });
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -88,9 +92,7 @@ class DashRectPainter extends CustomPainter {
     num dy = (math.sin(radians) * gap).toDouble();
 
     while (currentPoint.x <= b.x && currentPoint.y <= b.y) {
-      shouldDraw
-          ? path.lineTo(currentPoint.x, currentPoint.y)
-          : path.moveTo(currentPoint.x, currentPoint.y);
+      shouldDraw ? path.lineTo(currentPoint.x, currentPoint.y) : path.moveTo(currentPoint.x, currentPoint.y);
       shouldDraw = !shouldDraw;
       currentPoint = math.Point<double>(
         currentPoint.x + dx,
