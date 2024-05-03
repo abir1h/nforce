@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/auth/components/social_login_buttons.dart';
 import 'package:nuforce/app/modules/auth/controllers/auth_controller.dart';
 import 'package:nuforce/app/modules/auth/views/agent_customer_login_view.dart';
 import 'package:nuforce/app/modules/auth/views/login_singup_view.dart';
-import 'package:nuforce/app/shared/widgets/or_x_with.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
 import 'package:nuforce/app/utils/colors.dart';
@@ -91,10 +89,10 @@ class _AuthViewState extends State<AuthView> {
                   },
                   primaryColored: false,
                 ),
-                const SizedBox(height: 30),
-                const OrXWith(label: 'Or log in with'),
-                const SizedBox(height: 30),
-                const SocialLoginButtons(),
+                // const SizedBox(height: 30),
+                // const OrXWith(label: 'Or log in with'),
+                // const SizedBox(height: 30),
+                // const SocialLoginButtons(),
                 const Spacer(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
