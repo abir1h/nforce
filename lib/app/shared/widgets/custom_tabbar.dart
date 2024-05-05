@@ -32,7 +32,7 @@ class CustomTabBar extends StatelessWidget {
                 text,
                 style: TextStyle(
                   color: isSelected ? AppColors.primaryBlue1 : AppColors.greyText,
-                  fontSize: 20.sp,
+                  fontSize: 14.sp,
                   fontWeight: isMini ? FontWeight.w500 : FontWeight.w600,
                 ),
               ),
