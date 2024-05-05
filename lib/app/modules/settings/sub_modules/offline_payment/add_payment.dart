@@ -31,7 +31,7 @@ class _AddPaymentState extends State<AddPayment> {
     return Scaffold(
       backgroundColor: AppColors.white1,
       resizeToAvoidBottomInset: true,
-      appBar: CustomAppbarMinimal(
+      appBar: const CustomAppbarMinimal(
         title: 'Add Payment',
 
       ),
@@ -404,16 +404,15 @@ class _AddPaymentState extends State<AddPayment> {
               children: [
                 Expanded(
                   child: SecondaryButton(
-                    onPressed: () {},
+                    onPressed: () =>Get.back(),
                     text: 'Reset',
                   ),
                 ),
                 const SizedBox(width: 15),
                 Expanded(
                   child: PrimaryButton(
-                    onPressed: () {
-                     Get.back();
-                    },
+                    onPressed: () =>Get.back(),
+
                     text: 'Submit',
                   ),
                 ),

@@ -34,7 +34,7 @@ class _AddExpenseViewScreenState extends State<AddExpenseViewScreen> {
           children: [
             Expanded(
               child: SecondaryButton(
-                onPressed: () {},
+                onPressed: () =>Get.back(),
                 text: 'Reset',
               ),
             ),

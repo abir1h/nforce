@@ -55,6 +55,7 @@ class _MapFilterBottomSheetState extends State<MapFilterBottomSheet> {
                 children: [
                   SizedBox(height: 24.h),
                   Row(
+
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
