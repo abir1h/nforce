@@ -56,7 +56,7 @@ class PerformanceBody extends GetView<HomeController> {
                             value: e,
                             child: Text(
                               e,
-                              style:  TextStyle(
+                              style: TextStyle(
                                 fontSize: 12.sp,
                                 fontWeight: FontWeight.w400,
                                 color: AppColors.subText,
@@ -130,43 +130,46 @@ class PerformanceBody extends GetView<HomeController> {
             ),
             const SizedBox(height: 15),
             SizedBox(
-              width: width - 40,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Obx(
-                    () => ColoredCheckboxWithTitle(
-                      color: AppColors.green,
-                      isSelected: controller.chartController.isSmootherSelected.value,
-                      onChanged: (p0) => controller.chartController.isSmootherSelected.value = p0!,
-                      title: 'Smoother',
+              width: width,
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Obx(
+                      () => ColoredCheckboxWithTitle(
+                        color: AppColors.green,
+                        isSelected: controller.chartController.isSmootherSelected.value,
+                        onChanged: (p0) => controller.chartController.isSmootherSelected.value = p0!,
+                        title: 'Smoother',
+                      ),
                     ),
-                  ),
-                  Obx(
-                    () => ColoredCheckboxWithTitle(
-                      color: AppColors.primaryBlue1,
-                      isSelected: controller.chartController.isSaferSelected.value,
-                      onChanged: (p0) => controller.chartController.isSaferSelected.value = p0!,
-                      title: 'Safer',
+                    Obx(
+                      () => ColoredCheckboxWithTitle(
+                        color: AppColors.primaryBlue1,
+                        isSelected: controller.chartController.isSaferSelected.value,
+                        onChanged: (p0) => controller.chartController.isSaferSelected.value = p0!,
+                        title: 'Safer',
+                      ),
                     ),
-                  ),
-                  Obx(
-                    () => ColoredCheckboxWithTitle(
-                      color: AppColors.primaryBlue2,
-                      isSelected: controller.chartController.isCleanerSelected.value,
-                      onChanged: (p0) => controller.chartController.isCleanerSelected.value = p0!,
-                      title: 'Cleaner',
+                    Obx(
+                      () => ColoredCheckboxWithTitle(
+                        color: AppColors.primaryBlue2,
+                        isSelected: controller.chartController.isCleanerSelected.value,
+                        onChanged: (p0) => controller.chartController.isCleanerSelected.value = p0!,
+                        title: 'Cleaner',
+                      ),
                     ),
-                  ),
-                  Obx(
-                    () => ColoredCheckboxWithTitle(
-                      color: AppColors.orange,
-                      isSelected: controller.chartController.isOnTimeSelected.value,
-                      onChanged: (p0) => controller.chartController.isOnTimeSelected.value = p0!,
-                      title: 'On Time',
+                    Obx(
+                      () => ColoredCheckboxWithTitle(
+                        color: AppColors.orange,
+                        isSelected: controller.chartController.isOnTimeSelected.value,
+                        onChanged: (p0) => controller.chartController.isOnTimeSelected.value = p0!,
+                        title: 'On Time',
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
             const SizedBox(height: 100),

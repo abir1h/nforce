@@ -10,6 +10,7 @@ import 'package:nuforce/app/modules/business_manager/widgets/business_manager_da
 import 'package:nuforce/app/modules/business_manager/widgets/business_manager_money_matrics.dart';
 import 'package:nuforce/app/modules/business_manager/widgets/custome_pie_chart.dart';
 import 'package:nuforce/app/modules/home/components/service_button.dart';
+import 'package:nuforce/app/routes/app_pages.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/shared/widgets/custom_dropdown.dart';
 import 'package:nuforce/app/utils/colors.dart';
@@ -59,7 +60,9 @@ class BusinessManagerView extends GetView<BusinessManagerController> {
                       child: ServiceButton(
                         svgPath: Assets.images.svg.accounts,
                         title: 'Accounts',
-                        onTap: () {},
+                        onTap: () {
+                          Get.toNamed(Routes.ACCOUNTING);
+                        },
                       ),
                     ),
                     Expanded(

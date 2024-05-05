@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:nuforce/app/modules/order/controllers/order_controller.dart';
 import 'package:nuforce/app/modules/order/views/order_overview.dart';
 import 'package:nuforce/app/modules/order/widgets/order_mini_tab.dart';
+import 'package:nuforce/app/modules/service_center/sub_modules/work_order_view/sub_modules/invoice/views/invoice_view.dart';
+import 'package:nuforce/app/modules/service_center/sub_modules/work_order_view/sub_modules/over_view/views/edit_work_order.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/extension_methods.dart';
 import 'package:nuforce/gen/assets.gen.dart';
@@ -66,7 +68,11 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
           ],
         ),
         actions: [
-          _editButton(onTap: () {}),
+          _editButton(
+            onTap: () {
+              Get.to(const EditWorkOrder()); // THIS IS JUST A PLACEHOLDER
+            },
+          ),
         ],
       ),
       body: NestedScrollView(
@@ -83,13 +89,19 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                     case OrderTabEnum.overview:
                       return const OrderOverview();
                     case OrderTabEnum.invoices:
-                      return const SizedBox();
+                      return const InvoiceView(); // TODO Make these UIs
                     case OrderTabEnum.schedules:
-                      return const SizedBox();
+                      return const Center(
+                        child: Text('In development'), // TODO Make these UIs
+                      );
                     case OrderTabEnum.locations:
-                      return const SizedBox();
+                      return const Center(
+                        child: Text('In development'), // TODO Make these UIs
+                      );
                     case OrderTabEnum.policies:
-                      return const SizedBox();
+                      return const Center(
+                        child: Text('In development'), // TODO Make these UIs
+                      );
                     default:
                       return const SizedBox();
                   }
