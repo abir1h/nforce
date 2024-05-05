@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/new_orders/models/work_order_success_model.dart';
 import 'package:nuforce/app/modules/service_center/sub_modules/work_order/controllers/work_order_controller.dart';
 import 'package:nuforce/app/routes/app_pages.dart';
 import 'package:nuforce/app/utils/colors.dart';
@@ -41,13 +42,27 @@ class WorkOrderView extends GetView<WorkOrderController> {
               SizedBox(
                 height: 16.h,
               ),
-               WorkOrderCard(onPressed: ()=>Get.toNamed(Routes.WORK_ORDER_VIEW),),
-               WorkOrderCard(onPressed: ()=>Get.toNamed(Routes.WORK_ORDER_VIEW),),
-               WorkOrderCard(onPressed: ()=>Get.toNamed(Routes.WORK_ORDER_VIEW),),
-               WorkOrderCard(onPressed: ()=>Get.toNamed(Routes.WORK_ORDER_VIEW),),
-               WorkOrderCard(onPressed: ()=>Get.toNamed(Routes.WORK_ORDER_VIEW),),
-               WorkOrderCard(onPressed: ()=>Get.toNamed(Routes.WORK_ORDER_VIEW),),
-
+              WorkOrderCard(
+                onPressed: () => Get.toNamed(
+                  Routes.WORK_ORDER_VIEW,
+                  arguments: Invoice(),
+                ),
+              ),
+              WorkOrderCard(
+                onPressed: () => Get.toNamed(Routes.WORK_ORDER_VIEW),
+              ),
+              WorkOrderCard(
+                onPressed: () => Get.toNamed(Routes.WORK_ORDER_VIEW),
+              ),
+              WorkOrderCard(
+                onPressed: () => Get.toNamed(Routes.WORK_ORDER_VIEW),
+              ),
+              WorkOrderCard(
+                onPressed: () => Get.toNamed(Routes.WORK_ORDER_VIEW),
+              ),
+              WorkOrderCard(
+                onPressed: () => Get.toNamed(Routes.WORK_ORDER_VIEW),
+              ),
               SizedBox(
                 height: 32.h,
               ),

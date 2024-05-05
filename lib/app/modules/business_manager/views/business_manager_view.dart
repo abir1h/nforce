@@ -36,43 +36,35 @@ class BusinessManagerView extends GetView<BusinessManagerController> {
               children: [
                 const SizedBox(height: 10),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Expanded(
-                      child: ServiceButton(
-                        svgPath: Assets.images.svg.organization,
-                        title: 'Organization',
-                        onTap: () {
-                          Get.to<void>(() => const OrganizationView());
-                        },
-                      ),
+                    ServiceButton(
+                      svgPath: Assets.images.svg.organization,
+                      title: 'Organization',
+                      onTap: () {
+                        Get.to<void>(() => const OrganizationView());
+                      },
                     ),
-                    Expanded(
-                      child: ServiceButton(
-                        svgPath: Assets.images.svg.customer,
-                        title: 'Customer',
-                        onTap: () {
-                          Get.to<void>(() => const CustomerContactListView());
-                        },
-                      ),
+                    ServiceButton(
+                      svgPath: Assets.images.svg.customer,
+                      title: 'Customer',
+                      onTap: () {
+                        Get.to<void>(() => const CustomerContactListView());
+                      },
                     ),
-                    Expanded(
-                      child: ServiceButton(
-                        svgPath: Assets.images.svg.accounts,
-                        title: 'Accounts',
-                        onTap: () {
-                          Get.toNamed(Routes.ACCOUNTING);
-                        },
-                      ),
+                    ServiceButton(
+                      svgPath: Assets.images.svg.accounts,
+                      title: 'Accounts',
+                      onTap: () {
+                        Get.toNamed(Routes.ACCOUNTING);
+                      },
                     ),
-                    Expanded(
-                      child: ServiceButton(
-                        svgPath: Assets.images.svg.settings,
-                        title: 'Settings',
-                        onTap: () {
-                          Get.to<void>(() => const BusinessManagerSettingsView());
-                        },
-                      ),
+                    ServiceButton(
+                      svgPath: Assets.images.svg.settings,
+                      title: 'Settings',
+                      onTap: () {
+                        Get.to<void>(() => const BusinessManagerSettingsView());
+                      },
                     ),
                   ],
                 ),
