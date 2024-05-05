@@ -25,6 +25,7 @@ import '../sub_modules/privacy_terms/privacy_policy_screen.dart';
 import '../sub_modules/privacy_terms/terms_contdition.dart';
 import '../sub_modules/refer/refer_screen.dart';
 import '../sub_modules/route_suggestions/view/route_suggestion_screen.dart';
+import '../sub_modules/schedule_settings/views/schedule_settings_view.dart';
 import '../sub_modules/terms_policy/view/terms_policy_screen.dart';
 
 class SettingsView extends GetView<SettingsController> {
@@ -178,7 +179,7 @@ class SettingsView extends GetView<SettingsController> {
                     ),
                     SettingTile(
                       leading: Assets.images.png.schedules.keyName,
-                      onTap: () {},
+                      onTap: () {Get.to<void>(() =>  ScheduleSettingView());},
                       label: 'Schedules',
                       hasDivider: true,
                     ),

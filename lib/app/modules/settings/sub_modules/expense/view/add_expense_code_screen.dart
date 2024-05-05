@@ -12,7 +12,8 @@ class AddExpenseCodeViewScreen extends StatefulWidget {
   const AddExpenseCodeViewScreen({super.key});
 
   @override
-  State<AddExpenseCodeViewScreen> createState() => _AddExpenseCodeViewScreenState();
+  State<AddExpenseCodeViewScreen> createState() =>
+      _AddExpenseCodeViewScreenState();
 }
 
 class _AddExpenseCodeViewScreenState extends State<AddExpenseCodeViewScreen> {
