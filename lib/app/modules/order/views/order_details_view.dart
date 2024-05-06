@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/customer/customer_work_order/views/location_screen.dart';
+import 'package:nuforce/app/modules/customer/customer_work_order/views/policy_screen.dart';
+import 'package:nuforce/app/modules/customer/customer_work_order/views/schedule_screen.dart';
 import 'package:nuforce/app/modules/order/controllers/order_controller.dart';
 import 'package:nuforce/app/modules/order/views/order_overview.dart';
 import 'package:nuforce/app/modules/order/widgets/order_mini_tab.dart';
@@ -91,16 +95,28 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                     case OrderTabEnum.invoices:
                       return const InvoiceView(); // TODO Make these UIs
                     case OrderTabEnum.schedules:
-                      return const Center(
-                        child: Text('In development'), // TODO Make these UIs
+                      return const SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            ScheduleScreen(),
+                          ],
+                        ),
                       );
                     case OrderTabEnum.locations:
-                      return const Center(
-                        child: Text('In development'), // TODO Make these UIs
+                      return SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            10.h.vSpace,
+                            const LocationScreen(),
+                          ],
+                        ),
                       );
                     case OrderTabEnum.policies:
-                      return const Center(
-                        child: Text('In development'), // TODO Make these UIs
+                      return Column(
+                        children: [
+                          10.h.vSpace,
+                          const PolicySscreen(),
+                        ],
                       );
                     default:
                       return const SizedBox();
