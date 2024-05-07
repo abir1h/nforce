@@ -15,6 +15,7 @@ class AppColors {
 
   static const Color red = Color(0xFFFF0000);
   static const Color green = Color(0xFF1FB61F);
+  static const Color languaageCardBorder = Color(0xFFDDE7E1);
   static const Color yellow = Color(0xFFFFCC00);
   static const Color deepYellow = Color(0xFFEBA900);
 
