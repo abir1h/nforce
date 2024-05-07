@@ -292,6 +292,9 @@ class $AssetsImagesPngGen {
 class $AssetsImagesSvgGen {
   const $AssetsImagesSvgGen();
 
+  /// File path: assets/images/svg/Camera.svg
+  String get camera => 'assets/images/svg/Camera.svg';
+
   /// File path: assets/images/svg/Delete.svg
   String get delete => 'assets/images/svg/Delete.svg';
 
@@ -334,6 +337,9 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/calendar_report.svg
   String get calendarReport => 'assets/images/svg/calendar_report.svg';
 
+  /// File path: assets/images/svg/chat.svg
+  String get chat => 'assets/images/svg/chat.svg';
+
   /// File path: assets/images/svg/check.svg
   String get check => 'assets/images/svg/check.svg';
 
@@ -348,6 +354,9 @@ class $AssetsImagesSvgGen {
 
   /// File path: assets/images/svg/commissions.svg
   String get commissions => 'assets/images/svg/commissions.svg';
+
+  /// File path: assets/images/svg/constultation.svg
+  String get constultation => 'assets/images/svg/constultation.svg';
 
   /// File path: assets/images/svg/contact_groups.svg
   String get contactGroups => 'assets/images/svg/contact_groups.svg';
@@ -397,6 +406,9 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/facebook.svg
   String get facebook => 'assets/images/svg/facebook.svg';
 
+  /// File path: assets/images/svg/faq.svg
+  String get faq => 'assets/images/svg/faq.svg';
+
   /// File path: assets/images/svg/filter.svg
   String get filter => 'assets/images/svg/filter.svg';
 
@@ -427,6 +439,9 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/image_frame.svg
   String get imageFrame => 'assets/images/svg/image_frame.svg';
 
+  /// File path: assets/images/svg/info.svg
+  String get info => 'assets/images/svg/info.svg';
+
   /// File path: assets/images/svg/labels.svg
   String get labels => 'assets/images/svg/labels.svg';
 
@@ -448,8 +463,14 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/more1.svg
   String get more1 => 'assets/images/svg/more1.svg';
 
+  /// File path: assets/images/svg/myProfile.svg
+  String get myProfile => 'assets/images/svg/myProfile.svg';
+
   /// File path: assets/images/svg/notification.svg
   String get notification => 'assets/images/svg/notification.svg';
+
+  /// File path: assets/images/svg/notificationIcon.svg
+  String get notificationIcon => 'assets/images/svg/notificationIcon.svg';
 
   /// File path: assets/images/svg/nuforce_logo.svg
   String get nuforceLogo => 'assets/images/svg/nuforce_logo.svg';
@@ -523,6 +544,9 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/sort.svg
   String get sort => 'assets/images/svg/sort.svg';
 
+  /// File path: assets/images/svg/stack.svg
+  String get stack => 'assets/images/svg/stack.svg';
+
   /// File path: assets/images/svg/stripe.svg
   String get stripe => 'assets/images/svg/stripe.svg';
 
@@ -534,6 +558,9 @@ class $AssetsImagesSvgGen {
 
   /// File path: assets/images/svg/success.svg
   String get success => 'assets/images/svg/success.svg';
+
+  /// File path: assets/images/svg/terms.svg
+  String get terms => 'assets/images/svg/terms.svg';
 
   /// File path: assets/images/svg/terms_and_policy.svg
   String get termsAndPolicy => 'assets/images/svg/terms_and_policy.svg';
@@ -561,6 +588,7 @@ class $AssetsImagesSvgGen {
 
   /// List of all assets
   List<String> get values => [
+        camera,
         delete,
         document,
         accounting,
@@ -575,11 +603,13 @@ class $AssetsImagesSvgGen {
         calendar,
         calendarMonth,
         calendarReport,
+        chat,
         check,
         checkIcon,
         closeCircle,
         coloredCal,
         commissions,
+        constultation,
         contactGroups,
         copyIcon,
         coupon,
@@ -596,6 +626,7 @@ class $AssetsImagesSvgGen {
         editRounded,
         empty,
         facebook,
+        faq,
         filter,
         filter2,
         filterOutlined,
@@ -606,6 +637,7 @@ class $AssetsImagesSvgGen {
         home1,
         humanResource,
         imageFrame,
+        info,
         labels,
         location,
         mail,
@@ -613,7 +645,9 @@ class $AssetsImagesSvgGen {
         microsoft,
         more0,
         more1,
+        myProfile,
         notification,
+        notificationIcon,
         nuforceLogo,
         offer,
         officeLogo,
@@ -638,10 +672,12 @@ class $AssetsImagesSvgGen {
         settings1,
         simpleCalendar,
         sort,
+        stack,
         stripe,
         subscription,
         subscriptions,
         success,
+        terms,
         termsAndPolicy,
         thumb,
         ticketRipper,

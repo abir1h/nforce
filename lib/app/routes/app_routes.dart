@@ -33,9 +33,12 @@ abstract class Routes {
   static const OVER_VIEW =
       _Paths.SERVICE_CENTER + _Paths.WORK_ORDER_VIEW + _Paths.OVER_VIEW;
   static const ESTIMATION = _Paths.SERVICE_CENTER + _Paths.ESTIMATION;
-  static const INVOICE = _Paths.SERVICE_CENTER +
-      _Paths.WORK_ORDER_VIEW +
-      _Paths.INVOICE;
+  static const INVOICE =
+      _Paths.SERVICE_CENTER + _Paths.WORK_ORDER_VIEW + _Paths.INVOICE;
+  static const CUSTOMER_PROFILE = _Paths.CUSTOMER + _Paths.CUSTOMER_PROFILE;
+  static const CUSTOMER_FAQ = _Paths.CUSTOMER + _Paths.CUSTOMER_FAQ;
+  static const CUSTOMER_TERMS = _Paths.CUSTOMER + _Paths.CUSTOMER_TERMS;
+  static const CUSTOMER_ABOUT_US = _Paths.CUSTOMER + _Paths.CUSTOMER_ABOUT_US;
 }
 
 abstract class _Paths {
@@ -66,4 +69,8 @@ abstract class _Paths {
   static const OVER_VIEW = '/over-view';
   static const ESTIMATION = '/estimation';
   static const INVOICE = '/invoice';
+  static const CUSTOMER_PROFILE = '/customer-profile';
+  static const CUSTOMER_FAQ = '/customer-faq';
+  static const CUSTOMER_TERMS = '/customer-terms';
+  static const CUSTOMER_ABOUT_US = '/customer-about-us';
 }

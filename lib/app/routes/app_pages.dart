@@ -11,6 +11,14 @@ import '../modules/business_manager/views/business_manager_view.dart';
 import '../modules/customer/bindings/customer_binding.dart';
 import '../modules/customer/customer_work_order/bindings/customer_work_order_binding.dart';
 import '../modules/customer/customer_work_order/views/customer_work_order_view.dart';
+import '../modules/customer/sub_modules/customer_aboutUs/bindings/customer_about_us_binding.dart';
+import '../modules/customer/sub_modules/customer_aboutUs/views/customer_about_us_view.dart';
+import '../modules/customer/sub_modules/customer_faq/bindings/customer_faq_binding.dart';
+import '../modules/customer/sub_modules/customer_faq/views/customer_faq_view.dart';
+import '../modules/customer/sub_modules/customer_profile/bindings/customer_profile_binding.dart';
+import '../modules/customer/sub_modules/customer_profile/views/customer_profile_view.dart';
+import '../modules/customer/sub_modules/customer_terms/bindings/customer_terms_binding.dart';
+import '../modules/customer/sub_modules/customer_terms/views/customer_terms_view.dart';
 import '../modules/customer/views/customer_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
@@ -36,7 +44,6 @@ import '../modules/service_center/sub_modules/work_order/views/work_order_view.d
 import '../modules/service_center/sub_modules/work_order_search/bindings/work_order_search_binding.dart';
 import '../modules/service_center/sub_modules/work_order_search/views/work_order_search_view.dart';
 import '../modules/service_center/sub_modules/work_order_view/bindings/work_order_view_binding.dart';
-
 import '../modules/service_center/sub_modules/work_order_view/sub_modules/invoice/bindings/invoice_binding.dart';
 import '../modules/service_center/sub_modules/work_order_view/sub_modules/invoice/views/invoice_view.dart';
 import '../modules/service_center/sub_modules/work_order_view/sub_modules/over_view/bindings/over_view_binding.dart';
@@ -64,6 +71,13 @@ class AppPages {
       name: _Paths.HOME,
       page: () => const HomeView(),
       binding: HomeBinding(),
+      children: [
+        GetPage(
+          name: _Paths.HOME,
+          page: () => const HomeView(),
+          binding: HomeBinding(),
+        ),
+      ],
     ),
     GetPage(
       name: _Paths.SPLASH,
@@ -129,6 +143,26 @@ class AppPages {
           name: _Paths.CUSTOMER_WORK_ORDER,
           page: () => const CustomerWorkOrderView(),
           binding: CustomerWorkOrderBinding(),
+        ),
+        GetPage(
+          name: _Paths.CUSTOMER_PROFILE,
+          page: () => const CustomerProfileView(),
+          binding: CustomerProfileBinding(),
+        ),
+        GetPage(
+          name: _Paths.CUSTOMER_FAQ,
+          page: () => const CustomerFaqView(),
+          binding: CustomerFaqBinding(),
+        ),
+        GetPage(
+          name: _Paths.CUSTOMER_TERMS,
+          page: () => const CustomerTermsView(),
+          binding: CustomerTermsBinding(),
+        ),
+        GetPage(
+          name: _Paths.CUSTOMER_ABOUT_US,
+          page: () => const CustomerAboutUsView(),
+          binding: CustomerAboutUsBinding(),
         ),
       ],
     ),

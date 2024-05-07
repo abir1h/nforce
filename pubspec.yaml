@@ -50,6 +50,7 @@ dependencies:
   table_calendar: ^3.0.9
   syncfusion_flutter_charts: ^23.2.7
   easy_stepper: ^0.8.3
+  flutter_widget_from_html: ^0.15.0
 dev_dependencies:
   build_runner: 2.4.6
   change_app_package_name: ^1.1.0
