@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:nuforce/app/modules/settings/sub_modules/expense/controllers/add_new_expense_controller.dart';
+import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
+import 'package:nuforce/app/shared/widgets/custom_dropdown.dart';
 import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
-
-import '../../../../../../gen/assets.gen.dart';
-import '../../../../../shared/widgets/custom_appbar_minimal.dart';
-import '../../../../../shared/widgets/custom_dropdown.dart';
-import '../../../../../shared/widgets/primary_button.dart';
-import '../../../../../shared/widgets/secondary_button.dart';
-import '../../../../../utils/colors.dart';
-import '../../../../../utils/text_styles.dart';
-import '../../addons/widgets/dotted_border.dart';
+import 'package:nuforce/app/shared/widgets/primary_button.dart';
+import 'package:nuforce/app/shared/widgets/secondary_button.dart';
+import 'package:nuforce/app/utils/app_sizes.dart';
+import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/app/utils/extension_methods.dart';
+import 'package:nuforce/app/utils/text_styles.dart';
+import 'package:nuforce/gen/assets.gen.dart';
 
 class AddExpenseViewScreen extends StatefulWidget {
   const AddExpenseViewScreen({super.key});
@@ -21,7 +24,44 @@ class AddExpenseViewScreen extends StatefulWidget {
 }
 
 class _AddExpenseViewScreenState extends State<AddExpenseViewScreen> {
+  final addExpenseFormKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   String selectedDate = '';
+
+  @override
+  void dispose() {
+    itemNameController.dispose();
+    spendByController.dispose();
+    totalAmountController.dispose();
+    detailsController.dispose();
+    durationController.dispose();
+    super.dispose();
+  }
+
+  List<String> expenseCodes = ['X', 'Y', 'Z'];
+  String? selectedExpenseCode;
+
+  List<String> fundSources = ['A', 'B', 'C'];
+  String? selectedFundSource;
+
+  TextEditingController itemNameController = TextEditingController();
+  TextEditingController spendByController = TextEditingController();
+
+  DateTime? expireDate;
+  TextEditingController totalAmountController = TextEditingController();
+  TextEditingController detailsController = TextEditingController();
+  TextEditingController durationController = TextEditingController();
+
+  List<XFile> images = [];
+
+  List<String> reimbursableTo = ['A', 'B', 'C'];
+  String? selectedReimbursableTo;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,14 +73,14 @@ class _AddExpenseViewScreenState extends State<AddExpenseViewScreen> {
           children: [
             Expanded(
               child: SecondaryButton(
-                onPressed: () {},
+                onPressed: () =>Get.back(),
                 text: 'Reset',
               ),
             ),
             const SizedBox(width: 15),
             Expanded(
               child: PrimaryButton(
-                onPressed: () => Get.back(),
+                onPressed: () =>Get.back(),
                 text: 'Save',
               ),
             ),
@@ -51,8 +91,8 @@ class _AddExpenseViewScreenState extends State<AddExpenseViewScreen> {
       appBar: const CustomAppbarMinimal(
         title: 'Add New Expense',
       ),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+      body: Form(
+        key: addExpenseFormKey,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -281,24 +321,51 @@ class _AddExpenseViewScreenState extends State<AddExpenseViewScreen> {
             SizedBox(
               height: 16.h,
             ),
-            Row(
-              children: [
-                DottedRect(
-                  color: Colors.grey,
-                  gap: 5,
-                  child: Container(
-                    padding: EdgeInsets.all(20.r),
-                    child: Icon(
-                      Icons.camera_alt_outlined,
-                      color: Colors.grey,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: SecondaryButton(
+                      onPressed: () {},
+                      text: 'Reset',
                     ),
                   ),
-                ),
-              ],
+                  10.w.hSpace,
+                  Expanded(
+                    child: PrimaryButton(
+                      onPressed: () {
+                        if (addExpenseFormKey.currentState!.validate()) {
+                          Get.find<AddNewExpenseController>()
+                              .addExpense(
+                            MockExpense(
+                              expenseCode: selectedExpenseCode!,
+                              name: itemNameController.text,
+                              spendBy: spendByController.text,
+                              expireDate: expireDate!,
+                              duration: Duration(minutes: int.tryParse(durationController.text) ?? 0),
+                              totalAmount: totalAmountController.text,
+                              fundSource: selectedFundSource!,
+                              details: detailsController.text,
+                              reimbursable: selectedReimbursableTo!,
+                              images: images,
+                            ),
+                          )
+                              .then((value) {
+                            if (value) {
+                              Get.back();
+                              Fluttertoast.showToast(msg: 'Expense saved successfully!');
+                            }
+                          });
+                        }
+                      },
+                      text: 'Save',
+                    ),
+                  ),
+                ],
+              ),
             ),
-            SizedBox(
-              height: 70.h,
-            ),
+            20.h.vSpace,
           ],
         ),
       ),

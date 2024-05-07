@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/custom_field_controller.dart';
 import 'package:nuforce/app/modules/service_items/widgets/title_with_switch.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/utils/colors.dart';
+
+import '../controller/custom_field_controller.dart';
 
 class CustomFieldSettingsView extends StatefulWidget {
   const CustomFieldSettingsView({super.key});
@@ -12,6 +16,8 @@ class CustomFieldSettingsView extends StatefulWidget {
 }
 
 class _CustomFieldSettingsViewState extends State<CustomFieldSettingsView> {
+  final CustomFieldControllerSettings controller = Get.put(CustomFieldControllerSettings());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,55 +30,55 @@ class _CustomFieldSettingsViewState extends State<CustomFieldSettingsView> {
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-        child: Column(
+        child: Obx(()=>Column(
           children: [
             TitleWithSwitch(
               text: "Custom Field",
-              isSwitchSelected: true,
-              onSwitchChanged: (v) {},
+              isSwitchSelected: controller.customFieldSwitch.value,
+              onSwitchChanged: (v) =>controller.triggerSwitch(SwitchTypeCustomField.customField, v),
             ),
             SizedBox(
               height: 16.h,
             ),
             TitleWithSwitch(
               text: "Customer",
-              isSwitchSelected: true,
-              onSwitchChanged: (v) {},
+              isSwitchSelected: controller.customerSwitch.value,
+              onSwitchChanged: (v) =>controller.triggerSwitch(SwitchTypeCustomField.Customer, v),
             ),
             SizedBox(
               height: 16.h,
             ),
             TitleWithSwitch(
               text: "Agent",
-              isSwitchSelected: true,
-              onSwitchChanged: (v) {},
+              isSwitchSelected: controller.agentSwitch.value,
+              onSwitchChanged: (v) =>controller.triggerSwitch(SwitchTypeCustomField.agent, v),
             ),
             SizedBox(
               height: 16.h,
             ),
             TitleWithSwitch(
               text: "Service",
-              isSwitchSelected: true,
-              onSwitchChanged: (v) {},
+              isSwitchSelected: controller.serviceSwitch.value,
+              onSwitchChanged: (v) =>controller.triggerSwitch(SwitchTypeCustomField.service, v),
             ),
             SizedBox(
               height: 16.h,
             ),
             TitleWithSwitch(
               text: "Project",
-              isSwitchSelected: true,
-              onSwitchChanged: (v) {},
+              isSwitchSelected: controller.projectSwitch.value,
+              onSwitchChanged: (v) =>controller.triggerSwitch(SwitchTypeCustomField.project, v),
             ),
             SizedBox(
               height: 16.h,
             ),
             TitleWithSwitch(
               text: "Pre-Order Fields",
-              isSwitchSelected: true,
-              onSwitchChanged: (v) {},
+              isSwitchSelected: controller.preorderFieldsSwitch.value,
+              onSwitchChanged: (v) =>controller.triggerSwitch(SwitchTypeCustomField.preorderFields, v),
             ),
           ],
-        ),
+        ),)
       ),
     );
   }

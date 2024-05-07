@@ -5,7 +5,6 @@ import 'package:nuforce/app/utils/text_styles.dart';
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
     super.key,
-    required this.label,
     required this.hint,
     required this.controller,
     this.obscureText = false,
@@ -18,6 +17,7 @@ class CustomTextField extends StatelessWidget {
     this.onChanged,
     this.suffix,
     this.enable = true,
+    this.label,
   });
 
   //copywith method
@@ -48,12 +48,12 @@ class CustomTextField extends StatelessWidget {
       enable: enable ?? this.enable,
       maxLines: maxLines ?? this.maxLines,
       validator: validator ?? this.validator,
-      onChanged: onChange ?? this.onChanged,
+      onChanged: onChange ?? onChanged,
       suffix: suffix ?? this.suffix,
     );
   }
 
-  final String label;
+  final String? label;
   final String hint;
   final TextEditingController? controller;
   final bool obscureText;
@@ -72,15 +72,17 @@ class CustomTextField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          label,
-          style: CustomTextStyle.paragraphSmall.copyWith(
-            fontWeight: FontWeight.w500,
-            color: AppColors.nutralBlack1,
-            // fontSize: 20,
+        if (label != null) ...[
+          Text(
+            label!,
+            style: CustomTextStyle.paragraphSmall.copyWith(
+              fontWeight: FontWeight.w500,
+              color: AppColors.nutralBlack1,
+              // fontSize: 20,
+            ),
           ),
-        ),
-        const SizedBox(height: 8),
+          const SizedBox(height: 8),
+        ],
         ColoredBox(
           color: AppColors.textFieldBackground,
           child: TextFormField(

@@ -10,6 +10,7 @@ import '../../../../../utils/colors.dart';
 import '../../../../../utils/text_styles.dart';
 import '../../../../business_manager/sub_modules/regional_setting/widget/custom_tile.dart';
 import '../../../../service_items/widgets/title_with_switch.dart';
+import '../controller/calendar_sync_controller.dart';
 import '../widgets/calendar_sync_card.dart';
 import 'alert_settings.dart';
 
@@ -21,6 +22,8 @@ class CalendarSyncView extends StatefulWidget {
 }
 
 class _CalendarSyncViewState extends State<CalendarSyncView> {
+  final CalendarSyncController controller = Get.put(CalendarSyncController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,85 +35,95 @@ class _CalendarSyncViewState extends State<CalendarSyncView> {
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 20.w),
-        child: Column(
-          children: [
-            PopupMenuButton(
-              onSelected: (value) {
-                // Handle the selected value here
-              },
-              itemBuilder: (context) => popupMenuItems,
-              child: const CalendarSyncCard(
-                title: "First day of the week",
-                subtitile: 'Local Default',
-              ),
-            ),
-            SizedBox(
-              height: 16.h,
-            ),
-            CalendarSyncCard(
-              title: "Alternate Calendar",
-              subtitile: 'None',
-              onTap: () {
-                showCupertinoModalPopup<void>(
-                  context: context,
-                  barrierDismissible: true,
-                  builder: (context) => const AlternateCalendarBottomSheet(),
-                );
-              },
-            ),
-            SizedBox(
-              height: 16.h,
-            ),
-            TitleWithSwitch(
-              text: 'Show Week Sumbers',
-              isSwitchSelected: true,
-              onSwitchChanged: (v) {},
-            ),
-            SizedBox(
-              height: 16.h,
-            ),
-            TitleWithSwitch(
-              text: 'Hide declined enents',
-              isSwitchSelected: true,
-              onSwitchChanged: (v) {},
-            ),
-            SizedBox(
-              height: 16.h,
-            ),
-            CustomTile(
-              onTap: () {
-                Get.to(() => const AlertSettings());
-              },
-              lable: 'Alert Settings',
-              hasTraillingIcon: false,
-            ),
-            SizedBox(
-              height: 16.h,
-            ),
-            TitleWithSwitch(
-              text: 'Sync All Event',
-              isSwitchSelected: true,
-              onSwitchChanged: (v) {},
-            ),
-            SizedBox(
-              height: 16.h,
-            ),
-            CalendarSyncCard(
-              title: "Time zone",
-              subtitile: '(GMT +6.00) United states ',
-              onTap: () {
-                showCupertinoModalPopup<void>(
-                  context: context,
-                  barrierDismissible: true,
-                  builder: (context) => const TimeZoneBottomSheet(),
-                );
-              },
-            ),
-            SizedBox(
-              height: 32.h,
-            ),
-          ],
-        ),
+        child: Obx(() => Column(
+              children: [
+                PopupMenuButton(
+                  onSelected: (value) {
+                    // Handle the selected value here
+                  },
+                  itemBuilder: (context) => popupMenuItems,
+                  child: const CalendarSyncCard(
+                    title: "First day of the week",
+                    subtitile: 'Local Default',
+                  ),
+                ),
+                SizedBox(
+                  height: 16.h,
+                ),
+                CalendarSyncCard(
+                  title: "Alternate Calendar",
+                  subtitile: 'None',
+                  onTap: () {
+                    showCupertinoModalPopup<void>(
+                      context: context,
+                      barrierDismissible: true,
+                      builder: (context) =>
+                          const AlternateCalendarBottomSheet(),
+                    );
+                  },
+                ),
+                SizedBox(
+                  height: 16.h,
+                ),
+                TitleWithSwitch(
+                  text: 'Show Week numbers',
+                  isSwitchSelected: controller.weekNumberSwitch.value,
+                  onSwitchChanged: (v) {
+                    controller.triggerSwitch(
+                        SwitchTypeCalendarSync.weekNumber, v);
+                  },
+                ),
+                SizedBox(
+                  height: 16.h,
+                ),
+                TitleWithSwitch(
+                  text: 'Hide declined events',
+                  isSwitchSelected: controller.declineEventsSwitch.value,
+                  onSwitchChanged: (v) {
+                    controller.triggerSwitch(
+                        SwitchTypeCalendarSync.declineEvents, v);
+                  },
+                ),
+                SizedBox(
+                  height: 16.h,
+                ),
+                CustomTile(
+                  onTap: () {
+                    Get.to(() => const AlertSettings());
+                  },
+                  lable: 'Alert Settings',
+                  hasTraillingIcon: false,
+                ),
+                SizedBox(
+                  height: 16.h,
+                ),
+                TitleWithSwitch(
+                  text: 'Sync All Event',
+                  isSwitchSelected: controller.syncAllEventsSwitch.value,
+                  onSwitchChanged: (v) {
+                    controller.triggerSwitch(
+                        SwitchTypeCalendarSync.syncAllEvents, v);
+                  },
+                ),
+                SizedBox(
+                  height: 16.h,
+                ),
+                CalendarSyncCard(
+                  title: "Time zone",
+                  subtitile: '(GMT +6.00) United states ',
+                  onTap: () {
+                    showCupertinoModalPopup<void>(
+                      context: context,
+                      barrierDismissible: true,
+                      builder: (context) => const TimeZoneBottomSheet(),
+                    );
+                  },
+                ),
+                SizedBox(
+                  height: 32.h,
+                ),
+              ],
+            )),
       ),
     );
   }

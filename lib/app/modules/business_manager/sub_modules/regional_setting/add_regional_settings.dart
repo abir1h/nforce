@@ -16,8 +16,6 @@ class AddRegionalSettings extends StatefulWidget {
 }
 
 class _AddRegionalSettingsState extends State<AddRegionalSettings> {
-  final controller = Get.find<RegionalSettingController>();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +24,7 @@ class _AddRegionalSettingsState extends State<AddRegionalSettings> {
         title: 'Regional Settings',
       ),
       body: GetBuilder<RegionalSettingController>(
-        builder: (_) {
+        builder: (controller) {
           return SizedBox(
             height: 1.sh,
             child: Padding(

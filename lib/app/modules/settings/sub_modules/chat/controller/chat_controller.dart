@@ -1,18 +1,16 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 import 'package:nuforce/app/modules/settings/sub_modules/chat/models/chat_data_model.dart';
 
 class chatController extends GetxController {
-  late Map<String, dynamic> jsonData,jsonData2;
+  late Map<String, dynamic> jsonData, jsonData2;
   var jsonDataMap;
   ChatList? chatListDataModel;
 
-  TextEditingController msgController=TextEditingController();
+  TextEditingController msgController = TextEditingController();
   List<ChatList> allChatList = [];
-  addMessage(List<Message>? chatList,Message msg){
-
+  addMessage(List<Message>? chatList, Message msg) {
     chatList?.add(msg);
     msgController.clear();
     update();
@@ -62,7 +60,8 @@ class chatController extends GetxController {
               "timestamp": "2024-02-15T10:36:00Z",
             }
           ],
-        }, {
+        },
+        {
           "chatId": "123456789",
           "chatName": "Shadat Rahman",
           "messages": [
@@ -106,7 +105,7 @@ class chatController extends GetxController {
       ],
     };
     chatListDataModel = ChatList.fromJson(jsonData);
-    allChatList=[chatListDataModel!];
+    allChatList = [chatListDataModel!];
     Logger().i(allChatList[0].conversation![1].messages?[0].text);
     update();
 

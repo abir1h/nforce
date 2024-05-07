@@ -29,93 +29,92 @@ class _OrderSummaryState extends State<OrderSummary> {
   Widget build(BuildContext context) {
     return SizedBox(
       width: width,
-      child: Table(
-        children: [
-          TableRow(
+      child: GetBuilder<InvoiceController>(
+        builder: (controller) {
+          final invoice = controller.invoice;
+          return Table(
             children: [
-              Text(
-                'Invoice Date:',
-                style: _localLabelStyle(),
+              TableRow(
+                children: [
+                  Text(
+                    'Work Order:',
+                    style: _localLabelStyle(),
+                  ),
+                  Text(
+                    invoice?.params?.workorderNo ?? '-',
+                    style: _localValueStyle(),
+                  ),
+                  // const Spacer(),
+                ],
               ),
-              Text(
-                'WOAT351',
-                style: _localValueStyle(),
-              ),
-              // const Spacer(),
-            ],
-          ),
-          TableRow(
-            children: [
-              Text(
-                'Due Amount:',
-                style: _localLabelStyle(),
-              ),
-              GetBuilder<InvoiceController>(builder: (controller) {
-                return TextWithBottomBorder(
-                  hint: '\$${controller.dueAmount.toStringAsFixed(2)}',
-                  type: CustomType.text,
-                  onTap: () {
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        return CustomDialogWithTextField(
-                          controller: dueAmountController,
-                          keyboardType: TextInputType.number,
-                          hint: 'Enter Due Amount',
-                          onPrimaryButtonPressed: () {
-                            setState(() {
-                              controller.updateDueAmount(double.parse(dueAmountController.text));
-                            });
-                            Get.back();
-                          },
-                          onSecondaryButtonPressed: () {},
-                        );
-                      },
-                    );
-                  },
-                );
-              }),
-              // const Spacer(),
-            ],
-          ),
-          TableRow(
-            children: [
-              Text(
-                'Inv Date:',
-                style: _localLabelStyle(),
-              ),
-              GetBuilder<InvoiceController>(
-                builder: (controller) {
-                  return TextWithBottomBorder(
-                    hint: controller.invDate != null ? DatetimeCustomFunc.getFormattedDate(controller.invDate) : 'Select Inv Date',
-                    type: CustomType.dateTime,
+              TableRow(
+                children: [
+                  Text(
+                    'Due Amount:',
+                    style: _localLabelStyle(),
+                  ),
+                  TextWithBottomBorder(
+                    hint: '\$${invoice?.amountDue ?? 0}',
+                    type: CustomType.text,
                     onTap: () {
-                      showDatePicker(
+                      showDialog(
                         context: context,
-                        firstDate: DateTime.now(),
-                        lastDate: DateTime.now().add(const Duration(days: 365)),
-                      ).then(
-                        (value) {
-                          controller.updateInvDate(value);
+                        builder: (context) {
+                          return CustomDialogWithTextField(
+                            controller: dueAmountController,
+                            keyboardType: TextInputType.number,
+                            hint: 'Enter Due Amount',
+                            onPrimaryButtonPressed: () {},
+                            onSecondaryButtonPressed: () {},
+                          );
                         },
                       );
                     },
-                  );
-                },
+                  ),
+                  // const Spacer(),
+                ],
               ),
-              // const Spacer(),
-            ],
-          ),
-          TableRow(
-            children: [
-              Text(
-                'Expires On:',
-                style: _localLabelStyle(),
+              TableRow(
+                children: [
+                  Text(
+                    'Inv Date:',
+                    style: _localLabelStyle(),
+                  ),
+                  GetBuilder<InvoiceController>(
+                    builder: (controller) {
+                      return TextWithBottomBorder(
+                        hint: DatetimeCustomFunc.getFormattedDate(invoice?.createdAt),
+                        type: CustomType.dateTime,
+                        onTap: () {
+                          showDatePicker(
+                            context: context,
+                            firstDate: DateTime.now(),
+                            lastDate: DateTime.now().add(const Duration(days: 365)),
+                          ).then(
+                            (value) {
+                              // controller.updateInvDate(value);
+                              controller.updateInvoice(
+                                invoice!.copyWith(
+                                  createdAt: value,
+                                ),
+                              );
+                            },
+                          );
+                        },
+                      );
+                    },
+                  ),
+                  // const Spacer(),
+                ],
               ),
-              GetBuilder<InvoiceController>(
-                builder: (controller) {
-                  return TextWithBottomBorder(
-                    hint: controller.expireDate != null ? DatetimeCustomFunc.getFormattedDate(controller.expireDate) : 'Select Expire Date',
+              TableRow(
+                children: [
+                  Text(
+                    'Expires On:',
+                    style: _localLabelStyle(),
+                  ),
+                  TextWithBottomBorder(
+                    hint: invoice?.expiresOn != null ? DatetimeCustomFunc.getFormattedDate(invoice?.expiresOn) : 'Select Expire Date',
                     type: CustomType.dateTime,
                     onTap: () {
                       showDatePicker(
@@ -126,13 +125,13 @@ class _OrderSummaryState extends State<OrderSummary> {
                         controller.updateExpireDate(value);
                       });
                     },
-                  );
-                },
+                  )
+                  // const Spacer(),
+                ],
               ),
-              // const Spacer(),
             ],
-          ),
-        ],
+          );
+        },
       ),
     );
   }

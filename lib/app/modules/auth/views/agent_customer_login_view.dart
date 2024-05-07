@@ -74,7 +74,10 @@ class AgentCustomerLoginView extends StatelessWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SvgPicture.asset(Assets.images.svg.nuforceLogo),
+                    Image.asset(
+                      Assets.images.png.nuforceLogo.path,
+                      width: width * 0.5,
+                    ),
                     const SizedBox(height: 24),
                     Text(
                       'Welcome to NuForce',

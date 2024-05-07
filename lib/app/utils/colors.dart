@@ -15,6 +15,7 @@ class AppColors {
 
   static const Color red = Color(0xFFFF0000);
   static const Color green = Color(0xFF1FB61F);
+  static const Color languaageCardBorder = Color(0xFFDDE7E1);
   static const Color yellow = Color(0xFFFFCC00);
   static const Color deepYellow = Color(0xFFEBA900);
 
@@ -22,6 +23,7 @@ class AppColors {
   static const Color lightBlue = Color(0xFFD8E9FF);
   static const Color lightGreen = Color(0xFFD4F1D4);
   static const Color lightPink = Color(0xFFF4DEFF);
+  static const Color pink = Color(0xFFF66E84);
 
   static const Color greyText = Color(0xFFA1A1A1);
   static const Color greyStrokColor = Color(0xFFD1D5DB);
@@ -50,12 +52,15 @@ class AppColors {
   static const Color tableBorder = Color(0xFFD4D4D4);
 
   static const Color purple = Color(0xFFA300F0);
+  static const Color purple2 = Color(0xFF9816F4);
   static const Color orange = Color(0xFFFD9800);
   static const Color violet = Color(0xFF5867DD);
 
   static const Color powderPink = Color(0xFFFFCEDF);
   static const Color green2 = Color(0xFF0CE279);
   static const Color green3 = Color(0xFF4CAF50);
+  static const Color green4 = Color(0xFFEEF7EE);
+  static const Color greendark = Color(0xFF42c142);
   static const Color blue2 = Color(0xFFCED3FF);
   static const Color statusCanceldBg = Color(0xFFffe0e0);
   static const Color statusOverDuedBg = Color(0xFFfef8e6);

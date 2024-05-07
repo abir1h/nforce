@@ -9,16 +9,18 @@ class SecondaryButton extends StatelessWidget {
     super.key,
     required this.onPressed,
     required this.text,
+    this.height,
   });
   final VoidCallback onPressed;
   final String text;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
-        height: 50.h,
+        height: height?.h ?? 50.h,
         width: width,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(4),
@@ -32,6 +34,7 @@ class SecondaryButton extends StatelessWidget {
             style: CustomTextStyle.heading4.copyWith(
               fontWeight: FontWeight.w500,
               color: AppColors.red,
+              fontSize: height != null && height! <= 30 ? 12.sp : 16.sp,
             ),
           ),
         ),

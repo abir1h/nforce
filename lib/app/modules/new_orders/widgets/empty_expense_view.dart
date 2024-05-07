@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:nuforce/app/modules/settings/sub_modules/expense/view/add_new_expanse.dart';
 import 'package:nuforce/app/utils/colors.dart';
 
 class EmptyExpense extends StatelessWidget {
@@ -27,9 +29,11 @@ class EmptyExpense extends StatelessWidget {
           ),
           const Spacer(),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.to(() => const AddExpenseViewScreen());
+            },
             child: Text(
-              '+ Submit Expense',
+              '+ Add Expense',
               style: TextStyle(
                 color: AppColors.primaryBlue1,
                 fontSize: 12.sp,

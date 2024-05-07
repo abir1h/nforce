@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/payment_options/cash_view.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/payment_options/check_view.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/payment_options/direct_debit_view.dart';
-import 'package:nuforce/app/modules/business_manager/views/business_manager_settings_view.dart';
 import 'package:nuforce/app/modules/business_manager/widgets/big_button_with_icon.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/utils/colors.dart';
@@ -16,34 +15,30 @@ class PaymentOptionView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        await Get.to<void>(const BusinessManagerSettingsView());
-        return true;
-      },
-      child: Scaffold(
-        backgroundColor: AppColors.white1,
-        appBar: CustomAppbarMinimal(title: 'Payment Options', leadingPressed: () => Get.to<void>(const BusinessManagerSettingsView())),
-        body: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 20.w),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              BigButtonWithIcon(svgPath: Assets.images.svg.paymentOptions, lable: 'Cash', onTap: () => Get.to<void>(const CashView())),
-              SizedBox(
-                height: 16.h,
-              ),
-              BigButtonWithIcon(svgPath: Assets.images.svg.check, lable: 'Check', onTap: () => Get.to<void>(const CheckView())),
-              SizedBox(
-                height: 16.h,
-              ),
-              BigButtonWithIcon(svgPath: Assets.images.svg.stripe, lable: 'Stripe', onTap: () {}),
-              SizedBox(
-                height: 16.h,
-              ),
-              BigButtonWithIcon(svgPath: Assets.images.svg.document, lable: 'Direct Debit', onTap: () => Get.to<void>(const DirectDebitview())),
-            ],
-          ),
+    return Scaffold(
+      backgroundColor: AppColors.white1,
+      appBar: const CustomAppbarMinimal(
+        title: 'Payment Options',
+      ),
+      body: SingleChildScrollView(
+        padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 20.w),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            BigButtonWithIcon(svgPath: Assets.images.svg.paymentOptions, lable: 'Cash', onTap: () => Get.to<void>(const CashView())),
+            SizedBox(
+              height: 16.h,
+            ),
+            BigButtonWithIcon(svgPath: Assets.images.svg.check, lable: 'Check', onTap: () => Get.to<void>(const CheckView())),
+            SizedBox(
+              height: 16.h,
+            ),
+            BigButtonWithIcon(svgPath: Assets.images.svg.stripe, lable: 'Stripe', onTap: () {}),
+            SizedBox(
+              height: 16.h,
+            ),
+            BigButtonWithIcon(svgPath: Assets.images.svg.document, lable: 'Direct Debit', onTap: () => Get.to<void>(const DirectDebitview())),
+          ],
         ),
       ),
     );

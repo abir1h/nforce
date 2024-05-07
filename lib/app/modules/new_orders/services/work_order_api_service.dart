@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'dart:developer' as developer show log;
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:nuforce/app/modules/new_orders/models/contact_details_model.dart';
@@ -61,7 +62,7 @@ class WorkOrderApiService {
     }
   }
 
-  static Future<Either<ContactDetails, String>> getContactDetails(String id) async {
+  static Future<Either<SelectedContactDetails, String>> getContactDetails(String id) async {
     try {
       final response = await ApiClient.instance.get(
         url: URL.contactDetails,
@@ -73,7 +74,7 @@ class WorkOrderApiService {
       );
 
       if (response.statusCode == 200 && response.data != null) {
-        return Left(ContactDetails.fromJson(response.data));
+        return Left(SelectedContactDetails.fromJson(response.data));
       } else {
         return Right(response.data['error'] ?? 'An error occurred.');
       }
@@ -85,10 +86,10 @@ class WorkOrderApiService {
   }
 
   static Future<Either<WorkOrderSuccessModel, String>> createWorkOrder({
-    required String contactId,
-    required String billingAddressId,
-    required String serviceId,
-    required String regionId,
+    required int contactId,
+    required int billingAddressId,
+    required int serviceId,
+    required int regionId,
     String? taxExempt,
     String? standalone,
   }) async {
@@ -111,8 +112,10 @@ class WorkOrderApiService {
 
       log('Response: $response', name: 'createWorkOrder');
       if (response.statusCode == 200 && response.data != null) {
+        developer.log('Response: $response', name: 'createWorkOrder');
         return Left(WorkOrderSuccessModel.fromJson(response.data));
       } else {
+        developer.log('Response: $response', name: 'createWorkOrder');
         return Right(response.data['error'] ?? 'An error occurred.');
       }
     } on DioException catch (e) {

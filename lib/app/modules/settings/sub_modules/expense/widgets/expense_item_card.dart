@@ -32,14 +32,14 @@ class ExpenseItemCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    height: 150.h,
+                    height: 100.h,
                     width: 120.w,
                     decoration: BoxDecoration(
                       color: AppColors.primaryBlue3,
                       borderRadius: BorderRadius.circular(4.sp),
                       image: DecorationImage(
                         image: AssetImage(Assets.images.png.worker.keyName),
-                        fit: BoxFit.fill,
+                        fit: BoxFit.cover,
                       ),
                     ),
                   ),

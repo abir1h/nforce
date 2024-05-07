@@ -1,5 +1,5 @@
 name: nuforce
-version: 1.0.0+6
+version: 1.0.0+10
 publish_to: none
 description: A new Flutter project.
 environment:
@@ -20,7 +20,7 @@ dependencies:
   flutter_dotenv: ^5.1.0
   flutter_keyboard_visibility: ^6.0.0
   flutter_material_color_picker: ^1.2.0
-  flutter_native_splash: ^2.3.2
+  flutter_native_splash: ^2.4.0
   flutter_quill: ^9.3.1
   flutter_rating_bar: ^4.0.1
   flutter_screenutil: ^5.9.0
@@ -38,7 +38,7 @@ dependencies:
   pinput: ^3.0.0
   shared_preferences: ^2.2.0
   syncfusion_flutter_sliders: ^23.1.40
-  textfield_tags: ^2.0.2
+  textfield_tags: ^3.0.1
   timeline_tile: ^2.0.0
   url_launcher: ^6.1.11
   uuid: ^4.3.3
@@ -50,6 +50,17 @@ dependencies:
   table_calendar: ^3.0.9
   syncfusion_flutter_charts: ^23.2.7
   easy_stepper: ^0.8.3
+  curl_logger_dio_interceptor: ^1.0.0
+  firebase_core: ^2.27.2
+  firebase_messaging: ^14.7.21
+  icons_launcher: ^2.1.7
+  location: ^6.0.1
+  http: ^1.2.1
+  firebase_crashlytics: ^3.5.4
+  firebase_analytics: ^10.10.4
+  sentry_flutter: ^8.1.0
+  flutter_widget_from_html: ^0.15.0
+
 dev_dependencies:
   build_runner: 2.4.6
   change_app_package_name: ^1.1.0
@@ -64,8 +75,23 @@ flutter:
   assets:
     - assets/images/png/
     - assets/images/svg/
+    - assets/images/icon/
 
   fonts:
     - family: Poppins
       fonts:
         - asset: assets/fonts/Poppins/Poppins-Regular.ttf
+
+icons_launcher:
+  image_path: "assets/images/icon/icon_android.png"
+  platforms:
+    android:
+      enable: true
+      image_path: "assets/images/icon/icon_android.png"
+      adaptive_background_image: "assets/images/icon/icon_background.png"
+      adaptive_foreground_image: "assets/images/icon/icon_foreground.png"
+      adaptive_round_image: "assets/images/icon/icon_rounded.png"
+      adaptive_monochrome_image: "assets/images/icon/logo_monochromatic.png"
+    ios:
+      enable: true
+      image_path: "assets/images/icon/icon_ios.png"

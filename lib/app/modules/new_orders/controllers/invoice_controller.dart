@@ -4,10 +4,31 @@ import 'package:nuforce/app/model/agents_model.dart';
 import 'package:nuforce/app/model/card_model.dart';
 import 'package:nuforce/app/model/line_item_model.dart';
 import 'package:nuforce/app/modules/new_orders/models/payment_method_model.dart';
+import 'package:nuforce/app/modules/new_orders/models/work_order_success_model.dart';
 import 'package:nuforce/app/shared/functions/image_picker_func.dart';
 import 'package:nuforce/app/utils/colors.dart';
 
 class InvoiceController extends GetxController {
+  @override
+  void onInit() {
+    super.onInit();
+    getInvoice();
+  }
+
+  void getInvoice() {
+    final invoice = Get.arguments as Invoice;
+    updateInvoice(invoice);
+  }
+
+  // New code
+  Invoice? _invoice;
+  Invoice? get invoice => _invoice;
+  void updateInvoice(Invoice invoice) {
+    _invoice = invoice;
+    update();
+  }
+
+  // Previous code
   XFile? _image;
   XFile? get image => _image;
   Future<void> setImage() async {
@@ -75,12 +96,6 @@ class InvoiceController extends GetxController {
     update();
   }
 
-  double _dueAmount = 5000;
-  double get dueAmount => _dueAmount;
-  void updateDueAmount(double amount) {
-    _dueAmount = amount;
-    update();
-  }
 
   PaymentMethodModel? _selectedPaymentMethod;
   PaymentMethodModel? get selectedPaymentMethod => _selectedPaymentMethod;

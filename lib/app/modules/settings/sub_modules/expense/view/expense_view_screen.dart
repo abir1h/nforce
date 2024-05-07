@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/settings/sub_modules/expense/view/add_new_expanse.dart';
 import 'package:nuforce/app/modules/settings/sub_modules/expense/view/expense_code_screen.dart';
+import 'package:nuforce/app/utils/extension_methods.dart';
 import 'expense_detail_screen.dart';
 import '../widgets/expense_item_card.dart';
 
@@ -128,7 +129,7 @@ class _ExpenseViewState extends State<ExpenseView> {
               children: [
                 Expanded(
                   child: Text(
-                    ' Expenses',
+                    'Expenses',
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
                       fontSize: 16.sp,
@@ -140,25 +141,18 @@ class _ExpenseViewState extends State<ExpenseView> {
                   onTap: () {
                     Get.to<void>(() => const AddExpenseViewScreen());
                   },
-                  child: Row(
-                    children: [
-                      Icon(Icons.add),
-                      Text(
-                        'Add',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 14.sp,
-                          color: AppColors.nutralBlack1,
-                        ),
-                      ),
-                    ],
+                  child: Text(
+                    '+ Add',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 14.sp,
+                      color: AppColors.nutralBlack1,
+                    ),
                   ),
                 ),
               ],
             ),
-            SizedBox(
-              height: 14.h,
-            ),
+            14.h.vSpace,
             ListView(
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,

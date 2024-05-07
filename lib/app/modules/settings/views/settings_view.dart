@@ -5,10 +5,16 @@ import 'package:get/get.dart';
 import 'package:nuforce/app/modules/settings/controllers/settings_controller.dart';
 import 'package:nuforce/app/modules/settings/sub_modules/account_info/account_information_view.dart';
 import 'package:nuforce/app/modules/settings/sub_modules/branding/branding_view.dart';
-import 'package:nuforce/app/modules/settings/sub_modules/customField/customfield_view_settings.dart';
-import 'package:nuforce/app/modules/settings/sub_modules/notification/notification_view.dart';
+import 'package:nuforce/app/modules/settings/sub_modules/customField/view/customfield_view_settings.dart';
+import 'package:nuforce/app/modules/settings/sub_modules/notification/view/notification_view.dart';
 import 'package:nuforce/app/modules/settings/sub_modules/offline_payment/offine_payment_view.dart';
 import 'package:nuforce/app/modules/settings/sub_modules/subscriptions/view/active_plan_view.dart';
+import 'package:nuforce/app/modules/settings/views/invoice_screen.dart';
+import 'package:nuforce/app/modules/settings/views/quick_books_view.dart';
+import 'package:nuforce/app/modules/settings/views/quick_consultation_screen.dart';
+import 'package:nuforce/app/modules/settings/views/request_screen_view.dart';
+import 'package:nuforce/app/modules/settings/views/team_settings_view.dart';
+import 'package:nuforce/app/modules/settings/views/web_hook_integration_view.dart';
 import 'package:nuforce/app/modules/settings/widgets/setting_tile.dart';
 import 'package:nuforce/app/routes/app_pages.dart';
 import 'package:nuforce/app/utils/colors.dart';
@@ -25,7 +31,10 @@ import '../sub_modules/privacy_terms/privacy_policy_screen.dart';
 import '../sub_modules/privacy_terms/terms_contdition.dart';
 import '../sub_modules/refer/refer_screen.dart';
 import '../sub_modules/route_suggestions/view/route_suggestion_screen.dart';
+import '../sub_modules/schedule_settings/views/schedule_settings_view.dart';
 import '../sub_modules/terms_policy/view/terms_policy_screen.dart';
+import 'affliation_view.dart';
+import 'information_forms_view.dart';
 
 class SettingsView extends GetView<SettingsController> {
   const SettingsView({super.key});
@@ -83,8 +92,7 @@ class SettingsView extends GetView<SettingsController> {
                     ),
                     SettingTile(
                       leading: Assets.images.png.accountInfo.keyName,
-                      onTap: () =>
-                          Get.to<void>(() => const AccountInformationView()),
+                      onTap: () => Get.to<void>(() => const AccountInformationView()),
                       label: 'Account Information',
                       hasDivider: true,
                     ),
@@ -114,14 +122,13 @@ class SettingsView extends GetView<SettingsController> {
                     ),
                     SettingTile(
                       leading: Assets.images.png.customFields.keyName,
-                      onTap: () =>
-                          Get.to<void>(() => const CustomFieldSettingsView()),
+                      onTap: () => Get.to<void>(() => const CustomFieldSettingsView()),
                       label: 'Custom Fields',
                       hasDivider: true,
                     ),
                     SettingTile(
                       leading: Assets.images.png.invoices.keyName,
-                      onTap: () {},
+                      onTap: () => Get.to<void>(() => const InvoiceScreen()),
                       label: 'Invoices',
                       hasDivider: true,
                     ),
@@ -174,13 +181,13 @@ class SettingsView extends GetView<SettingsController> {
                     ),
                     SettingTile(
                       leading: Assets.images.png.teamSettings.keyName,
-                      onTap: () {},
+                      onTap: () => Get.to<void>(() => const TeamSettingsView()),
                       label: 'Team Settings',
                       hasDivider: true,
                     ),
                     SettingTile(
                       leading: Assets.images.png.schedules.keyName,
-                      onTap: () {},
+                      onTap: () {Get.to<void>(() =>  ScheduleSettingView());},
                       label: 'Schedules',
                       hasDivider: true,
                     ),
@@ -198,7 +205,7 @@ class SettingsView extends GetView<SettingsController> {
                     ),
                     SettingTile(
                       leading: Assets.images.png.informationForms.keyName,
-                      onTap: () {},
+                      onTap: () => Get.to<void>(() => const InformationFormView()),
                       label: 'Information Forms',
                       hasDivider: false,
                     ),
@@ -239,13 +246,13 @@ class SettingsView extends GetView<SettingsController> {
                     ),
                     SettingTile(
                       leading: Assets.images.png.webhookIntegration.keyName,
-                      onTap: () {},
+                      onTap: () => Get.to<void>(() => const WebHookIntegrationVIew()),
                       label: 'Webhook Integration',
                       hasDivider: true,
                     ),
                     SettingTile(
                       leading: Assets.images.png.quickBooks.keyName,
-                      onTap: () {},
+                      onTap: () => Get.to<void>(() => const QuickBookViewScreen()),
                       label: 'QuickBooks',
                       hasDivider: false,
                     ),
@@ -292,7 +299,7 @@ class SettingsView extends GetView<SettingsController> {
                     ),
                     SettingTile(
                       leading: Assets.images.png.affliation.keyName,
-                      onTap: () {},
+                      onTap: () => Get.to<void>(() => const AfflaitionViewScreen()),
                       label: 'Affiliation',
                       hasDivider: false,
                     ),
@@ -339,7 +346,7 @@ class SettingsView extends GetView<SettingsController> {
                     ),
                     SettingTile(
                       leading: Assets.images.png.requests.keyName,
-                      onTap: () {},
+                      onTap: () => Get.to<void>(() => const RequestViewScreen()),
                       label: 'Requests',
                       hasDivider: false,
                     ),
@@ -380,7 +387,7 @@ class SettingsView extends GetView<SettingsController> {
                     ),
                     SettingTile(
                       leading: Assets.images.png.quickConsultation.keyName,
-                      onTap: () {},
+                      onTap: () => Get.to<void>(() => const QuickConsultationViewScreen()),
                       label: 'Quick consultation ',
                       hasDivider: true,
                     ),
@@ -406,8 +413,9 @@ class SettingsView extends GetView<SettingsController> {
                       leading: Assets.images.png.terms.keyName,
                       onTap: () => Get.to<void>(() => const TermsCondtionScreen()),
                       label: 'Terms & Conditions',
-                      hasDivider: false,
-                    ), SettingTile(
+                      hasDivider: true,
+                    ),
+                    SettingTile(
                       leading: Assets.images.png.terms.keyName,
                       onTap: () => Get.to<void>(() => const TermsPolicyScreen()),
                       label: 'Terms & policy',

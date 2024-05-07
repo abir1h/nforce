@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/activity/views/activity_view.dart';
 import 'package:nuforce/app/modules/home/views/home_view.dart';
 import 'package:nuforce/app/modules/new_orders/views/new_orders_view.dart';
+import 'package:nuforce/app/modules/order/views/order_view.dart';
 import 'package:nuforce/app/modules/settings/views/settings_view.dart';
 import 'package:nuforce/app/modules/today/views/today_view.dart';
 import 'package:nuforce/app/routes/app_pages.dart';
@@ -34,7 +34,7 @@ class BottomNavBarController extends GetxController {
     const HomeView(),
     const TodayView(),
     const NewOrdersView(),
-    const ActivityView(),
+    const OrderView(),
     const SettingsView(),
   ];
   final appstateController = Get.put(AppState());
@@ -114,14 +114,14 @@ class BottomNavBarController extends GetxController {
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: [
-              if (index == 3) SvgPicture.asset(Assets.images.svg.activity1) else SvgPicture.asset(Assets.images.svg.activity0),
+              if (index == 3) SvgPicture.asset(Assets.images.svg.order1) else SvgPicture.asset(Assets.images.svg.order0),
               const SizedBox(height: 5),
               DefaultTextStyle(
                 style: CustomTextStyle.paragraphExtraSmall.copyWith(
                   fontWeight: FontWeight.w600,
                   color: index == 3 ? AppColors.primaryBlue1 : AppColors.nutralBlack2,
                 ),
-                child: const Text('Activity'),
+                child: const Text('Order'),
               ),
             ],
           ),

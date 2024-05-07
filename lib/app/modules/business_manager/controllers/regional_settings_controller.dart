@@ -4,7 +4,7 @@ import 'package:nuforce/app/modules/business_manager/models/regional_setting.dar
 class RegionalSettingController extends GetxController {
   //region Dropdown Data
 
-  String? selectedDropdownValue = 'Select Country';
+  String? selectedDropdownValue;
   String? selectedTimeZoneDropdownValue = 'Select Time Zone';
   String? selectedDateFormat = 'Select Date Format';
   String? selectedDay = 'Select Day';
