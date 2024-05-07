@@ -47,5 +47,14 @@ class CustomTextStyle {
       fontSize: 16.sp,
       color: AppColors.nutralBlack1,
       fontWeight: FontWeight.w600,
+      fontFamily: "Poppins");  static TextStyle commonTitle = TextStyle(
+      fontSize: 16.sp,
+      color: AppColors.nutralBlack1,
+      fontWeight: FontWeight.w500,
+      fontFamily: "Poppins");
+  static TextStyle commonLabel = TextStyle(
+      fontSize: 14.sp,
+      color: AppColors.subText,
+      fontWeight: FontWeight.w400,
       fontFamily: "Poppins");
 }

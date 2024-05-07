@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/order/views/create_order.dart';
 import 'package:nuforce/app/modules/order/views/order_details_view.dart';
 import 'package:nuforce/app/modules/order/widgets/order_status.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
@@ -20,7 +21,9 @@ class OrderView extends GetView<OrderController> {
         showBackButton: false,
         trailing: [
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.to(const CreateOrderView());
+            },
             child: Text(
               '+ Create',
               style: TextStyle(

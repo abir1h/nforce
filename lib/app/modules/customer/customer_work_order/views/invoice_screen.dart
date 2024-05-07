@@ -1,20 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/customer/customer_work_order/views/view_invoice_screen.dart';
-import 'package:timeline_tile/timeline_tile.dart';
 import '../../../../utils/text_styles.dart';
-import '../../../service_center/sub_modules/estimation/views/estimation_view.dart';
-import '../../../service_center/sub_modules/work_order_view/sub_modules/over_view/views/edit_work_order.dart';
-import 'work_order_details_view.dart';
-import 'package:nuforce/app/utils/extension_methods.dart';
-import 'package:nuforce/gen/assets.gen.dart';
 
 import '../../../../utils/app_sizes.dart';
 import '../../../../utils/colors.dart';
-import '../../../../utils/datetime_custom_func.dart';
-import '../providers/work_order_provider.dart';
 
 class InvoiceScreen extends StatefulWidget {
   const InvoiceScreen({
@@ -28,8 +19,7 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:
-      const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
+      padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -41,41 +31,52 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
             children: [
               Text("Total Invoices (20)", style: CustomTextStyle.commonBold),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 8.w,vertical: 5.h),
+                padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 5.h),
                 decoration: BoxDecoration(
                   color: AppColors.textFieldBackground,
                   borderRadius: BorderRadius.circular(4.r),
-
-                ),child: Row(
-                children: [
-                  Text("All", style: CustomTextStyle.commonBold),
-                  SizedBox(width: 40.w,),
-                  Icon(Icons.keyboard_arrow_down_sharp)
-                ],
-              ),
+                ),
+                child: Row(
+                  children: [
+                    Text("All", style: CustomTextStyle.commonBold),
+                    SizedBox(
+                      width: 40.w,
+                    ),
+                    const Icon(Icons.keyboard_arrow_down_sharp)
+                  ],
+                ),
               )
-          ],), SizedBox(
+            ],
+          ),
+          SizedBox(
             height: 16.h,
           ),
-          const InvoiceCard(), SizedBox(
+          const InvoiceCard(),
+          SizedBox(
             height: 16.h,
           ),
-          const InvoiceCard(), SizedBox(
+          const InvoiceCard(),
+          SizedBox(
             height: 16.h,
           ),
-          const InvoiceCard(), SizedBox(
+          const InvoiceCard(),
+          SizedBox(
             height: 16.h,
           ),
-          const InvoiceCard(), SizedBox(
+          const InvoiceCard(),
+          SizedBox(
             height: 16.h,
           ),
-          const InvoiceCard(), SizedBox(
+          const InvoiceCard(),
+          SizedBox(
             height: 16.h,
           ),
-          const InvoiceCard(), SizedBox(
+          const InvoiceCard(),
+          SizedBox(
             height: 16.h,
           ),
-          const InvoiceCard(), SizedBox(
+          const InvoiceCard(),
+          SizedBox(
             height: 16.h,
           ),
           const InvoiceCard(),
@@ -87,17 +88,17 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
     );
   }
 }
+
 class InvoiceCard extends StatelessWidget {
   const InvoiceCard({super.key});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: ()=>Get.to(()=>const ViewInvoiceScreen()),
+      onTap: () => Get.to(() => const ViewInvoiceScreen()),
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8.r), color: Colors.white,border: Border.all(color: AppColors.greyStrokColor)),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(8.r), color: Colors.white, border: Border.all(color: AppColors.greyStrokColor)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -116,17 +117,11 @@ class InvoiceCard extends StatelessWidget {
               children: [
                 Text(
                   "Due to: 27 Aug, 2023",
-                  style: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 14.sp,
-                      fontFamily: "poppins",
-                      color: AppColors.nutralBlack2),
+                  style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14.sp, fontFamily: "poppins", color: AppColors.nutralBlack2),
                 ),
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 13.w, vertical: 2.h),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5.r),
-                      color: AppColors.lightYellow2),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(5.r), color: AppColors.lightYellow2),
                   child: Text(
                     "pending",
                     style: TextStyle(
@@ -147,9 +142,7 @@ class InvoiceCard extends StatelessWidget {
               children: [
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 40.w, vertical: 6.h),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5.r),
-                      color: AppColors.primaryBlue1),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(5.r), color: AppColors.primaryBlue1),
                   child: Center(
                     child: Text(
                       "View invoice",
@@ -162,7 +155,6 @@ class InvoiceCard extends StatelessWidget {
                     ),
                   ),
                 ),
-
               ],
             ),
           ],

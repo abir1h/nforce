@@ -67,6 +67,26 @@ class _AddExpenseViewScreenState extends State<AddExpenseViewScreen> {
     return Scaffold(
       backgroundColor: AppColors.white1,
       resizeToAvoidBottomInset: true,
+      floatingActionButton: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+        child: Row(
+          children: [
+            Expanded(
+              child: SecondaryButton(
+                onPressed: () =>Get.back(),
+                text: 'Reset',
+              ),
+            ),
+            const SizedBox(width: 15),
+            Expanded(
+              child: PrimaryButton(
+                onPressed: () =>Get.back(),
+                text: 'Save',
+              ),
+            ),
+          ],
+        ),
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       appBar: const CustomAppbarMinimal(
         title: 'Add New Expense',

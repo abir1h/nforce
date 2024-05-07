@@ -23,8 +23,9 @@ class ServiceButton extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            height: 64.h,
-            width: 72.w,
+            // height: 64.h,
+            // width: 72.w,
+            padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: AppColors.tabbarColor,
               borderRadius: BorderRadius.circular(4),
@@ -34,18 +35,13 @@ class ServiceButton extends StatelessWidget {
             ),
           ),
           SizedBox(height: 4.h),
-          SizedBox(
-            width: 72.w,
-            child: Text(
-              title,
-              textAlign: TextAlign.center,
-              // maxLines: 1,
-              // overflow: TextOverflow.ellipsis,
-              style: TextStyle(
-                fontSize: 11.sp,
-                fontWeight: FontWeight.w400,
-                color: AppColors.subText,
-              ),
+          Text(
+            title,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 11.sp,
+              fontWeight: FontWeight.w400,
+              color: AppColors.subText,
             ),
           ),
         ],
