@@ -20,7 +20,6 @@ class CustomerTermsController extends GetxController {
 <p>Teams bring together diverse skills, perspe ctives, and knowledge, enabling them to tackle complex problems more effectively than individuals working in isolation. They promote synergy, creativity, and innovation, leading to enhanced decision-making and productivity. Recognizing the value of teams is crucial for organizations aiming to thrive in today's competitive landscape.</p>
 </body>
 </html>''';
-  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
@@ -35,6 +34,4 @@ class CustomerTermsController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }

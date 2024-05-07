@@ -78,7 +78,8 @@ class _CustomerViewState extends State<CustomerView> {
                     color: AppColors.nutralBlack2,
                   ),
                   hasDivider: true,
-                ), DrawerCard(
+                ),
+                DrawerCard(
                   leading: Assets.images.svg.stack,
                   onTap: () {},
                   label: "Wor Order",
@@ -87,7 +88,8 @@ class _CustomerViewState extends State<CustomerView> {
                     color: AppColors.nutralBlack2,
                   ),
                   hasDivider: true,
-                ),DrawerCard(
+                ),
+                DrawerCard(
                   leading: Assets.images.svg.myProfile,
                   onTap: () => Get.to<void>(() => const CustomerProfileView()),
                   label: "My profile",
@@ -96,7 +98,8 @@ class _CustomerViewState extends State<CustomerView> {
                     color: AppColors.nutralBlack2,
                   ),
                   hasDivider: true,
-                ),DrawerCard(
+                ),
+                DrawerCard(
                   leading: Assets.images.svg.notificationIcon,
                   onTap: () => Get.to<void>(() => const NotificationView()),
                   label: "Notifications",
@@ -105,7 +108,8 @@ class _CustomerViewState extends State<CustomerView> {
                     color: AppColors.nutralBlack2,
                   ),
                   hasDivider: true,
-                ),DrawerCard(
+                ),
+                DrawerCard(
                   leading: Assets.images.svg.constultation,
                   onTap: () {},
                   label: "Quick consultation",
@@ -114,7 +118,8 @@ class _CustomerViewState extends State<CustomerView> {
                     color: AppColors.nutralBlack2,
                   ),
                   hasDivider: true,
-                ),DrawerCard(
+                ),
+                DrawerCard(
                   leading: Assets.images.svg.faq,
                   onTap: () => Get.to<void>(() => const CustomerFaqView()),
                   label: "FAQs",
@@ -123,7 +128,8 @@ class _CustomerViewState extends State<CustomerView> {
                     color: AppColors.nutralBlack2,
                   ),
                   hasDivider: true,
-                ),DrawerCard(
+                ),
+                DrawerCard(
                   leading: Assets.images.svg.chat,
                   onTap: () => Get.to<void>(() => const ChatScreen()),
                   label: "Chat with us",
@@ -132,7 +138,8 @@ class _CustomerViewState extends State<CustomerView> {
                     color: AppColors.nutralBlack2,
                   ),
                   hasDivider: true,
-                ),DrawerCard(
+                ),
+                DrawerCard(
                   leading: Assets.images.svg.info,
                   onTap: () => Get.to<void>(() => const CustomerAboutUsView()),
                   label: "About Us",
@@ -141,7 +148,8 @@ class _CustomerViewState extends State<CustomerView> {
                     color: AppColors.nutralBlack2,
                   ),
                   hasDivider: true,
-                ),DrawerCard(
+                ),
+                DrawerCard(
                   leading: Assets.images.svg.terms,
                   onTap: () => Get.to<void>(() => const CustomerTermsView()),
                   label: "Terms & Conditions ",
@@ -150,7 +158,11 @@ class _CustomerViewState extends State<CustomerView> {
                     color: AppColors.nutralBlack2,
                   ),
                   hasDivider: true,
-                ),SizedBox(height: 24.h,), GestureDetector(
+                ),
+                SizedBox(
+                  height: 24.h,
+                ),
+                GestureDetector(
                   onTap: () {
                     SharedPreferenceService.clear();
                     Get.offAllNamed<void>(Routes.AUTH);
@@ -159,10 +171,9 @@ class _CustomerViewState extends State<CustomerView> {
                   child: Container(
                     padding: EdgeInsets.symmetric(vertical: 12.h),
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8.r),
-                      color: Colors.white,
-                      border: Border.all(color:AppColors.primaryBlue1 )
-                    ),
+                        borderRadius: BorderRadius.circular(8.r),
+                        color: Colors.white,
+                        border: Border.all(color: AppColors.primaryBlue1)),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
