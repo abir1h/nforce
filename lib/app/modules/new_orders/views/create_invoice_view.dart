@@ -8,8 +8,8 @@ import 'package:nuforce/app/modules/new_orders/controllers/invoice_controller.da
 import 'package:nuforce/app/modules/new_orders/widgets/agents_widget.dart';
 import 'package:nuforce/app/modules/new_orders/widgets/cancellation_widget.dart';
 import 'package:nuforce/app/modules/new_orders/widgets/empty_activity_log_view.dart';
-import 'package:nuforce/app/modules/new_orders/widgets/empty_expense_view.dart';
 import 'package:nuforce/app/modules/new_orders/widgets/empty_note_view.dart';
+import 'package:nuforce/app/modules/new_orders/widgets/invoice_expense_view.dart';
 import 'package:nuforce/app/modules/new_orders/widgets/invoice_payment_section.dart';
 import 'package:nuforce/app/modules/new_orders/widgets/empty_schedule_view.dart';
 import 'package:nuforce/app/modules/new_orders/widgets/empty_terms_view.dart';
@@ -34,10 +34,12 @@ class CreateInvoiceView extends StatefulWidget {
 }
 
 class _CreateInvoiceViewState extends State<CreateInvoiceView> {
+  late final InvoiceController invoiceController;
+
   @override
   void initState() {
     super.initState();
-    Get.put(InvoiceController());
+    invoiceController = Get.put(InvoiceController());
   }
 
   @override
@@ -53,7 +55,7 @@ class _CreateInvoiceViewState extends State<CreateInvoiceView> {
     return Scaffold(
       backgroundColor: AppColors.bgWithOpacity,
       appBar: CustomAppbarMinimal(
-        title: 'Invoice #0022',
+        title: 'Invoice #${invoiceController.invoice?.id}',
         trailing: [
           IconButton(
             onPressed: () {},
@@ -64,91 +66,95 @@ class _CreateInvoiceViewState extends State<CreateInvoiceView> {
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              10.h.vSpace,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: GetBuilder<InvoiceController>(
+        builder: (controller) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _profileImagePicker(),
-                  const Agents(),
-                ],
-              ),
-              18.h.vSpace,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  10.h.vSpace,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const TextWithBottomBorder(
-                        hint: 'Invoice ID: AT352375124',
-                        type: CustomType.text,
+                      _profileImagePicker(),
+                      const Agents(),
+                    ],
+                  ),
+                  18.h.vSpace,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          TextWithBottomBorder(
+                            hint: 'Invoice ID: ${controller.invoice?.invoiceNo ?? ''}',
+                            type: CustomType.text,
+                          ),
+                          8.h.vSpace,
+                          TextWithBottomBorder(
+                            hint: (controller.invoice?.invoiceType ?? '').toTitleCase(),
+                            textColor: AppColors.red,
+                            type: CustomType.text,
+                          ),
+                        ],
                       ),
-                      8.h.vSpace,
-                      const TextWithBottomBorder(
-                        hint: 'Estimation',
-                        textColor: AppColors.red,
-                        type: CustomType.text,
+                      ColoredButton(
+                        text: (controller.invoice?.status ?? '').toTitleCase(),
+                        textColor: AppColors.yellow,
+                        onTap: () {},
                       ),
                     ],
                   ),
-                  ColoredButton(
-                    text: 'Pending',
-                    textColor: AppColors.yellow,
-                    onTap: () {},
+                  16.h.vSpace,
+                  const OrderSummary(),
+                  16.h.vSpace,
+                  const InvoiceContactView(),
+                  16.h.vSpace,
+                  const InvoiceAttachments(),
+                  16.h.vSpace,
+                  const InvoiceLineItemsWidget(),
+                  16.h.vSpace,
+                  const CancellationWidget(),
+                  16.h.vSpace,
+                  const InvoicePaymentSection(),
+                  16.h.vSpace,
+                  const InvoiceExpenseView(),
+                  16.h.vSpace,
+                  const EmptyScheduleView(),
+                  16.h.vSpace,
+                  const EmptyNoteView(),
+                  16.h.vSpace,
+                  const EmptyTermsView(),
+                  16.h.vSpace,
+                  const EmptyActivityLogView(),
+                  24.h.vSpace,
+                  Row(
+                    children: [
+                      Expanded(
+                        child: PrimaryButton(
+                          onPressed: () {},
+                          text: 'Preview',
+                          isOutlined: true,
+                        ),
+                      ),
+                      10.w.hSpace,
+                      Expanded(
+                        child: PrimaryButton(
+                          onPressed: () {},
+                          text: 'Save & Send',
+                        ),
+                      ),
+                    ],
                   ),
+                  60.h.vSpace,
                 ],
               ),
-              16.h.vSpace,
-              const OrderSummary(),
-              16.h.vSpace,
-              const InvoiceContactView(),
-              16.h.vSpace,
-              const InvoiceAttachments(),
-              16.h.vSpace,
-              const InvoiceLineItemsWidget(),
-              16.h.vSpace,
-              const CancellationWidget(),
-              16.h.vSpace,
-              const InvoicePaymentSection(),
-              16.h.vSpace,
-              const EmptyExpense(),
-              16.h.vSpace,
-              const EmptyScheduleView(),
-              16.h.vSpace,
-              const EmptyNoteView(),
-              16.h.vSpace,
-              const EmptyTermsView(),
-              16.h.vSpace,
-              const EmptyActivityLogView(),
-              24.h.vSpace,
-              Row(
-                children: [
-                  Expanded(
-                    child: PrimaryButton(
-                      onPressed: () {},
-                      text: 'Preview',
-                      isOutlined: true,
-                    ),
-                  ),
-                  10.w.hSpace,
-                  Expanded(
-                    child: PrimaryButton(
-                      onPressed: () {},
-                      text: 'Save & Send',
-                    ),
-                  ),
-                ],
-              ),
-              60.h.vSpace,
-            ],
-          ),
-        ),
+            ),
+          );
+        },
       ),
     );
   }

@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/home/components/service_button.dart';
@@ -26,95 +28,102 @@ class ServiceItemsView extends GetView<ServiceItemsController> {
         width: width,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
           children: [
-            SizedBox(
-              width: width,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
-                child: Wrap(
-                  spacing: 16,
-                  runSpacing: 16,
-                  children: [
-                    ServiceButton(
-                      svgPath: Assets.images.svg.service,
-                      title: 'Service',
-                      onTap: () {
-                        late ServiceItemsController controller;
-                        if (!ServiceItemsController().initialized) {
-                          controller = Get.put(ServiceItemsController());
-                        }
-                        controller.miniTabEnum.value = ServiceTabEnum.all;
-                        Get.to<void>(() => const ServiceItemsListView());
-                      },
-                    ),
-                    ServiceButton(
-                      svgPath: Assets.images.svg.material,
-                      title: 'Material',
-                      onTap: () {
-                        late ServiceItemsController controller;
-                        if (!ServiceItemsController().initialized) {
-                          controller = Get.put(ServiceItemsController());
-                        }
-                        controller.miniTabEnum.value = ServiceTabEnum.material;
-                        Get.to<void>(() => const ServiceItemsListView());
-                      },
-                    ),
-                    ServiceButton(
-                      svgPath: Assets.images.svg.package,
-                      title: 'Package',
-                      onTap: () {
-                        late ServiceItemsController controller;
-                        if (!ServiceItemsController().initialized) {
-                          controller = Get.put(ServiceItemsController());
-                        }
-                        controller.miniTabEnum.value = ServiceTabEnum.package;
-                        Get.to<void>(() => const ServiceItemsListView());
-                      },
-                    ),
-                    ServiceButton(
-                      svgPath: Assets.images.svg.subscription,
-                      title: 'Subscription',
-                      onTap: () {
-                        late ServiceItemsController controller;
-                        if (!ServiceItemsController().initialized) {
-                          controller = Get.put(ServiceItemsController());
-                        }
-                        controller.miniTabEnum.value = ServiceTabEnum.subscription;
-                        Get.to<void>(() => const ServiceItemsListView());
-                        Future<void>.delayed(const Duration(milliseconds: 200)).then((value) {
-                          if (controller.scrollController.hasClients) {
-                            controller.scrollController.animateTo(
-                              controller.scrollController.position.maxScrollExtent,
-                              duration: const Duration(milliseconds: 500),
-                              curve: Curves.easeInOut,
-                            );
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ServiceButton(
+                        svgPath: Assets.images.svg.service,
+                        title: 'Service',
+                        onTap: () {
+                          late ServiceItemsController controller;
+                          if (!ServiceItemsController().initialized) {
+                            controller = Get.put(ServiceItemsController());
                           }
-                        });
-                      },
-                    ),
-                    ServiceButton(
-                      svgPath: Assets.images.svg.addons,
-                      title: 'Addons',
-                      onTap: () {
-                        late ServiceItemsController controller;
-                        if (!ServiceItemsController().initialized) {
-                          controller = Get.put(ServiceItemsController());
-                        }
-                        controller.miniTabEnum.value = ServiceTabEnum.addons;
-                        Get.to<void>(() => const ServiceItemsListView());
-                        Future<void>.delayed(const Duration(milliseconds: 200)).then((value) {
-                          if (controller.scrollController.hasClients) {
-                            controller.scrollController.animateTo(
-                              controller.scrollController.position.maxScrollExtent,
-                              duration: const Duration(milliseconds: 500),
-                              curve: Curves.easeInOut,
-                            );
+                          controller.miniTabEnum.value = ServiceTabEnum.all;
+                          Get.to<void>(() => const ServiceItemsListView());
+                        },
+                      ),
+                      ServiceButton(
+                        svgPath: Assets.images.svg.material,
+                        title: 'Material',
+                        onTap: () {
+                          late ServiceItemsController controller;
+                          if (!ServiceItemsController().initialized) {
+                            controller = Get.put(ServiceItemsController());
                           }
-                        });
-                      },
+                          controller.miniTabEnum.value = ServiceTabEnum.material;
+                          Get.to<void>(() => const ServiceItemsListView());
+                        },
+                      ),
+                      ServiceButton(
+                        svgPath: Assets.images.svg.package,
+                        title: 'Package',
+                        onTap: () {
+                          late ServiceItemsController controller;
+                          if (!ServiceItemsController().initialized) {
+                            controller = Get.put(ServiceItemsController());
+                          }
+                          controller.miniTabEnum.value = ServiceTabEnum.package;
+                          Get.to<void>(() => const ServiceItemsListView());
+                        },
+                      ),
+                      ServiceButton(
+                        svgPath: Assets.images.svg.subscription,
+                        title: 'Subscription',
+                        onTap: () {
+                          late ServiceItemsController controller;
+                          if (!ServiceItemsController().initialized) {
+                            controller = Get.put(ServiceItemsController());
+                          }
+                          controller.miniTabEnum.value = ServiceTabEnum.subscription;
+                          Get.to<void>(() => const ServiceItemsListView());
+                          Future<void>.delayed(const Duration(milliseconds: 200)).then((value) {
+                            if (controller.scrollController.hasClients) {
+                              controller.scrollController.animateTo(
+                                controller.scrollController.position.maxScrollExtent,
+                                duration: const Duration(milliseconds: 500),
+                                curve: Curves.easeInOut,
+                              );
+                            }
+                          });
+                        },
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 16.h),
+                  FittedBox(
+                    child: Center(
+                      child: ServiceButton(
+                        svgPath: Assets.images.svg.addons,
+                        title: 'Addons',
+                        onTap: () {
+                          late ServiceItemsController controller;
+                          if (!ServiceItemsController().initialized) {
+                            controller = Get.put(ServiceItemsController());
+                          }
+                          controller.miniTabEnum.value = ServiceTabEnum.addons;
+                          Get.to<void>(() => const ServiceItemsListView());
+                          Future<void>.delayed(const Duration(milliseconds: 200)).then((value) {
+                            if (controller.scrollController.hasClients) {
+                              controller.scrollController.animateTo(
+                                controller.scrollController.position.maxScrollExtent,
+                                duration: const Duration(milliseconds: 500),
+                                curve: Curves.easeInOut,
+                              );
+                            }
+                          });
+                        },
+                      ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
             SizedBox(height: 24.sp),
@@ -133,9 +142,8 @@ class ServiceItemsView extends GetView<ServiceItemsController> {
               width: width,
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
-                child: Wrap(
-                  spacing: 16,
-                  runSpacing: 16,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     ServiceButton(
                       svgPath: Assets.images.svg.coupon,

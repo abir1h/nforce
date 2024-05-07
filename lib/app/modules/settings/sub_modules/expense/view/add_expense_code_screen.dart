@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/settings/sub_modules/expense/view/expense_view_screen.dart';
 import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
 
 import '../../../../../shared/widgets/custom_appbar_minimal.dart';

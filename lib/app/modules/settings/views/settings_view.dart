@@ -92,8 +92,7 @@ class SettingsView extends GetView<SettingsController> {
                     ),
                     SettingTile(
                       leading: Assets.images.png.accountInfo.keyName,
-                      onTap: () =>
-                          Get.to<void>(() => const AccountInformationView()),
+                      onTap: () => Get.to<void>(() => const AccountInformationView()),
                       label: 'Account Information',
                       hasDivider: true,
                     ),
@@ -123,8 +122,7 @@ class SettingsView extends GetView<SettingsController> {
                     ),
                     SettingTile(
                       leading: Assets.images.png.customFields.keyName,
-                      onTap: () =>
-                          Get.to<void>(() => const CustomFieldSettingsView()),
+                      onTap: () => Get.to<void>(() => const CustomFieldSettingsView()),
                       label: 'Custom Fields',
                       hasDivider: true,
                     ),
@@ -415,8 +413,9 @@ class SettingsView extends GetView<SettingsController> {
                       leading: Assets.images.png.terms.keyName,
                       onTap: () => Get.to<void>(() => const TermsCondtionScreen()),
                       label: 'Terms & Conditions',
-                      hasDivider: false,
-                    ), SettingTile(
+                      hasDivider: true,
+                    ),
+                    SettingTile(
                       leading: Assets.images.png.terms.keyName,
                       onTap: () => Get.to<void>(() => const TermsPolicyScreen()),
                       label: 'Terms & policy',

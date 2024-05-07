@@ -10,6 +10,7 @@ import 'package:nuforce/app/modules/business_manager/widgets/business_manager_da
 import 'package:nuforce/app/modules/business_manager/widgets/business_manager_money_matrics.dart';
 import 'package:nuforce/app/modules/business_manager/widgets/custome_pie_chart.dart';
 import 'package:nuforce/app/modules/home/components/service_button.dart';
+import 'package:nuforce/app/routes/app_pages.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/shared/widgets/custom_dropdown.dart';
 import 'package:nuforce/app/utils/colors.dart';
@@ -35,41 +36,35 @@ class BusinessManagerView extends GetView<BusinessManagerController> {
               children: [
                 const SizedBox(height: 10),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Expanded(
-                      child: ServiceButton(
-                        svgPath: Assets.images.svg.organization,
-                        title: 'Organization',
-                        onTap: () {
-                          Get.to<void>(() => const OrganizationView());
-                        },
-                      ),
+                    ServiceButton(
+                      svgPath: Assets.images.svg.organization,
+                      title: 'Organization',
+                      onTap: () {
+                        Get.to<void>(() => const OrganizationView());
+                      },
                     ),
-                    Expanded(
-                      child: ServiceButton(
-                        svgPath: Assets.images.svg.customer,
-                        title: 'Customer',
-                        onTap: () {
-                          Get.to<void>(() => const CustomerContactListView());
-                        },
-                      ),
+                    ServiceButton(
+                      svgPath: Assets.images.svg.customer,
+                      title: 'Customer',
+                      onTap: () {
+                        Get.to<void>(() => const CustomerContactListView());
+                      },
                     ),
-                    Expanded(
-                      child: ServiceButton(
-                        svgPath: Assets.images.svg.accounts,
-                        title: 'Accounts',
-                        onTap: () {},
-                      ),
+                    ServiceButton(
+                      svgPath: Assets.images.svg.accounts,
+                      title: 'Accounts',
+                      onTap: () {
+                        Get.toNamed(Routes.ACCOUNTING);
+                      },
                     ),
-                    Expanded(
-                      child: ServiceButton(
-                        svgPath: Assets.images.svg.settings,
-                        title: 'Settings',
-                        onTap: () {
-                          Get.to<void>(() => const BusinessManagerSettingsView());
-                        },
-                      ),
+                    ServiceButton(
+                      svgPath: Assets.images.svg.settings,
+                      title: 'Settings',
+                      onTap: () {
+                        Get.to<void>(() => const BusinessManagerSettingsView());
+                      },
                     ),
                   ],
                 ),

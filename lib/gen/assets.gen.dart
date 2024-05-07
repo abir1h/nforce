@@ -12,8 +12,52 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  $AssetsImagesIconGen get icon => const $AssetsImagesIconGen();
   $AssetsImagesPngGen get png => const $AssetsImagesPngGen();
   $AssetsImagesSvgGen get svg => const $AssetsImagesSvgGen();
+}
+
+class $AssetsImagesIconGen {
+  const $AssetsImagesIconGen();
+
+  /// File path: assets/images/icon/icon_android.png
+  AssetGenImage get iconAndroid =>
+      const AssetGenImage('assets/images/icon/icon_android.png');
+
+  /// File path: assets/images/icon/icon_background.png
+  AssetGenImage get iconBackground =>
+      const AssetGenImage('assets/images/icon/icon_background.png');
+
+  /// File path: assets/images/icon/icon_foreground.png
+  AssetGenImage get iconForeground =>
+      const AssetGenImage('assets/images/icon/icon_foreground.png');
+
+  /// File path: assets/images/icon/icon_ios.png
+  AssetGenImage get iconIos =>
+      const AssetGenImage('assets/images/icon/icon_ios.png');
+
+  /// File path: assets/images/icon/icon_rounded.png
+  AssetGenImage get iconRounded =>
+      const AssetGenImage('assets/images/icon/icon_rounded.png');
+
+  /// File path: assets/images/icon/logo_monochromatic.png
+  AssetGenImage get logoMonochromatic =>
+      const AssetGenImage('assets/images/icon/logo_monochromatic.png');
+
+  /// File path: assets/images/icon/logo_monochromatic_no_bg.png
+  AssetGenImage get logoMonochromaticNoBg =>
+      const AssetGenImage('assets/images/icon/logo_monochromatic_no_bg.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+        iconAndroid,
+        iconBackground,
+        iconForeground,
+        iconIos,
+        iconRounded,
+        logoMonochromatic,
+        logoMonochromaticNoBg
+      ];
 }
 
 class $AssetsImagesPngGen {
@@ -125,9 +169,9 @@ class $AssetsImagesPngGen {
   AssetGenImage get notification =>
       const AssetGenImage('assets/images/png/notification.png');
 
-  /// File path: assets/images/png/nuforce_splash.png
-  AssetGenImage get nuforceSplash =>
-      const AssetGenImage('assets/images/png/nuforce_splash.png');
+  /// File path: assets/images/png/nuforce_logo.png
+  AssetGenImage get nuforceLogo =>
+      const AssetGenImage('assets/images/png/nuforce_logo.png');
 
   /// File path: assets/images/png/offline_payments.png
   AssetGenImage get offlinePayments =>
@@ -259,7 +303,7 @@ class $AssetsImagesPngGen {
         mapImage,
         mapImage2,
         notification,
-        nuforceSplash,
+        nuforceLogo,
         offlinePayments,
         onboarding1,
         onboarding2,
@@ -325,6 +369,9 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/arrow_right.svg
   String get arrowRight => 'assets/images/svg/arrow_right.svg';
 
+  /// File path: assets/images/svg/blue_mark.svg
+  String get blueMark => 'assets/images/svg/blue_mark.svg';
+
   /// File path: assets/images/svg/business_manager.svg
   String get businessManager => 'assets/images/svg/business_manager.svg';
 
@@ -333,6 +380,9 @@ class $AssetsImagesSvgGen {
 
   /// File path: assets/images/svg/calendar_month.svg
   String get calendarMonth => 'assets/images/svg/calendar_month.svg';
+
+  /// File path: assets/images/svg/calendar_pick.svg
+  String get calendarPick => 'assets/images/svg/calendar_pick.svg';
 
   /// File path: assets/images/svg/calendar_report.svg
   String get calendarReport => 'assets/images/svg/calendar_report.svg';
@@ -403,6 +453,9 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/empty.svg
   String get empty => 'assets/images/svg/empty.svg';
 
+  /// File path: assets/images/svg/empty_checkbox.svg
+  String get emptyCheckbox => 'assets/images/svg/empty_checkbox.svg';
+
   /// File path: assets/images/svg/facebook.svg
   String get facebook => 'assets/images/svg/facebook.svg';
 
@@ -457,6 +510,27 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/microsoft.svg
   String get microsoft => 'assets/images/svg/microsoft.svg';
 
+  /// File path: assets/images/svg/mini_email.svg
+  String get miniEmail => 'assets/images/svg/mini_email.svg';
+
+  /// File path: assets/images/svg/mini_events.svg
+  String get miniEvents => 'assets/images/svg/mini_events.svg';
+
+  /// File path: assets/images/svg/mini_notes.svg
+  String get miniNotes => 'assets/images/svg/mini_notes.svg';
+
+  /// File path: assets/images/svg/mini_phone.svg
+  String get miniPhone => 'assets/images/svg/mini_phone.svg';
+
+  /// File path: assets/images/svg/mini_pin_location.svg
+  String get miniPinLocation => 'assets/images/svg/mini_pin_location.svg';
+
+  /// File path: assets/images/svg/mini_service_region.svg
+  String get miniServiceRegion => 'assets/images/svg/mini_service_region.svg';
+
+  /// File path: assets/images/svg/mni_license.svg
+  String get mniLicense => 'assets/images/svg/mni_license.svg';
+
   /// File path: assets/images/svg/more0.svg
   String get more0 => 'assets/images/svg/more0.svg';
 
@@ -481,6 +555,12 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/office_logo.svg
   String get officeLogo => 'assets/images/svg/office_logo.svg';
 
+  /// File path: assets/images/svg/order_0.svg
+  String get order0 => 'assets/images/svg/order_0.svg';
+
+  /// File path: assets/images/svg/order_1.svg
+  String get order1 => 'assets/images/svg/order_1.svg';
+
   /// File path: assets/images/svg/organization.svg
   String get organization => 'assets/images/svg/organization.svg';
 
@@ -499,6 +579,9 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/pick_image.svg
   String get pickImage => 'assets/images/svg/pick_image.svg';
 
+  /// File path: assets/images/svg/pin_filled.svg
+  String get pinFilled => 'assets/images/svg/pin_filled.svg';
+
   /// File path: assets/images/svg/pin_location.svg
   String get pinLocation => 'assets/images/svg/pin_location.svg';
 
@@ -507,6 +590,9 @@ class $AssetsImagesSvgGen {
 
   /// File path: assets/images/svg/profile.svg
   String get profile => 'assets/images/svg/profile.svg';
+
+  /// File path: assets/images/svg/red_cross.svg
+  String get redCross => 'assets/images/svg/red_cross.svg';
 
   /// File path: assets/images/svg/scan.svg
   String get scan => 'assets/images/svg/scan.svg';
@@ -599,9 +685,11 @@ class $AssetsImagesSvgGen {
         addons,
         apple,
         arrowRight,
+        blueMark,
         businessManager,
         calendar,
         calendarMonth,
+        calendarPick,
         calendarReport,
         chat,
         check,
@@ -625,6 +713,7 @@ class $AssetsImagesSvgGen {
         editIc,
         editRounded,
         empty,
+        emptyCheckbox,
         facebook,
         faq,
         filter,
@@ -643,6 +732,13 @@ class $AssetsImagesSvgGen {
         mail,
         material,
         microsoft,
+        miniEmail,
+        miniEvents,
+        miniNotes,
+        miniPhone,
+        miniPinLocation,
+        miniServiceRegion,
+        mniLicense,
         more0,
         more1,
         myProfile,
@@ -651,15 +747,19 @@ class $AssetsImagesSvgGen {
         nuforceLogo,
         offer,
         officeLogo,
+        order0,
+        order1,
         organization,
         package,
         paymentOptions,
         pencil,
         phone,
         pickImage,
+        pinFilled,
         pinLocation,
         preferences,
         profile,
+        redCross,
         scan,
         search,
         service,

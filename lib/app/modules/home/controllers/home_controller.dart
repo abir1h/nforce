@@ -31,9 +31,8 @@ class HomeController extends GetxController {
     miniTabEnum = value;
     update();
   }
-  
-  ExpandableController expandableController = ExpandableController();
 
+  ExpandableController expandableController = ExpandableController();
 
   RxList<MockTaskApi> mockTaskApiList = <MockTaskApi>[
     MockTaskApi(
@@ -77,6 +76,7 @@ class HomeController extends GetxController {
   void updateMockApi(int index, bool value) {
     mockTaskApiList[index].isDone = value;
     mockTaskApiList.refresh();
+    update();
   }
 
   List<MockRecommandedActions> mockRecommandeActions = <MockRecommandedActions>[

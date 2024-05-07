@@ -29,7 +29,6 @@ class _AddContactCenterViewState extends State<AddContactCenterView> {
       backgroundColor: Colors.white,
       appBar: const CustomAppbarMinimal(
         title: 'Add New Contact Center',
-
       ),
       floatingActionButton: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
@@ -67,7 +66,7 @@ class _AddContactCenterViewState extends State<AddContactCenterView> {
                       controller: controller.titleController,
                       hint: 'Enter title',
                       label: 'Title',
-                      onChange: (v) {},
+                      onChanged: (v) {},
                     ),
                     SizedBox(
                       height: 16.h,
@@ -76,20 +75,23 @@ class _AddContactCenterViewState extends State<AddContactCenterView> {
                       controller: controller.officeNameController,
                       hint: 'Enter name',
                       label: 'Office Name',
-                      onChange: (v) {},
+                      onChanged: (v) {},
                     ),
                     SizedBox(
                       height: 16.h,
-                    ),  Text(
+                    ),
+                    Text(
                       'Phone Number ',
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
                         fontSize: 14.sp,
                         color: AppColors.nutralBlack1,
                       ),
-                    ),  SizedBox(
+                    ),
+                    SizedBox(
                       height: 16.h,
-                    ),Container(
+                    ),
+                    Container(
                       height: 50,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(6),
@@ -127,14 +129,15 @@ class _AddContactCenterViewState extends State<AddContactCenterView> {
                           onSaved: print,
                         ),
                       ),
-                    ), SizedBox(
+                    ),
+                    SizedBox(
                       height: 16.h,
                     ),
                     CustomTextField(
                       controller: controller.emailController,
                       hint: 'Enter email',
                       label: 'Email',
-                      onChange: (v) {},
+                      onChanged: (v) {},
                     ),
                     SizedBox(
                       height: 16.h,
@@ -143,17 +146,21 @@ class _AddContactCenterViewState extends State<AddContactCenterView> {
                       controller: controller.addressController,
                       hint: 'Enter address',
                       label: 'Office address',
-                      onChange: (v) {},
+                      onChanged: (v) {},
                     ),
                     SizedBox(
                       height: 8.h,
-                    ), CustomTextField(
+                    ),
+                    CustomTextField(
                       controller: controller.descriptionController,
                       hint: 'Write details',
-                      label: 'Description',maxLines: 4,
-                      onChange: (v) {},
-                    ),SizedBox(height: 400.h,),
-
+                      label: 'Description',
+                      maxLines: 4,
+                      onChanged: (v) {},
+                    ),
+                    SizedBox(
+                      height: 400.h,
+                    ),
                   ],
                 ),
               ],

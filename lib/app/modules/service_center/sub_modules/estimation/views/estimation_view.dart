@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/text_styles.dart';
 import 'package:nuforce/gen/assets.gen.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../controllers/estimation_controller.dart';
 
@@ -27,23 +26,13 @@ class EstimationView extends GetView<EstimationController> {
                 child: Row(
                   children: [
                     Expanded(
-                      child: Text.rich(TextSpan(
-                          text: 'Report',
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 16.sp,
-                              fontFamily: "Poppins",
-                              color: AppColors.nutralBlack1),
-                          children: <InlineSpan>[
-                            TextSpan(
-                              text: '(Dashboard & Colander )',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 16.sp,
-                                  fontFamily: "Poppins",
-                                  color: AppColors.nutralBlack1),
-                            )
-                          ])),
+                      child: Text.rich(
+                          TextSpan(text: 'Report', style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16.sp, fontFamily: "Poppins", color: AppColors.nutralBlack1), children: <InlineSpan>[
+                        TextSpan(
+                          text: '(Dashboard & Colander )',
+                          style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16.sp, fontFamily: "Poppins", color: AppColors.nutralBlack1),
+                        )
+                      ])),
                     ),
                     SvgPicture.asset(Assets.images.svg.calendarReport)
                   ],
@@ -83,8 +72,7 @@ class EstimatioCard extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16),
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8.r), color: Colors.white),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(8.r), color: Colors.white),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -100,11 +88,7 @@ class EstimatioCard extends StatelessWidget {
             ),
             Text(
               "Due to: 27 Aug, 2023",
-              style: TextStyle(
-                  fontWeight: FontWeight.w400,
-                  fontSize: 14.sp,
-                  fontFamily: "poppins",
-                  color: AppColors.nutralBlack2),
+              style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14.sp, fontFamily: "poppins", color: AppColors.nutralBlack2),
             ),
             SizedBox(
               height: 8.h,
@@ -114,9 +98,7 @@ class EstimatioCard extends StatelessWidget {
               children: [
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5.r),
-                      color: AppColors.primaryBlue1),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(5.r), color: AppColors.primaryBlue1),
                   child: Center(
                     child: Text(
                       "View Estimation",
@@ -131,9 +113,7 @@ class EstimatioCard extends StatelessWidget {
                 ),
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5.r),
-                      color: AppColors.lightYellow2),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(5.r), color: AppColors.lightYellow2),
                   child: Text(
                     "pending",
                     style: TextStyle(

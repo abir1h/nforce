@@ -173,7 +173,7 @@ class _ConfirmPaymentBottomSheetState extends State<ConfirmPaymentBottomSheet> {
                       paymentMethodType: widget.paymentMethodType,
                       paymentMethodSvgIcon: Assets.images.svg.paymentOptions,
                       cardNumber: widget.cardNumber,
-                      amount: invoiceController.dueAmount.toString(),
+                      amount: '499', // invoiceController.dueAmount.toString(),
                       date: DateTime.now(),
                       dueDate: DateTime.now().add(const Duration(days: 30)),
                       remainingAmount: '\$50.00',

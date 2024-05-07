@@ -37,6 +37,7 @@ class PrimaryButton extends StatelessWidget {
             style: CustomTextStyle.heading4.copyWith(
               fontWeight: FontWeight.w500,
               color: isOutlined ? AppColors.primaryBlue1 : (primaryColored ? AppColors.white1 : AppColors.primaryBlue1),
+              fontSize: height != null && height! <= 30 ? 12.sp : null,
             ),
           ),
         ),

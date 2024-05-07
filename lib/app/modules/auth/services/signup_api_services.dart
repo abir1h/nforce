@@ -21,7 +21,7 @@ class SignupService {
     required bool agreedToTnc,
     String? refCode,
   }) async {
-    try {
+    try { 
       final response = await ApiClient.instance.post(
         url: URL.signup,
         body: {

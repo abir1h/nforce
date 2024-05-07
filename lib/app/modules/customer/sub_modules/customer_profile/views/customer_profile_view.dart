@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/regional_setting/widget/custom_button.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/utils/text_styles.dart';
 import 'package:nuforce/gen/assets.gen.dart';
@@ -13,7 +12,6 @@ import '../controllers/customer_profile_controller.dart';
 import 'edit_profile.dart';
 
 class CustomerProfileView extends GetView<CustomerProfileController> {
-
   const CustomerProfileView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -24,7 +22,6 @@ class CustomerProfileView extends GetView<CustomerProfileController> {
         padding: const EdgeInsets.all(8.0),
         child: GestureDetector(
           onTap: () => Get.to<void>(() => const EditProfile()),
-
           child: Container(
             width: 1.sw,
             padding: EdgeInsets.symmetric(vertical: 12.h),
@@ -35,8 +32,15 @@ class CustomerProfileView extends GetView<CustomerProfileController> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SvgPicture.asset(Assets.images.svg.editIc,color: Colors.white,height: 24.h,width: 24.w,),SizedBox(width: 8.w,),
-
+                SvgPicture.asset(
+                  Assets.images.svg.editIc,
+                  colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
+                  height: 24.h,
+                  width: 24.w,
+                ),
+                SizedBox(
+                  width: 8.w,
+                ),
                 Text(
                   "Edit",
                   style: CustomTextStyle.commonBold.copyWith(
@@ -63,8 +67,7 @@ class CustomerProfileView extends GetView<CustomerProfileController> {
             Center(
               child: CircleAvatar(
                 radius: 40.r,
-                backgroundImage:
-                    AssetImage(Assets.images.png.profileAvatar.keyName),
+                backgroundImage: AssetImage(Assets.images.png.profileAvatar.keyName),
               ),
             ),
             SizedBox(
@@ -98,8 +101,7 @@ class CustomerProfileView extends GetView<CustomerProfileController> {
 class ProfileLabelSection extends StatelessWidget {
   final String label;
   final String data;
-  const ProfileLabelSection(
-      {super.key, required this.label, required this.data});
+  const ProfileLabelSection({super.key, required this.label, required this.data});
 
   @override
   Widget build(BuildContext context) {

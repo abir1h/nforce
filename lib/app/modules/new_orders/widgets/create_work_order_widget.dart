@@ -1,12 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/customer_address/customer_address_view.dart';
+import 'package:nuforce/app/modules/contact/views/contact_view.dart';
 import 'package:nuforce/app/modules/home/components/colored_checkbox_with_title.dart';
+import 'package:nuforce/app/modules/new_orders/controllers/new_work_order_controller.dart';
+import 'package:nuforce/app/modules/new_orders/models/work_order_contact_search_model.dart';
+import 'package:nuforce/app/modules/new_orders/models/work_order_service_package_model.dart';
+import 'package:nuforce/app/modules/new_orders/models/work_order_service_region_model.dart';
 import 'package:nuforce/app/modules/new_orders/views/create_invoice_view.dart';
 import 'package:nuforce/app/shared/widgets/custom_dropdown.dart';
 import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
+import 'package:nuforce/app/utils/app_sizes.dart';
 import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/app/utils/extension_methods.dart';
+import 'package:nuforce/main.dart';
 
 Future<void> createWorkOrderBottomSheet(BuildContext context) {
   return showModalBottomSheet<void>(
@@ -37,145 +48,373 @@ class _CreateOrderWidgetState extends State<CreateOrderWidget> {
 
   bool isCreateInvoiceSelected = true;
 
+  late final NewWorkOrderController workOrderController;
+
+  final TextEditingController findContactController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    if (NewWorkOrderController().initialized) {
+      workOrderController = Get.find<NewWorkOrderController>();
+    } else {
+      workOrderController = Get.put(NewWorkOrderController());
+    }
+    workOrderController.getServiceRegion();
+    workOrderController.fetchServicePackages();
+  }
+
+  @override
+  void dispose() {
+    findContactController.dispose();
+    workOrderController.clearContactSearchList();
+    workOrderController.clearServiceRegion();
+    workOrderController.clearContactSearchList();
+    workOrderController.clearSelectedServicePackage();
+    workOrderController.clearSelectedServiceRegion();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Container(
-        decoration: const BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20),
-            topRight: Radius.circular(20),
-          ),
+    return Container(
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
         ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Create Work Order',
-                    style: TextStyle(
-                      color: AppColors.nutralBlack1,
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.w600,
-                    ),
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Create Work Order',
+                  style: TextStyle(
+                    color: AppColors.nutralBlack1,
+                    fontSize: 18.sp,
+                    fontWeight: FontWeight.w600,
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: const Icon(
-                      Icons.close,
-                      color: AppColors.nutralBlack1,
-                    ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Icon(
+                    Icons.close,
+                    color: AppColors.nutralBlack1,
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-            const Divider(color: AppColors.white3, height: 2),
-            const SizedBox(height: 16),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  CustomDropdownButton(
-                    label: 'Service Region*',
-                    items: serviceRegions
-                        .map(
-                          (e) => DropdownMenuItem<String>(
-                            value: e,
-                            child: Text(e),
+          ),
+          const Divider(color: AppColors.white3, height: 2),
+          const SizedBox(height: 16),
+          GetBuilder<NewWorkOrderController>(
+            builder: (controller) {
+              if (controller.loading) {
+                return Column(
+                  children: [
+                    const Center(child: CircularProgressIndicator()),
+                    20.h.vSpace,
+                  ],
+                );
+              }
+              return Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                child: Stack(
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return SearchResult(findContactController: findContactController);
+                              },
+                            );
+                          },
+                          child: IgnorePointer(
+                            ignoring: true,
+                            child: CustomTextField(
+                              label: 'Find Contact',
+                              hint: controller.selectedContact?.name ?? 'Find Contact',
+                              controller: null,
+                            ),
                           ),
-                        )
-                        .toList(),
-                    hint: 'Select one',
-                    onChanged: (v) {
-                      setState(() {
-                        selectedServiceRegion = v as String;
-                      });
-                    },
-                    value: selectedServiceRegion,
-                  ),
-                  const SizedBox(height: 16),
-                  const CustomTextField(
-                    label: 'Find Contact',
-                    hint: 'Find Contact',
-                    controller: null,
-                  ),
-                  Text(
-                    'Search customer contact by name',
-                    style: TextStyle(
-                      color: AppColors.white4,
-                      fontSize: 12.sp,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  CustomDropdownButton(
-                    label: 'Service Package',
-                    items: servicePackages
-                        .map(
-                          (e) => DropdownMenuItem<String>(
-                            value: e,
-                            child: Text(e),
+                        ),
+                        Text(
+                          'Search customer contact by name',
+                          style: TextStyle(
+                            color: AppColors.white4,
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w400,
                           ),
-                        )
-                        .toList(),
-                    hint: 'Select one',
-                    onChanged: (v) {
-                      setState(() {
-                        selectedServicePackage = v as String;
-                      });
-                    },
-                    value: selectedServicePackage,
-                  ),
-                  Text(
-                    'Service package to copy line items for estimation (Optional)',
-                    style: TextStyle(
-                      color: AppColors.white4,
-                      fontSize: 12.sp,
-                      fontWeight: FontWeight.w400,
+                        ),
+                        16.h.vSpace,
+                        if (controller.selectedContactDetails.address?.isEmpty ?? false)
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'No address found',
+                                style: TextStyle(
+                                  color: AppColors.red,
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              TextButton(
+                                onPressed: () {
+                                  Get.to(
+                                    () => CustomerAddressView(
+                                      contactDetails: controller.selectedContactDetails,
+                                    ),
+                                  );
+                                },
+                                child: Text(
+                                  '+ Add Address',
+                                  style: TextStyle(
+                                    color: AppColors.primaryBlue1,
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        16.h.vSpace,
+                        CustomDropdownButton(
+                          label: 'Service Package',
+                          items: controller.servicePackageModel.servicePackage
+                                  ?.map(
+                                    (e) => DropdownMenuItem<ServicePackage>(
+                                      value: e,
+                                      child: Text(e.name ?? ''),
+                                    ),
+                                  )
+                                  .toList() ??
+                              [],
+                          hint: 'Select one',
+                          onChanged: (v) {
+                            controller.setSelectedServicePackage(v as ServicePackage);
+                          },
+                          value: controller.selectedServicePackage,
+                        ),
+                        Text(
+                          'Service package to copy line items for estimation (Optional)',
+                          style: TextStyle(
+                            color: AppColors.white4,
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+                        CustomDropdownButton(
+                          label: 'Service Region*',
+                          items: controller.serviceRegionModel.serviceRegion
+                                  ?.map(
+                                    (e) => DropdownMenuItem<ServiceRegion>(
+                                      value: e,
+                                      child: Text(e.name ?? ''),
+                                    ),
+                                  )
+                                  .toList() ??
+                              [],
+                          hint: 'Select one',
+                          onChanged: (v) {
+                            controller.setSelectedServiceRegion(v as ServiceRegion);
+                          },
+                          value: controller.selectedServiceRegion,
+                        ),
+                        const SizedBox(height: 16),
+                        Row(
+                          children: [
+                            ColoredCheckboxWithTitle(
+                              color: AppColors.primaryBlue1,
+                              isSelected: isCreateInvoiceSelected,
+                              onChanged: (p0) {
+                                setState(() {
+                                  isCreateInvoiceSelected = p0!;
+                                });
+                              },
+                              title: 'Create Invoice',
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 24),
+                        PrimaryButton(
+                          onPressed: () async {
+                            if (controller.selectedContactDetails.address == null || controller.selectedContactDetails.address!.isEmpty) {
+                              Fluttertoast.showToast(msg: 'The Selected contact does not have an address');
+                              return;
+                            }
+                            await controller
+                                .createWorkOrder(
+                              contactId: controller.selectedContact?.id ?? 0,
+                              billingAddressId: controller.selectedContactDetails.address?[0].id ?? 0,
+                              serviceId: controller.selectedServicePackage?.id ?? 0,
+                              regionId: controller.selectedServiceRegion?.id ?? 0,
+                            )
+                                .then((value) {
+                              if (value) {
+                                Get
+                                  ..back<void>()
+                                  ..to<void>(
+                                    () => const CreateInvoiceView(),
+                                    transition: Transition.downToUp,
+                                    arguments: controller.workOrderSuccessModel.invoice,
+                                  );
+                              }
+                            });
+                          },
+                          text: 'Create',
+                        ),
+                        35.h.vSpace,
+                      ],
                     ),
-                  ),
-                  const SizedBox(height: 16),
-                  Row(
+                  ],
+                ),
+              );
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class SearchResult extends StatelessWidget {
+  const SearchResult({
+    required this.findContactController,
+    super.key,
+  });
+
+  final TextEditingController findContactController;
+
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        child: GetBuilder<NewWorkOrderController>(
+          builder: (controller) {
+            return Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  child: Row(
                     children: [
-                      ColoredCheckboxWithTitle(
-                        color: AppColors.primaryBlue1,
-                        isSelected: isCreateInvoiceSelected,
-                        onChanged: (p0) {
-                          setState(() {
-                            isCreateInvoiceSelected = p0!;
-                          });
+                      Expanded(
+                        child: TextField(
+                          controller: findContactController,
+                          decoration: const InputDecoration(
+                            hintText: 'Search here',
+                            contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                            prefixIcon: Icon(Icons.search),
+                            border: InputBorder.none,
+                          ),
+                          onChanged: (value) {
+                            if (value.isEmpty) {
+                              controller.clearContactSearchList();
+                              controller.setShowSearchList(false);
+                              return;
+                            }
+                            controller.contactLookup(value);
+                          },
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Get.back();
+                          Get.to(
+                            () => const ContactView(),
+                            transition: Transition.downToUp,
+                          );
                         },
-                        title: 'Create Invoice',
+                        child: const Text('+ Add Contact'),
                       ),
                     ],
                   ),
-                  const SizedBox(height: 24),
-                  PrimaryButton(
-                    onPressed: () {
-                      Get
-                        ..back<void>()
-                        ..to<void>(
-                          () => const CreateInvoiceView(),
-                          transition: Transition.downToUp,
-                        );
-                    },
-                    text: 'Create',
+                ),
+                const Divider(),
+                if (controller.selectedContact != null)
+                  _contactListTile(
+                    contact: controller.selectedContact!,
+                    controller: controller,
+                    context: context,
+                    onTap: () {},
                   ),
-                  const SizedBox(height: 24),
-                ],
-              ),
-            ),
-          ],
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  height: controller.showSearchList ? 250.h : 0,
+                  width: width - (AppSizes.horizontalPadding * 4),
+                  child: controller.showSearchList
+                      ? controller.contactSearchList.isEmpty
+                          ? const Text('')
+                          : controller.contactLoading
+                              ? const Center(child: CircularProgressIndicator.adaptive())
+                              : Scrollbar(
+                                  child: ListView.builder(
+                                    shrinkWrap: true,
+                                    itemCount: controller.contactSearchList.length,
+                                    physics: const BouncingScrollPhysics(),
+                                    itemBuilder: (BuildContext context, int index) {
+                                      final contact = controller.contactSearchList[index];
+                                      return _contactListTile(
+                                        contact: contact,
+                                        controller: controller,
+                                        context: context,
+                                        onTap: () {
+                                          controller.setSelectedContact(contact);
+                                          controller.setShowSearchList(false);
+                                          findContactController.text = contact.name ?? '';
+                                          FocusScope.of(context).unfocus();
+                                          controller.getContactDetails();
+                                          Navigator.pop(context);
+                                        },
+                                      );
+                                    },
+                                  ),
+                                )
+                      : const SizedBox.shrink(),
+                ),
+              ],
+            );
+          },
         ),
       ),
+    );
+  }
+
+  Column _contactListTile({
+    required BuildContext context,
+    required WorkOrderContactSearch contact,
+    required NewWorkOrderController controller,
+    required VoidCallback onTap,
+  }) {
+    return Column(
+      children: [
+        ListTile(
+          title: Text(contact.name ?? ''),
+          trailing: controller.selectedContact?.id == contact.id
+              ? const Icon(
+                  Icons.check,
+                  color: AppColors.primaryBlue1,
+                )
+              : const SizedBox.shrink(),
+          onTap: onTap,
+        ),
+        const Divider(),
+      ],
     );
   }
 }

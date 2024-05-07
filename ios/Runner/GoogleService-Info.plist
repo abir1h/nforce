@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyDQzu7VBbvuli0yG8Q0NkJQJVJ2ropeWeM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>603013639306</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>app.nuforce.nuforce</string>
+	<key>PROJECT_ID</key>
+	<string>nuforce-pro</string>
+	<key>STORAGE_BUCKET</key>
+	<string>nuforce-pro.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:603013639306:ios:75f457dc9e24c7c1b55173</string>
+	<key>DATABASE_URL</key>
+	<string>https://nuforce-pro.firebaseio.com</string>
+</dict>
+</plist>

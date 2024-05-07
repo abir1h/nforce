@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/auth/components/social_login_buttons.dart';
 import 'package:nuforce/app/modules/auth/controllers/auth_controller.dart';
 import 'package:nuforce/app/modules/auth/views/forgot_password_view.dart';
 import 'package:nuforce/app/modules/auth/views/magic_link_signin_view.dart';
 import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
-import 'package:nuforce/app/shared/widgets/or_x_with.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/utils/colors.dart';
 
@@ -153,9 +151,9 @@ class _SignInPageState extends State<SignInPage> {
                       primaryColored: false,
                     ),
                     const SizedBox(height: 30),
-                    const OrXWith(label: 'Or log in with'),
-                    const SizedBox(height: 30),
-                    const SocialLoginButtons(),
+                    // const OrXWith(label: 'Or log in with'),
+                    // const SizedBox(height: 30),
+                    // const SocialLoginButtons(),
                   ],
                 ),
                 const Spacer(),
@@ -186,7 +184,7 @@ class _SignInPageState extends State<SignInPage> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 30),
+                const SizedBox(height: 40),
               ],
             ),
           ),

@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:timeline_tile/timeline_tile.dart';
@@ -8,7 +6,6 @@ import 'package:timeline_tile/timeline_tile.dart';
 import '../../../../utils/colors.dart';
 import '../../../../../gen/assets.gen.dart';
 import '../../../../utils/text_styles.dart';
-import '../../../service_center/sub_modules/work_order_view/sub_modules/over_view/views/edit_work_order.dart';
 import '../../../settings/widgets/text_card.dart';
 
 class ViewInvoiceScreen extends StatefulWidget {
@@ -42,10 +39,7 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
               fontWeight: FontWeight.w500,
             ),
           ),
-          actions: [
-            IconButton(
-                onPressed: () {}, icon: const Icon(Icons.more_vert_outlined))
-          ],
+          actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert_outlined))],
         ),
         body: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
@@ -66,19 +60,11 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
                       RichText(
                         text: TextSpan(
                           text: 'Invoice ID ',
-                          style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 14.sp,
-                              fontFamily: "Poppins",
-                              color: AppColors.nutralBlack2),
+                          style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14.sp, fontFamily: "Poppins", color: AppColors.nutralBlack2),
                           children: <TextSpan>[
                             TextSpan(
                               text: 'AT352375124',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 14.sp,
-                                  fontFamily: "Poppins",
-                                  color: Colors.black),
+                              style: TextStyle(fontWeight: FontWeight.w700, fontSize: 14.sp, fontFamily: "Poppins", color: Colors.black),
                             ),
                           ],
                         ),
@@ -114,51 +100,26 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
               Container(
                 padding: EdgeInsets.all(10.h),
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(4.r),
-                    color: AppColors.pink,
-                    boxShadow: [
-                      BoxShadow(
-                          offset: const Offset(0, 0),
-                          blurRadius: 4,
-                          color: Colors.black.withOpacity(.10))
-                    ]),
+                    borderRadius: BorderRadius.circular(4.r), color: AppColors.pink, boxShadow: [BoxShadow(offset: const Offset(0, 0), blurRadius: 4, color: Colors.black.withOpacity(.10))]),
                 child: Row(
                   children: [
                     Expanded(
                         child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Action Required",
-                            style: TextStyle(
-                                fontSize: 14.sp,
-                                color: AppColors.white1,
-                                fontWeight: FontWeight.w600,
-                                fontFamily: "Inter")),
-                        Text("This estimation is pending for your approval.",
-                            style: TextStyle(
-                                fontSize: 12.sp,
-                                color: AppColors.white1,
-                                fontWeight: FontWeight.w400,
-                                fontFamily: "Inter")),
+                        Text("Action Required", style: TextStyle(fontSize: 14.sp, color: AppColors.white1, fontWeight: FontWeight.w600, fontFamily: "Inter")),
+                        Text("This estimation is pending for your approval.", style: TextStyle(fontSize: 12.sp, color: AppColors.white1, fontWeight: FontWeight.w400, fontFamily: "Inter")),
                       ],
                     )),
                     const SizedBox(
                       width: 50,
                     ),
                     Container(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4.r),
-                          color: Colors.transparent,
-                          border: Border.all(color: Colors.white)),
+                      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(4.r), color: Colors.transparent, border: Border.all(color: Colors.white)),
                       child: Text(
                         "Accept Estimation",
-                        style: TextStyle(
-                            fontSize: 14.sp,
-                            color: AppColors.white1,
-                            fontWeight: FontWeight.w400,
-                            fontFamily: "lato"),
+                        style: TextStyle(fontSize: 14.sp, color: AppColors.white1, fontWeight: FontWeight.w400, fontFamily: "lato"),
                       ),
                     )
                   ],
@@ -175,44 +136,28 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
                       children: [
                         Text(
                           "Hammer Comms LLC",
-                          style: TextStyle(
-                              fontSize: 14.sp,
-                              color: AppColors.nutralBlack1,
-                              fontWeight: FontWeight.w600,
-                              fontFamily: "Poppins"),
+                          style: TextStyle(fontSize: 14.sp, color: AppColors.nutralBlack1, fontWeight: FontWeight.w600, fontFamily: "Poppins"),
                         ),
                         SizedBox(
                           height: 4.h,
                         ),
                         Text(
                           "Hammer Comms LLC",
-                          style: TextStyle(
-                              fontSize: 12.sp,
-                              color: AppColors.nutralBlack2,
-                              fontWeight: FontWeight.w400,
-                              fontFamily: "Poppins"),
+                          style: TextStyle(fontSize: 12.sp, color: AppColors.nutralBlack2, fontWeight: FontWeight.w400, fontFamily: "Poppins"),
                         ),
                         SizedBox(
                           height: 4.h,
                         ),
                         Text(
                           "Arlington, VA 22203",
-                          style: TextStyle(
-                              fontSize: 12.sp,
-                              color: AppColors.nutralBlack2,
-                              fontWeight: FontWeight.w400,
-                              fontFamily: "Poppins"),
+                          style: TextStyle(fontSize: 12.sp, color: AppColors.nutralBlack2, fontWeight: FontWeight.w400, fontFamily: "Poppins"),
                         ),
                         SizedBox(
                           height: 4.h,
                         ),
                         Text(
                           "E: info@hammercomms.com",
-                          style: TextStyle(
-                              fontSize: 12.sp,
-                              color: AppColors.nutralBlack2,
-                              fontWeight: FontWeight.w400,
-                              fontFamily: "Poppins"),
+                          style: TextStyle(fontSize: 12.sp, color: AppColors.nutralBlack2, fontWeight: FontWeight.w400, fontFamily: "Poppins"),
                         ),
                       ],
                     ),
@@ -220,19 +165,11 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
                   RichText(
                     text: TextSpan(
                       text: 'Work Order ',
-                      style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 14.sp,
-                          fontFamily: "Poppins",
-                          color: AppColors.nutralBlack2),
+                      style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14.sp, fontFamily: "Poppins", color: AppColors.nutralBlack2),
                       children: <TextSpan>[
                         TextSpan(
                           text: 'WOAT351',
-                          style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 14.sp,
-                              fontFamily: "Poppins",
-                              color: Colors.black),
+                          style: TextStyle(fontWeight: FontWeight.w700, fontSize: 14.sp, fontFamily: "Poppins", color: Colors.black),
                         ),
                       ],
                     ),
@@ -250,27 +187,15 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
                     children: [
                       Text(
                         "Billing Address",
-                        style: TextStyle(
-                            fontSize: 12.sp,
-                            color: AppColors.nutralBlack2,
-                            fontWeight: FontWeight.w400,
-                            fontFamily: "Poppins"),
+                        style: TextStyle(fontSize: 12.sp, color: AppColors.nutralBlack2, fontWeight: FontWeight.w400, fontFamily: "Poppins"),
                       ),
                       Text(
                         "Contractor",
-                        style: TextStyle(
-                            fontSize: 12.sp,
-                            color: AppColors.primaryBlue1,
-                            fontWeight: FontWeight.w500,
-                            fontFamily: "Poppins"),
+                        style: TextStyle(fontSize: 12.sp, color: AppColors.primaryBlue1, fontWeight: FontWeight.w500, fontFamily: "Poppins"),
                       ),
                       Text(
                         "12 Lafayette , NY 10562",
-                        style: TextStyle(
-                            fontSize: 12.sp,
-                            color: AppColors.nutralBlack2,
-                            fontWeight: FontWeight.w400,
-                            fontFamily: "Poppins"),
+                        style: TextStyle(fontSize: 12.sp, color: AppColors.nutralBlack2, fontWeight: FontWeight.w400, fontFamily: "Poppins"),
                       ),
                     ],
                   ),
@@ -289,11 +214,7 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
                               child: Text(
                                 "Due On",
                                 textAlign: TextAlign.right,
-                                style: TextStyle(
-                                    fontSize: 10.sp,
-                                    fontWeight: FontWeight.w600,
-                                    color: AppColors.nutralBlack1,
-                                    fontFamily: 'Poppins'),
+                                style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w600, color: AppColors.nutralBlack1, fontFamily: 'Poppins'),
                               ),
                             ),
                             Container(
@@ -302,11 +223,7 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
                               child: Text(
                                 "Due on receipt",
                                 textAlign: TextAlign.right,
-                                style: TextStyle(
-                                    fontSize: 10.sp,
-                                    fontWeight: FontWeight.w600,
-                                    color: AppColors.nutralBlack1,
-                                    fontFamily: 'Poppins'),
+                                style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w600, color: AppColors.nutralBlack1, fontFamily: 'Poppins'),
                               ),
                             ),
                           ]),
@@ -316,11 +233,7 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
                               child: Text(
                                 "Next Payment Amount",
                                 textAlign: TextAlign.right,
-                                style: TextStyle(
-                                    fontSize: 10.sp,
-                                    fontWeight: FontWeight.w600,
-                                    color: AppColors.nutralBlack2,
-                                    fontFamily: 'Poppins'),
+                                style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w600, color: AppColors.nutralBlack2, fontFamily: 'Poppins'),
                               ),
                             ),
                             Container(
@@ -328,11 +241,7 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
                               child: Text(
                                 r"$5.00",
                                 textAlign: TextAlign.right,
-                                style: TextStyle(
-                                    fontSize: 10.sp,
-                                    fontWeight: FontWeight.w600,
-                                    color: AppColors.nutralBlack2,
-                                    fontFamily: 'Poppins'),
+                                style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w600, color: AppColors.nutralBlack2, fontFamily: 'Poppins'),
                               ),
                             ),
                           ]),
@@ -343,11 +252,7 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
                               child: Text(
                                 "Expiration Period",
                                 textAlign: TextAlign.right,
-                                style: TextStyle(
-                                    fontSize: 10.sp,
-                                    fontWeight: FontWeight.w600,
-                                    color: AppColors.nutralBlack1,
-                                    fontFamily: 'Poppins'),
+                                style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w600, color: AppColors.nutralBlack1, fontFamily: 'Poppins'),
                               ),
                             ),
                             Container(
@@ -356,11 +261,7 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
                               child: Text(
                                 "10 Days",
                                 textAlign: TextAlign.right,
-                                style: TextStyle(
-                                    fontSize: 10.sp,
-                                    fontWeight: FontWeight.w600,
-                                    color: AppColors.nutralBlack1,
-                                    fontFamily: 'Poppins'),
+                                style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w600, color: AppColors.nutralBlack1, fontFamily: 'Poppins'),
                               ),
                             ),
                           ]),
@@ -370,11 +271,7 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
                               child: Text(
                                 "Expires On",
                                 textAlign: TextAlign.right,
-                                style: TextStyle(
-                                    fontSize: 10.sp,
-                                    fontWeight: FontWeight.w600,
-                                    color: AppColors.nutralBlack2,
-                                    fontFamily: 'Poppins'),
+                                style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w600, color: AppColors.nutralBlack2, fontFamily: 'Poppins'),
                               ),
                             ),
                             Container(
@@ -382,11 +279,7 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
                               child: Text(
                                 "Expires On",
                                 textAlign: TextAlign.right,
-                                style: TextStyle(
-                                    fontSize: 10.sp,
-                                    fontWeight: FontWeight.w600,
-                                    color: AppColors.nutralBlack2,
-                                    fontFamily: 'Poppins'),
+                                style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w600, color: AppColors.nutralBlack2, fontFamily: 'Poppins'),
                               ),
                             ),
                           ]),
@@ -400,19 +293,10 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
                 height: 16.h,
               ),
               Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(4.r),
-                        topLeft: Radius.circular(4.r))),
+                decoration: BoxDecoration(borderRadius: BorderRadius.only(topRight: Radius.circular(4.r), topLeft: Radius.circular(4.r))),
                 child: Table(
                   textDirection: TextDirection.ltr,
-                  columnWidths: const {
-                    0: FlexColumnWidth(2),
-                    1: FlexColumnWidth(4),
-                    2: FlexColumnWidth(),
-                    3: FlexColumnWidth(),
-                    4: FlexColumnWidth(2)
-                  },
+                  columnWidths: const {0: FlexColumnWidth(2), 1: FlexColumnWidth(4), 2: FlexColumnWidth(), 3: FlexColumnWidth(), 4: FlexColumnWidth(2)},
                   defaultVerticalAlignment: TableCellVerticalAlignment.middle,
                   children: [
                     TableRow(children: [
@@ -420,8 +304,7 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
                         padding: const EdgeInsets.all(4.0),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(
-                                4.r), // Adjust border radius as needed
+                            topLeft: Radius.circular(4.r), // Adjust border radius as needed
                           ),
                           color: AppColors.purple2,
                         ),
@@ -488,8 +371,7 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
                         padding: const EdgeInsets.all(4.0),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(
-                                4.r), // Adjust border radius as needed
+                            topRight: Radius.circular(4.r), // Adjust border radius as needed
                           ),
                           color: AppColors.purple2,
                         ),
@@ -512,21 +394,15 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
                         padding: const EdgeInsets.all(4),
                         decoration: const BoxDecoration(
                           border: Border(
-                            right:
-                                BorderSide(width: 1.5, color: AppColors.white2),
-                            bottom:
-                                BorderSide(width: 1.5, color: AppColors.white2),
+                            right: BorderSide(width: 1.5, color: AppColors.white2),
+                            bottom: BorderSide(width: 1.5, color: AppColors.white2),
                           ),
                         ),
                         child: Center(
                           child: Text(
                             "Invalid date",
                             textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontSize: 10.sp,
-                                fontWeight: FontWeight.w400,
-                                color: AppColors.nutralBlack1,
-                                fontFamily: 'Poppins'),
+                            style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w400, color: AppColors.nutralBlack1, fontFamily: 'Poppins'),
                           ),
                         ),
                       ),
@@ -536,10 +412,8 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
 
                         decoration: const BoxDecoration(
                           border: Border(
-                            right:
-                                BorderSide(width: 1.5, color: AppColors.white2),
-                            bottom:
-                                BorderSide(width: 1.5, color: AppColors.white2),
+                            right: BorderSide(width: 1.5, color: AppColors.white2),
+                            bottom: BorderSide(width: 1.5, color: AppColors.white2),
                           ),
                         ),
                         child: Column(
@@ -548,20 +422,12 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
                             Text(
                               "Bed bug extermination",
                               textAlign: TextAlign.start,
-                              style: TextStyle(
-                                  fontSize: 10.sp,
-                                  fontWeight: FontWeight.w600,
-                                  color: AppColors.nutralBlack1,
-                                  fontFamily: 'Poppins'),
+                              style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w600, color: AppColors.nutralBlack1, fontFamily: 'Poppins'),
                             ),
                             Text(
                               "Pest Control > Bed Bug Extermination",
                               textAlign: TextAlign.start,
-                              style: TextStyle(
-                                  fontSize: 10.sp,
-                                  fontWeight: FontWeight.w400,
-                                  color: AppColors.nutralBlack2,
-                                  fontFamily: 'Poppins'),
+                              style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w400, color: AppColors.nutralBlack2, fontFamily: 'Poppins'),
                             ),
                           ],
                         ),
@@ -572,21 +438,15 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
 
                         decoration: const BoxDecoration(
                           border: Border(
-                            right:
-                                BorderSide(width: 1.5, color: AppColors.white2),
-                            bottom:
-                                BorderSide(width: 1.5, color: AppColors.white2),
+                            right: BorderSide(width: 1.5, color: AppColors.white2),
+                            bottom: BorderSide(width: 1.5, color: AppColors.white2),
                           ),
                         ),
                         child: Center(
                           child: Text(
                             "1",
                             textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontSize: 12.sp,
-                                fontWeight: FontWeight.w400,
-                                color: AppColors.nutralBlack1,
-                                fontFamily: 'Poppins'),
+                            style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w400, color: AppColors.nutralBlack1, fontFamily: 'Poppins'),
                           ),
                         ),
                       ),
@@ -596,21 +456,15 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
 
                         decoration: const BoxDecoration(
                           border: Border(
-                            right:
-                                BorderSide(width: 1.5, color: AppColors.white2),
-                            bottom:
-                                BorderSide(width: 1.5, color: AppColors.white2),
+                            right: BorderSide(width: 1.5, color: AppColors.white2),
+                            bottom: BorderSide(width: 1.5, color: AppColors.white2),
                           ),
                         ),
                         child: Center(
                           child: Text(
                             r"$50",
                             textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontSize: 12.sp,
-                                fontWeight: FontWeight.w400,
-                                color: AppColors.nutralBlack1,
-                                fontFamily: 'Poppins'),
+                            style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w400, color: AppColors.nutralBlack1, fontFamily: 'Poppins'),
                           ),
                         ),
                       ),
@@ -620,21 +474,15 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
 
                         decoration: const BoxDecoration(
                           border: Border(
-                            right:
-                                BorderSide(width: 1.5, color: AppColors.white2),
-                            bottom:
-                                BorderSide(width: 1.5, color: AppColors.white2),
+                            right: BorderSide(width: 1.5, color: AppColors.white2),
+                            bottom: BorderSide(width: 1.5, color: AppColors.white2),
                           ),
                         ),
                         child: Center(
                           child: Text(
                             r"$50.00",
                             textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontSize: 12.sp,
-                                fontWeight: FontWeight.w400,
-                                color: AppColors.nutralBlack1,
-                                fontFamily: 'Poppins'),
+                            style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w400, color: AppColors.nutralBlack1, fontFamily: 'Poppins'),
                           ),
                         ),
                       ),
@@ -667,11 +515,7 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
                       child: Text(
                         "Subtotal",
                         textAlign: TextAlign.end,
-                        style: TextStyle(
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w500,
-                            color: AppColors.nutralBlack2,
-                            fontFamily: 'Poppins'),
+                        style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w500, color: AppColors.nutralBlack2, fontFamily: 'Poppins'),
                       ),
                     ),
                     Container(
@@ -680,11 +524,7 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
                       child: Text(
                         r"$50.00",
                         textAlign: TextAlign.end,
-                        style: TextStyle(
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w700,
-                            color: AppColors.nutralBlack1,
-                            fontFamily: 'Poppins'),
+                        style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w700, color: AppColors.nutralBlack1, fontFamily: 'Poppins'),
                       ),
                     ),
                   ]),
@@ -701,11 +541,7 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
                       child: Text(
                         "Discount ",
                         textAlign: TextAlign.end,
-                        style: TextStyle(
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w500,
-                            color: AppColors.nutralBlack2,
-                            fontFamily: 'Poppins'),
+                        style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w500, color: AppColors.nutralBlack2, fontFamily: 'Poppins'),
                       ),
                     ),
                     Container(
@@ -714,11 +550,7 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
                       child: Text(
                         r"0.00",
                         textAlign: TextAlign.end,
-                        style: TextStyle(
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w700,
-                            color: AppColors.nutralBlack1,
-                            fontFamily: 'Poppins'),
+                        style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w700, color: AppColors.nutralBlack1, fontFamily: 'Poppins'),
                       ),
                     ),
                   ]),
@@ -732,39 +564,29 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
                     Container(
                       decoration: const BoxDecoration(
                         border: Border(
-
-                          bottom:
-                          BorderSide(width: 1.5, color: AppColors.white2),
-                        ), color: AppColors.white1,
+                          bottom: BorderSide(width: 1.5, color: AppColors.white2),
+                        ),
+                        color: AppColors.white1,
                       ),
                       padding: const EdgeInsets.all(4),
                       child: Text(
                         "Taxable ",
                         textAlign: TextAlign.end,
-                        style: TextStyle(
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w500,
-                            color: AppColors.nutralBlack2,
-                            fontFamily: 'Poppins'),
+                        style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w500, color: AppColors.nutralBlack2, fontFamily: 'Poppins'),
                       ),
                     ),
                     Container(
                       decoration: const BoxDecoration(
                         border: Border(
-
-                          bottom:
-                          BorderSide(width: 1.5, color: AppColors.white2),
-                        ), color: AppColors.white1,
+                          bottom: BorderSide(width: 1.5, color: AppColors.white2),
+                        ),
+                        color: AppColors.white1,
                       ),
                       padding: const EdgeInsets.all(4),
                       child: Text(
                         r"0.00",
                         textAlign: TextAlign.end,
-                        style: TextStyle(
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w700,
-                            color: AppColors.nutralBlack1,
-                            fontFamily: 'Poppins'),
+                        style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w700, color: AppColors.nutralBlack1, fontFamily: 'Poppins'),
                       ),
                     ),
                   ]),
@@ -777,17 +599,13 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
                     ),
                     Container(
                       decoration: const BoxDecoration(
-                      color: AppColors.white1,
+                        color: AppColors.white1,
                       ),
                       padding: const EdgeInsets.all(4),
                       child: Text(
                         "Total ",
                         textAlign: TextAlign.end,
-                        style: TextStyle(
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w700,
-                            color: AppColors.nutralBlack1,
-                            fontFamily: 'Poppins'),
+                        style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w700, color: AppColors.nutralBlack1, fontFamily: 'Poppins'),
                       ),
                     ),
                     Container(
@@ -798,14 +616,11 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
                       child: Text(
                         r"$50.00",
                         textAlign: TextAlign.end,
-                        style: TextStyle(
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w700,
-                            color: AppColors.nutralBlack1,
-                            fontFamily: 'Poppins'),
+                        style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w700, color: AppColors.nutralBlack1, fontFamily: 'Poppins'),
                       ),
                     ),
-                  ]),                  TableRow(children: [
+                  ]),
+                  TableRow(children: [
                     const SizedBox(
                       width: 30,
                     ),
@@ -818,11 +633,7 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
                       child: Text(
                         "Paid ",
                         textAlign: TextAlign.end,
-                        style: TextStyle(
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w500,
-                            color: AppColors.nutralBlack2,
-                            fontFamily: 'Poppins'),
+                        style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w500, color: AppColors.nutralBlack2, fontFamily: 'Poppins'),
                       ),
                     ),
                     Container(
@@ -831,11 +642,7 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
                       child: Text(
                         r"0.00",
                         textAlign: TextAlign.end,
-                        style: TextStyle(
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w700,
-                            color: AppColors.nutralBlack1,
-                            fontFamily: 'Poppins'),
+                        style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w700, color: AppColors.nutralBlack1, fontFamily: 'Poppins'),
                       ),
                     ),
                   ]),
@@ -854,11 +661,7 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
                       child: Text(
                         "Minimum Payment ",
                         textAlign: TextAlign.end,
-                        style: TextStyle(
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w700,
-                            color: AppColors.nutralBlack1,
-                            fontFamily: 'Poppins'),
+                        style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w700, color: AppColors.nutralBlack1, fontFamily: 'Poppins'),
                       ),
                     ),
                     Container(
@@ -869,44 +672,31 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
                       child: Text(
                         r"$5.00",
                         textAlign: TextAlign.end,
-                        style: TextStyle(
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w700,
-                            color: AppColors.nutralBlack1,
-                            fontFamily: 'Poppins'),
+                        style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w700, color: AppColors.nutralBlack1, fontFamily: 'Poppins'),
                       ),
                     ),
                   ]),
-
                 ],
               ),
               SizedBox(
                 height: 30.h,
-              ),   Text(
+              ),
+              Text(
                 "Cancellation",
-                style: TextStyle(
-                    fontSize: 14.sp,
-                    color: AppColors.nutralBlack1,
-                    fontWeight: FontWeight.w600,
-                    fontFamily: "Poppins"),
-              ),  Text(
+                style: TextStyle(fontSize: 14.sp, color: AppColors.nutralBlack1, fontWeight: FontWeight.w600, fontFamily: "Poppins"),
+              ),
+              Text(
                 r"$5.00 cancellation fee might be applied if cancelled after activation.",
-                style: TextStyle(
-                    fontSize: 10.sp,
-                    color: AppColors.nutralBlack2,
-                    fontWeight: FontWeight.w400,
-                    fontFamily: "Poppins"),
+                style: TextStyle(fontSize: 10.sp, color: AppColors.nutralBlack2, fontWeight: FontWeight.w400, fontFamily: "Poppins"),
               ),
               SizedBox(
                 height: 24.h,
-              ),   Text(
+              ),
+              Text(
                 "Deposit to A/R",
-                style: TextStyle(
-                    fontSize: 14.sp,
-                    color: AppColors.primaryBlue1,
-                    fontWeight: FontWeight.w600,
-                    fontFamily: "Poppins"),
-              ), SizedBox(
+                style: TextStyle(fontSize: 14.sp, color: AppColors.primaryBlue1, fontWeight: FontWeight.w600, fontFamily: "Poppins"),
+              ),
+              SizedBox(
                 height: 8.h,
               ),
               Row(
@@ -914,106 +704,84 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
                   Expanded(
                     child: Text(
                       "Jhon Williamson",
-                      style: TextStyle(
-                          fontSize: 14.sp,
-                          color: AppColors.nutralBlack1,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: "Poppins"),
+                      style: TextStyle(fontSize: 14.sp, color: AppColors.nutralBlack1, fontWeight: FontWeight.w600, fontFamily: "Poppins"),
                     ),
-                  ), Text(
+                  ),
+                  Text(
                     r"$40.00",
-                    style: TextStyle(
-                        fontSize: 14.sp,
-                        color: AppColors.nutralBlack1,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: "Poppins"),
+                    style: TextStyle(fontSize: 14.sp, color: AppColors.nutralBlack1, fontWeight: FontWeight.w600, fontFamily: "Poppins"),
                   ),
                 ],
               ),
-              Row(mainAxisAlignment: MainAxisAlignment.start,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
                     "Payment via:Bank",
-                    style: TextStyle(
-                        fontSize: 14.sp,
-                        color: AppColors.nutralBlack2,
-                        fontWeight: FontWeight.w400,
-                        fontFamily: "Poppins"),
+                    style: TextStyle(fontSize: 14.sp, color: AppColors.nutralBlack2, fontWeight: FontWeight.w400, fontFamily: "Poppins"),
                   ),
                 ],
-              ),   Row(mainAxisAlignment: MainAxisAlignment.start,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Expanded(
                     child: Text(
                       "Date: 18 Dec, 2023",
-                      style: TextStyle(
-                          fontSize: 14.sp,
-                          color: AppColors.nutralBlack2,
-                          fontWeight: FontWeight.w400,
-                          fontFamily: "Poppins"),
+                      style: TextStyle(fontSize: 14.sp, color: AppColors.nutralBlack2, fontWeight: FontWeight.w400, fontFamily: "Poppins"),
                     ),
-                  ),TextCard(buttonText: "Paid",bgColor:AppColors.green4 ,textColor: AppColors.greendark,)
+                  ),
+                  const TextCard(
+                    buttonText: "Paid",
+                    bgColor: AppColors.green4,
+                    textColor: AppColors.greendark,
+                  )
                 ],
-              ),   SizedBox(
+              ),
+              SizedBox(
                 height: 30.h,
-              ),   Text(
+              ),
+              Text(
                 "Note  ",
-                style: TextStyle(
-                    fontSize: 14.sp,
-                    color: AppColors.nutralBlack1,
-                    fontWeight: FontWeight.w600,
-                    fontFamily: "Poppins"),
-              ),  SizedBox(
+                style: TextStyle(fontSize: 14.sp, color: AppColors.nutralBlack1, fontWeight: FontWeight.w600, fontFamily: "Poppins"),
+              ),
+              SizedBox(
                 height: 16.h,
-              ), Text(
+              ),
+              Text(
                 "In today's interconnected world, teams have become the backbone of successful organi zations. However, the effectiveness of a team heavily relies on various factors  ",
-                style: TextStyle(
-                    fontSize: 12.sp,
-                    color: AppColors.nutralBlack2,
-                    fontWeight: FontWeight.w400,
-                    fontFamily: "Poppins"),
-              ), SizedBox(
-                height: 30.h,
-              ),   Text(
-                "Terms & conditions  ",
-                style: TextStyle(
-                    fontSize: 14.sp,
-                    color: AppColors.nutralBlack1,
-                    fontWeight: FontWeight.w600,
-                    fontFamily: "Poppins"),
-              ),
-              Text("1. Please pay within 10 days",
-                style: TextStyle(
-                    fontSize: 12.sp,
-                    color: AppColors.nutralBlack2,
-                    fontWeight: FontWeight.w400,
-                    fontFamily: "Poppins"),
-              ),  Text("2. Please pay within 10 days",
-                style: TextStyle(
-                    fontSize: 12.sp,
-                    color: AppColors.nutralBlack2,
-                    fontWeight: FontWeight.w400,
-                    fontFamily: "Poppins"),
-              ),  Text("3. Please pay within 10 days",
-                style: TextStyle(
-                    fontSize: 12.sp,
-                    color: AppColors.nutralBlack2,
-                    fontWeight: FontWeight.w400,
-                    fontFamily: "Poppins"),
+                style: TextStyle(fontSize: 12.sp, color: AppColors.nutralBlack2, fontWeight: FontWeight.w400, fontFamily: "Poppins"),
               ),
               SizedBox(
                 height: 30.h,
-              ),   Text(
+              ),
+              Text(
+                "Terms & conditions  ",
+                style: TextStyle(fontSize: 14.sp, color: AppColors.nutralBlack1, fontWeight: FontWeight.w600, fontFamily: "Poppins"),
+              ),
+              Text(
+                "1. Please pay within 10 days",
+                style: TextStyle(fontSize: 12.sp, color: AppColors.nutralBlack2, fontWeight: FontWeight.w400, fontFamily: "Poppins"),
+              ),
+              Text(
+                "2. Please pay within 10 days",
+                style: TextStyle(fontSize: 12.sp, color: AppColors.nutralBlack2, fontWeight: FontWeight.w400, fontFamily: "Poppins"),
+              ),
+              Text(
+                "3. Please pay within 10 days",
+                style: TextStyle(fontSize: 12.sp, color: AppColors.nutralBlack2, fontWeight: FontWeight.w400, fontFamily: "Poppins"),
+              ),
+              SizedBox(
+                height: 30.h,
+              ),
+              Text(
                 "Activity Logs ",
-                style: TextStyle(
-                    fontSize: 14.sp,
-                    color: AppColors.nutralBlack1,
-                    fontWeight: FontWeight.w600,
-                    fontFamily: "Poppins"),
+                style: TextStyle(fontSize: 14.sp, color: AppColors.nutralBlack1, fontWeight: FontWeight.w600, fontFamily: "Poppins"),
               ),
               SizedBox(
                 height: 16.h,
-              ),   TimelineTile(
+              ),
+              TimelineTile(
                 isFirst: true,
                 alignment: TimelineAlign.start,
                 indicatorStyle: const IndicatorStyle(
@@ -1021,8 +789,7 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
                 ),
                 beforeLineStyle: const LineStyle(color: AppColors.primaryBlue1),
                 afterLineStyle: const LineStyle(color: AppColors.primaryBlue1),
-                endChild: const Padding(
-                    padding: EdgeInsets.all(8.0), child: ActivityLogCard()),
+                endChild: const Padding(padding: EdgeInsets.all(8.0), child: ActivityLogCard()),
               ),
               TimelineTile(
                 alignment: TimelineAlign.start,
@@ -1032,8 +799,7 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
                 ),
                 beforeLineStyle: const LineStyle(color: AppColors.primaryBlue1),
                 afterLineStyle: const LineStyle(color: AppColors.primaryBlue1),
-                endChild: const Padding(
-                    padding: EdgeInsets.all(8.0), child: ActivityLogCard()),
+                endChild: const Padding(padding: EdgeInsets.all(8.0), child: ActivityLogCard()),
               ),
               TimelineTile(
                 alignment: TimelineAlign.start,
@@ -1043,8 +809,7 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
                 ),
                 beforeLineStyle: const LineStyle(color: AppColors.primaryBlue1),
                 afterLineStyle: const LineStyle(color: AppColors.primaryBlue1),
-                endChild: const Padding(
-                    padding: EdgeInsets.all(8.0), child: ActivityLogCard()),
+                endChild: const Padding(padding: EdgeInsets.all(8.0), child: ActivityLogCard()),
               ),
               TimelineTile(
                 alignment: TimelineAlign.start,
@@ -1054,8 +819,7 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
                 ),
                 beforeLineStyle: const LineStyle(color: AppColors.primaryBlue1),
                 afterLineStyle: const LineStyle(color: AppColors.greyStrokColor),
-                endChild: const Padding(
-                    padding: EdgeInsets.all(8.0), child: ActivityLogCard()),
+                endChild: const Padding(padding: EdgeInsets.all(8.0), child: ActivityLogCard()),
               ),
               TimelineTile(
                 alignment: TimelineAlign.start,
@@ -1065,8 +829,7 @@ class _ViewInvoiceScreenState extends State<ViewInvoiceScreen> {
                 ),
                 beforeLineStyle: const LineStyle(color: AppColors.greyStrokColor),
                 afterLineStyle: const LineStyle(color: AppColors.greyStrokColor),
-                endChild: const Padding(
-                    padding: EdgeInsets.all(8.0), child: ActivityLogCard()),
+                endChild: const Padding(padding: EdgeInsets.all(8.0), child: ActivityLogCard()),
               ),
               SizedBox(
                 height: 32.h,
@@ -1084,9 +847,7 @@ class ActivityLogCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-      decoration: BoxDecoration(
-        border: Border.all(color:AppColors.greyStrokColor),
-          color: Colors.white, borderRadius: BorderRadius.circular(8.r)),
+      decoration: BoxDecoration(border: Border.all(color: AppColors.greyStrokColor), color: Colors.white, borderRadius: BorderRadius.circular(8.r)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -1099,27 +860,19 @@ class ActivityLogCard extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
                 style: CustomTextStyle.commonBold,
               ),
-
             ],
           ),
-          Text(r"Payment: $40.00",
-            style: TextStyle(
-                fontSize: 12.sp,
-                color: AppColors.nutralBlack2,
-                fontWeight: FontWeight.w400,
-                fontFamily: "Poppins"),
-          ),  Text("Payment via: Bank",
-            style: TextStyle(
-                fontSize: 12.sp,
-                color: AppColors.nutralBlack2,
-                fontWeight: FontWeight.w400,
-                fontFamily: "Poppins"),
-          ), Text("18 Dec, 2023 - 08:30 PM",
-            style: TextStyle(
-                fontSize: 12.sp,
-                color: AppColors.nutralBlack2,
-                fontWeight: FontWeight.w400,
-                fontFamily: "Poppins"),
+          Text(
+            r"Payment: $40.00",
+            style: TextStyle(fontSize: 12.sp, color: AppColors.nutralBlack2, fontWeight: FontWeight.w400, fontFamily: "Poppins"),
+          ),
+          Text(
+            "Payment via: Bank",
+            style: TextStyle(fontSize: 12.sp, color: AppColors.nutralBlack2, fontWeight: FontWeight.w400, fontFamily: "Poppins"),
+          ),
+          Text(
+            "18 Dec, 2023 - 08:30 PM",
+            style: TextStyle(fontSize: 12.sp, color: AppColors.nutralBlack2, fontWeight: FontWeight.w400, fontFamily: "Poppins"),
           ),
         ],
       ),

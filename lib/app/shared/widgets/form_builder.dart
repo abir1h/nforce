@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nuforce/app/modules/line_item/models/control.dart';
 import 'package:nuforce/app/shared/widgets/custom_dropdown.dart';
+import 'package:nuforce/app/shared/widgets/custom_tags_input.dart';
 import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
 import 'package:nuforce/app/utils/colors.dart';
+import 'package:textfield_tags/textfield_tags.dart';
 
 class CustomFormBuilder {
   final List<String> fieldNames;
   final Map<String, TextEditingController> textEditingControllers;
+  final Map<String, StringTagController> stringTagControllers;
   final Map<String, void Function(Option?)?> onChanged;
   final Map<String, Option?> dropdownValue;
   final Map<String, String? Function(String?)?> validator;
@@ -17,6 +20,7 @@ class CustomFormBuilder {
   CustomFormBuilder({
     this.fieldNames = const [],
     this.textEditingControllers = const {},
+    this.stringTagControllers = const {},
     this.onChanged = const {},
     this.dropdownValue = const {},
     this.validator = const {},
@@ -27,6 +31,7 @@ class CustomFormBuilder {
   CustomFormBuilder copyWith({
     List<String>? fieldNames,
     Map<String, TextEditingController>? textEditingControllers,
+    Map<String, StringTagController>? stringTagControllers,
     Map<String, void Function(Option?)?>? onChanged,
     Map<String, Option?>? dropdownValue,
     Map<String, String? Function(String?)?>? validator,
@@ -36,6 +41,7 @@ class CustomFormBuilder {
     return CustomFormBuilder(
       fieldNames: fieldNames ?? this.fieldNames,
       textEditingControllers: textEditingControllers ?? this.textEditingControllers,
+      stringTagControllers: stringTagControllers ?? this.stringTagControllers,
       onChanged: onChanged ?? this.onChanged,
       dropdownValue: dropdownValue ?? this.dropdownValue,
       validator: validator ?? this.validator,
@@ -79,7 +85,7 @@ CustomFormBuilder getForm({List<Control>? controls}) {
               ...formBuilder.widgets,
               control.name!: CustomTextField(
                 label: control.label ?? '',
-                hint: control.label ?? '',
+                hint: control.params?.help ?? control.label ?? '',
                 controller: formBuilder.textEditingControllers[control.name!],
                 validator: formBuilder.validator[control.name!],
               ),
@@ -133,6 +139,28 @@ CustomFormBuilder getForm({List<Control>? controls}) {
               ),
             },
           );
+        case 'tagsinput':
+          formBuilder = formBuilder.copyWith(
+            fieldNames: [...formBuilder.fieldNames, control.name!],
+          );
+          formBuilder = formBuilder.copyWith(
+            stringTagControllers: {
+              ...formBuilder.stringTagControllers,
+              control.name!: StringTagController(),
+            },
+          );
+          formBuilder = formBuilder.copyWith(
+            widgets: {
+              ...formBuilder.widgets,
+              control.name!: CustomTagsInput(
+                label: control.label ?? '',
+                hint: control.params?.help ?? control.label ?? '',
+                stringTagController: formBuilder.stringTagControllers[control.name!]!,
+              ),
+            },
+          );
+          break;
+
         default:
           break;
       }

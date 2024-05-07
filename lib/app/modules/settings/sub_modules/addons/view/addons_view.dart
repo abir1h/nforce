@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/settings/views/settings_view.dart';
-
 
 import '../../../../../shared/widgets/custom_appbar_minimal.dart';
 import '../../../../../utils/colors.dart';
@@ -25,7 +23,6 @@ class _AddonsViewState extends State<AddonsView> {
       resizeToAvoidBottomInset: true,
       appBar: CustomAppbarMinimal(
         title: 'Plugins',
-
         trailing: [
           Padding(
             padding: EdgeInsets.only(right: 20.w),
@@ -53,7 +50,7 @@ class _AddonsViewState extends State<AddonsView> {
         ],
       ),
       body: Padding(
-        padding:  EdgeInsets.symmetric(horizontal: 20.w,vertical: 20.h),
+        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
         child: AddonsItems(),
       ),
     );

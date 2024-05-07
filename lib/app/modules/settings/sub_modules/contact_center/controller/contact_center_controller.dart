@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/settings/sub_modules/contact_center/models/contact_center_model.dart';
-import 'package:nuforce/app/modules/settings/sub_modules/contact_center/view/contact_center_view.dart';
 
 class ContactCenterController extends GetxController {
   ContactCenter? contactCenter;

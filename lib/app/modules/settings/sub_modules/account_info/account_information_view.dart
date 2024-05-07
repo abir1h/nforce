@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/regional_setting/widget/custom_text_block.dart';
 import 'package:nuforce/app/modules/settings/controllers/settings_controller.dart';
 import 'package:nuforce/app/modules/settings/sub_modules/account_info/account_info_edit_view.dart';
-import 'package:nuforce/app/modules/settings/views/settings_view.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/utils/colors.dart';
@@ -24,7 +23,7 @@ class _AccountInformationViewState extends State<AccountInformationView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white1,
-      appBar:  const CustomAppbarMinimal(
+      appBar: const CustomAppbarMinimal(
         title: 'Account information',
       ),
       body: GetBuilder<SettingsController>(

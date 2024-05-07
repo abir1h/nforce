@@ -43,7 +43,7 @@ class ActionsBody extends GetView<HomeController> {
             ),
             const SizedBox(height: 12),
             SizedBox(
-              height: 350,
+              height: 350.h,
               child: ListView.builder(
                 itemCount: 2,
                 shrinkWrap: true,

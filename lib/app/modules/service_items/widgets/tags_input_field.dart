@@ -32,7 +32,6 @@ class _TagsInputFieldState extends State<TagsInputField> {
     _controller = TextfieldTagsController();
   }
 
-  // static const List<String> _pickLanguage = <String>['c', 'c++', 'java', 'python', 'javascript', 'php', 'sql', 'yaml', 'gradle', 'xml', 'html', 'flutter', 'css', 'dockerfile'];
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -173,8 +172,8 @@ class _TagsInputFieldState extends State<TagsInputField> {
                           )
                         : null,
                   ),
-                  onChanged: inputFieldValues.onChanged,
-                  onSubmitted: inputFieldValues.onSubmitted,
+                  onChanged: inputFieldValues.onTagChanged,
+                  onSubmitted: inputFieldValues.onTagSubmitted,
                 );
               },
             );

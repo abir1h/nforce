@@ -1,13 +1,21 @@
 import 'package:get/get.dart';
 
+import '../modules/accounting/bindings/accounting_binding.dart';
+import '../modules/accounting/views/accounting_view.dart';
 import '../modules/activity/bindings/activity_binding.dart';
 import '../modules/activity/views/activity_view.dart';
 import '../modules/auth/bindings/auth_binding.dart';
 import '../modules/auth/views/auth_view.dart';
 import '../modules/bottom_nav_bar/bindings/bottom_nav_bar_binding.dart';
 import '../modules/bottom_nav_bar/views/bottom_nav_bar_view.dart';
+import '../modules/business_customer/bindings/business_customer_binding.dart';
+import '../modules/business_customer/views/business_customer_view.dart';
 import '../modules/business_manager/bindings/business_manager_binding.dart';
 import '../modules/business_manager/views/business_manager_view.dart';
+import '../modules/calendar/bindings/calendar_binding.dart';
+import '../modules/calendar/views/calendar_view.dart';
+import '../modules/contact/bindings/contact_binding.dart';
+import '../modules/contact/views/contact_view.dart';
 import '../modules/customer/bindings/customer_binding.dart';
 
 import '../modules/customer/customer_work_order/bindings/customer_work_order_binding.dart';
@@ -27,6 +35,8 @@ import '../modules/customer/sub_modules/customer_terms/views/customer_terms_view
 import '../modules/customer/views/customer_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/human_resource/bindings/human_resource_binding.dart';
+import '../modules/human_resource/views/human_resource_view.dart';
 import '../modules/line_item/bindings/line_item_binding.dart';
 import '../modules/line_item/views/line_item_view.dart';
 import '../modules/more/bindings/more_binding.dart';
@@ -35,6 +45,8 @@ import '../modules/new_orders/bindings/new_orders_binding.dart';
 import '../modules/new_orders/views/new_orders_view.dart';
 import '../modules/on_boarding/bindings/on_boarding_binding.dart';
 import '../modules/on_boarding/views/on_boarding_view.dart';
+import '../modules/order/bindings/order_binding.dart';
+import '../modules/order/views/order_view.dart';
 import '../modules/service_center/bindings/service_center_binding.dart';
 import '../modules/service_center/sub_modules/calendar/bindings/calendar_binding.dart';
 import '../modules/service_center/sub_modules/calendar/views/calendar_view.dart';
@@ -202,7 +214,7 @@ class AppPages {
           binding: WorkOrderSearchBinding(),
         ),
         GetPage(
-          name: _Paths.CALENDAR,
+          name: _Paths.SERVICE_CALENDAR,
           page: () => const ServiceCenterCalendarView(),
           binding: ServiceCenterCalendarBinding(),
         ),
@@ -239,6 +251,36 @@ class AppPages {
       name: _Paths.LINE_ITEM,
       page: () => const LineItemView(),
       binding: LineItemBinding(),
+    ),
+    GetPage(
+      name: _Paths.CONTACT,
+      page: () => const ContactView(),
+      binding: ContactBinding(),
+    ),
+    GetPage(
+      name: _Paths.ORDER,
+      page: () => const OrderView(),
+      binding: OrderBinding(),
+    ),
+    GetPage(
+      name: _Paths.HUMAN_RESOURCE,
+      page: () => const HumanResourceView(),
+      binding: HumanResourceBinding(),
+    ),
+    GetPage(
+      name: _Paths.CALENDAR,
+      page: () => const CalendarView(),
+      binding: CalendarBinding(),
+    ),
+    GetPage(
+      name: _Paths.ACCOUNTING,
+      page: () => const AccountingView(),
+      binding: AccountingBinding(),
+    ),
+    GetPage(
+      name: _Paths.BUSINESS_CUSTOMER,
+      page: () => const BusinessCustomerView(),
+      binding: BusinessCustomerBinding(),
     ),
   ];
 }

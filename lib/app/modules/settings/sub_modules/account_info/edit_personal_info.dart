@@ -62,7 +62,7 @@ class _PersonalInfoEditState extends State<PersonalInfoEdit> {
                       controller: controller.firstName,
                       hint: 'First Name',
                       label: 'First Name',
-                      onChange: (v) {},
+                      onChanged: (v) {},
                     ),
                     SizedBox(
                       height: 16.h,
@@ -71,7 +71,7 @@ class _PersonalInfoEditState extends State<PersonalInfoEdit> {
                       controller: controller.lastName,
                       hint: 'Last Name',
                       label: 'Last Name',
-                      onChange: (v) {},
+                      onChanged: (v) {},
                     ),
                     SizedBox(
                       height: 16.h,
@@ -80,7 +80,7 @@ class _PersonalInfoEditState extends State<PersonalInfoEdit> {
                       controller: controller.email,
                       hint: 'Email',
                       label: 'Email',
-                      onChange: (v) {},
+                      onChanged: (v) {},
                     ),
                     SizedBox(
                       height: 16.h,
@@ -114,10 +114,7 @@ class _PersonalInfoEditState extends State<PersonalInfoEdit> {
                             ),
                             border: InputBorder.none,
                             hintText: 'Enter number',
-                            hintStyle: CustomTextStyle.paragraphSmall.copyWith(
-                                fontWeight: FontWeight.w400,
-                                color: AppColors.white3,
-                                fontFamily: 'Poppins'),
+                            hintStyle: CustomTextStyle.paragraphSmall.copyWith(fontWeight: FontWeight.w400, color: AppColors.white3, fontFamily: 'Poppins'),
                           ),
                           onInputChanged: (PhoneNumber number) {
                             phoneNumber = number.phoneNumber!;
@@ -127,11 +124,9 @@ class _PersonalInfoEditState extends State<PersonalInfoEdit> {
                             trailingSpace: false,
                           ),
                           ignoreBlank: true,
-                          selectorTextStyle:
-                              const TextStyle(color: AppColors.subText),
+                          selectorTextStyle: const TextStyle(color: AppColors.subText),
                           textFieldController: controller.phoneNumber,
-                          keyboardType: const TextInputType.numberWithOptions(
-                              signed: true, decimal: true),
+                          keyboardType: const TextInputType.numberWithOptions(signed: true, decimal: true),
                           inputBorder: const OutlineInputBorder(
                             borderSide: BorderSide(color: AppColors.greyText),
                             borderRadius: BorderRadius.all(Radius.circular(6)),

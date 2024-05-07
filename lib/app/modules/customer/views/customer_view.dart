@@ -25,7 +25,6 @@ import '../../../../gen/assets.gen.dart';
 import '../../../routes/app_pages.dart';
 import '../../../utils/shared_preferences.dart';
 import '../../settings/sub_modules/notification/view/notification_view.dart';
-import '../../settings/widgets/setting_tile.dart';
 import '../sub_modules/customer_faq/views/customer_faq_view.dart';
 import '../sub_modules/customer_terms/views/customer_terms_view.dart';
 
@@ -49,12 +48,7 @@ class _CustomerViewState extends State<CustomerView> {
     );
   }
 
-  final List<String> items = <String>[
-    'All',
-    'Pending',
-    'Completed',
-    'Cancelled'
-  ];
+  final List<String> items = <String>['All', 'Pending', 'Completed', 'Cancelled'];
   String ddValue = 'All';
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -121,7 +115,8 @@ class _CustomerViewState extends State<CustomerView> {
                       color: AppColors.nutralBlack2,
                     ),
                     hasDivider: true,
-                  ), DrawerCard(
+                  ),
+                  DrawerCard(
                     leading: Assets.images.svg.paymentOptions,
                     onTap: () => Get.to<void>(() => const CustomerPaymentHistoryView()),
                     label: "Payment History",
@@ -130,7 +125,8 @@ class _CustomerViewState extends State<CustomerView> {
                       color: AppColors.nutralBlack2,
                     ),
                     hasDivider: true,
-                  ),DrawerCard(
+                  ),
+                  DrawerCard(
                     leading: Assets.images.svg.paymentOptions,
                     onTap: () => Get.to<void>(() => const CustomerLanguageView()),
                     label: "Language",
@@ -191,10 +187,7 @@ class _CustomerViewState extends State<CustomerView> {
                     },
                     child: Container(
                       padding: EdgeInsets.symmetric(vertical: 12.h),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8.r),
-                          color: Colors.white,
-                          border: Border.all(color: AppColors.primaryBlue1)),
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(8.r), color: Colors.white, border: Border.all(color: AppColors.primaryBlue1)),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -249,8 +242,7 @@ class _CustomerViewState extends State<CustomerView> {
         child: SizedBox(
           width: width,
           child: Padding(
-            padding: const EdgeInsets.symmetric(
-                horizontal: AppSizes.horizontalPadding),
+            padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
             child: Column(
               children: [
                 SizedBox(height: 20.h),
@@ -366,11 +358,7 @@ class DrawerCard extends StatelessWidget {
                       ),
                       Text(
                         label ?? '',
-                        style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontFamily: 'Poppins',
-                            fontSize: 16.sp,
-                            color: AppColors.nutralBlack1),
+                        style: TextStyle(fontWeight: FontWeight.w400, fontFamily: 'Poppins', fontSize: 16.sp, color: AppColors.nutralBlack1),
                       ),
                     ],
                   ),

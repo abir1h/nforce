@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_material_color_picker/flutter_material_color_picker.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/settings/sub_modules/branding/branding_view.dart';
 import 'package:nuforce/app/modules/settings/widgets/choose_button.dart';
 import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
@@ -102,7 +101,9 @@ class _BrandingEditState extends State<BrandingEdit> {
             const SizedBox(width: 15),
             Expanded(
               child: PrimaryButton(
-                onPressed: () {Get.back();},
+                onPressed: () {
+                  Get.back();
+                },
                 text: 'Update',
               ),
             ),
@@ -161,8 +162,7 @@ class _BrandingEditState extends State<BrandingEdit> {
               // height: 50,
               color: AppColors.textFieldBackground,
               child: Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                 decoration: BoxDecoration(
                   border: Border.all(
                     color: Colors.grey,
@@ -175,10 +175,11 @@ class _BrandingEditState extends State<BrandingEdit> {
                       child: Text(
                         colorCodeController.text,
                         style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 16.sp,
-                            fontFamily: "Poppins",
-                            color: AppColors.nutralBlack1,),
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16.sp,
+                          fontFamily: "Poppins",
+                          color: AppColors.nutralBlack1,
+                        ),
                       ),
                     ),
                     InkWell(
@@ -224,7 +225,7 @@ class _BrandingEditState extends State<BrandingEdit> {
               controller: TextEditingController(),
               hint: 'Enter brand slogan',
               label: 'Brand Slogan',
-              onChange: (v) {},
+              onChanged: (v) {},
               maxLines: 3,
             ),
           ],

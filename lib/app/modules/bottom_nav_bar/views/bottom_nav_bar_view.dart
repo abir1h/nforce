@@ -63,7 +63,7 @@ class _BottomNavBarViewState extends State<BottomNavBarView> {
           screenTransitionAnimation: const ScreenTransitionAnimation(
             animateTabTransition: true,
           ),
-          navBarStyle: NavBarStyle.style15,
+          navBarStyle: NavBarStyle.style17,
         );
       },
     );

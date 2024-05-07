@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/line_item/models/control.dart' as ctrl;
 import 'package:nuforce/app/modules/line_item/models/line_item_controller_model.dart';
 import 'package:nuforce/app/modules/line_item/services/line_item_data_repo.dart';
 import 'package:nuforce/app/shared/widgets/form_builder.dart';
@@ -39,10 +40,17 @@ class LineItemFormController extends GetxController {
     super.dispose();
   }
 
-  bool _loading = false;
-  bool get loading => _loading;
+  bool _isLoading = false;
+  bool get isLoading => _isLoading;
   void setLoading(bool value) {
-    _loading = value;
+    _isLoading = value;
+    update();
+  }
+
+  bool _formLoading = false;
+  bool get formLoading => _formLoading;
+  void setFormLoading(bool value) {
+    _formLoading = value;
     update();
   }
 
@@ -50,6 +58,11 @@ class LineItemFormController extends GetxController {
   CustomFormBuilder get formBuilder => _formBuilder;
   void setFormBuilder(CustomFormBuilder value) {
     _formBuilder = value;
+    update();
+  }
+
+  void updateOnChanged(String name, ctrl.Option? value) {
+    _formBuilder.dropdownValue[name] = value;
     update();
   }
 

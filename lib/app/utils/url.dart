@@ -12,4 +12,17 @@ class URL {
 
   // Line Item
   static const String lineItem = '$baseUrl/form/lineitem.register-form';
+  static const String lineItemFromInvoice = '$baseUrl/form/invoice.add-lineitem-form';
+  static const String lookupLineItem = '$baseUrl/action/lineitems.lookup_lineitem?query[term]=@';
+
+  // Work Order
+  static const String workOrderServiceRegion = '$baseUrl/action/services.regions';
+  static const String workOrderServicePackage = '$baseUrl/action/services.packages';
+  static const String contactLookup = '$baseUrl/action/contact.searchForContact?query[term]=@';
+  static const String contactDetails = '$baseUrl/action/contact.getContactDetails';
+  static const String createWorkOrder = '$baseUrl/action/invoice.launchEstimation';
+
+  static const String contactForm = '$baseUrl/form/contact.quick-form';
+
+  static const String staticMap = "http://maps.google.com/maps/api/staticmap?center=lat,lng&zoom=15&size=200x200&sensor=false&key=AIzaSyDinOI_yEHrib-KuJHs9JeLPl7vdf1YNhM";
 }

@@ -1,19 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/customer/customer_work_order/views/schedule_calendar_screen.dart';
 import 'package:nuforce/app/modules/customer/customer_work_order/views/schedule_map_screen.dart';
-import 'package:nuforce/app/modules/settings/widgets/text_card.dart';
 import '../../widgets/rounded_tabs.dart';
 import '../controllers/customer_work_order_controller.dart';
-import 'view_invoice_screen.dart';
-import '../../../../utils/text_styles.dart';
 import '../../../../utils/app_sizes.dart';
 import '../../../../utils/colors.dart';
-import 'package:nuforce/app/modules/customer/customer_work_order/controllers/customer_work_order_controller.dart';
-import 'package:nuforce/app/shared/widgets/custom_tabbar_filled.dart';
 import 'package:nuforce/main.dart';
 
 class ScheduleScreen extends StatefulWidget {
@@ -34,8 +27,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: AppSizes.horizontalPadding),
+              padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -46,11 +38,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                     children: [
                       Text(
                         "Schedules List",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 16.sp,
-                            fontFamily: "poppins",
-                            color: AppColors.nutralBlack1),
+                        style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16.sp, fontFamily: "poppins", color: AppColors.nutralBlack1),
                       ),
                     ],
                   ),
@@ -99,10 +87,7 @@ class ScheduleCard extends StatelessWidget {
     return GestureDetector(
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8.r),
-            color: Colors.white,
-            border: Border.all(color: AppColors.white2)),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(8.r), color: Colors.white, border: Border.all(color: AppColors.white2)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -114,37 +99,24 @@ class ScheduleCard extends StatelessWidget {
                   children: [
                     Text(
                       "Online Courses Mobile app ui kit",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 16.sp,
-                          fontFamily: "poppins",
-                          color: AppColors.nutralBlack1),
+                      style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16.sp, fontFamily: "poppins", color: AppColors.nutralBlack1),
                     ),
                     Text(
                       "Aug 31, 2023",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 14.sp,
-                          fontFamily: "poppins",
-                          color: AppColors.nutralBlack2),
+                      style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14.sp, fontFamily: "poppins", color: AppColors.nutralBlack2),
                     ),
                     SizedBox(
                       height: 8.h,
                     ),
                     Container(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 8.w, vertical: 2.h),
+                      padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 2.h),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(4.r),
                         color: AppColors.blue,
                       ),
                       child: Text(
                         "06:45 AM - 31 Aug 10:45 AM",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 12.sp,
-                            fontFamily: "Poppins",
-                            color: Colors.white),
+                        style: TextStyle(fontWeight: FontWeight.w500, fontSize: 12.sp, fontFamily: "Poppins", color: Colors.white),
                       ),
                     )
                   ],
@@ -187,8 +159,7 @@ class _TabsState extends State<Tabs> {
             children: [
               Expanded(
                 child: RoundedTabs(
-                  isSelected:
-                      controller.tabEnumSchedule == SchedulesTabEnum.calendar,
+                  isSelected: controller.tabEnumSchedule == SchedulesTabEnum.calendar,
                   onTap: () {
                     controller.updateScheduleTabEnum(SchedulesTabEnum.calendar);
                   },
@@ -199,8 +170,7 @@ class _TabsState extends State<Tabs> {
               ),
               Expanded(
                 child: RoundedTabs(
-                  isSelected:
-                      controller.tabEnumSchedule == SchedulesTabEnum.timeline,
+                  isSelected: controller.tabEnumSchedule == SchedulesTabEnum.timeline,
                   onTap: () {
                     controller.updateScheduleTabEnum(SchedulesTabEnum.timeline);
                   },
@@ -211,8 +181,7 @@ class _TabsState extends State<Tabs> {
               ),
               Expanded(
                 child: RoundedTabs(
-                  isSelected:
-                      controller.tabEnumSchedule == SchedulesTabEnum.map,
+                  isSelected: controller.tabEnumSchedule == SchedulesTabEnum.map,
                   onTap: () {
                     controller.updateScheduleTabEnum(SchedulesTabEnum.map);
                   },

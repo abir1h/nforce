@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
-import 'package:nuforce/app/modules/settings/views/settings_view.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/shared/widgets/custom_checkbox.dart';
 import 'package:nuforce/app/shared/widgets/custom_dropdown.dart';
@@ -33,7 +32,6 @@ class _AddPaymentState extends State<AddPayment> {
       resizeToAvoidBottomInset: true,
       appBar: const CustomAppbarMinimal(
         title: 'Add Payment',
-
       ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
@@ -188,7 +186,7 @@ class _AddPaymentState extends State<AddPayment> {
               controller: TextEditingController(),
               hint: 'Enter bank name',
               label: 'Bank Name',
-              onChange: (v) {},
+              onChanged: (v) {},
             ),
             SizedBox(
               height: 16.h,
@@ -197,7 +195,7 @@ class _AddPaymentState extends State<AddPayment> {
               controller: TextEditingController(),
               hint: 'Enter account no',
               label: 'Account No',
-              onChange: (v) {},
+              onChanged: (v) {},
             ),
             SizedBox(
               height: 16.h,
@@ -294,7 +292,7 @@ class _AddPaymentState extends State<AddPayment> {
               hint: 'Write details',
               label: 'Additional Details',
               maxLines: 4,
-              onChange: (v) {},
+              onChanged: (v) {},
             ),
             SizedBox(
               height: 8.h,
