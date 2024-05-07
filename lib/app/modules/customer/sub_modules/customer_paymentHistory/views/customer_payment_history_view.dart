@@ -1,18 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/settings/widgets/expanded_list.dart';
 
 import '../../../../../shared/widgets/custom_appbar_minimal.dart';
 import '../../../../../utils/colors.dart';
 import '../../../../../utils/text_styles.dart';
 import '../controllers/customer_payment_history_controller.dart';
 
-class CustomerPaymentHistoryView
-    extends GetView<CustomerPaymentHistoryController> {
+class CustomerPaymentHistoryView extends GetView<CustomerPaymentHistoryController> {
   const CustomerPaymentHistoryView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -24,9 +19,9 @@ class CustomerPaymentHistoryView
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(20.w),
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         child: ListView.separated(
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (_, index) {
             return const PayentHistoryCard(
               accountId: 'AC123456',
@@ -54,15 +49,7 @@ class CustomerPaymentHistoryView
 class PayentHistoryCard extends StatelessWidget {
   final String accountId, invoiceId, status, ref, payer, method;
   final int ammount;
-  const PayentHistoryCard(
-      {super.key,
-      required this.accountId,
-      required this.invoiceId,
-      required this.status,
-      required this.ref,
-      required this.payer,
-      required this.method,
-      required this.ammount});
+  const PayentHistoryCard({super.key, required this.accountId, required this.invoiceId, required this.status, required this.ref, required this.payer, required this.method, required this.ammount});
 
   @override
   Widget build(BuildContext context) {
@@ -124,8 +111,7 @@ class PayentHistoryCard extends StatelessWidget {
                     Text(
                       'Ref',
                       overflow: TextOverflow.ellipsis,
-                      style:
-                          CustomTextStyle.commonLabel.copyWith(fontSize: 12.sp),
+                      style: CustomTextStyle.commonLabel.copyWith(fontSize: 12.sp),
                     ),
                     Text(
                       ref,
@@ -148,8 +134,7 @@ class PayentHistoryCard extends StatelessWidget {
                     Text(
                       'Payer',
                       overflow: TextOverflow.ellipsis,
-                      style:
-                          CustomTextStyle.commonLabel.copyWith(fontSize: 12.sp),
+                      style: CustomTextStyle.commonLabel.copyWith(fontSize: 12.sp),
                     ),
                     Text(
                       payer,
@@ -170,8 +155,7 @@ class PayentHistoryCard extends StatelessWidget {
                   Text(
                     'Method',
                     overflow: TextOverflow.ellipsis,
-                    style:
-                        CustomTextStyle.commonLabel.copyWith(fontSize: 12.sp),
+                    style: CustomTextStyle.commonLabel.copyWith(fontSize: 12.sp),
                   ),
                   Text(
                     method,

@@ -1,14 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:nuforce/app/modules/settings/widgets/expanded_list.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 import '../../../../shared/widgets/custom_dropdown.dart';
 import '../../../../utils/text_styles.dart';
-import '../../../service_center/sub_modules/work_order_view/sub_modules/over_view/views/edit_work_order.dart';
-
 import '../../../../utils/app_sizes.dart';
 import '../../../../utils/colors.dart';
 import '../../widgets/view_map_bottomsheet.dart';
@@ -25,8 +21,7 @@ class _LocationScreenState extends State<LocationScreen> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:
-          const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
+      padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -36,16 +31,10 @@ class _LocationScreenState extends State<LocationScreen> {
               Expanded(
                 child: Text(
                   "Address",
-                  style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16.sp,
-                      fontFamily: "poppins",
-                      color: AppColors.nutralBlack1),
+                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16.sp, fontFamily: "poppins", color: AppColors.nutralBlack1),
                 ),
               ),
-              SizedBox(
-                width: 100,
-              ),
+              const SizedBox(width: 100),
               Expanded(
                 child: CustomDropdownButton(
                   items: const [
@@ -78,7 +67,22 @@ class _LocationScreenState extends State<LocationScreen> {
           SizedBox(
             height: 16.h,
           ),
-          LocationCard(),SizedBox(height: 16.h,),  LocationCard(),SizedBox(height: 16.h,),  LocationCard(),SizedBox(height: 16.h,),  LocationCard(),SizedBox(height: 32.h,),
+          LocationCard(),
+          SizedBox(
+            height: 16.h,
+          ),
+          LocationCard(),
+          SizedBox(
+            height: 16.h,
+          ),
+          LocationCard(),
+          SizedBox(
+            height: 16.h,
+          ),
+          LocationCard(),
+          SizedBox(
+            height: 32.h,
+          ),
         ],
       ),
     );
@@ -91,15 +95,13 @@ class LocationCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: ()=>showCupertinoModalPopup<void>(
+      onTap: () => showCupertinoModalPopup<void>(
         context: context,
         builder: (context) => const ViewMapBottomSheet(),
       ),
       child: Container(
         padding: EdgeInsets.all(10.h),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16.r),
-            border: Border.all(color: AppColors.greyStrokColor, width: 1.w)),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(16.r), border: Border.all(color: AppColors.greyStrokColor, width: 1.w)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -123,11 +125,7 @@ class LocationCard extends StatelessWidget {
                 Expanded(
                   child: Text(
                     "12 Lafayetter Ave, Ossining, NY 10562, USA",
-                    style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 16.sp,
-                        fontFamily: "poppins",
-                        color: AppColors.nutralBlack1),
+                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16.sp, fontFamily: "poppins", color: AppColors.nutralBlack1),
                   ),
                 ),
                 PopupMenuButton(
@@ -142,27 +140,15 @@ class LocationCard extends StatelessWidget {
             ),
             Text(
               "Contractor",
-              style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 14.sp,
-                  fontFamily: "poppins",
-                  color: AppColors.nutralBlack2),
+              style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14.sp, fontFamily: "poppins", color: AppColors.nutralBlack2),
             ),
             Text(
               "taylor333@gmail.com",
-              style: TextStyle(
-                  fontWeight: FontWeight.w400,
-                  fontSize: 14.sp,
-                  fontFamily: "poppins",
-                  color: AppColors.nutralBlack2),
+              style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14.sp, fontFamily: "poppins", color: AppColors.nutralBlack2),
             ),
             Text(
               "+6316056575",
-              style: TextStyle(
-                  fontWeight: FontWeight.w400,
-                  fontSize: 14.sp,
-                  fontFamily: "poppins",
-                  color: AppColors.nutralBlack2),
+              style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14.sp, fontFamily: "poppins", color: AppColors.nutralBlack2),
             ),
           ],
         ),
@@ -170,7 +156,7 @@ class LocationCard extends StatelessWidget {
     );
   }
 
-  List<PopupMenuEntry<int>> popupMenuItems = [
+  final List<PopupMenuEntry<int>> popupMenuItems = [
     PopupMenuItem<int>(
       value: 1,
       child: Row(
