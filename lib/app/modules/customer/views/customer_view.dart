@@ -8,6 +8,8 @@ import 'package:nuforce/app/model/user_card_model.dart';
 import 'package:nuforce/app/modules/customer/customer_work_order/providers/work_order_provider.dart';
 import 'package:nuforce/app/modules/customer/customer_work_order/views/work_order_details_view.dart';
 import 'package:nuforce/app/modules/customer/sub_modules/customer_aboutUs/views/customer_about_us_view.dart';
+import 'package:nuforce/app/modules/customer/sub_modules/customer_language/views/customer_language_view.dart';
+import 'package:nuforce/app/modules/customer/sub_modules/customer_paymentHistory/views/customer_payment_history_view.dart';
 import 'package:nuforce/app/modules/customer/sub_modules/customer_profile/views/customer_profile_view.dart';
 import 'package:nuforce/app/modules/customer/widgets/customer_work_order_tile.dart';
 import 'package:nuforce/app/modules/service_items/widgets/search_widget.dart';
@@ -66,156 +68,176 @@ class _CustomerViewState extends State<CustomerView> {
           child: Container(
             padding: EdgeInsets.all(16.h),
             decoration: const BoxDecoration(color: Colors.white),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                DrawerCard(
-                  leading: Assets.images.svg.home0,
-                  onTap: () {},
-                  label: "Home",
-                  action: const Icon(
-                    Icons.arrow_forward_ios,
-                    color: AppColors.nutralBlack2,
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  DrawerCard(
+                    leading: Assets.images.svg.home0,
+                    onTap: () {},
+                    label: "Home",
+                    action: const Icon(
+                      Icons.arrow_forward_ios,
+                      color: AppColors.nutralBlack2,
+                    ),
+                    hasDivider: true,
                   ),
-                  hasDivider: true,
-                ),
-                DrawerCard(
-                  leading: Assets.images.svg.stack,
-                  onTap: () {},
-                  label: "Wor Order",
-                  action: const Icon(
-                    Icons.arrow_forward_ios,
-                    color: AppColors.nutralBlack2,
+                  DrawerCard(
+                    leading: Assets.images.svg.stack,
+                    onTap: () {},
+                    label: "Wor Order",
+                    action: const Icon(
+                      Icons.arrow_forward_ios,
+                      color: AppColors.nutralBlack2,
+                    ),
+                    hasDivider: true,
                   ),
-                  hasDivider: true,
-                ),
-                DrawerCard(
-                  leading: Assets.images.svg.myProfile,
-                  onTap: () => Get.to<void>(() => const CustomerProfileView()),
-                  label: "My profile",
-                  action: const Icon(
-                    Icons.arrow_forward_ios,
-                    color: AppColors.nutralBlack2,
+                  DrawerCard(
+                    leading: Assets.images.svg.myProfile,
+                    onTap: () => Get.to<void>(() => const CustomerProfileView()),
+                    label: "My profile",
+                    action: const Icon(
+                      Icons.arrow_forward_ios,
+                      color: AppColors.nutralBlack2,
+                    ),
+                    hasDivider: true,
                   ),
-                  hasDivider: true,
-                ),
-                DrawerCard(
-                  leading: Assets.images.svg.notificationIcon,
-                  onTap: () => Get.to<void>(() => const NotificationView()),
-                  label: "Notifications",
-                  action: const Icon(
-                    Icons.arrow_forward_ios,
-                    color: AppColors.nutralBlack2,
+                  DrawerCard(
+                    leading: Assets.images.svg.notificationIcon,
+                    onTap: () => Get.to<void>(() => const NotificationView()),
+                    label: "Notifications",
+                    action: const Icon(
+                      Icons.arrow_forward_ios,
+                      color: AppColors.nutralBlack2,
+                    ),
+                    hasDivider: true,
                   ),
-                  hasDivider: true,
-                ),
-                DrawerCard(
-                  leading: Assets.images.svg.constultation,
-                  onTap: () {},
-                  label: "Quick consultation",
-                  action: const Icon(
-                    Icons.arrow_forward_ios,
-                    color: AppColors.nutralBlack2,
+                  DrawerCard(
+                    leading: Assets.images.svg.constultation,
+                    onTap: () {},
+                    label: "Quick consultation",
+                    action: const Icon(
+                      Icons.arrow_forward_ios,
+                      color: AppColors.nutralBlack2,
+                    ),
+                    hasDivider: true,
+                  ), DrawerCard(
+                    leading: Assets.images.svg.paymentOptions,
+                    onTap: () => Get.to<void>(() => const CustomerPaymentHistoryView()),
+                    label: "Payment History",
+                    action: const Icon(
+                      Icons.arrow_forward_ios,
+                      color: AppColors.nutralBlack2,
+                    ),
+                    hasDivider: true,
+                  ),DrawerCard(
+                    leading: Assets.images.svg.paymentOptions,
+                    onTap: () => Get.to<void>(() => const CustomerLanguageView()),
+                    label: "Language",
+                    action: const Icon(
+                      Icons.arrow_forward_ios,
+                      color: AppColors.nutralBlack2,
+                    ),
+                    hasDivider: true,
                   ),
-                  hasDivider: true,
-                ),
-                DrawerCard(
-                  leading: Assets.images.svg.faq,
-                  onTap: () => Get.to<void>(() => const CustomerFaqView()),
-                  label: "FAQs",
-                  action: const Icon(
-                    Icons.arrow_forward_ios,
-                    color: AppColors.nutralBlack2,
+                  DrawerCard(
+                    leading: Assets.images.svg.faq,
+                    onTap: () => Get.to<void>(() => const CustomerFaqView()),
+                    label: "FAQs",
+                    action: const Icon(
+                      Icons.arrow_forward_ios,
+                      color: AppColors.nutralBlack2,
+                    ),
+                    hasDivider: true,
                   ),
-                  hasDivider: true,
-                ),
-                DrawerCard(
-                  leading: Assets.images.svg.chat,
-                  onTap: () => Get.to<void>(() => const ChatScreen()),
-                  label: "Chat with us",
-                  action: const Icon(
-                    Icons.arrow_forward_ios,
-                    color: AppColors.nutralBlack2,
+                  DrawerCard(
+                    leading: Assets.images.svg.chat,
+                    onTap: () => Get.to<void>(() => const ChatScreen()),
+                    label: "Chat with us",
+                    action: const Icon(
+                      Icons.arrow_forward_ios,
+                      color: AppColors.nutralBlack2,
+                    ),
+                    hasDivider: true,
                   ),
-                  hasDivider: true,
-                ),
-                DrawerCard(
-                  leading: Assets.images.svg.info,
-                  onTap: () => Get.to<void>(() => const CustomerAboutUsView()),
-                  label: "About Us",
-                  action: const Icon(
-                    Icons.arrow_forward_ios,
-                    color: AppColors.nutralBlack2,
+                  DrawerCard(
+                    leading: Assets.images.svg.info,
+                    onTap: () => Get.to<void>(() => const CustomerAboutUsView()),
+                    label: "About Us",
+                    action: const Icon(
+                      Icons.arrow_forward_ios,
+                      color: AppColors.nutralBlack2,
+                    ),
+                    hasDivider: true,
                   ),
-                  hasDivider: true,
-                ),
-                DrawerCard(
-                  leading: Assets.images.svg.terms,
-                  onTap: () => Get.to<void>(() => const CustomerTermsView()),
-                  label: "Terms & Conditions ",
-                  action: const Icon(
-                    Icons.arrow_forward_ios,
-                    color: AppColors.nutralBlack2,
+                  DrawerCard(
+                    leading: Assets.images.svg.terms,
+                    onTap: () => Get.to<void>(() => const CustomerTermsView()),
+                    label: "Terms & Conditions ",
+                    action: const Icon(
+                      Icons.arrow_forward_ios,
+                      color: AppColors.nutralBlack2,
+                    ),
+                    hasDivider: true,
                   ),
-                  hasDivider: true,
-                ),
-                SizedBox(
-                  height: 24.h,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    SharedPreferenceService.clear();
-                    Get.offAllNamed<void>(Routes.AUTH);
-                    Fluttertoast.showToast(msg: 'Logged out');
-                  },
-                  child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 12.h),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8.r),
-                        color: Colors.white,
-                        border: Border.all(color: AppColors.primaryBlue1)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          Assets.images.png.logout.keyName,
-                          height: 24.r,
-                          width: 24.r,
-                        ),
-                        SizedBox(
-                          width: 8.w,
-                        ),
-                        Text(
-                          'Logout',
-                          style: TextStyle(
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w600,
-                            fontSize: 16.sp,
-                            color: AppColors.primaryBlue1,
+                  SizedBox(
+                    height: 24.h,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      SharedPreferenceService.clear();
+                      Get.offAllNamed<void>(Routes.AUTH);
+                      Fluttertoast.showToast(msg: 'Logged out');
+                    },
+                    child: Container(
+                      padding: EdgeInsets.symmetric(vertical: 12.h),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8.r),
+                          color: Colors.white,
+                          border: Border.all(color: AppColors.primaryBlue1)),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            Assets.images.png.logout.keyName,
+                            height: 24.r,
+                            width: 24.r,
                           ),
-                        ),
-                      ],
+                          SizedBox(
+                            width: 8.w,
+                          ),
+                          Text(
+                            'Logout',
+                            style: TextStyle(
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w600,
+                              fontSize: 16.sp,
+                              color: AppColors.primaryBlue1,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: 8.h,
-                ),
-                Center(
-                  child: Text(
-                    'Version : 1.0.0',
-                    style: TextStyle(
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w500,
-                      fontSize: 14.sp,
-                      color: AppColors.greyText,
+                  SizedBox(
+                    height: 8.h,
+                  ),
+                  Center(
+                    child: Text(
+                      'Version : 1.0.0',
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14.sp,
+                        color: AppColors.greyText,
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: 32.h,
-                ),
-              ],
+                  SizedBox(
+                    height: 32.h,
+                  ),
+                ],
+              ),
             ),
           ),
         ),

@@ -39,6 +39,9 @@ abstract class Routes {
   static const CUSTOMER_FAQ = _Paths.CUSTOMER + _Paths.CUSTOMER_FAQ;
   static const CUSTOMER_TERMS = _Paths.CUSTOMER + _Paths.CUSTOMER_TERMS;
   static const CUSTOMER_ABOUT_US = _Paths.CUSTOMER + _Paths.CUSTOMER_ABOUT_US;
+  static const CUSTOMER_PAYMENT_HISTORY =
+      _Paths.CUSTOMER + _Paths.CUSTOMER_PAYMENT_HISTORY;
+  static const CUSTOMER_LANGUAGE = _Paths.CUSTOMER + _Paths.CUSTOMER_LANGUAGE;
 }
 
 abstract class _Paths {
@@ -73,4 +76,6 @@ abstract class _Paths {
   static const CUSTOMER_FAQ = '/customer-faq';
   static const CUSTOMER_TERMS = '/customer-terms';
   static const CUSTOMER_ABOUT_US = '/customer-about-us';
+  static const CUSTOMER_PAYMENT_HISTORY = '/customer-payment-history';
+  static const CUSTOMER_LANGUAGE = '/customer-language';
 }

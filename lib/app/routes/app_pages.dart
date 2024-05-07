@@ -9,12 +9,17 @@ import '../modules/bottom_nav_bar/views/bottom_nav_bar_view.dart';
 import '../modules/business_manager/bindings/business_manager_binding.dart';
 import '../modules/business_manager/views/business_manager_view.dart';
 import '../modules/customer/bindings/customer_binding.dart';
+
 import '../modules/customer/customer_work_order/bindings/customer_work_order_binding.dart';
 import '../modules/customer/customer_work_order/views/customer_work_order_view.dart';
 import '../modules/customer/sub_modules/customer_aboutUs/bindings/customer_about_us_binding.dart';
 import '../modules/customer/sub_modules/customer_aboutUs/views/customer_about_us_view.dart';
 import '../modules/customer/sub_modules/customer_faq/bindings/customer_faq_binding.dart';
 import '../modules/customer/sub_modules/customer_faq/views/customer_faq_view.dart';
+import '../modules/customer/sub_modules/customer_language/bindings/customer_language_binding.dart';
+import '../modules/customer/sub_modules/customer_language/views/customer_language_view.dart';
+import '../modules/customer/sub_modules/customer_paymentHistory/bindings/customer_payment_history_binding.dart';
+import '../modules/customer/sub_modules/customer_paymentHistory/views/customer_payment_history_view.dart';
 import '../modules/customer/sub_modules/customer_profile/bindings/customer_profile_binding.dart';
 import '../modules/customer/sub_modules/customer_profile/views/customer_profile_view.dart';
 import '../modules/customer/sub_modules/customer_terms/bindings/customer_terms_binding.dart';
@@ -163,6 +168,16 @@ class AppPages {
           name: _Paths.CUSTOMER_ABOUT_US,
           page: () => const CustomerAboutUsView(),
           binding: CustomerAboutUsBinding(),
+        ),
+        GetPage(
+          name: _Paths.CUSTOMER_PAYMENT_HISTORY,
+          page: () => const CustomerPaymentHistoryView(),
+          binding: CustomerPaymentHistoryBinding(),
+        ),
+        GetPage(
+          name: _Paths.CUSTOMER_LANGUAGE,
+          page: () => const CustomerLanguageView(),
+          binding: CustomerLanguageBinding(),
         ),
       ],
     ),
