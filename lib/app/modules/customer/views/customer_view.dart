@@ -351,7 +351,7 @@ class DrawerCard extends StatelessWidget {
                       SvgPicture.asset(
                         leading,
                         height: 24.r,
-                        width: 24.r,
+                        width: 24.r,color: AppColors.greyText,
                       ),
                       SizedBox(
                         width: 8.w,
