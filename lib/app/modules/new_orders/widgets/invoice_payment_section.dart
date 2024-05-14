@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/new_orders/controllers/invoice_controller.dart';
+import 'package:nuforce/app/modules/new_orders/views/payment_options_controller.dart';
 import 'package:nuforce/app/modules/new_orders/widgets/take_payment_bottomsheet.dart';
 import 'package:nuforce/app/shared/widgets/details_with_header_skleton.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/datetime_custom_func.dart';
 import 'package:nuforce/app/utils/extension_methods.dart';
+import 'package:nuforce/gen/assets.gen.dart';
 
 class InvoicePaymentSection extends StatefulWidget {
   const InvoicePaymentSection({
@@ -22,10 +23,23 @@ class InvoicePaymentSection extends StatefulWidget {
 class _InvoicePaymentSectionState extends State<InvoicePaymentSection> {
   final expandableController = ExpandableController(initialExpanded: true);
   @override
+  void initState() {
+    super.initState();
+    if (Get.isRegistered<PaymentOptionsController>()) {
+      Get.find<PaymentOptionsController>();
+    } else {
+      Get.put(PaymentOptionsController());
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return GetBuilder<InvoiceController>(
+    return GetBuilder<PaymentOptionsController>(
       builder: (controller) {
-        if (controller.selectedPaymentMethod == null) {
+        if (controller.isLoading) {
+          const SizedBox.shrink();
+        }
+        if (controller.selectedPaymentOption == null) {
           return const InvoiceEmptyPaymentView();
         } else {
           return DetailsWithHeaderSkleton(
@@ -63,23 +77,23 @@ class _InvoicePaymentSectionState extends State<InvoicePaymentSection> {
                           color: AppColors.primaryBlue3,
                           borderRadius: BorderRadius.circular(6.r),
                         ),
-                        child: SvgPicture.asset(controller.selectedPaymentMethod!.paymentMethodSvgIcon),
+                        child: SvgPicture.asset(Assets.images.svg.paymentOptions),
                       ),
                       10.w.hSpace,
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            controller.selectedPaymentMethod!.paymentMethodType.name.toTitleCase(),
+                            controller.selectedPaymentOption?.name?.toTitleCase() ?? '',
                             style: TextStyle(
                               color: AppColors.nutralBlack1,
                               fontSize: 14.sp,
                               fontWeight: FontWeight.w500,
                             ),
                           ),
-                          if (controller.selectedPaymentMethod!.cardNumber != null)
+                          if (controller.selectedPaymentOption?.accountId != null)
                             Text(
-                              '${controller.selectedPaymentMethod!.cardNumber}',
+                              '${controller.selectedPaymentOption?.accountId}',
                               style: TextStyle(
                                 color: AppColors.nutralBlack2,
                                 fontSize: 12.sp,
@@ -93,7 +107,7 @@ class _InvoicePaymentSectionState extends State<InvoicePaymentSection> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            controller.selectedPaymentMethod!.amount,
+                            controller.selectedPaymentOption?.name ?? '',
                             style: TextStyle(
                               color: AppColors.nutralBlack1,
                               fontSize: 14.sp,
@@ -101,7 +115,7 @@ class _InvoicePaymentSectionState extends State<InvoicePaymentSection> {
                             ),
                           ),
                           Text(
-                            DatetimeCustomFunc.getDashedDate(controller.selectedPaymentMethod!.date),
+                            DatetimeCustomFunc.getDashedDate(DateTime.now()),
                             style: TextStyle(
                               color: AppColors.nutralBlack2,
                               fontSize: 12.sp,
@@ -116,17 +130,17 @@ class _InvoicePaymentSectionState extends State<InvoicePaymentSection> {
                 16.h.vSpace,
                 LeftRightText(
                   textKey: 'Due Date:',
-                  textValue: DatetimeCustomFunc.getFormattedDate(controller.selectedPaymentMethod!.dueDate),
+                  textValue: DatetimeCustomFunc.getFormattedDate(DateTime.now()),
                 ),
                 8.h.vSpace,
                 LeftRightText(
                   textKey: 'Remaining Amount:',
-                  textValue: controller.selectedPaymentMethod!.remainingAmount,
+                  textValue: '1000',
                 ),
                 8.h.vSpace,
                 LeftRightText(
                   textKey: 'Payment terms:',
-                  textValue: controller.selectedPaymentMethod!.paymentTerm,
+                  textValue: 'Due on receipt',
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -134,6 +148,7 @@ class _InvoicePaymentSectionState extends State<InvoicePaymentSection> {
                     TextButton(
                       onPressed: () {
                         showModalBottomSheet(
+                          isScrollControlled: true,
                           shape: const RoundedRectangleBorder(
                             borderRadius: BorderRadius.vertical(
                               top: Radius.circular(30),
@@ -240,6 +255,7 @@ class InvoiceEmptyPaymentView extends StatelessWidget {
             onPressed: () {
               showModalBottomSheet(
                 context: context,
+                isScrollControlled: true,
                 shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.vertical(
                     top: Radius.circular(30),
