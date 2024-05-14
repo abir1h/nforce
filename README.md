@@ -7,6 +7,9 @@ Welcome to the nuforce project! This project is a mobile application that allows
 ### Flutter Version
  - Channel stable - `3.19.3`
 
+### Dart SDK Version
+ - 3.3.4 (stable)
+
 ### Java Version
 - java 17.0.9 2023-10-17 LTS
 - Java(TM) SE Runtime Environment (build 17.0.9+11-LTS-201)

@@ -5,6 +5,7 @@ import 'package:nuforce/app/model/card_model.dart';
 import 'package:nuforce/app/model/line_item_model.dart';
 import 'package:nuforce/app/modules/new_orders/models/payment_method_model.dart';
 import 'package:nuforce/app/modules/new_orders/models/work_order_success_model.dart';
+import 'package:nuforce/app/modules/new_orders/views/payment_options_controller.dart';
 import 'package:nuforce/app/shared/functions/image_picker_func.dart';
 import 'package:nuforce/app/utils/colors.dart';
 
@@ -13,6 +14,12 @@ class InvoiceController extends GetxController {
   void onInit() {
     super.onInit();
     getInvoice();
+  }
+
+  @override
+  void dispose() {
+    Get.delete<PaymentOptionsController>();
+    super.dispose();
   }
 
   void getInvoice() {
@@ -95,7 +102,6 @@ class InvoiceController extends GetxController {
     _selectedAgent = agent;
     update();
   }
-
 
   PaymentMethodModel? _selectedPaymentMethod;
   PaymentMethodModel? get selectedPaymentMethod => _selectedPaymentMethod;

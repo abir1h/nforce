@@ -7,7 +7,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>NuForce</string>
+	<string>Nuforce</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -27,9 +27,14 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Your location allows us to show live position on maps so you can prepare travel itinerary for service locations</string>
+	<string>We need your location to show the distance between you and the customers.</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -51,15 +56,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Your microphone access is used to take audio notes and uploading audio attachments</string>
-	<key>NSCameraUsageDescription</key>
-	<string>Your camera access is used for uploading images</string>
-	<key>NSLocationUsageDescription</key>
-	<string>Your location access needed to notify near by colleagues about active service job</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Your photo library access needed for saving and uploading images</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Your location allows us to show live position on maps so you can prepare travel itinerary for service locations</string>
 </dict>
 </plist>

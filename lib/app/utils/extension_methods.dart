@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
-extension TitleCase on String {
+extension TitleCase on String? {
   String toTitleCase() {
-    return this[0].toUpperCase() + substring(1);
+    if (this == null) return '';
+    return this![0].toUpperCase() + this!.substring(1);
   }
 }
 
