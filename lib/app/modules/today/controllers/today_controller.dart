@@ -4,6 +4,7 @@ import 'package:nuforce/app/utils/colors.dart';
 
 class TodayController extends GetxController {}
 
+// Mock Data
 final List<MockEvents> mockEvents = [
   MockEvents(
     id: 1,

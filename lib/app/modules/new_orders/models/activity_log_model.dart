@@ -48,25 +48,17 @@ class ActivityLogDataModel {
         columns: columns ?? this.columns,
       );
 
-  factory ActivityLogDataModel.fromJson(Map<String, dynamic> json) =>
-      ActivityLogDataModel(
+  factory ActivityLogDataModel.fromJson(Map<String, dynamic> json) => ActivityLogDataModel(
         page: json["page"],
         limit: json["limit"],
         totalCount: json["totalCount"],
         pageCount: json["pageCount"],
         nextPage: json["nextPage"],
         prevPage: json["prevPage"],
-        pageChunks: json["pageChunks"] == null
-            ? []
-            : List<int>.from(json["pageChunks"].map((x) => x)),
-        data: json["data"] == null
-            ? []
-            : List<ActivityListData>.from(
-                json["data"].map((x) => ActivityListData.fromJson(x))),
+        pageChunks: json["pageChunks"] == null ? [] : List<int>.from(json["pageChunks"].map((x) => x)),
+        data: json["data"] == null ? [] : List<ActivityListData>.from(json["data"].map((x) => ActivityListData.fromJson(x))),
         count: json["count"],
-        columns: json["columns"] == null
-            ? []
-            : List<column>.from(json["columns"].map((x) => column.fromJson(x))),
+        columns: json["columns"] == null ? [] : List<column>.from(json["columns"].map((x) => column.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -91,22 +83,9 @@ class column {
   final String name;
   final String description;
 
-  column(
-      {required this.key,
-      required this.hidden,
-      required this.label,
-      required this.order,
-      required this.name,
-      required this.description});
+  column({required this.key, required this.hidden, required this.label, required this.order, required this.name, required this.description});
 
-  column copyWith(
-          {String? key,
-          bool? hidden,
-          String? label,
-          int? order,
-          String? name,
-          String? description}) =>
-      column(
+  column copyWith({String? key, bool? hidden, String? label, int? order, String? name, String? description}) => column(
         key: key ?? this.key,
         hidden: hidden ?? this.hidden,
         label: label ?? this.label,
@@ -240,35 +219,31 @@ class ActivityListData {
         updatedAt: updatedAt ?? this.updatedAt,
       );
 
-  factory ActivityListData.fromJson(Map<String, dynamic> json) =>
-      ActivityListData(
-        id: json["id"]??-1,
-        businessId: json["businessId"]??-1,
-        userId: json["userId"]??-1,
-        owner: json["owner"]??"",
-        context: json["context"]??"",
-        action: json["action"]??"",
-        resulted: json["resulted"]??"",
-        description: json["description"]??"",
-        affectedObjectType: json["affectedObjectType"]??"",
-        affectedObjectId: json["affectedObjectId"]??-1,
-        priority: json["priority"??""],
-        data: json["data"] == null
-        ? null :Data.fromJson(json["data"]),
-        details:json["data"] == null
-            ? null: Details.fromJson(json["details"]),
-        detailsOwnerName: json["detailsOwnerName"]??"",
-        detailsDisplayName: json["detailsDisplayName"]??"",
-        detailsBusinessName: json["detailsBusinessName"]??"",
-        detailsOrgCode: json["detailsOrgCode"??""],
-        detailsUserName: json["detailsUserName"]??"",
-        url: json["url"]??"",
+  factory ActivityListData.fromJson(Map<String, dynamic> json) => ActivityListData(
+        id: json["id"] ?? -1,
+        businessId: json["businessId"] ?? -1,
+        userId: json["userId"] ?? -1,
+        owner: json["owner"] ?? "",
+        context: json["context"] ?? "",
+        action: json["action"] ?? "",
+        resulted: json["resulted"] ?? "",
+        description: json["description"] ?? "",
+        affectedObjectType: json["affectedObjectType"] ?? "",
+        affectedObjectId: json["affectedObjectId"] ?? -1,
+        priority: json["priority"] ?? '',
+        data: json["data"] == null ? null : Data.fromJson(json["data"]),
+        details: json["data"] == null ? null : Details.fromJson(json["details"]),
+        detailsOwnerName: json["detailsOwnerName"] ?? "",
+        detailsDisplayName: json["detailsDisplayName"] ?? "",
+        detailsBusinessName: json["detailsBusinessName"] ?? "",
+        detailsOrgCode: json["detailsOrgCode"] ?? '',
+        detailsUserName: json["detailsUserName"] ?? "",
+        url: json["url"] ?? "",
         logDate: DateTime.parse(json["logDate"]),
         logAt: DateTime.parse(json["logAt"]),
-        previousState:json["data"] == null
-            ? null: PreviousState.fromJson(json["previous_state"]),
-        createdAt: json["createdAt"]??"",
-        updatedAt: json["updatedAt"]??"",
+        previousState: json["data"] == null ? null : PreviousState.fromJson(json["previous_state"]),
+        createdAt: json["createdAt"] ?? "",
+        updatedAt: json["updatedAt"] ?? "",
       );
 
   Map<String, dynamic> toJson() => {
@@ -291,8 +266,7 @@ class ActivityListData {
         "detailsOrgCode": detailsOrgCode,
         "detailsUserName": detailsUserName,
         "url": url,
-        "logDate":
-            "${logDate.year.toString().padLeft(4, '0')}-${logDate.month.toString().padLeft(2, '0')}-${logDate.day.toString().padLeft(2, '0')}",
+        "logDate": "${logDate.year.toString().padLeft(4, '0')}-${logDate.month.toString().padLeft(2, '0')}-${logDate.day.toString().padLeft(2, '0')}",
         "logAt": logAt.toIso8601String(),
         "previous_state": previousState?.toJson(),
         "createdAt": createdAt,

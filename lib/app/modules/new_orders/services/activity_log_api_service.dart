@@ -1,7 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:nuforce/app/modules/new_orders/models/activity_log_model.dart';
-
-import '../../../model/business_manager/role_model.dart';
 import '../../../utils/api_client.dart';
 import '../../../utils/url.dart';
 

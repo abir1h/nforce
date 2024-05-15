@@ -31,6 +31,7 @@ class _TodayViewState extends State<TodayView> {
   void initState() {
     super.initState();
     todayController = Get.put(TodayController());
+
     expandableController.addListener(() {
       if (expandableController.expanded) {
         isExpanded = true;

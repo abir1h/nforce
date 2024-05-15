@@ -1,10 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:logger/logger.dart';
 import 'package:nuforce/app/model/agents_model.dart';
 import 'package:nuforce/app/model/card_model.dart';
 import 'package:nuforce/app/model/line_item_model.dart';
+import 'package:nuforce/app/modules/new_orders/controllers/invoice_schedule_controller.dart';
 import 'package:nuforce/app/modules/new_orders/models/activity_log_model.dart';
 import 'package:nuforce/app/modules/new_orders/models/payment_method_model.dart';
 import 'package:nuforce/app/modules/new_orders/models/work_order_success_model.dart';
@@ -26,6 +25,8 @@ class InvoiceController extends GetxController {
   @override
   void dispose() {
     Get.delete<PaymentOptionsController>();
+    Get.delete<InvoiceScheduleController>();
+
     super.dispose();
   }
 
@@ -39,12 +40,11 @@ class InvoiceController extends GetxController {
     final invoice = Get.arguments as Invoice;
     ActivityLogApiService.getActivityLog(invoice.id!).then((value) {
       value.fold((l) {
-        activityLogList=l.data!;
+        activityLogList = l.data!;
         update();
       }, (r) => print(r));
     });
   }
-
 
   ///Note
 
@@ -131,8 +131,7 @@ class InvoiceController extends GetxController {
     update();
   }
 
-  String? _cancellationNote =
-      r'$5.00 cancellation fee might be applied if cancelled after activation.';
+  String? _cancellationNote = r'$5.00 cancellation fee might be applied if cancelled after activation.';
   String? get cancellationNote => _cancellationNote;
   void updateCancellationNote(String note) {
     _cancellationNote = note;
