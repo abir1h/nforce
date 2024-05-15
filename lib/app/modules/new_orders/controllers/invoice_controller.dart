@@ -6,23 +6,25 @@ import 'package:nuforce/app/model/agents_model.dart';
 import 'package:nuforce/app/model/card_model.dart';
 import 'package:nuforce/app/model/line_item_model.dart';
 import 'package:nuforce/app/modules/new_orders/models/activity_log_model.dart';
+import 'package:nuforce/app/modules/new_orders/models/contact_details_model.dart';
 import 'package:nuforce/app/modules/new_orders/models/payment_method_model.dart';
 import 'package:nuforce/app/modules/new_orders/models/work_order_success_model.dart';
 import 'package:nuforce/app/modules/new_orders/services/activity_log_api_service.dart';
+import 'package:nuforce/app/modules/new_orders/services/note_api_service.dart';
 import 'package:nuforce/app/shared/functions/image_picker_func.dart';
 import 'package:nuforce/app/utils/colors.dart';
 
 class InvoiceController extends GetxController {
   List<ActivityListData> activityLogList = [];
+  List<Email> noteList = [];
 
   @override
   void onInit() {
     super.onInit();
     getInvoice();
     getActivityLog();
+    getNotes();
   }
-
-
 
   void getInvoice() {
     final invoice = Get.arguments as Invoice;
@@ -34,14 +36,22 @@ class InvoiceController extends GetxController {
     final invoice = Get.arguments as Invoice;
     ActivityLogApiService.getActivityLog(invoice.id!).then((value) {
       value.fold((l) {
-        activityLogList=l.data!;
+        activityLogList = l.data!;
         update();
       }, (r) => print(r));
     });
   }
 
-
   ///Note
+  getNotes() {
+    final invoice = Get.arguments as Invoice;
+    NoteApiService.getNote(invoice.contactId.toString()).then((value) {
+      value.fold((l) {
+        noteList = l.notes!;
+        update();
+      }, (r) => print(r));
+    });
+  }
 
   // New code
   Invoice? _invoice;

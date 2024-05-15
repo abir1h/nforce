@@ -6,8 +6,10 @@ import 'package:nuforce/app/modules/line_item/models/control.dart';
 import 'package:nuforce/app/utils/api_client.dart';
 import 'package:nuforce/app/utils/url.dart';
 
+import '../models/contact_details_model.dart';
+
 class NoteApiService {
-  static Future<Either<List<Control>, String>> getContactForm() async {
+  static Future<Either<List<Control>, String>> getNoteForm() async {
     try {
       final response = await ApiClient.instance.post(url: URL.noteForm);
       if (response.statusCode == 200 && response.data != null) {
@@ -32,34 +34,22 @@ class NoteApiService {
     }
   }
 
-  static Future<Either<String, String>> setContact({
-    required int businessId,
-    required String owner,
-    required String name,
-    required String refCode,
-    required String company,
-    required List<String> tags,
-    required String primaryEmail,
-    required String primaryMobile,
-    required String groupId,
+  static Future<Either<String, dynamic>> setNote({
+    required int contactId,
+    required String detailValue,
+
   }) async {
     try {
       final body = {
         "data": {
-          "business_id": businessId,
-          "owner": owner,
-          "name": name,
-          "ref_code": refCode,
-          "details.company": company,
-          "tags": tags.join('. '),
-          "details.primary_email": primaryEmail,
-          "details.primary_mobile": primaryMobile,
-          "group_id": groupId,
+          "contact_id": contactId,
+          "detail_type": "note",
+          "detail_value": detailValue
         },
         "action": "submit"
       };
-      developer.log('Body: $body', name: 'setContact');
-      final response = await ApiClient.instance.post(url: URL.contactForm, body: body);
+      developer.log('Body: $body', name: 'setNote');
+      final response = await ApiClient.instance.post(url: URL.noteForm, body: body);
 
       if (response.statusCode == 200 && response.data != null) {
         if (response.data['success'] != null) {
@@ -69,6 +59,28 @@ class NoteApiService {
         }
       } else {
         developer.log('Response: $response', name: 'setContact.else');
+        return Right(response.data['error'] ?? 'An error occurred.');
+      }
+    } on DioException catch (e) {
+      return Right(e.toString());
+    } catch (e) {
+      return Right(e.toString());
+    }
+  }
+  static Future<Either<SelectedContactDetails, String>> getNote(String id) async {
+    try {
+      final response = await ApiClient.instance.get(
+        url: URL.contactDetails,
+        data: {
+          "query": {
+            "id": id,
+          }
+        },
+      );
+
+      if (response.statusCode == 200 && response.data != null) {
+        return Left(SelectedContactDetails.fromJson(response.data));
+      } else {
         return Right(response.data['error'] ?? 'An error occurred.');
       }
     } on DioException catch (e) {
