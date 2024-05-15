@@ -10,6 +10,7 @@ import 'package:nuforce/app/modules/new_orders/models/contact_details_model.dart
 import 'package:nuforce/app/modules/new_orders/models/payment_method_model.dart';
 import 'package:nuforce/app/modules/new_orders/models/work_order_success_model.dart';
 import 'package:nuforce/app/modules/new_orders/services/activity_log_api_service.dart';
+import 'package:nuforce/app/modules/new_orders/views/payment_options_controller.dart';
 import 'package:nuforce/app/modules/new_orders/services/note_api_service.dart';
 import 'package:nuforce/app/shared/functions/image_picker_func.dart';
 import 'package:nuforce/app/utils/colors.dart';
@@ -24,6 +25,12 @@ class InvoiceController extends GetxController {
     getInvoice();
     getActivityLog();
     getNotes();
+  }
+
+  @override
+  void dispose() {
+    Get.delete<PaymentOptionsController>();
+    super.dispose();
   }
 
   void getInvoice() {
