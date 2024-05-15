@@ -84,7 +84,7 @@ class _AuthViewState extends State<AuthView> {
                 PrimaryButton(
                   text: 'Log in to your Business',
                   onPressed: () {
-                    // Get.offAllNamed(Routes.BOTTOM_NAV_BAR);
+                    //==Get.offAllNamed(Routes.BOTTOM_NAV_BAR);
                     Get.to<void>(() => const LoginSignupView());
                   },
                   primaryColored: false,

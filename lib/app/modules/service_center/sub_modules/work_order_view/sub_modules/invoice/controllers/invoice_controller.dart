@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class InvoiceController extends GetxController {
+class InvoiceController2 extends GetxController {
   //TODO: Implement InvoiceController
 
   final count = 0.obs;
