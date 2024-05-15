@@ -4,11 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/new_orders/controllers/invoice_controller.dart';
-import 'package:nuforce/app/modules/new_orders/widgets/agents_widget.dart';
-import 'package:nuforce/app/modules/new_orders/widgets/cancellation_widget.dart';
-import 'package:nuforce/app/modules/new_orders/widgets/empty_activity_log_view.dart';
-import 'package:nuforce/app/modules/new_orders/widgets/empty_note_view.dart';
+import 'package:nuforce/app/modules/new_orders/widgets/Toasty.dart';
+import '../controllers/invoice_controller.dart';
+import '../widgets/agents_widget.dart';
+import '../widgets/cancellation_widget.dart';
+import '../widgets/activity_log_view.dart';
+import 'package:nuforce/app/modules/new_orders/widgets/note_view.dart';
 import 'package:nuforce/app/modules/new_orders/widgets/invoice_expense_view.dart';
 import 'package:nuforce/app/modules/new_orders/widgets/invoice_payment_section.dart';
 import 'package:nuforce/app/modules/new_orders/widgets/empty_schedule_view.dart';
@@ -25,6 +26,7 @@ import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/extension_methods.dart';
 import 'package:nuforce/app/utils/global_states.dart';
 import 'package:nuforce/gen/assets.gen.dart';
+
 
 class CreateInvoiceView extends StatefulWidget {
   const CreateInvoiceView({super.key});
@@ -125,11 +127,11 @@ class _CreateInvoiceViewState extends State<CreateInvoiceView> {
                   16.h.vSpace,
                   const EmptyScheduleView(),
                   16.h.vSpace,
-                  const EmptyNoteView(),
+                  const NoteView(),
                   16.h.vSpace,
                   const EmptyTermsView(),
                   16.h.vSpace,
-                  const EmptyActivityLogView(),
+                   const ActivityLogView(),
                   24.h.vSpace,
                   Row(
                     children: [

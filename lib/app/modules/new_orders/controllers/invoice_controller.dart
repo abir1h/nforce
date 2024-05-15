@@ -1,19 +1,26 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:logger/logger.dart';
 import 'package:nuforce/app/model/agents_model.dart';
 import 'package:nuforce/app/model/card_model.dart';
 import 'package:nuforce/app/model/line_item_model.dart';
+import 'package:nuforce/app/modules/new_orders/models/activity_log_model.dart';
 import 'package:nuforce/app/modules/new_orders/models/payment_method_model.dart';
 import 'package:nuforce/app/modules/new_orders/models/work_order_success_model.dart';
+import 'package:nuforce/app/modules/new_orders/services/activity_log_api_service.dart';
 import 'package:nuforce/app/modules/new_orders/views/payment_options_controller.dart';
 import 'package:nuforce/app/shared/functions/image_picker_func.dart';
 import 'package:nuforce/app/utils/colors.dart';
 
 class InvoiceController extends GetxController {
+  List<ActivityListData> activityLogList = [];
+
   @override
   void onInit() {
     super.onInit();
     getInvoice();
+    getActivityLog();
   }
 
   @override
@@ -26,6 +33,20 @@ class InvoiceController extends GetxController {
     final invoice = Get.arguments as Invoice;
     updateInvoice(invoice);
   }
+
+  ///Activity Log
+  getActivityLog() {
+    final invoice = Get.arguments as Invoice;
+    ActivityLogApiService.getActivityLog(invoice.id!).then((value) {
+      value.fold((l) {
+        activityLogList=l.data!;
+        update();
+      }, (r) => print(r));
+    });
+  }
+
+
+  ///Note
 
   // New code
   Invoice? _invoice;
@@ -110,7 +131,8 @@ class InvoiceController extends GetxController {
     update();
   }
 
-  String? _cancellationNote = r'$5.00 cancellation fee might be applied if cancelled after activation.';
+  String? _cancellationNote =
+      r'$5.00 cancellation fee might be applied if cancelled after activation.';
   String? get cancellationNote => _cancellationNote;
   void updateCancellationNote(String note) {
     _cancellationNote = note;
