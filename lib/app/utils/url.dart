@@ -28,5 +28,7 @@ class URL {
   static const String staticMap = "http://maps.google.com/maps/api/staticmap?center=lat,lng&zoom=15&size=200x200&sensor=false&key=AIzaSyDinOI_yEHrib-KuJHs9JeLPl7vdf1YNhM";
 
   static const String getActivityLog = '$baseUrl/action/company.activityLog';
+  static const String staticMap = "http://maps.google.com/maps/api/staticmap?center=lat,lng&zoom=15&size=200x200&sensor=false&key=AIzaSyDinOI_yEHrib-KuJHs9JeLPl7vdf1YNhM";
 
+  static const String getpaymentOptions = '$baseUrl/action/company.getPaymentOptions';
 }
