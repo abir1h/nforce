@@ -23,26 +23,31 @@ class InvoiceScheduleSheet extends StatefulWidget {
 
 class _InvoiceScheduleState extends State<InvoiceScheduleSheet> {
   DateTime? selectedDate;
-  late final InvoiceScheduleController invoiceScheduleController;
 
   final ExpandableController expandableController = ExpandableController();
 
   @override
   void initState() {
     super.initState();
-    invoiceScheduleController = Get.put(InvoiceScheduleController());
+
+    if (!Get.isRegistered<TodayController>()) {
+      Get.put(InvoiceScheduleController());
+    }
 
     expandableController.addListener(() {
       if (expandableController.expanded) {
         isExpanded = true;
         setState(() {});
-        Future.delayed(const Duration(milliseconds: 300), () {
-          scrollController.animateTo(
-            scrollController.position.maxScrollExtent,
-            duration: const Duration(milliseconds: 300),
-            curve: Curves.easeOut,
-          );
-        });
+        Future.delayed(
+          const Duration(milliseconds: 300),
+          () {
+            scrollController.animateTo(
+              scrollController.position.maxScrollExtent,
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeOut,
+            );
+          },
+        );
       } else {
         isExpanded = false;
         setState(() {});
@@ -52,7 +57,6 @@ class _InvoiceScheduleState extends State<InvoiceScheduleSheet> {
 
   @override
   void dispose() {
-    Get.delete<TodayController>();
     scrollController.dispose();
     super.dispose();
   }
@@ -92,29 +96,31 @@ class _InvoiceScheduleState extends State<InvoiceScheduleSheet> {
         const Divider(color: AppColors.white3),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
-          child: TableCalendar<MockEvents>(
-            onDaySelected: (v1, v2) {
-              setState(() {
-                selectedEvents = mockEvents.firstWhereOrNull((element) => isSameDay(element.date, v1));
-                selectedDate = v1;
-              });
-            },
-            focusedDay: selectedDate ?? DateTime.now(),
-            firstDay: DateTime.now(),
-            lastDay: DateTime.now().add(const Duration(days: 365)),
-            headerStyle: _calendarHeaderStyle(),
-            weekendDays: const [],
-            daysOfWeekHeight: 40.h,
-            daysOfWeekStyle: _daysOfWeekStyle(),
-            rowHeight: 60.h,
-            selectedDayPredicate: (day) {
-              return isSameDay(selectedDate ?? DateTime.now(), day);
-            },
-            calendarStyle: _calendarStyle(),
-            eventLoader: (day) {
-              return mockEvents.where((element) => isSameDay(element.date, day)).toList();
-            },
-          ),
+          child: GetBuilder<InvoiceScheduleController>(builder: (controller) {
+            return TableCalendar<MockEvents>(
+              onDaySelected: (v1, v2) {
+                setState(() {
+                  selectedEvents = mockEvents.firstWhereOrNull((element) => isSameDay(element.date, v1));
+                  selectedDate = v1;
+                });
+              },
+              focusedDay: controller.selectedDate ?? DateTime.now(),
+              firstDay: controller.eventMinDate ?? DateTime.now(),
+              lastDay: controller.eventMaxDate ?? DateTime.now().add(const Duration(days: 360)), // DateTime.now().add(const Duration(days: 365)),
+              headerStyle: _calendarHeaderStyle(),
+              weekendDays: const [],
+              daysOfWeekHeight: 40.h,
+              daysOfWeekStyle: _daysOfWeekStyle(),
+              rowHeight: 60.h,
+              selectedDayPredicate: (day) {
+                return isSameDay(selectedDate ?? DateTime.now(), day);
+              },
+              calendarStyle: _calendarStyle(),
+              eventLoader: (day) {
+                return mockEvents.where((element) => isSameDay(element.date, day)).toList();
+              },
+            );
+          }),
         ),
         16.h.vSpace,
         if (selectedDate != null && selectedEvents != null)

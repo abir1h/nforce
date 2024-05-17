@@ -1,19 +1,19 @@
 class InvoiceScheduleModel {
-  final List<Datum>? data;
+  final List<Schedule>? data;
 
   InvoiceScheduleModel({
     this.data,
   });
 
   InvoiceScheduleModel copyWith({
-    List<Datum>? data,
+    List<Schedule>? data,
   }) =>
       InvoiceScheduleModel(
         data: data ?? this.data,
       );
 
   factory InvoiceScheduleModel.fromJson(Map<String, dynamic> json) => InvoiceScheduleModel(
-        data: json["data"] == null ? [] : List<Datum>.from(json["data"]!.map((x) => Datum.fromJson(x))),
+        data: json["data"] == null ? [] : List<Schedule>.from(json["data"]!.map((x) => Schedule.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -21,7 +21,7 @@ class InvoiceScheduleModel {
       };
 }
 
-class Datum {
+class Schedule {
   final int? id;
   final int? businessId;
   final String? owner;
@@ -75,7 +75,7 @@ class Datum {
   final List<dynamic>? attendees;
   final OwnerSummary? ownerSummary;
 
-  Datum({
+  Schedule({
     this.id,
     this.businessId,
     this.owner,
@@ -130,7 +130,7 @@ class Datum {
     this.ownerSummary,
   });
 
-  Datum copyWith({
+  Schedule copyWith({
     int? id,
     int? businessId,
     String? owner,
@@ -184,7 +184,7 @@ class Datum {
     List<dynamic>? attendees,
     OwnerSummary? ownerSummary,
   }) =>
-      Datum(
+      Schedule(
         id: id ?? this.id,
         businessId: businessId ?? this.businessId,
         owner: owner ?? this.owner,
@@ -239,7 +239,7 @@ class Datum {
         ownerSummary: ownerSummary ?? this.ownerSummary,
       );
 
-  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+  factory Schedule.fromJson(Map<String, dynamic> json) => Schedule(
         id: json["id"],
         businessId: json["business_id"],
         owner: json["owner"],

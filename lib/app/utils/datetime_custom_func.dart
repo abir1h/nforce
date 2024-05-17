@@ -6,23 +6,23 @@ class DatetimeCustomFunc {
     if (dateTime == null) {
       return '';
     }
-    return DateFormat.yMMMd().format(dateTime);
+    return DateFormat.yMMMd().format(dateTime); // Jul 20, 2021
   }
 
   static String dateWithTime(DateTime dateTime) {
-    return DateFormat.yMMMd().add_jm().format(dateTime);
+    return DateFormat.yMMMd().add_jm().format(dateTime); // Jul 20, 2021 3:00 PM
   }
 
   static String getDashedDate(DateTime dateTime) {
-    return DateFormat('yyyy-MM-dd').format(dateTime);
+    return DateFormat('yyyy-MM-dd').format(dateTime); // 2021-07-20
   }
 
   static String getFormattedDateWithMonth(DateTime dateTime) {
-    return DateFormat('d MMM, yyyy').format(dateTime);
+    return DateFormat('d MMM, yyyy').format(dateTime); // 20 Jul, 2021
   }
 
-  static String getDayName(DateTime dateTime) {
-    return DateFormat('EEEE').format(dateTime);
+  static String getDayName(DateTime dateTime) { 
+    return DateFormat('EEEE').format(dateTime); // Tuesday
   }
 
   static String getFormattedTime(TimeOfDay time) {

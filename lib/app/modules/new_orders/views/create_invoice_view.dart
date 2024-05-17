@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/new_orders/widgets/invoice_scheduel_view.dart';
+import 'package:nuforce/app/modules/new_orders/widgets/invoice_schedule_view.dart';
 import '../controllers/invoice_controller.dart';
 import '../widgets/agents_widget.dart';
 import '../widgets/cancellation_widget.dart';
