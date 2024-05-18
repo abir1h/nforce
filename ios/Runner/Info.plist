@@ -56,5 +56,14 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Nuforce would like to access your photo gallery</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Nuforce would like to access your microphone</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>We need your location to show the distance between you and the customers.</string>
+	
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 </dict>
 </plist>
