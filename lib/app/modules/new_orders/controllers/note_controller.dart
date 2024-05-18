@@ -8,6 +8,8 @@ import 'package:nuforce/app/modules/new_orders/services/note_api_service.dart';
 import 'package:nuforce/app/shared/widgets/form_builder.dart';
 import 'package:nuforce/app/utils/global_states.dart';
 
+import '../models/work_order_success_model.dart';
+
 class NoteController extends GetxController {
   @override
   void dispose() {
@@ -51,13 +53,13 @@ class NoteController extends GetxController {
 
   Future<void> setContactForm() async {
     setLoading(true);
-    await NoteApiService.getContactForm().then((value) {
+    await NoteApiService.getNoteForm().then((value) {
       value.fold(
-            (controls) {
+        (controls) {
           log('Controls: $controls', name: 'setContactForm');
           setFormBuilder(getForm(controls: controls));
         },
-            (r) {
+        (r) {
           log('Error: $r', name: 'setContactForm');
         },
       );
@@ -65,35 +67,21 @@ class NoteController extends GetxController {
     setLoading(false);
   }
 
-  Future<bool?> addContact({
-    required String name,
-    required String refCode,
-    required String company,
-    required List<String> tags,
-    required String primaryEmail,
-    required String primaryMobile,
-    required String groupId,
+  Future<bool?> addNote({
+    required String detailValue,
   }) async {
     bool? result;
     setSaving(true);
-    final appState = Get.find<AppState>();
-    await ContactApiServices.setContact(
-      businessId: appState.user?.businessId ?? 0,
-      owner: '',
-      name: name,
-      refCode: refCode,
-      company: company,
-      tags: tags,
-      primaryEmail: primaryEmail,
-      primaryMobile: primaryMobile,
-      groupId: groupId,
-    ).then((value) {
+    final invoice = Get.arguments as Invoice;
+    await NoteApiService.setNote(
+            contactId: invoice.contactId!, detailValue: detailValue)
+        .then((value) {
       value.fold(
-            (success) {
+        (success) {
           result = true;
           Fluttertoast.showToast(msg: success);
         },
-            (r) {
+        (r) {
           Fluttertoast.showToast(msg: r);
         },
       );

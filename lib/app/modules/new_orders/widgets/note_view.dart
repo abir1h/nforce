@@ -14,6 +14,7 @@ import 'package:nuforce/app/utils/colors.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 import '../../../shared/widgets/details_with_header_skleton.dart';
 import '../controllers/invoice_controller.dart';
+import 'dot_widget.dart';
 
 class NoteView extends StatefulWidget {
   const NoteView({
@@ -43,6 +44,7 @@ class _NoteViewState extends State<NoteView> {
 
   final activityExpandableController = ExpandableController();
   bool isActivityLogExpanded = false;
+  final invoiceController=Get.put(InvoiceController());
   @override
   Widget build(BuildContext context) {
     return DetailsWithHeaderSkleton(
@@ -60,7 +62,7 @@ class _NoteViewState extends State<NoteView> {
           const Spacer(),
           TextButton(
             onPressed: () {
-              Get.to<void>(() => const AddNoteView());
+              Get.to<void>(() => const AddNoteView(),arguments: invoiceController.invoice);
             },
             child: Text(
               '+ Add Note',
@@ -81,10 +83,45 @@ class _NoteViewState extends State<NoteView> {
       body: GetBuilder<InvoiceController>(
         builder: (controller) {
           return Column(
-            children: [],
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('Notes',style: TextStyle(fontWeight: FontWeight.w500,fontSize: 14.sp,fontFamily: "Poppins",color: AppColors.nutralBlack1),),
+              SizedBox(height: 8.h,),
+              ListView.separated(
+                itemCount: controller.noteList.length,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemBuilder: (context, index) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        controller.noteList[index].note!,
+                        style: TextStyle(
+                          color: AppColors.nutralBlack2,
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w400,fontFamily: 'Poppins'
+                        ),
+                      ),SizedBox(height:8.h),
+                      DotWidget(
+                        dashColor:AppColors.greyText,
+                        dashHeight: 1.h,
+                        dashWidth: 6.w,
+                      ),
+
+                    ],
+                  );
+                },
+                separatorBuilder: (context, index) {
+                  return  SizedBox(height: 10.h,);
+                },
+              ),
+            ],
           );
         },
       ),
     );
   }
 }
+
+
