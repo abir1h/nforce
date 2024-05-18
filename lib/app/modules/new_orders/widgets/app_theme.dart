@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 
 mixin AppTheme {
   ThemeColor get clr => ThemeColor.instance;
@@ -87,15 +86,10 @@ class ThemeColor {
   Color get placeHolderDeselectGray => HexColor("959596");
 }
 
-
-
 class ThemeSize {
   ThemeSize._();
   static ThemeSize? _instance;
   static ThemeSize get instance => _instance ?? (_instance = ThemeSize._());
-
-
-
 
   double get r1 => 1.r;
   double get r4 => 4.r;

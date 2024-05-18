@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nuforce/app/modules/new_orders/widgets/invoice_schedule_bottomsheet.dart';
 import 'package:nuforce/app/utils/colors.dart';
 
 class EmptyScheduleView extends StatelessWidget {
@@ -27,9 +28,24 @@ class EmptyScheduleView extends StatelessWidget {
           ),
           const Spacer(),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              showModalBottomSheet(
+                context: context,
+                isScrollControlled: true,
+                useSafeArea: true,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(24.r),
+                    topRight: Radius.circular(24.r),
+                  ),
+                ),
+                builder: (ctx) {
+                  return const InvoiceScheduleSheet();
+                },
+              );
+            },
             child: Text(
-              '+ Add Task',
+              '+ Add Schedule',
               style: TextStyle(
                 color: AppColors.primaryBlue1,
                 fontSize: 12.sp,

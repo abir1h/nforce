@@ -30,4 +30,6 @@ class URL {
   static const String getActivityLog = '$baseUrl/action/company.activityLog';
 
   static const String getpaymentOptions = '$baseUrl/action/company.getPaymentOptions';
+
+  static const String getInvoiceSchedules = '$baseUrl/action/workorder.events';
 }
