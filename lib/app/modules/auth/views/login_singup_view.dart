@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/auth/components/signup_page.dart';
 import 'package:nuforce/app/modules/auth/components/singin_page.dart';
@@ -57,18 +59,21 @@ class _LoginSignupViewState extends State<LoginSignupView> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 30),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
-                      child: controller.tabIndex == 0
-                          ? SizedBox(
-                              height: height - 50 - AppBar().preferredSize.height - 60,
-                              child: const SignInPage(),
-                            )
-                          : SizedBox(
-                              height: height - 50 - AppBar().preferredSize.height - 60,
-                              child: const SignUpPage(),
-                            ),
+                    SizedBox(height: 30.h),
+                    SizedBox(
+                      width: isIpad ? 0.8.sw : 1.sw,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
+                        child: controller.tabIndex == 0
+                            ? SizedBox(
+                                height: height - 50 - AppBar().preferredSize.height - 60,
+                                child: const SignInPage(),
+                              )
+                            : SizedBox(
+                                height: height - 50 - AppBar().preferredSize.height - 60,
+                                child: const SignUpPage(),
+                              ),
+                      ),
                     ),
                   ],
                 ),

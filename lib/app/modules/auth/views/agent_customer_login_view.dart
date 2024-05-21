@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/auth/components/new_login_form_widget.dart';
@@ -9,6 +10,7 @@ import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/shared/widgets/custom_tabbar.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
 import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/app/utils/extension_methods.dart';
 import 'package:nuforce/app/utils/text_styles.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 import 'package:nuforce/main.dart';
@@ -18,7 +20,6 @@ class AgentCustomerLoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // resizeToAvoidBottomInset: false,
       backgroundColor: AppColors.white1,
       appBar: const CustomAppbarMinimal(
         title: '',
@@ -96,8 +97,8 @@ class AgentCustomerLoginView extends StatelessWidget {
                       ),
                     ),
                   ],
-                ),
-                const SizedBox(height: 30),
+                ).ifIpad,
+                SizedBox(height: 30.h),
                 Row(
                   children: [
                     Expanded(
@@ -154,7 +155,7 @@ class AgentCustomerLoginView extends StatelessWidget {
                           : const NewLoginFormWidget();
                     },
                   ),
-                ),
+                ).ifIpad,
               ],
             ),
           ),

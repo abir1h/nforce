@@ -24,7 +24,7 @@ class CustomTabBar extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            height: isMini ? 40 : 50,
+            height: isMini ? 40.h : 50.h,
             width: width,
             color: isSelected ? AppColors.tabbarColor : AppColors.inactiveTabbarColor,
             child: Center(

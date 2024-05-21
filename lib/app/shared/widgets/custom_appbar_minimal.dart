@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/main.dart';
 
 class CustomAppbarMinimal extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppbarMinimal({
@@ -59,9 +60,10 @@ class CustomAppbarMinimal extends StatelessWidget implements PreferredSizeWidget
                   Get.back<void>();
                 }
               },
-              icon: const Icon(
+              icon: Icon(
                 Icons.arrow_back_ios,
                 color: AppColors.nutralBlack1,
+                size: isIpad ? 30 : null,
               ),
             )
           : const SizedBox(),
@@ -70,5 +72,5 @@ class CustomAppbarMinimal extends StatelessWidget implements PreferredSizeWidget
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => Size.fromHeight(kToolbarHeight + (isIpad ? 50 : 0));
 }

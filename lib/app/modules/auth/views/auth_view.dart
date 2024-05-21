@@ -37,120 +37,125 @@ class _AuthViewState extends State<AuthView> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: AppColors.white1,
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
-          child: SizedBox(
-            height: height,
-            width: width,
-            child: Column(
-              children: [
-                100.h.vSpace,
-                Image.asset(
-                  Assets.images.png.nuforceLogo.path,
-                  width: width * 0.5,
-                ),
-                35.h.vSpace,
-                Text(
-                  'Welcome to NuForce',
-                  style: CustomTextStyle.heading1.copyWith(
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.nutralBlack1,
-                  ),
-                ),
-                const SizedBox(height: 5),
-                Text(
-                  'Get started on your journey to effortless service management.',
-                  textAlign: TextAlign.center,
-                  style: CustomTextStyle.heading4.copyWith(
-                    fontWeight: FontWeight.w400,
-                    color: AppColors.subText,
-                  ),
-                ),
-                const SizedBox(height: 30),
-                PrimaryButton(
-                  text: 'Try NuForce For Free',
-                  onPressed: () {
-                    if (AuthController().initialized) {
-                      Get.to<void>(() => const LoginSignupView());
-                    } else {
-                      Get
-                        ..put(AuthController())
-                        ..to<void>(() => const LoginSignupView());
-                    }
-                  },
-                ),
-                const SizedBox(height: 15),
-                PrimaryButton(
-                  text: 'Log in to your Business',
-                  onPressed: () {
-                    //==Get.offAllNamed(Routes.BOTTOM_NAV_BAR);
-                    Get.to<void>(() => const LoginSignupView());
-                  },
-                  primaryColored: false,
-                ),
-                // const SizedBox(height: 30),
-                // const OrXWith(label: 'Or log in with'),
-                // const SizedBox(height: 30),
-                // const SocialLoginButtons(),
-                const Spacer(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+      body: Center(
+        child: SizedBox(
+          width: isIpad ? 0.8.sw : 1.sw,
+          child: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
+              child: SizedBox(
+                height: height,
+                width: width,
+                child: Column(
                   children: [
+                    100.h.vSpace,
+                    Image.asset(
+                      Assets.images.png.nuforceLogo.path,
+                      width: width * 0.5,
+                    ),
+                    35.h.vSpace,
                     Text(
-                      'Login as an ',
-                      style: CustomTextStyle.heading4.copyWith(
-                        fontWeight: FontWeight.w400,
-                        color: AppColors.greyText,
+                      'Welcome to NuForce',
+                      style: CustomTextStyle.heading1.copyWith(
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.nutralBlack1,
                       ),
                     ),
-                    GestureDetector(
-                      onTap: () {
+                    const SizedBox(height: 5),
+                    Text(
+                      'Get started on your journey to effortless service management.',
+                      textAlign: TextAlign.center,
+                      style: CustomTextStyle.heading4.copyWith(
+                        fontWeight: FontWeight.w400,
+                        color: AppColors.subText,
+                      ),
+                    ),
+                    const SizedBox(height: 30),
+                    PrimaryButton(
+                      text: 'Try NuForce For Free',
+                      onPressed: () {
                         if (AuthController().initialized) {
-                          Get.to<void>(() => const AgentCustomerLoginView());
+                          Get.to<void>(() => const LoginSignupView());
                         } else {
                           Get
                             ..put(AuthController())
-                            ..to<void>(() => const AgentCustomerLoginView());
+                            ..to<void>(() => const LoginSignupView());
                         }
                       },
-                      child: Text(
-                        'Agent ',
-                        style: CustomTextStyle.heading4.copyWith(
-                          fontWeight: FontWeight.w400,
-                          color: AppColors.primaryBlue1,
-                        ),
-                      ),
                     ),
-                    Text(
-                      'or ',
-                      style: CustomTextStyle.heading4.copyWith(
-                        fontWeight: FontWeight.w400,
-                        color: AppColors.greyText,
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        if (AuthController().initialized) {
-                          Get.to<void>(() => const AgentCustomerLoginView());
-                        } else {
-                          Get
-                            ..put(AuthController())
-                            ..to<void>(() => const AgentCustomerLoginView());
-                        }
+                    const SizedBox(height: 15),
+                    PrimaryButton(
+                      text: 'Log in to your Business',
+                      onPressed: () {
+                        //==Get.offAllNamed(Routes.BOTTOM_NAV_BAR);
+                        Get.to<void>(() => const LoginSignupView());
                       },
-                      child: Text(
-                        'Customer',
-                        style: CustomTextStyle.heading4.copyWith(
-                          fontWeight: FontWeight.w400,
-                          color: AppColors.primaryBlue1,
-                        ),
-                      ),
+                      primaryColored: false,
                     ),
+                    // const SizedBox(height: 30),
+                    // const OrXWith(label: 'Or log in with'),
+                    // const SizedBox(height: 30),
+                    // const SocialLoginButtons(),
+                    const Spacer(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Login as an ',
+                          style: CustomTextStyle.heading4.copyWith(
+                            fontWeight: FontWeight.w400,
+                            color: AppColors.greyText,
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            if (AuthController().initialized) {
+                              Get.to<void>(() => const AgentCustomerLoginView());
+                            } else {
+                              Get
+                                ..put(AuthController())
+                                ..to<void>(() => const AgentCustomerLoginView());
+                            }
+                          },
+                          child: Text(
+                            'Agent ',
+                            style: CustomTextStyle.heading4.copyWith(
+                              fontWeight: FontWeight.w400,
+                              color: AppColors.primaryBlue1,
+                            ),
+                          ),
+                        ),
+                        Text(
+                          'or ',
+                          style: CustomTextStyle.heading4.copyWith(
+                            fontWeight: FontWeight.w400,
+                            color: AppColors.greyText,
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            if (AuthController().initialized) {
+                              Get.to<void>(() => const AgentCustomerLoginView());
+                            } else {
+                              Get
+                                ..put(AuthController())
+                                ..to<void>(() => const AgentCustomerLoginView());
+                            }
+                          },
+                          child: Text(
+                            'Customer',
+                            style: CustomTextStyle.heading4.copyWith(
+                              fontWeight: FontWeight.w400,
+                              color: AppColors.primaryBlue1,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 30),
                   ],
                 ),
-                const SizedBox(height: 30),
-              ],
+              ),
             ),
           ),
         ),

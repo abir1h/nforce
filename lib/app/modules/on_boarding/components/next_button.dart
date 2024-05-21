@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/text_styles.dart';
+import 'package:nuforce/main.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class NextButton extends StatelessWidget {
@@ -20,14 +22,14 @@ class NextButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: SizedBox(
-        height: 72,
-        width: 72,
+        height: isIpad ? 88.h : 72.h,
+        width: isIpad ? 88.h : 72.h,
         child: Center(
           child: Stack(
             children: [
               CircularPercentIndicator(
-                radius: 36,
-                lineWidth: 10,
+                radius: isIpad ? 43.r : 36.r,
+                lineWidth: 10.w,
                 animation: true,
                 animateFromLastPercent: true,
                 percent: percent,
@@ -41,8 +43,8 @@ class NextButton extends StatelessWidget {
                   alignment: Alignment.center,
                   children: [
                     Container(
-                      height: 62,
-                      width: 62,
+                      height: isIpad ? 72.h : 62.h,
+                      width: isIpad ? 72.h : 62.h,
                       alignment: Alignment.center,
                       decoration: const BoxDecoration(
                         shape: BoxShape.circle,
@@ -50,18 +52,20 @@ class NextButton extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      height: 56,
-                      width: 56,
+                      height: isIpad ? 66.h : 56.h,
+                      width: isIpad ? 66.h : 56.h,
                       alignment: Alignment.center,
                       decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         color: AppColors.primaryBlue1,
                       ),
-                      child: Text(
-                        text,
-                        style: CustomTextStyle.heading4.copyWith(
-                          fontWeight: FontWeight.w400,
-                          color: Colors.white,
+                      child: Center(
+                        child: Text(
+                          text,
+                          style: CustomTextStyle.heading4.copyWith(
+                            fontWeight: FontWeight.w400,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     ),

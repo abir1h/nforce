@@ -157,7 +157,7 @@ class _OrderOverviewState extends State<OrderOverview> {
     return Table(
       children: [
         if (!showFull) ...[
-          _row(title: 'Start Date', value: '25 Aut 2023'),
+          _row(title: 'Start Date', value: '25 Aug 2023'),
           _row(title: 'Contact', value: 'Eleanor Pena'),
           _row(title: 'Address', value: '7163 Us 98 Hwy E Fort Meade, Florida3652'),
           _row(title: 'Agent Name', value: 'Jerome Bell'),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/text_styles.dart';
 
@@ -78,10 +79,9 @@ class CustomTextField extends StatelessWidget {
             style: CustomTextStyle.paragraphSmall.copyWith(
               fontWeight: FontWeight.w500,
               color: AppColors.nutralBlack1,
-              // fontSize: 20,
             ),
           ),
-          const SizedBox(height: 8),
+          SizedBox(height: 8.h),
         ],
         ColoredBox(
           color: AppColors.textFieldBackground,

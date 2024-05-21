@@ -26,39 +26,29 @@ class OverView extends GetView<OverViewController> {
             children: [
               const TextWithTitle(
                 firstItem: 'Start Date',
-                secondItem: '25 Aut 2023',
+                secondItem: '25 Aug 2023',
               ),
-              SizedBox(
-                height: 16.h,
-              ),
+              SizedBox(height: 16.h),
               const TextWithTitle(
                 firstItem: 'Contact',
                 secondItem: 'Eleanor Pena',
               ),
-              SizedBox(
-                height: 16.h,
-              ),
+              SizedBox(height: 16.h),
               const TextWithTitle(
                 firstItem: 'Address',
                 secondItem: '7163 Us 98 Hwy E Fort Meade, Florida3652',
               ),
-              SizedBox(
-                height: 16.h,
-              ),
+              SizedBox(height: 16.h),
               const TextWithTitle(
                 firstItem: 'Agent Name',
                 secondItem: 'Jerome Bell',
               ),
-              SizedBox(
-                height: 16.h,
-              ),
+              SizedBox(height: 16.h),
               const TextWithTitle(
                 firstItem: 'Status',
                 secondItem: 'Pending',
               ),
-              SizedBox(
-                height: 16.h,
-              ),
+              SizedBox(height: 16.h),
               const TextWithWidget(
                 firstItem: 'Work Order No',
                 secondItem: 'WOAT35134',

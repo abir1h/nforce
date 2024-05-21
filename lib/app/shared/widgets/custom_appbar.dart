@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -7,11 +6,13 @@ import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/global_states.dart';
 import 'package:nuforce/app/utils/text_styles.dart';
 import 'package:nuforce/gen/assets.gen.dart';
+import 'package:nuforce/main.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback? leadingOnPressed;
   const CustomAppBar({
-    super.key, this.leadingOnPressed,
+    super.key,
+    this.leadingOnPressed,
   });
 
   @override
@@ -87,5 +88,5 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight + 10);
+  Size get preferredSize => Size.fromHeight(kToolbarHeight + (isIpad ? 60 : 10));
 }

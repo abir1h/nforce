@@ -3,6 +3,7 @@ import 'dart:io';
 import 'dart:developer' as developer show log;
 // import 'package:firebase_core/firebase_core.dart';
 // import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -19,14 +20,29 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 
 double height = 0;
 double width = 0;
+bool isIpad = false;
 
 @pragma("vm:entry-point")
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   developer.log('Handling a background message ${message.messageId}');
 }
 
+Future<bool> checkIfIpad() async {
+  if (Platform.isIOS) {
+    DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+    IosDeviceInfo info = await deviceInfo.iosInfo;
+    if (info.name.toLowerCase().contains("ipad")) {
+      return true;
+    }
+    return false;
+  } else {
+    return false;
+  }
+}
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  isIpad = await checkIfIpad();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );

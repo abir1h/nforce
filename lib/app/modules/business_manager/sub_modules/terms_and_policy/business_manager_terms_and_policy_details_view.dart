@@ -67,7 +67,7 @@ class _BusinessManagerTermsAndPolicyDetailsViewState extends State<BusinessManag
               QuillEditor.basic(
                 configurations: QuillEditorConfigurations(
                   controller: _controller,
-                  readOnly: true,
+                  // readOnly: true,
                   sharedConfigurations: const QuillSharedConfigurations(
                     locale: Locale('en'),
                   ),

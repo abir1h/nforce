@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/text_styles.dart';
 
@@ -19,7 +20,7 @@ class TopViewWithText extends StatelessWidget {
     return Column(
       children: [
         Image.asset(imagePath),
-        const SizedBox(height: 60),
+        SizedBox(height: 60.h),
         Text(
           title,
           textAlign: TextAlign.center,

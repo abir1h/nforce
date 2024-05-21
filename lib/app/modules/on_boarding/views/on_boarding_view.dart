@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/on_boarding/components/next_button.dart';
 import 'package:nuforce/app/modules/on_boarding/components/skip_button.dart';
@@ -12,44 +13,47 @@ class OnBoardingView extends GetView<OnBoardingController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SizedBox(
-        height: height,
-        width: width,
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Obx(
-                  () => controller.contents[controller.currentPageIndex.value],
-                ),
-                Column(
-                  children: [
-                    const SizedBox(height: 40),
-                    Row(
-                      children: [
-                        SkipButton(
-                          onTap: () {
-                            Get.offAllNamed<void>(Routes.AUTH);
-                          },
-                        ),
-                        const Spacer(),
-                        Obx(
-                          () => NextButton(
-                            percent: controller.percent.value,
-                            text: controller.isLastPage.value ? 'Start' : 'Next',
+      body: Center(
+        child: SizedBox(
+          height: height,
+          width: isIpad ? 0.8.sw : 1.sw,
+          child: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Obx(
+                    () => controller.contents[controller.currentPageIndex.value],
+                  ),
+                  Column(
+                    children: [
+                      const SizedBox(height: 40),
+                      Row(
+                        children: [
+                          SkipButton(
                             onTap: () {
-                              controller.changePage();
+                              Get.offAllNamed<void>(Routes.AUTH);
                             },
                           ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 30),
-                  ],
-                ),
-              ],
+                          const Spacer(),
+                          Obx(
+                            () => NextButton(
+                              percent: controller.percent.value,
+                              text: controller.isLastPage.value ? 'Start' : 'Next',
+                              onTap: () {
+                                controller.changePage();
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 30),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),

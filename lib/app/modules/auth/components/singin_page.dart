@@ -7,6 +7,7 @@ import 'package:nuforce/app/modules/auth/views/magic_link_signin_view.dart';
 import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/main.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({
@@ -97,13 +98,13 @@ class _SignInPageState extends State<SignInPage> {
                             ),
                             const SizedBox(width: 4),
                             Padding(
-                              padding: const EdgeInsets.only(top: 8),
+                              padding: EdgeInsets.only(top: isIpad ? 3.h : 8.h),
                               child: Text(
                                 'Remember me\n(90 days)',
                                 style: TextStyle(
                                   color: AppColors.nutralBlack1,
                                   fontWeight: FontWeight.w500,
-                                  fontSize: 14.sp,
+                                  fontSize: isIpad ? 10.sp : 14.sp,
                                 ),
                               ),
                             ),
@@ -119,7 +120,7 @@ class _SignInPageState extends State<SignInPage> {
                             style: TextStyle(
                               color: AppColors.nutralBlack1,
                               fontWeight: FontWeight.w500,
-                              fontSize: 14.sp,
+                              fontSize: isIpad ? 10.sp : 14.sp,
                             ),
                           ),
                         ),
@@ -150,7 +151,7 @@ class _SignInPageState extends State<SignInPage> {
                       text: 'Sign in with magic link',
                       primaryColored: false,
                     ),
-                    const SizedBox(height: 30),
+                    // SizedBox(height: 30.h),
                     // const OrXWith(label: 'Or log in with'),
                     // const SizedBox(height: 30),
                     // const SocialLoginButtons(),
@@ -165,10 +166,10 @@ class _SignInPageState extends State<SignInPage> {
                       style: TextStyle(
                         color: AppColors.nutralBlack1,
                         fontWeight: FontWeight.w500,
-                        fontSize: 14.sp,
+                        fontSize: isIpad ? 13.h : 14.sp,
                       ),
                     ),
-                    const SizedBox(width: 4),
+                    SizedBox(width: 4.w),
                     GestureDetector(
                       onTap: () {
                         controller.changeTabIndex(1);
@@ -178,13 +179,13 @@ class _SignInPageState extends State<SignInPage> {
                         style: TextStyle(
                           color: AppColors.primaryBlue1,
                           fontWeight: FontWeight.w500,
-                          fontSize: 14.sp,
+                          fontSize: isIpad ? 13.h : 14.sp,
                         ),
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(height: 40),
+                SizedBox(height: isIpad ? 60.h : 40.h),
               ],
             ),
           ),

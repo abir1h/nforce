@@ -14,6 +14,7 @@ import 'package:nuforce/app/modules/service_center/sub_modules/work_order_view/s
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/extension_methods.dart';
 import 'package:nuforce/gen/assets.gen.dart';
+import 'package:nuforce/main.dart';
 
 class OrderDetailsView extends StatefulWidget {
   const OrderDetailsView({super.key});
@@ -39,25 +40,27 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: isIpad ? 80.h : null,
         backgroundColor: AppColors.white1,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(
+          icon: Icon(
             Icons.arrow_back_ios,
             color: AppColors.nutralBlack1,
+            size: isIpad ? 20.h : null,
           ),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
         title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
               'Eleanor Pena',
               style: TextStyle(
                 color: AppColors.nutralBlack1,
-                fontSize: 18.sp,
+                fontSize: isIpad ? 14.sp : 18.sp,
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -65,7 +68,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
               '25 Aug, 2023',
               style: TextStyle(
                 color: AppColors.nutralBlack2,
-                fontSize: 12.sp,
+                fontSize: isIpad ? 8.sp : 12.sp,
                 fontWeight: FontWeight.w400,
               ),
             ),
@@ -130,7 +133,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
     );
   }
 
-  Padding _editButton({required VoidCallback onTap}) {
+  Widget _editButton({required VoidCallback onTap}) {
     return Padding(
       padding: const EdgeInsets.only(right: 10, top: 10, bottom: 10),
       child: GestureDetector(
