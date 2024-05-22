@@ -7,6 +7,7 @@ import 'package:nuforce/app/modules/service_items/widgets/landing_page_url_text_
 import 'package:nuforce/app/modules/service_items/widgets/title_with_switch.dart';
 import 'package:nuforce/app/shared/widgets/custom_dropdown.dart';
 import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/app/utils/text_styles.dart';
 
 Widget settingsBody({
   required bool isLandingPageUrlSelected,
@@ -27,10 +28,8 @@ Widget settingsBody({
           children: [
             Text(
               'Landing Page URL',
-              style: TextStyle(
+              style: CustomTextStyle.paragraphSmall.copyWith(
                 color: AppColors.nutralBlack1,
-                fontSize: 14.sp,
-                fontWeight: FontWeight.w500,
               ),
             ),
             SizedBox(
@@ -66,10 +65,8 @@ Widget settingsBody({
         const SizedBox(height: 23),
         Text(
           'Regions',
-          style: TextStyle(
+          style: CustomTextStyle.paragraphSmall.copyWith(
             color: AppColors.nutralBlack1,
-            fontSize: 14.sp,
-            fontWeight: FontWeight.w500,
           ),
         ),
         const SizedBox(height: 8),
@@ -101,10 +98,8 @@ Widget settingsBody({
         const SizedBox(height: 23),
         Text(
           'Preferred Agents',
-          style: TextStyle(
+          style: CustomTextStyle.paragraphSmall.copyWith(
             color: AppColors.nutralBlack1,
-            fontSize: 14.sp,
-            fontWeight: FontWeight.w500,
           ),
         ),
         const SizedBox(height: 8),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/app/utils/text_styles.dart';
+import 'package:nuforce/main.dart';
 
 import '../../../../../../gen/assets.gen.dart';
 import '../../../../settings/widgets/text_card.dart';
@@ -13,81 +15,96 @@ class WorkOrderCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:  EdgeInsets.symmetric(horizontal: 20.w,vertical: 16.h),
+      padding: EdgeInsets.symmetric(horizontal: isIpad ? 0 : 20.w, vertical: 16.h),
       child: GestureDetector(
         onTap: onPressed,
         child: Container(
-          padding:  EdgeInsets.symmetric(horizontal: 10.w,vertical: 10.h),
-
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8.r), color: AppColors.white1),
+          padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(8.r), color: AppColors.white1),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 children: [
                   Expanded(
-                      child: Text(
-                    "Aaron Taylor",
-                    style: TextStyle(
+                    child: Text(
+                      "Aaron Taylor",
+                      style: CustomTextStyle.heading4.copyWith(
+                        color: AppColors.nutralBlack1,
                         fontWeight: FontWeight.w600,
-                        fontSize: 16.sp,
-                        fontFamily: "Poppins",
-                        color: AppColors.nutralBlack1),
-                  )),
-                  TextCard(
+                      ),
+                    ),
+                  ),
+                  const TextCard(
                     buttonText: "Pending",
                     bgColor: AppColors.lightYellow2,
                     textColor: AppColors.darkYellow,
                   )
                 ],
-              ),SizedBox(height: 6.h,),
+              ),
+              SizedBox(
+                height: 6.h,
+              ),
               Row(
                 children: [
                   Expanded(
-                      child: Text(
-                    "WOAT351",
-                    style: TextStyle(
+                    child: Text(
+                      "WOAT351",
+                      style: CustomTextStyle.heading5.copyWith(
+                        color: AppColors.nutralBlack2,
                         fontWeight: FontWeight.w400,
-                        fontSize: 14.sp,
-                        fontFamily: "Poppins",
-                        color: AppColors.nutralBlack2),
-                  )),
+                      ),
+                    ),
+                  ),
                   Text(
                     r"$500.00",
-                    style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 14.sp,
-                        fontFamily: "Poppins",
-                        color: AppColors.nutralBlack1),
+                    style: CustomTextStyle.heading5.copyWith(
+                      color: AppColors.nutralBlack1,
+                      fontWeight: FontWeight.w400,
+                    ),
                   )
                 ],
-              ),SizedBox(height: 6.h,),Text(
-                "25 Jan 2024",
-                style: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 14.sp,
-                    fontFamily: "Poppins",
-                    color: AppColors.nutralBlack2),
-              ),SizedBox(height: 6.h,),Text(
-                "1621 Ocean Pearl Rd Corolla, North Carolina (NC), 27927",
-                style: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 14.sp,
-                    fontFamily: "Poppins",
-                    color: AppColors.nutralBlack2),
               ),
-              Divider(thickness: 1,color: AppColors.greyStrokColor,),
+              SizedBox(height: 6.h),
+              Text(
+                "25 Jan 2024",
+                style: CustomTextStyle.heading5.copyWith(
+                  color: AppColors.nutralBlack2,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+              SizedBox(
+                height: 6.h,
+              ),
+              Text(
+                "1621 Ocean Pearl Rd Corolla, North Carolina (NC), 27927",
+                style: CustomTextStyle.heading5.copyWith(
+                  color: AppColors.nutralBlack2,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+              const Divider(
+                thickness: 1,
+                color: AppColors.greyStrokColor,
+              ),
               Row(
                 children: [
                   ClipRRect(
-
                     borderRadius: BorderRadius.all(Radius.circular(4.r)),
-                    child: Image.asset(Assets.images.png.worker.keyName,height:40,width: 50 ,),
-                  ),SizedBox(width: 8.r,),ClipRRect(
-
+                    child: Image.asset(
+                      Assets.images.png.worker.keyName,
+                      height: 40.h,
+                      width: 50.w,
+                    ),
+                  ),
+                  SizedBox(width: 8.r),
+                  ClipRRect(
                     borderRadius: BorderRadius.all(Radius.circular(4.r)),
-                    child: Image.asset(Assets.images.png.worker.keyName,height:40,width: 50 ,),
+                    child: Image.asset(
+                      Assets.images.png.worker.keyName,
+                      height: 40.h,
+                      width: 50.w,
+                    ),
                   )
                 ],
               )

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/app/utils/text_styles.dart';
 
 class TextCard extends StatelessWidget {
   final String buttonText;
@@ -13,7 +14,9 @@ class TextCard extends StatelessWidget {
     super.key,
     required this.buttonText,
     this.onPressed,
-    this.bgColor, this.textColor, this.borderColor,
+    this.bgColor,
+    this.textColor,
+    this.borderColor,
   });
 
   @override
@@ -24,18 +27,15 @@ class TextCard extends StatelessWidget {
         padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 15.w),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8.r),
-          border: Border.all(color: borderColor??Colors.transparent),
-
+          border: Border.all(color: borderColor ?? Colors.transparent),
           color: bgColor ?? AppColors.primaryBlue1,
         ),
         child: Center(
           child: Text(
             buttonText,
-            style: TextStyle(
+            style: CustomTextStyle.paragraphExtraSmall.copyWith(
+              color: textColor ?? AppColors.white1,
               fontWeight: FontWeight.w600,
-              fontSize: 12.sp,
-              fontFamily: "Poppins",
-              color: textColor??AppColors.white1,
             ),
           ),
         ),

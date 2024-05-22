@@ -16,7 +16,7 @@ class RecommandedActionsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: width * 0.8,
+      width: isIpad ? (width * 0.6) : (width * 0.8),
       decoration: BoxDecoration(
         color: AppColors.white1,
         borderRadius: BorderRadius.circular(8),
@@ -42,7 +42,7 @@ class RecommandedActionsWidget extends StatelessWidget {
               child: Text(
                 'Recommanded Actions',
                 style: TextStyle(
-                  fontSize: 14.sp,
+                  fontSize: isIpad ? 10.sp : 14.sp,
                   fontWeight: FontWeight.w400,
                   color: AppColors.nutralBlack1,
                 ),

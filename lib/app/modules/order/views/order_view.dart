@@ -8,6 +8,8 @@ import 'package:nuforce/app/modules/order/widgets/order_status.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
 import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/app/utils/extension_methods.dart';
+import 'package:nuforce/main.dart';
 
 import '../controllers/order_controller.dart';
 
@@ -28,11 +30,12 @@ class OrderView extends GetView<OrderController> {
               '+ Create',
               style: TextStyle(
                 color: AppColors.primaryBlue1,
-                fontSize: 14.sp,
+                fontSize: isIpad ? 10.sp : 14.sp,
                 fontWeight: FontWeight.w600,
               ),
             ),
           ),
+          5.w.hSpace,
         ],
       ),
       body: Padding(
@@ -57,7 +60,7 @@ class OrderView extends GetView<OrderController> {
             );
           },
         ),
-      ),
+      ).ifIpad,
     );
   }
 }

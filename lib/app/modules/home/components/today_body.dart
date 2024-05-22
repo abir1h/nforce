@@ -28,7 +28,7 @@ class TodayBody extends StatelessWidget {
                 Text(
                   'Today’s Appointments',
                   style: TextStyle(
-                    fontSize: 16.sp,
+                    fontSize: isIpad ? 12.sp : 16.sp,
                     fontWeight: FontWeight.w500,
                     color: AppColors.nutralBlack1,
                   ),
@@ -59,8 +59,8 @@ class TodayBody extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
-                                height: 48,
-                                width: 48,
+                                height: 48.h,
+                                width: 48.h,
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   image: DecorationImage(
@@ -122,7 +122,7 @@ class TodayBody extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          const SizedBox(width: 16 + 48 + 24),
+                          SizedBox(width: 88.h),
                           GestureDetector(
                             onTap: () {
                               controller.expandableController.toggle();
@@ -130,7 +130,7 @@ class TodayBody extends StatelessWidget {
                             child: Text(
                               controller.isExpanded ? '- Show less' : '+ Show more',
                               style: TextStyle(
-                                fontSize: 12.sp,
+                                fontSize: isIpad ? 8.sp : 12.sp,
                                 fontWeight: FontWeight.w400,
                                 color: AppColors.subText,
                               ),
@@ -142,7 +142,7 @@ class TodayBody extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: 30),
+                SizedBox(height: 30.h),
               ],
             ),
           ),

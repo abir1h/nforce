@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nuforce/app/modules/home/controllers/home_controller.dart';
 import 'package:nuforce/app/shared/widgets/custom_checkbox.dart';
 import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/main.dart';
 
 class TaskTileWithCheckbox extends StatelessWidget {
   const TaskTileWithCheckbox({
@@ -17,8 +19,7 @@ class TaskTileWithCheckbox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 48,
-      padding: const EdgeInsets.only(left: 15),
+      padding: EdgeInsets.only(left: 15.w, top: 5, bottom: 5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(4),
         color: mockTaskApi.isDone ? mockTaskApi.color : AppColors.textFieldBackground,
@@ -34,7 +35,7 @@ class TaskTileWithCheckbox extends StatelessWidget {
               Text(
                 mockTaskApi.time,
                 style: TextStyle(
-                  fontSize: 12.sp,
+                  fontSize: isIpad ? 8.sp : 12.sp,
                   fontWeight: FontWeight.w400,
                   color: AppColors.nutralBlack1,
                 ),
@@ -42,7 +43,7 @@ class TaskTileWithCheckbox extends StatelessWidget {
               Text(
                 mockTaskApi.title,
                 style: TextStyle(
-                  fontSize: 12.sp,
+                  fontSize: isIpad ? 8.sp : 12.sp,
                   fontWeight: FontWeight.w400,
                   color: AppColors.subText,
                   decoration: mockTaskApi.isDone ? TextDecoration.lineThrough : null,
@@ -51,9 +52,12 @@ class TaskTileWithCheckbox extends StatelessWidget {
               ),
             ],
           ),
-          CustomCheckbox(
-            value: mockTaskApi.isDone,
-            onChanged: onChanged,
+          Padding(
+            padding: EdgeInsets.only(right: isIpad ? 10 : 0),
+            child: CustomCheckbox(
+              value: mockTaskApi.isDone,
+              onChanged: onChanged,
+            ),
           ),
         ],
       ),

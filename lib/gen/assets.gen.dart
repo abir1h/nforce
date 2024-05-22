@@ -63,6 +63,10 @@ class $AssetsImagesIconGen {
 class $AssetsImagesPngGen {
   const $AssetsImagesPngGen();
 
+  /// File path: assets/images/png/ac_hydrowash.png
+  AssetGenImage get acHydrowash =>
+      const AssetGenImage('assets/images/png/ac_hydrowash.png');
+
   /// File path: assets/images/png/account_info.png
   AssetGenImage get accountInfo =>
       const AssetGenImage('assets/images/png/account_info.png');
@@ -275,6 +279,7 @@ class $AssetsImagesPngGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
+        acHydrowash,
         accountInfo,
         affliation,
         bLogo,

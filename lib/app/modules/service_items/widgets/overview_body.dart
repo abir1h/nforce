@@ -4,6 +4,9 @@ import 'package:nuforce/app/modules/service_items/widgets/little_text_with_color
 import 'package:nuforce/app/modules/service_items/widgets/rating_tile.dart';
 import 'package:nuforce/app/modules/service_items/widgets/total_reviwe_card.dart';
 import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/app/utils/text_styles.dart';
+import 'package:nuforce/gen/assets.gen.dart';
+import 'package:nuforce/main.dart';
 
 Widget overviewBody({
   required bool isFavorite,
@@ -18,7 +21,11 @@ Widget overviewBody({
           Container(
             height: 170.sp,
             decoration: BoxDecoration(
-              color: AppColors.primaryBlue3,
+              image: DecorationImage(
+                image: AssetImage(Assets.images.png.acHydrowash.path),
+                fit: BoxFit.fitWidth,
+              ),
+              // color: AppColors.primaryBlue3,
               borderRadius: BorderRadius.circular(4),
             ),
           ),
@@ -45,6 +52,7 @@ Widget overviewBody({
                 child: Icon(
                   isFavorite ? Icons.favorite : Icons.favorite_border,
                   color: AppColors.primaryBlue1,
+                  size: isIpad ? 30 : null,
                 ),
               ),
             ],
@@ -55,19 +63,15 @@ Widget overviewBody({
             children: [
               Text(
                 'Stat from',
-                style: TextStyle(
-                  color: AppColors.nutralBlack1,
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w400,
+                style: CustomTextStyle.paragraphSmall.copyWith(
+                  color: AppColors.nutralBlack2,
                 ),
               ),
               Text(
                 'Quantity',
                 textAlign: TextAlign.right,
-                style: TextStyle(
-                  color: AppColors.nutralBlack1,
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w400,
+                style: CustomTextStyle.paragraphSmall.copyWith(
+                  color: AppColors.nutralBlack2,
                 ),
               ),
             ],
@@ -77,18 +81,14 @@ Widget overviewBody({
             children: [
               Text(
                 r'$25.00',
-                style: TextStyle(
+                style: CustomTextStyle.paragraphMedium.copyWith(
                   color: AppColors.nutralBlack1,
-                  fontSize: 16.sp,
-                  fontWeight: FontWeight.w600,
                 ),
               ),
               Text(
                 '1',
-                style: TextStyle(
+                style: CustomTextStyle.paragraphMedium.copyWith(
                   color: AppColors.nutralBlack1,
-                  fontSize: 16.sp,
-                  fontWeight: FontWeight.w600,
                 ),
               ),
             ],
@@ -99,19 +99,15 @@ Widget overviewBody({
             children: [
               Text(
                 'Category',
-                style: TextStyle(
+                style: CustomTextStyle.heading5.copyWith(
                   color: AppColors.nutralBlack1,
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w400,
                 ),
               ),
               Text(
                 'Taxable',
                 textAlign: TextAlign.right,
-                style: TextStyle(
+                style: CustomTextStyle.heading5.copyWith(
                   color: AppColors.nutralBlack1,
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w400,
                 ),
               ),
             ],
@@ -121,19 +117,15 @@ Widget overviewBody({
             children: [
               Text(
                 'Lawn Services',
-                style: TextStyle(
+                style: CustomTextStyle.heading4.copyWith(
                   color: AppColors.nutralBlack1,
-                  fontSize: 16.sp,
-                  fontWeight: FontWeight.w400,
                 ),
               ),
               Text(
                 'No',
                 textAlign: TextAlign.right,
-                style: TextStyle(
+                style: CustomTextStyle.heading4.copyWith(
                   color: AppColors.nutralBlack1,
-                  fontSize: 16.sp,
-                  fontWeight: FontWeight.w400,
                 ),
               ),
             ],
@@ -143,44 +135,34 @@ Widget overviewBody({
           const SizedBox(height: 16),
           Text(
             'What’s Included?',
-            style: TextStyle(
+            style: CustomTextStyle.heading4.copyWith(
               color: AppColors.nutralBlack1,
-              fontSize: 16.sp,
-              fontWeight: FontWeight.w500,
             ),
           ),
           Text(
             ' • Only Service Charge\n • 7 Days service warranty',
-            style: TextStyle(
+            style: CustomTextStyle.heading5.copyWith(
               color: AppColors.nutralBlack2,
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w400,
             ),
           ),
           const SizedBox(height: 16),
           Text(
             'Why Choose Us?',
-            style: TextStyle(
+            style: CustomTextStyle.heading4.copyWith(
               color: AppColors.nutralBlack1,
-              fontSize: 16.sp,
-              fontWeight: FontWeight.w500,
             ),
           ),
           Text(
             'Your happiness is our goal. Lorem Ipsum is sim ply dummy text of the printing and typese tting industry. Lorem Ipsum has .',
-            style: TextStyle(
+            style: CustomTextStyle.heading5.copyWith(
               color: AppColors.nutralBlack2,
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w400,
             ),
           ),
           const SizedBox(height: 16),
           Text(
             'Customer Reviews',
-            style: TextStyle(
+            style: CustomTextStyle.heading4.copyWith(
               color: AppColors.nutralBlack1,
-              fontSize: 16.sp,
-              fontWeight: FontWeight.w500,
             ),
           ),
           const SizedBox(height: 16),
@@ -188,10 +170,8 @@ Widget overviewBody({
           Text(
             'Total 22 reviews',
             textAlign: TextAlign.center,
-            style: TextStyle(
+            style: CustomTextStyle.heading5.copyWith(
               color: AppColors.nutralBlack1,
-              fontSize: 16.sp,
-              fontWeight: FontWeight.w500,
             ),
           ),
           const SizedBox(height: 16),

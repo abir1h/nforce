@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/main.dart';
 
 class ServiceButton extends StatelessWidget {
   const ServiceButton({
@@ -23,15 +24,18 @@ class ServiceButton extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            // height: 64.h,
-            // width: 72.w,
+            height: isIpad ? 64.h : null,
+            width: isIpad ? 72.h : null,
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: AppColors.tabbarColor,
               borderRadius: BorderRadius.circular(4),
             ),
             child: Center(
-              child: SvgPicture.asset(svgPath),
+              child: SvgPicture.asset(
+                svgPath,
+                height: isIpad ? 35.h : null,
+              ),
             ),
           ),
           SizedBox(height: 4.h),
@@ -39,7 +43,7 @@ class ServiceButton extends StatelessWidget {
             title,
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontSize: 11.sp,
+              fontSize: isIpad ? 8.sp : 11.sp,
               fontWeight: FontWeight.w400,
               color: AppColors.subText,
             ),

@@ -56,13 +56,25 @@ class _AddScheduleBottoMSheetState extends State<AddScheduleBottoMSheet> {
                   Center(
                     child: Text(
                       'Add New Schedule',
-                      style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20.sp, color: AppColors.nutralBlack1),
+                      style: CustomTextStyle.heading2.copyWith(
+                        color: AppColors.nutralBlack1,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                   SizedBox(height: 24.h),
-                  CustomTextField(label: "Schedule Name*", hint: 'AC Fixing Service', controller: TextEditingController()),
+                  CustomTextField(
+                    label: "Schedule Name*",
+                    hint: 'AC Fixing Service',
+                    controller: TextEditingController(),
+                  ),
                   SizedBox(height: 16.h),
-                  CustomTextField(label: "Schedule Note", hint: 'Urna turpis ante nunc nibh amet enim nec. Placerat in turpis ultrices amet mauris.', maxLines: 3, controller: TextEditingController()),
+                  CustomTextField(
+                    label: "Schedule Note",
+                    hint: 'Urna turpis ante nunc nibh amet enim nec. Placerat in turpis ultrices amet mauris.',
+                    maxLines: 3,
+                    controller: TextEditingController(),
+                  ),
                   SizedBox(height: 16.h),
                   GestureDetector(
                     onTap: () {

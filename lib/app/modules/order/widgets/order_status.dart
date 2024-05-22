@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nuforce/app/shared/widgets/colored_button.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/extension_methods.dart';
+import 'package:nuforce/main.dart';
 
 enum OrderStatus {
   pending,
@@ -41,7 +42,7 @@ class OrderCard extends StatelessWidget {
                   'Aaron Taylor',
                   style: TextStyle(
                     color: AppColors.nutralBlack1,
-                    fontSize: 16.sp,
+                    fontSize: isIpad ? 12.sp : 16.sp,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
@@ -71,7 +72,7 @@ class OrderCard extends StatelessWidget {
                   'WOAT351',
                   style: TextStyle(
                     color: AppColors.nutralBlack2,
-                    fontSize: 14.sp,
+                    fontSize: isIpad ? 10.sp : 14.sp,
                     fontWeight: FontWeight.w400,
                   ),
                 ),
@@ -79,7 +80,7 @@ class OrderCard extends StatelessWidget {
                   '\$500.00',
                   style: TextStyle(
                     color: AppColors.nutralBlack1,
-                    fontSize: 14.sp,
+                    fontSize: isIpad ? 10.sp : 14.sp,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -90,7 +91,7 @@ class OrderCard extends StatelessWidget {
               '25 Jan 2024',
               style: TextStyle(
                 color: AppColors.nutralBlack2,
-                fontSize: 14.sp,
+                fontSize: isIpad ? 10.sp : 14.sp,
                 fontWeight: FontWeight.w400,
               ),
             ),
@@ -99,7 +100,7 @@ class OrderCard extends StatelessWidget {
               '1621 Ocean Pearl Rd Corolla, North Carolina (NC), 27927',
               style: TextStyle(
                 color: AppColors.nutralBlack2,
-                fontSize: 14.sp,
+                fontSize: isIpad ? 10.sp : 14.sp,
                 fontWeight: FontWeight.w400,
               ),
             ),

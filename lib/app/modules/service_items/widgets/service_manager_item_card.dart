@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nuforce/app/modules/service_items/widgets/bottom_tile_widget.dart';
 import 'package:nuforce/app/modules/service_items/widgets/little_text_with_colored_bg.dart';
 import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/app/utils/text_styles.dart';
+import 'package:nuforce/main.dart';
 
 class ServiceManagerItemCard extends StatelessWidget {
   const ServiceManagerItemCard({
@@ -66,6 +68,7 @@ class ServiceManagerItemCard extends StatelessWidget {
                           child: Icon(
                             isFavorite ? Icons.favorite : Icons.favorite_border,
                             color: AppColors.primaryBlue1,
+                            size: isIpad ? 20.sp : null,
                           ),
                         ),
                       ],
@@ -73,39 +76,42 @@ class ServiceManagerItemCard extends StatelessWidget {
                     SizedBox(height: 6.sp),
                     Text(
                       'Insulation Blow Over',
-                      style: TextStyle(
+                      style: CustomTextStyle.paragraphMedium.copyWith(
                         color: AppColors.nutralBlack1,
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w500,
                       ),
                     ),
                     Text(
                       'Lawn Services',
-                      style: TextStyle(
+                      style: CustomTextStyle.paragraphExtraSmall.copyWith(
                         color: AppColors.nutralBlack1,
-                        fontSize: 12.sp,
-                        fontWeight: FontWeight.w400,
                       ),
                     ),
                     Row(
                       children: [
                         Text(
                           r'$25.00',
-                          style: TextStyle(
+                          style: CustomTextStyle.paragraphSmall.copyWith(
                             color: AppColors.nutralBlack1,
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w500,
                           ),
+                          // style: TextStyle(
+                          //   color: AppColors.nutralBlack1,
+                          //   fontSize: 14.sp,
+                          //   fontWeight: FontWeight.w500,
+                          // ),
                         ),
                         SizedBox(width: 4.sp),
                         Text(
                           r'$30.00',
-                          style: TextStyle(
+                          style: CustomTextStyle.paragraphExtraSmall.copyWith(
                             color: AppColors.nutralBlack1,
                             decoration: TextDecoration.lineThrough,
-                            fontSize: 10.sp,
-                            fontWeight: FontWeight.w400,
                           ),
+                          // style: TextStyle(
+                          //   color: AppColors.nutralBlack1,
+                          //   decoration: TextDecoration.lineThrough,
+                          //   fontSize: 10.sp,
+                          //   fontWeight: FontWeight.w400,
+                          // ),
                         ),
                         SizedBox(width: 4.sp),
                         Container(
@@ -118,7 +124,7 @@ class ServiceManagerItemCard extends StatelessWidget {
                             '10%',
                             style: TextStyle(
                               color: AppColors.white1,
-                              fontSize: 10.sp,
+                              fontSize: isIpad ? 8.sp : 10.sp,
                               fontWeight: FontWeight.w400,
                             ),
                           ),
@@ -127,11 +133,14 @@ class ServiceManagerItemCard extends StatelessWidget {
                         Text(
                           'Qty: 1',
                           textAlign: TextAlign.right,
-                          style: TextStyle(
+                          style: CustomTextStyle.paragraphSmall.copyWith(
                             color: AppColors.nutralBlack1,
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w400,
                           ),
+                          // style: TextStyle(
+                          //   color: AppColors.nutralBlack1,
+                          //   fontSize: 12.sp,
+                          //   fontWeight: FontWeight.w400,
+                          // ),
                         ),
                       ],
                     ),

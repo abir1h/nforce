@@ -4,7 +4,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
 import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/app/utils/extension_methods.dart';
+import 'package:nuforce/app/utils/text_styles.dart';
 import 'package:nuforce/gen/assets.gen.dart';
+import 'package:nuforce/main.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../controllers/dashboard_controller.dart';
@@ -17,8 +20,9 @@ class DashboardView extends GetView<DashboardController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: AppColors.lightShade,
-        body: Obx(() {
+      backgroundColor: AppColors.lightShade,
+      body: Obx(
+        () {
           return SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,14 +34,26 @@ class DashboardView extends GetView<DashboardController> {
                     children: [
                       Expanded(
                         child: Text.rich(
-                            TextSpan(text: 'Report', style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16.sp, fontFamily: "Poppins", color: AppColors.nutralBlack1), children: <InlineSpan>[
                           TextSpan(
-                            text: '(Dashboard & Colander )',
-                            style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16.sp, fontFamily: "Poppins", color: AppColors.nutralBlack1),
-                          )
-                        ])),
+                            text: 'Report',
+                            style: CustomTextStyle.heading4.copyWith(
+                              color: AppColors.nutralBlack1,
+                            ),
+                            children: <InlineSpan>[
+                              TextSpan(
+                                text: '(Dashboard & Colander )',
+                                style: CustomTextStyle.heading4.copyWith(
+                                  color: AppColors.nutralBlack1,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
                       ),
-                      SvgPicture.asset(Assets.images.svg.calendarReport)
+                      SvgPicture.asset(
+                        Assets.images.svg.calendarReport,
+                        height: isIpad ? 35 : null,
+                      )
                     ],
                   ),
                 ),
@@ -46,7 +62,7 @@ class DashboardView extends GetView<DashboardController> {
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(
-                    horizontal: 20.w,
+                    horizontal: isIpad ? 0 : 20.w,
                   ),
                   child: SfCartesianChart(
                     backgroundColor: Colors.white,
@@ -72,7 +88,7 @@ class DashboardView extends GetView<DashboardController> {
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(
-                    horizontal: 20.w,
+                    horizontal: isIpad ? 0 : 20.w,
                   ),
                   child: Container(
                     padding: EdgeInsets.symmetric(
@@ -86,48 +102,44 @@ class DashboardView extends GetView<DashboardController> {
                         children: [
                           Text(
                             'Revenue Change',
-                            style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16.sp, fontFamily: "Poppins"),
+                            style: CustomTextStyle.heading4,
                           ),
                           Text(
                             'Revenue change breakdown by cities',
-                            style: TextStyle(fontWeight: FontWeight.w400, fontSize: 12.sp, fontFamily: "Poppins", color: AppColors.nutralBlack2),
+                            style: CustomTextStyle.paragraphExtraSmall.copyWith(
+                              color: AppColors.nutralBlack2,
+                            ),
                           ),
-                          SizedBox(
-                            height: 10.h,
-                          ),
+                          SizedBox(height: 10.h),
                           const DashBoardChartWidget(),
                         ],
                       ),
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 24.h,
-                ),
+                SizedBox(height: 24.h),
                 Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 20.w,
-                  ),
+                  padding: EdgeInsets.symmetric(horizontal: isIpad ? 0 : 20.w),
                   child: Text(
                     "User Progress",
-                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16.sp, fontFamily: 'Poppins', color: AppColors.nutralBlack1),
+                    style: CustomTextStyle.heading4.copyWith(
+                      color: AppColors.nutralBlack1,
+                    ),
                   ),
                 ),
-                SizedBox(
-                  height: 16.h,
-                ),
+                SizedBox(height: 16.h),
                 const UserProgressCard(),
                 const UserProgressCard(),
                 const UserProgressCard(),
                 const UserProgressCard(),
                 const UserProgressCard(),
                 const UserProgressCard(),
-                SizedBox(
-                  height: 32.h,
-                ),
+                SizedBox(height: 32.h),
               ],
             ),
           );
-        }));
+        },
+      ).ifIpad,
+    );
   }
 }

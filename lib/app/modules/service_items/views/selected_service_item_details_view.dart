@@ -12,6 +12,7 @@ import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/shared/widgets/secondary_button.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
 import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/app/utils/extension_methods.dart';
 import 'package:nuforce/main.dart';
 
 class SelectedItemDetailsView extends StatefulWidget {
@@ -83,7 +84,7 @@ class _SelectedItemDetailsViewState extends State<SelectedItemDetailsView> {
                             : controller.selectedServiceTabEnum.value == SelectedServiceTabEnum.content
                                 ? contentBody()
                                 : Container(),
-              ),
+              ).ifIpad,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),

@@ -1,8 +1,10 @@
 // ignore_for_file: strict_raw_type, inference_failure_on_function_return_type
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/text_styles.dart';
+import 'package:nuforce/main.dart';
 
 class CustomDropdownButton<T> extends StatelessWidget {
   const CustomDropdownButton({
@@ -52,7 +54,7 @@ class CustomDropdownButton<T> extends StatelessWidget {
           ),
         if (label != null) const SizedBox(height: 8),
         Container(
-          height: 50,
+          // height: 50.h,
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
           decoration: BoxDecoration(
             color: AppColors.textFieldBackground,
@@ -62,8 +64,8 @@ class CustomDropdownButton<T> extends StatelessWidget {
           child: DropdownButton<T>(
             hint: Text(
               hint,
-              style: const TextStyle(
-                fontSize: 14,
+              style: TextStyle(
+                fontSize: isIpad ? 10.sp : 14.sp,
                 fontWeight: FontWeight.w400,
                 color: AppColors.subText,
               ),
@@ -71,8 +73,8 @@ class CustomDropdownButton<T> extends StatelessWidget {
             underline: const SizedBox(),
             isExpanded: true,
             icon: const Icon(Icons.keyboard_arrow_down),
-            style: const TextStyle(
-              fontSize: 14,
+            style: TextStyle(
+              fontSize: isIpad ? 10.sp : 14.sp,
               fontWeight: FontWeight.w400,
               color: AppColors.subText,
             ),

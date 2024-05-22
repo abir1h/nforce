@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nuforce/app/shared/widgets/custom_checkbox.dart';
 import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/app/utils/extension_methods.dart';
+import 'package:nuforce/app/utils/text_styles.dart';
+import 'package:nuforce/main.dart';
 
 class ColoredCheckboxWithTitle extends StatelessWidget {
   const ColoredCheckboxWithTitle({
@@ -8,7 +13,8 @@ class ColoredCheckboxWithTitle extends StatelessWidget {
     required this.color,
     required this.onChanged,
     required this.title,
-    super.key,  this.titleColor,
+    super.key,
+    this.titleColor,
   });
 
   final bool isSelected;
@@ -21,17 +27,19 @@ class ColoredCheckboxWithTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        CustomCheckbox(
-          activeColor: color,
-          value: isSelected,
-          onChanged: onChanged,
+        Transform.scale(
+          scale: isIpad ? 1.2 : 1,
+          child: CustomCheckbox(
+            activeColor: color,
+            value: isSelected,
+            onChanged: onChanged,
+          ),
         ),
+        5.w.hSpace,
         Text(
           title,
-          style:  TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-            color: titleColor??AppColors.subText,
+          style: CustomTextStyle.heading5.copyWith(
+            color: AppColors.subText,
           ),
         ),
       ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
@@ -18,8 +19,10 @@ import 'package:nuforce/app/modules/settings/views/web_hook_integration_view.dar
 import 'package:nuforce/app/modules/settings/widgets/setting_tile.dart';
 import 'package:nuforce/app/routes/app_pages.dart';
 import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/app/utils/extension_methods.dart';
 import 'package:nuforce/app/utils/shared_preferences.dart';
 import 'package:nuforce/gen/assets.gen.dart';
+import 'package:nuforce/main.dart';
 
 import '../sub_modules/addons/view/addons_view.dart';
 import '../sub_modules/calendar_sync/views/calendar_sync.dart';
@@ -45,12 +48,12 @@ class SettingsView extends GetView<SettingsController> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: AppColors.white1,
+        toolbarHeight: isIpad ? 50 : null,
         title: Text(
           'Settings',
           style: TextStyle(
             fontWeight: FontWeight.w500,
-            fontSize: 18.sp,
-            fontFamily: 'Poppins',
+            fontSize: isIpad ? 14.sp : 18.sp,
             color: AppColors.nutralBlack1,
           ),
         ),
@@ -82,14 +85,12 @@ class SettingsView extends GetView<SettingsController> {
                       'General',
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
-                        fontSize: 14.sp,
+                        fontSize: isIpad ? 10.sp : 14.sp,
                         fontFamily: 'Poppins',
                         color: AppColors.nutralBlack1,
                       ),
                     ),
-                    SizedBox(
-                      height: 8.h,
-                    ),
+                    SizedBox(height: 8.h),
                     SettingTile(
                       leading: Assets.images.png.accountInfo.keyName,
                       onTap: () => Get.to<void>(() => const AccountInformationView()),
@@ -171,7 +172,7 @@ class SettingsView extends GetView<SettingsController> {
                       'Team Management',
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
-                        fontSize: 14.sp,
+                        fontSize: isIpad ? 10.sp : 14.sp,
                         fontFamily: 'Poppins',
                         color: AppColors.nutralBlack1,
                       ),
@@ -187,7 +188,9 @@ class SettingsView extends GetView<SettingsController> {
                     ),
                     SettingTile(
                       leading: Assets.images.png.schedules.keyName,
-                      onTap: () {Get.to<void>(() =>  ScheduleSettingView());},
+                      onTap: () {
+                        Get.to<void>(() => const ScheduleSettingView());
+                      },
                       label: 'Schedules',
                       hasDivider: true,
                     ),
@@ -236,7 +239,7 @@ class SettingsView extends GetView<SettingsController> {
                       'Integrations',
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
-                        fontSize: 14.sp,
+                        fontSize: isIpad ? 10.sp : 14.sp,
                         fontFamily: 'Poppins',
                         color: AppColors.nutralBlack1,
                       ),
@@ -283,7 +286,7 @@ class SettingsView extends GetView<SettingsController> {
                       'Affiliation',
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
-                        fontSize: 14.sp,
+                        fontSize: isIpad ? 10.sp : 14.sp,
                         fontFamily: 'Poppins',
                         color: AppColors.nutralBlack1,
                       ),
@@ -330,7 +333,7 @@ class SettingsView extends GetView<SettingsController> {
                       'Messaging',
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
-                        fontSize: 14.sp,
+                        fontSize: isIpad ? 10.sp : 14.sp,
                         fontFamily: 'Poppins',
                         color: AppColors.nutralBlack1,
                       ),
@@ -377,7 +380,7 @@ class SettingsView extends GetView<SettingsController> {
                       'Help & Support',
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
-                        fontSize: 14.sp,
+                        fontSize: isIpad ? 10.sp : 14.sp,
                         fontFamily: 'Poppins',
                         color: AppColors.nutralBlack1,
                       ),
@@ -443,10 +446,13 @@ class SettingsView extends GetView<SettingsController> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset(
-                      Assets.images.png.logout.keyName,
-                      height: 24.r,
-                      width: 24.r,
+                    Transform.scale(
+                      scale: isIpad ? 1.5 : 1,
+                      child: Image.asset(
+                        Assets.images.png.logout.path,
+                        // height: 24.r,
+                        // width: 24.r,
+                      ),
                     ),
                     SizedBox(
                       width: 8.w,
@@ -456,7 +462,7 @@ class SettingsView extends GetView<SettingsController> {
                       style: TextStyle(
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w600,
-                        fontSize: 16.sp,
+                        fontSize: isIpad ? 10.sp : 16.sp,
                         color: AppColors.primaryBlue1,
                       ),
                     ),
@@ -471,9 +477,8 @@ class SettingsView extends GetView<SettingsController> {
               child: Text(
                 'Version : 1.0.0',
                 style: TextStyle(
-                  fontFamily: 'Poppins',
                   fontWeight: FontWeight.w500,
-                  fontSize: 14.sp,
+                  fontSize: isIpad ? 10.sp : 14.sp,
                   color: AppColors.greyText,
                 ),
               ),
@@ -482,7 +487,7 @@ class SettingsView extends GetView<SettingsController> {
               height: 32.h,
             ),
           ],
-        ),
+        ).ifIpad,
       ),
     );
   }

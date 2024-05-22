@@ -35,7 +35,7 @@ class CustomAppbarMinimal extends StatelessWidget implements PreferredSizeWidget
                   title,
                   style: TextStyle(
                     color: AppColors.nutralBlack1,
-                    fontSize: 18.sp,
+                    fontSize: isIpad ? 14.sp : 18.sp,
                     fontWeight: FontWeight.w500,
                   ),
                 ),

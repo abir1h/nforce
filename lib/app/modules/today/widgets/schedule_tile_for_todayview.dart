@@ -5,6 +5,7 @@ import 'package:nuforce/app/modules/today/controllers/today_controller.dart';
 import 'package:nuforce/app/modules/today/widgets/schedule_details_view.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/gen/assets.gen.dart';
+import 'package:nuforce/main.dart';
 
 class ScheduleTileForTodayView extends StatelessWidget {
   const ScheduleTileForTodayView({
@@ -47,7 +48,7 @@ class ScheduleTileForTodayView extends StatelessWidget {
                   eventChild.title,
                   style: TextStyle(
                     color: AppColors.nutralBlack1,
-                    fontSize: 12.sp,
+                    fontSize: isIpad ? 8.sp : 12.sp,
                     fontWeight: FontWeight.w400,
                   ),
                 ),
@@ -55,18 +56,27 @@ class ScheduleTileForTodayView extends StatelessWidget {
                   eventChild.status,
                   style: TextStyle(
                     color: eventChild.color,
-                    fontSize: 12.sp,
+                    fontSize: isIpad ? 8.sp : 12.sp,
                     fontWeight: FontWeight.w400,
                   ),
                 ),
               ],
             ),
             if (eventChild.error)
-              SvgPicture.asset(Assets.images.svg.redCross)
+              SvgPicture.asset(
+                Assets.images.svg.redCross,
+                height: isIpad ? 20.h : null,
+              )
             else if (eventChild.isCompleted)
-              SvgPicture.asset(Assets.images.svg.blueMark)
+              SvgPicture.asset(
+                Assets.images.svg.blueMark,
+                height: isIpad ? 20.h : null,
+              )
             else
-              SvgPicture.asset(Assets.images.svg.emptyCheckbox),
+              SvgPicture.asset(
+                Assets.images.svg.emptyCheckbox,
+                height: isIpad ? 20.h : null,
+              ),
           ],
         ),
       ),

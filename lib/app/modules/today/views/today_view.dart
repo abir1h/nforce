@@ -66,10 +66,11 @@ class _TodayViewState extends State<TodayView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: isIpad ? 50 : null,
         title: Text(
           'Today',
           style: TextStyle(
-            fontSize: 18.sp,
+            fontSize: isIpad ? 14.sp : 18.sp,
             color: AppColors.nutralBlack1,
             fontWeight: FontWeight.w500,
           ),
@@ -101,7 +102,7 @@ class _TodayViewState extends State<TodayView> {
                   weekendDays: const [],
                   daysOfWeekHeight: 40.h,
                   daysOfWeekStyle: _daysOfWeekStyle(),
-                  rowHeight: 60.h,
+                  rowHeight: isIpad ? 80.h : 60.h,
                   selectedDayPredicate: (day) {
                     return isSameDay(selectedDate ?? DateTime(2024, 2, 9), day);
                   },
@@ -110,7 +111,7 @@ class _TodayViewState extends State<TodayView> {
                     return mockEvents.where((element) => isSameDay(element.date, day)).toList();
                   },
                 ),
-              ),
+              ).ifIpad,
               16.h.vSpace,
               if (selectedDate != null && selectedEvents != null)
                 Container(
@@ -135,7 +136,7 @@ class _TodayViewState extends State<TodayView> {
                                 'Schedule 0f ${DatetimeCustomFunc.getFormattedDateWithMonth(selectedDate!)}',
                                 style: TextStyle(
                                   color: AppColors.nutralBlack1,
-                                  fontSize: 16.sp,
+                                  fontSize: isIpad ? 12.sp : 16.sp,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
@@ -208,13 +209,14 @@ class _TodayViewState extends State<TodayView> {
                                                   '12:30 pm',
                                                   style: TextStyle(
                                                     color: Colors.white,
-                                                    fontSize: 12.sp,
+                                                    fontSize: isIpad ? 8.sp : 12.sp,
                                                     fontWeight: FontWeight.w600,
                                                   ),
                                                 ),
-                                                const Icon(
+                                                Icon(
                                                   Icons.schedule,
                                                   color: AppColors.white1,
+                                                  size: isIpad ? 17.sp : null,
                                                 ),
                                               ],
                                             ),
@@ -277,7 +279,7 @@ class _TodayViewState extends State<TodayView> {
                               child: Text(
                                 isExpanded ? '- Show less' : '+ Show more',
                                 style: TextStyle(
-                                  fontSize: 12.sp,
+                                  fontSize: isIpad ? 8.sp : 12.sp,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.primaryBlue1,
                                 ),
@@ -306,7 +308,7 @@ class _TodayViewState extends State<TodayView> {
                                 textAlign: TextAlign.right,
                                 style: TextStyle(
                                   color: AppColors.primaryBlue1,
-                                  fontSize: 12.sp,
+                                  fontSize: isIpad ? 8.sp : 12.sp,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
@@ -318,7 +320,7 @@ class _TodayViewState extends State<TodayView> {
                       ],
                     ),
                   ),
-                ),
+                ).ifIpad,
               40.h.vSpace,
             ],
           ),
@@ -402,7 +404,7 @@ class _TodayViewState extends State<TodayView> {
         color: AppColors.nutralBlack1,
       ),
       titleTextStyle: TextStyle(
-        fontSize: 18.sp,
+        fontSize: isIpad ? 14.sp : 18.sp,
         color: AppColors.nutralBlack1,
         fontWeight: FontWeight.w600,
       ),

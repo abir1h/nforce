@@ -2,33 +2,34 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/service_center/sub_modules/calendar/controllers/calendar_controller.dart';
 import 'package:nuforce/app/modules/service_center/sub_modules/calendar/views/calendar_view.dart';
 import 'package:nuforce/app/modules/service_center/sub_modules/dashboard/views/dashboard_view.dart';
-import 'package:nuforce/app/modules/service_center/sub_modules/estimation/controllers/estimation_controller.dart';
-import 'package:nuforce/app/modules/service_center/sub_modules/service_center_maps/controllers/service_center_maps_controller.dart';
 import 'package:nuforce/app/modules/service_center/sub_modules/service_center_maps/views/service_center_maps_view.dart';
-import 'package:nuforce/app/modules/service_center/sub_modules/work_order/controllers/work_order_controller.dart';
 import 'package:nuforce/app/modules/service_center/sub_modules/work_order/views/work_order_view.dart';
-import 'package:nuforce/app/modules/service_center/sub_modules/work_order_search/controllers/work_order_search_controller.dart';
 import 'package:nuforce/app/routes/app_pages.dart';
+import 'package:nuforce/app/utils/text_styles.dart';
 import '../../../shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/utils/colors.dart';
 
 import '../controllers/service_center_controller.dart';
-import '../sub_modules/dashboard/controllers/dashboard_controller.dart';
 import '../sub_modules/estimation/views/estimation_view.dart';
 
-class ServiceCenterView extends GetView<ServiceCenterController> {
+class ServiceCenterView extends StatefulWidget {
   const ServiceCenterView({Key? key}) : super(key: key);
+
+  @override
+  State<ServiceCenterView> createState() => _ServiceCenterViewState();
+}
+
+class _ServiceCenterViewState extends State<ServiceCenterView> {
+  @override
+  void initState() {
+    Get.put(ServiceCenterController());
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    Get.put(DashboardController());
-    Get.put(WorkOrderController());
-    Get.put(WorkOrderSearchController());
-    Get.put(EstimationController());
-    Get.put(ServiceCenterCalendarController());
-    Get.put(ServiceCenterMapsController());
     return Scaffold(
       backgroundColor: AppColors.white1,
       resizeToAvoidBottomInset: true,
@@ -64,20 +65,14 @@ class ServiceCenterView extends GetView<ServiceCenterController> {
               decoration: const BoxDecoration(color: AppColors.white1),
               child: TabBar(
                 isScrollable: true,
-                labelStyle: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 16.sp,
-                    fontFamily: 'Poppins'),
+                labelStyle: CustomTextStyle.heading4,
                 indicatorColor: AppColors.nutralBlack1,
                 unselectedLabelColor: AppColors.nutralBlack2,
-                unselectedLabelStyle: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 16.sp,
-                    fontFamily: 'Poppins'),
+                unselectedLabelStyle: CustomTextStyle.heading4,
+                labelPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
 
                 indicator: const BoxDecoration(
-                  color: AppColors
-                      .primaryBlue1, // Set the overlay color for the selected tab
+                  color: AppColors.primaryBlue1, // Set the overlay color for the selected tab
                 ),
                 padding: EdgeInsets.zero,
 

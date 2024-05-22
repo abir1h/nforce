@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/app/utils/text_styles.dart';
+import 'package:nuforce/main.dart';
 
 class RatingTile extends StatelessWidget {
   const RatingTile({
@@ -31,10 +33,8 @@ class RatingTile extends StatelessWidget {
                   child: Text(
                     'AK',
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w600,
+                    style: CustomTextStyle.heading5.copyWith(
+                      color: AppColors.white1,
                     ),
                   ),
                 ),
@@ -48,9 +48,8 @@ class RatingTile extends StatelessWidget {
                       children: [
                         Text(
                           'Abdul Korim',
-                          style: TextStyle(
+                          style: CustomTextStyle.paragraphLarge.copyWith(
                             color: AppColors.nutralBlack1,
-                            fontSize: 14.sp,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
@@ -58,10 +57,9 @@ class RatingTile extends StatelessWidget {
                         Text(
                           '5, June 2023',
                           textAlign: TextAlign.right,
-                          style: TextStyle(
-                            color: AppColors.white4,
-                            fontSize: 11.sp,
-                            fontWeight: FontWeight.w400,
+                          style: CustomTextStyle.paragraphExtraSmall.copyWith(
+                            color: AppColors.nutralBlack2,
+                            fontWeight: FontWeight.w500,
                           ),
                         ),
                       ],
@@ -86,10 +84,8 @@ class RatingTile extends StatelessWidget {
           const SizedBox(height: 10),
           Text(
             'Nibh nibh quis dolor in. Etiam cras nisi, turpis quisque diam',
-            style: TextStyle(
+            style: CustomTextStyle.paragraphSmall.copyWith(
               color: AppColors.nutralBlack1,
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w400,
               letterSpacing: -0.15,
             ),
           ),
@@ -106,7 +102,7 @@ class RatingTile extends StatelessWidget {
                   'Approve',
                   style: TextStyle(
                     color: AppColors.primaryBlue1,
-                    fontSize: 14.sp,
+                    fontSize: isIpad ? 10.sp : 14.sp,
                     fontWeight: FontWeight.w400,
                     letterSpacing: -0.15,
                   ),

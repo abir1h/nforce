@@ -58,13 +58,13 @@ class InvoiceBody extends GetView<HomeController> {
                 Text(
                   'All Invoices',
                   style: TextStyle(
-                    fontSize: 16.sp,
+                    fontSize: isIpad ? 12.sp : 16.sp,
                     fontWeight: FontWeight.w500,
                     color: AppColors.nutralBlack1,
                   ),
                 ),
                 Container(
-                  height: 30,
+                  height: 30.h,
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   decoration: BoxDecoration(
                     color: AppColors.textFieldBackground,
@@ -76,7 +76,7 @@ class InvoiceBody extends GetView<HomeController> {
                     isExpanded: false,
                     icon: const Icon(Icons.arrow_drop_down, color: AppColors.inactiveColor),
                     style: TextStyle(
-                      fontSize: 12.sp,
+                      fontSize: isIpad ? 8.sp : 12.sp,
                       fontWeight: FontWeight.w400,
                       color: AppColors.subText,
                     ),
@@ -87,7 +87,7 @@ class InvoiceBody extends GetView<HomeController> {
                             child: Text(
                               e,
                               style: TextStyle(
-                                fontSize: 12.sp,
+                                fontSize: isIpad ? 8.sp : 12.sp,
                                 fontWeight: FontWeight.w400,
                                 color: AppColors.subText,
                               ),

@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/extension_methods.dart';
+import 'package:nuforce/main.dart';
 
 class CustomTabBarFilled extends StatelessWidget {
   const CustomTabBarFilled({
@@ -34,7 +35,7 @@ class CustomTabBarFilled extends StatelessWidget {
         onTap: onTap,
         child: Container(
           color: isSelected ? AppColors.primaryBlue1 : AppColors.primaryBlue3,
-          padding: EdgeInsets.symmetric(horizontal: 20.sp, vertical: 13.sp),
+          padding: EdgeInsets.symmetric(horizontal: 20.sp, vertical: 13.h),
           child: Center(
             child: Row(
               children: [
@@ -52,7 +53,7 @@ class CustomTabBarFilled extends StatelessWidget {
                   text,
                   style: TextStyle(
                     color: isSelected ? AppColors.white1 : AppColors.nutralBlack1,
-                    fontSize: isMini ? 12.sp : 20.sp,
+                    fontSize: isIpad ? (isMini ? 8.sp : 16.sp) : (isMini ? 12.sp : 20.sp),
                     fontWeight: isMini ? FontWeight.w500 : FontWeight.w600,
                   ),
                 ),

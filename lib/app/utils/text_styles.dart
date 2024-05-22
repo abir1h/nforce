@@ -10,12 +10,12 @@ class CustomTextStyle {
   );
 
   static TextStyle heading2 = TextStyle(
-    fontSize: isIpad ? 18.sp : 20.sp,
+    fontSize: isIpad ? 16.sp : 20.sp,
     fontWeight: FontWeight.bold,
   );
 
   static TextStyle heading3 = TextStyle(
-    fontSize: isIpad ? 16.sp : 18.sp,
+    fontSize: isIpad ? 14.sp : 18.sp,
     fontWeight: FontWeight.bold,
   );
 
@@ -44,7 +44,19 @@ class CustomTextStyle {
   static TextStyle paragraphExtraSmall = TextStyle(
     fontSize: isIpad ? 8.sp : 12.sp,
   );
-  static TextStyle commonBold = TextStyle(fontSize: 16.sp, color: AppColors.nutralBlack1, fontWeight: FontWeight.w600, fontFamily: "Poppins");
-  static TextStyle commonTitle = TextStyle(fontSize: 16.sp, color: AppColors.nutralBlack1, fontWeight: FontWeight.w500, fontFamily: "Poppins");
-  static TextStyle commonLabel = TextStyle(fontSize: 14.sp, color: AppColors.subText, fontWeight: FontWeight.w400, fontFamily: "Poppins");
+  static TextStyle commonBold = TextStyle(
+    fontSize: isIpad ? 12.sp : 16.sp,
+    color: AppColors.nutralBlack1,
+    fontWeight: FontWeight.w600,
+  );
+  static TextStyle commonTitle = TextStyle(
+    fontSize: isIpad ? 12.sp : 16.sp,
+    color: AppColors.nutralBlack1,
+    fontWeight: FontWeight.w500,
+  );
+  static TextStyle commonLabel = TextStyle(
+    fontSize: isIpad ? 12.sp : 14.sp,
+    color: AppColors.subText,
+    fontWeight: FontWeight.w400,
+  );
 }

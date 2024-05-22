@@ -34,7 +34,7 @@ class SecondaryButton extends StatelessWidget {
             style: CustomTextStyle.heading4.copyWith(
               fontWeight: FontWeight.w500,
               color: AppColors.red,
-              fontSize: height != null && height! <= 30 ? 12.sp : 16.sp,
+              fontSize: isIpad ? 10.sp : (height != null && height! <= 30 ? 12.sp : 16.sp),
             ),
           ),
         ),

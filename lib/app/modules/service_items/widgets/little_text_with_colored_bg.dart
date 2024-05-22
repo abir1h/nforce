@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nuforce/app/utils/text_styles.dart';
 
 class LittleTextWithColoredBG extends StatelessWidget {
   const LittleTextWithColoredBG({
@@ -20,10 +21,8 @@ class LittleTextWithColoredBG extends StatelessWidget {
       ),
       child: Text(
         text,
-        style: TextStyle(
+        style: CustomTextStyle.paragraphExtraSmall.copyWith(
           color: Colors.white,
-          fontSize: 12.sp,
-          fontWeight: FontWeight.w500,
         ),
       ),
     );

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/service_items/controllers/service_items_controller.dart';
 import 'package:nuforce/app/shared/widgets/custom_tabbar_filled.dart';
+import 'package:nuforce/main.dart';
 
 class SelectedServiceDetailsTabs extends StatelessWidget {
   const SelectedServiceDetailsTabs({
@@ -13,11 +14,15 @@ class SelectedServiceDetailsTabs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: [
-          Obx(
+    return isIpad ? _tabbar() : SingleChildScrollView(child: _tabbar());
+  }
+
+  Widget _tabbar() {
+    return Row(
+      children: [
+        isExpanded(
+          isExpanded: isIpad,
+          child: Obx(
             () => CustomTabBarFilled(
               isSelected: controller.selectedServiceTabEnum.value == SelectedServiceTabEnum.overview,
               onTap: () {
@@ -27,7 +32,10 @@ class SelectedServiceDetailsTabs extends StatelessWidget {
               isMini: true,
             ),
           ),
-          Obx(
+        ),
+        isExpanded(
+          isExpanded: isIpad,
+          child: Obx(
             () => CustomTabBarFilled(
               isSelected: controller.selectedServiceTabEnum.value == SelectedServiceTabEnum.subItems,
               onTap: () {
@@ -37,7 +45,10 @@ class SelectedServiceDetailsTabs extends StatelessWidget {
               isMini: true,
             ),
           ),
-          Obx(
+        ),
+        isExpanded(
+          isExpanded: isIpad,
+          child: Obx(
             () => CustomTabBarFilled(
               isSelected: controller.selectedServiceTabEnum.value == SelectedServiceTabEnum.settings,
               onTap: () {
@@ -47,7 +58,10 @@ class SelectedServiceDetailsTabs extends StatelessWidget {
               isMini: true,
             ),
           ),
-          Obx(
+        ),
+        isExpanded(
+          isExpanded: isIpad,
+          child: Obx(
             () => CustomTabBarFilled(
               isSelected: controller.selectedServiceTabEnum.value == SelectedServiceTabEnum.content,
               onTap: () {
@@ -57,8 +71,16 @@ class SelectedServiceDetailsTabs extends StatelessWidget {
               isMini: true,
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
+}
+
+Widget isExpanded({required Widget child, required bool isExpanded}) {
+  return isExpanded
+      ? Expanded(
+          child: child,
+        )
+      : child;
 }

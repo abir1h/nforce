@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
 import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/app/utils/text_styles.dart';
 
 Widget contentBody() {
   return Padding(
@@ -15,9 +16,8 @@ Widget contentBody() {
           const SizedBox(height: 16),
           Text(
             'Description',
-            style: TextStyle(
+            style: CustomTextStyle.heading4.copyWith(
               color: AppColors.nutralBlack1,
-              fontSize: 16.sp,
               fontWeight: FontWeight.w600,
             ),
           ),
@@ -26,9 +26,8 @@ Widget contentBody() {
             'Pellentesque pharetra fermentum sit cras. Sed volutpat pulvinar est faucibus. Adipiscing volutpat pharetra nunc, Pellentesque pharetra fermentum sit cras. Sed volutpat pulvinar est faucibus. Adipiscing volutpat pharetra nunc',
             expandText: 'Read More',
             collapseText: 'Read Less',
-            style: TextStyle(
+            style: CustomTextStyle.heading5.copyWith(
               color: AppColors.nutralBlack1,
-              fontSize: 14.sp,
               fontWeight: FontWeight.w400,
             ),
             maxLines: 3,
@@ -37,9 +36,8 @@ Widget contentBody() {
           const SizedBox(height: 24),
           Text(
             'FAQ',
-            style: TextStyle(
+            style: CustomTextStyle.heading4.copyWith(
               color: AppColors.nutralBlack1,
-              fontSize: 16.sp,
               fontWeight: FontWeight.w600,
             ),
           ),
@@ -73,10 +71,9 @@ Widget contentBody() {
                   ),
                   header: Text(
                     'How the price include cleaning?',
-                    style: TextStyle(
+                    style: CustomTextStyle.heading5.copyWith(
                       color: AppColors.nutralBlack1,
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.w400,
                     ),
                   ),
                   collapsed: const SizedBox(),
@@ -95,9 +92,8 @@ Widget contentBody() {
           const SizedBox(height: 24),
           Text(
             'Specification',
-            style: TextStyle(
+            style: CustomTextStyle.heading4.copyWith(
               color: AppColors.nutralBlack1,
-              fontSize: 16.sp,
               fontWeight: FontWeight.w600,
             ),
           ),
@@ -109,9 +105,8 @@ Widget contentBody() {
             itemBuilder: (BuildContext context, int index) {
               return Text(
                 '${index + 1}. Only Service Charge',
-                style: TextStyle(
-                  color: AppColors.subText,
-                  fontSize: 14.sp,
+                style: CustomTextStyle.heading5.copyWith(
+                  color: AppColors.nutralBlack1,
                   fontWeight: FontWeight.w400,
                 ),
               );
@@ -120,9 +115,8 @@ Widget contentBody() {
           const SizedBox(height: 24),
           Text(
             'What’s Included?',
-            style: TextStyle(
+            style: CustomTextStyle.heading4.copyWith(
               color: AppColors.nutralBlack1,
-              fontSize: 16.sp,
               fontWeight: FontWeight.w600,
             ),
           ),
@@ -134,9 +128,8 @@ Widget contentBody() {
             itemBuilder: (BuildContext context, int index) {
               return Text(
                 'Only Service Charge',
-                style: TextStyle(
-                  color: AppColors.subText,
-                  fontSize: 14.sp,
+                style: CustomTextStyle.heading5.copyWith(
+                  color: AppColors.nutralBlack1,
                   fontWeight: FontWeight.w400,
                 ),
               );
@@ -145,9 +138,8 @@ Widget contentBody() {
           const SizedBox(height: 24),
           Text(
             'Terms of Service',
-            style: TextStyle(
+            style: CustomTextStyle.heading4.copyWith(
               color: AppColors.nutralBlack1,
-              fontSize: 16.sp,
               fontWeight: FontWeight.w600,
             ),
           ),
@@ -159,9 +151,8 @@ Widget contentBody() {
             itemBuilder: (BuildContext context, int index) {
               return Text(
                 'Your happiness is our goal. Lorem Ipsum is sim ply dummy text of.',
-                style: TextStyle(
-                  color: AppColors.subText,
-                  fontSize: 14.sp,
+                style: CustomTextStyle.heading5.copyWith(
+                  color: AppColors.nutralBlack1,
                   fontWeight: FontWeight.w400,
                 ),
               );
@@ -170,9 +161,8 @@ Widget contentBody() {
           const SizedBox(height: 24),
           Text(
             'Requirement For Service',
-            style: TextStyle(
+            style: CustomTextStyle.heading4.copyWith(
               color: AppColors.nutralBlack1,
-              fontSize: 16.sp,
               fontWeight: FontWeight.w600,
             ),
           ),
@@ -184,9 +174,8 @@ Widget contentBody() {
             itemBuilder: (BuildContext context, int index) {
               return Text(
                 'A recent audit conducted by the safeguar ding boards highlighted.',
-                style: TextStyle(
-                  color: AppColors.subText,
-                  fontSize: 14.sp,
+                style: CustomTextStyle.heading5.copyWith(
+                  color: AppColors.nutralBlack1,
                   fontWeight: FontWeight.w400,
                 ),
               );
@@ -195,9 +184,8 @@ Widget contentBody() {
           const SizedBox(height: 24),
           Text(
             'SEO',
-            style: TextStyle(
+            style: CustomTextStyle.heading4.copyWith(
               color: AppColors.nutralBlack1,
-              fontSize: 16.sp,
               fontWeight: FontWeight.w600,
             ),
           ),
@@ -214,9 +202,8 @@ Widget contentBody() {
                   ),
                   child: Text(
                     'Insultation',
-                    style: TextStyle(
-                      color: AppColors.subText,
-                      fontSize: 14.sp,
+                    style: CustomTextStyle.heading5.copyWith(
+                      color: AppColors.nutralBlack1,
                       fontWeight: FontWeight.w400,
                     ),
                   ),

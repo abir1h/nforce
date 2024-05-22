@@ -37,97 +37,94 @@ class _HomeViewState extends State<HomeView> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(
-                    width: width,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              ServiceButton(
-                                svgPath: Assets.images.svg.customerService,
-                                title: 'Service\nCenter',
-                                onTap: () {
-                                  Get.toNamed(Routes.SERVICE_CENTER);
-                                },
-                              ),
-                              ServiceButton(
-                                svgPath: Assets.images.svg.businessManager,
-                                title: 'Business\nManager',
-                                onTap: () {
-                                  Get.toNamed<void>(Routes.BUSINESS_MANAGER);
-                                },
-                              ),
-                              ServiceButton(
-                                svgPath: Assets.images.svg.serviceManager,
-                                title: 'Service\nManager',
-                                onTap: () {
-                                  Get.toNamed<void>(Routes.SERVICE_ITEMS);
-                                },
-                              ),
-                              ServiceButton(
-                                svgPath: Assets.images.svg.humanResource,
-                                title: 'Human\nResource',
-                                onTap: () {
-                                  Get.toNamed(Routes.HUMAN_RESOURCE);
-                                },
-                              ),
-                            ],
-                          ),
-                          16.h.vSpace,
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              ServiceButton(
-                                svgPath: Assets.images.svg.calendar,
-                                title: 'Calendar',
-                                onTap: () {
-                                  Get.toNamed(Routes.CALENDAR);
-                                },
-                              ),
-                              ServiceButton(
-                                svgPath: Assets.images.svg.accounting,
-                                title: 'Accounting',
-                                onTap: () {
-                                  Get.toNamed(Routes.ACCOUNTING);
-                                },
-                              ),
-                              ServiceButton(
-                                svgPath: Assets.images.svg.customer,
-                                title: 'Customer',
-                                onTap: () {
-                                  Get.toNamed(Routes.BUSINESS_CUSTOMER);
-                                },
-                              ),
-                              IgnorePointer(
-                                ignoring: true,
-                                child: Opacity(
-                                  opacity: 0,
-                                  child: ServiceButton(
-                                    svgPath: Assets.images.svg.customer,
-                                    title: 'Customer',
-                                    onTap: () {
-                                      Get.toNamed(Routes.BUSINESS_CUSTOMER);
-                                    },
-                                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            ServiceButton(
+                              svgPath: Assets.images.svg.customerService,
+                              title: 'Service\nCenter',
+                              onTap: () {
+                                Get.toNamed(Routes.SERVICE_CENTER);
+                              },
+                            ),
+                            ServiceButton(
+                              svgPath: Assets.images.svg.businessManager,
+                              title: 'Business\nManager',
+                              onTap: () {
+                                Get.toNamed<void>(Routes.BUSINESS_MANAGER);
+                              },
+                            ),
+                            ServiceButton(
+                              svgPath: Assets.images.svg.serviceManager,
+                              title: 'Service\nManager',
+                              onTap: () {
+                                Get.toNamed<void>(Routes.SERVICE_ITEMS);
+                              },
+                            ),
+                            ServiceButton(
+                              svgPath: Assets.images.svg.humanResource,
+                              title: 'Human\nResource',
+                              onTap: () {
+                                Get.toNamed(Routes.HUMAN_RESOURCE);
+                              },
+                            ),
+                          ],
+                        ),
+                        16.h.vSpace,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            ServiceButton(
+                              svgPath: Assets.images.svg.calendar,
+                              title: 'Calendar',
+                              onTap: () {
+                                Get.toNamed(Routes.CALENDAR);
+                              },
+                            ),
+                            ServiceButton(
+                              svgPath: Assets.images.svg.accounting,
+                              title: 'Accounting',
+                              onTap: () {
+                                Get.toNamed(Routes.ACCOUNTING);
+                              },
+                            ),
+                            ServiceButton(
+                              svgPath: Assets.images.svg.customer,
+                              title: 'Customer',
+                              onTap: () {
+                                Get.toNamed(Routes.BUSINESS_CUSTOMER);
+                              },
+                            ),
+                            IgnorePointer(
+                              ignoring: true,
+                              child: Opacity(
+                                opacity: 0,
+                                child: ServiceButton(
+                                  svgPath: Assets.images.svg.customer,
+                                  title: 'Customer',
+                                  onTap: () {
+                                    Get.toNamed(Routes.BUSINESS_CUSTOMER);
+                                  },
                                 ),
                               ),
-                            ],
-                          ),
-                        ],
-                      ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-                  ),
+                  ).ifIpad,
                   const SizedBox(height: 10),
                   const HomeMiniTabs(),
                   const SizedBox(height: 16),
                   switch (hcontroller.miniTabEnum) {
-                    MiniTabIndexEnum.today => const TodayBody(),
-                    MiniTabIndexEnum.actions => const ActionsBody(),
-                    MiniTabIndexEnum.performance => const PerformanceBody(),
-                    MiniTabIndexEnum.invoices => const InvoiceBody(),
+                    MiniTabIndexEnum.today => const TodayBody().ifIpad,
+                    MiniTabIndexEnum.actions => const ActionsBody().ifIpad,
+                    MiniTabIndexEnum.performance => const PerformanceBody().ifIpad,
+                    MiniTabIndexEnum.invoices => const InvoiceBody().ifIpad,
                   },
                 ],
               ),

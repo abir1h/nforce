@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/text_styles.dart';
 
@@ -96,8 +97,8 @@ class InvoiceTile extends StatelessWidget {
                 ],
               ),
               Container(
-                height: 34,
-                width: 76,
+                height: 34.h,
+                width: 76.h,
                 decoration: BoxDecoration(
                   color: statusColor.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(4),

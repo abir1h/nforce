@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/main.dart';
 
 class PerformanceCardWidget extends StatelessWidget {
   const PerformanceCardWidget({
@@ -42,7 +43,7 @@ class PerformanceCardWidget extends StatelessWidget {
                   child: Text(
                     mainPercentage,
                     style: TextStyle(
-                      fontSize: 14.sp,
+                      fontSize: isIpad ? 10.sp : 14.sp,
                       fontWeight: FontWeight.w500,
                       color: color,
                     ),
@@ -53,7 +54,7 @@ class PerformanceCardWidget extends StatelessWidget {
                   child: Text(
                     subPercentage,
                     style: TextStyle(
-                      fontSize: 12.sp,
+                      fontSize: isIpad ? 8.sp : 12.sp,
                       fontWeight: FontWeight.w400,
                       color: AppColors.white4,
                     ),
@@ -70,7 +71,7 @@ class PerformanceCardWidget extends StatelessWidget {
               child: Text(
                 title,
                 style: TextStyle(
-                  fontSize: 12.sp,
+                  fontSize: isIpad ? 8.sp : 12.sp,
                   fontWeight: FontWeight.w400,
                   color: AppColors.subText,
                 ),

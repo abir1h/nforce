@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/app/utils/extension_methods.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 import 'package:nuforce/main.dart';
 
@@ -36,11 +37,11 @@ class ActionsTile extends StatelessWidget {
                       clipBehavior: Clip.none,
                       children: [
                         Container(
-                          height: 38,
-                          width: 82,
+                          height: 38.h,
+                          width: 82.h,
                           decoration: BoxDecoration(
                             color: color.withOpacity(0.2),
-                            borderRadius: BorderRadius.circular(100),
+                            borderRadius: BorderRadius.circular(100.r),
                           ),
                           child: Padding(
                             padding: const EdgeInsets.only(top: 1),
@@ -51,7 +52,7 @@ class ActionsTile extends StatelessWidget {
                                 child: Text(
                                   '565',
                                   style: TextStyle(
-                                    fontSize: 12.sp,
+                                    fontSize: isIpad ? 10.sp : 12.sp,
                                     fontWeight: FontWeight.w400,
                                     color: AppColors.nutralBlack1,
                                   ),
@@ -64,8 +65,8 @@ class ActionsTile extends StatelessWidget {
                           top: -1.5,
                           left: -1,
                           child: Container(
-                            height: 42,
-                            width: 42,
+                            height: 42.h,
+                            width: 42.h,
                             padding: const EdgeInsets.all(8),
                             decoration: BoxDecoration(
                               color: color.withOpacity(0),
@@ -92,7 +93,7 @@ class ActionsTile extends StatelessWidget {
                       child: Text(
                         text,
                         style: TextStyle(
-                          fontSize: 12.sp,
+                          fontSize: isIpad ? 8.sp : 12.sp,
                           fontWeight: FontWeight.w400,
                           color: AppColors.nutralBlack1,
                         ),
@@ -101,6 +102,7 @@ class ActionsTile extends StatelessWidget {
                   ],
                 ),
                 SvgPicture.asset(Assets.images.svg.arrowRight),
+                5.w.hSpace,
               ],
             ),
           ),

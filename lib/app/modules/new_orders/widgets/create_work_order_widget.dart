@@ -17,6 +17,7 @@ import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/extension_methods.dart';
+import 'package:nuforce/app/utils/text_styles.dart';
 import 'package:nuforce/main.dart';
 
 Future<void> createWorkOrderBottomSheet(BuildContext context) {
@@ -95,10 +96,8 @@ class _CreateOrderWidgetState extends State<CreateOrderWidget> {
               children: [
                 Text(
                   'Create Work Order',
-                  style: TextStyle(
+                  style: CustomTextStyle.heading3.copyWith(
                     color: AppColors.nutralBlack1,
-                    fontSize: 18.sp,
-                    fontWeight: FontWeight.w600,
                   ),
                 ),
                 GestureDetector(
@@ -152,10 +151,8 @@ class _CreateOrderWidgetState extends State<CreateOrderWidget> {
                         ),
                         Text(
                           'Search customer contact by name',
-                          style: TextStyle(
+                          style: CustomTextStyle.paragraphExtraSmall.copyWith(
                             color: AppColors.white4,
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w400,
                           ),
                         ),
                         16.h.vSpace,
@@ -165,11 +162,14 @@ class _CreateOrderWidgetState extends State<CreateOrderWidget> {
                             children: [
                               Text(
                                 'No address found',
-                                style: TextStyle(
+                                style: CustomTextStyle.heading5.copyWith(
                                   color: AppColors.red,
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w500,
                                 ),
+                                // style: TextStyle(
+                                //   color: AppColors.red,
+                                //   fontSize: 14.sp,
+                                //   fontWeight: FontWeight.w500,
+                                // ),
                               ),
                               TextButton(
                                 onPressed: () {
@@ -181,10 +181,8 @@ class _CreateOrderWidgetState extends State<CreateOrderWidget> {
                                 },
                                 child: Text(
                                   '+ Add Address',
-                                  style: TextStyle(
+                                  style: CustomTextStyle.heading5.copyWith(
                                     color: AppColors.primaryBlue1,
-                                    fontSize: 14.sp,
-                                    fontWeight: FontWeight.w500,
                                   ),
                                 ),
                               ),
@@ -210,10 +208,8 @@ class _CreateOrderWidgetState extends State<CreateOrderWidget> {
                         ),
                         Text(
                           'Service package to copy line items for estimation (Optional)',
-                          style: TextStyle(
+                          style: CustomTextStyle.paragraphExtraSmall.copyWith(
                             color: AppColors.white4,
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w400,
                           ),
                         ),
                         const SizedBox(height: 16),

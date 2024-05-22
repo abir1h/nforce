@@ -6,7 +6,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/service_center/sub_modules/calendar/widgets/add_schedule_bottomsheet.dart';
 import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/app/utils/extension_methods.dart';
+import 'package:nuforce/app/utils/text_styles.dart';
 import 'package:nuforce/gen/assets.gen.dart';
+import 'package:nuforce/main.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import '../../../../../shared/widgets/custom_dropdown.dart';
@@ -37,7 +40,11 @@ class ServiceCenterCalendarView extends GetView<ServiceCenterCalendarController>
               ),
               Text(
                 'Add Schedule',
-                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16.sp, color: AppColors.white1),
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontSize: isIpad ? 12.sp : 16.sp,
+                  color: AppColors.white1,
+                ),
               )
             ],
           ),
@@ -65,18 +72,16 @@ class ServiceCenterCalendarView extends GetView<ServiceCenterCalendarController>
                         SizedBox(width: 8.w),
                         Text(
                           'Full View',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 12.sp,
-                            fontFamily: "Poppins",
+                          style: CustomTextStyle.paragraphExtraSmall.copyWith(
                             color: AppColors.nutralBlack1,
+                            fontWeight: FontWeight.w400,
                           ),
                         )
                       ],
                     ),
                   ),
                 ),
-                SizedBox(width: 8),
+                const SizedBox(width: 8),
                 Flexible(
                   child: Container(
                     padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 12.h),
@@ -92,18 +97,16 @@ class ServiceCenterCalendarView extends GetView<ServiceCenterCalendarController>
                         SizedBox(width: 8.w),
                         Text(
                           'Time Chart',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 12.sp,
-                            fontFamily: "Poppins",
+                          style: CustomTextStyle.paragraphExtraSmall.copyWith(
                             color: AppColors.nutralBlack1,
+                            fontWeight: FontWeight.w400,
                           ),
                         ),
                       ],
                     ),
                   ),
                 ),
-                SizedBox(width: 8),
+                const SizedBox(width: 8),
                 Flexible(
                   child: Container(
                     padding: EdgeInsets.symmetric(horizontal: 2.w, vertical: 12.h),
@@ -119,11 +122,9 @@ class ServiceCenterCalendarView extends GetView<ServiceCenterCalendarController>
                         SizedBox(width: 8.w),
                         Text(
                           'Daily Timeline',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 12.sp,
-                            fontFamily: "Poppins",
+                          style: CustomTextStyle.paragraphExtraSmall.copyWith(
                             color: AppColors.nutralBlack1,
+                            fontWeight: FontWeight.w400,
                           ),
                         ),
                       ],
@@ -132,9 +133,7 @@ class ServiceCenterCalendarView extends GetView<ServiceCenterCalendarController>
                 ),
               ],
             ),
-            SizedBox(
-              height: 14.h,
-            ),
+            SizedBox(height: 14.h),
             Row(
               children: [
                 Flexible(
@@ -144,9 +143,8 @@ class ServiceCenterCalendarView extends GetView<ServiceCenterCalendarController>
                         value: 'producttypex',
                         child: Text(
                           'Sort By Agent',
-                          style: TextStyle(
+                          style: CustomTextStyle.paragraphExtraSmall.copyWith(
                             color: AppColors.nutralBlack1,
-                            fontSize: 13.sp,
                             fontWeight: FontWeight.w400,
                           ),
                         ),
@@ -155,9 +153,8 @@ class ServiceCenterCalendarView extends GetView<ServiceCenterCalendarController>
                         value: 'producttypey',
                         child: Text(
                           'Sort By Customer',
-                          style: TextStyle(
+                          style: CustomTextStyle.paragraphExtraSmall.copyWith(
                             color: AppColors.nutralBlack1,
-                            fontSize: 13.sp,
                             fontWeight: FontWeight.w400,
                           ),
                         ),
@@ -168,7 +165,7 @@ class ServiceCenterCalendarView extends GetView<ServiceCenterCalendarController>
                     value: 'producttypex',
                   ),
                 ),
-                SizedBox(width: 8),
+                const SizedBox(width: 8),
                 Flexible(
                   child: CustomDropdownButton(
                     items: [
@@ -176,9 +173,8 @@ class ServiceCenterCalendarView extends GetView<ServiceCenterCalendarController>
                         value: 'producttypex',
                         child: Text(
                           'Sort By Region',
-                          style: TextStyle(
+                          style: CustomTextStyle.paragraphExtraSmall.copyWith(
                             color: AppColors.nutralBlack1,
-                            fontSize: 13.sp,
                             fontWeight: FontWeight.w400,
                           ),
                         ),
@@ -187,9 +183,8 @@ class ServiceCenterCalendarView extends GetView<ServiceCenterCalendarController>
                         value: 'producttypey',
                         child: Text(
                           'Sort By Region1',
-                          style: TextStyle(
+                          style: CustomTextStyle.paragraphExtraSmall.copyWith(
                             color: AppColors.nutralBlack1,
-                            fontSize: 13.sp,
                             fontWeight: FontWeight.w400,
                           ),
                         ),
@@ -205,7 +200,7 @@ class ServiceCenterCalendarView extends GetView<ServiceCenterCalendarController>
             TableCalendar(
               firstDay: DateTime.utc(2020, 1, 1),
               lastDay: DateTime.utc(2030, 12, 31),
-              calendarStyle: CalendarStyle(outsideDaysVisible: false),
+              calendarStyle: const CalendarStyle(outsideDaysVisible: false),
               focusedDay: DateTime.now(),
               calendarFormat: CalendarFormat.month,
               selectedDayPredicate: (day) {
@@ -223,7 +218,7 @@ class ServiceCenterCalendarView extends GetView<ServiceCenterCalendarController>
               calendarBuilders: CalendarBuilders(
                 outsideBuilder: (context, date, events) {
                   return Container(
-                    margin: EdgeInsets.all(4),
+                    margin: const EdgeInsets.all(4),
                     decoration: BoxDecoration(
                       color: Colors.grey.shade200,
                       shape: BoxShape.rectangle,
@@ -231,22 +226,28 @@ class ServiceCenterCalendarView extends GetView<ServiceCenterCalendarController>
                     child: Center(
                       child: Text(
                         '${date.day}',
-                        style: TextStyle(color: Colors.grey),
+                        style: CustomTextStyle.paragraphExtraSmall.copyWith(
+                          color: AppColors.greyText,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
                     ),
                   );
                 },
                 selectedBuilder: (context, date, _) {
                   return Container(
-                    margin: EdgeInsets.all(4),
-                    decoration: BoxDecoration(
+                    margin: const EdgeInsets.all(4),
+                    decoration: const BoxDecoration(
                       color: Colors.blue,
                       shape: BoxShape.rectangle,
                     ),
                     child: Center(
                       child: Text(
                         '${date.day}',
-                        style: TextStyle(color: Colors.white),
+                        style: CustomTextStyle.paragraphExtraSmall.copyWith(
+                          color: AppColors.white1,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
                     ),
                   );
@@ -254,7 +255,7 @@ class ServiceCenterCalendarView extends GetView<ServiceCenterCalendarController>
               ),
             ),
           ],
-        ),
+        ).ifIpad,
       ),
     );
   }

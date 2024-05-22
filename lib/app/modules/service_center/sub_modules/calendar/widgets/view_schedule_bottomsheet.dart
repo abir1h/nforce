@@ -50,33 +50,42 @@ class _ViewScheduleBottomsheetState extends State<ViewScheduleBottomsheet> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      SizedBox(
-                        width: 2,
-                      ),
+                      const SizedBox(width: 2),
                       Column(
                         children: [
                           Text(
                             '27 August 2023',
-                            style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20.sp, color: AppColors.nutralBlack1),
+                            style: CustomTextStyle.heading2.copyWith(
+                              color: AppColors.nutralBlack1,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                           Text(
                             'Sunday',
-                            style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20.sp, color: AppColors.nutralBlack1),
+                            style: CustomTextStyle.heading2.copyWith(
+                              color: AppColors.nutralBlack1,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ],
                       ),
-                      GestureDetector(onTap: () => Get.back(), child: Icon(Icons.clear))
+                      GestureDetector(onTap: () => Get.back(), child: const Icon(Icons.clear))
                     ],
                   ),
                   SizedBox(height: 24.h),
                   Text(
                     'AC Fixing Service',
-                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20.sp, color: AppColors.nutralBlack1),
+                    style: CustomTextStyle.heading2.copyWith(
+                      color: AppColors.nutralBlack1,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                   SizedBox(height: 16.h),
                   Text(
                     'Urna turpis ante nunc nibh amet enim nec. Placerat in turpis ultrices amet mauris.',
-                    style: CustomTextStyle.paragraphSmall.copyWith(fontWeight: FontWeight.w400, fontSize: 14.sp),
+                    style: CustomTextStyle.paragraphExtraSmall.copyWith(
+                      color: AppColors.nutralBlack1,
+                    ),
                   ),
                   SizedBox(height: 16.h),
                   Column(
@@ -84,11 +93,11 @@ class _ViewScheduleBottomsheetState extends State<ViewScheduleBottomsheet> {
                     children: [
                       Text(
                         'Date',
-                        style: CustomTextStyle.paragraphSmall.copyWith(fontWeight: FontWeight.w400, fontSize: 16.sp),
+                        style: CustomTextStyle.paragraphSmall.copyWith(fontWeight: FontWeight.w400),
                       ),
                       Text(
                         '30-08-2023',
-                        style: CustomTextStyle.paragraphSmall.copyWith(fontWeight: FontWeight.w400, fontSize: 16.sp, color: AppColors.nutralBlack2),
+                        style: CustomTextStyle.paragraphSmall.copyWith(fontWeight: FontWeight.w400, color: AppColors.nutralBlack2),
                       ),
                     ],
                   ),
@@ -100,27 +109,25 @@ class _ViewScheduleBottomsheetState extends State<ViewScheduleBottomsheet> {
                         children: [
                           Text(
                             'Start at',
-                            style: CustomTextStyle.paragraphSmall.copyWith(fontWeight: FontWeight.w400, fontSize: 16.sp),
+                            style: CustomTextStyle.paragraphSmall.copyWith(fontWeight: FontWeight.w400),
                           ),
                           Text(
                             '10:30 AM',
-                            style: CustomTextStyle.paragraphSmall.copyWith(fontWeight: FontWeight.w400, fontSize: 16.sp, color: AppColors.nutralBlack2),
+                            style: CustomTextStyle.paragraphSmall.copyWith(fontWeight: FontWeight.w400, color: AppColors.nutralBlack2),
                           ),
                         ],
                       ),
-                      SizedBox(
-                        width: 32.w,
-                      ),
+                      SizedBox(width: 32.w),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             'End at',
-                            style: CustomTextStyle.paragraphSmall.copyWith(fontWeight: FontWeight.w400, fontSize: 16.sp),
+                            style: CustomTextStyle.paragraphSmall.copyWith(fontWeight: FontWeight.w400),
                           ),
                           Text(
                             '11:15 AM',
-                            style: CustomTextStyle.paragraphSmall.copyWith(fontWeight: FontWeight.w400, fontSize: 16.sp, color: AppColors.nutralBlack2),
+                            style: CustomTextStyle.paragraphSmall.copyWith(fontWeight: FontWeight.w400, color: AppColors.nutralBlack2),
                           ),
                         ],
                       ),

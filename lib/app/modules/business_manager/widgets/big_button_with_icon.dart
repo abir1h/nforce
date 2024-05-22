@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/main.dart';
 
 class BigButtonWithIcon extends StatelessWidget {
   const BigButtonWithIcon({
@@ -26,7 +27,7 @@ class BigButtonWithIcon extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppColors.tileBackground,
           borderRadius: BorderRadius.circular(6),
-          border: Border.all(color: AppColors.white3,width: 1.h),
+          border: Border.all(color: AppColors.white3, width: 1.h),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -36,8 +37,8 @@ class BigButtonWithIcon extends StatelessWidget {
                 Stack(
                   children: [
                     Container(
-                      height: 34.h,
-                      width: 34.w,
+                      height: isIpad ? 40.h : 34.h,
+                      width: isIpad ? 40.h : 34.w,
                       decoration: BoxDecoration(
                         color: AppColors.primaryBlue3,
                         borderRadius: BorderRadius.circular(4),
@@ -47,6 +48,7 @@ class BigButtonWithIcon extends StatelessWidget {
                       child: Center(
                         child: SvgPicture.asset(
                           svgPath,
+                          height: isIpad ? 25.h : null,
                         ),
                       ),
                     ),
@@ -57,15 +59,15 @@ class BigButtonWithIcon extends StatelessWidget {
                   lable,
                   style: TextStyle(
                     color: AppColors.nutralBlack1,
-                    fontSize: 14.sp,
+                    fontSize: isIpad ? 10.sp : 14.sp,
                     fontWeight: FontWeight.w400,
                   ),
                 ),
               ],
             ),
-            const Icon(
+            Icon(
               Icons.arrow_forward_ios,
-              size: 14,
+              size: isIpad ? 10.sp : 14.sp,
             ),
           ],
         ),

@@ -78,7 +78,7 @@ class NumberTextAmountMatrics extends StatelessWidget {
     return Column(
       children: [
         Container(
-          height: 46,
+          height: 46.h,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(4),
             color: color,
@@ -89,7 +89,7 @@ class NumberTextAmountMatrics extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: AppColors.nutralBlack1,
-                fontSize: 18.sp,
+                fontSize: isIpad ? 14.sp : 18.sp,
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -100,7 +100,7 @@ class NumberTextAmountMatrics extends StatelessWidget {
           title,
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: 10.sp,
+            fontSize: isIpad ? 8.sp : 10.sp,
             fontWeight: FontWeight.w400,
             color: AppColors.subText,
           ),
@@ -109,7 +109,7 @@ class NumberTextAmountMatrics extends StatelessWidget {
           '\$$amount',
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: 12.sp,
+            fontSize: isIpad ? 10.sp : 12.sp,
             fontWeight: FontWeight.w400,
             color: AppColors.nutralBlack1,
           ),

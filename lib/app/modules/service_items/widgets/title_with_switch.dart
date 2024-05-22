@@ -18,7 +18,7 @@ class TitleWithSwitch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16.sp, vertical: 12.sp),
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 5.h),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(6),
         color: AppColors.inactiveTabbarColor,

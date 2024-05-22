@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/home/components/recommanded_actions_widget.dart';
@@ -26,7 +27,7 @@ class ActionsBody extends GetView<HomeController> {
                 Text(
                   'Today’s Activities',
                   style: TextStyle(
-                    fontSize: 16.sp,
+                    fontSize: isIpad ? 12.sp : 16.sp,
                     fontWeight: FontWeight.w500,
                     color: AppColors.nutralBlack1,
                   ),
@@ -34,7 +35,7 @@ class ActionsBody extends GetView<HomeController> {
                 Text(
                   'View All',
                   style: TextStyle(
-                    fontSize: 12.sp,
+                    fontSize: isIpad ? 8.sp : 12.sp,
                     fontWeight: FontWeight.w400,
                     color: AppColors.nutralBlack1,
                   ),
@@ -42,21 +43,18 @@ class ActionsBody extends GetView<HomeController> {
               ],
             ),
             const SizedBox(height: 12),
-            SizedBox(
-              height: 350.h,
-              child: ListView.builder(
-                itemCount: 2,
-                shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.only(right: 16),
-                    child: RecommandedActionsWidget(controller: controller),
-                  );
-                },
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  for (int i = 0; i < 3; i++) ...[
+                    RecommandedActionsWidget(controller: controller),
+                    SizedBox(width: 10.w),
+                  ],
+                ],
               ),
             ),
-            const SizedBox(height: 30),
+            SizedBox(height: 30.h),
           ],
         ),
       ),

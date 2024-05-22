@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/main.dart';
 
 class CustomCheckbox extends StatelessWidget {
   const CustomCheckbox({
@@ -27,9 +28,12 @@ class CustomCheckbox extends StatelessWidget {
           ),
         ),
       ),
-      child: Checkbox(
-        value: value,
-        onChanged: onChanged,
+      child: Transform.scale(
+        scale: isIpad ? 1.4 : 1,
+        child: Checkbox(
+          value: value,
+          onChanged: onChanged,
+        ),
       ),
     );
   }
