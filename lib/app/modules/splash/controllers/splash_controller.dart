@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/routes/app_pages.dart';
 import 'package:nuforce/app/utils/shared_preferences.dart';
@@ -16,5 +17,10 @@ class SplashController extends GetxController {
     } else {
       Get.offAllNamed<void>(Routes.ON_BOARDING);
     }
+    notificationPermission();
+  }
+
+  Future<void> notificationPermission() async {
+    await FirebaseMessaging.instance.requestPermission();
   }
 }
