@@ -75,8 +75,10 @@ class CustomerContactController extends GetxController {
     update();
   }
 
-  Future<void> getCustomers() async {
-    isLoading = true;
+  Future<void> getCustomers({bool showLoading = true}) async {
+    if (showLoading) {
+      isLoading = true;
+    }
     await CustomerContactApiServices.getCustomers().then((value) {
       value.fold(
         (data) {

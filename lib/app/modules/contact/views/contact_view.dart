@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/line_item/models/control.dart';
+import 'package:nuforce/app/modules/business_manager/models/form_model.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/shared/widgets/custom_dropdown.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
@@ -89,17 +89,7 @@ class _ContactViewState extends State<ContactView> {
                       return;
                     }
 
-                    controller
-                        .addContact(
-                      company: controller.formBuilder.textEditingControllers['detailsCompany']?.text ?? '',
-                      groupId: '${controller.formBuilder.dropdownValue['groupId']?.value ?? ''}',
-                      name: controller.formBuilder.textEditingControllers['name']?.text ?? '',
-                      refCode: controller.formBuilder.textEditingControllers['refCode']?.text ?? '',
-                      primaryEmail: controller.formBuilder.textEditingControllers['detailsPrimaryEmail']?.text ?? '',
-                      primaryMobile: controller.formBuilder.textEditingControllers['detailsPrimaryMobile']?.text ?? '',
-                      tags: controller.formBuilder.stringTagControllers['tags']?.getTags ?? [],
-                    )
-                        .then((value) {
+                    controller.addContact().then((value) {
                       if (value == true) {
                         Get.back();
                       }

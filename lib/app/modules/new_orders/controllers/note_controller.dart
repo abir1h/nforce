@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/line_item/models/control.dart' as ctrl;
+import 'package:nuforce/app/modules/business_manager/models/form_model.dart';
 import 'package:nuforce/app/modules/new_orders/services/note_api_service.dart';
 import 'package:nuforce/app/shared/widgets/form_builder.dart';
 
@@ -44,7 +44,7 @@ class NoteController extends GetxController {
     update();
   }
 
-  void updateOnChanged(String name, ctrl.Option? value) {
+  void updateOnChanged(String name, Option? value) {
     _formBuilder.dropdownValue[name] = value;
     update();
   }

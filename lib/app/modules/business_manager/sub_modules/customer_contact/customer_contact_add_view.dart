@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/business_manager/controllers/customer_contact_controller.dart';
-import 'package:nuforce/app/modules/business_manager/models/customer_contact_model.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/customer_contact/customer_contact_list_view.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/regional_setting/widget/custom_button.dart';
+import 'package:nuforce/app/modules/business_manager/models/form_model.dart';
 import 'package:nuforce/app/modules/contact/controllers/contact_controller.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
+import 'package:nuforce/app/shared/widgets/custom_dropdown.dart';
+import 'package:nuforce/app/shared/widgets/primary_button.dart';
+import 'package:nuforce/app/utils/app_sizes.dart';
 import 'package:nuforce/app/utils/colors.dart';
-import 'package:nuforce/app/utils/text_styles.dart';
+import 'package:nuforce/app/utils/extension_methods.dart';
 
 class CustomerContactAddView extends StatefulWidget {
   const CustomerContactAddView({super.key});
@@ -20,17 +22,26 @@ class CustomerContactAddView extends StatefulWidget {
 class _CustomerContactAddViewState extends State<CustomerContactAddView> {
   final controller = Get.find<CustomerContactController>();
 
-  final contactController = Get.put(ContactController());
+  late final ContactController contactFormController;
 
   @override
   void initState() {
+    dependencies();
     super.initState();
-    contactController.setContactForm();
+  }
+
+  Future<void> dependencies() async {
+    if (Get.isRegistered<ContactController>()) {
+      contactFormController = Get.find<ContactController>();
+    } else {
+      contactFormController = Get.put(ContactController());
+    }
+    await contactFormController.setContactForm();
   }
 
   @override
   void dispose() {
-    contactController.dispose();
+    // contactFormController.dispose();
     super.dispose();
   }
 
@@ -38,17 +49,76 @@ class _CustomerContactAddViewState extends State<CustomerContactAddView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white1,
-      appBar: CustomAppbarMinimal(
+      appBar: const CustomAppbarMinimal(
         title: 'Add Customer Contacts',
-        leadingPressed: () {
-          Get.to<void>(const CustomerContactListView());
-        },
       ),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 20.w),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [],
+          children: [
+            Expanded(
+              child: GetBuilder<CustomerContactController>(
+                builder: (controller) {
+                  if (controller.isLoading) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+                  return GetBuilder<ContactController>(
+                    builder: (formController) {
+                      return formController.isLoading
+                          ? const Center(child: CircularProgressIndicator())
+                          : ListView.builder(
+                              itemCount: formController.formBuilder.fieldNames.length,
+                              shrinkWrap: true,
+                              itemBuilder: (context, index) {
+                                final name = formController.formBuilder.fieldNames[index];
+                                Widget? widget = formController.formBuilder.widgets[name];
+                                if (widget != null && widget.runtimeType == CustomDropdownButton<Option?>) {
+                                  widget = (widget as CustomDropdownButton<Option?>).copyWith(
+                                    onChanged: (value) {
+                                      formController.updateOnChanged(name, value);
+                                    },
+                                    value: formController.formBuilder.dropdownValue[name],
+                                  );
+
+                                  return Padding(
+                                    padding: EdgeInsets.only(bottom: 16.h),
+                                    child: widget,
+                                  );
+                                }
+                                return Padding(
+                                  padding: EdgeInsets.only(bottom: 16.h),
+                                  child: widget ?? const SizedBox.shrink(),
+                                );
+                              },
+                            );
+                    },
+                  );
+                },
+              ),
+            ),
+            GetBuilder<ContactController>(
+              builder: (contactController) {
+                if (contactController.isSaving) return const Center(child: CircularProgressIndicator());
+                return PrimaryButton(
+                  onPressed: () async {
+                    if (contactController.formBuilder.textEditingControllers['name']?.text.isEmpty == true) {
+                      Fluttertoast.showToast(msg: 'Name is required');
+                      return;
+                    }
+
+                    contactController.addContact().then((value) async {
+                      if (value == true) {
+                        await controller.getCustomers(showLoading: false);
+                        Get.back();
+                      }
+                    });
+                  },
+                  text: 'Save',
+                );
+              },
+            ),
+            30.h.vSpace,
+          ],
         ),
       ),
     );

@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/line_item/models/control.dart';
+import 'package:nuforce/app/modules/business_manager/models/form_model.dart';
 import 'package:nuforce/app/modules/new_orders/controllers/invoice_controller.dart';
 import 'package:nuforce/app/modules/new_orders/controllers/note_controller.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';

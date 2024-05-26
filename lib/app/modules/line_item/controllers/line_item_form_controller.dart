@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/line_item/models/control.dart' as ctrl;
+import 'package:nuforce/app/modules/business_manager/models/form_model.dart';
 import 'package:nuforce/app/modules/line_item/models/line_item_controller_model.dart';
 import 'package:nuforce/app/modules/line_item/services/line_item_data_repo.dart';
 import 'package:nuforce/app/shared/widgets/form_builder.dart';
@@ -61,7 +61,7 @@ class LineItemFormController extends GetxController {
     update();
   }
 
-  void updateOnChanged(String name, ctrl.Option? value) {
+  void updateOnChanged(String name, Option? value) {
     _formBuilder.dropdownValue[name] = value;
     update();
   }

@@ -1,3 +1,5 @@
+import 'package:nuforce/app/modules/business_manager/models/form_model.dart';
+
 class LineItemControllerModel {
   final List<Control>? controls;
   final List<Action>? actions;
@@ -154,35 +156,6 @@ class Control {
         "params": params?.toJson(),
         "value": value,
         "options": options == null ? [] : List<dynamic>.from(options!.map((x) => x.toJson())),
-      };
-}
-
-class Option {
-  final String? label;
-  final int? value;
-
-  Option({
-    this.label,
-    this.value,
-  });
-
-  Option copyWith({
-    String? label,
-    int? value,
-  }) =>
-      Option(
-        label: label ?? this.label,
-        value: value ?? this.value,
-      );
-
-  factory Option.fromJson(Map<String, dynamic> json) => Option(
-        label: json["label"],
-        value: json["value"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "label": label,
-        "value": value,
       };
 }
 
