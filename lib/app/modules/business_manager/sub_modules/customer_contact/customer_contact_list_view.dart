@@ -18,7 +18,7 @@ class CustomerContactListView extends StatefulWidget {
 }
 
 class _CustomerContactListViewState extends State<CustomerContactListView> {
-  final controller = Get.put(CustomerContactController());
+  final controller = Get.find<CustomerContactController>();
 
   @override
   Widget build(BuildContext context) {
@@ -27,77 +27,63 @@ class _CustomerContactListViewState extends State<CustomerContactListView> {
       appBar: CustomAppbarMinimal(
         title: 'Customer Contacts',
         trailing: [
-          Padding(
-            padding: EdgeInsets.only(right: 20.w),
-            child: GestureDetector(
-              onTap: () {
-                controller.reset();
-                Get.to<void>(const CustomerContactAddView());
-              },
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.add,
-                    size: 24.r,
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.only(right: 20),
+              child: GestureDetector(
+                onTap: () {
+                  controller.reset();
+                  Get.to<void>(() => const CustomerContactAddView());
+                },
+                child: Text(
+                  '+ Add',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w400,
+                    fontSize: 14.sp,
                     color: AppColors.nutralBlack1,
                   ),
-                  Text(
-                    'Add',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 14.sp,
-                      color: AppColors.nutralBlack1,
-                    ),
-                  ),
-                ],
+                ),
               ),
             ),
           ),
         ],
         leadingPressed: Get.back<void>,
       ),
-      body: GetBuilder<CustomerContactController>(
-        builder: (_) {
-          return SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
-            padding: EdgeInsets.symmetric(vertical: 32.h, horizontal: 20.w),
-            child: Column(
-              children: [
-                const CustomSearchWidget(),
-                SizedBox(
-                  height: 24.h,
-                ),
-                ListView.builder(
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        padding: EdgeInsets.symmetric(vertical: 32.h, horizontal: 20.w),
+        child: Column(
+          children: [
+            const CustomSearchWidget(),
+            SizedBox(height: 24.h),
+            GetBuilder<CustomerContactController>(
+              builder: (controller) {
+                if (controller.isLoading) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+                return ListView.builder(
+                  itemCount: controller.customers?.data?.length ?? 0,
                   itemBuilder: (_, index) {
+                    final customer = controller.customers!.data![index];
                     return GestureDetector(
                       onTap: () {
-                        //controller.populateFieldsFromModel(controller.customerList[index]);
                         Get.to<void>(
-                          CustomerContactDetailsView(
-                            mainModel: controller.customerList[index],
-                          ),
+                          () => CustomerContactDetailsView(customer: customer),
                         );
                       },
-                      child: Column(
-                        children: [
-                          ListCard(
-                            mainModel: controller.customerList[index],
-                          ),
-                          SizedBox(
-                            height: 16.h,
-                          ),
-                        ],
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
+                        child: ListCard(customer: customer),
                       ),
                     );
                   },
-                  itemCount: controller.customerList.length,
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
-                ),
-              ],
+                );
+              },
             ),
-          );
-        },
+          ],
+        ),
       ),
     );
   }

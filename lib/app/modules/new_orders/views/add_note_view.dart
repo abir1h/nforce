@@ -12,8 +12,6 @@ import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
 import 'package:nuforce/app/utils/extension_methods.dart';
 
-import '../models/work_order_success_model.dart';
-
 class AddNoteView extends StatefulWidget {
   const AddNoteView({Key? key}) : super(key: key);
 
@@ -42,8 +40,7 @@ class _AddNoteViewState extends State<AddNoteView> {
         centerTitle: true,
       ),
       body: Padding(
-        padding:
-            const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
+        padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
         child: Column(
           children: [
             Expanded(
@@ -55,20 +52,14 @@ class _AddNoteViewState extends State<AddNoteView> {
                           itemCount: controller.formBuilder.fieldNames.length,
                           shrinkWrap: true,
                           itemBuilder: (context, index) {
-                            final name =
-                                controller.formBuilder.fieldNames[index];
-                            Widget? widget =
-                                controller.formBuilder.widgets[name];
-                            if (widget != null &&
-                                widget.runtimeType ==
-                                    CustomDropdownButton<Option?>) {
-                              widget = (widget as CustomDropdownButton<Option?>)
-                                  .copyWith(
+                            final name = controller.formBuilder.fieldNames[index];
+                            Widget? widget = controller.formBuilder.widgets[name];
+                            if (widget != null && widget.runtimeType == CustomDropdownButton<Option?>) {
+                              widget = (widget as CustomDropdownButton<Option?>).copyWith(
                                 onChanged: (value) {
                                   controller.updateOnChanged(name, value);
                                 },
-                                value:
-                                    controller.formBuilder.dropdownValue[name],
+                                value: controller.formBuilder.dropdownValue[name],
                               );
 
                               return Padding(
@@ -88,27 +79,17 @@ class _AddNoteViewState extends State<AddNoteView> {
             ),
             GetBuilder<NoteController>(
               builder: (controller) {
-                if (controller.isSaving)
-                  return const Center(child: CircularProgressIndicator());
+                if (controller.isSaving) return const Center(child: CircularProgressIndicator());
                 return PrimaryButton(
                   onPressed: () {
                     final controller = Get.find<NoteController>();
 
-                    if (controller
-                            .formBuilder
-                            .textEditingControllers['detailValue']
-                            ?.text
-                            .isEmpty ==
-                        true) {
+                    if (controller.formBuilder.textEditingControllers['detailValue']?.text.isEmpty == true) {
                       Fluttertoast.showToast(msg: 'Note is required');
                       return;
                     }
 
-                    controller
-                        .addNote(
-                            detailValue: controller.formBuilder
-                                .textEditingControllers['detailValue']!.text)
-                        .then((value) {
+                    controller.addNote(detailValue: controller.formBuilder.textEditingControllers['detailValue']!.text).then((value) {
                       if (value == true) {
                         final invoiceController = Get.find<InvoiceController>();
                         invoiceController.getNotes();

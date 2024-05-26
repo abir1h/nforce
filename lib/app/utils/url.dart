@@ -32,4 +32,6 @@ class URL {
   static const String getpaymentOptions = '$baseUrl/action/company.getPaymentOptions';
 
   static const String getInvoiceSchedules = '$baseUrl/action/workorder.events';
+
+  static const String customer = '$baseUrl/action/contact.browse';
 }

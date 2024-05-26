@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:nuforce/app/model/customers.dart';
 
 import 'package:nuforce/app/modules/business_manager/controllers/customer_contact_controller.dart';
-import 'package:nuforce/app/modules/business_manager/models/customer_contact_model.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/customer_contact/customer_contact_add_view.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/customer_contact/customer_contact_list_view.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/regional_setting/widget/custom_button.dart';
@@ -12,17 +12,26 @@ import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/utils/colors.dart';
 
 class CustomerContactDetailsView extends StatefulWidget {
-  final CustomerContactModel mainModel;
   const CustomerContactDetailsView({
-    required this.mainModel,
+    required this.customer,
     super.key,
   });
+
+  final Customer customer;
 
   @override
   State<CustomerContactDetailsView> createState() => _CustomerContactDetailsViewState();
 }
 
 class _CustomerContactDetailsViewState extends State<CustomerContactDetailsView> {
+  Customer customer = Customer();
+
+  @override
+  void initState() {
+    super.initState();
+    customer = widget.customer;
+  }
+
   final controller = Get.put(CustomerContactController());
 
   @override
@@ -42,56 +51,39 @@ class _CustomerContactDetailsViewState extends State<CustomerContactDetailsView>
           children: [
             CustomTextBlock(
               label: 'Name',
-              value: widget.mainModel.name!,
+              value: customer.name ?? '-',
             ),
-            SizedBox(
-              height: 16.h,
-            ),
+            const SizedBox(height: 16),
             CustomTextBlock(
               label: 'Ref Code',
-              value: widget.mainModel.refCode!,
+              value: customer.belongsTo ?? '-',
             ),
-            SizedBox(
-              height: 16.h,
-            ),
-            CustomTextBlock(
-              label: 'Tags',
-              value: widget.mainModel.tags!,
-            ),
-            SizedBox(
-              height: 16.h,
-            ),
+            const SizedBox(height: 16),
+            // CustomTextBlock(
+            //   label: 'Tags',
+            //   value: customer.tags!,
+            // ),
+            // const SizedBox(height: 16),
             CustomTextBlock(
               label: 'Company',
-              value: widget.mainModel.companyName!,
+              value: customer.companyTitle ?? '-',
             ),
-            SizedBox(
-              height: 16.h,
-            ),
+            const SizedBox(height: 16),
             CustomTextBlock(
               label: 'Email',
-              value: widget.mainModel.email!,
+              value: customer.primaryEmail ?? '-',
             ),
-            SizedBox(
-              height: 16.h,
-            ),
+            const SizedBox(height: 16),
             CustomTextBlock(
               label: 'Mobile',
-              value: widget.mainModel.mobile!,
+              value: customer.primaryMobile ?? '-',
             ),
-            SizedBox(
-              height: 16.h,
-            ),
-            CustomTextBlock(
-              label: 'Folder',
-              value: widget.mainModel.folderName!,
-            ),
-            SizedBox(
-              height: 16.h,
-            ),
-            SizedBox(
-              height: 20.h,
-            ),
+            // const SizedBox(height: 16),
+            // CustomTextBlock(
+            //   label: 'Folder',
+            //   value: widget.customer.folderName!,
+            // ),
+            const SizedBox(height: 40),
             Row(
               children: [
                 Expanded(
@@ -112,28 +104,8 @@ class _CustomerContactDetailsViewState extends State<CustomerContactDetailsView>
                   child: CustomButton(
                     text: 'Edit',
                     onPressed: () {
-                      /* controller.saveCustomerContact(CustomerContactModel(
-                        customerContactId: controller.customerList.length + 1,
-                        name: controller.name.text,
-                        refCode: controller.refCode.text,
-                        companyName: controller.company.text,
-                        email: controller.email.text,
-                        folderName: controller.selectFolder,
-                        mobile: controller.mobile.text,
-                        tags: controller.tags.text,
-                      ));*/
-                      controller.populateFieldsFromModel(widget.mainModel);
-
-                      Get.to<void>(const CustomerContactAddView());
-                      /*  controller.addRegionalSetting(CalendarSettingModel(
-                          serviceCalendar: controller.selectedServiceCalender.toString(),
-                          officeCalendar: controller.selectedOfficeCalender.toString(),
-                          endAt: controller.endAt.toString(),
-                          startAt: controller.endAt.toString(),
-                          taskDuration: controller.taskDuration.toString()));*/
-/*
-                      Get.to(const CalenderSettingView());
-*/
+                      // controller.populateFieldsFromModel(widget.customer);
+                      Get.to<void>(() => const CustomerContactAddView());
                     },
                   ),
                 ),

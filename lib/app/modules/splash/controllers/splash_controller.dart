@@ -2,6 +2,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/routes/app_pages.dart';
 import 'package:nuforce/app/utils/shared_preferences.dart';
+import 'dart:developer' as developer show log;
 
 class SplashController extends GetxController {
   @override
@@ -22,5 +23,7 @@ class SplashController extends GetxController {
 
   Future<void> notificationPermission() async {
     await FirebaseMessaging.instance.requestPermission();
+    final fcmToken = await FirebaseMessaging.instance.getToken();
+    developer.log(fcmToken ?? '', name: 'FCM Token');
   }
 }
