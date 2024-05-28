@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nuforce/app/modules/business_manager/models/form_model.dart';
@@ -92,6 +94,11 @@ CustomFormBuilder getForm({List<Control>? controls}) {
               ),
             },
           );
+
+          if (control.value != null) {
+            formBuilder.textEditingControllers[control.name!]!.text = control.value!;
+          }
+
           break;
 
         case 'dropdown':
@@ -106,12 +113,28 @@ CustomFormBuilder getForm({List<Control>? controls}) {
               },
             },
           );
-          formBuilder = formBuilder.copyWith(
-            dropdownValue: {
-              ...formBuilder.dropdownValue,
-              control.name!: control.value,
-            },
-          );
+
+          if (control.value != null) {
+            log('Control: ${control.toJson()}', name: 'debugging');
+            for (final option in control.options!) {
+              if (option.value == control.value) {
+                formBuilder = formBuilder.copyWith(
+                  dropdownValue: {
+                    ...formBuilder.dropdownValue,
+                    control.name!: option,
+                  },
+                );
+                break;
+              }
+            }
+          } else {
+            formBuilder = formBuilder.copyWith(
+              dropdownValue: {
+                ...formBuilder.dropdownValue,
+                control.name!: control.value,
+              },
+            );
+          }
 
           formBuilder = formBuilder.copyWith(
             widgets: {

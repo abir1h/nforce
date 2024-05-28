@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -36,12 +38,12 @@ class _CustomerContactAddViewState extends State<CustomerContactAddView> {
     } else {
       contactFormController = Get.put(ContactController());
     }
-    await contactFormController.setContactForm();
+    log('Selected Contact: ${controller.selectedContactDetails?.contact?.id}', name: 'CustomerContactAddView');
+    await contactFormController.setContactForm(controller.selectedContactDetails?.contact?.id);
   }
 
   @override
   void dispose() {
-    // contactFormController.dispose();
     super.dispose();
   }
 
@@ -106,10 +108,16 @@ class _CustomerContactAddViewState extends State<CustomerContactAddView> {
                       return;
                     }
 
-                    contactController.addContact().then((value) async {
+                    contactController.addContact(controller.selectedContactDetails?.contact?.id).then((value) async {
                       if (value == true) {
+                        if (controller.selectedContactDetails != null) {
+                          Get.back();
+                          await controller.getContactDetails('${controller.selectedContactDetails?.contact?.id}');
+                        }
                         await controller.getCustomers(showLoading: false);
-                        Get.back();
+                        if (controller.selectedContactDetails == null) {
+                          Get.back();
+                        }
                       }
                     });
                   },

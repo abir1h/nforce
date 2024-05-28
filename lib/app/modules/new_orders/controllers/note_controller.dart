@@ -54,7 +54,6 @@ class NoteController extends GetxController {
     await NoteApiService.getNoteForm().then((value) {
       value.fold(
         (controls) {
-          log('Controls: $controls', name: 'setContactForm');
           setFormBuilder(getForm(controls: controls));
         },
         (r) {

@@ -5,6 +5,8 @@ import 'package:nuforce/app/model/customers.dart';
 
 import "package:nuforce/app/modules/business_manager/models/customer_contact_model.dart";
 import 'package:nuforce/app/modules/business_manager/sub_modules/customer_contact/services/customer_contact_api_services.dart';
+import 'package:nuforce/app/modules/new_orders/models/contact_details_model.dart';
+import 'package:nuforce/app/modules/new_orders/services/note_api_service.dart';
 
 class CustomerContactController extends GetxController {
   List<CustomerContactModel> customerList = [];
@@ -57,6 +59,7 @@ class CustomerContactController extends GetxController {
     tags.clear();
     email.clear();
     mobile.clear();
+    selectedContactDetails = null;
     update();
   }
 
@@ -75,6 +78,13 @@ class CustomerContactController extends GetxController {
     update();
   }
 
+  SelectedContactDetails? _selectedContactDetails;
+  SelectedContactDetails? get selectedContactDetails => _selectedContactDetails;
+  set selectedContactDetails(SelectedContactDetails? value) {
+    _selectedContactDetails = value;
+    update();
+  }
+
   Future<void> getCustomers({bool showLoading = true}) async {
     if (showLoading) {
       isLoading = true;
@@ -83,6 +93,21 @@ class CustomerContactController extends GetxController {
       value.fold(
         (data) {
           customers = data;
+        },
+        (error) {
+          Fluttertoast.showToast(msg: error);
+        },
+      );
+    });
+    isLoading = false;
+  }
+
+  Future<void> getContactDetails(String id) async {
+    isLoading = true;
+    await NoteApiService.getContactDetails(id).then((value) {
+      value.fold(
+        (data) {
+          selectedContactDetails = data;
         },
         (error) {
           Fluttertoast.showToast(msg: error);

@@ -67,9 +67,8 @@ class _CustomerContactListViewState extends State<CustomerContactListView> {
                     final customer = controller.customers!.data![index];
                     return GestureDetector(
                       onTap: () {
-                        Get.to<void>(
-                          () => CustomerContactDetailsView(customer: customer),
-                        );
+                        controller.getContactDetails('${customer.id}');
+                        Get.to<void>(() => const CustomerContactDetailsView());
                       },
                       child: Padding(
                         padding: const EdgeInsets.only(bottom: 10),

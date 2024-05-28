@@ -48,12 +48,11 @@ class ContactController extends GetxController {
     update();
   }
 
-  Future<void> setContactForm() async {
+  Future<void> setContactForm([int? id]) async {
     setLoading(true);
-    await ContactApiServices.getContactForm().then((value) {
+    await ContactApiServices.getContactForm(id).then((value) {
       value.fold(
         (controls) {
-          log('Controls: $controls', name: 'setContactForm');
           setFormBuilder(getForm(controls: controls));
         },
         (r) {
@@ -64,11 +63,12 @@ class ContactController extends GetxController {
     setLoading(false);
   }
 
-  Future<bool?> addContact() async {
+  Future<bool?> addContact([int? id]) async {
     bool? result;
     setSaving(true);
     final appState = Get.find<AppState>();
     await ContactApiServices.setContact(
+      id: id,
       businessId: appState.user?.businessId ?? 0,
       owner: '',
       name: formBuilder.textEditingControllers['name']?.text ?? '',
