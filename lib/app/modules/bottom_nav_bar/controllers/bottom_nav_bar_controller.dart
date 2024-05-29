@@ -9,8 +9,9 @@ import 'package:nuforce/app/modules/settings/views/settings_view.dart';
 import 'package:nuforce/app/modules/today/views/today_view.dart';
 import 'package:nuforce/app/routes/app_pages.dart';
 import 'package:nuforce/app/shared/services/user_api_service.dart';
+import 'package:nuforce/app/utils/ably_config.dart';
 import 'package:nuforce/app/utils/colors.dart';
-import 'package:nuforce/app/utils/global_states.dart';
+import 'package:nuforce/app/utils/app_states.dart';
 import 'package:nuforce/app/utils/shared_preferences.dart';
 import 'package:nuforce/app/utils/text_styles.dart';
 import 'package:nuforce/gen/assets.gen.dart';
@@ -31,6 +32,8 @@ class BottomNavBarController extends GetxController {
   int currentIndex = 0;
   List<PersistentBottomNavBarItem> items = <PersistentBottomNavBarItem>[];
 
+  AblyConfig ablyConfig = AblyConfig();
+
   List<Widget> screens = [
     const HomeView(),
     const TodayView(),
@@ -47,7 +50,10 @@ class BottomNavBarController extends GetxController {
     if (userId != null) {
       await UserApiService().getUser(userId: userId).then((value) {
         value.fold(
-          appstateController.setUser,
+          (success) {
+            appstateController.setUser(success);
+            ablyConfig.connect();
+          },
           (error) {
             SharedPreferenceService.clear();
             Get.offAllNamed<void>(Routes.AUTH);

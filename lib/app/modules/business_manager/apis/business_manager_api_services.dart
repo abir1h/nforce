@@ -4,7 +4,7 @@ import 'package:logger/logger.dart';
 import 'package:nuforce/app/model/business_manager/role_model.dart';
 import 'package:nuforce/app/modules/business_manager/models/form_model.dart';
 import 'package:nuforce/app/utils/api_client.dart';
-import 'package:nuforce/app/utils/global_states.dart';
+import 'package:nuforce/app/utils/app_states.dart';
 import 'package:nuforce/app/utils/url.dart';
 import 'dart:developer' as developer show log;
 

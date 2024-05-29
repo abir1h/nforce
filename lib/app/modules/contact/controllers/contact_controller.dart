@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:nuforce/app/modules/business_manager/models/form_model.dart';
 import 'package:nuforce/app/modules/contact/services/contact_api_services.dart';
 import 'package:nuforce/app/shared/widgets/form_builder.dart';
-import 'package:nuforce/app/utils/global_states.dart';
+import 'package:nuforce/app/utils/app_states.dart';
 
 class ContactController extends GetxController {
   @override

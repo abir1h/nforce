@@ -2,7 +2,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/model/company_payment_options.dart';
 import 'package:nuforce/app/modules/new_orders/services/payment_options_api_services.dart';
-import 'package:nuforce/app/utils/global_states.dart';
+import 'package:nuforce/app/utils/app_states.dart';
 
 class PaymentOptionsController extends GetxController {
   @override

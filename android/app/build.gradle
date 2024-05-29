@@ -77,6 +77,9 @@ android {
            signingConfig signingConfigs.release
        }
     }
+    // buildFeatures {
+    //     buildConfig true
+    // }
 }
 
 flutter {

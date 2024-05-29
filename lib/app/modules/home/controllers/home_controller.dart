@@ -22,6 +22,12 @@ class HomeController extends GetxController {
     super.onInit();
   }
 
+  @override
+  void dispose() {
+    expandableController.dispose();
+    super.dispose();
+  }
+
   final chartController = Get.put(ChartController());
 
   bool isExpanded = false;
