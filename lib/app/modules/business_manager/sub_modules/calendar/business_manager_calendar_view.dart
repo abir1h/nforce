@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/business_manager/controllers/business_manager_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/calendar/business_manager_add_or_edit_calendar.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/calendar/business_manager_calendar_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/calendar/business_manager_calendar_details_view.dart';
@@ -10,6 +9,7 @@ import 'package:nuforce/app/modules/business_manager/sub_modules/calendar/widget
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
 import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/app/utils/extension_methods.dart';
 
 class BusinessManagerCalendarView extends StatefulWidget {
   const BusinessManagerCalendarView({super.key});
@@ -19,22 +19,35 @@ class BusinessManagerCalendarView extends StatefulWidget {
 }
 
 class _BusinessManagerCalendarViewState extends State<BusinessManagerCalendarView> {
-  final controller = Get.find<BusinessManagerController>();
+  final controller = Get.put(BusinessManagerCalendarController());
+
+  @override
+  void initState() {
+    super.initState();
+    controller.getCalendarList();
+  }
+
+  @override
+  void dispose() {
+    Get.delete<BusinessManagerCalendarController>();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<BusinessManagerCalendarController>(
-      builder: (_) {
-        return Scaffold(
-          backgroundColor: AppColors.white1,
-          appBar: CustomAppbarMinimal(
-            title: 'Calendar',
-            trailing: [
-              if (controller.businessManagerCalendarController.mockCalendar.isEmpty)
-                const SizedBox()
-              else
-                GestureDetector(
-                  onTap: () {
+    return Scaffold(
+      backgroundColor: AppColors.white1,
+      appBar: CustomAppbarMinimal(
+        title: 'Calendar',
+        trailing: [
+          GetBuilder<BusinessManagerCalendarController>(
+            builder: (controller) {
+              if (controller.calendarData.isEmpty) {
+                return const SizedBox();
+              } else {
+                return GestureDetector(
+                  onTap: () async {
+                    await controller.setContactForm();
                     Get.to<void>(() => const BusinessManagerAddOrEditCalendar());
                   },
                   child: Row(
@@ -52,30 +65,38 @@ class _BusinessManagerCalendarViewState extends State<BusinessManagerCalendarVie
                       ),
                     ],
                   ),
-                ),
-              const SizedBox(width: 16),
-            ],
+                );
+              }
+            },
           ),
-          body: SizedBox(
-            width: Get.width,
-            child: Padding(
+          20.w.hSpace,
+        ],
+      ),
+      body: SizedBox(
+        width: Get.width,
+        child: GetBuilder<BusinessManagerCalendarController>(
+          builder: (controller) {
+            if (controller.isLoading) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            return Padding(
               padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
-              child: controller.businessManagerCalendarController.mockCalendar.isEmpty
+              child: controller.calendarData.isEmpty
                   ? const EmptyCalendar()
                   : Padding(
                       padding: const EdgeInsets.only(top: 14),
                       child: ListView.builder(
-                        itemCount: controller.businessManagerCalendarController.mockCalendar.length,
+                        itemCount: controller.calendarData.length,
                         shrinkWrap: true,
                         itemBuilder: (BuildContext context, int index) {
                           return Padding(
                             padding: const EdgeInsets.only(bottom: 16),
                             child: ColoredCalendarTaskTile(
-                              calendar: controller.businessManagerCalendarController.mockCalendar[index],
+                              calendar: controller.calendarData[index],
                               onTap: () {
                                 Get.to<void>(
                                   () => BusinessManagerCalendarDetailsView(
-                                    calendar: controller.businessManagerCalendarController.mockCalendar[index],
+                                    calendar: controller.calendarData[index],
                                   ),
                                 );
                               },
@@ -84,10 +105,10 @@ class _BusinessManagerCalendarViewState extends State<BusinessManagerCalendarVie
                         },
                       ),
                     ),
-            ),
-          ),
-        );
-      },
+            );
+          },
+        ),
+      ),
     );
   }
 }

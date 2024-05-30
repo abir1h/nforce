@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/calendar/business_manager_calendar_controller.dart';
+import 'package:nuforce/app/model/calendar_list_model.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 
@@ -12,7 +12,7 @@ class ColoredCalendarTaskTile extends StatelessWidget {
     this.onTap,
   });
 
-  final MockCalendar calendar;
+  final CalendarData calendar;
   final VoidCallback? onTap;
 
   @override
@@ -30,9 +30,9 @@ class ColoredCalendarTaskTile extends StatelessWidget {
             Container(
               width: 5.w,
               constraints: const BoxConstraints(minHeight: 70),
-              decoration: BoxDecoration(
-                color: calendar.color,
-                borderRadius: const BorderRadius.only(
+              decoration: const BoxDecoration(
+                color: AppColors.primaryBlue1,
+                borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(6),
                   bottomLeft: Radius.circular(6),
                 ),
@@ -44,7 +44,7 @@ class ColoredCalendarTaskTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    calendar.name,
+                    calendar.name ?? 'N/A',
                     style: TextStyle(
                       color: AppColors.nutralBlack1,
                       fontSize: 16.sp,
@@ -52,7 +52,7 @@ class ColoredCalendarTaskTile extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    calendar.timeZone ?? '',
+                    calendar.timezone ?? 'N/A',
                     style: TextStyle(
                       color: AppColors.subText,
                       fontSize: 14.sp,
