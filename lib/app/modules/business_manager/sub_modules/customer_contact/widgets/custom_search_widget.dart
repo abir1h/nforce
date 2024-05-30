@@ -30,7 +30,7 @@ class CustomSearchWidget extends StatelessWidget {
                     height: 18.h,
                     fit: BoxFit.contain,
                     width: 18.h,
-                    color: AppColors.greyText,
+                    colorFilter: const ColorFilter.mode(AppColors.greyText, BlendMode.srcIn),
                   ),
                 ),
                 hintStyle: TextStyle(

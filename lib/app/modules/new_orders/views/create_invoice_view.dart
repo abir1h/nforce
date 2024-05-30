@@ -23,7 +23,7 @@ import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/shared/widgets/text_with_bottom_border.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/extension_methods.dart';
-import 'package:nuforce/app/utils/global_states.dart';
+import 'package:nuforce/app/utils/app_states.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 
 class CreateInvoiceView extends StatefulWidget {

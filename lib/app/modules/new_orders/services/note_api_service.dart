@@ -37,15 +37,10 @@ class NoteApiService {
   static Future<Either<String, dynamic>> setNote({
     required int contactId,
     required String detailValue,
-
   }) async {
     try {
       final body = {
-        "data": {
-          "contact_id": contactId,
-          "detail_type": "note",
-          "detail_value": detailValue
-        },
+        "data": {"contact_id": contactId, "detail_type": "note", "detail_value": detailValue},
         "action": "submit"
       };
       developer.log('Body: $body', name: 'setNote');
@@ -67,7 +62,8 @@ class NoteApiService {
       return Right(e.toString());
     }
   }
-  static Future<Either<SelectedContactDetails, String>> getNote(String id) async {
+
+  static Future<Either<SelectedContactDetails, String>> getContactDetails(String id) async {
     try {
       final response = await ApiClient.instance.get(
         url: URL.contactDetails,
@@ -77,7 +73,7 @@ class NoteApiService {
           }
         },
       );
-
+      developer.log('Response: $response', name: 'getContactDetails');
       if (response.statusCode == 200 && response.data != null) {
         return Left(SelectedContactDetails.fromJson(response.data));
       } else {

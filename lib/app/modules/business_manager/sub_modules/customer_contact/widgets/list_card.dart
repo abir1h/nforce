@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:nuforce/app/modules/business_manager/models/customer_contact_model.dart';
-
+import 'package:nuforce/app/model/customers.dart';
 import 'package:nuforce/app/utils/colors.dart';
 
 class ListCard extends StatelessWidget {
-  final CustomerContactModel mainModel;
   const ListCard({
-    required this.mainModel,
+    required this.customer,
     super.key,
   });
+
+  final Customer customer;
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +28,7 @@ class ListCard extends StatelessWidget {
                   backgroundColor: AppColors.primaryBlue1,
                   radius: 20.r,
                   child: Text(
-                    // mainModel.mobile.toString().substring(0, 2),
-                    get2DigitString(mainModel.mobile),
+                    get2DigitString(customer.name?.substring(0, 2)),
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
                       fontSize: 16.sp,
@@ -42,7 +41,7 @@ class ListCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      mainModel.name!,
+                      customer.name!,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
                       style: TextStyle(
@@ -51,11 +50,9 @@ class ListCard extends StatelessWidget {
                         color: AppColors.nutralBlack1,
                       ),
                     ),
-                    SizedBox(
-                      height: 2.h,
-                    ),
+                    SizedBox(height: 2.h),
                     Text(
-                      mainModel.mobile!,
+                      customer.primaryMobile ?? '',
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
                       style: TextStyle(
