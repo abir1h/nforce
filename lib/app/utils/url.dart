@@ -21,17 +21,20 @@ class URL {
   static const String contactLookup = '$baseUrl/action/contact.searchForContact?query[term]=@';
   static const String contactDetails = '$baseUrl/action/contact.getContactDetails';
   static const String createWorkOrder = '$baseUrl/action/invoice.launchEstimation';
-
   static const String contactForm = '$baseUrl/form/contact.quick-form';
   static const String noteForm = '$baseUrl/form/contact.detail.note-form';
-
   static const String staticMap = "http://maps.google.com/maps/api/staticmap?center=lat,lng&zoom=15&size=200x200&sensor=false&key=AIzaSyDinOI_yEHrib-KuJHs9JeLPl7vdf1YNhM";
-
   static const String getActivityLog = '$baseUrl/action/company.activityLog';
-
   static const String getpaymentOptions = '$baseUrl/action/company.getPaymentOptions';
-
   static const String getInvoiceSchedules = '$baseUrl/action/workorder.events';
-
   static const String customer = '$baseUrl/action/contact.browse';
+
+  // business manager
+  static const String calendarList = '$baseUrl/browser/calendar';
+  static const String calendarForm = '$baseUrl/form/calendar.register-form';
+
+  ///Category
+  static const String getCategry = '$baseUrl/browser/category';
+  static const String getCategoryForm = '$baseUrl/form/category.register-form';
+
 }
