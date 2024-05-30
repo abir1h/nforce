@@ -60,11 +60,11 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyDQzu7VBbvuli0yG8Q0NkJQJVJ2ropeWeM',
-    appId: '1:603013639306:ios:75f457dc9e24c7c1b55173',
+    appId: '1:603013639306:ios:b419c48c64cf6b0fb55173',
     messagingSenderId: '603013639306',
     projectId: 'nuforce-pro',
     databaseURL: 'https://nuforce-pro.firebaseio.com',
     storageBucket: 'nuforce-pro.appspot.com',
-    iosBundleId: 'app.nuforce.nuforce',
+    iosBundleId: 'com.nuforce.pro',
   );
 }

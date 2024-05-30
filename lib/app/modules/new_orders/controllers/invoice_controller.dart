@@ -53,7 +53,7 @@ class InvoiceController extends GetxController {
   ///Note
   getNotes() {
     final invoice = Get.arguments as Invoice;
-    NoteApiService.getNote(invoice.contactId.toString()).then((value) {
+    NoteApiService.getContactDetails(invoice.contactId.toString()).then((value) {
       value.fold((l) {
         noteList = l.notes!;
         update();

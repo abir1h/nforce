@@ -47,7 +47,7 @@ class _SignInPageState extends State<SignInPage> {
                   children: [
                     CustomTextField(
                       controller: emailController,
-                      hint: 'Enter your email',
+                      hint: 'Enter your username or email',
                       label: 'Email',
                       keyboardType: TextInputType.emailAddress,
                       validator: (v) {

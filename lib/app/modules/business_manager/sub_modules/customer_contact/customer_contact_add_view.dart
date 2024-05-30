@@ -1,13 +1,18 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/business_manager/controllers/customer_contact_controller.dart';
-import 'package:nuforce/app/modules/business_manager/models/customer_contact_model.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/customer_contact/customer_contact_list_view.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/regional_setting/widget/custom_button.dart';
+import 'package:nuforce/app/modules/business_manager/models/form_model.dart';
+import 'package:nuforce/app/modules/contact/controllers/contact_controller.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
+import 'package:nuforce/app/shared/widgets/custom_dropdown.dart';
+import 'package:nuforce/app/shared/widgets/primary_button.dart';
+import 'package:nuforce/app/utils/app_sizes.dart';
 import 'package:nuforce/app/utils/colors.dart';
-import 'package:nuforce/app/utils/text_styles.dart';
+import 'package:nuforce/app/utils/extension_methods.dart';
 
 class CustomerContactAddView extends StatefulWidget {
   const CustomerContactAddView({super.key});
@@ -17,427 +22,110 @@ class CustomerContactAddView extends StatefulWidget {
 }
 
 class _CustomerContactAddViewState extends State<CustomerContactAddView> {
-  final controller = Get.put(CustomerContactController());
+  final controller = Get.find<CustomerContactController>();
+
+  late final ContactController contactFormController;
+
+  @override
+  void initState() {
+    dependencies();
+    super.initState();
+  }
+
+  Future<void> dependencies() async {
+    if (Get.isRegistered<ContactController>()) {
+      contactFormController = Get.find<ContactController>();
+    } else {
+      contactFormController = Get.put(ContactController());
+    }
+    log('Selected Contact: ${controller.selectedContactDetails?.contact?.id}', name: 'CustomerContactAddView');
+    await contactFormController.setContactForm(controller.selectedContactDetails?.contact?.id);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white1,
-      appBar: CustomAppbarMinimal(
+      appBar: const CustomAppbarMinimal(
         title: 'Add Customer Contacts',
-        leadingPressed: () {
-          Get.to<void>(const CustomerContactListView());
-        },
       ),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 20.w),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'Name',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Poppins',
-                fontSize: 14.sp,
-                color: AppColors.nutralBlack1,
-              ),
-            ),
-            SizedBox(
-              height: 8.h,
-            ),
-            ColoredBox(
-              // height: 50,
-              color: AppColors.textFieldBackground,
-              child: TextFormField(
-                controller: controller.name,
-                cursorColor: AppColors.primaryBlue1,
-                autocorrect: false,
-                textAlignVertical: TextAlignVertical.center,
-                decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                  hintText: 'Enter display name',
-                  hintStyle: CustomTextStyle.paragraphSmall.copyWith(
-                    fontWeight: FontWeight.w400,
-                  ),
-                  border: OutlineInputBorder(
-                    borderSide: const BorderSide(
-                      color: AppColors.greyText,
-                    ),
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(
-                      color: AppColors.greyText,
-                    ),
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(
-                      color: AppColors.primaryBlue1,
-                    ),
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                ),
-                onChanged: (v) {},
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 4.h),
-              child: Text(
-                'Contact Name',
-                style: TextStyle(
-                  fontWeight: FontWeight.w400,
-                  fontSize: 12.sp,
-                  fontFamily: 'Poppins',
-                  color: AppColors.greyText,
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 16.h,
-            ),
-            Text(
-              'Ref Code',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Poppins',
-                fontSize: 14.sp,
-                color: AppColors.nutralBlack1,
-              ),
-            ),
-            SizedBox(
-              height: 8.h,
-            ),
-            ColoredBox(
-              // height: 50,
-              color: AppColors.textFieldBackground,
-              child: TextFormField(
-                controller: controller.refCode,
-                cursorColor: AppColors.primaryBlue1,
-                autocorrect: false,
-                textAlignVertical: TextAlignVertical.center,
-                decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                  hintText: 'Enter ref code',
-                  hintStyle: CustomTextStyle.paragraphSmall.copyWith(
-                    fontWeight: FontWeight.w400,
-                  ),
-                  border: OutlineInputBorder(
-                    borderSide: const BorderSide(
-                      color: AppColors.greyText,
-                    ),
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(
-                      color: AppColors.greyText,
-                    ),
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(
-                      color: AppColors.primaryBlue1,
-                    ),
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                ),
-                onChanged: (v) {},
-              ),
-            ),
-            SizedBox(
-              height: 16.h,
-            ),
-            Text(
-              'Company',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Poppins',
-                fontSize: 14.sp,
-                color: AppColors.nutralBlack1,
-              ),
-            ),
-            SizedBox(
-              height: 8.h,
-            ),
-            ColoredBox(
-              // height: 50,
-              color: AppColors.textFieldBackground,
-              child: TextFormField(
-                controller: controller.company,
-                cursorColor: AppColors.primaryBlue1,
-                autocorrect: false,
-                textAlignVertical: TextAlignVertical.center,
-                decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                  hintText: 'Company name',
-                  hintStyle: CustomTextStyle.paragraphSmall.copyWith(
-                    fontWeight: FontWeight.w400,
-                  ),
-                  border: OutlineInputBorder(
-                    borderSide: const BorderSide(
-                      color: AppColors.greyText,
-                    ),
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(
-                      color: AppColors.greyText,
-                    ),
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(
-                      color: AppColors.primaryBlue1,
-                    ),
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                ),
-                onChanged: (v) {},
-              ),
-            ),
-            SizedBox(
-              height: 16.h,
-            ),
-            Text(
-              'Tags',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Poppins',
-                fontSize: 14.sp,
-                color: AppColors.nutralBlack1,
-              ),
-            ),
-            SizedBox(
-              height: 8.h,
-            ),
-            ColoredBox(
-              // height: 50,
-              color: AppColors.textFieldBackground,
-              child: TextFormField(
-                controller: controller.tags,
-                cursorColor: AppColors.primaryBlue1,
-                autocorrect: false,
-                textAlignVertical: TextAlignVertical.center,
-                decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                  hintText: 'Add a tag',
-                  hintStyle: CustomTextStyle.paragraphSmall.copyWith(
-                    fontWeight: FontWeight.w400,
-                  ),
-                  border: OutlineInputBorder(
-                    borderSide: const BorderSide(
-                      color: AppColors.greyText,
-                    ),
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(
-                      color: AppColors.greyText,
-                    ),
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(
-                      color: AppColors.primaryBlue1,
-                    ),
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                ),
-                onChanged: (v) {},
-              ),
-            ),
-            SizedBox(
-              height: 16.h,
-            ),
-            Text(
-              'Email',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Poppins',
-                fontSize: 14.sp,
-                color: AppColors.nutralBlack1,
-              ),
-            ),
-            SizedBox(
-              height: 8.h,
-            ),
-            ColoredBox(
-              // height: 50,
-              color: AppColors.textFieldBackground,
-              child: TextFormField(
-                controller: controller.email,
-                cursorColor: AppColors.primaryBlue1,
-                autocorrect: false,
-                textAlignVertical: TextAlignVertical.center,
-                decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                  hintText: 'Enter Email address',
-                  hintStyle: CustomTextStyle.paragraphSmall.copyWith(
-                    fontWeight: FontWeight.w400,
-                  ),
-                  border: OutlineInputBorder(
-                    borderSide: const BorderSide(
-                      color: AppColors.greyText,
-                    ),
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(
-                      color: AppColors.greyText,
-                    ),
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(
-                      color: AppColors.primaryBlue1,
-                    ),
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                ),
-                onChanged: (v) {},
-              ),
-            ),
-            SizedBox(
-              height: 16.h,
-            ),
-            Text(
-              'Mobile',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Poppins',
-                fontSize: 14.sp,
-                color: AppColors.nutralBlack1,
-              ),
-            ),
-            SizedBox(
-              height: 8.h,
-            ),
-            ColoredBox(
-              // height: 50,
-              color: AppColors.textFieldBackground,
-              child: TextFormField(
-                controller: controller.mobile,
-                keyboardType: TextInputType.number,
-                cursorColor: AppColors.primaryBlue1,
-                autocorrect: false,
-                textAlignVertical: TextAlignVertical.center,
-                decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                  hintText: 'Enter phone number',
-                  hintStyle: CustomTextStyle.paragraphSmall.copyWith(
-                    fontWeight: FontWeight.w400,
-                  ),
-                  border: OutlineInputBorder(
-                    borderSide: const BorderSide(
-                      color: AppColors.greyText,
-                    ),
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(
-                      color: AppColors.greyText,
-                    ),
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(
-                      color: AppColors.primaryBlue1,
-                    ),
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                ),
-                onChanged: (v) {},
-              ),
-            ),
-            SizedBox(
-              height: 16.h,
-            ),
-            Text(
-              'Folder',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Poppins',
-                fontSize: 14.sp,
-                color: AppColors.nutralBlack1,
-              ),
-            ),
-            SizedBox(
-              height: 8.h,
-            ),
-            DropdownButtonFormField<String>(
-              dropdownColor: Colors.white,
-              isExpanded: true,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                filled: true,
-                fillColor: AppColors.textFieldBackground,
-                contentPadding: const EdgeInsets.symmetric(horizontal: 16),
-              ),
-              borderRadius: BorderRadius.circular(6.r),
-              value: controller.selectFolder,
-              hint: const Text('Select Folder'),
-              onChanged: (String? value) {
-                controller.setFolder(value!);
-              },
-              items: controller.folderList.map((item) {
-                return DropdownMenuItem<String>(
-                  value: item as String,
-                  child: Text(item),
-                );
-              }).toList(),
-            ),
-            SizedBox(
-              height: 20.h,
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: CustomButton(
-                    text: 'Reset',
-                    textStyle: TextStyle(fontWeight: FontWeight.w600, fontSize: 16.sp, fontFamily: 'Poppins', color: AppColors.red),
-                    borderColor: AppColors.red,
-                    primaryColored: false,
-                    onPressed: controller.reset,
-                  ),
-                ),
-                SizedBox(
-                  width: 16.w,
-                ),
-                Expanded(
-                  child: CustomButton(
-                    text: 'Submit',
-                    onPressed: () {
-                      controller.saveCustomerContact(
-                        CustomerContactModel(
-                          customerContactId: controller.customerList.length + 1,
-                          name: controller.name.text,
-                          refCode: controller.refCode.text,
-                          companyName: controller.company.text,
-                          email: controller.email.text,
-                          folderName: controller.selectFolder,
-                          mobile: controller.mobile.text,
-                          tags: controller.tags.text,
-                        ),
-                      );
-                      Get.to<void>(const CustomerContactListView());
-                      /*  controller.addRegionalSetting(CalendarSettingModel(
-                          serviceCalendar: controller.selectedServiceCalender.toString(),
-                          officeCalendar: controller.selectedOfficeCalender.toString(),
-                          endAt: controller.endAt.toString(),
-                          startAt: controller.endAt.toString(),
-                          taskDuration: controller.taskDuration.toString()));*/
-/*
-                      Get.to(const CalenderSettingView());
-*/
+            Expanded(
+              child: GetBuilder<CustomerContactController>(
+                builder: (controller) {
+                  if (controller.isLoading) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+                  return GetBuilder<ContactController>(
+                    builder: (formController) {
+                      return formController.isLoading
+                          ? const Center(child: CircularProgressIndicator())
+                          : ListView.builder(
+                              itemCount: formController.formBuilder.fieldNames.length,
+                              shrinkWrap: true,
+                              itemBuilder: (context, index) {
+                                final name = formController.formBuilder.fieldNames[index];
+                                Widget? widget = formController.formBuilder.widgets[name];
+                                if (widget != null && widget.runtimeType == CustomDropdownButton<Option?>) {
+                                  widget = (widget as CustomDropdownButton<Option?>).copyWith(
+                                    onChanged: (value) {
+                                      formController.updateOnChanged(name, value);
+                                    },
+                                    value: formController.formBuilder.dropdownValue[name],
+                                  );
+
+                                  return Padding(
+                                    padding: EdgeInsets.only(bottom: 16.h),
+                                    child: widget,
+                                  );
+                                }
+                                return Padding(
+                                  padding: EdgeInsets.only(bottom: 16.h),
+                                  child: widget ?? const SizedBox.shrink(),
+                                );
+                              },
+                            );
                     },
-                  ),
-                ),
-              ],
+                  );
+                },
+              ),
             ),
-            const SizedBox(height: 24),
+            GetBuilder<ContactController>(
+              builder: (contactController) {
+                if (contactController.isSaving) return const Center(child: CircularProgressIndicator());
+                return PrimaryButton(
+                  onPressed: () async {
+                    if (contactController.formBuilder.textEditingControllers['name']?.text.isEmpty == true) {
+                      Fluttertoast.showToast(msg: 'Name is required');
+                      return;
+                    }
+
+                    contactController.addContact(controller.selectedContactDetails?.contact?.id).then((value) async {
+                      if (value == true) {
+                        if (controller.selectedContactDetails != null) {
+                          Get.back();
+                          await controller.getContactDetails('${controller.selectedContactDetails?.contact?.id}');
+                        }
+                        await controller.getCustomers(showLoading: false);
+                        if (controller.selectedContactDetails == null) {
+                          Get.back();
+                        }
+                      }
+                    });
+                  },
+                  text: 'Save',
+                );
+              },
+            ),
+            30.h.vSpace,
           ],
         ),
       ),

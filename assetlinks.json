@@ -1,0 +1,15 @@
+[
+	{
+		"relation": [
+			"delegate_permission/common.handle_all_urls"
+		],
+		"target": {
+			"namespace": "android_app",
+			"package_name": "com.nuforce.pro",
+			"sha256_cert_fingerprints": [
+				"0B:C7:9F:47:07:03:2F:0C:9D:DA:9E:B7:85:65:84:D3:95:09:19:BA:DC:0D:18:BC:82:5A:6E:12:33:55:36:8A",
+				"35:54:8A:17:72:F9:27:C6:2E:76:A2:2C:24:7E:8E:FC:FD:39:3F:81:2A:FF:CB:36:67:9D:E0:18:1D:20:F4:82"
+			]
+		}
+	}
+]

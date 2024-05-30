@@ -1,5 +1,5 @@
 class URL {
-  static const String baseUrl = 'https://nuforce.pro/api';
+  static const String baseUrl = 'https://hq.nuforce360.com/api';
 
   static const String signup = '$baseUrl/public/hello.signup';
   static const String login = '$baseUrl/action/person.login';
@@ -32,4 +32,6 @@ class URL {
   static const String getpaymentOptions = '$baseUrl/action/company.getPaymentOptions';
 
   static const String getInvoiceSchedules = '$baseUrl/action/workorder.events';
+
+  static const String customer = '$baseUrl/action/contact.browse';
 }

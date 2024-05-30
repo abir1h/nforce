@@ -2,11 +2,9 @@ import 'dart:developer';
 
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/contact/services/contact_api_services.dart';
-import 'package:nuforce/app/modules/line_item/models/control.dart' as ctrl;
+import 'package:nuforce/app/modules/business_manager/models/form_model.dart';
 import 'package:nuforce/app/modules/new_orders/services/note_api_service.dart';
 import 'package:nuforce/app/shared/widgets/form_builder.dart';
-import 'package:nuforce/app/utils/global_states.dart';
 
 import '../models/work_order_success_model.dart';
 
@@ -46,7 +44,7 @@ class NoteController extends GetxController {
     update();
   }
 
-  void updateOnChanged(String name, ctrl.Option? value) {
+  void updateOnChanged(String name, Option? value) {
     _formBuilder.dropdownValue[name] = value;
     update();
   }
@@ -56,7 +54,6 @@ class NoteController extends GetxController {
     await NoteApiService.getNoteForm().then((value) {
       value.fold(
         (controls) {
-          log('Controls: $controls', name: 'setContactForm');
           setFormBuilder(getForm(controls: controls));
         },
         (r) {
@@ -73,9 +70,7 @@ class NoteController extends GetxController {
     bool? result;
     setSaving(true);
     final invoice = Get.arguments as Invoice;
-    await NoteApiService.setNote(
-            contactId: invoice.contactId!, detailValue: detailValue)
-        .then((value) {
+    await NoteApiService.setNote(contactId: invoice.contactId!, detailValue: detailValue).then((value) {
       value.fold(
         (success) {
           result = true;

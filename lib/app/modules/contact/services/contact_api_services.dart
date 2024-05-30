@@ -7,11 +7,19 @@ import 'package:nuforce/app/utils/api_client.dart';
 import 'package:nuforce/app/utils/url.dart';
 
 class ContactApiServices {
-  static Future<Either<List<Control>, String>> getContactForm() async {
+  static Future<Either<List<Control>, String>> getContactForm([int? id]) async {
     try {
-      final response = await ApiClient.instance.post(url: URL.contactForm);
+      final data = {
+        "data": {},
+        "query": {
+          "id": id,
+        }
+      };
+      final response = await ApiClient.instance.post(
+        url: URL.contactForm,
+        body: id != null ? data : null,
+      );
       if (response.statusCode == 200 && response.data != null) {
-        developer.log('Response: $response', name: 'getContactForm');
         if (response.data['controls'] != null) {
           List<Control> controls = [];
           for (final control in response.data['controls']) {
@@ -22,7 +30,6 @@ class ContactApiServices {
           return Right(response.data['error'] ?? 'An error occurred.');
         }
       } else {
-        developer.log('Response: $response', name: 'getContactForm.else');
         return Right(response.data['error'] ?? 'An error occurred.');
       }
     } on DioException catch (e) {
@@ -33,6 +40,7 @@ class ContactApiServices {
   }
 
   static Future<Either<String, String>> setContact({
+    int? id,
     required int businessId,
     required String owner,
     required String name,
@@ -58,6 +66,11 @@ class ContactApiServices {
         },
         "action": "submit"
       };
+      if (id != null) {
+        body['query'] = {
+          "id": id,
+        };
+      }
       developer.log('Body: $body', name: 'setContact');
       final response = await ApiClient.instance.post(url: URL.contactForm, body: body);
 

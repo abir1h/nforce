@@ -2,10 +2,10 @@ import 'dart:developer';
 
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/business_manager/models/form_model.dart';
 import 'package:nuforce/app/modules/contact/services/contact_api_services.dart';
-import 'package:nuforce/app/modules/line_item/models/control.dart' as ctrl;
 import 'package:nuforce/app/shared/widgets/form_builder.dart';
-import 'package:nuforce/app/utils/global_states.dart';
+import 'package:nuforce/app/utils/app_states.dart';
 
 class ContactController extends GetxController {
   @override
@@ -43,17 +43,16 @@ class ContactController extends GetxController {
     update();
   }
 
-  void updateOnChanged(String name, ctrl.Option? value) {
+  void updateOnChanged(String name, Option? value) {
     _formBuilder.dropdownValue[name] = value;
     update();
   }
 
-  Future<void> setContactForm() async {
+  Future<void> setContactForm([int? id]) async {
     setLoading(true);
-    await ContactApiServices.getContactForm().then((value) {
+    await ContactApiServices.getContactForm(id).then((value) {
       value.fold(
         (controls) {
-          log('Controls: $controls', name: 'setContactForm');
           setFormBuilder(getForm(controls: controls));
         },
         (r) {
@@ -64,28 +63,21 @@ class ContactController extends GetxController {
     setLoading(false);
   }
 
-  Future<bool?> addContact({
-    required String name,
-    required String refCode,
-    required String company,
-    required List<String> tags,
-    required String primaryEmail,
-    required String primaryMobile,
-    required String groupId,
-  }) async {
+  Future<bool?> addContact([int? id]) async {
     bool? result;
     setSaving(true);
     final appState = Get.find<AppState>();
     await ContactApiServices.setContact(
+      id: id,
       businessId: appState.user?.businessId ?? 0,
       owner: '',
-      name: name,
-      refCode: refCode,
-      company: company,
-      tags: tags,
-      primaryEmail: primaryEmail,
-      primaryMobile: primaryMobile,
-      groupId: groupId,
+      name: formBuilder.textEditingControllers['name']?.text ?? '',
+      refCode: formBuilder.textEditingControllers['refCode']?.text ?? '',
+      company: formBuilder.textEditingControllers['detailsCompany']?.text ?? '',
+      tags: formBuilder.stringTagControllers['tags']?.getTags ?? [],
+      primaryEmail: formBuilder.textEditingControllers['detailsPrimaryEmail']?.text ?? '',
+      primaryMobile: formBuilder.textEditingControllers['detailsPrimaryMobile']?.text ?? '',
+      groupId: '${formBuilder.dropdownValue['groupId']?.value ?? ''}',
     ).then((value) {
       value.fold(
         (success) {

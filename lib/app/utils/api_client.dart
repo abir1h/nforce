@@ -5,7 +5,6 @@ import 'dart:io';
 
 import 'package:curl_logger_dio_interceptor/curl_logger_dio_interceptor.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
 import 'package:logger/logger.dart';
 import 'package:nuforce/app/utils/url.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -32,14 +31,12 @@ class ApiClient {
       HttpHeaders.acceptHeader: 'application/json',
       if (prefs.getString('token') != null) 'Authorization': "Bearer ${prefs.getString("token")}",
     };
-    if (kDebugMode) {
-      dio.interceptors.add(
-        CurlLoggerDioInterceptor(
-          // printOnSuccess: true,
-          convertFormData: true,
-        ),
-      );
-    }
+    dio.interceptors.add(
+      CurlLoggerDioInterceptor(
+        printOnSuccess: true,
+        convertFormData: true,
+      ),
+    );
   }
 
   Future<Response> get({
