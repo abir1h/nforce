@@ -32,7 +32,7 @@ class BottomNavBarController extends GetxController {
   int currentIndex = 0;
   List<PersistentBottomNavBarItem> items = <PersistentBottomNavBarItem>[];
 
-  AblyConfig ablyConfig = AblyConfig();
+  // AblyConfig ablyConfig = AblyConfig();
 
   List<Widget> screens = [
     const HomeView(),
@@ -52,7 +52,7 @@ class BottomNavBarController extends GetxController {
         value.fold(
           (success) {
             appstateController.setUser(success);
-            ablyConfig.connect();
+            // ablyConfig.connect();
           },
           (error) {
             SharedPreferenceService.clear();

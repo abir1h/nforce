@@ -31,7 +31,7 @@ class _BusinessManagerServiceCatalogsViewState extends State<BusinessManagerServ
           appBar: CustomAppbarMinimal(
             title: 'Service Catalogs',
             trailing: [
-              if (controller.serviceCatalogsController.mockServiceCatalogs.isEmpty)
+              if (controller.serviceCatalogsController.categoryList.isEmpty)
                 const SizedBox()
               else
                 GestureDetector(
@@ -57,40 +57,44 @@ class _BusinessManagerServiceCatalogsViewState extends State<BusinessManagerServ
               const SizedBox(width: 16),
             ],
           ),
-          body: SizedBox(
-            width: Get.width,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
-              child: controller.serviceCatalogsController.mockServiceCatalogs.isEmpty
-                  ? const EmptyServiceCatalogs()
-                  : Padding(
-                      padding: const EdgeInsets.only(top: 14),
-                      child: Column(
-                        children: [
-                          const ServiceCalatogDropdown(),
-                          const SizedBox(height: 16),
-                          ListView.builder(
-                            itemCount: controller.serviceCatalogsController.mockServiceCatalogs.length,
-                            shrinkWrap: true,
-                            itemBuilder: (BuildContext context, int index) {
-                              return Padding(
-                                padding: const EdgeInsets.only(bottom: 16),
-                                child: ServiceCatalogTile(
-                                  service: controller.serviceCatalogsController.mockServiceCatalogs[index],
-                                  onTap: () {
-                                    Get.to<void>(
-                                      () => BusinessManagerServiceCatalogsDeatilsView(
-                                        serviceCategory: controller.serviceCatalogsController.mockServiceCatalogs[index],
-                                      ),
-                                    );
-                                  },
-                                ),
-                              );
-                            },
-                          ),
-                        ],
+          body: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: SizedBox(
+              width: Get.width,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
+                child: controller.serviceCatalogsController.categoryList.isEmpty
+                    ? const EmptyServiceCatalogs()
+                    : Padding(
+                        padding: const EdgeInsets.only(top: 14),
+                        child: Column(
+                          children: [
+                            const ServiceCalatogDropdown(),
+                            const SizedBox(height: 16),
+                            ListView.builder(
+                              itemCount: controller.serviceCatalogsController.categoryList.length,
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemBuilder: (BuildContext context, int index) {
+                                return Padding(
+                                  padding: const EdgeInsets.only(bottom: 16),
+                                  child: ServiceCatalogTile(
+                                    service: controller.serviceCatalogsController.categoryList[index],
+                                    onTap: () {
+                                      Get.to<void>(
+                                        () => BusinessManagerServiceCatalogsDeatilsView(
+                                          serviceCategory: controller.serviceCatalogsController.categoryList[index],
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                );
+                              },
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
+              ),
             ),
           ),
         );

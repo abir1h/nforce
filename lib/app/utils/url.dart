@@ -34,4 +34,9 @@ class URL {
   static const String getInvoiceSchedules = '$baseUrl/action/workorder.events';
 
   static const String customer = '$baseUrl/action/contact.browse';
+
+  ///Category
+  static const String getCategry = '$baseUrl/browser/category';
+  static const String getCategoryForm = '$baseUrl/form/category.register-form';
+
 }
