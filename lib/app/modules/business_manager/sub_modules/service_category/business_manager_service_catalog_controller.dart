@@ -1,7 +1,28 @@
 import 'package:equatable/equatable.dart';
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/business_manager/services/service_catelog_api_service.dart';
+
+import '../../models/service_catelog_model.dart';
 
 class BusinessManagerServiceCatalogsController extends GetxController {
+  List<ServiceCategoryModel> categoryList = [];
+
+  @override
+  void onInit() {
+    super.onInit();
+    getServiceCategories();
+  }
+
+  getServiceCategories() {
+    ServiceCatelogsApiService.getServiceCategories().then((value) {
+      value.fold((l) {
+        categoryList = l.data!;
+        update();
+      }, (r) => print(r));
+    });
+  }
+
+
   final List<MockServiceCatalog> _mockServiceCatalogs = [];
 
   List<MockServiceCatalog> get mockServiceCatalogs => _mockServiceCatalogs;
@@ -12,7 +33,8 @@ class BusinessManagerServiceCatalogsController extends GetxController {
   }
 
   void updateServiceCatalog(MockServiceCatalog serviceCategory) {
-    final index = _mockServiceCatalogs.indexWhere((element) => element.id == serviceCategory.id);
+    final index = _mockServiceCatalogs
+        .indexWhere((element) => element.id == serviceCategory.id);
     _mockServiceCatalogs[index] = serviceCategory;
     update();
   }
@@ -47,5 +69,15 @@ class MockServiceCatalog extends Equatable {
   });
 
   @override
-  List<Object?> get props => [id, name, refCode, parentCategory, googleTaxonomy, displayOrder, termsAndConditions, tags, description];
+  List<Object?> get props => [
+        id,
+        name,
+        refCode,
+        parentCategory,
+        googleTaxonomy,
+        displayOrder,
+        termsAndConditions,
+        tags,
+        description
+      ];
 }

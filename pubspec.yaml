@@ -61,7 +61,7 @@ dependencies:
   sentry_flutter: ^8.1.0
   flutter_widget_from_html: ^0.15.0
   device_info_plus: ^10.1.0
-  ably_flutter: ^1.2.32
+#  ably_flutter: ^1.2.32
 
 dev_dependencies:
   build_runner: 2.4.6
