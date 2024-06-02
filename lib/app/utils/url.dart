@@ -32,4 +32,9 @@ class URL {
   // business manager
   static const String calendarList = '$baseUrl/browser/calendar';
   static const String calendarForm = '$baseUrl/form/calendar.register-form';
+
+  ///Category
+  static const String getCategry = '$baseUrl/browser/category';
+  static const String getCategoryForm = '$baseUrl/form/category.register-form';
+
 }

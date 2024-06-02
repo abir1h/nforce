@@ -135,9 +135,8 @@ CustomFormBuilder getForm({List<Control>? controls}) {
               },
             );
 
-            if (control.value != null) {
-              formBuilder.textEditingControllers[control.name!]!.text = control.value!;
-            }
+          if (control.value != null) {
+            formBuilder.textEditingControllers[control.name!]!.text = control.value.toString();
           }
 
           break;
