@@ -1,44 +1,94 @@
-import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:nuforce/app/model/contact_group_model.dart';
+import 'package:nuforce/app/modules/business_manager/models/form_model.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/calendar/services/business_manager_calendar_api_services.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/contact_group/services/contact_group_api_service.dart';
+import 'dart:developer' as developer show log;
+
+import 'package:nuforce/app/shared/widgets/form_builder.dart';
 
 class BusinessManagerContactGroupController extends GetxController {
-  final List<MockContactGroup> _mockContactGroup = [];
-
-  List<MockContactGroup> get mockContactGroup => _mockContactGroup;
-
-  void addContactGroup(MockContactGroup mockContactGroup) {
-    _mockContactGroup.add(mockContactGroup);
+  bool _isLoading = false;
+  bool get isLoading => _isLoading;
+  set isLoading(bool val) {
+    _isLoading = val;
     update();
   }
 
-  void updateContactGroup(MockContactGroup mockContactGroup) {
-    final index = _mockContactGroup.indexWhere((element) => element.id == mockContactGroup.id);
-    _mockContactGroup[index] = mockContactGroup;
+  ContactGroupModel? _contactGroup;
+  ContactGroupModel? get contactGroup => _contactGroup;
+  set contactGroup(ContactGroupModel? contactGroup) {
+    _contactGroup = contactGroup;
     update();
   }
 
-  void removeContactGroup(MockContactGroup mockContactGroup) {
-    _mockContactGroup.remove(mockContactGroup);
+  Future<void> getContactGroups() async {
+    isLoading = true;
+    await ContactGroupApiServices.getModelList().then((value) {
+      value.fold(
+        (success) {
+          contactGroup = success;
+        },
+        (r) {
+          Fluttertoast.showToast(msg: r);
+          developer.log(r, name: 'BusinessManagerLabelController.getLables');
+        },
+      );
+    });
+    isLoading = false;
+  }
+
+  CustomFormBuilder _formBuilder = CustomFormBuilder();
+  CustomFormBuilder get formBuilder => _formBuilder;
+
+  void setFormBuilder(CustomFormBuilder value) {
+    _formBuilder = value;
     update();
   }
-}
 
-class MockContactGroup extends Equatable {
-  final String id;
-  final String name;
-  final String? for_;
-  final String? description;
-  final Color? color;
+  void updateOnChanged(String name, Option? value) {
+    _formBuilder.dropdownValue[name] = value;
+    update();
+  }
 
-  const MockContactGroup({
-    required this.id,
-    required this.name,
-    required this.for_,
-    required this.description,
-    required this.color,
-  });
+  Future<void> setContactGroupForm([int? id]) async {
+    isLoading = true;
+    await ContactGroupApiServices.getCustomerGroupForm(id).then((value) {
+      value.fold(
+        (controls) {
+          setFormBuilder(getForm(controls: controls));
+        },
+        (error) {
+          developer.log('Error: $error', name: 'setContactForm');
+        },
+      );
+    });
+    isLoading = false;
+  }
 
-  @override
-  List<Object?> get props => [id, name, for_, color, description];
+  Future<bool> saveEditOrDelete({int? id, required ActionType action}) async {
+    isLoading = true;
+    bool isSuccess = false;
+    await ContactGroupApiServices.saveEditOrDelete(
+      id: id,
+      name: formBuilder.textEditingControllers['name']?.text ?? '',
+      description: formBuilder.textEditingControllers['detailsDescription']?.text ?? '',
+      action: action,
+    ).then((value) {
+      value.fold(
+        (l) async {
+          isSuccess = true;
+          Fluttertoast.showToast(msg: 'Contact group ${action.name} successfully.');
+          await getContactGroups();
+        },
+        (r) {
+          isSuccess = false;
+          Fluttertoast.showToast(msg: r);
+        },
+      );
+    });
+    isLoading = false;
+    return isSuccess;
+  }
 }

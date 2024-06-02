@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/business_manager/controllers/business_manager_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/contact_group/business_manager_add_or_edit_contact_group.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/contact_group/business_manager_contact_group_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/contact_group/business_manager_contact_group_details_view.dart';
@@ -10,6 +9,7 @@ import 'package:nuforce/app/modules/business_manager/sub_modules/contact_group/w
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
 import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/app/utils/custom_loading_widget.dart';
 
 class BusinessManagerContactGroupView extends StatefulWidget {
   const BusinessManagerContactGroupView({super.key});
@@ -19,22 +19,23 @@ class BusinessManagerContactGroupView extends StatefulWidget {
 }
 
 class _BusinessManagerContactGroupViewState extends State<BusinessManagerContactGroupView> {
-  final controller = Get.find<BusinessManagerController>();
+  // final controller = Get.find<BusinessManagerController>();
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<BusinessManagerContactGroupController>(
-      builder: (_) {
+      builder: (controller) {
         return Scaffold(
           backgroundColor: AppColors.white1,
           appBar: CustomAppbarMinimal(
             title: 'Contact Group',
             trailing: [
-              if (controller.contactGroupController.mockContactGroup.isEmpty)
+              if (controller.contactGroup?.data?.isEmpty ?? true)
                 const SizedBox()
               else
                 GestureDetector(
-                  onTap: () {
+                  onTap: () async {
+                    await controller.setContactGroupForm();
                     Get.to<void>(() => const BusinessManagerAddOrEditContactGroup());
                   },
                   child: Row(
@@ -58,32 +59,36 @@ class _BusinessManagerContactGroupViewState extends State<BusinessManagerContact
           ),
           body: SizedBox(
             width: Get.width,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
-              child: controller.contactGroupController.mockContactGroup.isEmpty
-                  ? const EmptyContactGroup()
-                  : Padding(
-                      padding: const EdgeInsets.only(top: 14),
-                      child: ListView.builder(
-                        itemCount: controller.contactGroupController.mockContactGroup.length,
-                        shrinkWrap: true,
-                        itemBuilder: (BuildContext context, int index) {
-                          return Padding(
-                            padding: const EdgeInsets.only(bottom: 16),
-                            child: ColoredContactGroupTile(
-                              contactGroup: controller.contactGroupController.mockContactGroup[index],
-                              onTap: () {
-                                Get.to<void>(
-                                  () => BusinessManagerContactGroupDeatilsView(
-                                    contactGroup: controller.contactGroupController.mockContactGroup[index],
-                                  ),
-                                );
-                              },
-                            ),
-                          );
-                        },
+            child: CustomLoadingWidget(
+              isLoading: controller.isLoading,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
+                child: controller.contactGroup?.data?.isEmpty ?? true
+                    ? const EmptyContactGroup()
+                    : Padding(
+                        padding: const EdgeInsets.only(top: 14),
+                        child: ListView.builder(
+                          itemCount: controller.contactGroup?.data?.length ?? 0,
+                          shrinkWrap: true,
+                          itemBuilder: (BuildContext context, int index) {
+                            final contactGroup = controller.contactGroup!.data![index];
+                            return Padding(
+                              padding: const EdgeInsets.only(bottom: 16),
+                              child: ColoredContactGroupTile(
+                                contactGroup: contactGroup,
+                                onTap: () {
+                                  Get.to<void>(
+                                    () => BusinessManagerContactGroupDeatilsView(
+                                      contactGroup: contactGroup,
+                                    ),
+                                  );
+                                },
+                              ),
+                            );
+                          },
+                        ),
                       ),
-                    ),
+              ),
             ),
           ),
         );

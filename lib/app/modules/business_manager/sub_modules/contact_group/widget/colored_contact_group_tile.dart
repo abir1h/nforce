@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/contact_group/business_manager_contact_group_controller.dart';
+import 'package:nuforce/app/model/contact_group_model.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 
@@ -12,7 +12,7 @@ class ColoredContactGroupTile extends StatelessWidget {
     this.onTap,
   });
 
-  final MockContactGroup contactGroup;
+  final ContactGroup contactGroup;
   final VoidCallback? onTap;
 
   @override
@@ -30,9 +30,9 @@ class ColoredContactGroupTile extends StatelessWidget {
             Container(
               width: 5.w,
               constraints: const BoxConstraints(minHeight: 70),
-              decoration: BoxDecoration(
-                color: contactGroup.color,
-                borderRadius: const BorderRadius.only(
+              decoration: const BoxDecoration(
+                color: AppColors.primaryBlue1,
+                borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(6),
                   bottomLeft: Radius.circular(6),
                 ),
@@ -44,7 +44,7 @@ class ColoredContactGroupTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    contactGroup.name,
+                    contactGroup.name ?? 'N/A',
                     style: TextStyle(
                       color: AppColors.nutralBlack1,
                       fontSize: 16.sp,
@@ -52,7 +52,7 @@ class ColoredContactGroupTile extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    contactGroup.for_ ?? '',
+                    contactGroup.groupCode ?? '',
                     style: TextStyle(
                       color: AppColors.subText,
                       fontSize: 14.sp,

@@ -40,4 +40,8 @@ class URL {
   // Labels
   static const String getLabels = '/browser/label';
   static const String labelForm = '/form/label.entry-form';
+
+  // Contact Groups
+  static const String getContactGroups = '/browser/group';
+  static const String contactGroupForm = '/form/group.entry-form';
 }

@@ -25,14 +25,6 @@ class BusinessManagerAddOrEditLabel extends StatefulWidget {
 }
 
 class _BusinessManagerAddOrEditCalendarViewState extends State<BusinessManagerAddOrEditLabel> {
-  String? name;
-  String? type;
-  String? color;
-  String? description;
-
-  TextEditingController nameController = TextEditingController();
-  TextEditingController descriptionController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
