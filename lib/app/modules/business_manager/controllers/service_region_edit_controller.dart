@@ -3,14 +3,10 @@ import 'dart:developer';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/business_manager/models/form_model.dart';
-import 'package:nuforce/app/modules/business_manager/services/service_catelog_api_service.dart';
 import 'package:nuforce/app/modules/business_manager/services/service_region_api_service.dart';
-import 'package:nuforce/app/modules/business_manager/services/service_topic_api_service.dart';
-import 'package:nuforce/app/modules/new_orders/services/note_api_service.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/calendar/services/business_manager_calendar_api_services.dart';
 import 'package:nuforce/app/shared/widgets/form_builder.dart';
-
 import '../../../utils/app_states.dart';
-import '../../contact/services/contact_api_services.dart';
 
 class ServiceRegionEditController extends GetxController {
   @override
@@ -19,12 +15,6 @@ class ServiceRegionEditController extends GetxController {
       value.dispose();
     });
     super.dispose();
-  }
-
-  @override
-  void onInit() {
-    super.onInit();
-    // setRegionForm();
   }
 
   bool _isLoading = false;
@@ -68,19 +58,19 @@ class ServiceRegionEditController extends GetxController {
     setLoading(false);
   }
 
-  Future<bool?> addRegion([int? id]) async {
+  Future<bool?> addRegion({int? id, required ActionType action}) async {
     bool? result;
     setSaving(true);
     final appState = Get.find<AppState>();
     await ServiceRegionApiService.setRegionForm(
-            id: id,
-            businessId: appState.user?.businessId ?? 0,
-            name: formBuilder.textEditingControllers['name']!.text,
-            groupCode: formBuilder.textEditingControllers['groupCode']!.text,
-            detailsPrefixCode:
-                formBuilder.textEditingControllers['detailsPrefixCode']!.text,
-            subType: '${formBuilder.dropdownValue['subType']?.value ?? ''}')
-        .then((value) {
+      id: id,
+      businessId: appState.user?.businessId ?? 0,
+      name: formBuilder.textEditingControllers['name']!.text,
+      groupCode: formBuilder.textEditingControllers['groupCode']!.text,
+      detailsPrefixCode: formBuilder.textEditingControllers['detailsPrefixCode']!.text,
+      subType: '${formBuilder.dropdownValue['subType']?.value ?? ''}',
+      action: action,
+    ).then((value) {
       value.fold(
         (success) {
           result = true;

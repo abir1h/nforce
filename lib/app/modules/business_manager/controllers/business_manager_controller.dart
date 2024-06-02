@@ -8,6 +8,7 @@ import 'package:nuforce/app/modules/business_manager/controllers/direct_debit_co
 import 'package:nuforce/app/modules/business_manager/controllers/estimation_controller.dart';
 import 'package:nuforce/app/modules/business_manager/controllers/regional_settings_controller.dart';
 import 'package:nuforce/app/modules/business_manager/controllers/service_category_edit_controller.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/service_region_edit_controller.dart';
 import 'package:nuforce/app/modules/business_manager/controllers/service_topic_edit_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/calendar/business_manager_calendar_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/commision_tires/business_manager_commission_tiers_controller.dart';
@@ -40,6 +41,7 @@ class BusinessManagerController extends GetxController {
   final termsAndPolicyController = Get.put(BusinessManagerTermsAndPolicyController());
   final serviceCategoryController = Get.put(ServiceCategoryEditController());
   final serviceTopicEditController = Get.put(ServiceTopicEditController());
+  final serviceRegionEditController = Get.put(ServiceRegionEditController());
 
   @override
   void dispose() {

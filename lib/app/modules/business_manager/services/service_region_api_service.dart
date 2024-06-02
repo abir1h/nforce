@@ -1,31 +1,17 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:get/get.dart';
-import 'package:nuforce/app/modules/business_manager/models/service_catelog_model.dart';
 import 'package:nuforce/app/modules/business_manager/models/service_region_model.dart';
-import 'package:nuforce/app/modules/business_manager/models/service_topic_model.dart';
-import 'package:nuforce/app/modules/new_orders/models/activity_log_model.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/calendar/services/business_manager_calendar_api_services.dart';
 import '../../../utils/api_client.dart';
-import '../../../utils/app_states.dart';
 import '../../../utils/url.dart';
 import '../../line_item/models/control.dart';
 import 'dart:developer' as developer show log;
 
 class ServiceRegionApiService {
-  static Future<Either<ServiceRegionDataModel, String>>
-  getServiceRegions() async {
+  static Future<Either<ServiceRegionDataModel, String>> getServiceRegions() async {
     try {
       final response =
-      await ApiClient.instance.post(url: URL.getRegions, body: {
-        "table": "region",
-        "page": 1,
-        "limit": 20,
-        "where": {},
-        "order": "id asc",
-        "transform": "",
-        "humanized": true,
-        "columns": true
-      });
+          await ApiClient.instance.post(url: URL.getRegions, body: {"table": "region", "page": 1, "limit": 20, "where": {}, "order": "id asc", "transform": "", "humanized": true, "columns": true});
       if (response.statusCode == 200 && response.data['data'] != null) {
         return Left(ServiceRegionDataModel.fromJson(response.data));
       } else {
@@ -72,12 +58,11 @@ class ServiceRegionApiService {
     required String subType,
     required String groupCode,
     required String detailsPrefixCode,
-
+    required ActionType action,
   }) async {
     try {
       final body = {
-        "query": {},
-        "data":{
+        "data": {
           "business_id": 15,
           "params.org_code": "hammer",
           "group_type": "region",
@@ -89,7 +74,7 @@ class ServiceRegionApiService {
           "details.prefix_code": detailsPrefixCode,
           "active": 1
         },
-        "action": "submit"
+        "action": action.name,
       };
       if (id != null) {
         body['query'] = {
@@ -97,12 +82,10 @@ class ServiceRegionApiService {
         };
       }
       developer.log('Body: $body', name: 'setCategory');
-      final response =
-      await ApiClient.instance.post(url: URL.getRegionForm, body: body);
+      final response = await ApiClient.instance.post(url: URL.getRegionForm, body: body);
 
       if (response.statusCode == 200 && response.data != null) {
-        if (response.data['success'] != null &&
-            response.data['error'] == false) {
+        if (response.data['success'] != null && response.data['error'] == false) {
           return Left(response.data['success']);
         } else {
           return Right(response.data['error'] ?? 'An error occurred.');
