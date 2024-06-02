@@ -8,6 +8,7 @@ import 'package:nuforce/app/modules/business_manager/sub_modules/commision_tires
 import 'package:nuforce/app/modules/business_manager/sub_modules/commision_tires/business_manager_commission_tiers_controller.dart';
 import 'package:nuforce/app/modules/service_items/widgets/title_subtitle_minimal_widget.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
+import 'package:nuforce/app/shared/widgets/custom_dialog.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/shared/widgets/secondary_button.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
@@ -56,16 +57,31 @@ class BusinessManagerCommissionTierDeatilsView extends StatelessWidget {
                         Expanded(
                           child: SecondaryButton(
                             onPressed: () {
-                              // Get.back<void>();
-                              // controller.commissionTierController.removeCommissionTier(commissionTier);
-                              // Fluttertoast.showToast(msg: 'Commission Tier Deleted');
-                              final controller = Get.find<BusinessManagerCommissionTiersController>();
-                              controller.saveEditOrDelete(action: ActionType.delete, id: commissionTier?.id).then(
-                                (value) {
-                                  if (value) {
-                                    Get.back<void>();
-                                    Fluttertoast.showToast(msg: 'Commission Tier Deleted');
-                                  }
+                              showDialog(
+                                context: context,
+                                builder: (ctx) {
+                                  return CustomDialog(
+                                    dialogType: DialogType.warning,
+                                    title: 'Delete Commission Tier?',
+                                    content: 'Are you sure you want to delete ${commissionTier?.name ?? 'Commission Tier'}?',
+                                    primaryText: 'Delete',
+                                    onPrimaryButtonPress: () async {
+                                      Navigator.of(ctx).pop();
+                                      final controller = Get.find<BusinessManagerCommissionTiersController>();
+                                      await controller.saveEditOrDelete(action: ActionType.delete, id: commissionTier?.id).then(
+                                        (value) {
+                                          if (value) {
+                                            Get.back<void>();
+                                            Fluttertoast.showToast(msg: 'Commission Tier Deleted');
+                                          }
+                                        },
+                                      );
+                                    },
+                                    secondaryText: 'Cancel',
+                                    onSecondaryButtonPressed: () {
+                                      Navigator.of(ctx).pop();
+                                    },
+                                  );
                                 },
                               );
                             },

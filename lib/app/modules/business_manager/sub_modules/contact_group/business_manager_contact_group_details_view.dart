@@ -8,6 +8,7 @@ import 'package:nuforce/app/modules/business_manager/sub_modules/contact_group/b
 import 'package:nuforce/app/modules/business_manager/sub_modules/contact_group/business_manager_contact_group_controller.dart';
 import 'package:nuforce/app/modules/service_items/widgets/title_subtitle_minimal_widget.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
+import 'package:nuforce/app/shared/widgets/custom_dialog.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/shared/widgets/secondary_button.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
@@ -45,13 +46,31 @@ class BusinessManagerContactGroupDeatilsView extends StatelessWidget {
                         Expanded(
                           child: SecondaryButton(
                             onPressed: () async {
-                              final controller = Get.find<BusinessManagerContactGroupController>();
-                              await controller.saveEditOrDelete(action: ActionType.delete, id: contactGroup?.id).then((value) {
-                                if (value) {
-                                  Get.back<void>();
-                                  Fluttertoast.showToast(msg: 'Contact Group Deleted');
-                                }
-                              });
+                              showDialog(
+                                context: context,
+                                builder: (ctx) {
+                                  return CustomDialog(
+                                    dialogType: DialogType.warning,
+                                    title: 'Delete Contact Group?',
+                                    content: 'Are you sure you want to delete ${contactGroup?.name ?? 'Contact Group'}?',
+                                    primaryText: 'Delete',
+                                    onPrimaryButtonPress: () async {
+                                      Navigator.of(ctx).pop();
+                                      final controller = Get.find<BusinessManagerContactGroupController>();
+                                      await controller.saveEditOrDelete(action: ActionType.delete, id: contactGroup?.id).then((value) {
+                                        if (value) {
+                                          Get.back<void>();
+                                          Fluttertoast.showToast(msg: 'Contact Group Deleted');
+                                        }
+                                      });
+                                    },
+                                    secondaryText: 'Cancel',
+                                    onSecondaryButtonPressed: () {
+                                      Navigator.of(ctx).pop();
+                                    },
+                                  );
+                                },
+                              );
                             },
                             text: 'Delete',
                           ),
