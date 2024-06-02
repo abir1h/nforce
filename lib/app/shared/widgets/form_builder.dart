@@ -135,12 +135,12 @@ CustomFormBuilder getForm({List<Control>? controls}) {
               },
             );
 
-          if (control.value != null) {
-            formBuilder.textEditingControllers[control.name!]!.text = control.value.toString();
+            if (control.value != null) {
+              formBuilder.textEditingControllers[control.name!]!.text = control.value.toString();
+            }
+
+            break;
           }
-
-          break;
-
         case 'dropdown':
           formBuilder = formBuilder.copyWith(
             fieldNames: [...formBuilder.fieldNames, control.name!],
