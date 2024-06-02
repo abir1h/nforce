@@ -37,6 +37,12 @@ class _UserRolesViewState extends State<UserRolesView> {
               else
                 GestureDetector(
                   onTap: () {
+                    // if (OrganizationRoleController().initialized) {
+                    //   controller = Get.find<OrganizationRoleController>();
+                    // } else {
+                    //   controller = Get.put(OrganizationRoleController());
+                    // }
+                    controller.getFormData();
                     Get.to<void>(() => const AddOrEditUserRoleView());
                   },
                   child: Row(

@@ -40,12 +40,7 @@ class _AddOrEditUserRoleViewState extends State<AddOrEditUserRoleView> {
   @override
   void initState() {
     super.initState();
-    if (OrganizationRoleController().initialized) {
-      controller = Get.find<OrganizationRoleController>();
-    } else {
-      controller = Get.put(OrganizationRoleController());
-    }
-    controller.getFormData();
+
     // if (widget.user != null) {
     //   final user = widget.user!;
     //   nameController.text = user.name;

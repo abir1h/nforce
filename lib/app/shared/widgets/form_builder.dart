@@ -7,6 +7,7 @@ import 'package:nuforce/app/modules/line_item/models/control.dart';
 import 'package:nuforce/app/shared/widgets/custom_dropdown.dart';
 import 'package:nuforce/app/shared/widgets/custom_tags_input.dart';
 import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
+import 'package:nuforce/app/shared/widgets/form_builder_color_picker.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:textfield_tags/textfield_tags.dart';
 
@@ -63,40 +64,80 @@ CustomFormBuilder getForm({List<Control>? controls}) {
     if (control.name != null && control.params?.type != 'hidden') {
       switch (control.editor) {
         case 'text':
-          formBuilder = formBuilder.copyWith(
-            fieldNames: [...formBuilder.fieldNames, control.name!],
-          );
-          formBuilder = formBuilder.copyWith(
-            textEditingControllers: {
-              ...formBuilder.textEditingControllers,
-              control.name!: TextEditingController(),
-            },
-          );
-          formBuilder = formBuilder.copyWith(
-            validator: {
-              ...formBuilder.validator,
-              control.name!: (v) {
-                if (v!.isEmpty) {
-                  return 'Please enter ${control.label}';
-                }
-                return null;
-              },
-            },
-          );
-          formBuilder = formBuilder.copyWith(
-            widgets: {
-              ...formBuilder.widgets,
-              control.name!: CustomTextField(
-                label: control.label ?? '',
-                hint: control.params?.help ?? control.label ?? '',
-                controller: formBuilder.textEditingControllers[control.name!],
-                validator: formBuilder.validator[control.name!],
-              ),
-            },
-          );
+          if (control.params?.paramsClass == 'color-picker') {
+            formBuilder = formBuilder.copyWith(
+              fieldNames: [...formBuilder.fieldNames, control.name!],
+            );
 
-          if (control.value != null) {
-            formBuilder.textEditingControllers[control.name!]!.text = control.value!;
+            // add onchange function
+            formBuilder = formBuilder.copyWith(
+              onChanged: {
+                ...formBuilder.onChanged,
+                control.name!: (value) {
+                  formBuilder.dropdownValue[control.name!] = value;
+                },
+              },
+            );
+
+            String colorString = AppColors.primaryBlue1.toString();
+            if (control.value != null && control.value is String) {
+              if (control.value!.startsWith('#')) {
+                colorString = control.value.toString().substring(1).toUpperCase();
+                colorString = '0xFF$colorString';
+              }
+              while (colorString.length < 8) {
+                colorString += '0';
+              }
+            }
+
+            formBuilder = formBuilder.copyWith(
+              widgets: {
+                ...formBuilder.widgets,
+                control.name!: FormBuilderColorPicker(
+                  label: control.label ?? 'Color',
+                  pickerColor: colorString,
+                  onColorChanged: (p0) {
+                    // formBuilder.dropdownValue[control.name!] = p0;
+                  },
+                ),
+              },
+            );
+          } else {
+            formBuilder = formBuilder.copyWith(
+              fieldNames: [...formBuilder.fieldNames, control.name!],
+            );
+            formBuilder = formBuilder.copyWith(
+              textEditingControllers: {
+                ...formBuilder.textEditingControllers,
+                control.name!: TextEditingController(),
+              },
+            );
+            formBuilder = formBuilder.copyWith(
+              validator: {
+                ...formBuilder.validator,
+                control.name!: (v) {
+                  if (v!.isEmpty) {
+                    return 'Please enter ${control.label}';
+                  }
+                  return null;
+                },
+              },
+            );
+            formBuilder = formBuilder.copyWith(
+              widgets: {
+                ...formBuilder.widgets,
+                control.name!: CustomTextField(
+                  label: control.label ?? '',
+                  hint: control.params?.help ?? control.label ?? '',
+                  controller: formBuilder.textEditingControllers[control.name!],
+                  validator: formBuilder.validator[control.name!],
+                ),
+              },
+            );
+
+            if (control.value != null) {
+              formBuilder.textEditingControllers[control.name!]!.text = control.value!;
+            }
           }
 
           break;
@@ -125,6 +166,13 @@ CustomFormBuilder getForm({List<Control>? controls}) {
                   },
                 );
                 break;
+              } else {
+                formBuilder = formBuilder.copyWith(
+                  dropdownValue: {
+                    ...formBuilder.dropdownValue,
+                    control.name!: null,
+                  },
+                );
               }
             }
           } else {
