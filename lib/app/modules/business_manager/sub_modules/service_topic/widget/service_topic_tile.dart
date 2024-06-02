@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/service_topic/business_manager_service_topic_controller.dart';
+import 'package:nuforce/app/modules/business_manager/models/service_topic_model.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/business_manager_service_topic_controller.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 
@@ -12,7 +13,7 @@ class ServiceTopicTile extends StatelessWidget {
     this.onTap,
   });
 
-  final MockServiceTopic serviceTopic;
+  final ServiceTopicModel serviceTopic;
   final VoidCallback? onTap;
 
   @override
@@ -41,7 +42,7 @@ class ServiceTopicTile extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    serviceTopic.description ?? '',
+                    serviceTopic.groupCode ?? '',
                     style: TextStyle(
                       color: AppColors.subText,
                       fontSize: 14.sp,

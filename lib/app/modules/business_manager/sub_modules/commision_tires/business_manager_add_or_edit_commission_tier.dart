@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/business_manager/controllers/business_manager_controller.dart';
+import 'package:nuforce/app/model/commission_data_model.dart';
+import 'package:nuforce/app/modules/business_manager/models/form_model.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/calendar/services/business_manager_calendar_api_services.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/commision_tires/business_manager_commission_tiers_controller.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/shared/widgets/custom_dropdown.dart';
-import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
-import 'package:nuforce/app/shared/widgets/secondary_button.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
-import 'package:nuforce/app/utils/colors.dart';
-import 'package:nuforce/main.dart';
+import 'package:nuforce/app/utils/extension_methods.dart';
 
 GlobalKey<FormState> addOrEditCommissionTier = GlobalKey<FormState>();
 
@@ -19,52 +18,13 @@ class BusinessManagerAddOrEditCommissionTier extends StatefulWidget {
     super.key,
     this.commissionTier,
   });
-  final MockCommissionTier? commissionTier;
+  final Commission? commissionTier;
 
   @override
   State<BusinessManagerAddOrEditCommissionTier> createState() => _BusinessManagerAddOrEditCommissionTierState();
 }
 
 class _BusinessManagerAddOrEditCommissionTierState extends State<BusinessManagerAddOrEditCommissionTier> {
-  String? name;
-  String? rate;
-  String? firstRate;
-  String? description;
-  String? source;
-  String? rewardOn;
-
-  TextEditingController nameController = TextEditingController();
-  TextEditingController rateController = TextEditingController();
-  TextEditingController firstRateController = TextEditingController();
-  TextEditingController descriptionController = TextEditingController();
-
-  @override
-  void initState() {
-    super.initState();
-    if (widget.commissionTier != null) {
-      final commissionTier = widget.commissionTier!;
-      nameController.text = commissionTier.tierName;
-      rateController.text = commissionTier.rate.toString();
-      firstRateController.text = commissionTier.firstRate.toString();
-      descriptionController.text = commissionTier.description ?? '';
-      name = commissionTier.tierName;
-      rate = commissionTier.rate.toString();
-      firstRate = commissionTier.firstRate.toString();
-      description = commissionTier.description;
-      source = commissionTier.source;
-      rewardOn = commissionTier.rewardOn;
-    }
-  }
-
-  @override
-  void dispose() {
-    nameController.dispose();
-    descriptionController.dispose();
-    rateController.dispose();
-    firstRateController.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,193 +33,59 @@ class _BusinessManagerAddOrEditCommissionTierState extends State<BusinessManager
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding, vertical: 15),
-        child: Form(
-          key: addOrEditCommissionTier,
-          child: SizedBox(
-            height: height,
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 25),
-                  CustomTextField(
-                    label: 'Tier Name*',
-                    hint: 'Enter tier name',
-                    controller: nameController,
-                    validator: (p0) {
-                      if (p0!.isEmpty) {
-                        return 'Please enter tier name';
-                      }
-                      return null;
-                    },
-                  ),
-                  const SizedBox(height: 16),
-                  CustomTextField(
-                    label: 'Rate',
-                    hint: 'Enter rate %',
-                    controller: rateController,
-                    validator: (p0) {
-                      if (p0!.isEmpty) {
-                        return 'Please enter rate';
-                      }
-                      return null;
-                    },
-                  ),
-                  const SizedBox(height: 16),
-                  CustomTextField(
-                    label: 'First Rate',
-                    hint: 'Enter first rate %',
-                    controller: firstRateController,
-                    validator: (p0) {
-                      if (p0!.isEmpty) {
-                        return 'Please enter first rate';
-                      }
-                      return null;
-                    },
-                  ),
-                  const SizedBox(height: 16),
-                  CustomDropdownButton(
-                    label: 'Source',
-                    items: ['Commission value calculation', 'Source 2', 'Source 3']
-                        .map(
-                          (e) => DropdownMenuItem(
-                            value: e,
-                            child: Text(
-                              e,
-                              style: const TextStyle(
-                                fontSize: 14,
-                                color: AppColors.nutralBlack1,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                          ),
-                        )
-                        .toList(),
-                    hint: 'Select one',
-                    onChanged: (v) {
-                      setState(() {
-                        source = v as String?;
-                      });
-                    },
-                    value: source,
-                  ),
-                  const SizedBox(height: 16),
-                  CustomDropdownButton(
-                    label: 'Reward On',
-                    items: ['Payment Received', 'Reward type 2', 'Reward type 3']
-                        .map(
-                          (e) => DropdownMenuItem(
-                            value: e,
-                            child: Text(
-                              e,
-                              style: const TextStyle(
-                                fontSize: 14,
-                                color: AppColors.nutralBlack1,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                          ),
-                        )
-                        .toList(),
-                    hint: 'Select one',
-                    onChanged: (v) {
-                      setState(() {
-                        rewardOn = v as String?;
-                      });
-                    },
-                    value: rewardOn,
-                  ),
-                  const SizedBox(height: 16),
-                  CustomTextField(
-                    label: 'Description',
-                    hint: 'Enter description',
-                    maxLines: 3,
-                    controller: descriptionController,
-                  ),
-                  const SizedBox(height: 32),
-                  Row(
+        child: GetBuilder<BusinessManagerCommissionTiersController>(
+          builder: (controller) {
+            return controller.isLoading
+                ? const Center(child: CircularProgressIndicator())
+                : Column(
                     children: [
                       Expanded(
-                        child: SecondaryButton(
-                          onPressed: () {
-                            if (widget.commissionTier == null) {
-                              nameController.clear();
-                              descriptionController.clear();
-                              setState(() {
-                                name = null;
-                                rate = null;
-                                firstRate = null;
-                                source = null;
-                                rewardOn = null;
-                                description = null;
-                              });
-                            } else {
-                              final commission = widget.commissionTier!;
-                              nameController.text = commission.tierName;
-                              rateController.text = commission.rate.toString();
-                              firstRateController.text = commission.firstRate.toString();
-                              descriptionController.text = commission.description ?? '';
-                              setState(() {
-                                name = commission.tierName;
-                                rate = commission.rate.toString();
-                                firstRate = commission.firstRate.toString();
-                                source = commission.source;
-                                rewardOn = commission.rewardOn;
-                                description = commission.description;
-                              });
-                            }
-                          },
-                          text: 'Reset',
-                        ),
-                      ),
-                      const SizedBox(width: 15),
-                      Expanded(
-                        child: PrimaryButton(
-                          onPressed: () {
-                            if (!addOrEditCommissionTier.currentState!.validate()) {
-                              return;
-                            }
-
-                            final controller = Get.find<BusinessManagerController>();
-
-                            if (widget.commissionTier != null) {
-                              controller.commissionTierController.updateCommissionTier(
-                                MockCommissionTier(
-                                  id: widget.commissionTier!.id,
-                                  tierName: nameController.text,
-                                  rate: double.parse(rateController.text),
-                                  firstRate: double.parse(firstRateController.text),
-                                  description: descriptionController.text,
-                                  source: source,
-                                  rewardOn: rewardOn,
-                                ),
+                        child: ListView.builder(
+                          itemCount: controller.formBuilder.fieldNames.length,
+                          shrinkWrap: true,
+                          itemBuilder: (context, index) {
+                            String name = controller.formBuilder.fieldNames[index];
+                            Widget? widget = controller.formBuilder.widgets[name];
+                            if (widget != null && widget.runtimeType == CustomDropdownButton<Option?>) {
+                              widget = (widget as CustomDropdownButton<Option?>).copyWith(
+                                onChanged: (value) {
+                                  controller.updateOnChanged(name, value);
+                                },
+                                value: controller.formBuilder.dropdownValue[name],
                               );
-                            } else {
-                              controller.commissionTierController.addCommissionTier(
-                                MockCommissionTier(
-                                  id: DateTime.now().millisecondsSinceEpoch.toString(),
-                                  tierName: nameController.text,
-                                  rate: double.parse(rateController.text),
-                                  firstRate: double.parse(firstRateController.text),
-                                  description: descriptionController.text,
-                                  source: source,
-                                  rewardOn: rewardOn,
-                                ),
+
+                              return Padding(
+                                padding: EdgeInsets.only(bottom: 16.h),
+                                child: widget,
                               );
                             }
-                            Get.back<void>();
-                            Fluttertoast.showToast(msg: 'Commission tier ${widget.commissionTier != null ? 'updated' : 'added'} successfully');
+                            return Padding(
+                              padding: EdgeInsets.only(bottom: 16.h),
+                              child: widget ?? const SizedBox.shrink(),
+                            );
                           },
-                          text: widget.commissionTier != null ? 'Update' : 'Submit',
                         ),
                       ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: PrimaryButton(
+                              onPressed: () {
+                                controller.saveEditOrDelete(action: ActionType.submit, id: widget.commissionTier?.id).then((value) {
+                                  if (value) {
+                                    Get.back();
+                                  }
+                                });
+                              },
+                              text: 'Submit',
+                            ),
+                          ),
+                        ],
+                      ),
+                      30.h.vSpace,
                     ],
-                  ),
-                  const SizedBox(height: 16),
-                ],
-              ),
-            ),
-          ),
+                  );
+          },
         ),
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nuforce/app/utils/colors.dart';
 
 class CustomLoadingWidget extends StatefulWidget {
   const CustomLoadingWidget({
@@ -27,9 +28,9 @@ class _CustomLoadingWidgetState extends State<CustomLoadingWidget> {
           ),
         ),
         if (widget.isLoading)
-          Center(
+          const Center(
             child: CircularProgressIndicator.adaptive(
-              backgroundColor: Theme.of(context).colorScheme.onBackground,
+              backgroundColor: AppColors.nutralBlack1,
             ),
           ),
       ],

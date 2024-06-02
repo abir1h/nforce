@@ -91,29 +91,35 @@ class Action {
 class Option {
   final String? label;
   final dynamic value;
+  final List<Option>? option;
 
   Option({
     this.label,
     this.value,
+    this.option,
   });
 
   Option copyWith({
     String? label,
     dynamic value,
+    List<Option>? option,
   }) =>
       Option(
         label: label ?? this.label,
         value: value ?? this.value,
+        option: option ?? this.option,
       );
 
   factory Option.fromJson(Map<String, dynamic> json) => Option(
         label: json["label"],
         value: json["value"],
+        option: json["options"] == null ? [] : List<Option>.from(json["options"]!.map((x) => Option.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
         "label": label,
         "value": value,
+        "options": option == null ? [] : List<dynamic>.from(option!.map((x) => x.toJson())),
       };
 }
 

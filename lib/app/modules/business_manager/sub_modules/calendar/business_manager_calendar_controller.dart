@@ -75,7 +75,7 @@ class BusinessManagerCalendarController extends GetxController {
     bool isSuccess = false;
     final appState = Get.find<AppState>();
     await BusinessManagerCalendarApiServices.saveEditOrDelete(
-      id: calendarId ?? -1,
+      id: calendarId,
       businessId: appState.user?.businessId ?? -1,
       owner: appState.user?.businessName ?? '',
       context: 'business',

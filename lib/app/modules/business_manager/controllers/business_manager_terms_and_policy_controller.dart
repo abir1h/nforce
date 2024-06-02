@@ -1,25 +1,30 @@
 import 'package:equatable/equatable.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/business_manager/models/service_terms_model.dart';
+import 'package:nuforce/app/modules/business_manager/services/service_terms_api_service.dart';
 
 class BusinessManagerTermsAndPolicyController extends GetxController {
-  final List<MockTermsAndPolicy> _mockTermsAndPolicy = [];
+  List<ServiceTermsModel> termsList = [];
 
-  List<MockTermsAndPolicy> get mockTermsAndPolicy => _mockTermsAndPolicy;
-
-  void addTermsAndPolicy(MockTermsAndPolicy mockTermsAndPolicy) {
-    _mockTermsAndPolicy.add(mockTermsAndPolicy);
-    update();
+  @override
+  void onInit() {
+    super.onInit();
+    getServiceTerms();
   }
 
-  void updateTermsAndPolicy(MockTermsAndPolicy mockTermsAndPolicy) {
-    final index = _mockTermsAndPolicy.indexWhere((element) => element.id == mockTermsAndPolicy.id);
-    _mockTermsAndPolicy[index] = mockTermsAndPolicy;
-    update();
-  }
-
-  void removeTermsAndPolicy(MockTermsAndPolicy mockTermsAndPolicy) {
-    _mockTermsAndPolicy.remove(mockTermsAndPolicy);
-    update();
+  getServiceTerms() {
+    ServiceTermsApiService.getServiceTerms().then((value) {
+      value.fold(
+        (l) {
+          termsList = l.data!;
+          update();
+        },
+        (r) {
+          Fluttertoast.showToast(msg: r);
+        },
+      );
+    });
   }
 }
 

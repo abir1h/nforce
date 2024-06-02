@@ -4,6 +4,8 @@
 
 import 'dart:convert';
 
+import 'package:nuforce/app/modules/business_manager/models/form_model.dart';
+
 ServiceCategoryDataModel ServiceCategoryDataModelFromJson(String str) => ServiceCategoryDataModel.fromJson(json.decode(str));
 
 String ServiceCategoryDataModelToJson(ServiceCategoryDataModel data) => json.encode(data.toJson());
@@ -18,7 +20,7 @@ class ServiceCategoryDataModel {
   final List<int>? pageChunks;
   final List<ServiceCategoryModel>? data;
   final int count;
-  final List<Columns>? Columnss;
+  final List<Columns>? columns;
   final List<Action>? actions;
   final List<Filter>? filters;
   final List<Tool>? tools;
@@ -33,7 +35,7 @@ class ServiceCategoryDataModel {
     required this.pageChunks,
     required this.data,
     required this.count,
-    required this.Columnss,
+    required this.columns,
     required this.actions,
     required this.filters,
     required this.tools,
@@ -64,7 +66,7 @@ class ServiceCategoryDataModel {
         pageChunks: pageChunks ?? this.pageChunks,
         data: data ?? this.data,
         count: count ?? this.count,
-        Columnss: Columnss ?? this.Columnss,
+        columns: Columnss ?? this.columns,
         actions: actions ?? this.actions,
         filters: filters ?? this.filters,
         tools: tools ?? this.tools,
@@ -80,7 +82,7 @@ class ServiceCategoryDataModel {
         pageChunks: json["pageChunks"] == null ? [] : List<int>.from(json["pageChunks"].map((x) => x)),
         data: json["data"] == null ? [] : List<ServiceCategoryModel>.from(json["data"].map((x) => ServiceCategoryModel.fromJson(x))),
         count: json["count"],
-        Columnss: json["Columnss"] == null ? [] : List<Columns>.from(json["Columnss"].map((x) => Columns.fromJson(x))),
+        columns: json["columns"] == null ? [] : List<Columns>.from(json["columns"].map((x) => Columns.fromJson(x))),
         actions: json["actions"] == null ? [] : List<Action>.from(json["actions"].map((x) => Action.fromJson(x))),
         filters: json["filters"] == null ? [] : List<Filter>.from(json["filters"].map((x) => Filter.fromJson(x))),
         tools: json["tools"] == null ? [] : List<Tool>.from(json["tools"].map((x) => Tool.fromJson(x))),
@@ -96,7 +98,7 @@ class ServiceCategoryDataModel {
         "pageChunks": List<dynamic>.from(pageChunks!.map((x) => x)),
         "data": List<dynamic>.from(data!.map((x) => x.toJson())),
         "count": count,
-        "Columnss": List<dynamic>.from(Columnss!.map((x) => x.toJson())),
+        "columns": List<dynamic>.from(columns!.map((x) => x.toJson())),
         "actions": List<dynamic>.from(actions!.map((x) => x.toJson())),
         "filters": List<dynamic>.from(filters!.map((x) => x.toJson())),
         "tools": List<dynamic>.from(tools!.map((x) => x.toJson())),
@@ -342,35 +344,6 @@ class Filter {
         "params": params!.toJson(),
         "value": value,
         "options": List<dynamic>.from(options.map((x) => x.toJson())),
-      };
-}
-
-class Option {
-  final String label;
-  final int value;
-
-  Option({
-    required this.label,
-    required this.value,
-  });
-
-  Option copyWith({
-    String? label,
-    int? value,
-  }) =>
-      Option(
-        label: label ?? this.label,
-        value: value ?? this.value,
-      );
-
-  factory Option.fromJson(Map<String, dynamic> json) => Option(
-        label: json["label"] ?? "",
-        value: json["value"] ?? -1,
-      );
-
-  Map<String, dynamic> toJson() => {
-        "label": label,
-        "value": value,
       };
 }
 

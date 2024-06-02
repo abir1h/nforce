@@ -7,8 +7,8 @@ class URL {
   static const String getUserCard = '$baseUrl/action/person.usercard';
 
   static const String businessProfileForm = '$baseUrl/form/business.profile-form';
-  static const String getBusinessManagerRoles = '$baseUrl/browser/role';
-  static const String businessRoleForm = '$baseUrl/form/role.entry-form';
+  static const String getRoles = '$baseUrl/browser/role';
+  static const String roleForm = '$baseUrl/form/role.entry-form';
 
   // Line Item
   static const String lineItem = '$baseUrl/form/lineitem.register-form';
@@ -37,4 +37,25 @@ class URL {
   static const String getCategry = '$baseUrl/browser/category';
   static const String getCategoryForm = '$baseUrl/form/category.register-form';
 
+  // Labels
+  static const String getLabels = '/browser/label';
+  static const String labelForm = '/form/label.entry-form';
+
+  // Contact Groups
+  static const String getContactGroups = '/browser/group';
+  static const String contactGroupForm = '/form/group.entry-form';
+
+  // Commission Tiers
+  static const String getCommissionTiers = '/browser/commission';
+  static const String commissionTierForm = '/form/commission.entry-form';
+  ///Service Topic
+  static const String getTopics = '$baseUrl/browser/topic';
+  static const String getTopicForm = '$baseUrl/form/topic.entry-form';
+
+  ///Service Topic
+  static const String getRegions = '$baseUrl/browser/region';
+  static const String getRegionForm = '$baseUrl/form/region.entry-form';
+  ///Service Topic
+  static const String getTerms = '$baseUrl/browser/policy';
+  static const String getTermsForm = '$baseUrl/form/policy.register-form';
 }

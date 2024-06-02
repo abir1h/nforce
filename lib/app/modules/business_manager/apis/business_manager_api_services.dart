@@ -39,7 +39,7 @@ class BusinessManagerApiServices {
   static Future<Either<RoleModel, String>> getRoles([int? page, int? limit]) async {
     try {
       final response = await ApiClient.instance.post(
-        url: URL.getBusinessManagerRoles,
+        url: URL.getRoles,
         body: {
           "table": "role",
           "page": page ?? 1,
@@ -66,7 +66,7 @@ class BusinessManagerApiServices {
   }) async {
     try {
       final response = await ApiClient.instance.post(
-        url: URL.businessRoleForm,
+        url: URL.roleForm,
         body: body,
       );
       if (response.statusCode == 200) {

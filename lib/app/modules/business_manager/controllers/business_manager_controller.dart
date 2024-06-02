@@ -7,19 +7,23 @@ import 'package:nuforce/app/modules/business_manager/controllers/customer_contac
 import 'package:nuforce/app/modules/business_manager/controllers/direct_debit_controller.dart';
 import 'package:nuforce/app/modules/business_manager/controllers/estimation_controller.dart';
 import 'package:nuforce/app/modules/business_manager/controllers/regional_settings_controller.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/service_category_edit_controller.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/service_region_edit_controller.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/service_terms_edit_controller.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/service_topic_edit_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/calendar/business_manager_calendar_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/commision_tires/business_manager_commission_tiers_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/contact_group/business_manager_contact_group_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/label/business_manager_label_controller.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/service_category/business_manager_service_catalog_controller.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/service_region/business_manager_service_region_controller.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/service_topic/business_manager_service_topic_controller.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/terms_and_policy/business_manager_terms_and_policy_controller.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/organization_roles/controllers/organization_role_controller.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/business_manager_service_catalog_controller.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/business_manager_service_region_controller.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/business_manager_service_topic_controller.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/business_manager_terms_and_policy_controller.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/user_roles/controllers/user_role_controller.dart';
 
 class BusinessManagerController extends GetxController {
   RxString selectedValue = '7 days'.obs;
-  final userRolesController = Get.put(OrganizationRoleController());
+  final userRolesController = Get.put(UserRoleController());
   final businessManagerCalendarController = Get.put(BusinessManagerCalendarController());
   final regionalSettingController = Get.put(RegionalSettingController());
   final calendarSettingController = Get.put(CalenderSettingController());
@@ -36,6 +40,10 @@ class BusinessManagerController extends GetxController {
   final serviceTopicController = Get.put(BusinessManagerServiceTopicController());
   final serviceRegionController = Get.put(BusinessManagerServiceRegionController());
   final termsAndPolicyController = Get.put(BusinessManagerTermsAndPolicyController());
+  final serviceCategoryController = Get.put(ServiceCategoryEditController());
+  final serviceTopicEditController = Get.put(ServiceTopicEditController());
+  final serviceRegionEditController = Get.put(ServiceRegionEditController());
+  final serviceTermsEditController = Get.put(ServiceTermsEditController());
 
   @override
   void dispose() {

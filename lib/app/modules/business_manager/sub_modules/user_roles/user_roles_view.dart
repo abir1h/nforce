@@ -1,13 +1,11 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/model/business_manager/role_model.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/organization_roles/add_or_edit_organization_role_view.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/organization_roles/controllers/organization_role_controller.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/organization_roles/organization_role_details_view.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/organization_roles/widget/empty_user_role.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/user_roles/add_or_edit_user_role_view.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/user_roles/controllers/user_role_controller.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/user_roles/user_role_details_view.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/user_roles/widget/empty_user_role.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
 import 'package:nuforce/app/utils/colors.dart';
@@ -21,22 +19,21 @@ class UserRolesView extends StatefulWidget {
 }
 
 class _UserRolesViewState extends State<UserRolesView> {
-  // final controller = Get.find<BusinessManagerController>();
-
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<OrganizationRoleController>(
+    return GetBuilder<UserRoleController>(
       builder: (controller) {
         return Scaffold(
           backgroundColor: AppColors.white1,
           appBar: CustomAppbarMinimal(
             title: 'User Roles',
             trailing: [
-              if (controller.roleModel.data?.isEmpty == true)
+              if (controller.roleModel?.data?.isEmpty ?? true)
                 const SizedBox()
               else
                 GestureDetector(
-                  onTap: () {
+                  onTap: () async {
+                    await controller.getRoleForm();
                     Get.to<void>(() => const AddOrEditUserRoleView());
                   },
                   child: Row(
@@ -64,29 +61,22 @@ class _UserRolesViewState extends State<UserRolesView> {
               width: Get.width,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
-                child: controller.roleModel.data?.isEmpty == true
+                child: controller.roleModel?.data?.isEmpty == true
                     ? const EmptyUserRole()
                     : controller.isLoading
                         ? const SizedBox()
                         : ListView.builder(
-                            itemCount: controller.roleModel.data?.length,
+                            itemCount: controller.roleModel?.data?.length ?? 0,
                             shrinkWrap: true,
                             itemBuilder: (BuildContext context, int index) {
+                              final role = controller.roleModel!.data![index];
                               return Padding(
                                 padding: const EdgeInsets.only(bottom: 16),
                                 child: GestureDetector(
                                   onTap: () {
-                                    if (controller.roleModel.data != null) {
-                                      if (controller.roleModel.data![index].id != null) {
-                                        controller.getFormData(controller.roleModel.data![index].id!);
-                                        log('role id: ${controller.roleModel.data![index].id}');
-                                        Get.to<void>(
-                                          () => const OrganizationRoleDeatilsView(),
-                                        );
-                                      }
-                                    }
+                                    Get.to<void>(() => UserRoleDeatilsView(role: role));
                                   },
-                                  child: UserRoleTile(role: controller.roleModel.data![index]),
+                                  child: UserRoleTile(role: role),
                                 ),
                               );
                             },

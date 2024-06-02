@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/calendar/business_manager_calendar_view.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/commision_tires/business_manager_commission_tiers_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/commision_tires/business_manager_commission_tiers_view.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/contact_group/business_manager_contact_group_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/contact_group/business_manager_contact_group_view.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/label/business_manager_label_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/label/business_manager_label_view.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/service_category/business_manager_service_catalog_view.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/service_region/business_manager_service_region_view.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/service_topic/business_manager_service_topic_view.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/terms_and_policy/business_manager_terms_and_policy_view.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/organization_roles/controllers/organization_role_controller.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/organization_roles/organization_roles_view.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/user_roles/controllers/user_role_controller.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/user_roles/user_roles_view.dart';
 import 'package:nuforce/app/modules/business_manager/views/organization_profile_view.dart';
 import 'package:nuforce/app/modules/business_manager/widgets/big_button_with_icon.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
@@ -48,14 +51,8 @@ class OrganizationView extends StatelessWidget {
                 svgPath: Assets.images.svg.userRoles,
                 lable: 'User Roles',
                 onTap: () {
-                  late final OrganizationRoleController orgRoleController;
-                  if (OrganizationRoleController().initialized) {
-                    orgRoleController = Get.find<OrganizationRoleController>();
-                    orgRoleController.getData();
-                  } else {
-                    orgRoleController = Get.put(OrganizationRoleController());
-                    orgRoleController.getData();
-                  }
+                  final controller = Get.find<UserRoleController>();
+                  controller.getRoles();
                   Get.to<void>(() => const UserRolesView());
                 },
               ),
@@ -72,6 +69,8 @@ class OrganizationView extends StatelessWidget {
                 svgPath: Assets.images.svg.labels,
                 lable: 'Labels',
                 onTap: () {
+                  final controller = Get.find<BusinessManagerLabelController>();
+                  controller.getLables();
                   Get.to<void>(() => const BusinessManagerLabelView());
                 },
               ),
@@ -80,6 +79,8 @@ class OrganizationView extends StatelessWidget {
                 svgPath: Assets.images.svg.contactGroups,
                 lable: 'Contact Groups',
                 onTap: () {
+                  final controller = Get.find<BusinessManagerContactGroupController>();
+                  controller.getContactGroups();
                   Get.to<void>(() => const BusinessManagerContactGroupView());
                 },
               ),
@@ -88,6 +89,8 @@ class OrganizationView extends StatelessWidget {
                 svgPath: Assets.images.svg.commissions,
                 lable: 'Commissions',
                 onTap: () {
+                  final controller = Get.find<BusinessManagerCommissionTiersController>();
+                  controller.getComissions();
                   Get.to<void>(() => const BusinessManagerCommissionTiersView());
                 },
               ),
