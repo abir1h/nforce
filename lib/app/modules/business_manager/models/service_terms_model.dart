@@ -2,7 +2,6 @@
 //
 //     final serviceTermsDataModel = serviceTermsDataModelFromJson(jsonString);
 
-import 'package:meta/meta.dart';
 import 'dart:convert';
 
 ServiceTermsDataModel serviceTermsDataModelFromJson(String str) => ServiceTermsDataModel.fromJson(json.decode(str));
@@ -60,36 +59,30 @@ class ServiceTermsDataModel {
       );
 
   factory ServiceTermsDataModel.fromJson(Map<String, dynamic> json) => ServiceTermsDataModel(
-    page: json["page"],
-    limit: json["limit"],
-    totalCount: json["totalCount"],
-    pageCount: json["pageCount"],
-    nextPage: json["nextPage"],
-    prevPage: json["prevPage"],
-    pageChunks: json["pageChunks"] == null
-        ? []
-        : List<int>.from(json["pageChunks"].map((x) => x)),
-    data: json["data"] == null
-        ? []
-        : List<ServiceTermsModel>.from(json["data"].map((x) => ServiceTermsModel.fromJson(x))),
-    count: json["count"],
-    columns:  json["columns"] == null
-        ? []
-        :List<Columns>.from(json["columns"].map((x) => Columns.fromJson(x))),
-  );
+        page: json["page"],
+        limit: json["limit"],
+        totalCount: json["totalCount"],
+        pageCount: json["pageCount"],
+        nextPage: json["nextPage"],
+        prevPage: json["prevPage"],
+        pageChunks: json["pageChunks"] == null ? [] : List<int>.from(json["pageChunks"].map((x) => x)),
+        data: json["data"] == null ? [] : List<ServiceTermsModel>.from(json["data"].map((x) => ServiceTermsModel.fromJson(x))),
+        count: json["count"],
+        columns: json["columns"] == null ? [] : List<Columns>.from(json["columns"].map((x) => Columns.fromJson(x))),
+      );
 
   Map<String, dynamic> toJson() => {
-    "page": page,
-    "limit": limit,
-    "totalCount": totalCount,
-    "pageCount": pageCount,
-    "nextPage": nextPage,
-    "prevPage": prevPage,
-    "pageChunks": List<dynamic>.from(pageChunks!.map((x) => x)),
-    "data": List<dynamic>.from(data!.map((x) => x.toJson())),
-    "count": count,
-    "columns": List<dynamic>.from(columns!.map((x) => x.toJson())),
-  };
+        "page": page,
+        "limit": limit,
+        "totalCount": totalCount,
+        "pageCount": pageCount,
+        "nextPage": nextPage,
+        "prevPage": prevPage,
+        "pageChunks": List<dynamic>.from(pageChunks!.map((x) => x)),
+        "data": List<dynamic>.from(data!.map((x) => x.toJson())),
+        "count": count,
+        "columns": List<dynamic>.from(columns!.map((x) => x.toJson())),
+      };
 }
 
 class Columns {
@@ -127,22 +120,22 @@ class Columns {
       );
 
   factory Columns.fromJson(Map<String, dynamic> json) => Columns(
-    key: json["key"]??"",
-    hidden: json["hidden"]??false,
-    label: json["label"]??"",
-    order: json["order"]??-1,
-    name: json["name"]??"",
-    description: json["description"]??"",
-  );
+        key: json["key"] ?? "",
+        hidden: json["hidden"] ?? false,
+        label: json["label"] ?? "",
+        order: json["order"] ?? -1,
+        name: json["name"] ?? "",
+        description: json["description"] ?? "",
+      );
 
   Map<String, dynamic> toJson() => {
-    "key": key,
-    "hidden": hidden,
-    "label": label,
-    "order": order,
-    "name": name,
-    "description": description,
-  };
+        "key": key,
+        "hidden": hidden,
+        "label": label,
+        "order": order,
+        "name": name,
+        "description": description,
+      };
 }
 
 class ServiceTermsModel {
@@ -176,18 +169,18 @@ class ServiceTermsModel {
       );
 
   factory ServiceTermsModel.fromJson(Map<String, dynamic> json) => ServiceTermsModel(
-    id: json["id"],
-    businessId: json["businessId"],
-    name: json["name"],
-    policyType: json["policyType"],
-    active: json["active"],
-  );
+        id: json["id"],
+        businessId: json["businessId"],
+        name: json["name"],
+        policyType: json["policyType"],
+        active: json["active"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "businessId": businessId,
-    "name": name,
-    "policyType": policyType,
-    "active": active,
-  };
+        "id": id,
+        "businessId": businessId,
+        "name": name,
+        "policyType": policyType,
+        "active": active,
+      };
 }

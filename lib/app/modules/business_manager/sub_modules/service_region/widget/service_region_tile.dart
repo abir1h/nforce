@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:nuforce/app/modules/business_manager/controllers/business_manager_service_region_controller.dart';
 import 'package:nuforce/app/modules/business_manager/models/service_region_model.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/gen/assets.gen.dart';
@@ -42,7 +41,7 @@ class ServiceRegionTile extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    serviceRegion.groupCode ?? '',
+                    serviceRegion.groupCode,
                     style: TextStyle(
                       color: AppColors.subText,
                       fontSize: 14.sp,

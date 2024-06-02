@@ -1,9 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/business_manager/models/service_region_model.dart';
-import 'package:nuforce/app/modules/business_manager/models/service_topic_model.dart';
 import 'package:nuforce/app/modules/business_manager/services/service_region_api_service.dart';
-import 'package:nuforce/app/modules/business_manager/services/service_topic_api_service.dart';
 
 class BusinessManagerServiceRegionController extends GetxController {
   List<ServiceRegionModel> regionList = [];

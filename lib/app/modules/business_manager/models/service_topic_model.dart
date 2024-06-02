@@ -2,14 +2,11 @@
 //
 //     final serviceTopicDataModel = serviceTopicDataModelFromJson(jsonString);
 
-import 'package:meta/meta.dart';
 import 'dart:convert';
 
-ServiceTopicDataModel serviceTopicDataModelFromJson(String str) =>
-    ServiceTopicDataModel.fromJson(json.decode(str));
+ServiceTopicDataModel serviceTopicDataModelFromJson(String str) => ServiceTopicDataModel.fromJson(json.decode(str));
 
-String serviceTopicDataModelToJson(ServiceTopicDataModel data) =>
-    json.encode(data.toJson());
+String serviceTopicDataModelToJson(ServiceTopicDataModel data) => json.encode(data.toJson());
 
 class ServiceTopicDataModel {
   final int page;
@@ -69,30 +66,19 @@ class ServiceTopicDataModel {
         tools: tools ?? this.tools,
       );
 
-  factory ServiceTopicDataModel.fromJson(Map<String, dynamic> json) =>
-      ServiceTopicDataModel(
+  factory ServiceTopicDataModel.fromJson(Map<String, dynamic> json) => ServiceTopicDataModel(
         page: json["page"],
         limit: json["limit"],
         totalCount: json["totalCount"],
         pageCount: json["pageCount"],
         nextPage: json["nextPage"],
         prevPage: json["prevPage"],
-        pageChunks: json["pageChunks"] == null
-            ? []
-            : List<int>.from(json["pageChunks"].map((x) => x)),
-        data: json["data"] == null
-            ? []
-            : List<ServiceTopicModel>.from(json["data"].map((x) => ServiceTopicModel.fromJson(x))),
+        pageChunks: json["pageChunks"] == null ? [] : List<int>.from(json["pageChunks"].map((x) => x)),
+        data: json["data"] == null ? [] : List<ServiceTopicModel>.from(json["data"].map((x) => ServiceTopicModel.fromJson(x))),
         count: json["count"],
-        colums: json["columns"] == null
-            ? []
-            : List<Colums>.from(json["columns"].map((x) => Colums.fromJson(x))),
-        actions: json["actions"] == null
-            ? []
-            : List<Action>.from(json["actions"].map((x) => Action.fromJson(x))),
-        tools: json["tools"] == null
-            ? []
-            : List<Action>.from(json["tools"].map((x) => Action.fromJson(x))),
+        colums: json["columns"] == null ? [] : List<Colums>.from(json["columns"].map((x) => Colums.fromJson(x))),
+        actions: json["actions"] == null ? [] : List<Action>.from(json["actions"].map((x) => Action.fromJson(x))),
+        tools: json["tools"] == null ? [] : List<Action>.from(json["tools"].map((x) => Action.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -141,7 +127,7 @@ class Action {
         label: json["label"],
         icon: json["icon"],
         action: json["action"],
-        data: json["data"]!=null?Data.fromJson(json["data"]):null,
+        data: json["data"] != null ? Data.fromJson(json["data"]) : null,
       );
 
   Map<String, dynamic> toJson() => {

@@ -2,7 +2,6 @@
 //
 //     final serviceRegionDataModel = serviceRegionDataModelFromJson(jsonString);
 
-import 'package:meta/meta.dart';
 import 'dart:convert';
 
 ServiceRegionDataModel serviceRegionDataModelFromJson(String str) => ServiceRegionDataModel.fromJson(json.decode(str));
@@ -68,44 +67,34 @@ class ServiceRegionDataModel {
       );
 
   factory ServiceRegionDataModel.fromJson(Map<String, dynamic> json) => ServiceRegionDataModel(
-    page: json["page"],
-    limit: json["limit"],
-    totalCount: json["totalCount"],
-    pageCount: json["pageCount"],
-    nextPage: json["nextPage"],
-    prevPage: json["prevPage"],
-    pageChunks: json["pageChunks"] == null
-        ? []
-        :List<int>.from(json["pageChunks"].map((x) => x)),
-    data:json["data"] == null
-        ? []
-        : List<ServiceRegionModel>.from(json["data"].map((x) => ServiceRegionModel.fromJson(x))),
-    count: json["count"],
-    columns: json["columns"] == null
-        ? []
-        :List<Columns>.from(json["columns"].map((x) => Columns.fromJson(x))),
-    actions:json["actions"] == null
-        ? []
-        : List<Action>.from(json["actions"].map((x) => Action.fromJson(x))),
-    tools: json["tools"] == null
-        ? []
-        :List<Tool>.from(json["tools"].map((x) => Tool.fromJson(x))),
-  );
+        page: json["page"],
+        limit: json["limit"],
+        totalCount: json["totalCount"],
+        pageCount: json["pageCount"],
+        nextPage: json["nextPage"],
+        prevPage: json["prevPage"],
+        pageChunks: json["pageChunks"] == null ? [] : List<int>.from(json["pageChunks"].map((x) => x)),
+        data: json["data"] == null ? [] : List<ServiceRegionModel>.from(json["data"].map((x) => ServiceRegionModel.fromJson(x))),
+        count: json["count"],
+        columns: json["columns"] == null ? [] : List<Columns>.from(json["columns"].map((x) => Columns.fromJson(x))),
+        actions: json["actions"] == null ? [] : List<Action>.from(json["actions"].map((x) => Action.fromJson(x))),
+        tools: json["tools"] == null ? [] : List<Tool>.from(json["tools"].map((x) => Tool.fromJson(x))),
+      );
 
   Map<String, dynamic> toJson() => {
-    "page": page,
-    "limit": limit,
-    "totalCount": totalCount,
-    "pageCount": pageCount,
-    "nextPage": nextPage,
-    "prevPage": prevPage,
-    "pageChunks": List<dynamic>.from(pageChunks!.map((x) => x)),
-    "data": List<dynamic>.from(data!.map((x) => x.toJson())),
-    "count": count,
-    "columns": List<dynamic>.from(columns!.map((x) => x.toJson())),
-    "actions": List<dynamic>.from(actions!.map((x) => x.toJson())),
-    "tools": List<dynamic>.from(tools!.map((x) => x.toJson())),
-  };
+        "page": page,
+        "limit": limit,
+        "totalCount": totalCount,
+        "pageCount": pageCount,
+        "nextPage": nextPage,
+        "prevPage": prevPage,
+        "pageChunks": List<dynamic>.from(pageChunks!.map((x) => x)),
+        "data": List<dynamic>.from(data!.map((x) => x.toJson())),
+        "count": count,
+        "columns": List<dynamic>.from(columns!.map((x) => x.toJson())),
+        "actions": List<dynamic>.from(actions!.map((x) => x.toJson())),
+        "tools": List<dynamic>.from(tools!.map((x) => x.toJson())),
+      };
 }
 
 class Action {
@@ -139,20 +128,20 @@ class Action {
       );
 
   factory Action.fromJson(Map<String, dynamic> json) => Action(
-    label: json["label"]??"",
-    icon: json["icon"]??"",
-    action: json["action"]??"",
-    form: json["form"]??"",
-    confirm: json["confirm"]??"",
-  );
+        label: json["label"] ?? "",
+        icon: json["icon"] ?? "",
+        action: json["action"] ?? "",
+        form: json["form"] ?? "",
+        confirm: json["confirm"] ?? "",
+      );
 
   Map<String, dynamic> toJson() => {
-    "label": label,
-    "icon": icon,
-    "action": action,
-    "form": form,
-    "confirm": confirm,
-  };
+        "label": label,
+        "icon": icon,
+        "action": action,
+        "form": form,
+        "confirm": confirm,
+      };
 }
 
 class Columns {
@@ -190,22 +179,22 @@ class Columns {
       );
 
   factory Columns.fromJson(Map<String, dynamic> json) => Columns(
-    key: json["key"],
-    hidden: json["hidden"],
-    label: json["label"],
-    order: json["order"],
-    name: json["name"],
-    description: json["description"],
-  );
+        key: json["key"],
+        hidden: json["hidden"],
+        label: json["label"],
+        order: json["order"],
+        name: json["name"],
+        description: json["description"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "key": key,
-    "hidden": hidden,
-    "label": label,
-    "order": order,
-    "name": name,
-    "description": description,
-  };
+        "key": key,
+        "hidden": hidden,
+        "label": label,
+        "order": order,
+        "name": name,
+        "description": description,
+      };
 }
 
 class ServiceRegionModel {
@@ -247,24 +236,24 @@ class ServiceRegionModel {
       );
 
   factory ServiceRegionModel.fromJson(Map<String, dynamic> json) => ServiceRegionModel(
-    id: json["id"]??-1,
-    businessId: json["businessId"]??-1,
-    groupType: json["groupType"]??"",
-    groupCode: json["groupCode"]??"",
-    paramsOrgCode: json["paramsOrgCode"]??"",
-    name: json["name"]??"",
-    subType: json["subType"]??"",
-  );
+        id: json["id"] ?? -1,
+        businessId: json["businessId"] ?? -1,
+        groupType: json["groupType"] ?? "",
+        groupCode: json["groupCode"] ?? "",
+        paramsOrgCode: json["paramsOrgCode"] ?? "",
+        name: json["name"] ?? "",
+        subType: json["subType"] ?? "",
+      );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "businessId": businessId,
-    "groupType": groupType,
-    "groupCode": groupCode,
-    "paramsOrgCode": paramsOrgCode,
-    "name": name,
-    "subType": subType,
-  };
+        "id": id,
+        "businessId": businessId,
+        "groupType": groupType,
+        "groupCode": groupCode,
+        "paramsOrgCode": paramsOrgCode,
+        "name": name,
+        "subType": subType,
+      };
 }
 
 class Tool {
@@ -294,18 +283,18 @@ class Tool {
       );
 
   factory Tool.fromJson(Map<String, dynamic> json) => Tool(
-    label: json["label"],
-    icon: json["icon"],
-    action: json["action"],
-    data: Data.fromJson(json["data"]),
-  );
+        label: json["label"],
+        icon: json["icon"],
+        action: json["action"],
+        data: Data.fromJson(json["data"]),
+      );
 
   Map<String, dynamic> toJson() => {
-    "label": label,
-    "icon": icon,
-    "action": action,
-    "data": data.toJson(),
-  };
+        "label": label,
+        "icon": icon,
+        "action": action,
+        "data": data.toJson(),
+      };
 }
 
 class Data {
@@ -323,10 +312,10 @@ class Data {
       );
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
-    groupType: json["groupType"],
-  );
+        groupType: json["groupType"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "groupType": groupType,
-  };
+        "groupType": groupType,
+      };
 }
