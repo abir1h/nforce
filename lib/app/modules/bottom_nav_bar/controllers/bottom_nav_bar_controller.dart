@@ -9,7 +9,6 @@ import 'package:nuforce/app/modules/settings/views/settings_view.dart';
 import 'package:nuforce/app/modules/today/views/today_view.dart';
 import 'package:nuforce/app/routes/app_pages.dart';
 import 'package:nuforce/app/shared/services/user_api_service.dart';
-import 'package:nuforce/app/utils/ably_config.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/app_states.dart';
 import 'package:nuforce/app/utils/shared_preferences.dart';

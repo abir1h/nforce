@@ -1,27 +1,15 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:get/get.dart';
 import 'package:nuforce/app/modules/business_manager/models/service_catelog_model.dart';
-import 'package:nuforce/app/modules/new_orders/models/activity_log_model.dart';
 import '../../../utils/api_client.dart';
-import '../../../utils/app_states.dart';
 import '../../../utils/url.dart';
 import '../../line_item/models/control.dart';
 import 'dart:developer' as developer show log;
 
 class ServiceCatelogsApiService {
-  static Future<Either<ServiceCategoryDataModel, String>>
-      getServiceCategories() async {
+  static Future<Either<ServiceCategoryDataModel, String>> getServiceCategories() async {
     try {
-      final response =
-          await ApiClient.instance.post(url: URL.getCategry, body: {
-        "table": "category",
-        "where": {},
-        "order": "name ASC",
-        "page": 1,
-        "limit": 25,
-        "columns": true
-      });
+      final response = await ApiClient.instance.post(url: URL.getCategry, body: {"table": "category", "where": {}, "order": "name ASC", "page": 1, "limit": 25, "columns": true});
       if (response.statusCode == 200 && response.data['data'] != null) {
         return Left(ServiceCategoryDataModel.fromJson(response.data));
       } else {
@@ -85,8 +73,7 @@ class ServiceCatelogsApiService {
       };
 
       developer.log('Body: $body', name: 'setNote');
-      final response =
-          await ApiClient.instance.post(url: URL.getCategoryForm, body: body);
+      final response = await ApiClient.instance.post(url: URL.getCategoryForm, body: body);
 
       if (response.statusCode == 200 && response.data != null) {
         if (response.data['success'] != null) {

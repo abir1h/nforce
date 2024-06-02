@@ -1,9 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nuforce/app/modules/business_manager/models/service_catelog_model.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/service_category/business_manager_service_catalog_controller.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 import 'package:nuforce/main.dart';
@@ -32,7 +30,6 @@ class ServiceCatalogTile extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
