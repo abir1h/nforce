@@ -37,4 +37,14 @@ class URL {
   static const String getCategry = '$baseUrl/browser/category';
   static const String getCategoryForm = '$baseUrl/form/category.register-form';
 
+  ///Service Topic
+  static const String getTopics = '$baseUrl/browser/topic';
+  static const String getTopicForm = '$baseUrl/form/topic.entry-form';
+
+  ///Service Topic
+  static const String getRegions = '$baseUrl/browser/region';
+  static const String getRegionForm = '$baseUrl/form/region.entry-form';
+  ///Service Topic
+  static const String getTerms = '$baseUrl/browser/policy';
+  static const String getTermsForm = '$baseUrl/form/policy.register-form';
 }

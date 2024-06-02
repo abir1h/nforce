@@ -21,7 +21,7 @@ class ServiceCategoryDataModel {
   final List<int>? pageChunks;
   final List<ServiceCategoryModel>? data;
   final int count;
-  final List<Columns>? Columnss;
+  final List<Columns>? columns;
   final List<Action>? actions;
   final List<Filter>? filters;
   final List<Tool>? tools;
@@ -36,7 +36,7 @@ class ServiceCategoryDataModel {
     required this.pageChunks,
     required this.data,
     required this.count,
-    required this.Columnss,
+    required this.columns,
     required this.actions,
     required this.filters,
     required this.tools,
@@ -67,7 +67,7 @@ class ServiceCategoryDataModel {
         pageChunks: pageChunks ?? this.pageChunks,
         data: data ?? this.data,
         count: count ?? this.count,
-        Columnss: Columnss ?? this.Columnss,
+        columns: Columnss ?? this.columns,
         actions: actions ?? this.actions,
         filters: filters ?? this.filters,
         tools: tools ?? this.tools,
@@ -89,9 +89,9 @@ class ServiceCategoryDataModel {
             : List<ServiceCategoryModel>.from(
                 json["data"].map((x) => ServiceCategoryModel.fromJson(x))),
         count: json["count"],
-        Columnss: json["Columnss"] == null
+        columns: json["columns"] == null
             ? []
-            : List<Columns>.from(json["Columnss"].map((x) => Columns.fromJson(x))),
+            : List<Columns>.from(json["columns"].map((x) => Columns.fromJson(x))),
         actions: json["actions"] == null
             ? []
             : List<Action>.from(json["actions"].map((x) => Action.fromJson(x))),
@@ -113,7 +113,7 @@ class ServiceCategoryDataModel {
         "pageChunks": List<dynamic>.from(pageChunks!.map((x) => x)),
         "data": List<dynamic>.from(data!.map((x) => x.toJson())),
         "count": count,
-        "Columnss": List<dynamic>.from(Columnss!.map((x) => x.toJson())),
+        "columns": List<dynamic>.from(columns!.map((x) => x.toJson())),
         "actions": List<dynamic>.from(actions!.map((x) => x.toJson())),
         "filters": List<dynamic>.from(filters!.map((x) => x.toJson())),
         "tools": List<dynamic>.from(tools!.map((x) => x.toJson())),

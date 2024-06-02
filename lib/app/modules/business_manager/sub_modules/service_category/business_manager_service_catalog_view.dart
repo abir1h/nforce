@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/business_manager/controllers/business_manager_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/service_category/business_manager_add_or_edit_service_catalog.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/service_category/business_manager_service_catalog_controller.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/business_manager_service_catalog_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/service_category/business_manager_service_catalog_details_view.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/service_category/widget/business_manager_empty_service_catalog.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/service_category/widget/service_catalog_dropdown.dart';

@@ -2,6 +2,8 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/business_manager/models/service_catelog_model.dart';
+import 'package:nuforce/app/modules/business_manager/models/service_region_model.dart';
+import 'package:nuforce/app/modules/business_manager/models/service_topic_model.dart';
 import 'package:nuforce/app/modules/new_orders/models/activity_log_model.dart';
 import '../../../utils/api_client.dart';
 import '../../../utils/app_states.dart';
@@ -9,21 +11,23 @@ import '../../../utils/url.dart';
 import '../../line_item/models/control.dart';
 import 'dart:developer' as developer show log;
 
-class ServiceCatelogsApiService {
-  static Future<Either<ServiceCategoryDataModel, String>>
-      getServiceCategories() async {
+class ServiceRegionApiService {
+  static Future<Either<ServiceRegionDataModel, String>>
+  getServiceRegions() async {
     try {
       final response =
-          await ApiClient.instance.post(url: URL.getCategry, body: {
-        "table": "category",
-        "where": {},
-        "order": "name ASC",
+      await ApiClient.instance.post(url: URL.getRegions, body: {
+        "table": "region",
         "page": 1,
-        "limit": 100,
+        "limit": 20,
+        "where": {},
+        "order": "id asc",
+        "transform": "",
+        "humanized": true,
         "columns": true
       });
       if (response.statusCode == 200 && response.data['data'] != null) {
-        return Left(ServiceCategoryDataModel.fromJson(response.data));
+        return Left(ServiceRegionDataModel.fromJson(response.data));
       } else {
         return Right(response.data['error'] ?? 'An error occurred.');
       }
@@ -32,11 +36,16 @@ class ServiceCatelogsApiService {
     }
   }
 
-  static Future<Either<List<Control>, String>> getCategoryForm() async {
+  static Future<Either<List<Control>, String>> getRegionForm([int? id]) async {
     try {
-      final response = await ApiClient.instance.post(url: URL.getCategoryForm);
+      final data = {
+        "query": {"id": id}
+      };
+      final response = await ApiClient.instance.post(
+        url: URL.getRegionForm,
+        body: id != null ? data : null,
+      );
       if (response.statusCode == 200 && response.data != null) {
-        developer.log('Response: $response', name: 'getCategoryForm');
         if (response.data['controls'] != null) {
           List<Control> controls = [];
           for (final control in response.data['controls']) {
@@ -47,7 +56,6 @@ class ServiceCatelogsApiService {
           return Right(response.data['error'] ?? 'An error occurred.');
         }
       } else {
-        developer.log('Response: $response', name: 'getCategoryForm.else');
         return Right(response.data['error'] ?? 'An error occurred.');
       }
     } on DioException catch (e) {
@@ -57,43 +65,44 @@ class ServiceCatelogsApiService {
     }
   }
 
-  static Future<Either<String, dynamic>> setCategoryForm({
+  static Future<Either<String, dynamic>> setRegionForm({
+    int? id,
     required int businessId,
     required String name,
-    required String refCode,
-    required String parentId,
-    required String description,
-    required String detailsGoogleTaxonomyId,
-    required String displayOrder,
-    required String policyIds,
-    required List<String> tags,
+    required String subType,
+    required String groupCode,
+    required String detailsPrefixCode,
+
   }) async {
     try {
       final body = {
-        'query': {},
-        "data": {
-          "business_id": businessId,
-          'breadcrumbs': null,
-          'slug': null,
+        "query": {},
+        "data":{
+          "business_id": 15,
+          "params.org_code": "hammer",
+          "group_type": "region",
+          "parent_id": null,
+          "details.description": null,
           "name": name,
-          "ref_code": refCode,
-          "parent_id": parentId,
-          "description": description,
-          "tags": tags.join('. '),
-          "details.google_taxonomy_id": detailsGoogleTaxonomyId,
-          "display_order": displayOrder,
-          "policy_ids": [policyIds],
-          'photo_url': ''
+          "sub_type": subType,
+          "group_code": groupCode,
+          "details.prefix_code": detailsPrefixCode,
+          "active": 1
         },
         "action": "submit"
       };
-
+      if (id != null) {
+        body['query'] = {
+          "id": id,
+        };
+      }
       developer.log('Body: $body', name: 'setCategory');
       final response =
-          await ApiClient.instance.post(url: URL.getCategoryForm, body: body);
+      await ApiClient.instance.post(url: URL.getRegionForm, body: body);
 
       if (response.statusCode == 200 && response.data != null) {
-        if (response.data['success'] != null && response.data['error']==false) {
+        if (response.data['success'] != null &&
+            response.data['error'] == false) {
           return Left(response.data['success']);
         } else {
           return Right(response.data['error'] ?? 'An error occurred.');

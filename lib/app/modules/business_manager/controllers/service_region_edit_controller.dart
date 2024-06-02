@@ -4,13 +4,15 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/business_manager/models/form_model.dart';
 import 'package:nuforce/app/modules/business_manager/services/service_catelog_api_service.dart';
+import 'package:nuforce/app/modules/business_manager/services/service_region_api_service.dart';
+import 'package:nuforce/app/modules/business_manager/services/service_topic_api_service.dart';
 import 'package:nuforce/app/modules/new_orders/services/note_api_service.dart';
 import 'package:nuforce/app/shared/widgets/form_builder.dart';
 
 import '../../../utils/app_states.dart';
 import '../../contact/services/contact_api_services.dart';
 
-class ServiceCategoryEditController extends GetxController {
+class ServiceRegionEditController extends GetxController {
   @override
   void dispose() {
     formBuilder.textEditingControllers.forEach((key, value) {
@@ -22,7 +24,7 @@ class ServiceCategoryEditController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    setContactForm();
+    // setRegionForm();
   }
 
   bool _isLoading = false;
@@ -51,9 +53,9 @@ class ServiceCategoryEditController extends GetxController {
     update();
   }
 
-  Future<void> setContactForm() async {
+  Future<void> setRegionForm([int? id]) async {
     setLoading(true);
-    await ServiceCatelogsApiService.getCategoryForm().then((value) {
+    await ServiceRegionApiService.getRegionForm(id).then((value) {
       value.fold(
         (controls) {
           setFormBuilder(getForm(controls: controls));
@@ -66,31 +68,26 @@ class ServiceCategoryEditController extends GetxController {
     setLoading(false);
   }
 
-  Future<bool?> addCategory() async {
+  Future<bool?> addRegion([int? id]) async {
     bool? result;
     setSaving(true);
     final appState = Get.find<AppState>();
-    await ServiceCatelogsApiService.setCategoryForm(
-      businessId: appState.user?.businessId ?? 0,
-      name: formBuilder.textEditingControllers['name']!.text,
-      refCode: formBuilder.textEditingControllers['refCode']!.text,
-      parentId: '${formBuilder.dropdownValue['parentId']?.value ?? ''}',
-      description: formBuilder.textEditingControllers['description']!.text,
-      detailsGoogleTaxonomyId:
-          formBuilder.textEditingControllers['detailsGoogleTaxonomyId']!.text,
-      displayOrder: formBuilder.textEditingControllers['displayOrder']!.text,
-      policyIds: '${formBuilder.dropdownValue['policyIds']?.value ?? ''}',
-      tags: formBuilder.stringTagControllers['tags']?.getTags ?? [],
-
-
-    ).then((value) {
+    await ServiceRegionApiService.setRegionForm(
+            id: id,
+            businessId: appState.user?.businessId ?? 0,
+            name: formBuilder.textEditingControllers['name']!.text,
+            groupCode: formBuilder.textEditingControllers['groupCode']!.text,
+            detailsPrefixCode:
+                formBuilder.textEditingControllers['detailsPrefixCode']!.text,
+            subType: '${formBuilder.dropdownValue['subType']?.value ?? ''}')
+        .then((value) {
       value.fold(
         (success) {
           result = true;
           Fluttertoast.showToast(msg: success);
         },
         (r) {
-          Fluttertoast.showToast(msg:r);
+          Fluttertoast.showToast(msg: r);
         },
       );
     });

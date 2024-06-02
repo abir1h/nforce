@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/business_manager/controllers/business_manager_controller.dart';
+import 'package:nuforce/app/modules/business_manager/models/service_region_model.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/service_region/business_manager_add_or_edit_service_region.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/service_region/business_manager_service_region_controller.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/business_manager_service_region_controller.dart';
 import 'package:nuforce/app/modules/service_items/widgets/title_subtitle_minimal_widget.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
@@ -16,7 +17,7 @@ class BusinessManagerServiceRegionDetailsView extends StatelessWidget {
     required this.serviceRegion,
     super.key,
   });
-  final MockServiceRegion serviceRegion;
+  final ServiceRegionModel serviceRegion;
 
   @override
   Widget build(BuildContext context) {
@@ -26,20 +27,22 @@ class BusinessManagerServiceRegionDetailsView extends StatelessWidget {
         height: height,
         width: width,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
+          padding: const EdgeInsets.symmetric(
+              horizontal: AppSizes.horizontalPadding),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 16),
               TitleSubtitleMinimal(title: 'Name', subtitle: serviceRegion.name),
               const SizedBox(height: 16),
-              TitleSubtitleMinimal(title: 'Type', subtitle: serviceRegion.type ?? 'N/A'),
+              TitleSubtitleMinimal(
+                  title: 'Group Code',
+                  subtitle: serviceRegion.groupCode ?? 'N/A'),
               const SizedBox(height: 16),
-              TitleSubtitleMinimal(title: 'Addr.', subtitle: serviceRegion.address ?? 'N/A'),
+              TitleSubtitleMinimal(
+                  title: 'ParamsorgCode.',
+                  subtitle: serviceRegion.paramsOrgCode ?? 'N/A'),
               const SizedBox(height: 16),
-              TitleSubtitleMinimal(title: 'Dial Prefix', subtitle: serviceRegion.dialPrefix ?? 'N/A'),
-              const SizedBox(height: 16),
-              TitleSubtitleMinimal(title: 'Status', subtitle: serviceRegion.address ?? 'N/A'),
               const SizedBox(height: 32),
               const Spacer(),
               Row(
@@ -47,10 +50,10 @@ class BusinessManagerServiceRegionDetailsView extends StatelessWidget {
                   Expanded(
                     child: SecondaryButton(
                       onPressed: () {
-                        Get.back<void>();
+                        /*  Get.back<void>();
                         final controller = Get.find<BusinessManagerController>();
                         controller.serviceRegionController.removeServiceRegion(serviceRegion);
-                        Fluttertoast.showToast(msg: 'Service region Deleted');
+                        Fluttertoast.showToast(msg: 'Service region Deleted');*/
                       },
                       text: 'Delete',
                     ),
@@ -61,7 +64,9 @@ class BusinessManagerServiceRegionDetailsView extends StatelessWidget {
                       onPressed: () {
                         Get
                           ..back<void>()
-                          ..to<void>(() => BusinessManagerAddOrEditServiceRegion(serviceRegion: serviceRegion));
+                          ..to<void>(() =>
+                              BusinessManagerAddOrEditServiceRegion(
+                                  serviceRegion: serviceRegion));
                       },
                       text: 'Edit',
                     ),
