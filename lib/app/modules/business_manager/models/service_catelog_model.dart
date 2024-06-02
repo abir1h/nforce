@@ -2,14 +2,11 @@
 //
 //     final ServiceCategoryDataModel = ServiceCategoryDataModelFromJson(jsonString);
 
-import 'package:meta/meta.dart';
 import 'dart:convert';
 
-ServiceCategoryDataModel ServiceCategoryDataModelFromJson(String str) =>
-    ServiceCategoryDataModel.fromJson(json.decode(str));
+ServiceCategoryDataModel ServiceCategoryDataModelFromJson(String str) => ServiceCategoryDataModel.fromJson(json.decode(str));
 
-String ServiceCategoryDataModelToJson(ServiceCategoryDataModel data) =>
-    json.encode(data.toJson());
+String ServiceCategoryDataModelToJson(ServiceCategoryDataModel data) => json.encode(data.toJson());
 
 class ServiceCategoryDataModel {
   final int page;
@@ -73,34 +70,20 @@ class ServiceCategoryDataModel {
         tools: tools ?? this.tools,
       );
 
-  factory ServiceCategoryDataModel.fromJson(Map<String, dynamic> json) =>
-      ServiceCategoryDataModel(
+  factory ServiceCategoryDataModel.fromJson(Map<String, dynamic> json) => ServiceCategoryDataModel(
         page: json["page"],
         limit: json["limit"],
         totalCount: json["totalCount"],
         pageCount: json["pageCount"],
         nextPage: json["nextPage"],
         prevPage: json["prevPage"],
-        pageChunks: json["pageChunks"] == null
-            ? []
-            : List<int>.from(json["pageChunks"].map((x) => x)),
-        data: json["data"] == null
-            ? []
-            : List<ServiceCategoryModel>.from(
-                json["data"].map((x) => ServiceCategoryModel.fromJson(x))),
+        pageChunks: json["pageChunks"] == null ? [] : List<int>.from(json["pageChunks"].map((x) => x)),
+        data: json["data"] == null ? [] : List<ServiceCategoryModel>.from(json["data"].map((x) => ServiceCategoryModel.fromJson(x))),
         count: json["count"],
-        Columnss: json["Columnss"] == null
-            ? []
-            : List<Columns>.from(json["Columnss"].map((x) => Columns.fromJson(x))),
-        actions: json["actions"] == null
-            ? []
-            : List<Action>.from(json["actions"].map((x) => Action.fromJson(x))),
-        filters: json["filters"] == null
-            ? []
-            : List<Filter>.from(json["filters"].map((x) => Filter.fromJson(x))),
-        tools: json["tools"] == null
-            ? []
-            : List<Tool>.from(json["tools"].map((x) => Tool.fromJson(x))),
+        Columnss: json["Columnss"] == null ? [] : List<Columns>.from(json["Columnss"].map((x) => Columns.fromJson(x))),
+        actions: json["actions"] == null ? [] : List<Action>.from(json["actions"].map((x) => Action.fromJson(x))),
+        filters: json["filters"] == null ? [] : List<Filter>.from(json["filters"].map((x) => Filter.fromJson(x))),
+        tools: json["tools"] == null ? [] : List<Tool>.from(json["tools"].map((x) => Tool.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -258,8 +241,7 @@ class ServiceCategoryModel {
         childrenCount: childrenCount ?? this.childrenCount,
       );
 
-  factory ServiceCategoryModel.fromJson(Map<String, dynamic> json) =>
-      ServiceCategoryModel(
+  factory ServiceCategoryModel.fromJson(Map<String, dynamic> json) => ServiceCategoryModel(
         id: json["id"] ?? -1,
         businessId: json["businessId"] ?? -1,
         slug: json["slug"] ?? "",
@@ -342,14 +324,10 @@ class Filter {
         readonly: json["readonly"] ?? false,
         actions: json["actions"] ?? false,
         editor: json["editor"] ?? "",
-        validators: json["validators"] == null
-            ? []
-            : List<dynamic>.from(json["validators"].map((x) => x)),
+        validators: json["validators"] == null ? [] : List<dynamic>.from(json["validators"].map((x) => x)),
         params: json["params"] == null ? null : Params.fromJson(json["params"]),
         value: json["value"] ?? "",
-        options: json["options"] == null
-            ? []
-            : List<Option>.from(json["options"].map((x) => Option.fromJson(x))),
+        options: json["options"] == null ? [] : List<Option>.from(json["options"].map((x) => Option.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nuforce/app/modules/business_manager/models/form_model.dart';
@@ -7,7 +5,6 @@ import 'package:nuforce/app/modules/line_item/models/control.dart';
 import 'package:nuforce/app/shared/widgets/custom_dropdown.dart';
 import 'package:nuforce/app/shared/widgets/custom_tags_input.dart';
 import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
-import 'package:nuforce/app/shared/widgets/form_builder_color_picker.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:textfield_tags/textfield_tags.dart';
 
@@ -143,9 +140,12 @@ CustomFormBuilder getForm({List<Control>? controls}) {
           break;
         // }
         case 'dropdown':
+          // Just name
           formBuilder = formBuilder.copyWith(
             fieldNames: [...formBuilder.fieldNames, control.name!],
           );
+
+          // Just onchanged method for one dropdown
           formBuilder = formBuilder.copyWith(
             onChanged: {
               ...formBuilder.onChanged,
@@ -156,9 +156,28 @@ CustomFormBuilder getForm({List<Control>? controls}) {
           );
 
           if (control.value != null) {
-            log('Control: ${control.toJson()}', name: 'debugging');
             for (final option in control.options!) {
-              if (option.value == control.value) {
+              // If there is nested options in dropdown
+              if (option.option?.isNotEmpty ?? false) {
+                for (final opt in option.option!) {
+                  if (opt.value == control.value) {
+                    formBuilder = formBuilder.copyWith(
+                      dropdownValue: {
+                        ...formBuilder.dropdownValue,
+                        control.name!: opt,
+                      },
+                    );
+                    break;
+                  } else {
+                    formBuilder = formBuilder.copyWith(
+                      dropdownValue: {
+                        ...formBuilder.dropdownValue,
+                        control.name!: null,
+                      },
+                    );
+                  }
+                }
+              } else if (option.value == control.value) {
                 formBuilder = formBuilder.copyWith(
                   dropdownValue: {
                     ...formBuilder.dropdownValue,
@@ -184,6 +203,73 @@ CustomFormBuilder getForm({List<Control>? controls}) {
             );
           }
 
+          List<DropdownMenuItem<Option?>> items = [];
+          if (control.options != null) {
+            for (final option in control.options!) {
+              if (option.option?.isNotEmpty ?? false) {
+                for (final opt in option.option!) {
+                  items.add(DropdownMenuItem(
+                    value: opt,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          opt.label ?? '',
+                          style: TextStyle(
+                            color: AppColors.nutralBlack2,
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        Text(
+                          ' (${option.label ?? ''})',
+                          style: TextStyle(
+                            color: AppColors.nutralBlack3,
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ));
+                }
+              } else {
+                items.add(DropdownMenuItem(
+                  value: option,
+                  child: Text(
+                    option.label ?? '',
+                    style: TextStyle(
+                      color: AppColors.nutralBlack2,
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                ));
+              }
+            }
+
+            // if(control.options[0].option){
+
+            // } else {
+
+            // control.options
+            //     ?.map(
+            //       (e) => DropdownMenuItem(
+            //         value: e,
+            //         child: Text(
+            //           e.label ?? '',
+            //           style: TextStyle(
+            //             color: AppColors.nutralBlack2,
+            //             fontSize: 16.sp,
+            //             fontWeight: FontWeight.w400,
+            //           ),
+            //         ),
+            //       ),
+            //     )
+            //     .toList();
+            // }
+          }
+
           formBuilder = formBuilder.copyWith(
             widgets: {
               ...formBuilder.widgets,
@@ -192,22 +278,7 @@ CustomFormBuilder getForm({List<Control>? controls}) {
                 hint: control.label ?? '',
                 onChanged: formBuilder.onChanged[control.name!]!,
                 value: formBuilder.dropdownValue[control.name!],
-                items: control.options
-                        ?.map(
-                          (e) => DropdownMenuItem(
-                            value: e,
-                            child: Text(
-                              e.label ?? '',
-                              style: TextStyle(
-                                color: AppColors.nutralBlack2,
-                                fontSize: 16.sp,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                          ),
-                        )
-                        .toList() ??
-                    [],
+                items: items,
               ),
             },
           );
