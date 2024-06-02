@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/business_manager/controllers/business_manager_controller.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/service_topic_edit_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/service_topic/business_manager_add_or_edit_service_topic.dart';
 import 'package:nuforce/app/modules/business_manager/controllers/business_manager_service_topic_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/service_topic/business_manager_service_topic_details_view.dart';
@@ -19,7 +19,6 @@ class BusinessManagerServiceTopicView extends StatefulWidget {
 }
 
 class _BusinessManagerServiceTopicViewState extends State<BusinessManagerServiceTopicView> {
-
   @override
   Widget build(BuildContext context) {
     return GetBuilder<BusinessManagerServiceTopicController>(
@@ -34,6 +33,8 @@ class _BusinessManagerServiceTopicViewState extends State<BusinessManagerService
               else
                 GestureDetector(
                   onTap: () {
+                    final controller = Get.find<ServiceTopicEditController>();
+                    controller.setTopicForm();
                     Get.to<void>(() => const BusinessManagerAddOrEditServiceTopic());
                   },
                   child: Row(
@@ -72,6 +73,8 @@ class _BusinessManagerServiceTopicViewState extends State<BusinessManagerService
                             child: ServiceTopicTile(
                               serviceTopic: controller.topicList[index],
                               onTap: () {
+                                final editController = Get.find<ServiceTopicEditController>();
+                                editController.setTopicForm(controller.topicList[index].id);
                                 Get.to<void>(
                                   () => BusinessManagerServiceTopicDetailsView(
                                     serviceTopic: controller.topicList[index],

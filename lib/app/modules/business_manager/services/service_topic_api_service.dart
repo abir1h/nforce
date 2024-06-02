@@ -1,30 +1,17 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:get/get.dart';
-import 'package:nuforce/app/modules/business_manager/models/service_catelog_model.dart';
 import 'package:nuforce/app/modules/business_manager/models/service_topic_model.dart';
-import 'package:nuforce/app/modules/new_orders/models/activity_log_model.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/calendar/services/business_manager_calendar_api_services.dart';
 import '../../../utils/api_client.dart';
-import '../../../utils/app_states.dart';
 import '../../../utils/url.dart';
 import '../../line_item/models/control.dart';
 import 'dart:developer' as developer show log;
 
 class ServiceTopicApiService {
-  static Future<Either<ServiceTopicDataModel, String>>
-  getServiceTopics() async {
+  static Future<Either<ServiceTopicDataModel, String>> getServiceTopics() async {
     try {
       final response =
-      await ApiClient.instance.post(url: URL.getTopics, body: {
-        "table": "topic",
-        "page": 1,
-        "limit": 100,
-        "where": {},
-        "order": "id asc",
-        "transform": "",
-        "humanized": true,
-        "columns": true
-      });
+          await ApiClient.instance.post(url: URL.getTopics, body: {"table": "topic", "page": 1, "limit": 100, "where": {}, "order": "id asc", "transform": "", "humanized": true, "columns": true});
       if (response.statusCode == 200 && response.data['data'] != null) {
         return Left(ServiceTopicDataModel.fromJson(response.data));
       } else {
@@ -70,20 +57,19 @@ class ServiceTopicApiService {
     required String name,
     required String groupCode,
     required String detailsDescription,
-
+    required ActionType action,
   }) async {
     try {
       final body = {
-        "query": {},
         "data": {
           "business_id": businessId,
           "group_type": "topic",
           "active": 1,
           "name": name,
           "group_code": groupCode,
-          "details.description": detailsDescription
+          "details.description": detailsDescription,
         },
-        "action": "submit"
+        "action": action.name,
       };
       if (id != null) {
         body['query'] = {
@@ -91,12 +77,10 @@ class ServiceTopicApiService {
         };
       }
       developer.log('Body: $body', name: 'setCategory');
-      final response =
-      await ApiClient.instance.post(url: URL.getTopicForm, body: body);
+      final response = await ApiClient.instance.post(url: URL.getTopicForm, body: body);
 
       if (response.statusCode == 200 && response.data != null) {
-        if (response.data['success'] != null &&
-            response.data['error'] == false) {
+        if (response.data['success'] != null && response.data['error'] == false) {
           return Left(response.data['success']);
         } else {
           return Right(response.data['error'] ?? 'An error occurred.');
