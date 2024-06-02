@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/business_manager/controllers/business_manager_controller.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/service_terms_edit_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/terms_and_policy/business_manager_add_or_edit_terms_and_policy.dart';
 import 'package:nuforce/app/modules/business_manager/controllers/business_manager_terms_and_policy_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/terms_and_policy/business_manager_terms_and_policy_details_view.dart';
@@ -19,7 +19,6 @@ class BusinessManagerTermsAndConditionView extends StatefulWidget {
 }
 
 class _BusinessManagerTermsAndPolicyViewState extends State<BusinessManagerTermsAndConditionView> {
-
   @override
   Widget build(BuildContext context) {
     return GetBuilder<BusinessManagerTermsAndPolicyController>(
@@ -34,6 +33,8 @@ class _BusinessManagerTermsAndPolicyViewState extends State<BusinessManagerTerms
               else
                 GestureDetector(
                   onTap: () {
+                    final controller = Get.find<ServiceTermsEditController>();
+                    controller.setTermsForm();
                     Get.to<void>(() => const BusinessManagerAddOrEditTermsAndPolicy());
                   },
                   child: Row(

@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/business_manager/models/service_terms_model.dart';
 import 'package:nuforce/app/modules/business_manager/services/service_terms_api_service.dart';
-
 
 class BusinessManagerTermsAndPolicyController extends GetxController {
   List<ServiceTermsModel> termsList = [];
@@ -12,15 +12,22 @@ class BusinessManagerTermsAndPolicyController extends GetxController {
     super.onInit();
     getServiceTerms();
   }
+
   getServiceTerms() {
     ServiceTermsApiService.getServiceTerms().then((value) {
-      value.fold((l) {
-        termsList = l.data!;
-        update();
-      }, (r) => print(r));
+      value.fold(
+        (l) {
+          termsList = l.data!;
+          update();
+        },
+        (r) {
+          Fluttertoast.showToast(msg: r);
+        },
+      );
     });
   }
 }
+
 class MockTermsAndPolicy extends Equatable {
   final String id;
   final String policyName;

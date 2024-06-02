@@ -1,32 +1,17 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:get/get.dart';
-import 'package:nuforce/app/modules/business_manager/models/service_catelog_model.dart';
-import 'package:nuforce/app/modules/business_manager/models/service_region_model.dart';
 import 'package:nuforce/app/modules/business_manager/models/service_terms_model.dart';
-import 'package:nuforce/app/modules/business_manager/models/service_topic_model.dart';
-import 'package:nuforce/app/modules/new_orders/models/activity_log_model.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/calendar/services/business_manager_calendar_api_services.dart';
 import '../../../utils/api_client.dart';
-import '../../../utils/app_states.dart';
 import '../../../utils/url.dart';
 import '../../line_item/models/control.dart';
 import 'dart:developer' as developer show log;
 
 class ServiceTermsApiService {
-  static Future<Either<ServiceTermsDataModel, String>>
-  getServiceTerms() async {
+  static Future<Either<ServiceTermsDataModel, String>> getServiceTerms() async {
     try {
       final response =
-      await ApiClient.instance.post(url: URL.getTerms, body:{
-        "table": null,
-        "page": 1,
-        "limit": 100,
-        "where": {},
-        "order": "id asc",
-        "transform": "",
-        "humanized": true,
-        "columns": true
-      });
+          await ApiClient.instance.post(url: URL.getTerms, body: {"table": null, "page": 1, "limit": 100, "where": {}, "order": "id asc", "transform": "", "humanized": true, "columns": true});
       if (response.statusCode == 200 && response.data['data'] != null) {
         return Left(ServiceTermsDataModel.fromJson(response.data));
       } else {
@@ -68,19 +53,17 @@ class ServiceTermsApiService {
 
   static Future<Either<String, dynamic>> setTermsForm({
     int? id,
-
     required int businessId,
     required String name,
     required String policyType,
     required String policyText,
     required String detailsDescription,
     required String detailsInstructions,
-
+    required ActionType action,
   }) async {
     try {
       final body = {
-        "query": {},
-        "data":{
+        "data": {
           "business_id": businessId,
           "name": name,
           "policy_type": policyType,
@@ -89,7 +72,7 @@ class ServiceTermsApiService {
           "details.instructions": detailsInstructions,
           "active": 1
         },
-        "action": "submit"
+        "action": action.name,
       };
 
       developer.log('Body: $body', name: 'setCategory');
@@ -98,12 +81,10 @@ class ServiceTermsApiService {
           "id": id,
         };
       }
-      final response =
-      await ApiClient.instance.post(url: URL.getTermsForm, body: body);
+      final response = await ApiClient.instance.post(url: URL.getTermsForm, body: body);
 
       if (response.statusCode == 200 && response.data != null) {
-        if (response.data['success'] != null &&
-            response.data['error'] == false) {
+        if (response.data['success'] != null && response.data['error'] == false) {
           return Left(response.data['success']);
         } else {
           return Right(response.data['error'] ?? 'An error occurred.');
