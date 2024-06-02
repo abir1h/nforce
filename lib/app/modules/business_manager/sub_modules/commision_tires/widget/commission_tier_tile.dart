@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/commision_tires/business_manager_commission_tiers_controller.dart';
+import 'package:nuforce/app/model/commission_data_model.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 import 'package:nuforce/main.dart';
@@ -13,7 +13,7 @@ class CommissionTierTile extends StatelessWidget {
     this.onTap,
   });
 
-  final MockCommissionTier commission;
+  final Commission commission;
   final VoidCallback? onTap;
 
   @override
@@ -34,7 +34,7 @@ class CommissionTierTile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  commission.tierName,
+                  commission.name ?? 'N/A',
                   style: TextStyle(
                     color: AppColors.nutralBlack1,
                     fontSize: 16.sp,
@@ -56,7 +56,7 @@ class CommissionTierTile extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          '${commission.rate}%',
+                          commission.detailsDefaultValue ?? 'N/A',
                           style: TextStyle(
                             color: AppColors.nutralBlack1,
                             fontSize: 14.sp,
@@ -78,7 +78,7 @@ class CommissionTierTile extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          '${commission.firstRate}%',
+                          commission.detailsInitialValue ?? 'N/A',
                           style: TextStyle(
                             color: AppColors.nutralBlack1,
                             fontSize: 14.sp,

@@ -44,4 +44,8 @@ class URL {
   // Contact Groups
   static const String getContactGroups = '/browser/group';
   static const String contactGroupForm = '/form/group.entry-form';
+
+  // Commission Tiers
+  static const String getCommissionTiers = '/browser/commission';
+  static const String commissionTierForm = '/form/commission.entry-form';
 }

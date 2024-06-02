@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/calendar/business_manager_calendar_view.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/commision_tires/business_manager_commission_tiers_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/commision_tires/business_manager_commission_tiers_view.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/contact_group/business_manager_contact_group_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/contact_group/business_manager_contact_group_view.dart';
@@ -94,6 +95,8 @@ class OrganizationView extends StatelessWidget {
                 svgPath: Assets.images.svg.commissions,
                 lable: 'Commissions',
                 onTap: () {
+                  final controller = Get.find<BusinessManagerCommissionTiersController>();
+                  controller.getComissions();
                   Get.to<void>(() => const BusinessManagerCommissionTiersView());
                 },
               ),
