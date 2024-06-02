@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/business_manager/services/service_catelog_api_service.dart';
 
-import '../../models/service_catelog_model.dart';
+import '../models/service_catelog_model.dart';
 
 class BusinessManagerServiceCatalogsController extends GetxController {
   List<ServiceCategoryModel> categoryList = [];
@@ -12,7 +12,6 @@ class BusinessManagerServiceCatalogsController extends GetxController {
     super.onInit();
     getServiceCategories();
   }
-
   getServiceCategories() {
     ServiceCatelogsApiService.getServiceCategories().then((value) {
       value.fold((l) {
@@ -20,28 +19,6 @@ class BusinessManagerServiceCatalogsController extends GetxController {
         update();
       }, (r) => print(r));
     });
-  }
-
-
-  final List<MockServiceCatalog> _mockServiceCatalogs = [];
-
-  List<MockServiceCatalog> get mockServiceCatalogs => _mockServiceCatalogs;
-
-  void addServiceCatalog(MockServiceCatalog serviceCategory) {
-    _mockServiceCatalogs.add(serviceCategory);
-    update();
-  }
-
-  void updateServiceCatalog(MockServiceCatalog serviceCategory) {
-    final index = _mockServiceCatalogs
-        .indexWhere((element) => element.id == serviceCategory.id);
-    _mockServiceCatalogs[index] = serviceCategory;
-    update();
-  }
-
-  void removeServiceCatalog(MockServiceCatalog serviceCategory) {
-    _mockServiceCatalogs.remove(serviceCategory);
-    update();
   }
 }
 

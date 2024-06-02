@@ -6,8 +6,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/business_manager/controllers/business_manager_controller.dart';
+import 'package:nuforce/app/modules/business_manager/models/service_terms_model.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/terms_and_policy/business_manager_add_or_edit_terms_and_policy.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/terms_and_policy/business_manager_terms_and_policy_controller.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/business_manager_terms_and_policy_controller.dart';
 import 'package:nuforce/app/modules/service_items/widgets/title_subtitle_minimal_widget.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
@@ -21,18 +22,16 @@ class BusinessManagerTermsAndPolicyDetailsView extends StatefulWidget {
     required this.termsAndPolicy,
     super.key,
   });
-  final MockTermsAndPolicy termsAndPolicy;
+  final ServiceTermsModel termsAndPolicy;
 
   @override
   State<BusinessManagerTermsAndPolicyDetailsView> createState() => _BusinessManagerTermsAndPolicyDetailsViewState();
 }
 
 class _BusinessManagerTermsAndPolicyDetailsViewState extends State<BusinessManagerTermsAndPolicyDetailsView> {
-  final QuillController _controller = QuillController.basic();
   @override
   void initState() {
     super.initState();
-    _controller.document = Document.fromJson(jsonDecode(widget.termsAndPolicy.policy) as List<dynamic>);
   }
 
   @override
@@ -48,10 +47,10 @@ class _BusinessManagerTermsAndPolicyDetailsViewState extends State<BusinessManag
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 16),
-              TitleSubtitleMinimal(title: 'Policy Name', subtitle: widget.termsAndPolicy.policyName),
+              TitleSubtitleMinimal(title: 'Policy Name', subtitle: widget.termsAndPolicy.name),
               const SizedBox(height: 16),
               TitleSubtitleMinimal(title: 'Policy Type', subtitle: widget.termsAndPolicy.policyType),
-              const SizedBox(height: 16),
+            /*  const SizedBox(height: 16),
               TitleSubtitleMinimal(title: 'Brief Description', subtitle: widget.termsAndPolicy.briefDescription),
               const SizedBox(height: 16),
               TitleSubtitleMinimal(title: 'Instructions', subtitle: widget.termsAndPolicy.instructions),
@@ -74,16 +73,16 @@ class _BusinessManagerTermsAndPolicyDetailsViewState extends State<BusinessManag
                 ),
               ),
               const SizedBox(height: 32),
-              const Spacer(),
+              const Spacer(),*/
               Row(
                 children: [
                   Expanded(
                     child: SecondaryButton(
                       onPressed: () {
-                        Get.back<void>();
+                      /*  Get.back<void>();
                         final controller = Get.find<BusinessManagerController>();
                         controller.termsAndPolicyController.removeTermsAndPolicy(widget.termsAndPolicy);
-                        Fluttertoast.showToast(msg: 'Terms and policy deleted');
+                        Fluttertoast.showToast(msg: 'Terms and policy deleted');*/
                       },
                       text: 'Delete',
                     ),

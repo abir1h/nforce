@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/terms_and_policy/business_manager_terms_and_policy_controller.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/business_manager_terms_and_policy_controller.dart';
+import 'package:nuforce/app/modules/business_manager/models/service_terms_model.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 
@@ -12,7 +13,7 @@ class TermsAndPolicyTile extends StatelessWidget {
     this.onTap,
   });
 
-  final MockTermsAndPolicy termsAndPolicy;
+  final ServiceTermsModel termsAndPolicy;
   final VoidCallback? onTap;
 
   @override
@@ -33,7 +34,7 @@ class TermsAndPolicyTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    termsAndPolicy.policyName,
+                    termsAndPolicy.name,
                     style: TextStyle(
                       color: AppColors.nutralBlack1,
                       fontSize: 16.sp,

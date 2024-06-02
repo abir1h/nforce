@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/service_category/business_manager_service_catalog_controller.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/business_manager_controller.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/business_manager_service_catalog_controller.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/shared/widgets/custom_dropdown.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
@@ -85,33 +86,45 @@ class _BusinessManagerAddOrEditServiceCatalogsState extends State<BusinessManage
                                 // controller.addCategory();
                                 final controller = Get.find<ServiceCategoryEditController>();
 
-                                List checks = [
-                                  {'field': controller.formBuilder.textEditingControllers['name']?.text, 'message': 'Name is required'},
-                                  {'field': controller.formBuilder.textEditingControllers['refCode']?.text, 'message': 'RefCode is required'},
-                                  {'field': '${controller.formBuilder.dropdownValue['parentId']?.value ?? ''}', 'message': 'ParentId is required'},
-                                  {'field': controller.formBuilder.textEditingControllers['description']?.text, 'message': 'Description is required'},
-                                  {'field': controller.formBuilder.textEditingControllers['detailsGoogleTaxonomyId']?.text, 'message': 'Details Google Taxonomy Id is required'},
-                                  {'field': controller.formBuilder.textEditingControllers['displayOrder']?.text, 'message': 'Display Order is required'},
-                                  {'field': '${controller.formBuilder.dropdownValue['policyIds']?.value ?? ''}', 'message': 'PolicyIds is required'},
-                                  {'field': controller.formBuilder.stringTagControllers['tags']!.getTags!.isEmpty == false ? 'valid' : '', 'message': 'Tags are required'},
-                                ];
-
-                                // Iterate over the checks and show a toast if any field is empty
-                                for (var check in checks) {
-                                  if (check['field']?.isEmpty == true) {
-                                    Fluttertoast.showToast(msg: check['message']);
-                                    return;
-                                  } else {
+                                /* List checks = [
+                                   {'field': controller.formBuilder.textEditingControllers['name']?.text, 'message': 'Name is required'},
+                                   {'field': controller.formBuilder.textEditingControllers['refCode']?.text, 'message': 'RefCode is required'},
+                                   {'field': '${controller.formBuilder.dropdownValue['parentId']?.value ?? ''}', 'message': 'ParentId is required'},
+                                   {'field': controller.formBuilder.textEditingControllers['description']?.text, 'message': 'Description is required'},
+                                   {'field': controller.formBuilder.textEditingControllers['detailsGoogleTaxonomyId']?.text, 'message': 'Details Google Taxonomy Id is required'},
+                                   {'field': controller.formBuilder.textEditingControllers['displayOrder']?.text, 'message': 'Display Order is required'},
+                                   {'field': '${controller.formBuilder.dropdownValue['policyIds']?.value ?? ''}', 'message': 'PolicyIds is required'},
+                                   {'field': controller.formBuilder.stringTagControllers['tags']!.getTags!.isEmpty == false ? 'valid' : '', 'message': 'Tags are required'},
+                                 ];
+*/
+                                 // Iterate over the checks and show a toast if any field is empty
+                                 if (controller.formBuilder.textEditingControllers['name']?.text.isEmpty == true) {
+                                   Fluttertoast.showToast(msg: 'Name is required');
+                                   return;
+                                 }
+                                 controller.addCategory().then((value) {
+                                   if (value == true) {
+                                     final data = Get.find<BusinessManagerServiceCatalogsController>();
+                                     data.getServiceCategories();
+                                     Get.back();
+                                   }
+                                 });
+                               /*  for (var check in checks) {
+                                   if (check['field']?.isEmpty == true) {
+                                     Fluttertoast.showToast(msg: check['message']);
+                                     return;
+                                   }else{
                                     controller.addCategory().then((value) {
                                       if (value == true) {
                                         print('success>>>>>>');
                                         Get.back();
                                       }
                                     });
-                                  }
-                                }
+                                   }
+                                 }
+*/
 
-                                /* controller.addNote(detailValue: controller.formBuilder.textEditingControllers['detailValue']!.text).then((value) {
+                   /* controller.addNote(detailValue: controller.formBuilder.textEditingControllers['detailValue']!.text).then((value) {
                       if (value == true) {
                         final invoiceController = Get.find<InvoiceController>();
                         invoiceController.getNotes();

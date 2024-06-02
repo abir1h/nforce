@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/business_manager/controllers/business_manager_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/service_topic/business_manager_add_or_edit_service_topic.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/service_topic/business_manager_service_topic_controller.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/business_manager_service_topic_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/service_topic/business_manager_service_topic_details_view.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/service_topic/widget/business_manager_empty_service_topic.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/service_topic/widget/service_topic_tile.dart';
@@ -19,18 +19,17 @@ class BusinessManagerServiceTopicView extends StatefulWidget {
 }
 
 class _BusinessManagerServiceTopicViewState extends State<BusinessManagerServiceTopicView> {
-  final controller = Get.find<BusinessManagerController>();
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<BusinessManagerServiceTopicController>(
-      builder: (_) {
+      builder: (controller) {
         return Scaffold(
           backgroundColor: AppColors.white1,
           appBar: CustomAppbarMinimal(
             title: 'Service Topic',
             trailing: [
-              if (controller.serviceTopicController.mockServiceTopic.isEmpty)
+              if (controller.topicList.isEmpty)
                 const SizedBox()
               else
                 GestureDetector(
@@ -60,22 +59,22 @@ class _BusinessManagerServiceTopicViewState extends State<BusinessManagerService
             width: Get.width,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
-              child: controller.serviceTopicController.mockServiceTopic.isEmpty
+              child: controller.topicList.isEmpty
                   ? const EmptyServiceTopic()
                   : Padding(
                       padding: const EdgeInsets.only(top: 14),
                       child: ListView.builder(
-                        itemCount: controller.serviceTopicController.mockServiceTopic.length,
+                        itemCount: controller.topicList.length,
                         shrinkWrap: true,
                         itemBuilder: (BuildContext context, int index) {
                           return Padding(
                             padding: const EdgeInsets.only(bottom: 16),
                             child: ServiceTopicTile(
-                              serviceTopic: controller.serviceTopicController.mockServiceTopic[index],
+                              serviceTopic: controller.topicList[index],
                               onTap: () {
                                 Get.to<void>(
                                   () => BusinessManagerServiceTopicDetailsView(
-                                    serviceTopic: controller.serviceTopicController.mockServiceTopic[index],
+                                    serviceTopic: controller.topicList[index],
                                   ),
                                 );
                               },

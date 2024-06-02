@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/business_manager/controllers/business_manager_controller.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/service_topic/business_manager_service_topic_controller.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/business_manager_service_topic_controller.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/service_topic_edit_controller.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/shared/widgets/secondary_button.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
+import 'package:nuforce/app/utils/extension_methods.dart';
+
+import '../../../../shared/widgets/custom_dropdown.dart';
+import '../../controllers/service_category_edit_controller.dart';
+import '../../models/form_model.dart';
+import '../../models/service_topic_model.dart';
 
 GlobalKey<FormState> addOrEditServiceTopic = GlobalKey<FormState>();
 
@@ -15,147 +24,120 @@ class BusinessManagerAddOrEditServiceTopic extends StatefulWidget {
     super.key,
     this.serviceTopic,
   });
-  final MockServiceTopic? serviceTopic;
+  final ServiceTopicModel? serviceTopic;
 
   @override
-  State<BusinessManagerAddOrEditServiceTopic> createState() => _BusinessManagerAddOrEditCalendarViewState();
+  State<BusinessManagerAddOrEditServiceTopic> createState() =>
+      _BusinessManagerAddOrEditCalendarViewState();
 }
 
-class _BusinessManagerAddOrEditCalendarViewState extends State<BusinessManagerAddOrEditServiceTopic> {
-  String? name;
-  String? topicNo;
-  String? description;
-
-  TextEditingController nameController = TextEditingController();
-  TextEditingController topicNoController = TextEditingController();
-  TextEditingController descriptionController = TextEditingController();
+class _BusinessManagerAddOrEditCalendarViewState
+    extends State<BusinessManagerAddOrEditServiceTopic> {
+  final controller = Get.put(ServiceTopicEditController());
 
   @override
   void initState() {
     super.initState();
     if (widget.serviceTopic != null) {
-      final serviceTopic = widget.serviceTopic!;
-      nameController.text = serviceTopic.name;
-      descriptionController.text = serviceTopic.description ?? '';
-      topicNoController.text = serviceTopic.topicNo ?? '';
+      controller.setTopicForm(widget.serviceTopic!.id);
     }
   }
 
   @override
   void dispose() {
-    nameController.dispose();
-    descriptionController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppbarMinimal(
-        title: widget.serviceTopic != null ? 'Edit Service Topic' : 'Add Service Topic',
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding, vertical: 15),
-        child: Form(
-          key: addOrEditServiceTopic,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 25),
-              CustomTextField(
-                label: 'Topic*',
-                hint: 'Enter Topic name',
-                controller: nameController,
-                validator: (p0) {
-                  if (p0!.isEmpty) {
-                    return 'Please enter service topic name';
-                  }
-                  return null;
-                },
-              ),
-              const SizedBox(height: 16),
-              CustomTextField(
-                label: 'Topic No',
-                hint: 'Enter Topic No',
-                controller: topicNoController,
-              ),
-              const SizedBox(height: 16),
-              CustomTextField(
-                label: 'Description',
-                hint: 'Enter description',
-                maxLines: 3,
-                controller: descriptionController,
-              ),
-              const Spacer(),
-              Row(
-                children: [
-                  Expanded(
-                    child: SecondaryButton(
-                      onPressed: () {
-                        if (widget.serviceTopic == null) {
-                          nameController.clear();
-                          descriptionController.clear();
-                          setState(() {
-                            name = null;
-                            topicNo = null;
-                            description = null;
-                          });
-                        } else {
-                          final serviceTopic = widget.serviceTopic!;
-                          nameController.text = serviceTopic.name;
-                          descriptionController.text = serviceTopic.description ?? '';
-                          topicNoController.text = serviceTopic.topicNo ?? '';
-                          setState(() {
-                            name = serviceTopic.name;
-                            topicNo = serviceTopic.topicNo;
-                            description = serviceTopic.description;
-                          });
-                        }
-                      },
-                      text: 'Reset',
-                    ),
-                  ),
-                  const SizedBox(width: 15),
-                  Expanded(
-                    child: PrimaryButton(
-                      onPressed: () {
-                        if (!addOrEditServiceTopic.currentState!.validate()) {
-                          return;
-                        }
-
-                        final controller = Get.find<BusinessManagerController>();
-
-                        if (widget.serviceTopic != null) {
-                          controller.serviceTopicController.updateServiceTopic(
-                            MockServiceTopic(
-                              id: widget.serviceTopic!.id,
-                              name: nameController.text,
-                              topicNo: topicNoController.text,
-                              description: descriptionController.text,
-                            ),
-                          );
-                        } else {
-                          controller.serviceTopicController.addServiceTopic(
-                            MockServiceTopic(
-                              id: DateTime.now().millisecondsSinceEpoch.toString(),
-                              name: nameController.text,
-                              topicNo: topicNoController.text,
-                              description: descriptionController.text,
-                            ),
-                          );
-                        }
-                        Get.back<void>();
-                      },
-                      text: widget.serviceTopic != null ? 'Update' : 'Submit',
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 32),
-            ],
-          ),
+        appBar: CustomAppbarMinimal(
+          title: widget.serviceTopic != null
+              ? 'Edit Service Topic'
+              : 'Add Service Topic',
         ),
-      ),
-    );
+        body: GetBuilder<ServiceTopicEditController>(builder: (controller) {
+          return controller.isLoading
+              ? const Center(child: CircularProgressIndicator())
+              : Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: AppSizes.horizontalPadding),
+                  child: Column(
+                    children: [
+                      Expanded(
+                          child: ListView.builder(
+                        itemCount: controller.formBuilder.fieldNames.length,
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          final name = controller.formBuilder.fieldNames[index];
+                          Widget? widget = controller.formBuilder.widgets[name];
+                          if (widget != null &&
+                              widget.runtimeType ==
+                                  CustomDropdownButton<Option?>) {
+                            widget = (widget as CustomDropdownButton<Option?>)
+                                .copyWith(
+                              onChanged: (value) {
+                                controller.updateOnChanged(name, value);
+                              },
+                              value: controller.formBuilder.dropdownValue[name],
+                            );
+
+                            return Padding(
+                              padding: EdgeInsets.only(bottom: 16.h),
+                              child: widget,
+                            );
+                          }
+
+                          return Padding(
+                            padding: EdgeInsets.only(bottom: 16.h),
+                            child: widget ?? const SizedBox.shrink(),
+                          );
+                        },
+                      )),
+                      controller.isSaving
+                          ? const Center(child: CircularProgressIndicator())
+                          : PrimaryButton(
+                              onPressed: () {
+                                // controller.addCategory();
+
+                                if (controller
+                                        .formBuilder
+                                        .textEditingControllers['name']
+                                        ?.text
+                                        .isEmpty ==
+                                    true) {
+                                  Fluttertoast.showToast(
+                                      msg: 'Name is required');
+                                  return;
+                                }
+                                if (controller
+                                        .formBuilder
+                                        .textEditingControllers[
+                                            'detailsDescription']
+                                        ?.text
+                                        .isEmpty ==
+                                    true) {
+                                  Fluttertoast.showToast(
+                                      msg: 'details.description is required');
+                                  return;
+                                }
+                                controller
+                                    .addTopic(widget.serviceTopic!.id)
+                                    .then((value) {
+                                  if (value == true) {
+                                    final data = Get.find<
+                                        BusinessManagerServiceTopicController>();
+                                    data.getServiceTopics();
+                                    Get.back();
+                                  }
+                                });
+                              },
+                              text: 'Save',
+                            ),
+                      30.h.vSpace,
+                    ],
+                  ),
+                );
+        }));
   }
 }

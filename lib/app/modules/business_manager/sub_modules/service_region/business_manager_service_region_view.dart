@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/business_manager/controllers/business_manager_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/service_region/business_manager_add_or_edit_service_region.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/service_region/business_manager_service_region_controller.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/business_manager_service_region_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/service_region/business_manager_service_region_details_view.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/service_region/widget/business_manager_empty_service_region.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/service_region/widget/service_region_tile.dart';
@@ -19,18 +19,18 @@ class BusinessManagerServiceRegionView extends StatefulWidget {
 }
 
 class _BusinessManagerServiceRegionViewState extends State<BusinessManagerServiceRegionView> {
-  final controller = Get.find<BusinessManagerController>();
+  final controller = Get.put(BusinessManagerServiceRegionController());
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<BusinessManagerServiceRegionController>(
-      builder: (_) {
+      builder: (controller) {
         return Scaffold(
           backgroundColor: AppColors.white1,
           appBar: CustomAppbarMinimal(
             title: 'Service Region',
             trailing: [
-              if (controller.serviceRegionController.mockServiceRegion.isEmpty)
+              if (controller.regionList.isEmpty)
                 const SizedBox()
               else
                 GestureDetector(
@@ -60,22 +60,22 @@ class _BusinessManagerServiceRegionViewState extends State<BusinessManagerServic
             width: Get.width,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
-              child: controller.serviceRegionController.mockServiceRegion.isEmpty
+              child: controller.regionList.isEmpty
                   ? const EmptyServiceRegion()
                   : Padding(
                       padding: const EdgeInsets.only(top: 14),
                       child: ListView.builder(
-                        itemCount: controller.serviceRegionController.mockServiceRegion.length,
+                        itemCount: controller.regionList.length,
                         shrinkWrap: true,
                         itemBuilder: (BuildContext context, int index) {
                           return Padding(
                             padding: const EdgeInsets.only(bottom: 16),
                             child: ServiceRegionTile(
-                              serviceRegion: controller.serviceRegionController.mockServiceRegion[index],
+                              serviceRegion: controller.regionList[index],
                               onTap: () {
                                 Get.to<void>(
                                   () => BusinessManagerServiceRegionDetailsView(
-                                    serviceRegion: controller.serviceRegionController.mockServiceRegion[index],
+                                    serviceRegion: controller.regionList[index],
                                   ),
                                 );
                               },

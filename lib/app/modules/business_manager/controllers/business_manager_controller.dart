@@ -11,10 +11,10 @@ import 'package:nuforce/app/modules/business_manager/sub_modules/calendar/busine
 import 'package:nuforce/app/modules/business_manager/sub_modules/commision_tires/business_manager_commission_tiers_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/contact_group/business_manager_contact_group_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/label/business_manager_label_controller.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/service_category/business_manager_service_catalog_controller.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/service_region/business_manager_service_region_controller.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/service_topic/business_manager_service_topic_controller.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/terms_and_policy/business_manager_terms_and_policy_controller.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/business_manager_service_catalog_controller.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/business_manager_service_region_controller.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/business_manager_service_topic_controller.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/business_manager_terms_and_policy_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/user_roles/controllers/user_role_controller.dart';
 
 class BusinessManagerController extends GetxController {
