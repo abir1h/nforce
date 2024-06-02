@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/label/business_manager_label_controller.dart';
+import 'package:nuforce/app/model/label_model.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 
@@ -12,7 +12,7 @@ class ColoredLabelTile extends StatelessWidget {
     this.onTap,
   });
 
-  final MockLabel label;
+  final Label label;
   final VoidCallback? onTap;
 
   @override
@@ -30,9 +30,9 @@ class ColoredLabelTile extends StatelessWidget {
             Container(
               width: 5.w,
               constraints: const BoxConstraints(minHeight: 70),
-              decoration: BoxDecoration(
-                color: label.color,
-                borderRadius: const BorderRadius.only(
+              decoration: const BoxDecoration(
+                color: AppColors.primaryBlue1,
+                borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(6),
                   bottomLeft: Radius.circular(6),
                 ),
@@ -44,7 +44,7 @@ class ColoredLabelTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    label.name,
+                    label.name ?? 'N/A',
                     style: TextStyle(
                       color: AppColors.nutralBlack1,
                       fontSize: 16.sp,
@@ -52,7 +52,7 @@ class ColoredLabelTile extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    label.type ?? '',
+                    label.subType ?? '',
                     style: TextStyle(
                       color: AppColors.subText,
                       fontSize: 14.sp,

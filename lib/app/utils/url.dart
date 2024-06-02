@@ -37,4 +37,7 @@ class URL {
   static const String getCategry = '$baseUrl/browser/category';
   static const String getCategoryForm = '$baseUrl/form/category.register-form';
 
+  // Labels
+  static const String getLabels = '/browser/label';
+  static const String labelForm = '/form/label.entry-form';
 }
