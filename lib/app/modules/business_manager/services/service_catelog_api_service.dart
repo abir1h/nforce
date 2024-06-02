@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:nuforce/app/modules/business_manager/models/service_catelog_model.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/calendar/services/business_manager_calendar_api_services.dart';
 import '../../../utils/api_client.dart';
 import '../../../utils/url.dart';
 import '../../line_item/models/control.dart';
@@ -9,15 +10,17 @@ import 'dart:developer' as developer show log;
 class ServiceCatelogsApiService {
   static Future<Either<ServiceCategoryDataModel, String>> getServiceCategories() async {
     try {
-      final response =
-          await ApiClient.instance.post(url: URL.getCategry, body: {
-        "table": "category",
-        "where": {},
-        "order": "name ASC",
-        "page": 1,
-        "limit": 100,
-        "columns": true
-      });
+      final response = await ApiClient.instance.post(
+        url: URL.getCategry,
+        body: {
+          "table": "category",
+          "where": {},
+          "order": "name ASC",
+          "page": 1,
+          "limit": 100,
+          "columns": true,
+        },
+      );
       if (response.statusCode == 200 && response.data['data'] != null) {
         return Left(ServiceCategoryDataModel.fromJson(response.data));
       } else {
@@ -28,9 +31,18 @@ class ServiceCatelogsApiService {
     }
   }
 
-  static Future<Either<List<Control>, String>> getCategoryForm() async {
+  static Future<Either<List<Control>, String>> getCategoryForm([int? id]) async {
     try {
-      final response = await ApiClient.instance.post(url: URL.getCategoryForm);
+      final response = await ApiClient.instance.post(
+        url: URL.getCategoryForm,
+        body: id != null
+            ? {
+                "query": {
+                  "id": id,
+                },
+              }
+            : {},
+      );
       if (response.statusCode == 200 && response.data != null) {
         developer.log('Response: $response', name: 'getCategoryForm');
         if (response.data['controls'] != null) {
@@ -54,6 +66,7 @@ class ServiceCatelogsApiService {
   }
 
   static Future<Either<String, dynamic>> setCategoryForm({
+    int? id,
     required int businessId,
     required String name,
     required String refCode,
@@ -63,10 +76,10 @@ class ServiceCatelogsApiService {
     required String displayOrder,
     required String policyIds,
     required List<String> tags,
+    required ActionType action,
   }) async {
     try {
       final body = {
-        'query': {},
         "data": {
           "business_id": businessId,
           'breadcrumbs': null,
@@ -81,15 +94,23 @@ class ServiceCatelogsApiService {
           "policy_ids": [policyIds],
           'photo_url': ''
         },
-        "action": "submit"
+        "action": action.name,
       };
 
+      if (id != null) {
+        body['query'] = {
+          "id": id,
+        };
+      }
+
       developer.log('Body: $body', name: 'setCategory');
-      final response =
-          await ApiClient.instance.post(url: URL.getCategoryForm, body: body);
+      final response = await ApiClient.instance.post(
+        url: URL.getCategoryForm,
+        body: body,
+      );
 
       if (response.statusCode == 200 && response.data != null) {
-        if (response.data['success'] != null && response.data['error']==false) {
+        if (response.data['success'] != null && response.data['error'] == false) {
           return Left(response.data['success']);
         } else {
           return Right(response.data['error'] ?? 'An error occurred.');
@@ -102,6 +123,34 @@ class ServiceCatelogsApiService {
       return Right(e.toString());
     } catch (e) {
       return Right(e.toString());
+    }
+  }
+
+  Future<bool> deleteCategory(int id) async {
+    try {
+      final response = await ApiClient.instance.post(
+        url: URL.getCategoryForm,
+        body: {
+          "data": {
+            "id": id,
+          },
+          "action": ActionType.delete.name,
+        },
+      );
+
+      if (response.statusCode == 200 && response.data != null) {
+        if (response.data['success'] != null && response.data['error'] == false) {
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        return false;
+      }
+    } on DioException catch (_) {
+      return false;
+    } catch (e) {
+      return false;
     }
   }
 }
