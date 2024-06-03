@@ -93,7 +93,7 @@ class _BusinessManagerAddOrEditServiceTopicViewState extends State<BusinessManag
                                 controller
                                     .addRegion(
                                   id: widget.serviceRegion?.id,
-                                  action: widget.serviceRegion != null ? ActionType.edit : ActionType.submit,
+                                  action: ActionType.submit,
                                 )
                                     .then((value) {
                                   if (value == true) {

@@ -86,7 +86,7 @@ class _BusinessManagerAddOrEditCalendarViewState extends State<BusinessManagerAd
                                 controller
                                     .addEditDeleteTopic(
                                   id: widget.serviceTopic?.id,
-                                  action: widget.serviceTopic?.id != null ? ActionType.edit : ActionType.submit,
+                                  action: ActionType.submit,
                                 )
                                     .then((value) {
                                   if (value == true) {
