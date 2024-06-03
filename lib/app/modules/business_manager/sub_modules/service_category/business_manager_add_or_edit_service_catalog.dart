@@ -96,7 +96,7 @@ class _BusinessManagerAddOrEditServiceCatalogsState extends State<BusinessManage
                             controller
                                 .addEditOrDeleteCategory(
                               id: widget.serviceCatalog?.id,
-                              action: widget.serviceCatalog == null ? ActionType.submit : ActionType.edit,
+                              action: ActionType.submit,
                             )
                                 .then((value) {
                               if (value == true) {

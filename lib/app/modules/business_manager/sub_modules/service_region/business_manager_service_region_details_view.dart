@@ -80,7 +80,9 @@ class BusinessManagerServiceRegionDetailsView extends StatelessWidget {
                       const SizedBox(width: 15),
                       Expanded(
                         child: PrimaryButton(
-                          onPressed: () {
+                          onPressed: () async {
+                            final controller = Get.find<ServiceRegionEditController>();
+                            await controller.setRegionForm(serviceRegion.id);
                             Get
                               ..back<void>()
                               ..to<void>(() => BusinessManagerAddOrEditServiceRegion(serviceRegion: serviceRegion));

@@ -110,4 +110,4 @@ class BusinessManagerCalendarApiServices {
   }
 }
 
-enum ActionType { submit, edit, delete }
+enum ActionType { submit, delete }
