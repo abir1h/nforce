@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:logger/logger.dart';
 import 'package:nuforce/app/utils/api_client.dart';
 import 'package:nuforce/app/utils/shared_preferences.dart';
@@ -27,9 +25,8 @@ class OtpServices {
       );
       Logger().i(response.data);
       if (response.data?['data']?['success'] != false) {
-        final token = getTokenDataAsString(response.data?['data']?['redirectTo']);
+        final token = getTokenFromUrl(response.data?['data']?['redirectTo']);
         SharedPreferenceService.setToken(token);
-        log('Token: $token', name: 'token');
         return true;
       } else {
         return false;
@@ -64,7 +61,7 @@ class OtpServices {
   }
 }
 
-String getTokenDataAsString(String url) {
+String getTokenFromUrl(String url) {      
   final uri = Uri.parse(url);
   final dataParam = uri.queryParameters['data'];
   // final decodedData = utf8.decode(base64.decode(dataParam!));
