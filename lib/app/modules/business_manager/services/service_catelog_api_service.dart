@@ -15,7 +15,6 @@ class ServiceCatelogsApiService {
         body: {
           "table": "category",
           "where": {},
-          "order": "name ASC",
           "page": 1,
           "limit": 100,
           "columns": true,
@@ -82,8 +81,8 @@ class ServiceCatelogsApiService {
       final body = {
         "data": {
           "business_id": businessId,
-          'breadcrumbs': null,
-          'slug': null,
+
+
           "name": name,
           "ref_code": refCode,
           "parent_id": parentId,

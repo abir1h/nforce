@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/business_manager/controllers/customer_contact_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/customer_contact/customer_contact_add_view.dart';
@@ -10,6 +11,8 @@ import 'package:nuforce/app/modules/business_manager/sub_modules/customer_contac
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/utils/colors.dart';
 
+import '../../../../../gen/assets.gen.dart';
+
 class CustomerContactListView extends StatefulWidget {
   const CustomerContactListView({super.key});
 
@@ -18,7 +21,8 @@ class CustomerContactListView extends StatefulWidget {
 }
 
 class _CustomerContactListViewState extends State<CustomerContactListView> {
-  final controller = Get.find<CustomerContactController>();
+  // final controller = Get.find<CustomerContactController>();
+  final controller = Get.put(CustomerContactController());
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +58,59 @@ class _CustomerContactListViewState extends State<CustomerContactListView> {
         padding: EdgeInsets.symmetric(vertical: 32.h, horizontal: 20.w),
         child: Column(
           children: [
-            const CustomSearchWidget(),
+            Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8.r),
+                      border: Border.all(
+                        color: AppColors.greyText,
+                        width: 1,
+                      ),
+                    ),
+                    child: TextField(
+                      onChanged: (v){
+                        controller.getCustomers(query: v.trim());
+                      },
+                      decoration: InputDecoration(
+                        hintText: 'find contact by name, notes, etc.',
+                        prefixIcon: Padding(
+                          padding: const EdgeInsets.only(top: 8.0, bottom: 8),
+                          child: SvgPicture.asset(
+                            Assets.images.svg.search,
+                            height: 18.h,
+                            fit: BoxFit.contain,
+                            width: 18.h,
+                            colorFilter: const ColorFilter.mode(AppColors.greyText, BlendMode.srcIn),
+                          ),
+                        ),
+                        hintStyle: TextStyle(
+                          color: AppColors.greyText,
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w400,
+                        ),
+                        border: InputBorder.none,
+                        enabledBorder: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 16.w,
+                ),
+                Container(
+                  padding: EdgeInsets.all(16.h),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8.r),
+                    color: AppColors.primaryBlue1,
+                  ),
+                  child: SvgPicture.asset(Assets.images.svg.filter2),
+                ),
+              ],
+            ),
             SizedBox(height: 24.h),
             GetBuilder<CustomerContactController>(
               builder: (controller) {

@@ -5,12 +5,12 @@ import 'package:nuforce/app/utils/app_constants.dart';
 import 'package:nuforce/app/utils/url.dart';
 
 class CustomerContactApiServices {
-  static Future<Either<Customers, String>> getCustomers() async {
+  static Future<Either<Customers, String>> getCustomers([String? query]) async {
     final response = await ApiClient.instance.post(
       url: URL.customer,
       body: {
         "where": {
-          "_search": "",
+          "_search": query??"",
           "user_type": "customer",
         }
       },
