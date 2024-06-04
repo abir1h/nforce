@@ -7,6 +7,7 @@ import 'package:nuforce/app/modules/auth/views/magic_link_signin_view.dart';
 import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/app/utils/extension_methods.dart';
 import 'package:nuforce/main.dart';
 
 class SignInPage extends StatefulWidget {
@@ -157,7 +158,9 @@ class _SignInPageState extends State<SignInPage> {
                     // const SocialLoginButtons(),
                   ],
                 ),
-                const Spacer(),
+                // const Spacer(),
+
+                30.h.vSpace,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

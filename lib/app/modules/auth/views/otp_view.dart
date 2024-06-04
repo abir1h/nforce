@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/auth/controllers/signup_controller.dart';
+
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
@@ -10,10 +12,18 @@ import 'package:pinput/pinput.dart';
 
 import '../controllers/auth_controller.dart';
 
-class OtpView extends GetView<AuthController> {
+class OtpView extends StatefulWidget {
   const OtpView({Key? key}) : super(key: key);
+
+  @override
+  State<OtpView> createState() => _OtpViewState();
+}
+
+class _OtpViewState extends State<OtpView> {
   @override
   Widget build(BuildContext context) {
+    print(Get.find<SingupAuthController>().email);
+    print(Get.find<SingupAuthController>().uniqueId);
     final defaultPinTheme = PinTheme(
       width: 56,
       height: 56,
@@ -62,51 +72,58 @@ class OtpView extends GetView<AuthController> {
                   ),
                 ),
                 const SizedBox(height: 30),
-                Pinput(
-                  controller: controller.pinController,
-                  focusNode: controller.focusNode,
-                  androidSmsAutofillMethod: AndroidSmsAutofillMethod.smsUserConsentApi,
-                  listenForMultipleSmsOnAndroid: true,
-                  defaultPinTheme: defaultPinTheme,
-                  separatorBuilder: (index) => const SizedBox(width: 8),
-                  length: 6,
-                  validator: (value) {
-                    return value == '123123' ? null : 'Wrong OTP. The correct OTP is 123123';
+                GetBuilder<AuthController>(
+                  builder: (controller) {
+                    return Pinput(
+                      controller: controller.pinController,
+                      focusNode: controller.focusNode,
+                      androidSmsAutofillMethod: AndroidSmsAutofillMethod.smsUserConsentApi,
+                      listenForMultipleSmsOnAndroid: true,
+                      defaultPinTheme: defaultPinTheme,
+                      separatorBuilder: (index) => const SizedBox(width: 8),
+                      length: 6,
+                      validator: (value) {
+                        if (value!.length < 6) {
+                          return 'Enter 6 digit code';
+                        }
+                        return null;
+                      },
+                      // hapticFeedbackType: HapticFeedbackType.lightImpact,
+                      showCursor: true,
+                      onCompleted: (pin) {
+                        debugPrint('onCompleted: $pin');
+                      },
+                      onChanged: (value) {
+                        debugPrint('onChanged: $value');
+                      },
+                      focusedPinTheme: defaultPinTheme.copyWith(
+                        decoration: defaultPinTheme.decoration!.copyWith(
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(color: AppColors.primaryBlue1),
+                        ),
+                      ),
+                      submittedPinTheme: defaultPinTheme.copyWith(
+                        decoration: defaultPinTheme.decoration!.copyWith(
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(color: AppColors.primaryBlue1),
+                        ),
+                      ),
+                      errorPinTheme: defaultPinTheme.copyBorderWith(
+                        border: Border.all(color: AppColors.red),
+                      ),
+                    );
                   },
-                  // hapticFeedbackType: HapticFeedbackType.lightImpact,
-                  showCursor: true,
-                  onCompleted: (pin) {
-                    debugPrint('onCompleted: $pin');
-                  },
-                  onChanged: (value) {
-                    debugPrint('onChanged: $value');
-                  },
-                  focusedPinTheme: defaultPinTheme.copyWith(
-                    decoration: defaultPinTheme.decoration!.copyWith(
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: AppColors.primaryBlue1),
-                    ),
-                  ),
-                  submittedPinTheme: defaultPinTheme.copyWith(
-                    decoration: defaultPinTheme.decoration!.copyWith(
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: AppColors.primaryBlue1),
-                    ),
-                  ),
-                  errorPinTheme: defaultPinTheme.copyBorderWith(
-                    border: Border.all(color: AppColors.red),
-                  ),
                 ),
                 const SizedBox(height: 30),
-                Text(
-                  '00:56',
-                  textAlign: TextAlign.center,
-                  style: CustomTextStyle.heading4.copyWith(
-                    fontWeight: FontWeight.w700,
-                    color: AppColors.nutralBlack1,
-                  ),
-                ),
-                const SizedBox(height: 8),
+                // Text(
+                //   '00:56',
+                //   textAlign: TextAlign.center,
+                //   style: CustomTextStyle.heading4.copyWith(
+                //     fontWeight: FontWeight.w700,
+                //     color: AppColors.nutralBlack1,
+                //   ),
+                // ),
+                // const SizedBox(height: 8),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -128,13 +145,16 @@ class OtpView extends GetView<AuthController> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 30),
+                // const SizedBox(height: 30),
+                const Spacer(),
                 PrimaryButton(
                   onPressed: () {
-                    controller.navigateFromOtpView();
+                    final controller = Get.find<AuthController>();
+                    controller.verifyOtp();
                   },
                   text: 'Done',
                 ),
+                const SizedBox(height: 30),
               ],
             ),
           ),

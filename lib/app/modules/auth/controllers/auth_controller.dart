@@ -1,14 +1,18 @@
 // ignore_for_file: avoid_positional_boolean_parameters
 
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/auth/controllers/agent_customer_auth_controller.dart';
 import 'package:nuforce/app/modules/auth/controllers/signup_controller.dart';
 import 'package:nuforce/app/modules/auth/services/login_api_services.dart';
-import 'package:nuforce/app/modules/auth/views/account_setup_view.dart';
+import 'package:nuforce/app/modules/auth/services/otp_services.dart';
 import 'package:nuforce/app/modules/auth/views/reset_password_view.dart';
 import 'package:nuforce/app/routes/app_pages.dart';
 import 'package:nuforce/app/utils/api_client.dart';
+import 'package:nuforce/app/utils/app_constants.dart';
 import 'package:nuforce/app/utils/shared_preferences.dart';
 
 class AuthController extends GetxController {
@@ -67,10 +71,31 @@ class AuthController extends GetxController {
       return;
     }
     if (fromSignUp) {
-      Get.to<void>(() => const AccountSetupView());
+      // Get.to<void>(() => const AccountSetupView());
+      Get.offAllNamed(Routes.BOTTOM_NAV_BAR);
     } else {
       Get.to<void>(() => const ResetPasswordView());
     }
+  }
+
+  Future<void> verifyOtp() async {
+    if (signUpController.uniqueId == null) {
+      Fluttertoast.showToast(msg: AppConstants.unknownError);
+      return;
+    }
+
+    await OtpServices.verifyOtp(
+      uniqueId: signUpController.uniqueId ?? '',
+      email: signUpController.email!,
+      otp: pinController.text,
+    ).then((value) {
+      if (value) {
+        navigateFromOtpView();
+      } else {
+        // Fluttertoast.showToast(msg: 'Invalid OTP');
+        log('OTP verification failed');
+      }
+    });
   }
 
   // API call for login

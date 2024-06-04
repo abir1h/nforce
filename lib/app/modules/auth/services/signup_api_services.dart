@@ -1,5 +1,6 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
-import 'package:logger/logger.dart';
 import 'package:nuforce/app/utils/api_client.dart';
 import 'package:nuforce/app/utils/app_constants.dart';
 import 'package:nuforce/app/utils/url.dart';
@@ -21,7 +22,7 @@ class SignupService {
     required bool agreedToTnc,
     String? refCode,
   }) async {
-    try { 
+    try {
       final response = await ApiClient.instance.post(
         url: URL.signup,
         body: {
@@ -30,21 +31,45 @@ class SignupService {
             'country_code': countryCode,
             'name': name,
             'email': email,
-            // 'mobile': phone,
             'ref_code': refCode ?? '',
             'password': password,
             'agreed_to_tnc': agreedToTnc ? '1' : '0',
           },
         },
       );
-      Logger().i(response.data);
-      if (response.data['error'] == false) {
-        return Left('${response.data['success'] ?? 'Success'}');
+
+      String? uniqueId;
+      for (final control in response.data?['controls']) {
+        if (control['name'] == 'uniqid') {
+          uniqueId = control['value'];
+          break;
+        }
+      }
+      if (response.data?['error'] == false) {
+        if (uniqueId != null) {
+          return Left(uniqueId);
+        } else {
+          return Right(uniqueId ?? AppConstants.unknownError); // TODO Remove uniqueId on SMTP fixed production
+        }
       } else {
-        return Right('${response.data['error'] ?? AppConstants.unknownError}');
+        log('should return error object');
+        return Right(uniqueId ?? '${response.data?['error'] ?? AppConstants.unknownError}'); // TODO Remove uniqueId on SMTP fixed production
       }
     } catch (e) {
+      log('should return error object from catch block');
       return const Right(AppConstants.unknownError);
     }
   }
+}
+
+class RegistrationSuccess {
+  final String uniqueId;
+  final String identifier;
+  final String pipeLine;
+
+  RegistrationSuccess({
+    required this.uniqueId,
+    required this.identifier,
+    required this.pipeLine,
+  });
 }

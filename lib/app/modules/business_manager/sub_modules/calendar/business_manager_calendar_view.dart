@@ -9,6 +9,7 @@ import 'package:nuforce/app/modules/business_manager/sub_modules/calendar/widget
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
 import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/app/utils/custom_loading_widget.dart';
 import 'package:nuforce/app/utils/extension_methods.dart';
 
 class BusinessManagerCalendarView extends StatefulWidget {
@@ -76,35 +77,35 @@ class _BusinessManagerCalendarViewState extends State<BusinessManagerCalendarVie
         width: Get.width,
         child: GetBuilder<BusinessManagerCalendarController>(
           builder: (controller) {
-            if (controller.isLoading) {
-              return const Center(child: CircularProgressIndicator());
-            }
-            return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
-              child: controller.calendarData.isEmpty
-                  ? const EmptyCalendar()
-                  : Padding(
-                      padding: const EdgeInsets.only(top: 14),
-                      child: ListView.builder(
-                        itemCount: controller.calendarData.length,
-                        shrinkWrap: true,
-                        itemBuilder: (BuildContext context, int index) {
-                          return Padding(
-                            padding: const EdgeInsets.only(bottom: 16),
-                            child: ColoredCalendarTaskTile(
-                              calendar: controller.calendarData[index],
-                              onTap: () {
-                                Get.to<void>(
-                                  () => BusinessManagerCalendarDetailsView(
-                                    calendar: controller.calendarData[index],
-                                  ),
-                                );
-                              },
-                            ),
-                          );
-                        },
+            return CustomLoadingWidget(
+              isLoading: controller.isLoading,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
+                child: controller.calendarData.isEmpty
+                    ? const EmptyCalendar()
+                    : Padding(
+                        padding: const EdgeInsets.only(top: 14),
+                        child: ListView.builder(
+                          itemCount: controller.calendarData.length,
+                          shrinkWrap: true,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Padding(
+                              padding: const EdgeInsets.only(bottom: 16),
+                              child: ColoredCalendarTaskTile(
+                                calendar: controller.calendarData[index],
+                                onTap: () {
+                                  Get.to<void>(
+                                    () => BusinessManagerCalendarDetailsView(
+                                      calendar: controller.calendarData[index],
+                                    ),
+                                  );
+                                },
+                              ),
+                            );
+                          },
+                        ),
                       ),
-                    ),
+              ),
             );
           },
         ),

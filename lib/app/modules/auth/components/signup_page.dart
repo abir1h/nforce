@@ -1,9 +1,10 @@
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/auth/controllers/auth_controller.dart';
 import 'package:nuforce/app/modules/auth/controllers/signup_controller.dart';
-import 'package:nuforce/app/routes/app_pages.dart';
 import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/utils/colors.dart';
@@ -26,6 +27,7 @@ class _SignUpPageState extends State<SignUpPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
+  final phoneController = TextEditingController();
 
   @override
   void dispose() {
@@ -80,6 +82,44 @@ class _SignUpPageState extends State<SignUpPage> {
                   }
                   return null;
                 },
+              ),
+              const SizedBox(height: 16),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Country',
+                    style: CustomTextStyle.paragraphSmall.copyWith(
+                      fontWeight: FontWeight.w500,
+                      color: AppColors.nutralBlack1,
+                    ),
+                  ),
+                  SizedBox(height: 8.h),
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: AppColors.greyText,
+                      ),
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    child: GetBuilder<SingupAuthController>(
+                      builder: (controller) {
+                        return CountryCodePicker(
+                          onChanged: (v) {
+                            if (v.code != null) {
+                              controller.countryCode = v.code!;
+                            }
+                          },
+                          initialSelection: 'US',
+                          favorite: const ['US'],
+                          showCountryOnly: true,
+                          showOnlyCountryWhenClosed: true,
+                          alignLeft: true,
+                        );
+                      },
+                    ),
+                  ),
+                ],
               ),
               const SizedBox(height: 16),
               GetBuilder<SingupAuthController>(
@@ -164,11 +204,12 @@ class _SignUpPageState extends State<SignUpPage> {
                                   builder: (ctx) {
                                     return AlertDialog(
                                       title: const Text('Success'),
-                                      content: Text(success),
+                                      content: const Text('Please check your email for verification code.'),
                                       actions: [
                                         TextButton(
                                           onPressed: () {
-                                            Get.offAllNamed<void>(Routes.AUTH);
+                                            // Get.offAllNamed<void>(Routes.AUTH);
+                                            Get.back();
                                           },
                                           child: const Text('OK'),
                                         ),
@@ -234,7 +275,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                 ],
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 100),
             ],
           ),
         ),

@@ -3,6 +3,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/auth/services/signup_api_services.dart';
+import 'package:nuforce/app/modules/auth/views/otp_view.dart';
 
 class SingupAuthController extends GetxController {
   bool _isLoading = false;
@@ -40,6 +41,27 @@ class SingupAuthController extends GetxController {
     update();
   }
 
+  String _countryCode = 'US';
+  String get countryCode => _countryCode;
+  set countryCode(String code) {
+    _countryCode = code;
+    update();
+  }
+
+  String? _uniqueId;
+  String? get uniqueId => _uniqueId;
+  set uniqueId(String? unique) {
+    _uniqueId = unique;
+    update();
+  }
+
+  String? _email;
+  String? get email => _email;
+  set email(String? email) {
+    _email = email;
+    update();
+  }
+
   Future<Either<String, String>> onSignup({
     required String name,
     required String email,
@@ -49,24 +71,30 @@ class SingupAuthController extends GetxController {
 
     bool isSuccessful = false;
     String message = '';
+
     await SignupService.signup(
       userType: UserTypes.provider,
-      countryCode: 'US', // TODO Make it dynamic
+      countryCode: countryCode,
       name: name,
       email: email,
       password: password,
       agreedToTnc: _agreeToTerms,
     ).then((res) {
+      this.email = email;
       res.fold(
         (success) {
           isSuccessful = true;
-          message = success;
+          uniqueId = success;
+          message = 'Registration successful';
+          // Get.to(() => const OtpView());
         },
         (error) {
           isSuccessful = false;
+          uniqueId = error; // TODO Remvoe this on SMTP fixed production
           message = error;
         },
       );
+      Get.to(() => const OtpView());
     });
     toggleLoading();
     return isSuccessful ? Left(message) : Right(message);

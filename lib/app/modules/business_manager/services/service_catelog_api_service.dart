@@ -14,8 +14,6 @@ class ServiceCatelogsApiService {
         url: URL.getCategry,
         body: {
           "table": "category",
-          "where": {},
-          "order": "name ASC",
           "page": 1,
           "limit": 100,
           "columns": true,
