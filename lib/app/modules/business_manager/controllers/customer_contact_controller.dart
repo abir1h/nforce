@@ -53,6 +53,7 @@ class CustomerContactController extends GetxController {
   }
 
   void reset() {
+    getCustomers();
     name.clear();
     refCode.clear();
     company.clear();
@@ -60,6 +61,7 @@ class CustomerContactController extends GetxController {
     email.clear();
     mobile.clear();
     selectedContactDetails = null;
+
     update();
   }
 

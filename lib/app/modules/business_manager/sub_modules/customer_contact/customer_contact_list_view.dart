@@ -10,6 +10,7 @@ import 'package:nuforce/app/modules/business_manager/sub_modules/customer_contac
 
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/utils/colors.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../../../../../gen/assets.gen.dart';
 
@@ -36,6 +37,7 @@ class _CustomerContactListViewState extends State<CustomerContactListView> {
               padding: const EdgeInsets.only(right: 20),
               child: GestureDetector(
                 onTap: () {
+
                   controller.reset();
                   Get.to<void>(() => const CustomerContactAddView());
                 },
@@ -71,7 +73,10 @@ class _CustomerContactListViewState extends State<CustomerContactListView> {
                     ),
                     child: TextField(
                       onChanged: (v){
-                        controller.getCustomers(query: v.trim());
+                        v.length>2?controller.getCustomers(query: v.trim()):null;
+                        if(v.length==0){
+                        controller.getCustomers();
+                        }
                       },
                       decoration: InputDecoration(
                         hintText: 'find contact by name, notes, etc.',
@@ -115,7 +120,7 @@ class _CustomerContactListViewState extends State<CustomerContactListView> {
             GetBuilder<CustomerContactController>(
               builder: (controller) {
                 if (controller.isLoading) {
-                  return const Center(child: CircularProgressIndicator());
+                  return const ContactLoader();
                 }
                 return ListView.builder(
                   itemCount: controller.customers?.data?.length ?? 0,
@@ -137,9 +142,88 @@ class _CustomerContactListViewState extends State<CustomerContactListView> {
                 );
               },
             ),
+
           ],
         ),
       ),
     );
+  }
+}
+class ContactLoader extends StatelessWidget {
+  const ContactLoader({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return                ListView.separated(
+
+      separatorBuilder: (_, index) {
+        return SizedBox(
+          height: 16.h,
+        );
+      },
+      itemBuilder: (_, index) {
+        return Shimmer.fromColors(
+            baseColor: Colors.grey.shade300,
+            highlightColor: Colors.grey.shade100,
+            child: Container(
+              padding: EdgeInsets.only(top: 12.h, bottom: 12.h, left: 10.w, right: 18.w),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8.r),
+                border: Border.all(color: AppColors.white3, width: 1.w),
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Row(
+                      children: [
+                        CircleAvatar(
+                          backgroundColor: AppColors.primaryBlue1,
+                          radius: 20.r,
+                          child: Text(
+                            '',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 16.sp,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 10.w),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              width: .4.sw,
+                              height: 12.0,
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(10)),
+                            ),
+                            SizedBox(height: 5.h),
+                            Container(
+                              width: .2.sw,
+                              height: 12.0,
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(10)),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Icon(
+                    Icons.arrow_forward_ios,
+                    color: AppColors.nutralBlack2,
+                  ),
+                ],
+              ),
+            )
+        );
+      },
+      itemCount: 10,
+      shrinkWrap: true,
+    );
+
   }
 }
