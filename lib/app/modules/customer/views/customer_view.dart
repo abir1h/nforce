@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:get/get.dart';
 import 'package:nuforce/app/model/user_card_model.dart';
@@ -22,8 +21,6 @@ import 'package:nuforce/app/utils/app_states.dart';
 import 'package:nuforce/main.dart';
 
 import '../../../../gen/assets.gen.dart';
-import '../../../routes/app_pages.dart';
-import '../../../utils/shared_preferences.dart';
 import '../../settings/sub_modules/notification/view/notification_view.dart';
 import '../sub_modules/customer_faq/views/customer_faq_view.dart';
 import '../sub_modules/customer_terms/views/customer_terms_view.dart';
@@ -181,9 +178,8 @@ class _CustomerViewState extends State<CustomerView> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      SharedPreferenceService.clear();
-                      Get.offAllNamed<void>(Routes.AUTH);
-                      Fluttertoast.showToast(msg: 'Logged out');
+                      final appState = Get.find<AppState>();
+                      appState.logout();
                     },
                     child: Container(
                       padding: EdgeInsets.symmetric(vertical: 12.h),
@@ -351,7 +347,8 @@ class DrawerCard extends StatelessWidget {
                       SvgPicture.asset(
                         leading,
                         height: 24.r,
-                        width: 24.r,color: AppColors.greyText,
+                        width: 24.r,
+                        color: AppColors.greyText,
                       ),
                       SizedBox(
                         width: 8.w,

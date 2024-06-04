@@ -11,6 +11,7 @@ import 'package:nuforce/app/shared/widgets/custom_text_field.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
 import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/app/utils/shared_preferences.dart';
 import 'package:nuforce/app/utils/text_styles.dart';
 import 'package:nuforce/main.dart';
 
@@ -18,6 +19,7 @@ class AccountSetupView extends StatelessWidget {
   const AccountSetupView({super.key});
   @override
   Widget build(BuildContext context) {
+    print(SharedPreferenceService.getToken());
     return Scaffold(
       resizeToAvoidBottomInset: true,
       backgroundColor: AppColors.white1,

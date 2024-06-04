@@ -2,8 +2,10 @@
 
 import 'package:dartz/dartz.dart';
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/auth/controllers/auth_controller.dart';
 import 'package:nuforce/app/modules/auth/services/signup_api_services.dart';
 import 'package:nuforce/app/modules/auth/views/otp_view.dart';
+import 'package:nuforce/app/utils/shared_preferences.dart';
 
 class SingupAuthController extends GetxController {
   bool _isLoading = false;
@@ -48,10 +50,10 @@ class SingupAuthController extends GetxController {
     update();
   }
 
-  String? _uniqueId;
-  String? get uniqueId => _uniqueId;
-  set uniqueId(String? unique) {
-    _uniqueId = unique;
+  RegistrationSuccess? _registrationData;
+  RegistrationSuccess? get registrationData => _registrationData;
+  set registrationData(RegistrationSuccess? unique) {
+    _registrationData = unique;
     update();
   }
 
@@ -59,6 +61,13 @@ class SingupAuthController extends GetxController {
   String? get email => _email;
   set email(String? email) {
     _email = email;
+    update();
+  }
+
+  int? _userId;
+  int? get userId => _userId;
+  set userId(int? id) {
+    _userId = id;
     update();
   }
 
@@ -82,19 +91,20 @@ class SingupAuthController extends GetxController {
     ).then((res) {
       this.email = email;
       res.fold(
-        (success) {
+        (success) async {
           isSuccessful = true;
-          uniqueId = success;
+          registrationData = success;
           message = 'Registration successful';
-          // Get.to(() => const OtpView());
+          userId = success.userId;
+          SharedPreferenceService.setUserId(success.userId);
+          Get.find<AuthController>().changeFromSignUp(true);
+          Get.to(() => const OtpView());
         },
         (error) {
           isSuccessful = false;
-          uniqueId = error; // TODO Remvoe this on SMTP fixed production
           message = error;
         },
       );
-      Get.to(() => const OtpView());
     });
     toggleLoading();
     return isSuccessful ? Left(message) : Right(message);

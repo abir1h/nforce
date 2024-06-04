@@ -6,6 +6,7 @@ import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
 import 'package:nuforce/app/utils/colors.dart';
+import 'package:nuforce/app/utils/custom_loading_widget.dart';
 import 'package:nuforce/app/utils/text_styles.dart';
 import 'package:nuforce/main.dart';
 import 'package:pinput/pinput.dart';
@@ -22,8 +23,6 @@ class OtpView extends StatefulWidget {
 class _OtpViewState extends State<OtpView> {
   @override
   Widget build(BuildContext context) {
-    print(Get.find<SingupAuthController>().email);
-    print(Get.find<SingupAuthController>().uniqueId);
     final defaultPinTheme = PinTheme(
       width: 56,
       height: 56,
@@ -43,122 +42,135 @@ class _OtpViewState extends State<OtpView> {
       appBar: const CustomAppbarMinimal(
         title: '',
       ),
-      body: SafeArea(
-        child: SizedBox(
-          height: height,
-          width: width,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  'Verification',
-                  textAlign: TextAlign.center,
-                  style: CustomTextStyle.heading1.copyWith(
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.nutralBlack1,
-                  ),
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  'We’ve the code send to your Phone number- random@gmail.com ',
-                  textAlign: TextAlign.center,
-                  style: CustomTextStyle.heading4.copyWith(
-                    fontWeight: FontWeight.w400,
-                    color: AppColors.subText,
-                  ),
-                ),
-                const SizedBox(height: 30),
-                GetBuilder<AuthController>(
-                  builder: (controller) {
-                    return Pinput(
-                      controller: controller.pinController,
-                      focusNode: controller.focusNode,
-                      androidSmsAutofillMethod: AndroidSmsAutofillMethod.smsUserConsentApi,
-                      listenForMultipleSmsOnAndroid: true,
-                      defaultPinTheme: defaultPinTheme,
-                      separatorBuilder: (index) => const SizedBox(width: 8),
-                      length: 6,
-                      validator: (value) {
-                        if (value!.length < 6) {
-                          return 'Enter 6 digit code';
-                        }
-                        return null;
-                      },
-                      // hapticFeedbackType: HapticFeedbackType.lightImpact,
-                      showCursor: true,
-                      onCompleted: (pin) {
-                        debugPrint('onCompleted: $pin');
-                      },
-                      onChanged: (value) {
-                        debugPrint('onChanged: $value');
-                      },
-                      focusedPinTheme: defaultPinTheme.copyWith(
-                        decoration: defaultPinTheme.decoration!.copyWith(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: AppColors.primaryBlue1),
+      body: GetBuilder<AuthController>(
+        builder: (controller) {
+          return SafeArea(
+            child: CustomLoadingWidget(
+              isLoading: controller.isLoading,
+              child: SizedBox(
+                height: height,
+                width: width,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        'Verification',
+                        textAlign: TextAlign.center,
+                        style: CustomTextStyle.heading1.copyWith(
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.nutralBlack1,
                         ),
                       ),
-                      submittedPinTheme: defaultPinTheme.copyWith(
-                        decoration: defaultPinTheme.decoration!.copyWith(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: AppColors.primaryBlue1),
+                      const SizedBox(height: 8),
+                      Text(
+                        'We’ve sent an OTP to your email address at ${Get.find<SingupAuthController>().email}',
+                        textAlign: TextAlign.center,
+                        style: CustomTextStyle.heading4.copyWith(
+                          fontWeight: FontWeight.w400,
+                          color: AppColors.subText,
                         ),
                       ),
-                      errorPinTheme: defaultPinTheme.copyBorderWith(
-                        border: Border.all(color: AppColors.red),
+                      const SizedBox(height: 30),
+                      GetBuilder<AuthController>(
+                        builder: (controller) {
+                          return Pinput(
+                            controller: controller.pinController,
+                            focusNode: controller.focusNode,
+                            androidSmsAutofillMethod: AndroidSmsAutofillMethod.smsUserConsentApi,
+                            listenForMultipleSmsOnAndroid: true,
+                            defaultPinTheme: defaultPinTheme,
+                            separatorBuilder: (index) => const SizedBox(width: 8),
+                            length: 6,
+                            validator: (value) {
+                              if (value!.length < 6) {
+                                return 'Enter 6 digit code';
+                              }
+                              return null;
+                            },
+                            // hapticFeedbackType: HapticFeedbackType.lightImpact,
+                            showCursor: true,
+                            onCompleted: (pin) {
+                              debugPrint('onCompleted: $pin');
+                            },
+                            onChanged: (value) {
+                              debugPrint('onChanged: $value');
+                            },
+                            focusedPinTheme: defaultPinTheme.copyWith(
+                              decoration: defaultPinTheme.decoration!.copyWith(
+                                borderRadius: BorderRadius.circular(10),
+                                border: Border.all(color: AppColors.primaryBlue1),
+                              ),
+                            ),
+                            submittedPinTheme: defaultPinTheme.copyWith(
+                              decoration: defaultPinTheme.decoration!.copyWith(
+                                borderRadius: BorderRadius.circular(10),
+                                border: Border.all(color: AppColors.primaryBlue1),
+                              ),
+                            ),
+                            errorPinTheme: defaultPinTheme.copyBorderWith(
+                              border: Border.all(color: AppColors.red),
+                            ),
+                          );
+                        },
                       ),
-                    );
-                  },
-                ),
-                const SizedBox(height: 30),
-                // Text(
-                //   '00:56',
-                //   textAlign: TextAlign.center,
-                //   style: CustomTextStyle.heading4.copyWith(
-                //     fontWeight: FontWeight.w700,
-                //     color: AppColors.nutralBlack1,
-                //   ),
-                // ),
-                // const SizedBox(height: 8),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Didn’t receive code? ',
-                      textAlign: TextAlign.center,
-                      style: CustomTextStyle.heading5.copyWith(
-                        fontWeight: FontWeight.w400,
-                        color: AppColors.subText,
+                      const SizedBox(height: 30),
+                      // Text(
+                      //   '00:56',
+                      //   textAlign: TextAlign.center,
+                      //   style: CustomTextStyle.heading4.copyWith(
+                      //     fontWeight: FontWeight.w700,
+                      //     color: AppColors.nutralBlack1,
+                      //   ),
+                      // ),
+                      // const SizedBox(height: 8),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Didn’t receive code? ',
+                            textAlign: TextAlign.center,
+                            style: CustomTextStyle.heading5.copyWith(
+                              fontWeight: FontWeight.w400,
+                              color: AppColors.subText,
+                            ),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              final controller = Get.find<AuthController>();
+                              controller.resendOtp();
+                            },
+                            child: Text(
+                              'Resend Code',
+                              textAlign: TextAlign.center,
+                              style: CustomTextStyle.heading5.copyWith(
+                                fontWeight: FontWeight.w600,
+                                color: AppColors.primaryBlue1,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                    Text(
-                      'Resend Code',
-                      textAlign: TextAlign.center,
-                      style: CustomTextStyle.heading5.copyWith(
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.primaryBlue1,
+                      // const SizedBox(height: 30),
+                      const Spacer(),
+                      PrimaryButton(
+                        onPressed: () {
+                          final controller = Get.find<AuthController>();
+                          controller.verifyOtp();
+                        },
+                        text: 'Done',
                       ),
-                    ),
-                  ],
+                      const SizedBox(height: 30),
+                    ],
+                  ),
                 ),
-                // const SizedBox(height: 30),
-                const Spacer(),
-                PrimaryButton(
-                  onPressed: () {
-                    final controller = Get.find<AuthController>();
-                    controller.verifyOtp();
-                  },
-                  text: 'Done',
-                ),
-                const SizedBox(height: 30),
-              ],
+              ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }

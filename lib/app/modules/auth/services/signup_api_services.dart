@@ -12,7 +12,7 @@ enum UserTypes {
 }
 
 class SignupService {
-  static Future<Either<String, String>> signup({
+  static Future<Either<RegistrationSuccess, String>> signup({
     required UserTypes userType,
     required String countryCode,
     required String name,
@@ -47,13 +47,18 @@ class SignupService {
       }
       if (response.data?['error'] == false) {
         if (uniqueId != null) {
-          return Left(uniqueId);
+          log('${response.data?['query']?['id']}', name: 'userid');
+          return Left(RegistrationSuccess(
+            uniqueId: uniqueId,
+            identifier: email,
+            userId: response.data?['query']?['id'] ?? 0,
+          ));
         } else {
-          return Right(uniqueId ?? AppConstants.unknownError); // TODO Remove uniqueId on SMTP fixed production
+          return const Right(AppConstants.unknownError);
         }
       } else {
         log('should return error object');
-        return Right(uniqueId ?? '${response.data?['error'] ?? AppConstants.unknownError}'); // TODO Remove uniqueId on SMTP fixed production
+        return Right('${response.data?['error'] ?? AppConstants.unknownError}');
       }
     } catch (e) {
       log('should return error object from catch block');
@@ -65,11 +70,11 @@ class SignupService {
 class RegistrationSuccess {
   final String uniqueId;
   final String identifier;
-  final String pipeLine;
+  final int userId;
 
   RegistrationSuccess({
     required this.uniqueId,
     required this.identifier,
-    required this.pipeLine,
+    required this.userId,
   });
 }

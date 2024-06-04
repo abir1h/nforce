@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/business_manager/views/organization_profile_view.dart';
 import 'package:nuforce/app/modules/home/views/home_view.dart';
 import 'package:nuforce/app/modules/new_orders/views/new_orders_view.dart';
 import 'package:nuforce/app/modules/order/views/order_view.dart';
 import 'package:nuforce/app/modules/settings/views/settings_view.dart';
 import 'package:nuforce/app/modules/today/views/today_view.dart';
-import 'package:nuforce/app/routes/app_pages.dart';
 import 'package:nuforce/app/shared/services/user_api_service.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/app_states.dart';
@@ -40,6 +40,9 @@ class BottomNavBarController extends GetxController {
     const OrderView(),
     const SettingsView(),
   ];
+
+  final arguments = Get.arguments;
+
   final appstateController = Get.put(AppState());
   Future<void> getUser() async {
     isLoading = true;
@@ -52,10 +55,12 @@ class BottomNavBarController extends GetxController {
           (success) {
             appstateController.setUser(success);
             // ablyConfig.connect();
+            if (arguments?['navigateTo'] == 'profile') {
+              Get.to(() => const OrganizationProfileView());
+            }
           },
           (error) {
-            SharedPreferenceService.clear();
-            Get.offAllNamed<void>(Routes.AUTH);
+            appstateController.logout();
             Fluttertoast.showToast(msg: error);
           },
         );

@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/bottom_nav_bar/controllers/bottom_nav_bar_controller.dart';
 import 'package:nuforce/app/modules/new_orders/widgets/create_work_order_widget.dart';
+import 'package:nuforce/app/utils/app_states.dart';
 import 'package:nuforce/app/utils/custom_loading_widget.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
@@ -26,6 +27,7 @@ class _BottomNavBarViewState extends State<BottomNavBarView> {
 
   @override
   Widget build(BuildContext context) {
+    print(Get.find<AppState>().user?.toJson());
     return GetBuilder<BottomNavBarController>(
       builder: (_) {
         return CustomLoadingWidget(

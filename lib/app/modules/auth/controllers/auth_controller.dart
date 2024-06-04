@@ -9,6 +9,7 @@ import 'package:nuforce/app/modules/auth/controllers/agent_customer_auth_control
 import 'package:nuforce/app/modules/auth/controllers/signup_controller.dart';
 import 'package:nuforce/app/modules/auth/services/login_api_services.dart';
 import 'package:nuforce/app/modules/auth/services/otp_services.dart';
+import 'package:nuforce/app/modules/auth/views/account_setup_view.dart';
 import 'package:nuforce/app/modules/auth/views/reset_password_view.dart';
 import 'package:nuforce/app/routes/app_pages.dart';
 import 'package:nuforce/app/utils/api_client.dart';
@@ -19,6 +20,13 @@ class AuthController extends GetxController {
   final signUpController = Get.put(SingupAuthController());
   final agentCustomerAuthController = Get.put(AgentCustomerAuthController());
   int tabIndex = 0;
+
+  bool _isLoading = false;
+  bool get isLoading => _isLoading;
+  set isLoading(bool value) {
+    _isLoading = value;
+    update();
+  }
 
   void changeTabIndex(int index) {
     tabIndex = index;
@@ -71,21 +79,25 @@ class AuthController extends GetxController {
       return;
     }
     if (fromSignUp) {
-      // Get.to<void>(() => const AccountSetupView());
-      Get.offAllNamed(Routes.BOTTOM_NAV_BAR);
+      Get.offAll(() => const AccountSetupView());
+      // Get.offAllNamed(
+      //   Routes.BOTTOM_NAV_BAR,
+      //   arguments: {'navigateTo': 'profile'},
+      // );
     } else {
       Get.to<void>(() => const ResetPasswordView());
     }
   }
 
   Future<void> verifyOtp() async {
-    if (signUpController.uniqueId == null) {
+    isLoading = true;
+    if (signUpController.registrationData == null) {
       Fluttertoast.showToast(msg: AppConstants.unknownError);
       return;
     }
 
     await OtpServices.verifyOtp(
-      uniqueId: signUpController.uniqueId ?? '',
+      uniqueId: signUpController.registrationData?.uniqueId ?? '',
       email: signUpController.email!,
       otp: pinController.text,
     ).then((value) {
@@ -96,17 +108,31 @@ class AuthController extends GetxController {
         log('OTP verification failed');
       }
     });
+    isLoading = false;
   }
 
-  // API call for login
-  bool isLoading = false;
+  Future<void> resendOtp() async {
+    if (signUpController.registrationData?.userId == null) {
+      Fluttertoast.showToast(msg: AppConstants.unknownError);
+      return;
+    }
+    await OtpServices.resendOtp(
+      userId: signUpController.registrationData!.userId,
+    ).then((value) {
+      if (value) {
+        Fluttertoast.showToast(msg: 'OTP sent successfully');
+      } else {
+        Fluttertoast.showToast(msg: 'Failed to send OTP');
+      }
+    });
+  }
+
   Future<void> businessLogin({
     required BuildContext context,
     required String email,
     required String password,
   }) async {
     isLoading = true;
-    update();
     await LoginService.businessLogin(email: email, password: password).then((value) {
       value.fold(
         (success) async {
@@ -138,6 +164,5 @@ class AuthController extends GetxController {
       );
     });
     isLoading = false;
-    update();
   }
 }

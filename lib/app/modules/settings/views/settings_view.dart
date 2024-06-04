@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/settings/controllers/settings_controller.dart';
 import 'package:nuforce/app/modules/settings/sub_modules/account_info/account_information_view.dart';
@@ -17,10 +15,9 @@ import 'package:nuforce/app/modules/settings/views/request_screen_view.dart';
 import 'package:nuforce/app/modules/settings/views/team_settings_view.dart';
 import 'package:nuforce/app/modules/settings/views/web_hook_integration_view.dart';
 import 'package:nuforce/app/modules/settings/widgets/setting_tile.dart';
-import 'package:nuforce/app/routes/app_pages.dart';
+import 'package:nuforce/app/utils/app_states.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/app/utils/extension_methods.dart';
-import 'package:nuforce/app/utils/shared_preferences.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 import 'package:nuforce/main.dart';
 
@@ -433,9 +430,8 @@ class SettingsView extends GetView<SettingsController> {
             ),
             GestureDetector(
               onTap: () {
-                SharedPreferenceService.clear();
-                Get.offAllNamed<void>(Routes.AUTH);
-                Fluttertoast.showToast(msg: 'Logged out');
+                final appState = Get.find<AppState>();
+                appState.logout();
               },
               child: Container(
                 padding: EdgeInsets.symmetric(vertical: 12.h),
