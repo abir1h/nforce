@@ -6,6 +6,7 @@ class URL {
   static const String verifyIdentity = '/public/hello.verifyIdentity';
   static const String passwordReset = '$baseUrl/public/hello.requestPasswordReset';
   static const String getUserCard = '$baseUrl/action/person.usercard';
+  static const String accountStatus = '$baseUrl/public/hello.accountStatus';
 
   static const String businessProfileForm = '$baseUrl/form/business.profile-form';
   static const String getRoles = '$baseUrl/browser/role';

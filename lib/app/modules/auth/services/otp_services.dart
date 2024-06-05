@@ -1,10 +1,15 @@
+import 'dart:convert';
+import 'dart:developer';
+
+import 'package:dartz/dartz.dart';
 import 'package:logger/logger.dart';
 import 'package:nuforce/app/utils/api_client.dart';
+import 'package:nuforce/app/utils/app_constants.dart';
 import 'package:nuforce/app/utils/shared_preferences.dart';
 import 'package:nuforce/app/utils/url.dart';
 
 class OtpServices {
-  static Future<bool> verifyOtp({
+  static Future<Either<bool, String>> verifyOtp({
     required String uniqueId,
     required String email,
     required String otp,
@@ -26,13 +31,14 @@ class OtpServices {
       Logger().i(response.data);
       if (response.data?['data']?['success'] != false) {
         final token = getTokenFromUrl(response.data?['data']?['redirectTo']);
-        SharedPreferenceService.setToken(token);
-        return true;
+        SharedPreferenceService.setUniqueId(token);
+        log(token, name: 'unique-id');
+        return const Left(true);
       } else {
-        return false;
+        return Right(response.data?['data']?['error'] ?? AppConstants.unknownError);
       }
     } catch (e) {
-      return false;
+      return Right(e.toString());
     }
   }
 
@@ -61,9 +67,9 @@ class OtpServices {
   }
 }
 
-String getTokenFromUrl(String url) {      
+String getTokenFromUrl(String url) {
   final uri = Uri.parse(url);
   final dataParam = uri.queryParameters['data'];
-  // final decodedData = utf8.decode(base64.decode(dataParam!));
-  return dataParam ?? '';
+  final decodedData = utf8.decode(base64.decode(dataParam!));
+  return json.decode(decodedData)['uniqid'];
 }

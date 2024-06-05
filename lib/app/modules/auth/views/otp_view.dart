@@ -21,6 +21,14 @@ class OtpView extends StatefulWidget {
 }
 
 class _OtpViewState extends State<OtpView> {
+  final pinController = TextEditingController();
+
+  @override
+  void dispose() {
+    pinController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final defaultPinTheme = PinTheme(
@@ -42,7 +50,7 @@ class _OtpViewState extends State<OtpView> {
       appBar: const CustomAppbarMinimal(
         title: '',
       ),
-      body: GetBuilder<AuthController>(
+      body: GetBuilder<SingupAuthController>(
         builder: (controller) {
           return SafeArea(
             child: CustomLoadingWidget(
@@ -78,7 +86,7 @@ class _OtpViewState extends State<OtpView> {
                       GetBuilder<AuthController>(
                         builder: (controller) {
                           return Pinput(
-                            controller: controller.pinController,
+                            controller: pinController,
                             focusNode: controller.focusNode,
                             androidSmsAutofillMethod: AndroidSmsAutofillMethod.smsUserConsentApi,
                             listenForMultipleSmsOnAndroid: true,
@@ -140,7 +148,7 @@ class _OtpViewState extends State<OtpView> {
                           ),
                           TextButton(
                             onPressed: () {
-                              final controller = Get.find<AuthController>();
+                              final controller = Get.find<SingupAuthController>();
                               controller.resendOtp();
                             },
                             child: Text(
@@ -158,8 +166,8 @@ class _OtpViewState extends State<OtpView> {
                       const Spacer(),
                       PrimaryButton(
                         onPressed: () {
-                          final controller = Get.find<AuthController>();
-                          controller.verifyOtp();
+                          final controller = Get.find<SingupAuthController>();
+                          controller.verifyOtp(otp: pinController.text);
                         },
                         text: 'Done',
                       ),

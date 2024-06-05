@@ -6,6 +6,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 class SharedPreferenceService extends GetxService {
   static SharedPreferenceService to = Get.find();
   static const String TOKEN = "token";
+  static const String UNIQUE_ID = "unique-id";
+  static const String USER_EMAIL = "user-email";
   static const String DEVICE_TOKEN = "device-token";
   static const String USER_ID = "user-id";
   static late SharedPreferences _sharedPreferences;
@@ -37,6 +39,14 @@ class SharedPreferenceService extends GetxService {
 
   static int? getUserId() {
     return _sharedPreferences.getInt(USER_ID);
+  }
+
+  static void setUniqueId(String userHash) {
+    _sharedPreferences.setString(UNIQUE_ID, userHash);
+  }
+
+  static String? getUniqueId() {
+    return _sharedPreferences.getString(UNIQUE_ID);
   }
 
   static Future<void> clear() async {
