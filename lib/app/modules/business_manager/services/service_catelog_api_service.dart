@@ -14,6 +14,7 @@ class ServiceCatelogsApiService {
         url: URL.getCategry,
         body: {
           "table": "category",
+          "where": {},
           "page": 1,
           "limit": 100,
           "columns": true,
@@ -80,8 +81,8 @@ class ServiceCatelogsApiService {
       final body = {
         "data": {
           "business_id": businessId,
-          'breadcrumbs': null,
-          'slug': null,
+
+
           "name": name,
           "ref_code": refCode,
           "parent_id": parentId,

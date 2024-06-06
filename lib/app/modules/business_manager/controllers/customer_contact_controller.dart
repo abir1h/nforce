@@ -53,6 +53,7 @@ class CustomerContactController extends GetxController {
   }
 
   void reset() {
+    getCustomers();
     name.clear();
     refCode.clear();
     company.clear();
@@ -60,6 +61,7 @@ class CustomerContactController extends GetxController {
     email.clear();
     mobile.clear();
     selectedContactDetails = null;
+
     update();
   }
 
@@ -85,11 +87,11 @@ class CustomerContactController extends GetxController {
     update();
   }
 
-  Future<void> getCustomers({bool showLoading = true}) async {
+  Future<void> getCustomers({bool showLoading = true,String? query}) async {
     if (showLoading) {
       isLoading = true;
     }
-    await CustomerContactApiServices.getCustomers().then((value) {
+    await CustomerContactApiServices.getCustomers(query).then((value) {
       value.fold(
         (data) {
           customers = data;

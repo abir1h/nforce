@@ -65,9 +65,9 @@ class ServiceRegionEditController extends GetxController {
     await ServiceRegionApiService.setRegionForm(
       id: id,
       businessId: appState.user?.businessId ?? 0,
-      name: formBuilder.textEditingControllers['name']!.text,
-      groupCode: formBuilder.textEditingControllers['groupCode']!.text,
-      detailsPrefixCode: formBuilder.textEditingControllers['detailsPrefixCode']!.text,
+      name: formBuilder.textEditingControllers['name']?.text??'',
+      groupCode: formBuilder.textEditingControllers['groupCode']?.text??"",
+      detailsPrefixCode: formBuilder.textEditingControllers['detailsPrefixCode']?.text??"",
       subType: '${formBuilder.dropdownValue['subType']?.value ?? ''}',
       action: action,
     ).then((value) {
