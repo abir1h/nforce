@@ -30,9 +30,14 @@ class OtpServices {
       );
       Logger().i(response.data);
       if (response.data?['data']?['success'] != false) {
-        final token = getTokenFromUrl(response.data?['data']?['redirectTo']);
-        SharedPreferenceService.setUniqueId(token);
-        log(token, name: 'unique-id');
+        final uniqueId = getTokenFromUrl(response.data?['data']?['redirectTo']);
+        SharedPreferenceService.setUniqueId(uniqueId);
+
+        final token = response.data?['data']?['access_token'];
+        SharedPreferenceService.setToken(token);
+
+        log(uniqueId, name: 'unique-id');
+        log(token, name: 'token-from-otp');
         return const Left(true);
       } else {
         return Right(response.data?['data']?['error'] ?? AppConstants.unknownError);

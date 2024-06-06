@@ -9,6 +9,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:nuforce/app/modules/business_manager/apis/business_manager_api_services.dart';
 import 'package:nuforce/app/modules/business_manager/models/form_model.dart';
 import 'package:nuforce/app/shared/functions/image_picker_func.dart';
+import 'package:nuforce/app/utils/app_states.dart';
 import 'package:nuforce/app/utils/shared_preferences.dart';
 
 class OrganizationProfileController extends GetxController {
@@ -219,44 +220,65 @@ class OrganizationProfileController extends GetxController {
     }
   }
 
-  Future<Either<String, String>> submitForm() async {
+  Future<Either<String, String>> submitForm({
+    required String countryCode,
+    required String orgCode,
+    required String name,
+    required String businessType,
+    required String logoUrl,
+  }) async {
     toggleLoading();
     try {
-      final Map<String, dynamic> body = {
-        'action': 'submit',
-        'query': {
-          'org_code': appState.user?.orgCode ?? '',
-        },
-        'data': {},
-      };
+      // final Map<String, dynamic> body = {
+      //   'action': 'submit',
+      //   'query': {
+      //     'org_code': appState.user?.orgCode ?? '',
+      //   },
+      //   'data': {},
+      // };
 
-      _businessProfileFormModel?.controls?.forEach((control) {
-        if (control.name == 'name') {
-          body['data'][control.key!] = displayNameController.text;
-        } else if (control.name == 'profileTagline') {
-          body['data'][control.key!] = brandTaglineController.text;
-        } else if (control.name == 'businessType' && control.editor == 'dropdown') {
-          body['data'][control.key!] = _selectedBusinessType?.value;
-        } else if (control.name == 'profileAbout') {
-          body['data'][control.key!] = aboutYourBusinessController.text;
-        } else if (control.name == 'address') {
-          body['data'][control.key!] = officeAddressController.text;
-        } else if (control.name == 'profilePhone') {
-          body['data'][control.key!] = phoneController.text;
-        } else if (control.name == 'profileEmail') {
-          body['data'][control.key!] = emailController.text;
-        } else if (control.name == 'profileSupport') {
-          body['data'][control.key!] = supportController.text;
-        } else if (control.name == 'profileWebsite') {
-          body['data'][control.key!] = websiteController.text;
-        } else if (control.name == 'profileTwitter') {
-          body['data'][control.key!] = twitterHandleController.text;
-        } else if (control.name == 'profileFacebook') {
-          body['data'][control.key!] = facebookPageController.text;
-        } else if (control.name == 'profileLogoUrl') {
-          // TODO Upload image
-        }
-      });
+      // _businessProfileFormModel?.controls?.forEach((control) {
+      //   if (control.name == 'name') {
+      //     body['data'][control.key!] = displayNameController.text;
+      //   } else if (control.name == 'profileTagline') {
+      //     body['data'][control.key!] = brandTaglineController.text;
+      //   } else if (control.name == 'businessType' && control.editor == 'dropdown') {
+      //     body['data'][control.key!] = _selectedBusinessType?.value;
+      //   } else if (control.name == 'profileAbout') {
+      //     body['data'][control.key!] = aboutYourBusinessController.text;
+      //   } else if (control.name == 'address') {
+      //     body['data'][control.key!] = officeAddressController.text;
+      //   } else if (control.name == 'profilePhone') {
+      //     body['data'][control.key!] = phoneController.text;
+      //   } else if (control.name == 'profileEmail') {
+      //     body['data'][control.key!] = emailController.text;
+      //   } else if (control.name == 'profileSupport') {
+      //     body['data'][control.key!] = supportController.text;
+      //   } else if (control.name == 'profileWebsite') {
+      //     body['data'][control.key!] = websiteController.text;
+      //   } else if (control.name == 'profileTwitter') {
+      //     body['data'][control.key!] = twitterHandleController.text;
+      //   } else if (control.name == 'profileFacebook') {
+      //     body['data'][control.key!] = facebookPageController.text;
+      //   } else if (control.name == 'profileLogoUrl') {
+      //     // TODO Upload image
+      //   }
+      // });
+      final appState = Get.find<AppState>();
+      final body = {
+        "query": {
+          "org_code": appState.user?.orgCode,
+        },
+        "data": {
+          "user_id": SharedPreferenceService.getUserId(),
+          'country_code': countryCode,
+          'name': name,
+          'business_type': businessType,
+          'org_code': orgCode,
+          'profile.logo_url': logoUrl,
+        },
+        "action": 'submit',
+      };
       await BusinessManagerApiServices.businessProfileForm(body).then((value) {
         value.fold(
           (l) {

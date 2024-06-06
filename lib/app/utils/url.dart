@@ -7,8 +7,9 @@ class URL {
   static const String passwordReset = '$baseUrl/public/hello.requestPasswordReset';
   static const String getUserCard = '$baseUrl/action/person.usercard';
   static const String accountStatus = '$baseUrl/public/hello.accountStatus';
+  static const String businessRegisterForm = '/form/business.register-form';
+  static const String businessProfileForm = '/form/business.profile-form';
 
-  static const String businessProfileForm = '$baseUrl/form/business.profile-form';
   static const String getRoles = '$baseUrl/browser/role';
   static const String roleForm = '$baseUrl/form/role.entry-form';
   static const String resendOtp = '/action/person.resendVerificationCode';

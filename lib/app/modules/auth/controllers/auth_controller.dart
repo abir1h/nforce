@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:nuforce/app/modules/auth/controllers/agent_customer_auth_controller.dart';
 import 'package:nuforce/app/modules/auth/controllers/signup_controller.dart';
 import 'package:nuforce/app/modules/auth/services/login_api_services.dart';
+import 'package:nuforce/app/modules/auth/views/account_setup_view.dart';
 import 'package:nuforce/app/routes/app_pages.dart';
 import 'package:nuforce/app/utils/api_client.dart';
 import 'package:nuforce/app/utils/shared_preferences.dart';
@@ -77,11 +78,20 @@ class AuthController extends GetxController {
           if (success.data?.accessToken != null && success.data!.accessToken != '' && success.data?.id != null) {
             SharedPreferenceService.setToken(success.data!.accessToken!);
             SharedPreferenceService.setUserId(success.data!.id!);
+            SharedPreferenceService.setUniqueId(success.data!.uniqid!);
             await ApiClient.init();
             if (!rememberMe) {
               SharedPreferenceService.setToken('');
             }
-            await Get.offAllNamed<void>(Routes.BOTTOM_NAV_BAR);
+
+            // await Get.offAllNamed<void>(Routes.BOTTOM_NAV_BAR);
+            // signUpController.checkAccount();
+
+            if (success.data?.businessId != null) {
+              Get.offAllNamed(Routes.BOTTOM_NAV_BAR);
+            } else {
+              Get.offAll(() => const AccountSetupView());
+            }
           }
         },
         (error) {

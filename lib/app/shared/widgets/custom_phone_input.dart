@@ -69,6 +69,7 @@ class CustomPhoneInput extends StatelessWidget {
                 borderSide: BorderSide(color: AppColors.greyText),
                 borderRadius: BorderRadius.all(Radius.circular(6)),
               ),
+              initialValue: PhoneNumber(isoCode: 'US'),
               onSaved: (PhoneNumber number) {},
             ),
           ),
