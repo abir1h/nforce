@@ -1,9 +1,7 @@
-
 import 'package:equatable/equatable.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/business_manager/models/service_topic_model.dart';
 import 'package:nuforce/app/modules/business_manager/services/service_topic_api_service.dart';
-
 
 class BusinessManagerServiceTopicController extends GetxController {
   List<ServiceTopicModel> topicList = [];
@@ -13,6 +11,7 @@ class BusinessManagerServiceTopicController extends GetxController {
     super.onInit();
     getServiceTopics();
   }
+
   getServiceTopics() {
     ServiceTopicApiService.getServiceTopics().then((value) {
       value.fold((l) {
@@ -22,6 +21,7 @@ class BusinessManagerServiceTopicController extends GetxController {
     });
   }
 }
+
 class MockServiceTopic extends Equatable {
   final String id;
   final String name;

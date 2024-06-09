@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/service_topic_edit_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/service_topic/business_manager_add_or_edit_service_topic.dart';
 import 'package:nuforce/app/shared/widgets/primary_button.dart';
 import 'package:nuforce/app/utils/colors.dart';
@@ -30,6 +31,8 @@ class EmptyServiceTopic extends StatelessWidget {
         const Expanded(child: SizedBox()),
         PrimaryButton(
           onPressed: () {
+            final controller = Get.find<ServiceTopicEditController>();
+            controller.setTopicForm();
             Get.to<void>(() => const BusinessManagerAddOrEditServiceTopic());
           },
           text: 'Add Service Topic',
