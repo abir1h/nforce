@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nuforce/app/modules/service_items/models/service_manager_data_model.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 
@@ -7,11 +8,12 @@ class AddonItemCard extends StatelessWidget {
   const AddonItemCard({
     required this.onTap,
     required this.onInstallTap,
-    super.key,
+    super.key, this.data,
   });
 
   final VoidCallback onTap;
   final VoidCallback onInstallTap;
+  final ServiceMangerItemModel? data;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +47,7 @@ class AddonItemCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'QuickBooks Customer Sync',
+                        data!.name,
                         style: TextStyle(
                           color: AppColors.nutralBlack1,
                           fontSize: 14.sp,
@@ -53,7 +55,7 @@ class AddonItemCard extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        'Sync your quick books customers with nuforce contacts',
+                        data!.description,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
@@ -65,7 +67,7 @@ class AddonItemCard extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            r'$250.00',
+                            '\$${data!.totalCost}',
                             style: TextStyle(
                               color: AppColors.nutralBlack1,
                               fontSize: 14.sp,

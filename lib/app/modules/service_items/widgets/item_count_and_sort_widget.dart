@@ -5,8 +5,9 @@ import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 
 class ItemCountAndSort extends StatelessWidget {
+  final String items;
   const ItemCountAndSort({
-    super.key,
+    super.key, required this.items,
   });
 
   @override
@@ -15,7 +16,7 @@ class ItemCountAndSort extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          'Total Items (20)',
+          'Total Items ($items)',
           style: TextStyle(
             color: AppColors.nutralBlack1,
             fontSize: 14.sp,

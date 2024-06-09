@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nuforce/app/modules/service_items/models/service_manager_data_model.dart';
 import 'package:nuforce/app/modules/service_items/widgets/little_text_with_colored_bg.dart';
 import 'package:nuforce/app/utils/colors.dart';
 
 class PackageListTile extends StatelessWidget {
   const PackageListTile({
-    super.key,
+    super.key, this.data,
   });
+  final ServiceMangerItemModel? data;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +37,7 @@ class PackageListTile extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      'Roof Repairs',
+                      data!.name,
                       style: TextStyle(
                         color: AppColors.nutralBlack1,
                         fontSize: 16.sp,
@@ -50,7 +52,7 @@ class PackageListTile extends StatelessWidget {
                   ],
                 ),
                 Text(
-                  'Lawn Services',
+                  data!.categoryName,
                   style: TextStyle(
                     color: AppColors.subText,
                     fontSize: 12.sp,
@@ -60,13 +62,13 @@ class PackageListTile extends StatelessWidget {
                 SizedBox(height: 8.h),
                 Row(
                   children: [
-                    const LittleTextWithColoredBG(
-                      text: 'FCD10',
+                     LittleTextWithColoredBG(
+                      text: data!.itemCode,
                       color: AppColors.primaryBlue1,
                     ),
                     SizedBox(width: 4.w),
-                    const LittleTextWithColoredBG(
-                      text: 'Active',
+                     LittleTextWithColoredBG(
+                      text: data!.status,
                       color: AppColors.green,
                     ),
                   ],

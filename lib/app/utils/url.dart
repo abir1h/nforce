@@ -58,4 +58,7 @@ class URL {
   ///Service Topic
   static const String getTerms = '$baseUrl/browser/policy';
   static const String getTermsForm = '$baseUrl/form/policy.register-form';
+
+  ///Service Manger
+  static const String getLineItems = '$baseUrl/action/lineitems.browse';
 }

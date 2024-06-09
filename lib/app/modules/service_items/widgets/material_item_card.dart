@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nuforce/app/modules/service_items/models/service_manager_data_model.dart';
 import 'package:nuforce/app/modules/service_items/widgets/bottom_tile_widget.dart';
 import 'package:nuforce/app/modules/service_items/widgets/little_text_with_colored_bg.dart';
 import 'package:nuforce/app/utils/colors.dart';
@@ -9,12 +10,13 @@ class MaterialItemCard extends StatelessWidget {
     required this.withBottomTitle,
     super.key,
     this.onFavoriteTap,
-    this.isFavorite = false,
+    this.isFavorite = false,  this.data,
   });
 
   final bool withBottomTitle;
   final VoidCallback? onFavoriteTap;
   final bool isFavorite;
+  final ServiceMangerItemModel? data;
 
   @override
   Widget build(BuildContext context) {
@@ -46,13 +48,13 @@ class MaterialItemCard extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        const LittleTextWithColoredBG(
-                          text: 'Discount',
+                         LittleTextWithColoredBG(
+                          text: data!.itemType.toUpperCase(),
                           color: AppColors.yellow,
                         ),
                         SizedBox(width: 4.sp),
-                        const LittleTextWithColoredBG(
-                          text: 'IBO4',
+                         LittleTextWithColoredBG(
+                          text: data!.itemCode,
                           color: AppColors.blue,
                         ),
                         const Spacer(),
@@ -67,7 +69,7 @@ class MaterialItemCard extends StatelessWidget {
                     ),
                     SizedBox(height: 6.sp),
                     Text(
-                      'Broom and Dust Pan',
+                      data!.name,
                       style: TextStyle(
                         color: AppColors.nutralBlack1,
                         fontSize: 16.sp,
@@ -75,7 +77,7 @@ class MaterialItemCard extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'Lawn Services',
+                      data!.categoryName,
                       style: TextStyle(
                         color: AppColors.nutralBlack1,
                         fontSize: 12.sp,
@@ -85,7 +87,7 @@ class MaterialItemCard extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          r'$25.00',
+                          '\$${data!.totalCost.toString()}',
                           style: TextStyle(
                             color: AppColors.nutralBlack1,
                             fontSize: 14.sp,
@@ -120,7 +122,7 @@ class MaterialItemCard extends StatelessWidget {
                         ),
                         const Spacer(),
                         Text(
-                          'Qty: 1',
+                          'Qty: ${data!.quantity}',
                           textAlign: TextAlign.right,
                           style: TextStyle(
                             color: AppColors.nutralBlack1,
