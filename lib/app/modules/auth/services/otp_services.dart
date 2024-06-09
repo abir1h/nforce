@@ -35,6 +35,7 @@ class OtpServices {
 
         final token = response.data?['data']?['access_token'];
         SharedPreferenceService.setToken(token);
+        await ApiClient.init();
 
         log(uniqueId, name: 'unique-id');
         log(token, name: 'token-from-otp');
