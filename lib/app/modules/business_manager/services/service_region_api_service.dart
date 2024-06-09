@@ -1,7 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:get/get.dart';
 import 'package:nuforce/app/modules/business_manager/models/service_region_model.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/calendar/services/business_manager_calendar_api_services.dart';
+import 'package:nuforce/app/utils/app_states.dart';
 import '../../../utils/api_client.dart';
 import '../../../utils/url.dart';
 import '../../line_item/models/control.dart';
@@ -61,10 +63,11 @@ class ServiceRegionApiService {
     required ActionType action,
   }) async {
     try {
+      final controller = Get.find<AppState>();
       final body = {
         "data": {
-          "business_id": 15,
-          "params.org_code": "hammer",
+          "business_id": controller.user?.businessId,
+          "params.org_code": controller.user?.orgCode,
           "group_type": "region",
           "parent_id": null,
           "details.description": null,

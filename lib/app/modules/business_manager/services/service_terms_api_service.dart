@@ -22,7 +22,7 @@ class ServiceTermsApiService {
     }
   }
 
-  static Future<Either<List<Control>, String>> getServiceForm([int? id]) async {
+  static Future<Either<List<Control>, String>>  getServiceForm([int? id]) async {
     try {
       final data = {
         "query": {"id": id}
