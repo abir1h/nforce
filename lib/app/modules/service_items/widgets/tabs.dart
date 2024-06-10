@@ -23,6 +23,9 @@ class ServiceMiniTabs extends StatelessWidget {
               isSelected: controller.miniTabEnum.value == ServiceTabEnum.all,
               onTap: () {
                 controller.miniTabEnum.value = ServiceTabEnum.all;
+                controller
+                    .getServiceCategoriesByTab(controller.miniTabEnum.value);
+                controller.dataLoaded=false;
               },
               text: 'All',
               isMini: true,
@@ -30,9 +33,13 @@ class ServiceMiniTabs extends StatelessWidget {
           ),
           Obx(
             () => CustomTabBarFilled(
-              isSelected: controller.miniTabEnum.value == ServiceTabEnum.service,
+              isSelected:
+                  controller.miniTabEnum.value == ServiceTabEnum.service,
               onTap: () {
                 controller.miniTabEnum.value = ServiceTabEnum.service;
+                controller
+                    .getServiceCategoriesByTab(controller.miniTabEnum.value);                controller.dataLoaded=false;
+
               },
               text: 'Service',
               isMini: true,
@@ -40,9 +47,13 @@ class ServiceMiniTabs extends StatelessWidget {
           ),
           Obx(
             () => CustomTabBarFilled(
-              isSelected: controller.miniTabEnum.value == ServiceTabEnum.material,
+              isSelected:
+                  controller.miniTabEnum.value == ServiceTabEnum.material,
               onTap: () {
                 controller.miniTabEnum.value = ServiceTabEnum.material;
+                controller
+                    .getServiceCategoriesByTab(controller.miniTabEnum.value);                controller.dataLoaded=false;
+
               },
               text: 'Material',
               isMini: true,
@@ -50,9 +61,13 @@ class ServiceMiniTabs extends StatelessWidget {
           ),
           Obx(
             () => CustomTabBarFilled(
-              isSelected: controller.miniTabEnum.value == ServiceTabEnum.package,
+              isSelected:
+                  controller.miniTabEnum.value == ServiceTabEnum.package,
               onTap: () {
                 controller.miniTabEnum.value = ServiceTabEnum.package;
+                controller
+                    .getServiceCategoriesByTab(controller.miniTabEnum.value);                controller.dataLoaded=false;
+
               },
               text: 'Package',
               isMini: true,
@@ -60,9 +75,13 @@ class ServiceMiniTabs extends StatelessWidget {
           ),
           Obx(
             () => CustomTabBarFilled(
-              isSelected: controller.miniTabEnum.value == ServiceTabEnum.subscription,
+              isSelected:
+                  controller.miniTabEnum.value == ServiceTabEnum.subscription,
               onTap: () {
                 controller.miniTabEnum.value = ServiceTabEnum.subscription;
+                controller
+                    .getServiceCategoriesByTab(controller.miniTabEnum.value);                controller.dataLoaded=false;
+
               },
               text: 'Subscription',
               isMini: true,
@@ -73,6 +92,9 @@ class ServiceMiniTabs extends StatelessWidget {
               isSelected: controller.miniTabEnum.value == ServiceTabEnum.addons,
               onTap: () {
                 controller.miniTabEnum.value = ServiceTabEnum.addons;
+                controller
+                    .getServiceCategoriesByTab(controller.miniTabEnum.value);                controller.dataLoaded=false;
+
               },
               text: 'Addons',
               isMini: true,

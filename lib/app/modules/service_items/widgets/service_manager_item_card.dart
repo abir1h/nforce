@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nuforce/app/modules/service_items/models/service_manager_data_model.dart';
 import 'package:nuforce/app/modules/service_items/widgets/bottom_tile_widget.dart';
 import 'package:nuforce/app/modules/service_items/widgets/little_text_with_colored_bg.dart';
 import 'package:nuforce/app/utils/colors.dart';
@@ -11,12 +12,13 @@ class ServiceManagerItemCard extends StatelessWidget {
     required this.withBottomTitle,
     super.key,
     this.onFavoriteTap,
-    this.isFavorite = false,
+    this.isFavorite = false,  this.data,
   });
 
   final bool withBottomTitle;
   final VoidCallback? onFavoriteTap;
   final bool isFavorite;
+  final ServiceMangerItemModel? data;
 
   @override
   Widget build(BuildContext context) {
@@ -53,13 +55,13 @@ class ServiceManagerItemCard extends StatelessWidget {
                           color: AppColors.primaryBlue2,
                         ),
                         SizedBox(width: 4.sp),
-                        const LittleTextWithColoredBG(
-                          text: 'Service',
+                         LittleTextWithColoredBG(
+                          text: data!.itemType.toUpperCase(),
                           color: AppColors.primaryBlue1,
                         ),
                         SizedBox(width: 4.sp),
-                        const LittleTextWithColoredBG(
-                          text: 'IBO4',
+                         LittleTextWithColoredBG(
+                          text: data!.itemCode,
                           color: AppColors.primaryBlue2,
                         ),
                         const Spacer(),
@@ -75,21 +77,23 @@ class ServiceManagerItemCard extends StatelessWidget {
                     ),
                     SizedBox(height: 6.sp),
                     Text(
-                      'Insulation Blow Over',
+                      data!.name??"",
                       style: CustomTextStyle.paragraphMedium.copyWith(
                         color: AppColors.nutralBlack1,
                       ),
                     ),
                     Text(
-                      'Lawn Services',
+                     data!.categoryName,
                       style: CustomTextStyle.paragraphExtraSmall.copyWith(
                         color: AppColors.nutralBlack1,
                       ),
                     ),
+
+                    //TODO complete after getting proper api documentation
                     Row(
                       children: [
                         Text(
-                          r'$25.00',
+                          '\$${data!.totalCost.toString()}',
                           style: CustomTextStyle.paragraphSmall.copyWith(
                             color: AppColors.nutralBlack1,
                           ),
@@ -131,7 +135,7 @@ class ServiceManagerItemCard extends StatelessWidget {
                         ),
                         const Spacer(),
                         Text(
-                          'Qty: 1',
+                          'Qty: ${data!.quantity}',
                           textAlign: TextAlign.right,
                           style: CustomTextStyle.paragraphSmall.copyWith(
                             color: AppColors.nutralBlack1,
