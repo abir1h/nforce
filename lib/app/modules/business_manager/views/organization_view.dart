@@ -97,7 +97,7 @@ class OrganizationView extends StatelessWidget {
               const SizedBox(height: 16),
               BigButtonWithIcon(
                 svgPath: Assets.images.svg.serviceCategory,
-                lable: 'Service Catalogs',
+                lable: 'Service Categories',
                 onTap: () {
                   Get.to<void>(() => const BusinessManagerServiceCatalogsView());
                 },

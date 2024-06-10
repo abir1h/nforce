@@ -20,7 +20,7 @@ class _ServiceCalatogDropdownState extends State<ServiceCalatogDropdown> {
     return Row(
       children: [
         Text(
-          'All Catalogs',
+          'All Categories',
           style: TextStyle(
             color: AppColors.nutralBlack1,
             fontSize: 16.sp,

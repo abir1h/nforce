@@ -26,7 +26,7 @@ class _BusinessManagerServiceCatalogsViewState extends State<BusinessManagerServ
         return Scaffold(
           backgroundColor: AppColors.white1,
           appBar: CustomAppbarMinimal(
-            title: 'Service Catalogs',
+            title: 'Service Categories',
             trailing: [
               if (controller.categoryList.isEmpty)
                 const SizedBox()
