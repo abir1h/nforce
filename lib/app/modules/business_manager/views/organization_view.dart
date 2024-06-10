@@ -59,7 +59,7 @@ class OrganizationView extends StatelessWidget {
               const SizedBox(height: 16),
               BigButtonWithIcon(
                 svgPath: Assets.images.svg.simpleCalendar,
-                lable: 'Calendar',
+                lable: 'Calendars',
                 onTap: () {
                   Get.to<void>(() => const BusinessManagerCalendarView());
                 },
@@ -97,7 +97,7 @@ class OrganizationView extends StatelessWidget {
               const SizedBox(height: 16),
               BigButtonWithIcon(
                 svgPath: Assets.images.svg.serviceCategory,
-                lable: 'Service Category',
+                lable: 'Service Catalogs',
                 onTap: () {
                   Get.to<void>(() => const BusinessManagerServiceCatalogsView());
                 },
@@ -105,7 +105,7 @@ class OrganizationView extends StatelessWidget {
               const SizedBox(height: 16),
               BigButtonWithIcon(
                 svgPath: Assets.images.svg.serviceTopic,
-                lable: 'Service Topic',
+                lable: 'Service Topics',
                 onTap: () {
                   Get.to<void>(() => const BusinessManagerServiceTopicView());
                 },
@@ -121,7 +121,7 @@ class OrganizationView extends StatelessWidget {
               const SizedBox(height: 16),
               BigButtonWithIcon(
                 svgPath: Assets.images.svg.termsAndPolicy,
-                lable: 'Terms and Policy',
+                lable: 'Terms and Policies',
                 onTap: () {
                   Get.to<void>(() => const BusinessManagerTermsAndConditionView());
                 },

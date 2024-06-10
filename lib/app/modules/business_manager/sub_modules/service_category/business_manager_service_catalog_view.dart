@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/business_manager/controllers/business_manager_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/service_category/business_manager_add_or_edit_service_catalog.dart';
 import 'package:nuforce/app/modules/business_manager/controllers/business_manager_service_catalog_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/service_category/business_manager_service_catalog_details_view.dart';
@@ -20,18 +19,16 @@ class BusinessManagerServiceCatalogsView extends StatefulWidget {
 }
 
 class _BusinessManagerServiceCatalogsViewState extends State<BusinessManagerServiceCatalogsView> {
-  final controller = Get.find<BusinessManagerController>();
-
   @override
   Widget build(BuildContext context) {
     return GetBuilder<BusinessManagerServiceCatalogsController>(
-      builder: (_) {
+      builder: (controller) {
         return Scaffold(
           backgroundColor: AppColors.white1,
           appBar: CustomAppbarMinimal(
             title: 'Service Catalogs',
             trailing: [
-              if (controller.serviceCatalogsController.categoryList.isEmpty)
+              if (controller.categoryList.isEmpty)
                 const SizedBox()
               else
                 GestureDetector(
@@ -61,35 +58,37 @@ class _BusinessManagerServiceCatalogsViewState extends State<BusinessManagerServ
             width: Get.width,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
-              child: controller.serviceCatalogsController.categoryList.isEmpty
+              child: controller.categoryList.isEmpty
                   ? const EmptyServiceCatalogs()
                   : Padding(
                       padding: const EdgeInsets.only(top: 14),
-                      child: Column(
-                        children: [
-                          const ServiceCalatogDropdown(),
-                          const SizedBox(height: 16),
-                          ListView.builder(
-                            itemCount: controller.serviceCatalogsController.categoryList.length,
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemBuilder: (BuildContext context, int index) {
-                              return Padding(
-                                padding: const EdgeInsets.only(bottom: 16),
-                                child: ServiceCatalogTile(
-                                  service: controller.serviceCatalogsController.categoryList[index],
-                                  onTap: () {
-                                    Get.to<void>(
-                                      () => BusinessManagerServiceCatalogsDeatilsView(
-                                        serviceCategory: controller.serviceCatalogsController.categoryList[index],
-                                      ),
-                                    );
-                                  },
-                                ),
-                              );
-                            },
-                          ),
-                        ],
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            const ServiceCalatogDropdown(),
+                            const SizedBox(height: 16),
+                            ListView.builder(
+                              itemCount: controller.categoryList.length,
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemBuilder: (BuildContext context, int index) {
+                                return Padding(
+                                  padding: const EdgeInsets.only(bottom: 16),
+                                  child: ServiceCatalogTile(
+                                    service: controller.categoryList[index],
+                                    onTap: () {
+                                      Get.to<void>(
+                                        () => BusinessManagerServiceCatalogsDeatilsView(
+                                          serviceCategory: controller.categoryList[index],
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                );
+                              },
+                            ),
+                          ],
+                        ),
                       ),
                     ),
             ),
