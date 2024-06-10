@@ -1,11 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:dio/dio.dart';
-import 'package:nuforce/app/modules/business_manager/models/service_category_model.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/calendar/services/business_manager_calendar_api_services.dart';
 import '../../../utils/api_client.dart';
 import '../../../utils/url.dart';
-import '../../line_item/models/control.dart';
-import 'dart:developer' as developer show log;
 
 import '../models/service_manager_data_model.dart';
 
@@ -14,32 +9,34 @@ class ServiceMangerApiService {
     try {
       final response = await ApiClient.instance.post(
         url: URL.getLineItems,
-        body:type==null? {
-          "table": null,
-          "page": 1,
-          "limit": 20,
-          "where": {
-            // "category_id": "22",
-            // "name": "First Purchase Discount",
-          },
-          "order": "id asc",
-          "transform": "toData",
-          "humanized": true,
-          "columns": true
-        }:{
-          "table": null,
-          "page": 1,
-          "limit": 10,
-          "where": {
-            // "category_id": "22",
-            // "name": "First Purchase Discount",
-            "item_type":type
-          },
-          "order": "id asc",
-          "transform": "toData",
-          "humanized": true,
-          "columns": true
-        },
+        body: type == null
+            ? {
+                "table": null,
+                "page": 1,
+                "limit": 20,
+                "where": {
+                  // "category_id": "22",
+                  // "name": "First Purchase Discount",
+                },
+                "order": "id asc",
+                "transform": "toData",
+                "humanized": true,
+                "columns": true
+              }
+            : {
+                "table": null,
+                "page": 1,
+                "limit": 10,
+                "where": {
+                  // "category_id": "22",
+                  // "name": "First Purchase Discount",
+                  "item_type": type
+                },
+                "order": "id asc",
+                "transform": "toData",
+                "humanized": true,
+                "columns": true
+              },
       );
       if (response.statusCode == 200 && response.data['data'] != null) {
         return Left(ServiceManagerDataModel.fromJson(response.data));

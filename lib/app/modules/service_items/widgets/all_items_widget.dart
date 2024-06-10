@@ -9,14 +9,19 @@ import 'package:nuforce/app/modules/service_items/widgets/service_manager_item_c
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:shimmer/shimmer.dart';
 
-class AllItems extends StatelessWidget {
+class AllItems extends StatefulWidget {
   const AllItems({
     super.key,
   });
 
   @override
+  State<AllItems> createState() => _AllItemsState();
+}
+
+class _AllItemsState extends State<AllItems> {
+  final controller = Get.put(ServiceItemsController());
+  @override
   Widget build(BuildContext context) {
-    final controller = Get.put(ServiceItemsController());
     return GetBuilder<ServiceItemsController>(builder: (controller) {
       return controller.dataLoaded == true
           ? Column(
@@ -40,8 +45,7 @@ class AllItems extends StatelessWidget {
                         padding: const EdgeInsets.only(bottom: 16),
                         child: GestureDetector(
                           onTap: () {
-                            Get.to<void>(() => const SelectedItemDetailsView(
-                                appbarText: 'AC Hydrowash Service'));
+                            Get.to<void>(() => const SelectedItemDetailsView(appbarText: 'AC Hydrowash Service'));
                           },
                           child: Obx(
                             () => ServiceManagerItemCard(
@@ -82,8 +86,7 @@ class Loader extends StatelessWidget {
             baseColor: Colors.grey.shade300,
             highlightColor: Colors.grey.shade100,
             child: Container(
-              padding: EdgeInsets.only(
-                  top: 12.h, bottom: 12.h, left: 10.w, right: 18.w),
+              padding: EdgeInsets.only(top: 12.h, bottom: 12.h, left: 10.w, right: 18.w),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8.r),
                 border: Border.all(color: AppColors.white3, width: 1.w),
@@ -108,41 +111,31 @@ class Loader extends StatelessWidget {
                             Container(
                               width: .5.sw,
                               height: 12.0,
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10)),
+                              decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
                             ),
                             SizedBox(height: 5.h),
                             Container(
                               width: .5.sw,
                               height: 12.0,
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10)),
+                              decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
                             ),
                             SizedBox(height: 5.h),
                             Container(
                               width: .3.sw,
                               height: 12.0,
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10)),
+                              decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
                             ),
                             SizedBox(height: 5.h),
                             Container(
                               width: .2.sw,
                               height: 12.0,
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10)),
+                              decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
                             ),
                             SizedBox(height: 5.h),
                             Container(
                               width: .2.sw,
                               height: 12.0,
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10)),
+                              decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
                             ),
                           ],
                         ),

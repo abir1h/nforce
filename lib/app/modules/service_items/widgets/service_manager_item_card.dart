@@ -12,7 +12,8 @@ class ServiceManagerItemCard extends StatelessWidget {
     required this.withBottomTitle,
     super.key,
     this.onFavoriteTap,
-    this.isFavorite = false,  this.data,
+    this.isFavorite = false,
+    this.data,
   });
 
   final bool withBottomTitle;
@@ -55,12 +56,12 @@ class ServiceManagerItemCard extends StatelessWidget {
                           color: AppColors.primaryBlue2,
                         ),
                         SizedBox(width: 4.sp),
-                         LittleTextWithColoredBG(
+                        LittleTextWithColoredBG(
                           text: data!.itemType.toUpperCase(),
                           color: AppColors.primaryBlue1,
                         ),
                         SizedBox(width: 4.sp),
-                         LittleTextWithColoredBG(
+                        LittleTextWithColoredBG(
                           text: data!.itemCode,
                           color: AppColors.primaryBlue2,
                         ),
@@ -77,13 +78,13 @@ class ServiceManagerItemCard extends StatelessWidget {
                     ),
                     SizedBox(height: 6.sp),
                     Text(
-                      data!.name??"",
+                      data?.name ?? "",
                       style: CustomTextStyle.paragraphMedium.copyWith(
                         color: AppColors.nutralBlack1,
                       ),
                     ),
                     Text(
-                     data!.categoryName,
+                      data!.categoryName,
                       style: CustomTextStyle.paragraphExtraSmall.copyWith(
                         color: AppColors.nutralBlack1,
                       ),

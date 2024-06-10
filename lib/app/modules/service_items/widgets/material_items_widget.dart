@@ -10,13 +10,19 @@ import 'package:nuforce/app/utils/colors.dart';
 
 import '../controllers/service_items_controller.dart';
 
-class MaterialItems extends StatelessWidget {
+class MaterialItems extends StatefulWidget {
   const MaterialItems({super.key});
 
   @override
-  Widget build(BuildContext context) {    final controller=Get.put(ServiceItemsController());
+  State<MaterialItems> createState() => _MaterialItemsState();
+}
 
-  return GetBuilder<ServiceItemsController>(builder: (controller) {
+class _MaterialItemsState extends State<MaterialItems> {
+  final controller = Get.put(ServiceItemsController());
+
+  @override
+  Widget build(BuildContext context) {
+    return GetBuilder<ServiceItemsController>(builder: (controller) {
       return controller.dataLoaded == true
           ? Column(
               children: [
@@ -39,8 +45,7 @@ class MaterialItems extends StatelessWidget {
                         padding: const EdgeInsets.only(bottom: 16),
                         child: GestureDetector(
                           onTap: () {
-                            Get.to<void>(() => const SelectedItemDetailsView(
-                                appbarText: 'Broom and Dust Pan'));
+                            Get.to<void>(() => const SelectedItemDetailsView(appbarText: 'Broom and Dust Pan'));
                           },
                           child: Obx(
                             () => MaterialItemCard(
