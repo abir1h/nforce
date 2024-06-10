@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:nuforce/app/modules/business_manager/models/service_catelog_model.dart';
+import 'package:nuforce/app/modules/business_manager/models/service_category_model.dart';
 import 'package:nuforce/app/utils/colors.dart';
 import 'package:nuforce/gen/assets.gen.dart';
 import 'package:nuforce/main.dart';
 
-class ServiceCatalogTile extends StatelessWidget {
-  const ServiceCatalogTile({
+class ServiceCategoryTile extends StatelessWidget {
+  const ServiceCategoryTile({
     required this.service,
     super.key,
     this.onTap,

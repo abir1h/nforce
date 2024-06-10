@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/business_manager/controllers/business_manager_service_catalog_controller.dart';
-import 'package:nuforce/app/modules/business_manager/models/service_catelog_model.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/business_manager_service_category_controller.dart';
+import 'package:nuforce/app/modules/business_manager/models/service_category_model.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/calendar/services/business_manager_calendar_api_services.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/shared/widgets/custom_dropdown.dart';
@@ -16,18 +16,18 @@ import '../../models/form_model.dart';
 
 GlobalKey<FormState> addOrEditServiceCategory = GlobalKey<FormState>();
 
-class BusinessManagerAddOrEditServiceCatalogs extends StatefulWidget {
-  const BusinessManagerAddOrEditServiceCatalogs({
+class BusinessManagerAddOrEditServiceCategory extends StatefulWidget {
+  const BusinessManagerAddOrEditServiceCategory({
     super.key,
     this.serviceCatalog,
   });
   final ServiceCategoryModel? serviceCatalog;
 
   @override
-  State<BusinessManagerAddOrEditServiceCatalogs> createState() => _BusinessManagerAddOrEditServiceCatalogsState();
+  State<BusinessManagerAddOrEditServiceCategory> createState() => _BusinessManagerAddOrEditServiceCategoryState();
 }
 
-class _BusinessManagerAddOrEditServiceCatalogsState extends State<BusinessManagerAddOrEditServiceCatalogs> {
+class _BusinessManagerAddOrEditServiceCategoryState extends State<BusinessManagerAddOrEditServiceCategory> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -100,7 +100,7 @@ class _BusinessManagerAddOrEditServiceCatalogsState extends State<BusinessManage
                             )
                                 .then((value) {
                               if (value == true) {
-                                final data = Get.find<BusinessManagerServiceCatalogsController>();
+                                final data = Get.find<BusinessManagerServiceCategoryController>();
                                 data.getServiceCategories();
                                 Get.back();
                               }

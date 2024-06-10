@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/service_category/business_manager_add_or_edit_service_catalog.dart';
-import 'package:nuforce/app/modules/business_manager/controllers/business_manager_service_catalog_controller.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/service_category/business_manager_service_catalog_details_view.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/service_category/widget/business_manager_empty_service_catalog.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/service_category/widget/service_catalog_dropdown.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/service_category/widget/service_catalog_tile.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/service_category/business_manager_add_or_edit_service_category.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/business_manager_service_category_controller.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/service_category/business_manager_service_category_details_view.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/service_category/widget/business_manager_empty_service_category.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/service_category/widget/service_category_dropdown.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/service_category/widget/service_category_tile.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/utils/app_sizes.dart';
 import 'package:nuforce/app/utils/colors.dart';
 
-class BusinessManagerServiceCatalogsView extends StatefulWidget {
-  const BusinessManagerServiceCatalogsView({super.key});
+class BusinessManagerServiceCategoryView extends StatefulWidget {
+  const BusinessManagerServiceCategoryView({super.key});
 
   @override
-  State<BusinessManagerServiceCatalogsView> createState() => _BusinessManagerServiceCatalogsViewState();
+  State<BusinessManagerServiceCategoryView> createState() => _BusinessManagerServiceCategoryViewState();
 }
 
-class _BusinessManagerServiceCatalogsViewState extends State<BusinessManagerServiceCatalogsView> {
+class _BusinessManagerServiceCategoryViewState extends State<BusinessManagerServiceCategoryView> {
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<BusinessManagerServiceCatalogsController>(
+    return GetBuilder<BusinessManagerServiceCategoryController>(
       builder: (controller) {
         return Scaffold(
           backgroundColor: AppColors.white1,
@@ -33,7 +33,7 @@ class _BusinessManagerServiceCatalogsViewState extends State<BusinessManagerServ
               else
                 GestureDetector(
                   onTap: () {
-                    Get.to<void>(() => const BusinessManagerAddOrEditServiceCatalogs());
+                    Get.to<void>(() => const BusinessManagerAddOrEditServiceCategory());
                   },
                   child: Row(
                     children: [
@@ -59,13 +59,13 @@ class _BusinessManagerServiceCatalogsViewState extends State<BusinessManagerServ
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
               child: controller.categoryList.isEmpty
-                  ? const EmptyServiceCatalogs()
+                  ? const EmptyServiceCatagory()
                   : Padding(
                       padding: const EdgeInsets.only(top: 14),
                       child: SingleChildScrollView(
                         child: Column(
                           children: [
-                            const ServiceCalatogDropdown(),
+                            const ServiceCalegoryDropdown(),
                             const SizedBox(height: 16),
                             ListView.builder(
                               itemCount: controller.categoryList.length,
@@ -74,11 +74,11 @@ class _BusinessManagerServiceCatalogsViewState extends State<BusinessManagerServ
                               itemBuilder: (BuildContext context, int index) {
                                 return Padding(
                                   padding: const EdgeInsets.only(bottom: 16),
-                                  child: ServiceCatalogTile(
+                                  child: ServiceCategoryTile(
                                     service: controller.categoryList[index],
                                     onTap: () {
                                       Get.to<void>(
-                                        () => BusinessManagerServiceCatalogsDeatilsView(
+                                        () => BusinessManagerServiceCategoryDeatilsView(
                                           serviceCategory: controller.categoryList[index],
                                         ),
                                       );

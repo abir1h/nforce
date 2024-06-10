@@ -1,14 +1,4 @@
-// To parse this JSON data, do
-//
-//     final ServiceCategoryDataModel = ServiceCategoryDataModelFromJson(jsonString);
-
-import 'dart:convert';
-
 import 'package:nuforce/app/modules/business_manager/models/form_model.dart';
-
-ServiceCategoryDataModel ServiceCategoryDataModelFromJson(String str) => ServiceCategoryDataModel.fromJson(json.decode(str));
-
-String ServiceCategoryDataModelToJson(ServiceCategoryDataModel data) => json.encode(data.toJson());
 
 class ServiceCategoryDataModel {
   final int page;

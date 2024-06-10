@@ -7,7 +7,7 @@ import 'package:nuforce/app/modules/business_manager/sub_modules/contact_group/b
 import 'package:nuforce/app/modules/business_manager/sub_modules/contact_group/business_manager_contact_group_view.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/label/business_manager_label_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/label/business_manager_label_view.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/service_category/business_manager_service_catalog_view.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/service_category/business_manager_service_category_view.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/service_region/business_manager_service_region_view.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/service_topic/business_manager_service_topic_view.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/terms_and_policy/business_manager_terms_and_policy_view.dart';
@@ -99,7 +99,7 @@ class OrganizationView extends StatelessWidget {
                 svgPath: Assets.images.svg.serviceCategory,
                 lable: 'Service Categories',
                 onTap: () {
-                  Get.to<void>(() => const BusinessManagerServiceCatalogsView());
+                  Get.to<void>(() => const BusinessManagerServiceCategoryView());
                 },
               ),
               const SizedBox(height: 16),

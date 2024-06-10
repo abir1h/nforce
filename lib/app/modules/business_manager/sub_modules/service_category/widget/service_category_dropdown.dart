@@ -3,16 +3,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nuforce/app/shared/widgets/custom_dropdown_with_bg.dart';
 import 'package:nuforce/app/utils/colors.dart';
 
-class ServiceCalatogDropdown extends StatefulWidget {
-  const ServiceCalatogDropdown({
+class ServiceCalegoryDropdown extends StatefulWidget {
+  const ServiceCalegoryDropdown({
     super.key,
   });
 
   @override
-  State<ServiceCalatogDropdown> createState() => _ServiceCalatogDropdownState();
+  State<ServiceCalegoryDropdown> createState() => _ServiceCalegoryDropdownState();
 }
 
-class _ServiceCalatogDropdownState extends State<ServiceCalatogDropdown> {
+class _ServiceCalegoryDropdownState extends State<ServiceCalegoryDropdown> {
   List<String> dropdownItems = ['Type 1', 'Type 2', 'Type 3'];
   String? selectedValue;
   @override

@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:nuforce/app/modules/business_manager/controllers/customer_contact_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/customer_contact/customer_contact_add_view.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/customer_contact/customer_contact_details_view.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/customer_contact/widgets/custom_search_widget.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/customer_contact/widgets/list_card.dart';
 
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
@@ -37,7 +36,6 @@ class _CustomerContactListViewState extends State<CustomerContactListView> {
               padding: const EdgeInsets.only(right: 20),
               child: GestureDetector(
                 onTap: () {
-
                   controller.reset();
                   Get.to<void>(() => const CustomerContactAddView());
                 },
@@ -72,10 +70,10 @@ class _CustomerContactListViewState extends State<CustomerContactListView> {
                       ),
                     ),
                     child: TextField(
-                      onChanged: (v){
-                        v.length>2?controller.getCustomers(query: v.trim()):null;
-                        if(v.length==0){
-                        controller.getCustomers();
+                      onChanged: (v) {
+                        v.length > 2 ? controller.getCustomers(query: v.trim()) : null;
+                        if (v.length == 0) {
+                          controller.getCustomers();
                         }
                       },
                       decoration: InputDecoration(
@@ -98,7 +96,6 @@ class _CustomerContactListViewState extends State<CustomerContactListView> {
                         border: InputBorder.none,
                         enabledBorder: InputBorder.none,
                         focusedBorder: InputBorder.none,
-
                       ),
                     ),
                   ),
@@ -142,20 +139,19 @@ class _CustomerContactListViewState extends State<CustomerContactListView> {
                 );
               },
             ),
-
           ],
         ),
       ),
     );
   }
 }
+
 class ContactLoader extends StatelessWidget {
   const ContactLoader({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return                ListView.separated(
-
+    return ListView.separated(
       separatorBuilder: (_, index) {
         return SizedBox(
           height: 16.h,
@@ -195,17 +191,13 @@ class ContactLoader extends StatelessWidget {
                             Container(
                               width: .4.sw,
                               height: 12.0,
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10)),
+                              decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
                             ),
                             SizedBox(height: 5.h),
                             Container(
                               width: .2.sw,
                               height: 12.0,
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10)),
+                              decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
                             ),
                           ],
                         ),
@@ -218,12 +210,10 @@ class ContactLoader extends StatelessWidget {
                   ),
                 ],
               ),
-            )
-        );
+            ));
       },
       itemCount: 10,
       shrinkWrap: true,
     );
-
   }
 }

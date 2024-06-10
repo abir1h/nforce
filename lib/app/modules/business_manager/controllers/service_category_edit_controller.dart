@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/business_manager/models/form_model.dart';
-import 'package:nuforce/app/modules/business_manager/services/service_catelog_api_service.dart';
+import 'package:nuforce/app/modules/business_manager/services/service_category_api_service.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/calendar/services/business_manager_calendar_api_services.dart';
 import 'package:nuforce/app/shared/widgets/form_builder.dart';
 
@@ -52,7 +52,7 @@ class ServiceCategoryEditController extends GetxController {
 
   Future<void> setContactForm([int? id]) async {
     setLoading(true);
-    await ServiceCatelogsApiService.getCategoryForm(id).then((value) {
+    await ServiceCategoryApiService.getCategoryForm(id).then((value) {
       value.fold(
         (controls) {
           setFormBuilder(getForm(controls: controls));
@@ -69,7 +69,7 @@ class ServiceCategoryEditController extends GetxController {
     bool? result;
     setSaving(true);
     final appState = Get.find<AppState>();
-    await ServiceCatelogsApiService.setCategoryForm(
+    await ServiceCategoryApiService.setCategoryForm(
       id: id,
       businessId: appState.user?.businessId ?? 0,
       name: formBuilder.textEditingControllers['name']!.text,

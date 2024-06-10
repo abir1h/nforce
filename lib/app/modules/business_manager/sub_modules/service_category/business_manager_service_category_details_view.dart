@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/business_manager/controllers/service_category_edit_controller.dart';
-import 'package:nuforce/app/modules/business_manager/models/service_catelog_model.dart';
+import 'package:nuforce/app/modules/business_manager/models/service_category_model.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/calendar/services/business_manager_calendar_api_services.dart';
-import 'package:nuforce/app/modules/business_manager/sub_modules/service_category/business_manager_add_or_edit_service_catalog.dart';
+import 'package:nuforce/app/modules/business_manager/sub_modules/service_category/business_manager_add_or_edit_service_category.dart';
 import 'package:nuforce/app/modules/service_items/widgets/title_subtitle_minimal_widget.dart';
 import 'package:nuforce/app/shared/widgets/custom_appbar_minimal.dart';
 import 'package:nuforce/app/shared/widgets/custom_dialog.dart';
@@ -14,8 +14,8 @@ import 'package:nuforce/app/utils/app_sizes.dart';
 import 'package:nuforce/app/utils/custom_loading_widget.dart';
 import 'package:nuforce/main.dart';
 
-class BusinessManagerServiceCatalogsDeatilsView extends StatelessWidget {
-  const BusinessManagerServiceCatalogsDeatilsView({
+class BusinessManagerServiceCategoryDeatilsView extends StatelessWidget {
+  const BusinessManagerServiceCategoryDeatilsView({
     required this.serviceCategory,
     super.key,
   });
@@ -105,7 +105,7 @@ class BusinessManagerServiceCatalogsDeatilsView extends StatelessWidget {
                               await controller.setContactForm(serviceCategory.id);
                               Get
                                 ..back<void>()
-                                ..to<void>(() => BusinessManagerAddOrEditServiceCatalogs(serviceCatalog: serviceCategory));
+                                ..to<void>(() => BusinessManagerAddOrEditServiceCategory(serviceCatalog: serviceCategory));
                               /*  Get
                                 ..back<void>()
                                 ..to<void>(() => BusinessManagerAddOrEditServiceCatalogs(serviceCatalog: serviceCategory));*/

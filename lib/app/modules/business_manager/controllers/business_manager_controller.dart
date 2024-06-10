@@ -15,7 +15,7 @@ import 'package:nuforce/app/modules/business_manager/sub_modules/calendar/busine
 import 'package:nuforce/app/modules/business_manager/sub_modules/commision_tires/business_manager_commission_tiers_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/contact_group/business_manager_contact_group_controller.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/label/business_manager_label_controller.dart';
-import 'package:nuforce/app/modules/business_manager/controllers/business_manager_service_catalog_controller.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/business_manager_service_category_controller.dart';
 import 'package:nuforce/app/modules/business_manager/controllers/business_manager_service_region_controller.dart';
 import 'package:nuforce/app/modules/business_manager/controllers/business_manager_service_topic_controller.dart';
 import 'package:nuforce/app/modules/business_manager/controllers/business_manager_terms_and_policy_controller.dart';
@@ -36,7 +36,7 @@ class BusinessManagerController extends GetxController {
   final commissionTierController = Get.put(BusinessManagerCommissionTiersController());
   final customFieldController = Get.put(CustomFieldController());
   final customerContactController = Get.put(CustomerContactController());
-  final serviceCatalogsController = Get.put(BusinessManagerServiceCatalogsController());
+  final serviceCatalogsController = Get.put(BusinessManagerServiceCategoryController());
   final serviceTopicController = Get.put(BusinessManagerServiceTopicController());
   final serviceRegionController = Get.put(BusinessManagerServiceRegionController());
   final termsAndPolicyController = Get.put(BusinessManagerTermsAndPolicyController());

@@ -1,10 +1,10 @@
 import 'package:equatable/equatable.dart';
 import 'package:get/get.dart';
-import 'package:nuforce/app/modules/business_manager/services/service_catelog_api_service.dart';
+import 'package:nuforce/app/modules/business_manager/services/service_category_api_service.dart';
 
-import '../models/service_catelog_model.dart';
+import '../models/service_category_model.dart';
 
-class BusinessManagerServiceCatalogsController extends GetxController {
+class BusinessManagerServiceCategoryController extends GetxController {
   List<ServiceCategoryModel> categoryList = [];
 
   @override
@@ -12,8 +12,9 @@ class BusinessManagerServiceCatalogsController extends GetxController {
     super.onInit();
     getServiceCategories();
   }
+
   getServiceCategories() {
-    ServiceCatelogsApiService.getServiceCategories().then((value) {
+    ServiceCategoryApiService.getServiceCategories().then((value) {
       value.fold((l) {
         categoryList = l.data!;
         update();
@@ -46,15 +47,5 @@ class MockServiceCatalog extends Equatable {
   });
 
   @override
-  List<Object?> get props => [
-        id,
-        name,
-        refCode,
-        parentCategory,
-        googleTaxonomy,
-        displayOrder,
-        termsAndConditions,
-        tags,
-        description
-      ];
+  List<Object?> get props => [id, name, refCode, parentCategory, googleTaxonomy, displayOrder, termsAndConditions, tags, description];
 }
