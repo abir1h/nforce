@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 import 'package:nuforce/app/model/business_manager/role_model.dart';
 import 'package:nuforce/app/modules/business_manager/models/form_model.dart';
+import 'package:nuforce/app/modules/line_item/models/control.dart';
 import 'package:nuforce/app/utils/api_client.dart';
 import 'package:nuforce/app/utils/app_states.dart';
 import 'package:nuforce/app/utils/url.dart';
@@ -11,7 +12,7 @@ import 'dart:developer' as developer show log;
 AppState appState = Get.find<AppState>();
 
 class BusinessManagerApiServices {
-  static Future<Either<FormModel, String>> businessProfileForm([
+  static Future<Either<List<Control>, String>> businessProfileForm([
     Map<String, dynamic>? body,
   ]) async {
     developer.log(body.toString(), name: 'testing');
@@ -27,7 +28,15 @@ class BusinessManagerApiServices {
       );
       if (response.statusCode == 200) {
         Logger().i('budget ${FormModel.fromJson(response.data as Map<String, dynamic>)}');
-        return Left(FormModel.fromJson(response.data as Map<String, dynamic>));
+        if (response.data['controls'] != null) {
+          List<Control> controls = [];
+          for (final control in response.data['controls']) {
+            controls.add(Control.fromJson(control));
+          }
+          return Left(controls);
+        } else {
+          return Right(response.data['error'] ?? 'An error occurred.');
+        }
       } else {
         return const Right('Error');
       }

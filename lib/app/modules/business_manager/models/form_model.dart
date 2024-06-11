@@ -45,7 +45,7 @@ class Action {
   final String? action;
   final String? label;
   final String? color;
-  final String? confirm;
+  final dynamic confirm;
   final String? warning;
 
   Action({

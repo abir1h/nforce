@@ -35,25 +35,9 @@ class _OrganizationProfileViewState extends State<OrganizationProfileView> {
       orgProfileController = Get.find<OrganizationProfileController>();
     } else {
       orgProfileController = Get.put(OrganizationProfileController());
-      orgProfileController.getData();
+      orgProfileController.getProfileForm();
     }
   }
-
-  final companyNameController = TextEditingController();
-  final phoneController = TextEditingController();
-  final websiteController = TextEditingController();
-  final orgCodeController = TextEditingController();
-
-  String selectedCountry = 'US';
-
-  List<Option> businessType = [
-    Option(label: 'Self Employed', value: ''),
-    Option(label: 'Team Work', value: 'team'),
-    Option(label: 'Corporation', value: 'corporation'),
-    Option(label: 'Proprietorship', value: 'proprietorship'),
-    Option(label: 'Partnership', value: 'partnership'),
-  ];
-  Option? selectedBusinessType;
 
   @override
   Widget build(BuildContext context) {
@@ -62,9 +46,9 @@ class _OrganizationProfileViewState extends State<OrganizationProfileView> {
       body: Builder(
         builder: (context) {
           return GetBuilder<OrganizationProfileController>(
-            builder: (ctrl) {
+            builder: (controller) {
               return CustomLoadingWidget(
-                isLoading: ctrl.isLoading,
+                isLoading: controller.isLoading,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding, vertical: 15),
                   child: Column(
@@ -74,32 +58,32 @@ class _OrganizationProfileViewState extends State<OrganizationProfileView> {
                           child: Column(
                             children: [
                               ImageUploadOptional(
-                                image: ctrl.image,
+                                image: controller.image,
                                 onImageRemoveButtonTap: () {
-                                  ctrl.removeImage();
+                                  controller.removeImage();
                                 },
                                 ontap: () async {
-                                  await ctrl.setImage();
+                                  await controller.setImage();
                                 },
                               ),
                               const SizedBox(height: 25),
                               CustomTextField(
                                 label: 'Company Name',
                                 hint: 'Write your company name here',
-                                controller: companyNameController,
+                                controller: controller.companyNameController,
                               ),
                               16.h.vSpace,
                               CustomTextField(
                                 label: 'Organization Code',
                                 hint: 'Enter your organization code',
-                                controller: orgCodeController,
+                                controller: controller.orgCodeController,
                               ),
                               16.h.vSpace,
                               CustomDropdownButton<Option?>(
                                 label: 'Industry Type',
                                 hint: 'Select your industry type',
-                                value: selectedBusinessType,
-                                items: businessType
+                                value: controller.selectedBusinessType,
+                                items: controller.businessType
                                     .map(
                                       (e) => DropdownMenuItem<Option?>(
                                         value: e,
@@ -109,7 +93,7 @@ class _OrganizationProfileViewState extends State<OrganizationProfileView> {
                                     .toList(),
                                 onChanged: (v) {
                                   setState(() {
-                                    selectedBusinessType = v;
+                                    controller.selectedBusinessType = v;
                                   });
                                 },
                               ),
@@ -117,7 +101,7 @@ class _OrganizationProfileViewState extends State<OrganizationProfileView> {
                               CustomPhoneInput(
                                 label: 'Phone Number',
                                 hint: 'Enter your phone number',
-                                controller: phoneController,
+                                controller: controller.phoneController,
                               ),
                               16.h.vSpace,
                               Column(
@@ -141,7 +125,7 @@ class _OrganizationProfileViewState extends State<OrganizationProfileView> {
                                     child: CountryCodePicker(
                                       onChanged: (v) {
                                         if (v.code != null) {
-                                          selectedCountry = v.code!;
+                                          controller.selectedCountry = v.code!;
                                         }
                                       },
                                       initialSelection: 'US',
@@ -157,92 +141,8 @@ class _OrganizationProfileViewState extends State<OrganizationProfileView> {
                               CustomTextField(
                                 label: 'Website',
                                 hint: 'Your website URL',
-                                controller: websiteController,
+                                controller: controller.websiteController,
                               ),
-                              // CustomTextField(
-                              //   label: ctrl.displayNameLabel,
-                              //   hint: 'Enter display name',
-                              //   controller: ctrl.displayNameController,
-                              // ),
-                              // const SizedBox(height: 16),
-                              // CustomTextField(
-                              //   label: ctrl.brandTaglineLabel,
-                              //   hint: 'Enter brand tagline',
-                              //   controller: ctrl.brandTaglineController,
-                              // ),
-                              // const SizedBox(height: 16),
-                              // CustomDropdownButton(
-                              //   label: ctrl.businessTypeLabel ?? 'Business Type',
-                              //   hint: 'Select one',
-                              //   onChanged: (p0) {
-                              //     ctrl.onBusinessTypeChange(p0);
-                              //   },
-                              //   value: ctrl.selectedBusinessType,
-                              //   items: ctrl.businessTypeList
-                              //       .map(
-                              //         (e) => DropdownMenuItem(
-                              //           value: e,
-                              //           child: Text(
-                              //             e.label ?? '',
-                              //             style: TextStyle(
-                              //               fontSize: 14.sp,
-                              //               color: AppColors.nutralBlack1,
-                              //               fontWeight: FontWeight.w400,
-                              //             ),
-                              //           ),
-                              //         ),
-                              //       )
-                              //       .toList(),
-                              // ),
-                              // const SizedBox(height: 16),
-                              // CustomTextField(
-                              //   label: ctrl.profileAboutLabel,
-                              //   controller: ctrl.aboutYourBusinessController,
-                              //   hint: 'Write about your business',
-                              //   maxLines: 3,
-                              // ),
-                              // const SizedBox(height: 16),
-                              // CustomTextField(
-                              //   label: ctrl.officeAddressLabel,
-                              //   controller: ctrl.officeAddressController,
-                              //   hint: 'Enter office address',
-                              // ),
-                              // const SizedBox(height: 16),
-                              // CustomTextField(
-                              //   label: ctrl.phoneLabel,
-                              //   controller: ctrl.phoneController,
-                              //   hint: 'Enter phone number',
-                              // ),
-                              // const SizedBox(height: 16),
-                              // CustomTextField(
-                              //   label: ctrl.emailLabel,
-                              //   controller: ctrl.emailController,
-                              //   hint: 'Enter email address',
-                              // ),
-                              // const SizedBox(height: 16),
-                              // CustomTextField(
-                              //   label: ctrl.supportLabel,
-                              //   controller: ctrl.supportController,
-                              //   hint: 'Enter support email',
-                              // ),
-                              // const SizedBox(height: 16),
-                              // CustomTextField(
-                              //   label: ctrl.websiteLabel,
-                              //   controller: ctrl.websiteController,
-                              //   hint: 'Enter website link',
-                              // ),
-                              // const SizedBox(height: 16),
-                              // CustomTextField(
-                              //   label: ctrl.twitterHandleLabel,
-                              //   controller: ctrl.twitterHandleController,
-                              //   hint: 'Enter twitter handle',
-                              // ),
-                              // const SizedBox(height: 16),
-                              // CustomTextField(
-                              //   label: ctrl.facebookPageLabel,
-                              //   controller: ctrl.facebookPageController,
-                              //   hint: 'Enter facebook page link',
-                              // ),
                               const SizedBox(height: 32),
                             ],
                           ),
@@ -253,13 +153,13 @@ class _OrganizationProfileViewState extends State<OrganizationProfileView> {
                           Expanded(
                             child: SecondaryButton(
                               onPressed: () {
-                                if (ctrl.showResetWarning) {
+                                if (controller.showResetWarning) {
                                   showDialog(
                                     context: context,
                                     builder: (ctx) {
                                       return AlertDialog(
                                         title: const Text('Warning'),
-                                        content: Text(ctrl.resetWarning),
+                                        content: Text(controller.resetWarning),
                                         actions: [
                                           TextButton(
                                             onPressed: () {
@@ -269,7 +169,7 @@ class _OrganizationProfileViewState extends State<OrganizationProfileView> {
                                           ),
                                           TextButton(
                                             onPressed: () {
-                                              ctrl.resetForm();
+                                              // ctrl.resetForm(); // TODO reset form
                                               Navigator.of(ctx).pop();
                                             },
                                             child: const Text('Reset'),
@@ -279,7 +179,7 @@ class _OrganizationProfileViewState extends State<OrganizationProfileView> {
                                     },
                                   );
                                 } else {
-                                  ctrl.resetForm();
+                                  // ctrl.resetForm(); // TODO reset form
                                 }
                               },
                               text: 'Reset',
@@ -289,25 +189,25 @@ class _OrganizationProfileViewState extends State<OrganizationProfileView> {
                           Expanded(
                             child: PrimaryButton(
                               onPressed: () {
-                                if (companyNameController.text.isEmpty || orgCodeController.text.isEmpty || selectedBusinessType == null) {
+                                if (controller.companyNameController.text.isEmpty || controller.orgCodeController.text.isEmpty || controller.selectedBusinessType == null) {
                                   Fluttertoast.showToast(msg: 'Please fill all fields');
                                   return;
                                 }
-                                if (selectedCountry.isEmpty) {
+                                if (controller.selectedCountry.isEmpty) {
                                   Fluttertoast.showToast(msg: 'Please select country');
                                   return;
                                 }
-                                if (selectedBusinessType == null) {
+                                if (controller.selectedBusinessType == null) {
                                   Fluttertoast.showToast(msg: 'Please select business type');
                                   return;
                                 }
-                                ctrl
+                                controller
                                     .submitForm(
-                                  businessType: selectedBusinessType?.value,
-                                  countryCode: selectedCountry,
-                                  name: companyNameController.text,
+                                  businessType: controller.selectedBusinessType?.value,
+                                  countryCode: controller.selectedCountry,
+                                  name: controller.companyNameController.text,
                                   logoUrl: '',
-                                  orgCode: orgCodeController.text,
+                                  orgCode: controller.orgCodeController.text,
                                 )
                                     .then((value) {
                                   value.fold(
