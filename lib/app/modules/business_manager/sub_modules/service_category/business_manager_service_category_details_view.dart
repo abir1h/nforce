@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/business_manager_service_category_controller.dart';
 import 'package:nuforce/app/modules/business_manager/controllers/service_category_edit_controller.dart';
 import 'package:nuforce/app/modules/business_manager/models/service_category_model.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/calendar/services/business_manager_calendar_api_services.dart';
@@ -29,7 +30,8 @@ class BusinessManagerServiceCategoryDeatilsView extends StatelessWidget {
         height: height,
         width: width,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
+          padding: const EdgeInsets.symmetric(
+              horizontal: AppSizes.horizontalPadding),
           child: GetBuilder<ServiceCategoryEditController>(
             builder: (controller) {
               return CustomLoadingWidget(
@@ -38,13 +40,17 @@ class BusinessManagerServiceCategoryDeatilsView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(height: 16),
-                    TitleSubtitleMinimal(title: 'Name', subtitle: serviceCategory.slug),
+                    TitleSubtitleMinimal(
+                        title: 'Name', subtitle: serviceCategory.slug),
                     const SizedBox(height: 16),
-                    TitleSubtitleMinimal(title: 'Ref Code', subtitle: serviceCategory.refCode),
+                    TitleSubtitleMinimal(
+                        title: 'Ref Code', subtitle: serviceCategory.refCode),
                     const SizedBox(height: 16),
                     // TitleSubtitleMinimal(title: 'Parent Category', subtitle: serviceCategory.parentCategory),
                     //const SizedBox(height: 16),
-                    TitleSubtitleMinimal(title: 'breadcrumbs', subtitle: serviceCategory.breadcrumbs),
+                    TitleSubtitleMinimal(
+                        title: 'breadcrumbs',
+                        subtitle: serviceCategory.breadcrumbs),
                     const SizedBox(height: 16),
                     /*     TitleSubtitleMinimal(title: 'Display Order', subtitle: serviceCategory.displayOrder),
                     const SizedBox(height: 16),
@@ -70,11 +76,13 @@ class BusinessManagerServiceCategoryDeatilsView extends StatelessWidget {
                                   return CustomDialog(
                                     dialogType: DialogType.warning,
                                     title: 'Delete Category?',
-                                    content: 'Are you sure you want to delete ${serviceCategory.slug}?',
+                                    content:
+                                        'Are you sure you want to delete ${serviceCategory.slug}?',
                                     primaryText: 'Delete',
                                     onPrimaryButtonPress: () async {
                                       Navigator.of(ctx).pop();
-                                      final controller = Get.find<ServiceCategoryEditController>();
+                                      final controller = Get.find<
+                                          ServiceCategoryEditController>();
                                       controller
                                           .addEditOrDeleteCategory(
                                         action: ActionType.delete,
@@ -82,6 +90,10 @@ class BusinessManagerServiceCategoryDeatilsView extends StatelessWidget {
                                       )
                                           .then((value) {
                                         if (value) {
+                                          final controllerCategory = Get.find<
+                                              BusinessManagerServiceCategoryController>();
+                                          controllerCategory
+                                              .getServiceCategories();
                                           Get.back<void>();
                                         }
                                       });
@@ -101,11 +113,15 @@ class BusinessManagerServiceCategoryDeatilsView extends StatelessWidget {
                         Expanded(
                           child: PrimaryButton(
                             onPressed: () async {
-                              final controller = Get.find<ServiceCategoryEditController>();
-                              await controller.setContactForm(serviceCategory.id);
+                              final controller =
+                                  Get.find<ServiceCategoryEditController>();
+                              await controller
+                                  .setContactForm(serviceCategory.id);
                               Get
                                 ..back<void>()
-                                ..to<void>(() => BusinessManagerAddOrEditServiceCategory(serviceCatalog: serviceCategory));
+                                ..to<void>(() =>
+                                    BusinessManagerAddOrEditServiceCategory(
+                                        serviceCatalog: serviceCategory));
                               /*  Get
                                 ..back<void>()
                                 ..to<void>(() => BusinessManagerAddOrEditServiceCatalogs(serviceCatalog: serviceCategory));*/

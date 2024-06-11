@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/business_manager_service_region_controller.dart';
 import 'package:nuforce/app/modules/business_manager/controllers/service_region_edit_controller.dart';
 import 'package:nuforce/app/modules/business_manager/models/service_region_model.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/calendar/services/business_manager_calendar_api_services.dart';
@@ -62,6 +63,8 @@ class BusinessManagerServiceRegionDetailsView extends StatelessWidget {
                                     Navigator.of(ctx).pop();
                                     await controller.addRegion(id: serviceRegion.id, action: ActionType.delete).then((value) {
                                       if (value ?? false) {
+                                        final controllerRegion= Get.find<BusinessManagerServiceRegionController>();
+                                        controllerRegion.getRegions();
                                         Get.back<void>();
                                       }
                                     });

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/business_manager_service_topic_controller.dart';
 import 'package:nuforce/app/modules/business_manager/controllers/service_topic_edit_controller.dart';
 import 'package:nuforce/app/modules/business_manager/models/service_topic_model.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/calendar/services/business_manager_calendar_api_services.dart';
@@ -64,6 +65,8 @@ class BusinessManagerServiceTopicDetailsView extends StatelessWidget {
                                       final controller = Get.find<ServiceTopicEditController>();
                                       controller.addEditDeleteTopic(action: ActionType.delete, id: serviceTopic.id).then((value) {
                                         if (value ?? false) {
+                                          final controllerTopic= Get.find<BusinessManagerServiceTopicController>();
+                                          controllerTopic.getServiceTopics();
                                           Get.back<void>();
                                         }
                                       });

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/business_manager_terms_and_policy_controller.dart';
 import 'package:nuforce/app/modules/business_manager/controllers/service_terms_edit_controller.dart';
 import 'package:nuforce/app/modules/business_manager/models/service_terms_model.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/calendar/services/business_manager_calendar_api_services.dart';
@@ -102,7 +103,9 @@ class _BusinessManagerTermsAndPolicyDetailsViewState extends State<BusinessManag
                                     )
                                         .then((value) {
                                       if (value == true) {
-                                        Get.back();
+                                        final controllerService= Get.find<BusinessManagerTermsAndPolicyController>();
+                                        controllerService.getServiceTerms();
+                                        Get.back<void>();
                                       }
                                     });
 
