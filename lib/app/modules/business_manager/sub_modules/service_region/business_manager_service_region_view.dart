@@ -21,6 +21,46 @@ class BusinessManagerServiceRegionView extends StatefulWidget {
 
 class _BusinessManagerServiceRegionViewState extends State<BusinessManagerServiceRegionView> {
   final controller = Get.put(BusinessManagerServiceRegionController());
+  final editController = Get.put(ServiceRegionEditController());
+  late ScrollController _scrollController;
+
+  bool lazyLoad = false;
+  String? lastFetchedId;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController();
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  bool _handleScrollNotification(ScrollEndNotification scrollEndNotification) {
+    if (scrollEndNotification.metrics.extentAfter < 1000) {
+      if (!lazyLoad) {
+        if (mounted) {
+          setState(() {
+            lazyLoad = true;
+          });
+        }
+        if (controller.regionList.isNotEmpty) {
+          lastFetchedId = controller.regionList.last.id.toString();
+          controller.loadMoreRegions();
+        } else {
+          if (mounted) {
+            setState(() {
+              lazyLoad = false;
+            });
+          }
+        }
+      }
+    }
+    return false;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,10 +76,7 @@ class _BusinessManagerServiceRegionViewState extends State<BusinessManagerServic
               else
                 GestureDetector(
                   onTap: () async {
-                    // controller.setRegionForm(widget.serviceRegion!.id);
-                    final controller = Get.find<ServiceRegionEditController>();
-                    await controller.setRegionForm();
-
+                    editController.setRegionForm();
                     Get.to<void>(() => const BusinessManagerAddOrEditServiceRegion());
                   },
                   child: Row(
@@ -61,41 +98,43 @@ class _BusinessManagerServiceRegionViewState extends State<BusinessManagerServic
               const SizedBox(width: 16),
             ],
           ),
-          body: GetBuilder<ServiceRegionEditController>(builder: (con) {
-            return CustomLoadingWidget(
-              isLoading: con.isLoading,
-              child: SizedBox(
-                width: Get.width,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
-                  child: controller.regionList.isEmpty
-                      ? const EmptyServiceRegion()
-                      : Padding(
-                          padding: const EdgeInsets.only(top: 14),
-                          child: ListView.builder(
-                            itemCount: controller.regionList.length,
-                            shrinkWrap: true,
-                            itemBuilder: (BuildContext context, int index) {
-                              return Padding(
-                                padding: const EdgeInsets.only(bottom: 16),
-                                child: ServiceRegionTile(
-                                  serviceRegion: controller.regionList[index],
-                                  onTap: () {
-                                    Get.to<void>(
-                                      () => BusinessManagerServiceRegionDetailsView(
-                                        serviceRegion: controller.regionList[index],
-                                      ),
-                                    );
-                                  },
-                                ),
-                              );
-                            },
-                          ),
+          body: NotificationListener<ScrollEndNotification>(
+            onNotification: _handleScrollNotification,
+            child: SizedBox(
+              width: Get.width,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
+                child: controller.regionList.isEmpty
+                    ? const EmptyServiceRegion()
+                    : Padding(
+                  padding: const EdgeInsets.only(top: 14),
+                  child: ListView.builder(
+                    controller: _scrollController,
+                    itemCount: controller.regionList.length + (controller.isLoadingMore ? 1 : 0),
+                    shrinkWrap: true,
+                    itemBuilder: (BuildContext context, int index) {
+                      if (index == controller.regionList.length) {
+                        return const Center(child: CircularProgressIndicator());
+                      }
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 16),
+                        child: ServiceRegionTile(
+                          serviceRegion: controller.regionList[index],
+                          onTap: () {
+                            Get.to<void>(
+                                  () => BusinessManagerServiceRegionDetailsView(
+                                serviceRegion: controller.regionList[index],
+                              ),
+                            );
+                          },
                         ),
+                      );
+                    },
+                  ),
                 ),
               ),
-            );
-          }),
+            ),
+          ),
         );
       },
     );

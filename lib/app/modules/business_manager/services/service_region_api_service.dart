@@ -10,10 +10,34 @@ import '../../line_item/models/control.dart';
 import 'dart:developer' as developer show log;
 
 class ServiceRegionApiService {
-  static Future<Either<ServiceRegionDataModel, String>> getServiceRegions() async {
+/*  static Future<Either<ServiceRegionDataModel, String>> getServiceRegions() async {
     try {
       final response =
           await ApiClient.instance.post(url: URL.getRegions, body: {"table": "region", "page": 1, "limit": 20, "where": {}, "order": "id asc", "transform": "", "humanized": true, "columns": true});
+      if (response.statusCode == 200 && response.data['data'] != null) {
+        return Left(ServiceRegionDataModel.fromJson(response.data));
+      } else {
+        return Right(response.data['error'] ?? 'An error occurred.');
+      }
+    } catch (e) {
+      return Right(e.toString());
+    }
+  }*/
+  static Future<Either<ServiceRegionDataModel, String>> getServiceRegions({int page = 1}) async {
+    try {
+      final response = await ApiClient.instance.post(
+        url: URL.getRegions,
+        body: {
+          "table": "region",
+          "page": page,
+          "limit": 10,
+          "where": {},
+          "order": "id asc",
+          "transform": "",
+          "humanized": true,
+          "columns": true
+        },
+      );
       if (response.statusCode == 200 && response.data['data'] != null) {
         return Left(ServiceRegionDataModel.fromJson(response.data));
       } else {

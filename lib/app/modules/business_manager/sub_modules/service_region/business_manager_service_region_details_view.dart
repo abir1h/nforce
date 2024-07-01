@@ -24,6 +24,7 @@ class BusinessManagerServiceRegionDetailsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller=Get.put(ServiceRegionEditController());
     return Scaffold(
       appBar: const CustomAppbarMinimal(title: 'Details'),
       body: GetBuilder<ServiceRegionEditController>(builder: (controller) {

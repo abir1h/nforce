@@ -38,11 +38,11 @@ class BusinessManagerController extends GetxController {
   final customerContactController = Get.put(CustomerContactController());
   final serviceCatalogsController = Get.put(BusinessManagerServiceCategoryController());
   final serviceTopicController = Get.put(BusinessManagerServiceTopicController());
-  final serviceRegionController = Get.put(BusinessManagerServiceRegionController());
+  // final serviceRegionController = Get.put(BusinessManagerServiceRegionController());
   final termsAndPolicyController = Get.put(BusinessManagerTermsAndPolicyController());
   final serviceCategoryController = Get.put(ServiceCategoryEditController());
   final serviceTopicEditController = Get.put(ServiceTopicEditController());
-  final serviceRegionEditController = Get.put(ServiceRegionEditController());
+  // final serviceRegionEditController = Get.put(ServiceRegionEditController());
   final serviceTermsEditController = Get.put(ServiceTermsEditController());
 
   @override

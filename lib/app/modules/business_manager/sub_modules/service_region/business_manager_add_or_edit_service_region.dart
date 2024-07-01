@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:nuforce/app/modules/business_manager/controllers/business_manager_service_region_controller.dart';
+import 'package:nuforce/app/modules/business_manager/controllers/business_manager_service_topic_controller.dart';
 import 'package:nuforce/app/modules/business_manager/controllers/service_region_edit_controller.dart';
 import 'package:nuforce/app/modules/business_manager/models/service_region_model.dart';
 import 'package:nuforce/app/modules/business_manager/sub_modules/calendar/services/business_manager_calendar_api_services.dart';
@@ -37,6 +38,8 @@ class _BusinessManagerAddOrEditServiceTopicViewState extends State<BusinessManag
   void dispose() {
     super.dispose();
   }
+  final controller=Get.put(ServiceRegionEditController());
+  final controllerRegion=Get.put(BusinessManagerServiceRegionController());
 
   @override
   Widget build(BuildContext context) {
@@ -97,8 +100,10 @@ class _BusinessManagerAddOrEditServiceTopicViewState extends State<BusinessManag
                                 )
                                     .then((value) {
                                   if (value == true) {
-                                    final data = Get.find<BusinessManagerServiceRegionController>();
-                                    data.getRegions();
+
+                                    // controllerRegion.currentPage=1;
+
+                                    controllerRegion.getRegions();
                                     Get.back();
                                   }
                                 });

@@ -5,6 +5,8 @@ import 'package:nuforce/app/modules/business_manager/services/service_region_api
 
 class BusinessManagerServiceRegionController extends GetxController {
   List<ServiceRegionModel> regionList = [];
+  bool isLoadingMore = false;
+  int currentPage = 1;
 
   @override
   void onInit() {
@@ -12,13 +14,34 @@ class BusinessManagerServiceRegionController extends GetxController {
     getRegions();
   }
 
-  getRegions() {
-    ServiceRegionApiService.getServiceRegions().then((value) {
+  getRegions({int page = 1}) {
+    ServiceRegionApiService.getServiceRegions(page: page).then((value) {
       value.fold((l) {
-        regionList = l.data!;
+        if (l.data!.isEmpty && page > 1) {
+          isLoadingMore = false;
+          return;
+        }
+
+        if (page == 1) {
+          regionList = l.data!;
+        } else {
+          regionList.addAll(l.data!);
+          currentPage = page; // Update currentPage only if new data is added
+        }
+        isLoadingMore = false;
         update();
-      }, (r) => print(r));
+      }, (r) {
+        isLoadingMore = false;
+        print(r);
+      });
     });
+  }
+
+  loadMoreRegions() {
+    if (!isLoadingMore) {
+      isLoadingMore = true;
+      getRegions(page: currentPage + 1);
+    }
   }
 }
 
